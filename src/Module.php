@@ -57,6 +57,12 @@ class Module
                         $serviceManager->get('amazon')
                     );
                 },
+                AmazonTable\Product\Hashtag::class => function ($serviceManager) {
+                    return new AmazonTable\Product\Hashtag(
+                        $serviceManager->get(MemcachedService\Memcached::class),
+                        $serviceManager->get('amazon')
+                    );
+                },
             ],
         ];
     }
