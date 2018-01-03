@@ -28,12 +28,12 @@ class Image
         }
 
         $sql = '
-            SELECT `amazon_product_image`.`asin`
-                 , `amazon_product_image`.`category`
-                 , `amazon_product_image`.`url`
-                 , `amazon_product_image`.`width`
-                 , `amazon_product_image`.`height`
-              FROM `amazon_product_image`
+            SELECT `product_image`.`asin`
+                 , `product_image`.`category`
+                 , `product_image`.`url`
+                 , `product_image`.`width`
+                 , `product_image`.`height`
+              FROM `product_image`
              WHERE `asin` = ?
                  ;
         ';
@@ -57,7 +57,7 @@ class Image
     {
         $sql = '
             INSERT
-              INTO `amazon_product_image` (
+              INTO `product_image` (
                          `asin`
                        , `category`
                        , `url`
@@ -65,10 +65,10 @@ class Image
                        , `height`
                    )
                 SELECT ?, ?, ?, ?, ?
-                FROM `amazon_product_image`
+                FROM `product_image`
                WHERE NOT EXISTS (
                    SELECT `asin`
-                     FROM `amazon_product_image`
+                     FROM `product_image`
                     WHERE `asin` = ?
                       AND `category` = ?
                       AND `url` = ?
@@ -113,9 +113,9 @@ class Image
     public function selectWidthAndHeightWhereAsinAndUrl($asin, $url)
     {
         $sql = '
-            SELECT `amazon_product_image`.`width`
-                 , `amazon_product_image`.`height`
-              FROM `amazon_product_image`
+            SELECT `product_image`.`width`
+                 , `product_image`.`height`
+              FROM `product_image`
              WHERE `asin` = ?
                AND `url` = ?
                  ;
@@ -134,11 +134,11 @@ class Image
         $url
     ) {
         $sql = '
-            UPDATE `amazon_product_image`
-               SET `amazon_product_image`.`width` = ?
-                 , `amazon_product_image`.`height` = ?
-             WHERE `amazon_product_image`.`asin` = ?
-               AND `amazon_product_image`.`url` = ?
+            UPDATE `product_image`
+               SET `product_image`.`width` = ?
+                 , `product_image`.`height` = ?
+             WHERE `product_image`.`asin` = ?
+               AND `product_image`.`url` = ?
                  ;
         ';
         $parameters = [
