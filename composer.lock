@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d62825a3cca04613aa66048a7d5bc357",
-    "content-hash": "ec10d08676df26827d82b8afa227f102",
+    "hash": "1cfee5f48d934ff928a3a9831d56a15d",
+    "content-hash": "a29a340601759b45d3e3164eefebc8e3",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -91,6 +91,37 @@
                 "instantiate"
             ],
             "time": "2015-06-14 21:17:01"
+        },
+        {
+            "name": "leo-galleguillos/memcached",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LeoGalleguillos/Memcached.git",
+                "reference": "c23a88ae0b6c3c15f0e5c985e934a2e8a9f1312f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LeoGalleguillos/Memcached/zipball/c23a88ae0b6c3c15f0e5c985e934a2e8a9f1312f",
+                "reference": "c23a88ae0b6c3c15f0e5c985e934a2e8a9f1312f",
+                "shasum": ""
+            },
+            "require": {
+                "zendframework/zend-cache": "^2.7",
+                "zendframework/zend-test": "^3.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LeoGalleguillos\\Memcached\\": "src/",
+                    "LeoGalleguillos\\MemcachedTest\\": "test/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2017-12-30 01:07:16"
         },
         {
             "name": "myclabs/deep-copy",
@@ -1545,6 +1576,75 @@
             "time": "2016-11-23 20:04:58"
         },
         {
+            "name": "zendframework/zend-cache",
+            "version": "2.7.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-cache.git",
+                "reference": "c98331b96d3b9d9b24cf32d02660602edb34d039"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-cache/zipball/c98331b96d3b9d9b24cf32d02660602edb34d039",
+                "reference": "c98331b96d3b9d9b24cf32d02660602edb34d039",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5 || ^7.0",
+                "zendframework/zend-eventmanager": "^2.6.2 || ^3.0",
+                "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3",
+                "zendframework/zend-stdlib": "^2.7 || ^3.0"
+            },
+            "require-dev": {
+                "phpbench/phpbench": "^0.10.0",
+                "phpunit/phpunit": "^4.8",
+                "zendframework/zend-coding-standard": "~1.0.0",
+                "zendframework/zend-serializer": "^2.6",
+                "zendframework/zend-session": "^2.6.2"
+            },
+            "suggest": {
+                "ext-apc": "APC or compatible extension, to use the APC storage adapter",
+                "ext-apcu": "APCU >= 5.1.0, to use the APCu storage adapter",
+                "ext-dba": "DBA, to use the DBA storage adapter",
+                "ext-memcache": "Memcache >= 2.0.0 to use the Memcache storage adapter",
+                "ext-memcached": "Memcached >= 1.0.0 to use the Memcached storage adapter",
+                "ext-mongo": "Mongo, to use MongoDb storage adapter",
+                "ext-redis": "Redis, to use Redis storage adapter",
+                "ext-wincache": "WinCache, to use the WinCache storage adapter",
+                "ext-xcache": "XCache, to use the XCache storage adapter",
+                "mongofill/mongofill": "Alternative to ext-mongo - a pure PHP implementation designed as a drop in replacement",
+                "zendframework/zend-serializer": "Zend\\Serializer component",
+                "zendframework/zend-session": "Zend\\Session component"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.7-dev",
+                    "dev-develop": "2.8-dev"
+                },
+                "zf": {
+                    "component": "Zend\\Cache",
+                    "config-provider": "Zend\\Cache\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zend\\Cache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "provides a generic way to cache any data",
+            "homepage": "https://github.com/zendframework/zend-cache",
+            "keywords": [
+                "cache",
+                "zf2"
+            ],
+            "time": "2016-12-16 11:35:47"
+        },
+        {
             "name": "zendframework/zend-config",
             "version": "3.1.0",
             "source": {
@@ -2534,7 +2634,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "leo-galleguillos/memcached": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
