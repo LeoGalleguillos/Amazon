@@ -39,6 +39,12 @@ class Module
                         $serviceManager->get('amazon')
                     );
                 },
+                AmazonTable\Brand::class => function ($serviceManager) {
+                    return new AmazonTable\Brand(
+                        $serviceManager->get(MemcachedService\Memcached::class),
+                        $serviceManager->get('amazon')
+                    );
+                },
             ],
         ];
     }
