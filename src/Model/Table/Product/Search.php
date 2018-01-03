@@ -25,7 +25,7 @@ class Search
     {
         $sql = "
             INSERT
-              INTO `amazon_product_search` (`asin`, `title`, `modified`)
+              INTO `product_search` (`asin`, `title`, `modified`)
             VALUES (?, ?, ?)
                 ON
          DUPLICATE
@@ -50,7 +50,7 @@ class Search
         $query = $this->keepOnlyFirstWords($query);
         $sql = '
             SELECT COUNT(*) AS `count`
-              FROM `amazon_product_search`
+              FROM `product_search`
              WHERE MATCH (`title`) AGAINST (?)
                  ;
         ';
@@ -72,7 +72,7 @@ class Search
         $offset = (int) (($page - 1) * 100);
         $sql = "
             SELECT `asin`
-              FROM `amazon_product_search`
+              FROM `product_search`
              WHERE MATCH (`title`) AGAINST (?)
              LIMIT $offset, 100
                  ;
@@ -98,7 +98,7 @@ class Search
     {
         $sql = '
             SELECT MAX(`modified`) AS `max_modified`
-              FROM `amazon_product_search`
+              FROM `product_search`
                  ;
         ';
         $row = $this->adapter->query($sql)->execute()->current();
