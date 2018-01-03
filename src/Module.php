@@ -69,6 +69,12 @@ class Module
                         $serviceManager->get('amazon')
                     );
                 },
+                AmazonTable\Product\Similar::class => function ($serviceManager) {
+                    return new AmazonTable\Product\Similar(
+                        $serviceManager->get(MemcachedService\Memcached::class),
+                        $serviceManager->get('amazon')
+                    );
+                },
             ],
         ];
     }
