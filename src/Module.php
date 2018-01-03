@@ -32,6 +32,11 @@ class Module
                         $serviceManager->get('amazon')
                     );
                 },
+                AmazonTable\Binding::class => function ($serviceManager) {
+                    return new AmazonTable\Binding(
+                        $serviceManager->get('amazon')
+                    );
+                },
             ],
         ];
     }
