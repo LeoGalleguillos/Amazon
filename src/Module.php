@@ -63,6 +63,12 @@ class Module
                         $serviceManager->get('amazon')
                     );
                 },
+                AmazonTable\Product\Search::class => function ($serviceManager) {
+                    return new AmazonTable\Product\Search(
+                        $serviceManager->get(MemcachedService\Memcached::class),
+                        $serviceManager->get('amazon')
+                    );
+                },
             ],
         ];
     }
