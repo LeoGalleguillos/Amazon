@@ -45,6 +45,12 @@ class Module
                         $serviceManager->get('amazon')
                     );
                 },
+                AmazonTable\Product::class => function ($serviceManager) {
+                    return new AmazonTable\Product(
+                        $serviceManager->get(MemcachedService\Memcached::class),
+                        $serviceManager->get('amazon')
+                    );
+                },
                 AmazonTable\Product\EditorialReview::class => function ($serviceManager) {
                     return new AmazonTable\Product\EditorialReview(
                         $serviceManager->get(MemcachedService\Memcached::class),
@@ -86,9 +92,19 @@ class Module
                         $serviceManager->get('amazon')
                     );
                 },
+                AmazonTable\Product\SimilarRetrieved::class => function ($serviceManager) {
+                    return new AmazonTable\Product\SimilarRetrieved(
+                        $serviceManager->get('amazon')
+                    );
+                },
                 AmazonTable\ProductGroup::class => function ($serviceManager) {
                     return new AmazonTable\ProductGroup(
                         $serviceManager->get(MemcachedService\Memcached::class),
+                        $serviceManager->get('amazon')
+                    );
+                },
+                AmazonTable\Products::class => function ($serviceManager) {
+                    return new AmazonTable\Products(
                         $serviceManager->get('amazon')
                     );
                 },
