@@ -23,7 +23,7 @@ class EditorialReview
     public function selectWhereAsin($asin)
     {
         $cacheKey = md5(__METHOD__ . $asin);
-        if (null !== ($rows = $this->memcached->getItem($cacheKey))) {
+        if (null !== ($rows = $this->memcached->get($cacheKey))) {
             return $rows;
         }
 
@@ -42,7 +42,7 @@ class EditorialReview
             $rows[] = (array) $row;
         }
 
-        $this->memcached->setItem($cacheKey, $rows);
+        $this->memcached->setForDays($cacheKey, $rows, 3);
         return $rows;
     }
 
