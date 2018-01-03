@@ -3,6 +3,7 @@ namespace LeoGalleguillos\Amazon;
 
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
+use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
 
 class Module
 {
@@ -34,6 +35,7 @@ class Module
                 },
                 AmazonTable\Binding::class => function ($serviceManager) {
                     return new AmazonTable\Binding(
+                        $serviceManager->get(MemcachedService\Memcached::class),
                         $serviceManager->get('amazon')
                     );
                 },
