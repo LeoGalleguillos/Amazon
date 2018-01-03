@@ -45,6 +45,12 @@ class Module
                         $serviceManager->get('amazon')
                     );
                 },
+                AmazonTable\Product\EditorialReview::class => function ($serviceManager) {
+                    return new AmazonTable\Product\EditorialReview(
+                        $serviceManager->get(MemcachedService\Memcached::class),
+                        $serviceManager->get('amazon')
+                    );
+                },
                 AmazonTable\Product\Feature::class => function ($serviceManager) {
                     return new AmazonTable\Product\Feature(
                         $serviceManager->get(MemcachedService\Memcached::class),
