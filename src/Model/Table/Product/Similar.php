@@ -12,7 +12,7 @@ class Similar
     private $adapter;
 
     public function __construct(
-        Memcached $memcached,
+        MemcachedService $memcached,
         Adapter $adapter
     ) {
         $this->memcached = $memcached;
