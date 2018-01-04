@@ -71,11 +71,11 @@ class Hashtag
               FROM `product_hashtag`
               JOIN `hashtag`.`hashtag`
              USING (`hashtag_id`)
-              JOIN `amazon_product`
+              JOIN `product`
              USING (`asin`)
              WHERE `hashtag`.`hashtag`.`hashtag` = ?
              ORDER
-                BY `amazon_product`.`modified` DESC
+                BY `product`.`modified` DESC
              LIMIT $offset, 100
                  ;
         ";
