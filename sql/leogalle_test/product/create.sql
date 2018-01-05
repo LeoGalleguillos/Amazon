@@ -6,7 +6,6 @@ CREATE TABLE `product` (
   `binding` varchar(255) DEFAULT NULL,
   `brand` varchar(255) DEFAULT NULL,
   `list_price` float(16,2) DEFAULT NULL,
-  `in_stock` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `similar_retrieved` datetime DEFAULT NULL,
   PRIMARY KEY (`product_id`),

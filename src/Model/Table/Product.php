@@ -37,7 +37,6 @@ class Product
                  , `product`.`binding`
                  , `product`.`brand`
                  , `product`.`list_price`
-                 , `product`.`in_stock`
                  , `product`.`modified`
               FROM `product`
              WHERE `asin` = ?
@@ -238,7 +237,6 @@ class Product
                  , `product`.`binding`
                  , `product`.`brand`
                  , `product`.`list_price`
-                 , `product`.`in_stock`
                  , `product`.`modified`
               FROM `product`
              WHERE `product`.`product_id` = ?

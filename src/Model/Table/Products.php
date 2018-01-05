@@ -17,25 +17,6 @@ class Products
     }
 
     /**
-     * @yield string
-     */
-    public function selectAsinWhereInStockEquals1()
-    {
-        $sql = '
-            SELECT `product`.`asin`
-              FROM `product`
-             WHERE `product`.`in_stock` = 1
-             LIMIT 100
-                 ;
-        ';
-        $results = $this->adapter->query($sql)->execute();
-
-        foreach ($results as $row) {
-            yield $row['asin'];
-        }
-    }
-
-    /**
      * Select ASIN where modified is greater than or equal to.
      *
      * @yield string
