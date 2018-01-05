@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\AmazonTest\Model\Table;
 
+use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
 use Zend\Db\Adapter\Adapter;
@@ -43,5 +44,25 @@ class ProductTest extends TestCase
     public function testInitialize()
     {
         $this->assertInstanceOf(AmazonTable\Product::class, $this->productTable);
+    }
+
+    public function testInsertOnDuplicateKeyUpdate()
+    {
+        $productEntity       = new AmazonEntity\Product();
+        $productEntity->asin  = 'ASIN';
+        $productEntity->title = 'Test Product';
+        $productEntity->listPrice = 0.00;
+        $productEntity->productGroup = 'Product Group';
+        $productEntity->binding = 'Binding';
+        $productEntity->brand = 'Brand';
+
+        $this->assertSame(
+            1,
+            $this->productTable->insertOnDuplicateKeyUpdate($productEntity)
+        );
+        $this->assertSame(
+            0,
+            $this->productTable->insertOnDuplicateKeyUpdate($productEntity)
+        );
     }
 }

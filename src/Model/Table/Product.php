@@ -2,7 +2,7 @@
 namespace LeoGalleguillos\Amazon\Model\Table;
 
 use LeoGalleguillos\Memcached\Model\Service\Memcached as MemcachedService;
-use Website\Model\Entity\Amazon\Product as AmazonProductEntity;
+use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use Zend\Db\Adapter\Adapter;
 
 class Product
@@ -74,25 +74,22 @@ class Product
         return $newestAsins;
     }
 
-    public function insertProductIfNotExists(AmazonProductEntity $product)
-    {
-        return $this->insertWhereNotExists($product);
-    }
-
-    private function insertWhereNotExists(AmazonProductEntity $product)
+    public function insertOnDuplicateKeyUpdate(AmazonEntity\Product $product)
     {
         $sql = '
             INSERT
               INTO `product` (`asin`, `title`, `product_group`, `binding`, `brand`, `list_price`)
-                SELECT ?, ?, ?, ?, ?, ?
-                FROM `product`
-               WHERE NOT EXISTS (
-                   SELECT `asin`
-                     FROM `product`
-                    WHERE `asin` = ?
-               )
-               LIMIT 1
-           ;
+            VALUES (?, ?, ?, ?, ?, ?)
+                ON
+         DUPLICATE
+               KEY
+            UPDATE `asin`  = VALUES(`asin`)
+                 , `title` = VALUES(`title`)
+                 , `product_group` = VALUES(`product_group`)
+                 , `binding` = VALUES(`binding`)
+                 , `brand` = VALUES(`brand`)
+                 , `list_price` = VALUES(`list_price`)
+                 ;
         ';
         $parameters = [
             $product->asin,
@@ -101,9 +98,8 @@ class Product
             $product->binding,
             $product->brand,
             $product->listPrice,
-            $product->asin
         ];
-        return $this->adapter
+        return (int) $this->adapter
                     ->query($sql, $parameters)
                     ->getGeneratedValue();
     }
