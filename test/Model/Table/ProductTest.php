@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\AmazonTest\Model\Table;
 
+use ArrayObject;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
@@ -63,6 +64,24 @@ class ProductTest extends TestCase
         $this->assertSame(
             0,
             $this->productTable->insertOnDuplicateKeyUpdate($productEntity)
+        );
+    }
+
+    public function testSelectWhereProductId()
+    {
+        $productEntity       = new AmazonEntity\Product();
+        $productEntity->asin  = 'ASIN';
+        $productEntity->title = 'Test Product';
+        $productEntity->listPrice = 0.00;
+        $productEntity->productGroup = 'Product Group';
+        $productEntity->binding = 'Binding';
+        $productEntity->brand = 'Brand';
+
+        $this->productTable->insertOnDuplicateKeyUpdate($productEntity);
+
+        $this->assertInstanceOf(
+            ArrayObject::class,
+            $this->productTable->selectWhereProductId(1)
         );
     }
 }

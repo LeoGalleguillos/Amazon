@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table;
 
+use ArrayObject;
 use LeoGalleguillos\Memcached\Model\Service\Memcached as MemcachedService;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use Zend\Db\Adapter\Adapter;
@@ -197,7 +198,7 @@ class Product
     }
 
     /**
-     * @return array
+     * @return ArrayObject
      */
     public function selectWhereProductId(int $productId)
     {
@@ -219,7 +220,7 @@ class Product
              WHERE `product`.`product_id` = ?
                  ;
         ';
-        $array = (array) $this->adapter->query($sql, [$productId])->current();
+        $array = $this->adapter->query($sql, [$productId])->current();
 
         $this->memcached->setForDays($cacheKey, $array, 1);
         return $array;
