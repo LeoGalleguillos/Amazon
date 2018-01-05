@@ -10,7 +10,6 @@ CREATE TABLE `product` (
   `similar_retrieved` datetime DEFAULT NULL,
   PRIMARY KEY (`product_id`),
   UNIQUE KEY `asin` (`asin`),
-  KEY `in_stock` (`in_stock`),
   KEY `product_group_modified` (`product_group`,`modified`),
   KEY `modified` (`modified`),
   KEY `product_group_binding_modified` (`product_group`,`binding`,`modified`),
