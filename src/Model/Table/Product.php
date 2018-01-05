@@ -219,4 +219,34 @@ class Product
             yield $row;
         }
     }
+
+    /**
+     * @return array
+     */
+    public function selectWhereProductId(int $productId)
+    {
+        $cacheKey = md5(__METHOD__ . $productId);
+        if (false != ($array = $this->memcached->get($cacheKey))) {
+            return $array;
+        }
+
+        $sql = '
+            SELECT `product`.`product_id`
+                 , `product`.`asin`
+                 , `product`.`title`
+                 , `product`.`product_group`
+                 , `product`.`binding`
+                 , `product`.`brand`
+                 , `product`.`list_price`
+                 , `product`.`in_stock`
+                 , `product`.`modified`
+              FROM `product`
+             WHERE `product`.`product_id` = ?
+                 ;
+        ';
+        $array = (array) $this->adapter->query($sql, [$productId])->current();
+
+        $this->memcached->setForDays($cacheKey, $array, 1);
+        return $array;
+    }
 }
