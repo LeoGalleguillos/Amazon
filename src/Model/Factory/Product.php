@@ -32,7 +32,13 @@ class Product
         $this->amazonProductImageTable             = $amazonProductImageTable;
     }
 
-    public function createFromMysql($asin)
+    /**
+     * Build from ASIN.
+     *
+     * @param string $asin
+     * @return AmazonEntity\Product
+     */
+    public function buildFromAsin(string $asin)
     {
         $amazonProductEntity = new AmazonEntity\Product();
 
@@ -86,7 +92,13 @@ class Product
         return $amazonProductEntity;
     }
 
-    public function createFromXml(SimpleXMLElement $xml)
+    /**
+     * Build from XML.
+     *
+     * @param SimpleXMLElement $xml
+     * @return AmazonEntity\Product
+     */
+    public function buildFromXml(SimpleXMLElement $xml)
     {
         /**
          * Maybe add:
