@@ -4,6 +4,7 @@ namespace LeoGalleguillos\Amazon;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
+use LeoGalleguillos\Image\Model\Factory as ImageFactory;
 use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
 
 class Module
@@ -31,7 +32,17 @@ class Module
                     return new AmazonFactory\Brand();
                 },
                 AmazonFactory\Product::class => function ($serviceManager) {
-                    return new AmazonFactory\Product();
+                    return new AmazonFactory\Product(
+                        $serviceManager->get(AmazonFactory\Binding::class),
+                        $serviceManager->get(AmazonFactory\Brand::class),
+                        $serviceManager->get(AmazonFactory\Product\EditorialReview::class),
+                        $serviceManager->get(AmazonFactory\ProductGroup::class),
+                        $serviceManager->get(ImageFactory\Image::class),
+                        $serviceManager->get(AmazonTable\Product::class),
+                        $serviceManager->get(AmazonTable\Product\EditorialReview::class),
+                        $serviceManager->get(AmazonTable\Product\Feature::class),
+                        $serviceManager->get(AmazonTable\Product\Image::class)
+                    );
                 },
                 AmazonFactory\Product\EditorialReview::class => function ($serviceManager) {
                     return new AmazonFactory\Product\EditorialReview();
