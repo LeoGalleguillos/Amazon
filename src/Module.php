@@ -30,6 +30,9 @@ class Module
                 AmazonFactory\Brand::class => function ($serviceManager) {
                     return new AmazonFactory\Brand();
                 },
+                AmazonFactory\Product::class => function ($serviceManager) {
+                    return new AmazonFactory\Product();
+                },
                 AmazonFactory\Product\EditorialReview::class => function ($serviceManager) {
                     return new AmazonFactory\Product\EditorialReview();
                 },
