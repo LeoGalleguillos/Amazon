@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1cfee5f48d934ff928a3a9831d56a15d",
-    "content-hash": "a29a340601759b45d3e3164eefebc8e3",
+    "hash": "b34d925d8a00e1e7e8e530bfd649d213",
+    "content-hash": "e04ca099c16c302390df7a4fea695031",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -91,6 +91,36 @@
                 "instantiate"
             ],
             "time": "2015-06-14 21:17:01"
+        },
+        {
+            "name": "leo-galleguillos/image",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LeoGalleguillos/Image.git",
+                "reference": "a6b7ffc022a8c94a84a7fdd68f535c39365091a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LeoGalleguillos/Image/zipball/a6b7ffc022a8c94a84a7fdd68f535c39365091a1",
+                "reference": "a6b7ffc022a8c94a84a7fdd68f535c39365091a1",
+                "shasum": ""
+            },
+            "require": {
+                "zendframework/zend-test": "^3.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LeoGalleguillos\\Image\\": "src/",
+                    "LeoGalleguillos\\ImageTest\\": "test/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2018-01-05 18:31:54"
         },
         {
             "name": "leo-galleguillos/memcached",
@@ -2635,6 +2665,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "leo-galleguillos/image": 20,
         "leo-galleguillos/memcached": 20
     },
     "prefer-stable": false,
