@@ -74,25 +74,6 @@ class Product
         return $newestAsins;
     }
 
-    private function insert(AmazonProductEntity $product)
-    {
-        $sql = '
-            INSERT
-              INTO `product` (`asin`, `title`, `product_group`, `list_price`)
-            VALUES (?, ?, ?, ?)
-                 ;
-        ';
-        $parameters = [
-            $product->asin,
-            substr($product->title, 0, 255),
-            $product->productGroup,
-            $product->listPrice,
-        ];
-        return $this->adapter
-                    ->query($sql, $parameters)
-                    ->getGeneratedValue();
-    }
-
     public function insertProductIfNotExists(AmazonProductEntity $product)
     {
         return $this->insertWhereNotExists($product);
