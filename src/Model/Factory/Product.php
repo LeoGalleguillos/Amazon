@@ -40,43 +40,43 @@ class Product
      */
     public function buildFromAsin(string $asin)
     {
-        $amazonProductEntity = new AmazonEntity\Product();
+        $productEntity = new AmazonEntity\Product();
 
         $amazonProductArray = $this->amazonProductTable->getArrayFromAsin($asin);
-        $amazonProductEntity->asin         = $amazonProductArray['asin'];
-        $amazonProductEntity->title        = $amazonProductArray['title'];
+        $productEntity->asin         = $amazonProductArray['asin'];
+        $productEntity->title        = $amazonProductArray['title'];
 
-        $amazonProductEntity->productGroup = $this->amazonProductGroupFactory->buildFromName(
+        $productEntity->productGroup = $this->amazonProductGroupFactory->buildFromName(
             $amazonProductArray['product_group']
         );
         try {
-            $amazonProductEntity->binding      = $this->amazonBindingFactory->buildFromName(
+            $productEntity->binding      = $this->amazonBindingFactory->buildFromName(
                 $amazonProductArray['binding']
             );
         } catch (Exception $exception) {
         }
         try {
-            $amazonProductEntity->brand      = $this->amazonBrandFactory->buildFromName(
+            $productEntity->brand      = $this->amazonBrandFactory->buildFromName(
                 $amazonProductArray['brand']
             );
         } catch (Exception $exception) {
         }
-        $amazonProductEntity->listPrice    = $amazonProductArray['list_price'];
+        $productEntity->listPrice    = $amazonProductArray['list_price'];
 
         $amazonProductFeatureArrays = $this->amazonProductFeatureTable->getArraysFromAsin($asin);
         foreach ($amazonProductFeatureArrays as $array) {
-            $amazonProductEntity->features[] = $array['feature'];
+            $productEntity->features[] = $array['feature'];
         }
 
         $amazonProductImageArrays = $this->amazonProductImageTable->getArraysFromAsin($asin);
         foreach ($amazonProductImageArrays as $array) {
             $array['url'] = str_replace('http://ecx.', 'https://images-na.ssl-', $array['url']);
             if ($array['category'] == 'primary') {
-                $amazonProductEntity->primaryImage = $this->imageFactory->buildFromArray(
+                $productEntity->primaryImage = $this->imageFactory->buildFromArray(
                     $array
                 );
             } else {
-                $amazonProductEntity->variantImages[] = $this->imageFactory->buildFromArray(
+                $productEntity->variantImages[] = $this->imageFactory->buildFromArray(
                     $array
                 );
             }
@@ -85,11 +85,75 @@ class Product
         $amazonProductEditorialReviewArrays = $this->amazonProductEditorialReviewTable->
             selectWhereAsin($asin);
         foreach ($amazonProductEditorialReviewArrays as $array) {
-            $amazonProductEntity->editorialReviews[]
+            $productEntity->editorialReviews[]
                 = $this->amazonProductEditorialReviewFactory->buildFromArray($array);
         }
 
-        return $amazonProductEntity;
+        return $productEntity;
+    }
+
+    /**
+     * Build from product ID.
+     *
+     * @param int $productId
+     * @return AmazonEntity\Product
+     */
+    public function buildFromProductId(int $productId)
+    {
+        $productEntity = new AmazonEntity\Product();
+
+        $amazonProductArray = $this->amazonProductTable->selectWhereProductId($productId);
+        $productEntity->asin         = $amazonProductArray['asin'];
+        $productEntity->title        = $amazonProductArray['title'];
+
+        $productEntity->productGroup = $this->amazonProductGroupFactory->buildFromName(
+            $amazonProductArray['product_group']
+        );
+        try {
+            $productEntity->binding      = $this->amazonBindingFactory->buildFromName(
+                $amazonProductArray['binding']
+            );
+        } catch (Exception $exception) {
+        }
+        try {
+            $productEntity->brand      = $this->amazonBrandFactory->buildFromName(
+                $amazonProductArray['brand']
+            );
+        } catch (Exception $exception) {
+        }
+        $productEntity->listPrice    = $amazonProductArray['list_price'];
+
+        $amazonProductFeatureArrays = $this->amazonProductFeatureTable->getArraysFromAsin(
+            $productEntity->asin
+        );
+        foreach ($amazonProductFeatureArrays as $array) {
+            $productEntity->features[] = $array['feature'];
+        }
+
+        $amazonProductImageArrays = $this->amazonProductImageTable->getArraysFromAsin(
+            $productEntity->asin
+        );
+        foreach ($amazonProductImageArrays as $array) {
+            $array['url'] = str_replace('http://ecx.', 'https://images-na.ssl-', $array['url']);
+            if ($array['category'] == 'primary') {
+                $productEntity->primaryImage = $this->imageFactory->buildFromArray(
+                    $array
+                );
+            } else {
+                $productEntity->variantImages[] = $this->imageFactory->buildFromArray(
+                    $array
+                );
+            }
+        }
+
+        $amazonProductEditorialReviewArrays = $this->amazonProductEditorialReviewTable->
+            selectWhereAsin($productEntity->asin);
+        foreach ($amazonProductEditorialReviewArrays as $array) {
+            $productEntity->editorialReviews[]
+                = $this->amazonProductEditorialReviewFactory->buildFromArray($array);
+        }
+
+        return $productEntity;
     }
 
     /**
