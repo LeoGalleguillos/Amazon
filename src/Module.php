@@ -14,8 +14,12 @@ class Module
         return [
             'view_helpers' => [
                 'aliases' => [
+                    'productModifiedTitle' => AmazonHelper\Product\ModifiedTitle::class,
                 ],
                 'factories' => [
+                    AmazonHelper\Product\ModifiedTitle::class => function ($serviceManager) {
+                        return new AmazonHelper\Product\ModifiedTitle();
+                    },
                 ],
             ],
         ];
