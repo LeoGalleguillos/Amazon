@@ -42,26 +42,26 @@ class Product
     {
         $productEntity = new AmazonEntity\Product();
 
-        $amazonProductArray = $this->amazonProductTable->getArrayFromAsin($asin);
-        $productEntity->asin         = $amazonProductArray['asin'];
-        $productEntity->title        = $amazonProductArray['title'];
+        $productArray         = $this->amazonProductTable->getArrayFromAsin($asin);
+        $productEntity->asin  = $productArray['asin'];
+        $productEntity->title = $productArray['title'];
 
         $productEntity->productGroup = $this->amazonProductGroupFactory->buildFromName(
-            $amazonProductArray['product_group']
+            $productArray['product_group']
         );
         try {
             $productEntity->binding      = $this->amazonBindingFactory->buildFromName(
-                $amazonProductArray['binding']
+                $productArray['binding']
             );
         } catch (Exception $exception) {
         }
         try {
             $productEntity->brand      = $this->amazonBrandFactory->buildFromName(
-                $amazonProductArray['brand']
+                $productArray['brand']
             );
         } catch (Exception $exception) {
         }
-        $productEntity->listPrice    = $amazonProductArray['list_price'];
+        $productEntity->listPrice    = $productArray['list_price'];
 
         $amazonProductFeatureArrays = $this->amazonProductFeatureTable->getArraysFromAsin($asin);
         foreach ($amazonProductFeatureArrays as $array) {
@@ -102,26 +102,26 @@ class Product
     {
         $productEntity = new AmazonEntity\Product();
 
-        $amazonProductArray = $this->amazonProductTable->selectWhereProductId($productId);
-        $productEntity->asin         = $amazonProductArray['asin'];
-        $productEntity->title        = $amazonProductArray['title'];
+        $productArray         = $this->amazonProductTable->selectWhereProductId($productId);
+        $productEntity->asin  = $productArray['asin'];
+        $productEntity->title = $productArray['title'];
 
         $productEntity->productGroup = $this->amazonProductGroupFactory->buildFromName(
-            $amazonProductArray['product_group']
+            $productArray['product_group']
         );
         try {
             $productEntity->binding      = $this->amazonBindingFactory->buildFromName(
-                $amazonProductArray['binding']
+                $productArray['binding']
             );
         } catch (Exception $exception) {
         }
         try {
             $productEntity->brand      = $this->amazonBrandFactory->buildFromName(
-                $amazonProductArray['brand']
+                $productArray['brand']
             );
         } catch (Exception $exception) {
         }
-        $productEntity->listPrice    = $amazonProductArray['list_price'];
+        $productEntity->listPrice    = $productArray['list_price'];
 
         $amazonProductFeatureArrays = $this->amazonProductFeatureTable->getArraysFromAsin(
             $productEntity->asin
