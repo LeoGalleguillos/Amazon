@@ -18,7 +18,9 @@ class Module
                 ],
                 'factories' => [
                     AmazonHelper\Product\ModifiedTitle::class => function ($serviceManager) {
-                        return new AmazonHelper\Product\ModifiedTitle();
+                        return new AmazonHelper\Product\ModifiedTitle(
+                            $serviceManager->get(AmazonService\Product\ModifiedTitle::class)
+                        );
                     },
                 ],
             ],
