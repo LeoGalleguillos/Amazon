@@ -15,6 +15,8 @@ class ModifiedTitle extends AbstractHelper
 
     public function __invoke(AmazonEntity\Product $productEntity)
     {
-        return 'wow' . $productEntity->title;
+        return $this->productModifiedTitleService->getModifiedTitle(
+            $productEntity
+        );
     }
 }
