@@ -32,9 +32,14 @@ class ModifiedTitleTest extends TestCase
         );
 
         $productEntity->title = 'My Amazing Product\'s Title [Is Great]';
-
         $this->assertSame(
             'Amazing Products Title',
+            $this->productModifiedTitleService->getModifiedTitle($productEntity)
+        );
+
+        $productEntity->title = 'This is a really long title with more than nine words in it.';
+        $this->assertSame(
+            'This is a really long title with more than',
             $this->productModifiedTitleService->getModifiedTitle($productEntity)
         );
     }
