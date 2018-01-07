@@ -22,11 +22,19 @@ class ModifiedTitleTest extends TestCase
 
     public function testGetModifiedTitle()
     {
-        $productEntity = new AmazonEntity\Product();
-        $productEntity->title = 'My Amazing Title';
+        $productEntity        = new AmazonEntity\Product();
+        $productEntity->title = 'My Amazing Product\'s Title (Is Great)';
+        $productEntity->brand = new AmazonEntity\Brand('My', 'My');
 
         $this->assertSame(
-            'My Amazing Title',
+            'Amazing Products Title',
+            $this->productModifiedTitleService->getModifiedTitle($productEntity)
+        );
+
+        $productEntity->title = 'My Amazing Product\'s Title [Is Great]';
+
+        $this->assertSame(
+            'Amazing Products Title',
             $this->productModifiedTitleService->getModifiedTitle($productEntity)
         );
     }
