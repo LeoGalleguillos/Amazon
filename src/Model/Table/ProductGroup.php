@@ -32,7 +32,7 @@ class ProductGroup
             $name,
             $slug,
         ];
-        $this->adapter->query($sql, $parameters);
+        return (int) $this->adapter->query($sql, $parameters)->getGeneratedValue();
     }
 
     public function getAsins(string $productGroup, int $page)

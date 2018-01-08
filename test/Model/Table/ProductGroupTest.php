@@ -2,6 +2,7 @@
 namespace LeoGalleguillos\AmazonTest\Model\Table;
 
 use ArrayObject;
+use Exception;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
@@ -45,5 +46,45 @@ class ProductGroupTest extends TestCase
     public function testInitialize()
     {
         $this->assertInstanceOf(AmazonTable\ProductGroup::class, $this->productGroupTable);
+    }
+
+    public function testInsertIgnore()
+    {
+        $this->assertSame(
+            1,
+            $this->productGroupTable->insertIgnore('name', 'slug')
+        );
+        $this->assertSame(
+            2,
+            $this->productGroupTable->insertIgnore('another name', 'another-slug')
+        );
+        $this->assertSame(
+            0,
+            $this->productGroupTable->insertIgnore('name', 'slug')
+        );
+    }
+
+    public function testSelectWhereProductGroupId()
+    {
+        $this->productGroupTable->insertIgnore('name', 'slug');
+        $arrayObject = new ArrayObject([
+            'product_group_id' => '1',
+            'name' => 'name',
+            'slug' => 'slug',
+        ]);
+        $this->assertEquals(
+            $arrayObject,
+            $this->productGroupTable->selectWhereProductGroupId(1)
+        );
+
+        try {
+            $this->productGroupTable->selectWhereProductGroupId(2);
+            $this->fail();
+        } catch (Exception $exception) {
+            $this->assertSame(
+                'Product group ID not found.',
+                $exception->getMessage()
+            );
+        }
     }
 }
