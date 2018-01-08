@@ -62,6 +62,9 @@ class Module
                         $serviceManager->get(AmazonTable\Api::class)
                     );
                 },
+                AmazonService\Product\ModifiedTitle::class => function ($serviceManager) {
+                    return new AmazonService\Product\ModifiedTitle();
+                },
                 AmazonTable\Api::class => function ($serviceManager) {
                     return new AmazonTable\Api(
                         $serviceManager->get('amazon')
