@@ -64,6 +64,23 @@ class ProductGroup
         return $asins;
     }
 
+    public function selectWhereProductGroupId(int $productGroupId)
+    {
+        $sql = '
+            SELECT `product_group`.`product_group_id`
+                 , `product_group`.`name`
+                 , `product_group`.`slug`
+              FROM `product_group`
+             WHERE `product_group`.`product_group_id` = ?
+                 ;
+        ';
+        $row = $this->adapter->query($sql, [$productGroupId])->current();
+        if (empty($row)) {
+            throw new Exception('Product group ID not found.');
+        }
+        return $row;
+    }
+
     /**
      * Count the number of products for a given product group.
      *

@@ -55,7 +55,9 @@ class Module
                     return new AmazonFactory\Product\EditorialReview();
                 },
                 AmazonFactory\ProductGroup::class => function ($serviceManager) {
-                    return new AmazonFactory\ProductGroup();
+                    return new AmazonFactory\ProductGroup(
+                        $serviceManager->get(AmazonTable\ProductGroup::class)
+                    );
                 },
                 AmazonService\Api::class => function ($serviceManager) {
                     return new AmazonService\Api(
