@@ -27,12 +27,12 @@ class ModifiedTitleTest extends TestCase
         );
     }
 
-    public function testInvoke()
+    public function testGetModifiedTitle()
     {
         $this->productModifiedTitleService->method('getModifiedTitle')->willReturn(
             'The Modified Title'
         );
-        $modifiedTitle = $this->productModifiedTitleHelper->__invoke(
+        $modifiedTitle = $this->productModifiedTitleHelper->getModifiedTitle(
             new AmazonEntity\Product()
         );
         $this->assertSame(
