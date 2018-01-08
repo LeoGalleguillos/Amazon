@@ -14,7 +14,13 @@ class ProductGroup
 
     public function buildFromProductGroupId(int $productGroupId)
     {
-
+        $arrayObject = $this->productGroupTable->selectWhereProductGroupId(
+            $productGroupId
+        );
+        return new AmazonEntity\ProductGroup(
+            $arrayObject['name'],
+            $arrayObject['slug']
+        );
     }
 
     public function buildFromName($name)
