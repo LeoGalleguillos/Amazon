@@ -15,9 +15,20 @@ class Module
         return [
             'view_helpers' => [
                 'aliases' => [
+                    'productModifiedFeature' => AmazonHelper\Product\ModifiedFeature::class,
+                    'productModifiedFeatures' => AmazonHelper\Product\ModifiedFeatures::class,
                     'productModifiedTitle' => AmazonHelper\Product\ModifiedTitle::class,
                 ],
                 'factories' => [
+                    AmazonHelper\Product\ModifiedFeature::class => function ($serviceManager) {
+                        return new AmazonHelper\Product\ModifiedFeature();
+                    },
+                    AmazonHelper\Product\ModifiedFeatures::class => function ($serviceManager) {
+                        $viewHelperManager = $serviceManager->get('ViewHelperManager');
+                        return new AmazonHelper\Product\ModifiedFeatures(
+                            $viewHelperManager->get(AmazonHelper\Product\ModifiedFeature::class)
+                        );
+                    },
                     AmazonHelper\Product\ModifiedTitle::class => function ($serviceManager) {
                         return new AmazonHelper\Product\ModifiedTitle(
                             $serviceManager->get(AmazonService\Product\ModifiedTitle::class)
