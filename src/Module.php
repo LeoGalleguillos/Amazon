@@ -15,9 +15,10 @@ class Module
         return [
             'view_helpers' => [
                 'aliases' => [
-                    'productModifiedFeature' => AmazonHelper\Product\ModifiedFeature::class,
+                    'productModifiedFeature'  => AmazonHelper\Product\ModifiedFeature::class,
                     'productModifiedFeatures' => AmazonHelper\Product\ModifiedFeatures::class,
-                    'productModifiedTitle' => AmazonHelper\Product\ModifiedTitle::class,
+                    'productModifiedTitle'    => AmazonHelper\Product\ModifiedTitle::class,
+                    'productRootRelativeUrl'  => AmazonHelper\Product\RootRelativeUrl::class,
                 ],
                 'factories' => [
                     AmazonHelper\Product\ModifiedFeature::class => function ($serviceManager) {
@@ -32,6 +33,11 @@ class Module
                     AmazonHelper\Product\ModifiedTitle::class => function ($serviceManager) {
                         return new AmazonHelper\Product\ModifiedTitle(
                             $serviceManager->get(AmazonService\Product\ModifiedTitle::class)
+                        );
+                    },
+                    AmazonHelper\Product\RootRelativeUrl::class => function ($serviceManager) {
+                        return new AmazonHelper\Product\RootRelativeUrl(
+                            $serviceManager->get(AmazonService\Product\RootRelativeUrl::class)
                         );
                     },
                 ],
@@ -77,6 +83,12 @@ class Module
                 },
                 AmazonService\Product\ModifiedTitle::class => function ($serviceManager) {
                     return new AmazonService\Product\ModifiedTitle();
+                },
+                AmazonService\Product\RootRelativeUrl::class => function ($serviceManager) {
+                    return new AmazonService\Product\RootRelativeUrl(
+                        $serviceManager->get(AmazonService\Product\ModifiedTitle::class),
+                        $serviceManager->get(StringService\UrlFriendly::class)
+                    );
                 },
                 AmazonTable\Api::class => function ($serviceManager) {
                     return new AmazonTable\Api(
