@@ -42,9 +42,10 @@ class Product
     {
         $productEntity = new AmazonEntity\Product();
 
-        $productArray         = $this->amazonProductTable->getArrayFromAsin($asin);
-        $productEntity->asin  = $productArray['asin'];
-        $productEntity->title = $productArray['title'];
+        $productArray             = $this->amazonProductTable->getArrayFromAsin($asin);
+        $productEntity->asin      = $productArray['asin'];
+        $productEntity->productId = $productArray['product_id'];
+        $productEntity->title     = $productArray['title'];
 
         $productEntity->productGroup = $this->amazonProductGroupFactory->buildFromName(
             $productArray['product_group']
