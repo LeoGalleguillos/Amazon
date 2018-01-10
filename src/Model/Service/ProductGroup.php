@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Service;
 
+use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 
@@ -29,10 +30,19 @@ class ProductGroup
         return $this->amazonProductGroupTable->selectCountWhereProductGroup($productGroupName);
     }
 
-    public function getProductEntities($productGroupName, int $page)
-    {
+    /**
+     * Get product entities.
+     *
+     * @param AmazonEntity\ProductGroup $productGroupEntity
+     * @param int $page
+     * @return AmazonEntityProduct[]
+     */
+    public function getProductEntities(
+        AmazonEntity\ProductGroup $productGroupEntity,
+        int $page
+    ) : array {
         $asins = $this->amazonProductGroupTable->getAsins(
-            $productGroupName,
+            $productGroupEntity,
             $page
         );
 
