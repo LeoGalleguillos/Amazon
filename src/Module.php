@@ -91,6 +91,11 @@ class Module
                         $serviceManager->get(StringService\UrlFriendly::class)
                     );
                 },
+                AmazonService\Product\Url::class => function ($serviceManager) {
+                    return new AmazonService\Product\Url(
+                        $serviceManager->get(AmazonService\Product\RootRelativeUrl::class)
+                    );
+                },
                 AmazonTable\Api::class => function ($serviceManager) {
                     return new AmazonTable\Api(
                         $serviceManager->get('amazon')
