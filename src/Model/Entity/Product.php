@@ -36,6 +36,11 @@ class Product
     public $productGroup;
 
     /**
+     * @var int Product ID.
+     */
+    public $productId;
+
+    /**
      * @var ImageEntity
      */
     public $primaryImage;
