@@ -96,6 +96,12 @@ class Module
                         $serviceManager->get(AmazonService\Product\RootRelativeUrl::class)
                     );
                 },
+                AmazonService\ProductGroup::class => function ($serviceManager) {
+                    return new AmazonService\ProductGroup(
+                        $serviceManager->get(AmazonFactory\Product::class),
+                        $serviceManager->get(AmazonTable\ProductGroup::class)
+                    );
+                },
                 AmazonTable\Api::class => function ($serviceManager) {
                     return new AmazonTable\Api(
                         $serviceManager->get('amazon')
