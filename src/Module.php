@@ -7,6 +7,7 @@ use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Amazon\View\Helper as AmazonHelper;
 use LeoGalleguillos\Image\Model\Factory as ImageFactory;
 use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
+use LeoGalleguillos\String\Model\Service as StringService;
 
 class Module
 {
