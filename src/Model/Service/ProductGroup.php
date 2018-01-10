@@ -48,7 +48,7 @@ class ProductGroup
 
         $products = [];
         foreach ($asins as $asin) {
-            $products[] = $this->amazonProductFactory->buildFromMySql($asin);
+            $products[] = $this->amazonProductFactory->buildFromAsin($asin);
         }
 
         return $products;
