@@ -22,9 +22,12 @@ class Product
     }
 
     /**
+     * Select where ASIN.
+     *
+     * @param string $asin
      * @return array
      */
-    public function getArrayFromAsin($asin)
+    public function selectWhereAsin(string $asin)
     {
         $cacheKey = md5(__METHOD__ . $asin);
         if (false != ($array = $this->memcached->get($cacheKey))) {
@@ -32,7 +35,8 @@ class Product
         }
 
         $sql = '
-            SELECT `product`.`asin`
+            SELECT `product`.`product_id`
+                 , `product`.`asin`
                  , `product`.`title`
                  , `product`.`product_group`
                  , `product`.`binding`

@@ -42,7 +42,7 @@ class Product
     {
         $productEntity = new AmazonEntity\Product();
 
-        $productArray             = $this->amazonProductTable->getArrayFromAsin($asin);
+        $productArray             = $this->amazonProductTable->selectWhereAsin($asin);
         $productEntity->asin      = $productArray['asin'];
         $productEntity->productId = $productArray['product_id'];
         $productEntity->title     = $productArray['title'];
