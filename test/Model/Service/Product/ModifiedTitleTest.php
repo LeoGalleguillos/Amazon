@@ -37,10 +37,12 @@ class ModifiedTitleTest extends TestCase
             $this->productModifiedTitleService->getModifiedTitle($productEntity)
         );
 
-        $productEntity->title = 'This is a really long title with more than nine words in it.';
+        $productEntity->title = '!This is a really long title! as it has more than nine words in it holy cow.';
         $this->assertSame(
-            'This is a really long title with more than',
+            'This really long title has more than nine words',
             $this->productModifiedTitleService->getModifiedTitle($productEntity)
         );
+
+        $productEntity->title = 'Ratchet Noise maker Plastic 25 X 25 Pack Of 20';
     }
 }

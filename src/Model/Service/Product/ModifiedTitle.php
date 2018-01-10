@@ -20,6 +20,9 @@ class ModifiedTitle
         // Remove non-alphanumeric characters.
         $title = preg_replace('/[^\w ]/', '', $title);
 
+        // Remove any words that are two characters or less.
+        $title = preg_replace('/\b\w{1,2}\b/', ' ', $title);
+
         // Keep only first nine words.
         $words = preg_split('/\s+/', $title);
         $title = implode(' ', array_slice($words, 0, 9));
