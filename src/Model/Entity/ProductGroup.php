@@ -13,7 +13,7 @@ class ProductGroup
      */
     public $slug;
 
-    public function __construct($name, $slug)
+    public function __construct($name = null, $slug = null)
     {
         $this->name = $name;
         $this->slug = $slug;

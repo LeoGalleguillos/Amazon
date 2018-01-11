@@ -1,5 +1,5 @@
 <?php
-namespace LeoGalleguillos\AmazonTest\Model\Service;
+namespace LeoGalleguillos\AmazonTest\Model\Factory;
 
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
