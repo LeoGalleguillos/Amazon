@@ -102,6 +102,12 @@ class Module
                         $serviceManager->get(AmazonTable\ProductGroup::class)
                     );
                 },
+                AmazonService\Search\ProductGroup::class => function ($serviceManager) {
+                    return new AmazonService\Search\ProductGroup(
+                        $serviceManager->get(AmazonFactory\Product::class),
+                        $serviceManager->get(AmazonTable\Search\ProductGroup::class)
+                    );
+                },
                 AmazonTable\Api::class => function ($serviceManager) {
                     return new AmazonTable\Api(
                         $serviceManager->get('amazon')
