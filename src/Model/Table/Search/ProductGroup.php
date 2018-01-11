@@ -17,26 +17,29 @@ class ProductGroup
         $this->adapter          = $adapter;
     }
 
-    public function getSimilarAsins($table, $query, $asin)
-    {
+    public function selectProductIdWhereMatchTitleAgainstAndProductIdDoesNotEqual(
+        string $table,
+        string $query,
+        int $productId
+    ) {
         if (preg_match('/\W/', $table)) {
             throw new Exception('Invalid table name.');
         }
         $sql = "
-            SELECT `asin`
+            SELECT `product_id`
               FROM $table
              WHERE MATCH(`title`) AGAINST (?)
-               AND `asin` != ?
+               AND `product_id` != ?
              LIMIT 30
                  ;
         ";
-        $rows = $this->adapter->query($sql, [$query, $asin]);
+        $rows = $this->adapter->query($sql, [$query, $productId]);
 
-        $asins = [];
+        $productIds = [];
         foreach ($rows as $row) {
-            $asins[] = $row['asin'];
+            $productIds[] = $row['product_id'];
         }
-        return $asins;
+        return $productIds;
     }
 
     public function insertIntoWhereModified($table, $productGroup, $modified) : int

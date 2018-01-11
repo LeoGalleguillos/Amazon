@@ -49,4 +49,18 @@ class ProductGroupTest extends TestCase
             $this->searchProductGroupTable
         );
     }
+
+    public function testSelectProductIdWhereMatchTitleAgainstAndProductIdDoesNotEqual()
+    {
+        $productIds = $this->searchProductGroupTable
+             ->selectProductIdWhereMatchTitleAgainstAndProductIdDoesNotEqual(
+            'search_product_group_toy',
+            'example search query',
+            1
+        );
+        $this->assertSame(
+            [],
+            $productIds
+        );
+    }
 }
