@@ -30,7 +30,7 @@ class ProductGroup
               FROM $table
              WHERE MATCH(`title`) AGAINST (?)
                AND `product_id` != ?
-             LIMIT 30
+             LIMIT 28
                  ;
         ";
         $rows = $this->adapter->query($sql, [$query, $productId]);
