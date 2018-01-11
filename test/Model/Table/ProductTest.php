@@ -4,11 +4,12 @@ namespace LeoGalleguillos\AmazonTest\Model\Table;
 use ArrayObject;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
+use LeoGalleguillos\AmazonTest as AmazonTest;
 use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
 use Zend\Db\Adapter\Adapter;
 use PHPUnit\Framework\TestCase;
 
-class ProductTest extends TestCase
+class ProductTest extends AmazonTest\TableCase
 {
     /**
      * @var string
@@ -30,22 +31,6 @@ class ProductTest extends TestCase
         $this->dropTable();
         $this->createTable();
         $this->setForeignKeyChecks1();
-    }
-
-    protected function setForeignKeyChecks0()
-    {
-        $sql     = file_get_contents(
-            $this->sqlDirectory . 'SetForeignKeyChecks0.sql'
-        );
-        $result = $this->adapter->query($sql)->execute();
-    }
-
-    protected function setForeignKeyChecks1()
-    {
-        $sql     = file_get_contents(
-            $this->sqlDirectory . 'SetForeignKeyChecks1.sql'
-        );
-        $result = $this->adapter->query($sql)->execute();
     }
 
     protected function dropTable()
