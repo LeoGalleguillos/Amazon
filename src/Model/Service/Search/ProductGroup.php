@@ -55,11 +55,10 @@ class ProductGroup
     }
 
     public function getSimilarProducts(
-        AmazonEntity\Product $productEntity,
-        AmazonEntity\ProductGroup $productGroupEntity
+        AmazonEntity\Product $productEntity
     ) {
         $productIds = $this->searchTable->selectProductIdWhereMatchTitleAgainstAndProductIdDoesNotEqual(
-            $productGroupEntity->searchTable,
+            $productEntity->productGroup->searchTable,
             $productEntity->title,
             $productEntity->productId
         );
