@@ -11,8 +11,8 @@ class ProductGroup
         AmazonFactory\Product $productFactory,
         AmazonTable\Search\ProductGroup $searchProductGroupTable
     ) {
-        $this->productFactory      = $productFactory;
-        $this->searchTable         = $searchProductGroupTable;
+        $this->productFactory          = $productFactory;
+        $this->searchProductGroupTable = $searchProductGroupTable;
     }
 
     public function getNumberOfPages($numberOfResults)
@@ -54,12 +54,14 @@ class ProductGroup
         return $products;
     }
 
-    public function getSimilarProducts(ProductEntity $productEntity)
-    {
-        $similarAsins = $this->searchTable->getSimilarAsins(
-            $websiteEntity->searchTable,
+    public function getSimilarProducts(
+        AmazonEntity\Product $productEntity,
+        AmazonEntity\ProductGroup $productGroupEntity
+    ) {
+        $similarAsins = $this->searchTable->selectProductIdWhereMatchTitleAgainstAndProductIdDoesNotEqual(
+            $productGroupEntity->searchTable,
             $productEntity->title,
-            $productEntity->asin
+            $productEntity->productId
         );
 
         $products = [];
