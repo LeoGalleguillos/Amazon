@@ -20,17 +20,18 @@ class ProductGroup
         $this->adapter   = $adapter;
     }
 
-    public function insertIgnore($name, $slug)
+    public function insertIgnore($name, $slug, $searchTable = null)
     {
         $sql = '
             INSERT IGNORE
-              INTO `product_group` (`name`, `slug`)
-            VALUES (?, ?)
+              INTO `product_group` (`name`, `slug`, `search_table`)
+            VALUES (?, ?, ?)
                  ;
         ';
         $parameters = [
             $name,
             $slug,
+            $searchTable,
         ];
         return (int) $this->adapter->query($sql, $parameters)->getGeneratedValue();
     }
@@ -70,6 +71,7 @@ class ProductGroup
             SELECT `product_group`.`product_group_id`
                  , `product_group`.`name`
                  , `product_group`.`slug`
+                 , `product_group`.`search_table`
               FROM `product_group`
              WHERE `product_group`.`product_group_id` = ?
                  ;

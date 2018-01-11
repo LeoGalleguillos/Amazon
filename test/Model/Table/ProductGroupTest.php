@@ -52,7 +52,7 @@ class ProductGroupTest extends TestCase
     {
         $this->assertSame(
             1,
-            $this->productGroupTable->insertIgnore('name', 'slug')
+            $this->productGroupTable->insertIgnore('name', 'slug', 'search_product_group_test')
         );
         $this->assertSame(
             2,
@@ -60,17 +60,18 @@ class ProductGroupTest extends TestCase
         );
         $this->assertSame(
             0,
-            $this->productGroupTable->insertIgnore('name', 'slug')
+            $this->productGroupTable->insertIgnore('name', 'slug', 'search_product_group_test')
         );
     }
 
     public function testSelectWhereProductGroupId()
     {
-        $this->productGroupTable->insertIgnore('name', 'slug');
+        $this->productGroupTable->insertIgnore('name', 'slug', 'search_product_group_test');
         $arrayObject = new ArrayObject([
             'product_group_id' => '1',
             'name' => 'name',
             'slug' => 'slug',
+            'search_table' => 'search_product_group_test',
         ]);
         $this->assertEquals(
             $arrayObject,
