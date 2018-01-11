@@ -58,16 +58,16 @@ class ProductGroup
         AmazonEntity\Product $productEntity,
         AmazonEntity\ProductGroup $productGroupEntity
     ) {
-        $similarAsins = $this->searchTable->selectProductIdWhereMatchTitleAgainstAndProductIdDoesNotEqual(
+        $productIds = $this->searchTable->selectProductIdWhereMatchTitleAgainstAndProductIdDoesNotEqual(
             $productGroupEntity->searchTable,
             $productEntity->title,
             $productEntity->productId
         );
 
-        $products = [];
-        foreach ($similarAsins as $similarAsin) {
-            $products[] = $this->productFactory->buildFromMySql($similarAsin);
+        $productEntities = [];
+        foreach ($productIds as $productId) {
+            $productEntities[] = $this->productFactory->buildFromProductId($productId);
         }
-        return $products;
+        return $productEntities;
     }
 }
