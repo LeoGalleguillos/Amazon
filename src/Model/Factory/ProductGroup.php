@@ -18,18 +18,28 @@ class ProductGroup
         $arrayObject = $this->productGroupTable->selectWhereProductGroupId(
             $productGroupId
         );
-        $productGroupEntity = new AmazonEntity\ProductGroup();
-        $productGroupEntity->productGroupId        = $arrayObject['product_group_id'] ?? null;
-        $productGroupEntity->name        = $arrayObject['name'] ?? null;
-        $productGroupEntity->slug        = $arrayObject['slug'] ?? null;
-        $productGroupEntity->searchTable = $arrayObject['search_table'] ?? null;
+
+        $productGroupEntity                 = new AmazonEntity\ProductGroup();
+        $productGroupEntity->productGroupId = $arrayObject['product_group_id'] ?? null;
+        $productGroupEntity->name           = $arrayObject['name'] ?? null;
+        $productGroupEntity->slug           = $arrayObject['slug'] ?? null;
+        $productGroupEntity->searchTable    = $arrayObject['search_table'] ?? null;
+
         return $productGroupEntity;
     }
 
-    public function buildFromName($name)
+    public function buildFromName(string $name)
     {
-        $slug = preg_replace('/[^a-zA-Z0-9]/', '-', $name);
-        $amazonProductGroupEntity = new AmazonEntity\ProductGroup($name, $slug);
-        return $amazonProductGroupEntity;
+        $arrayObject = $this->productGroupTable->selectWhereName(
+            $name
+        );
+
+        $productGroupEntity                 = new AmazonEntity\ProductGroup();
+        $productGroupEntity->productGroupId = $arrayObject['product_group_id'] ?? null;
+        $productGroupEntity->name           = $arrayObject['name'] ?? null;
+        $productGroupEntity->slug           = $arrayObject['slug'] ?? null;
+        $productGroupEntity->searchTable    = $arrayObject['search_table'] ?? null;
+
+        return $productGroupEntity;
     }
 }
