@@ -31,7 +31,7 @@ class ModifiedTitleTest extends TestCase
             $this->productModifiedTitleService->getModifiedTitle($productEntity)
         );
 
-        $productEntity->title = 'My Amazing Product\'s Title [Is Great]';
+        $productEntity->title = ' My Amazing   Product\'s Title   [Is Great]';
         $this->assertSame(
             'Amazing Products Title',
             $this->productModifiedTitleService->getModifiedTitle($productEntity)
@@ -44,5 +44,15 @@ class ModifiedTitleTest extends TestCase
         );
 
         $productEntity->title = 'Ratchet Noise maker Plastic 25 X 25 Pack Of 20';
+        $this->assertSame(
+            'Ratchet Noise maker Plastic Pack',
+            $this->productModifiedTitleService->getModifiedTitle($productEntity)
+        );
+
+        $productEntity->title = 'Google Android Series With AND with';
+        $this->assertSame(
+            'Google Android Series',
+            $this->productModifiedTitleService->getModifiedTitle($productEntity)
+        );
     }
 }

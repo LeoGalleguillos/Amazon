@@ -25,14 +25,29 @@ class ModifiedTitle
 
         // Keep only first nine words.
         $words = preg_split('/\s+/', $title);
+
+        // Remove empty words.
+        $words = array_filter($words);
+
+        while ($this->shouldLastWordBeRemoved($words)) {
+            array_pop($words);
+        }
+
         $title = implode(' ', array_slice($words, 0, 9));
 
-        // Replace multiple spaces with one space.
-        $title = preg_replace('/\s{2,}/', ' ', $title);
-
-        // Trim.
-        $title = trim($title);
-
         return $title;
+    }
+
+    protected function shouldLastWordBeRemoved($words)
+    {
+        $lastWord = end($words);
+        $wordsToRemove = [
+            'and',
+            'with',
+        ];
+        return in_array(
+            strtolower($lastWord),
+            $wordsToRemove
+        );
     }
 }
