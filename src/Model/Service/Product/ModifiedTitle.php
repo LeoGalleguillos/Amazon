@@ -25,20 +25,23 @@ class ModifiedTitle
 
         // Keep only first nine words.
         $words = preg_split('/\s+/', $title);
+        $words = array_slice($words, 0, 9);
 
         // Remove empty words.
         $words = array_filter($words);
 
+        // Conditionally remove last words.
         while ($this->shouldLastWordBeRemoved($words)) {
             array_pop($words);
         }
 
+        // Implode.
         $title = implode(' ', array_slice($words, 0, 9));
 
         return $title;
     }
 
-    protected function shouldLastWordBeRemoved($words)
+    protected function shouldLastWordBeRemoved(array $words)
     {
         $lastWord = end($words);
         $wordsToRemove = [
