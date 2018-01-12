@@ -50,6 +50,20 @@ class ProductGroupTest extends TestCase
         );
     }
 
+    public function testSelectProductIdWhereMatchTitleAgainst()
+    {
+        $productIds = $this->searchProductGroupTable
+             ->selectProductIdWhereMatchTitleAgainst(
+            'search_product_group_toy',
+            'example search query',
+            1
+        );
+        $this->assertSame(
+            [],
+            $productIds
+        );
+    }
+
     public function testSelectProductIdWhereMatchTitleAgainstAndProductIdDoesNotEqual()
     {
         $productIds = $this->searchProductGroupTable

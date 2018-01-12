@@ -17,6 +17,42 @@ class ProductGroup
         $this->adapter          = $adapter;
     }
 
+    public function selectProductIdWhereMatchTitleAgainst(
+        string $table,
+        string $query
+    ) {
+        if (preg_match('/\W/', $table)) {
+            throw new Exception('Invalid table name.');
+        }
+
+        $cacheKey = md5(__METHOD__ . $table . $query);
+        if (false != ($asins = $this->memcachedService->get($cacheKey))) {
+            return $asins;
+        }
+
+        $query = $this->keepOnlyFirstWords($query);
+        $sql = "
+            SELECT `product_id`
+                 , MATCH (`title`) AGAINST (?) AS `score`
+              FROM `$table`
+             WHERE MATCH (`title`) AGAINST (?)
+             ORDER
+                BY `score` DESC
+             LIMIT 0, 100
+                 ;
+        ";
+        $results = $this->adapter->query($sql, [$query, $query]);
+
+        $productIds = [];
+
+        foreach ($results as $row) {
+            $productIds[] = $row['product_id'];
+        }
+
+        $this->memcachedService->setForDays($cacheKey, $asins, 5);
+        return $productIds;
+    }
+
     public function selectProductIdWhereMatchTitleAgainstAndProductIdDoesNotEqual(
         string $table,
         string $query,
@@ -58,44 +94,6 @@ class ProductGroup
         ";
         $result = $this->adapter->query($sql, [$productGroup, $modified]);
         return $result->getAffectedRows();
-    }
-
-    public function selectProductIdWhereMatchTitleAgainst(
-        string $table,
-        string $query,
-        int $offset,
-        int $rowCount
-    ) {
-        if (preg_match('/\W/', $table)) {
-            throw new Exception('Invalid table name.');
-        }
-
-        $cacheKey = md5(__METHOD__ . $table . $query . $page);
-        if (false != ($asins = $this->memcachedService->get($cacheKey))) {
-            return $asins;
-        }
-
-        $query = $this->keepOnlyFirstWords($query);
-        $sql = "
-            SELECT `product_id`
-                 , MATCH (`title`) AGAINST (?) AS `score`
-              FROM `$table`
-             WHERE MATCH (`title`) AGAINST (?)
-             ORDER
-                BY `score` DESC
-             LIMIT $offset, $rowCount
-                 ;
-        ";
-        $results = $this->adapter->query($sql, [$query]);
-
-        $asins = [];
-
-        foreach ($results as $row) {
-            $asins[] = $row['asin'];
-        }
-
-        $this->memcachedService->setForDays($cacheKey, $asins, 5);
-        return $asins;
     }
 
     public function selectCountWhereMatchTitleAgainst($table, $query) : int

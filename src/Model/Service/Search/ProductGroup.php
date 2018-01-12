@@ -33,22 +33,22 @@ class ProductGroup
     }
 
     public function getSearchResults(
-        $query,
-        $page
-    ) {
+        AmazonEntity\ProductGroup $productGroup,
+        string $query
+    ) : array {
         if (empty($query)) {
             return [];
         }
 
-        $asins = $this->searchTable->selectAsinWhereMatchTitleAgainst(
-            $websiteEntity->searchTable,
-            $query,
-            $page
-        );
+        $productIds = $this->searchProductGroupTable
+            ->selectProductIdWhereMatchTitleAgainst(
+                $productGroup->searchTable,
+                $query
+            );
 
         $products = [];
-        foreach ($asins as $asin) {
-            $products[] = $this->productFactory->buildFromMysql($asin);
+        foreach ($productIds as $productId) {
+            $products[] = $this->productFactory->buildFromProductId($productId);
         }
 
         return $products;
