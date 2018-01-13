@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d9992909f80d4ddc1f603284787e7d84",
-    "content-hash": "855439c46d812002d23fb6329d48e653",
+    "hash": "a78127f76f1ce31f364937501ac94ca1",
+    "content-hash": "f8c276095c7df163dba9307ebc673eea",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -182,6 +182,37 @@
                 "MIT"
             ],
             "time": "2018-01-06 17:02:10"
+        },
+        {
+            "name": "leo-galleguillos/word",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LeoGalleguillos/Word.git",
+                "reference": "2ea374687b531d046b1c416698a918707cd7660e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LeoGalleguillos/Word/zipball/2ea374687b531d046b1c416698a918707cd7660e",
+                "reference": "2ea374687b531d046b1c416698a918707cd7660e",
+                "shasum": ""
+            },
+            "require": {
+                "zendframework/zend-db": "^2.9",
+                "zendframework/zend-test": "^3.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LeoGalleguillos\\Word\\": "src/",
+                    "LeoGalleguillos\\WordTest\\": "test/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2018-01-13 16:33:49"
         },
         {
             "name": "myclabs/deep-copy",
@@ -1033,16 +1064,16 @@
         },
         {
             "name": "sebastian/comparator",
-            "version": "2.1.1",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "b11c729f95109b56a0fe9650c6a63a0fcd8c439f"
+                "reference": "11c07feade1d65453e06df3b3b90171d6d982087"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/b11c729f95109b56a0fe9650c6a63a0fcd8c439f",
-                "reference": "b11c729f95109b56a0fe9650c6a63a0fcd8c439f",
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/11c07feade1d65453e06df3b3b90171d6d982087",
+                "reference": "11c07feade1d65453e06df3b3b90171d6d982087",
                 "shasum": ""
             },
             "require": {
@@ -1093,7 +1124,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2017-12-22 14:50:35"
+            "time": "2018-01-12 06:34:42"
         },
         {
             "name": "sebastian/diff",
@@ -2697,7 +2728,8 @@
     "stability-flags": {
         "leo-galleguillos/image": 20,
         "leo-galleguillos/memcached": 20,
-        "leo-galleguillos/string": 20
+        "leo-galleguillos/string": 20,
+        "leo-galleguillos/word": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
