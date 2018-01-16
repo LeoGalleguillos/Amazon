@@ -189,12 +189,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/Word.git",
-                "reference": "2ea374687b531d046b1c416698a918707cd7660e"
+                "reference": "719021f5df4a6dec43c72fcfcaa0d43bb5440ad2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/Word/zipball/2ea374687b531d046b1c416698a918707cd7660e",
-                "reference": "2ea374687b531d046b1c416698a918707cd7660e",
+                "url": "https://api.github.com/repos/LeoGalleguillos/Word/zipball/719021f5df4a6dec43c72fcfcaa0d43bb5440ad2",
+                "reference": "719021f5df4a6dec43c72fcfcaa0d43bb5440ad2",
                 "shasum": ""
             },
             "require": {
@@ -212,7 +212,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2018-01-13 16:33:49"
+            "time": "2018-01-16 15:53:57"
         },
         {
             "name": "myclabs/deep-copy",
