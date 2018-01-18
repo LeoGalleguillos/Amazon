@@ -23,7 +23,11 @@ class Module
                 ],
                 'factories' => [
                     AmazonHelper\Product\ModifiedFeature::class => function ($serviceManager) {
-                        return new AmazonHelper\Product\ModifiedFeature();
+                        return new AmazonHelper\Product\ModifiedFeature(
+                            $serviceManager->get(WordService\Capitalization::class),
+                            $serviceManager->get(WordService\Thesaurus::class),
+                            $serviceManager->get(WordService\Word::class)
+                        );
                     },
                     AmazonHelper\Product\ModifiedFeatures::class => function ($serviceManager) {
                         $viewHelperManager = $serviceManager->get('ViewHelperManager');
