@@ -1,11 +1,19 @@
 <?php
 namespace LeoGalleguillos\Amazon\View\Helper\Product;
 
-use Website\Model\Entity\Amazon\Product as ProductEntity;
+use LeoGalleguillos\Word\Model\Service as WordService;
 use Zend\View\Helper\AbstractHelper;
 
 class ModifiedFeature extends AbstractHelper
 {
+    public function __construct(
+        WordService\Capitalization $capitalizationService,
+        WordService\Thesaurus $thesaurusService
+    ) {
+        $this->capitalizationService = $capitalizationService;
+        $this->thesaurusService      = $thesaurusService;
+    }
+
     public function __invoke(string $feature)
     {
         // Change unicode spaces to ASCII spaces.
@@ -39,6 +47,37 @@ class ModifiedFeature extends AbstractHelper
 
         // Trim.
         $feature = trim($feature);
+
+        return $feature;
+    }
+
+    protected function replaceFirstWord($feature)
+    {
+        if (empty($feature)) {
+            return $feature;
+        }
+
+        $words = preg_split('/\s+/', $feature);
+        if (empty($words)) {
+            return $feature;
+        }
+
+        $firstWord        = $words[0];
+        $synonyms         = $this->thesaurusService->getSynonyms($firstWord);
+        if (empty($synonyms)) {
+            return $feature;
+        }
+
+        $numberOfSynonyms = count($synonyms);
+        $synonymIndex     = strlen($feature) % $numberOfSynonyms;
+        $synonym          = $synonyms[$synonymIndex];
+
+        $capitalization = $this->capitalizationService->getCapitalization($firstWord);
+
+        $synonym = $this->capitalizationService->setCapitalization(
+            $synonym,
+            $capitalization
+        );
 
         return $feature;
     }

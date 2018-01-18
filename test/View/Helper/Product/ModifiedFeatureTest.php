@@ -3,13 +3,24 @@ namespace LeoGalleguillos\AmazonTest\View\Helper\Product;
 
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\View\Helper as AmazonHelper;
+use LeoGalleguillos\Word\Model\Service as WordService;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 
 class ModifiedFeatureTest extends TestCase
 {
     protected function setUp()
     {
-        $this->productModifiedFeatureHelper = new AmazonHelper\Product\ModifiedFeature();
+        $capitalizationServiceMock = $this->createMock(
+            WordService\Capitalization::class
+        );
+        $thesaurusServiceMock = $this->createMock(
+            WordService\Thesaurus::class
+        );
+        $this->productModifiedFeatureHelper = new AmazonHelper\Product\ModifiedFeature(
+            $capitalizationServiceMock,
+            $thesaurusServiceMock
+        );
     }
 
     public function testInitialize()
@@ -17,6 +28,23 @@ class ModifiedFeatureTest extends TestCase
         $this->assertInstanceOf(
             AmazonHelper\Product\ModifiedFeature::class,
             $this->productModifiedFeatureHelper
+        );
+    }
+
+    public function testReplaceFirstWord()
+    {
+        $reflectionClass  = new ReflectionClass($this->productModifiedFeatureHelper);
+        $reflectionMethod = $reflectionClass->getMethod('replaceFirstWord');
+        $reflectionMethod->setAccessible(true);
+
+        $feature = 'Test 123 is our first test.';
+
+        $this->assertSame(
+            $feature,
+            $reflectionMethod->invokeArgs(
+                $this->productModifiedFeatureHelper,
+                [$feature]
+            )
         );
     }
 }
