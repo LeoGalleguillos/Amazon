@@ -2,6 +2,7 @@
 
 return [
     'modules' => [
+        'LeoGalleguillos\Amazon',
         'LeoGalleguillos\Image',
         'LeoGalleguillos\Memcached',
         'LeoGalleguillos\String',
@@ -15,7 +16,6 @@ return [
         // namespace, the value of that key the specific path to that module's
         // Module class.
         'module_paths' => array(
-            './module',
             './vendor',
         ),
 
