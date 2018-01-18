@@ -6,6 +6,7 @@ return [
         'LeoGalleguillos\Image',
         'LeoGalleguillos\Memcached',
         'LeoGalleguillos\String',
+        'LeoGalleguillos\Word',
         'Zend\Db',
         'Zend\Router',
     ],

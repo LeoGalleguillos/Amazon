@@ -18,11 +18,27 @@ class ModuleTest extends TestCase
         $this->assertInstanceOf(Module::class, $this->module);
     }
 
+    public function testGetConfig()
+    {
+        $applicationConfig = include(__DIR__ . '/../config/application.config.php');
+        $this->application = Application::init($applicationConfig);
+        $serviceConfig     = $this->module->getServiceConfig();
+        $serviceManager    = $this->application->getServiceManager();
+        $viewHelperManager = $serviceManager->get('ViewHelperManager');
+        $config            = $this->module->getConfig();
+
+        foreach ($config['view_helpers']['factories'] as $className => $value) {
+            $this->assertInstanceOf(
+                $className,
+                $viewHelperManager->get($className)
+            );
+        }
+    }
+
     public function testGetServiceConfig()
     {
         $applicationConfig = include(__DIR__ . '/../config/application.config.php');
         $this->application = Application::init($applicationConfig);
-
         $serviceConfig     = $this->module->getServiceConfig();
         $serviceManager    = $this->application->getServiceManager();
 
