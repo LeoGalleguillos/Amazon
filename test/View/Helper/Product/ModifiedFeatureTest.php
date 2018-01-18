@@ -31,6 +31,19 @@ class ModifiedFeatureTest extends TestCase
         );
     }
 
+    public function testInvoke()
+    {
+        $feature = 'This is a <i>feature</i> and it\'s great.';
+        $modifiedFeature = $this->productModifiedFeatureHelper->__invoke(
+            $feature
+        );
+
+        $this->assertSame(
+            'Is a feature, it\'s great.',
+            $modifiedFeature
+        );
+    }
+
     public function testReplaceFirstWord()
     {
         $reflectionClass  = new ReflectionClass($this->productModifiedFeatureHelper);
