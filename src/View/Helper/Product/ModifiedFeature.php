@@ -64,8 +64,8 @@ class ModifiedFeature extends AbstractHelper
             return $feature;
         }
 
-        $firstWord        = $this->wordService->getEntityFromString($words[0]);
-        $synonyms         = $this->thesaurusService->getSynonyms($firstWord);
+        $wordEntity = $this->wordService->getEntityFromString($words[0]);
+        $synonyms   = $this->thesaurusService->getSynonyms($wordEntity);
         if (empty($synonyms)) {
             return $feature;
         }
@@ -74,7 +74,7 @@ class ModifiedFeature extends AbstractHelper
         $synonymIndex     = strlen($feature) % $numberOfSynonyms;
         $synonym          = $synonyms[$synonymIndex];
 
-        $capitalization = $this->capitalizationService->getCapitalization($firstWord);
+        $capitalization = $this->capitalizationService->getCapitalization($wordEntity);
 
         $synonym = $this->capitalizationService->setCapitalization(
             $synonym,

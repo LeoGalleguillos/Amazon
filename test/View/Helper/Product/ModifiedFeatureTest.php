@@ -76,13 +76,23 @@ class ModifiedFeatureTest extends TestCase
             [$this->wordEntity2, $this->wordEntity3]
         );
 
-        $this->wordEntity2->word = 'Essay';
-        $this->capitalizationServiceMock->method('setCapitalization')->willReturn(
-            $this->wordEntity2
+        $this->wordEntity3->word = 'Trial';
+        $this->capitalizationServiceMock->method('getCapitalization')->willReturn(
+            new WordEntity\Capitalization\Uppercase()
         );
+        $this->capitalizationServiceMock->method('setCapitalization')->willReturn(
+            $this->wordEntity3
+        );
+        $this->capitalizationServiceMock
+             ->expects($this->once())
+             ->method('setCapitalization')
+             ->with(
+                $this->wordEntity3,
+                $this->equalTo(new WordEntity\Capitalization\Uppercase())
+             );
 
         $this->assertSame(
-            'Essay 123 is our first test.',
+            'Trial 123 is our first test.',
             $reflectionMethod->invokeArgs(
                 $this->productModifiedFeatureHelper,
                 [$feature]
