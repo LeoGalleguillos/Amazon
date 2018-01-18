@@ -50,10 +50,13 @@ class ModifiedFeature extends AbstractHelper
         // Trim.
         $feature = trim($feature);
 
+        // Replace first word.
+        $feature = $this->replaceFirstWord($feature);
+
         return $feature;
     }
 
-    protected function replaceFirstWord($feature)
+    protected function replaceFirstWord(string $feature)
     {
         if (empty($feature)) {
             return $feature;

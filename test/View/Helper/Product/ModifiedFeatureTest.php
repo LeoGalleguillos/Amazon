@@ -50,6 +50,10 @@ class ModifiedFeatureTest extends TestCase
 
     public function testInvoke()
     {
+        $this->wordServiceMock->method('getEntityFromString')->willReturn(
+            $this->wordEntity1
+        );
+
         $feature = 'This is a <i>feature</i> and it\'s great.';
         $modifiedFeature = $this->productModifiedFeatureHelper->__invoke(
             $feature
