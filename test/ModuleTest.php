@@ -3,6 +3,8 @@ namespace LeoGalleguillos\AmazonTest;
 
 use LeoGalleguillos\Amazon\Module;
 use PHPUnit\Framework\TestCase;
+use Zend\Mvc\Application;
+use Zend\ServiceManager\ServiceManager;
 
 class ModuleTest extends TestCase
 {
@@ -18,10 +20,19 @@ class ModuleTest extends TestCase
 
     public function testGetServiceConfig()
     {
-        $serviceConfig = $this->module->getServiceConfig();
+        $applicationConfig = include(__DIR__ . '/../config/application.config.php');
+        $this->application = Application::init($applicationConfig);
+
+        $serviceConfig     = $this->module->getServiceConfig();
+        $serviceManager    = $this->application->getServiceManager();
+        $serviceManager->configure($serviceConfig);
+
         $serviceConfigFactories = $serviceConfig['factories'];
         foreach ($serviceConfigFactories as $className => $value) {
-            $this->assertTrue(class_exists($className));
+            $this->assertInstanceOf(
+                $className,
+                $serviceManager->get($className)
+            );
         }
     }
 }
