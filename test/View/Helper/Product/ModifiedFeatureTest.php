@@ -3,6 +3,7 @@ namespace LeoGalleguillos\AmazonTest\View\Helper\Product;
 
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\View\Helper as AmazonHelper;
+use LeoGalleguillos\Word\Model\Entity as WordEntity;
 use LeoGalleguillos\Word\Model\Service as WordService;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
@@ -11,16 +12,32 @@ class ModifiedFeatureTest extends TestCase
 {
     protected function setUp()
     {
-        $capitalizationServiceMock = $this->createMock(
+        $this->capitalizationServiceMock = $this->createMock(
             WordService\Capitalization::class
         );
-        $thesaurusServiceMock = $this->createMock(
+        $this->thesaurusServiceMock = $this->createMock(
             WordService\Thesaurus::class
         );
-        $this->productModifiedFeatureHelper = new AmazonHelper\Product\ModifiedFeature(
-            $capitalizationServiceMock,
-            $thesaurusServiceMock
+        $this->wordServiceMock = $this->createMock(
+            WordService\Word::class
         );
+        $this->productModifiedFeatureHelper = new AmazonHelper\Product\ModifiedFeature(
+            $this->capitalizationServiceMock,
+            $this->thesaurusServiceMock,
+            $this->wordServiceMock
+        );
+
+        $this->wordEntity1         = new WordEntity\Word();
+        $this->wordEntity1->wordId = 1;
+        $this->wordEntity1->word   = 'test';
+
+        $this->wordEntity2         = new WordEntity\Word();
+        $this->wordEntity2->wordId = 2;
+        $this->wordEntity2->word   = 'essay';
+
+        $this->wordEntity3         = new WordEntity\Word();
+        $this->wordEntity3->wordId = 3;
+        $this->wordEntity3->word   = 'trial';
     }
 
     public function testInitialize()
@@ -52,8 +69,20 @@ class ModifiedFeatureTest extends TestCase
 
         $feature = 'Test 123 is our first test.';
 
+        $this->wordServiceMock->method('getEntityFromString')->willReturn(
+            $this->wordEntity1
+        );
+        $this->thesaurusServiceMock->method('getSynonyms')->willReturn(
+            [$this->wordEntity2, $this->wordEntity3]
+        );
+
+        $this->wordEntity2->word = 'Essay';
+        $this->capitalizationServiceMock->method('setCapitalization')->willReturn(
+            $this->wordEntity2
+        );
+
         $this->assertSame(
-            $feature,
+            'Essay 123 is our first test.',
             $reflectionMethod->invokeArgs(
                 $this->productModifiedFeatureHelper,
                 [$feature]

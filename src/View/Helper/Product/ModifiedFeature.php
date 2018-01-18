@@ -8,10 +8,12 @@ class ModifiedFeature extends AbstractHelper
 {
     public function __construct(
         WordService\Capitalization $capitalizationService,
-        WordService\Thesaurus $thesaurusService
+        WordService\Thesaurus $thesaurusService,
+        WordService\Word $wordService
     ) {
         $this->capitalizationService = $capitalizationService;
         $this->thesaurusService      = $thesaurusService;
+        $this->wordService           = $wordService;
     }
 
     public function __invoke(string $feature)
@@ -62,7 +64,7 @@ class ModifiedFeature extends AbstractHelper
             return $feature;
         }
 
-        $firstWord        = $words[0];
+        $firstWord        = $this->wordService->getEntityFromString($words[0]);
         $synonyms         = $this->thesaurusService->getSynonyms($firstWord);
         if (empty($synonyms)) {
             return $feature;
@@ -78,7 +80,8 @@ class ModifiedFeature extends AbstractHelper
             $synonym,
             $capitalization
         );
+        $words[0] = $synonym;
 
-        return $feature;
+        return implode(' ', $words);
     }
 }
