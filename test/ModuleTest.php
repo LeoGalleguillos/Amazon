@@ -25,10 +25,8 @@ class ModuleTest extends TestCase
 
         $serviceConfig     = $this->module->getServiceConfig();
         $serviceManager    = $this->application->getServiceManager();
-        $serviceManager->configure($serviceConfig);
 
-        $serviceConfigFactories = $serviceConfig['factories'];
-        foreach ($serviceConfigFactories as $className => $value) {
+        foreach ($serviceConfig['factories'] as $className => $value) {
             $this->assertInstanceOf(
                 $className,
                 $serviceManager->get($className)
