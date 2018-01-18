@@ -8,6 +8,7 @@ use LeoGalleguillos\Amazon\View\Helper as AmazonHelper;
 use LeoGalleguillos\Image\Model\Factory as ImageFactory;
 use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
 use LeoGalleguillos\String\Model\Service as StringService;
+use LeoGalleguillos\Word\Model\Service as WordService;
 
 class Module
 {
