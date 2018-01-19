@@ -27,11 +27,24 @@ class ModuleTest extends TestCase
         $viewHelperManager = $serviceManager->get('ViewHelperManager');
         $config            = $this->module->getConfig();
 
-        foreach ($config['view_helpers']['factories'] as $className => $value) {
-            $this->assertInstanceOf(
-                $className,
-                $viewHelperManager->get($className)
-            );
+        $this->assertTrue(is_array($config));
+
+        if (isset($config['view_helpers']['aliases'])) {
+            foreach ($config['view_helpers']['aliases'] as $alias => $class) {
+                $this->assertInstanceOf(
+                    $class,
+                    $viewHelperManager->get($class)
+                );
+            }
+        }
+
+        if (isset($config['view_helpers']['factories'])) {
+            foreach ($config['view_helpers']['factories'] as $class => $value) {
+                $this->assertInstanceOf(
+                    $class,
+                    $viewHelperManager->get($class)
+                );
+            }
         }
     }
 
@@ -42,10 +55,10 @@ class ModuleTest extends TestCase
         $serviceConfig     = $this->module->getServiceConfig();
         $serviceManager    = $this->application->getServiceManager();
 
-        foreach ($serviceConfig['factories'] as $className => $value) {
+        foreach ($serviceConfig['factories'] as $class => $value) {
             $this->assertInstanceOf(
-                $className,
-                $serviceManager->get($className)
+                $class,
+                $serviceManager->get($class)
             );
         }
     }
