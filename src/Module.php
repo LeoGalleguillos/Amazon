@@ -17,12 +17,16 @@ class Module
         return [
             'view_helpers' => [
                 'aliases' => [
+                    'productAffiliateUrl'     => AmazonHelper\Product\AffiliateUrl::class,
                     'productModifiedFeature'  => AmazonHelper\Product\ModifiedFeature::class,
                     'productModifiedFeatures' => AmazonHelper\Product\ModifiedFeatures::class,
                     'productModifiedTitle'    => AmazonHelper\Product\ModifiedTitle::class,
                     'productRootRelativeUrl'  => AmazonHelper\Product\RootRelativeUrl::class,
                 ],
                 'factories' => [
+                    AmazonHelper\Product\AffiliateUrl::class => function ($serviceManager) {
+                        return new AmazonHelper\Product\AffiliateUrl();
+                    },
                     AmazonHelper\Product\ModifiedFeature::class => function ($serviceManager) {
                         return new AmazonHelper\Product\ModifiedFeature(
                             $serviceManager->get(WordService\Capitalization::class),

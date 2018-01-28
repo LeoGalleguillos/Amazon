@@ -159,12 +159,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/String.git",
-                "reference": "7e166a783280be853cec79dff7488c041074aef7"
+                "reference": "769f76ce38100ad2c6a80b543622e1b7f2988aba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/String/zipball/7e166a783280be853cec79dff7488c041074aef7",
-                "reference": "7e166a783280be853cec79dff7488c041074aef7",
+                "url": "https://api.github.com/repos/LeoGalleguillos/String/zipball/769f76ce38100ad2c6a80b543622e1b7f2988aba",
+                "reference": "769f76ce38100ad2c6a80b543622e1b7f2988aba",
                 "shasum": ""
             },
             "require": {
@@ -181,7 +181,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2018-01-06 17:02:10"
+            "time": "2018-01-22 18:10:32"
         },
         {
             "name": "leo-galleguillos/word",
@@ -189,12 +189,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/Word.git",
-                "reference": "b0e0c015836b3107881df6efd96e8a4c3a97a3a3"
+                "reference": "0eaa9e1df970afe4e97498f20ea81a78f0665f5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/Word/zipball/b0e0c015836b3107881df6efd96e8a4c3a97a3a3",
-                "reference": "b0e0c015836b3107881df6efd96e8a4c3a97a3a3",
+                "url": "https://api.github.com/repos/LeoGalleguillos/Word/zipball/0eaa9e1df970afe4e97498f20ea81a78f0665f5f",
+                "reference": "0eaa9e1df970afe4e97498f20ea81a78f0665f5f",
                 "shasum": ""
             },
             "require": {
@@ -213,7 +213,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2018-01-18 16:42:06"
+            "time": "2018-01-19 18:57:39"
         },
         {
             "name": "myclabs/deep-copy",
@@ -418,16 +418,16 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "4.2.0",
+            "version": "4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "66465776cfc249844bde6d117abff1d22e06c2da"
+                "reference": "94fd0001232e47129dd3504189fa1c7225010d08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/66465776cfc249844bde6d117abff1d22e06c2da",
-                "reference": "66465776cfc249844bde6d117abff1d22e06c2da",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/94fd0001232e47129dd3504189fa1c7225010d08",
+                "reference": "94fd0001232e47129dd3504189fa1c7225010d08",
                 "shasum": ""
             },
             "require": {
@@ -465,7 +465,7 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2017-11-27 17:38:31"
+            "time": "2017-11-30 07:14:17"
         },
         {
             "name": "phpdocumentor/type-resolver",
@@ -1798,28 +1798,28 @@
         },
         {
             "name": "zendframework/zend-console",
-            "version": "2.6.0",
+            "version": "2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-console.git",
-                "reference": "cbbdfdfa0564aa20d1c6c6ef3daeafe6aec02360"
+                "reference": "e8aa08da83de3d265256c40ba45cd649115f0e18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-console/zipball/cbbdfdfa0564aa20d1c6c6ef3daeafe6aec02360",
-                "reference": "cbbdfdfa0564aa20d1c6c6ef3daeafe6aec02360",
+                "url": "https://api.github.com/repos/zendframework/zend-console/zipball/e8aa08da83de3d265256c40ba45cd649115f0e18",
+                "reference": "e8aa08da83de3d265256c40ba45cd649115f0e18",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5 || ^7.0",
-                "zendframework/zend-stdlib": "^2.7 || ^3.0"
+                "php": "^5.6 || ^7.0",
+                "zendframework/zend-stdlib": "^2.7.7 || ^3.1"
             },
             "require-dev": {
-                "fabpot/php-cs-fixer": "1.7.*",
-                "phpunit/phpunit": "^4.0",
-                "zendframework/zend-filter": "^2.6",
-                "zendframework/zend-json": "^2.6",
-                "zendframework/zend-validator": "^2.5"
+                "phpunit/phpunit": "^5.7.23 || ^6.4.3",
+                "zendframework/zend-coding-standard": "~1.0.0",
+                "zendframework/zend-filter": "^2.7.2",
+                "zendframework/zend-json": "^2.6 || ^3.0",
+                "zendframework/zend-validator": "^2.10.1"
             },
             "suggest": {
                 "zendframework/zend-filter": "To support DefaultRouteMatcher usage",
@@ -1828,8 +1828,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.6-dev",
-                    "dev-develop": "2.7-dev"
+                    "dev-master": "2.7.x-dev",
+                    "dev-develop": "2.8.x-dev"
                 }
             },
             "autoload": {
@@ -1841,12 +1841,13 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "homepage": "https://github.com/zendframework/zend-console",
+            "description": "Build console applications using getopt syntax or routing, complete with prompts",
             "keywords": [
+                "ZendFramework",
                 "console",
-                "zf2"
+                "zf"
             ],
-            "time": "2016-02-09 17:15:12"
+            "time": "2018-01-25 19:08:04"
         },
         {
             "name": "zendframework/zend-db",
