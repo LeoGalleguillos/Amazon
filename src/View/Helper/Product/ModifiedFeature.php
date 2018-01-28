@@ -1,19 +1,16 @@
 <?php
 namespace LeoGalleguillos\Amazon\View\Helper\Product;
 
+use LeoGalleguillos\Sentence\Model\Service as SentenceService;
 use LeoGalleguillos\Word\Model\Service as WordService;
 use Zend\View\Helper\AbstractHelper;
 
 class ModifiedFeature extends AbstractHelper
 {
     public function __construct(
-        WordService\Capitalization $capitalizationService,
-        WordService\Thesaurus $thesaurusService,
-        WordService\Word $wordService
+        SentenceService\ReplaceWords $replaceWordsService
     ) {
-        $this->capitalizationService = $capitalizationService;
-        $this->thesaurusService      = $thesaurusService;
-        $this->wordService           = $wordService;
+        $this->replaceWordsService   = $replaceWordsService;
     }
 
     public function __invoke(string $feature)
@@ -50,41 +47,11 @@ class ModifiedFeature extends AbstractHelper
         // Trim.
         $feature = trim($feature);
 
-        // Replace first word.
-        $feature = $this->replaceFirstWord($feature);
+        $feature = $this->replaceWordsService->replaceWords(
+            $feature,
+            strlen($feature)
+        );
 
         return $feature;
-    }
-
-    protected function replaceFirstWord(string $feature)
-    {
-        if (empty($feature)) {
-            return $feature;
-        }
-
-        $words = preg_split('/\s+/', $feature);
-        if (empty($words)) {
-            return $feature;
-        }
-
-        $wordEntity = $this->wordService->getEntityFromString($words[0]);
-        $synonyms   = $this->thesaurusService->getSynonyms($wordEntity);
-        if (empty($synonyms)) {
-            return $feature;
-        }
-
-        $numberOfSynonyms = count($synonyms);
-        $synonymIndex     = strlen($feature) % $numberOfSynonyms;
-        $synonym          = $synonyms[$synonymIndex];
-
-        $capitalization = $this->capitalizationService->getCapitalization($wordEntity);
-
-        $synonym = $this->capitalizationService->setCapitalization(
-            $synonym,
-            $capitalization
-        );
-        $words[0] = $synonym;
-
-        return implode(' ', $words);
     }
 }

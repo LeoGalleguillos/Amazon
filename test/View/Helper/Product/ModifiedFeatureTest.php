@@ -3,6 +3,7 @@ namespace LeoGalleguillos\AmazonTest\View\Helper\Product;
 
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\View\Helper as AmazonHelper;
+use LeoGalleguillos\Sentence\Model\Service as SentenceService;
 use LeoGalleguillos\Word\Model\Entity as WordEntity;
 use LeoGalleguillos\Word\Model\Service as WordService;
 use PHPUnit\Framework\TestCase;
@@ -12,19 +13,11 @@ class ModifiedFeatureTest extends TestCase
 {
     protected function setUp()
     {
-        $this->capitalizationServiceMock = $this->createMock(
-            WordService\Capitalization::class
-        );
-        $this->thesaurusServiceMock = $this->createMock(
-            WordService\Thesaurus::class
-        );
-        $this->wordServiceMock = $this->createMock(
-            WordService\Word::class
+        $this->replaceWordsServiceMock = $this->createMock(
+            SentenceService\ReplaceWords::class
         );
         $this->productModifiedFeatureHelper = new AmazonHelper\Product\ModifiedFeature(
-            $this->capitalizationServiceMock,
-            $this->thesaurusServiceMock,
-            $this->wordServiceMock
+            $this->replaceWordsServiceMock
         );
 
         $this->wordEntity1         = new WordEntity\Word();
@@ -50,57 +43,15 @@ class ModifiedFeatureTest extends TestCase
 
     public function testInvoke()
     {
-        $this->wordServiceMock->method('getEntityFromString')->willReturn(
-            $this->wordEntity1
-        );
-
+        $this->replaceWordsServiceMock->method('replaceWords')->willReturn('ok');
         $feature = 'This is a <i>feature</i> and it\'s great.';
         $modifiedFeature = $this->productModifiedFeatureHelper->__invoke(
             $feature
         );
 
         $this->assertSame(
-            'Is a feature, it\'s great.',
+            'ok',
             $modifiedFeature
-        );
-    }
-
-    public function testReplaceFirstWord()
-    {
-        $reflectionClass  = new ReflectionClass($this->productModifiedFeatureHelper);
-        $reflectionMethod = $reflectionClass->getMethod('replaceFirstWord');
-        $reflectionMethod->setAccessible(true);
-
-        $feature = 'Test 123 is our first test.';
-
-        $this->wordServiceMock->method('getEntityFromString')->willReturn(
-            $this->wordEntity1
-        );
-        $this->thesaurusServiceMock->method('getSynonyms')->willReturn(
-            [$this->wordEntity2, $this->wordEntity3]
-        );
-
-        $this->wordEntity3->word = 'Trial';
-        $this->capitalizationServiceMock->method('getCapitalization')->willReturn(
-            new WordEntity\Capitalization\Uppercase()
-        );
-        $this->capitalizationServiceMock->method('setCapitalization')->willReturn(
-            $this->wordEntity3
-        );
-        $this->capitalizationServiceMock
-             ->expects($this->once())
-             ->method('setCapitalization')
-             ->with(
-                $this->wordEntity3,
-                $this->equalTo(new WordEntity\Capitalization\Uppercase())
-             );
-
-        $this->assertSame(
-            'Trial 123 is our first test.',
-            $reflectionMethod->invokeArgs(
-                $this->productModifiedFeatureHelper,
-                [$feature]
-            )
         );
     }
 }

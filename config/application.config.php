@@ -5,6 +5,7 @@ return [
         'LeoGalleguillos\Amazon',
         'LeoGalleguillos\Image',
         'LeoGalleguillos\Memcached',
+        'LeoGalleguillos\Sentence',
         'LeoGalleguillos\String',
         'LeoGalleguillos\Word',
         'Zend\Db',

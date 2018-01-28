@@ -7,6 +7,7 @@ use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Amazon\View\Helper as AmazonHelper;
 use LeoGalleguillos\Image\Model\Factory as ImageFactory;
 use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
+use LeoGalleguillos\Sentence\Model\Service as SentenceService;
 use LeoGalleguillos\String\Model\Service as StringService;
 use LeoGalleguillos\Word\Model\Service as WordService;
 
@@ -29,9 +30,7 @@ class Module
                     },
                     AmazonHelper\Product\ModifiedFeature::class => function ($serviceManager) {
                         return new AmazonHelper\Product\ModifiedFeature(
-                            $serviceManager->get(WordService\Capitalization::class),
-                            $serviceManager->get(WordService\Thesaurus::class),
-                            $serviceManager->get(WordService\Word::class)
+                            $serviceManager->get(SentenceService\ReplaceWords::class)
                         );
                     },
                     AmazonHelper\Product\ModifiedFeatures::class => function ($serviceManager) {

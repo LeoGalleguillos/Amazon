@@ -10,6 +10,7 @@
     "require": {
         "leo-galleguillos/image": "dev-master",
         "leo-galleguillos/memcached": "dev-master",
+        "leo-galleguillos/sentence": "dev-master",
         "leo-galleguillos/string": "dev-master",
         "leo-galleguillos/word": "dev-master",
         "zendframework/zend-test": "^3.1",
