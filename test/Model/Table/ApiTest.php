@@ -20,7 +20,7 @@ class ApiTest extends TestCase
 
     protected function setUp()
     {
-        $configArray    = require(__DIR__ . '/../../../config/autoload/local.php');
+        $configArray    = require($_SERVER['PWD'] . '/config/autoload/local.php');
         $configArray    = $configArray['db']['adapters']['leogalle_test'];
         $this->adapter  = new Adapter($configArray);
         $this->apiTable = new ApiTable($this->adapter);
