@@ -50,4 +50,23 @@ class SimilarProductsTest extends TestCase
             $this->similarProductsService
         );
     }
+
+    public function testGetSimilarProducts()
+    {
+        $asin = '';
+        $this->assertEmpty(
+            $this->similarProductsService->getSimilarProducts($asin)
+        );
+
+        $this->productSimilarTableMock->method('getSimilarAsins')->will(
+            $this->onConsecutiveCalls(
+                [1, 2, 3],
+                [1, 2, 3]
+            )
+        );
+        $this->assertSame(
+            3,
+            count($this->similarProductsService->getSimilarProducts($asin))
+        );
+    }
 }

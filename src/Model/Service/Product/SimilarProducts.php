@@ -41,7 +41,7 @@ class SimilarProducts
         $asins = $this->productSimilarTable->getSimilarAsins($asin);
         if (!empty($asins)) {
             foreach ($asins as $asin) {
-                $products[] = $this->productFactory->createFromMySql($asin);
+                $products[] = $this->productFactory->buildFromAsin($asin);
             }
             return $products;
         }
