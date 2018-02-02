@@ -25,31 +25,31 @@ class Download
         $this->productImageTable           = $productImageTable;
     }
 
-    public function downloadProduct(AmazonEntity\Product $amazonProductEntity)
+    public function downloadProduct(AmazonEntity\Product $productEntity)
     {
-        $this->productTable->insertProductIfNotExists($amazonProductEntity);
+        $this->productTable->insertProductIfNotExists($productEntity);
         $this->productFeatureTable->insertProductIfNotExists(
-            $amazonProductEntity
+            $productEntity
         );
         $this->productImageTable->insertProductIfNotExists(
-            $amazonProductEntity
+            $productEntity
         );
-        foreach ($amazonProductEntity->editorialReviews as $editorialReviewEntity) {
+        foreach ($productEntity->editorialReviews as $editorialReviewEntity) {
             $this->productEditorialReviewTable->insert(
-                $amazonProductEntity->asin,
+                $productEntity->asin,
                 $editorialReviewEntity->source,
                 $editorialReviewEntity->content
             );
         }
 
         $this->productGroupService->insertIgnore(
-            $amazonProductEntity->productGroup
+            $productEntity->productGroup
         );
         $this->bindingService->insertIgnore(
-            $amazonProductEntity->binding
+            $productEntity->binding
         );
         $this->brandService->insertIgnore(
-            $amazonProductEntity->brand
+            $productEntity->brand
         );
     }
 }
