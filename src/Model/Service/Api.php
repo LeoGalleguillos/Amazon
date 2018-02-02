@@ -5,6 +5,11 @@ use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 
 class Api
 {
+    /**
+     * @var bool
+     */
+    const GET_NEW_PRODUCTS = false;
+
     public function __construct(AmazonTable\Api $amazonApiTable)
     {
         $this->amazonApiTable = $amazonApiTable;
