@@ -8,63 +8,63 @@ use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 class SimilarProducts
 {
     public function __construct(
-        AmazonFactory\Product $amazonProductFactory,
-        AmazonService\Api $amazonApiService,
+        AmazonFactory\Product $productFactory,
+        AmazonService\Api $apiService,
         AmazonService\Api\SimilarProducts\Xml $apiSimilarProductsXmlService,
-        AmazonService\Product $amazonProductService,
-        AmazonService\Product\Download $amazonProductDownloadService,
-        AmazonTable\Product\Similar $amazonProductSimilarTable,
-        AmazonTable\Product\SimilarRetrieved $amazonProductSimilarRetrievedTable
+        AmazonService\Product $productService,
+        AmazonService\Product\Download $productDownloadService,
+        AmazonTable\Product\Similar $productSimilarTable,
+        AmazonTable\Product\SimilarRetrieved $productSimilarRetrievedTable
     ) {
-        $this->amazonProductFactory               = $amazonProductFactory;
-        $this->amazonApiService                   = $amazonApiService;
-        $this->apiSimilarProductsXmlService       = $apiSimilarProductsXmlService;
-        $this->amazonProductService               = $amazonProductService;
-        $this->amazonProductDownloadService       = $amazonProductDownloadService;
-        $this->amazonProductSimilarTable          = $amazonProductSimilarTable;
-        $this->amazonProductSimilarRetrievedTable = $amazonProductSimilarRetrievedTable;
+        $this->productFactory               = $productFactory;
+        $this->apiService                   = $apiService;
+        $this->apiSimilarProductsXmlService = $apiSimilarProductsXmlService;
+        $this->productService               = $productService;
+        $this->productDownloadService       = $productDownloadService;
+        $this->productSimilarTable          = $productSimilarTable;
+        $this->productSimilarRetrievedTable = $productSimilarRetrievedTable;
     }
 
     public function getSimilarProducts($asin)
     {
         $products = [];
 
-        $asins = $this->amazonProductSimilarTable->getSimilarAsins($asin);
+        $asins = $this->productSimilarTable->getSimilarAsins($asin);
         if (!empty($asins)) {
             foreach ($asins as $asin) {
-                $products[] = $this->amazonProductFactory->createFromMySql($asin);
+                $products[] = $this->productFactory->createFromMySql($asin);
             }
             return $products;
         }
 
         if (!AmazonService\Api::GET_NEW_PRODUCTS
-            || $this->amazonApiService->wasAmazonApiCalledRecently()
-            || $this->amazonProductService->wereSimilarProductsRetrievedRecently($asin)
+            || $this->apiService->wasAmazonApiCalledRecently()
+            || $this->productService->wereSimilarProductsRetrievedRecently($asin)
         ) {
             return [];
         }
 
         $xml = $this->apiSimilarProductsXmlService->getXml($asin);
 
-        $this->amazonApiService->insertOnDuplicateKeyUpdate(
+        $this->apiService->insertOnDuplicateKeyUpdate(
             'last_call_microtime',
             microtime(true)
         );
-        $this->amazonProductSimilarRetrievedTable->updateToNowWhereAsin($asin);
+        $this->productSimilarRetrievedTable->updateToNowWhereAsin($asin);
 
         if (!empty($xml->{'Items'}->{'Item'})) {
             foreach ($xml->{'Items'}->{'Item'} as $itemXml) {
-                $product = $this->amazonProductFactory->createFromXml($itemXml);
+                $product = $this->productFactory->createFromXml($itemXml);
 
-                if ($this->amazonProductService->isAmazonProductBanned($product->asin)) {
+                if ($this->productService->isAmazonProductBanned($product->asin)) {
                     continue;
                 }
 
                 if (!$this->isProductInTable($product->asin)) {
-                    $this->amazonProductDownloadService->downloadProduct($product);
+                    $this->productDownloadService->downloadProduct($product);
                 }
 
-                $this->amazonProductSimilarTable->insertIfNotExists($asin, $product->asin);
+                $this->productSimilarTable->insertIfNotExists($asin, $product->asin);
                 $products[] = $product;
             }
         }
