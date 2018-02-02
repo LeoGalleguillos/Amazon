@@ -8,47 +8,47 @@ use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 class Download
 {
     public function __construct(
-        AmazonService\Binding $amazonBindingService,
-        AmazonService\Brand $amazonBrandService,
-        AmazonService\ProductGroup $amazonProductGroupService,
-        AmazonTable\Product $amazonProductTable,
-        AmazonTable\Product\EditorialReview $amazonProductEditorialReviewTable,
-        AmazonTable\Product\Feature $amazonProductFeatureTable,
-        AmazonTable\Product\Image $amazonProductImageTable
+        AmazonService\Binding $bindingService,
+        AmazonService\Brand $brandService,
+        AmazonService\ProductGroup $productGroupService,
+        AmazonTable\Product $productTable,
+        AmazonTable\Product\EditorialReview $productEditorialReviewTable,
+        AmazonTable\Product\Feature $productFeatureTable,
+        AmazonTable\Product\Image $productImageTable
     ) {
-        $this->amazonBindingService              = $amazonBindingService;
-        $this->amazonBrandService                = $amazonBrandService;
-        $this->amazonProductGroupService         = $amazonProductGroupService;
-        $this->amazonProductTable                = $amazonProductTable;
-        $this->amazonProductEditorialReviewTable = $amazonProductEditorialReviewTable;
-        $this->amazonProductFeatureTable         = $amazonProductFeatureTable;
-        $this->amazonProductImageTable           = $amazonProductImageTable;
+        $this->bindingService              = $bindingService;
+        $this->brandService                = $brandService;
+        $this->productGroupService         = $productGroupService;
+        $this->productTable                = $productTable;
+        $this->productEditorialReviewTable = $productEditorialReviewTable;
+        $this->productFeatureTable         = $productFeatureTable;
+        $this->productImageTable           = $productImageTable;
     }
 
     public function downloadProduct(AmazonEntity\Product $amazonProductEntity)
     {
-        $this->amazonProductTable->insertProductIfNotExists($amazonProductEntity);
-        $this->amazonProductFeatureTable->insertProductIfNotExists(
+        $this->productTable->insertProductIfNotExists($amazonProductEntity);
+        $this->productFeatureTable->insertProductIfNotExists(
             $amazonProductEntity
         );
-        $this->amazonProductImageTable->insertProductIfNotExists(
+        $this->productImageTable->insertProductIfNotExists(
             $amazonProductEntity
         );
         foreach ($amazonProductEntity->editorialReviews as $editorialReviewEntity) {
-            $this->amazonProductEditorialReviewTable->insert(
+            $this->productEditorialReviewTable->insert(
                 $amazonProductEntity->asin,
                 $editorialReviewEntity->source,
                 $editorialReviewEntity->content
             );
         }
 
-        $this->amazonProductGroupService->insertIgnore(
+        $this->productGroupService->insertIgnore(
             $amazonProductEntity->productGroup
         );
-        $this->amazonBindingService->insertIgnore(
+        $this->bindingService->insertIgnore(
             $amazonProductEntity->binding
         );
-        $this->amazonBrandService->insertIgnore(
+        $this->brandService->insertIgnore(
             $amazonProductEntity->brand
         );
     }
