@@ -90,8 +90,67 @@ class Module
                         $serviceManager->get(AmazonTable\Api::class)
                     );
                 },
+                AmazonService\Api\Product\Xml::class => function ($serviceManager) {
+                    $config = $serviceManager->get('Config');
+                    return new AmazonService\Api\Product\Xml(
+                        $config['amazon']['access_key_id'],
+                        $config['amazon']['associate_tag'],
+                        $config['amazon']['secret_access_key']
+                    );
+                },
+                AmazonService\Api\SimilarProducts\Xml::class => function ($serviceManager) {
+                    $config = $serviceManager->get('Config');
+                    return new AmazonService\Api\SimilarProducts\Xml(
+                        $config['amazon']['access_key_id'],
+                        $config['amazon']['associate_tag'],
+                        $config['amazon']['secret_access_key']
+                    );
+                },
+                AmazonService\Binding::class => function ($serviceManager) {
+                    return new AmazonService\Binding(
+                        $serviceManager->get(AmazonFactory\Product::class),
+                        $serviceManager->get(AmazonTable\Binding::class)
+                    );
+                },
+                AmazonService\Brand::class => function ($serviceManager) {
+                    return new AmazonService\Brand(
+                        $serviceManager->get(AmazonFactory\Product::class),
+                        $serviceManager->get(AmazonTable\Brand::class)
+                    );
+                },
+                AmazonService\Product::class => function ($serviceManager) {
+                    return new AmazonService\Product(
+                        $serviceManager->get(AmazonFactory\Product::class),
+                        $serviceManager->get(AmazonService\Api::class),
+                        $serviceManager->get(AmazonService\Api\Product\Xml::class),
+                        $serviceManager->get(AmazonService\Product\Download::class),
+                        $serviceManager->get(AmazonTable\Product::class)
+                    );
+                },
+                AmazonService\Product\Download::class => function ($serviceManager) {
+                    return new AmazonService\Product\Download(
+                        $serviceManager->get(AmazonService\Binding::class),
+                        $serviceManager->get(AmazonService\Brand::class),
+                        $serviceManager->get(AmazonService\ProductGroup::class),
+                        $serviceManager->get(AmazonTable\Product::class),
+                        $serviceManager->get(AmazonTable\Product\EditorialReview::class),
+                        $serviceManager->get(AmazonTable\Product\Feature::class),
+                        $serviceManager->get(AmazonTable\Product\Image::class)
+                    );
+                },
                 AmazonService\Product\ModifiedTitle::class => function ($serviceManager) {
                     return new AmazonService\Product\ModifiedTitle();
+                },
+                AmazonService\Product\SimilarProducts::class => function ($serviceManager) {
+                    return new AmazonService\Product\SimilarProducts(
+                        $serviceManager->get(AmazonFactory\Product::class),
+                        $serviceManager->get(AmazonService\Api::class),
+                        $serviceManager->get(AmazonService\Api\SimilarProducts\Xml::class),
+                        $serviceManager->get(AmazonService\Product::class),
+                        $serviceManager->get(AmazonService\Product\Download::class),
+                        $serviceManager->get(AmazonTable\Product\Similar::class),
+                        $serviceManager->get(AmazonTable\Product\SimilarRetrieved::class)
+                    );
                 },
                 AmazonService\Product\RootRelativeUrl::class => function ($serviceManager) {
                     return new AmazonService\Product\RootRelativeUrl(
