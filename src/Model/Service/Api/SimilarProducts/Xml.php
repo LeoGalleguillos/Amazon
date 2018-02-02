@@ -17,10 +17,6 @@ class Xml
 
     public function getXml($asin)
     {
-        $endpoint = "webservices.amazon.com";
-
-        $uri = "/onca/xml";
-
         $params = [
             'Service'        => 'AWSECommerceService',
             'Operation'      => 'SimilarityLookup',
@@ -31,30 +27,35 @@ class Xml
             'ResponseGroup'  => 'Large',
             'Timestamp'      => gmdate('Y-m-d\TH:i:s\Z'),
         ];
-
-        // Sort the parameters by key
         ksort($params);
 
         $pairs = [];
-
         foreach ($params as $key => $value) {
-            array_push($pairs, rawurlencode($key) . '=' . rawurlencode($value));
+            array_push(
+                $pairs,
+                urlencode($key) . '=' . urlencode($value)
+            );
         }
 
-        // Generate the canonical query
-        $canonical_query_string = join('&', $pairs);
+        $queryString = join('&', $pairs);
 
-        // Generate the string to be signed
-        $string_to_sign = "GET\n".$endpoint."\n".$uri."\n".$canonical_query_string;
+        $stringToSign = "GET\n"
+                      . "webservices.amazon.com\n"
+                      . "/onca/xml\n"
+                      . $queryString;
 
-        // Generate the signature required by the Product Advertising API
-        $signature = base64_encode(hash_hmac('sha256', $string_to_sign, $this->secretAccessKey, true));
+        $signature = base64_encode(hash_hmac(
+            'sha256',
+            $stringToSign,
+            $this->secretAccessKey,
+            true
+        ));
 
-        // Generate the signed URL
-        $request_url = 'https://'.$endpoint.$uri.'?'.$canonical_query_string.'&Signature='.rawurlencode($signature);
+        $signedUrl = 'https://webservices.amazon.com/onca/xml?'
+                   . $queryString
+                   . '&Signature=' . urlencode($signature);
 
-        $xmlString = file_get_contents($request_url);
-        $xml = simplexml_load_string($xmlString);
-        return $xml;
+        $xmlString = file_get_contents($signedUrl);
+        return simplexml_load_string($xmlString);
     }
 }
