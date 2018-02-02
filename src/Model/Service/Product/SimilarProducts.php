@@ -7,6 +7,9 @@ use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 
 class SimilarProducts
 {
+    /**
+     * Construct.
+     */
     public function __construct(
         AmazonFactory\Product $productFactory,
         AmazonService\Api $apiService,
@@ -25,7 +28,13 @@ class SimilarProducts
         $this->productSimilarRetrievedTable = $productSimilarRetrievedTable;
     }
 
-    public function getSimilarProducts($asin)
+    /**
+     * Get similar products.
+     *
+     * @param string $asin
+     * @return array
+     */
+    public function getSimilarProducts(string $asin) : array
     {
         $products = [];
 
