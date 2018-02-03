@@ -69,7 +69,7 @@ class SimilarProducts
                     continue;
                 }
 
-                if (!$this->isProductInTable($product->asin)) {
+                if (!$this->productService->isProductInTable($product->asin)) {
                     $this->productDownloadService->downloadProduct($product);
                 }
 
