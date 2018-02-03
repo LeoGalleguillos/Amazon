@@ -121,17 +121,26 @@ class Product
         return (bool) $row['count'];
     }
 
-    public function selectAsinWhereSimilarRetrievedIsNull() : string
-    {
+    public function selectAsinWhereProductGroupAndSimilarRetrievedIsNull(
+        string $productGroup
+    ) {
         $sql = '
             SELECT `product`.`asin`
               FROM `product`
-             WHERE `product`.`product_group` = "Jewelry"
+             WHERE `product`.`product_group` = ?
                AND `product`.`similar_retrieved` IS NULL
              LIMIT 1
                  ;
         ';
-        $row = $this->adapter->query($sql)->execute()->current();
+        $parameters = [
+            $productGroup,
+        ];
+        $row = $this->adapter->query($sql, $parameters)->current();
+
+        if (empty($row)) {
+            return false;
+        }
+
         return $row['asin'];
     }
 

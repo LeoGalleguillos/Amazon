@@ -74,6 +74,31 @@ class ProductTest extends AmazonTest\TableCase
         );
     }
 
+    public function testSelectAsinWhereProductGroupAndSimilarRetrievedIsNull()
+    {
+        $this->assertFalse(
+            $this->productTable->selectAsinWhereProductGroupAndSimilarRetrievedIsNull(
+                'Toy'
+            )
+        );
+
+        $productEntity       = new AmazonEntity\Product();
+        $productEntity->asin  = 'ASIN';
+        $productEntity->title = 'Test Product';
+        $productEntity->listPrice = 0.00;
+        $productEntity->productGroup = 'Toy';
+        $productEntity->binding = 'Binding';
+        $productEntity->brand = 'Brand';
+        $this->productTable->insertOnDuplicateKeyUpdate($productEntity);
+
+        $this->assertSame(
+            'ASIN',
+            $this->productTable->selectAsinWhereProductGroupAndSimilarRetrievedIsNull(
+                'Toy'
+            )
+        );
+    }
+
     public function testSelectWhereProductId()
     {
         $productEntity       = new AmazonEntity\Product();
