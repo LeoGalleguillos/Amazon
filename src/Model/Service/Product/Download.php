@@ -27,7 +27,7 @@ class Download
 
     public function downloadProduct(AmazonEntity\Product $productEntity)
     {
-        $this->productTable->insertProductIfNotExists($productEntity);
+        $this->productTable->insertOnDuplicateKeyUpdate($productEntity);
         $this->productFeatureTable->insertProductIfNotExists(
             $productEntity
         );
