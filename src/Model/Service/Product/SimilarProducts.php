@@ -63,7 +63,7 @@ class SimilarProducts
 
         if (!empty($xml->{'Items'}->{'Item'})) {
             foreach ($xml->{'Items'}->{'Item'} as $itemXml) {
-                $product = $this->productFactory->createFromXml($itemXml);
+                $product = $this->productFactory->buildFromXml($itemXml);
 
                 if ($this->productService->isAmazonProductBanned($product->asin)) {
                     continue;
