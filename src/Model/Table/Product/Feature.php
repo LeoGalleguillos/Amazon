@@ -1,7 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table\Product;
 
-use Website\Model\Entity\Amazon\Product as AmazonProductEntity;
+use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Memcached\Model\Service\Memcached as MemcachedService;
 use Zend\Db\Adapter\Adapter;
 
@@ -45,12 +45,12 @@ class Feature
         return $rows;
     }
 
-    public function insertProductIfNotExists(AmazonProductEntity $product)
+    public function insertProductIfNotExists(AmazonEntity\Product $product)
     {
         return $this->insertWhereNotExists($product);
     }
 
-    private function insertWhereNotExists(AmazonProductEntity $product)
+    private function insertWhereNotExists(AmazonEntity\Product $product)
     {
         foreach ($product->features as $feature) {
             if (strlen($feature)) {
