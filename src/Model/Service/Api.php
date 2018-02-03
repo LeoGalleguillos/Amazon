@@ -8,7 +8,7 @@ class Api
     /**
      * @var bool
      */
-    const GET_NEW_PRODUCTS = false;
+    const GET_NEW_PRODUCTS = true;
 
     public function __construct(AmazonTable\Api $amazonApiTable)
     {
