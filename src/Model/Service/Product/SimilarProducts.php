@@ -80,4 +80,22 @@ class SimilarProducts
 
         return $products;
     }
+
+    /**
+     * Were similar products retrieved recently.
+     *
+     * @param string $asin
+     * @return bool
+     */
+    public function wereSimilarProductsRetrievedRecently(string $asin)
+    {
+        $similarRetrieved = $this->productSimilarRetrievedTable
+                                 ->selectWhereAsin($asin);
+
+        if (empty($similarRetrieved)) {
+            return false;
+        }
+
+        return (strtotime($similarRetrieved) > strtotime('-7 days'));
+    }
 }
