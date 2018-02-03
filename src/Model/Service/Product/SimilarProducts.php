@@ -48,7 +48,7 @@ class SimilarProducts
 
         if (!AmazonService\Api::GET_NEW_PRODUCTS
             || $this->apiService->wasAmazonApiCalledRecently()
-            || $this->productService->wereSimilarProductsRetrievedRecently($asin)
+            || $this->wereSimilarProductsRetrievedRecently($asin)
         ) {
             return [];
         }
