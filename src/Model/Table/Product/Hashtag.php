@@ -2,7 +2,6 @@
 namespace LeoGalleguillos\Amazon\Model\Table\Product;
 
 use LeoGalleguillos\Memcached\Model\Service\Memcached as MemcachedService;
-use Website\Model\Entity\Amazon\Product as AmazonProductEntity;
 use Zend\Db\Adapter\Adapter;
 
 class Hashtag
