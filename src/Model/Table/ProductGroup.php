@@ -61,7 +61,7 @@ class ProductGroup
             $asins[] = $row['asin'];
         }
 
-        $this->memcached->setForDays($cacheKey, $asins, 5);
+        $this->memcached->setForDays($cacheKey, $asins, 1);
         return $asins;
     }
 

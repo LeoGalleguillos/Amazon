@@ -64,6 +64,13 @@ class ProductGroupTest extends TestCase
         );
     }
 
+    public function testGetAsins()
+    {
+        $this->assertEmpty(
+            $this->productGroupTable->getAsins('Toy', rand(1, 999))
+        );
+    }
+
     public function testSelectWhereProductGroupId()
     {
         $this->productGroupTable->insertIgnore('name', 'slug', 'search_product_group_test');
