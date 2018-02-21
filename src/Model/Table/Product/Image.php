@@ -110,8 +110,17 @@ class Image
         }
     }
 
-    public function selectWidthAndHeightWhereAsinAndUrl($asin, $url)
-    {
+    /**
+     * Select width and height where ASIN and URL.
+     *
+     * @param string $asin
+     * @param string $url
+     * @return array
+     */
+    public function selectWidthAndHeightWhereAsinAndUrl(
+        string $asin,
+        string $url
+    ) : array {
         $sql = '
             SELECT `product_image`.`width`
                  , `product_image`.`height`
