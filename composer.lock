@@ -98,12 +98,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/Image.git",
-                "reference": "bc1ec04d9d9a4baf5a614de9943f127a5ba3e066"
+                "reference": "4884675c8dd1e374d515458c70d1f31a52f1aa52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/Image/zipball/bc1ec04d9d9a4baf5a614de9943f127a5ba3e066",
-                "reference": "bc1ec04d9d9a4baf5a614de9943f127a5ba3e066",
+                "url": "https://api.github.com/repos/LeoGalleguillos/Image/zipball/4884675c8dd1e374d515458c70d1f31a52f1aa52",
+                "reference": "4884675c8dd1e374d515458c70d1f31a52f1aa52",
                 "shasum": ""
             },
             "require": {
@@ -120,7 +120,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2018-02-21 16:06:22"
+            "time": "2018-02-21 16:14:54"
         },
         {
             "name": "leo-galleguillos/memcached",
