@@ -86,7 +86,7 @@ class Image
                 $product->primaryImage->getHeight(),
                 $product->asin,
                 'primary',
-                $product->primaryImage->url,
+                $product->primaryImage->getUrl(),
             ];
             $this->adapter
                         ->query($sql, $parameters)
@@ -102,7 +102,7 @@ class Image
                 $imageEntity->getHeight(),
                 $product->asin,
                 'variant',
-                $imageEntity->url,
+                $imageEntity->getUrl(),
             ];
             $this->adapter
                         ->query($sql, $parameters)
