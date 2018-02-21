@@ -1,12 +1,16 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Entity;
 
+use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
+
 class ProductGroup
 {
     /**
      * @var bool Whether the product is in stock.
      */
     public $name;
+
+    protected $searchTable;
 
     /**
      * @var array Array of product features.
@@ -22,5 +26,16 @@ class ProductGroup
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getSearchTable() : string
+    {
+        return $this->searchTable;
+    }
+
+    public function setSearchTable(string $searchTable) : AmazonEntity\ProductGroup
+    {
+        $this->searchTable = $searchTable;
+        return $this;
     }
 }

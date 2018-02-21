@@ -45,7 +45,8 @@ class ProductGroupTest extends TestCase
         $productGroupEntity->productGroupId = 1;
         $productGroupEntity->name           = 'Test';
         $productGroupEntity->slug           = 'test';
-        $productGroupEntity->searchTable    = 'search_product_group_test';
+
+        $productGroupEntity->setSearchTable('search_product_group_test');
 
         $this->assertEquals(
             $productGroupEntity,
