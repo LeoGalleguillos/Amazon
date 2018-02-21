@@ -2,6 +2,7 @@
 namespace LeoGalleguillos\Amazon\Model\Table;
 
 use Exception;
+use Generator;
 use LeoGalleguillos\Memcached\Model\Service\Memcached as MemcachedService;
 use Zend\Db\Adapter\Adapter;
 
@@ -171,5 +172,26 @@ class ProductGroup
             throw new Exception('Product group ID not found.');
         }
         return $row;
+    }
+
+    /**
+     * Select where search_table is not null.
+     *
+     * @yield array
+     */
+    public function selectWhereSearchTableIsNotNull() : Generator
+    {
+        $sql = '
+            SELECT `product_group`.`product_group_id`
+                 , `product_group`.`name`
+                 , `product_group`.`slug`
+                 , `product_group`.`search_table`
+              FROM `product_group`
+             WHERE `product_group`.`search_table` IS NOT NULL
+                 ;
+        ';
+        foreach ($this->adapter->query($sql)->execute() as $row) {
+            yield $row;
+        }
     }
 }

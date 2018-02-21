@@ -95,4 +95,16 @@ class ProductGroupTest extends TestCase
             );
         }
     }
+
+    public function testSelectWhereSearchTableIsNotNull()
+    {
+        $this->productGroupTable->insertIgnore('name', 'slug', 'search_table_1');
+        $this->productGroupTable->insertIgnore('another name', 'another-slug');
+        $this->productGroupTable->insertIgnore('name2', 'slug2', 'search_table_2');
+        $this->productGroupTable->insertIgnore('name3', 'slug3', 'search_table_3');
+
+        foreach ($this->productGroupTable->selectWhereSearchTableIsNotNull() as $array) {
+            $this->assertInternalType('array', $array);
+        }
+    }
 }
