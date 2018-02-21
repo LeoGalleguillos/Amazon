@@ -12,6 +12,12 @@ class Feature
      */
     private $adapter;
 
+    /**
+     * Construct.
+     *
+     * @param MemcachedService $memcached,
+     * @param Adapter $adapter
+     */
     public function __construct(
         MemcachedService $memcached,
         Adapter $adapter
@@ -20,7 +26,7 @@ class Feature
         $this->adapter   = $adapter;
     }
 
-    public function getArraysFromAsin($asin)
+    public function getArraysFromAsin(string $asin)
     {
         $cacheKey = md5(__METHOD__ . $asin);
         if (null !== ($rows = $this->memcached->get($cacheKey))) {
