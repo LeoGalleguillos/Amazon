@@ -172,6 +172,8 @@ class Module
                 AmazonService\Search\ProductGroup::class => function ($serviceManager) {
                     return new AmazonService\Search\ProductGroup(
                         $serviceManager->get(AmazonFactory\Product::class),
+                        $serviceManager->get(AmazonFactory\ProductGroup::class),
+                        $serviceManager->get(AmazonTable\ProductGroup::class),
                         $serviceManager->get(AmazonTable\Search\ProductGroup::class)
                     );
                 },

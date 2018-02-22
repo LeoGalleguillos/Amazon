@@ -12,6 +12,20 @@ class ProductGroup
         $this->productGroupTable = $productGroupTable;
     }
 
+    public function buildFromArray(array $array) : AmazonEntity\ProductGroup
+    {
+        $productGroupEntity                 = new AmazonEntity\ProductGroup();
+        $productGroupEntity->productGroupId = $array['product_group_id'] ?? null;
+        $productGroupEntity->name           = $array['name'] ?? null;
+        $productGroupEntity->slug           = $array['slug'] ?? null;
+
+        if (!empty($arrayObject['search_table'])) {
+            $productGroupEntity->setSearchTable($arrayObject['search_table']);
+        }
+
+        return $productGroupEntity;
+    }
+
     public function buildFromProductGroupId(
         int $productGroupId
     ) : AmazonEntity\ProductGroup {

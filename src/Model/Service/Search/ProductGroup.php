@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Service\Search;
 
+use Generator;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
@@ -9,9 +10,13 @@ class ProductGroup
 {
     public function __construct(
         AmazonFactory\Product $productFactory,
+        AmazonFactory\ProductGroup $productGroupFactory,
+        AmazonTable\ProductGroup $productGroupTable,
         AmazonTable\Search\ProductGroup $searchProductGroupTable
     ) {
         $this->productFactory          = $productFactory;
+        $this->productGroupFactory     = $productGroupFactory;
+        $this->productGroupTable       = $productGroupTable;
         $this->searchProductGroupTable = $searchProductGroupTable;
     }
 
@@ -52,6 +57,18 @@ class ProductGroup
         }
 
         return $products;
+    }
+
+    /**
+     * Get product group entites with search tables.
+     *
+     * @yield string
+     */
+    public function getProductGroupEntitiesWithSearchTables() : Generator
+    {
+        foreach ($this->productGroupTable->selectWhereSearchTableIsNotNull() as $array) {
+            yield $this->productGroupFactory->buildFromArray($array);
+        }
     }
 
     /**
