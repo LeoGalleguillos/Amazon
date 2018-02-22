@@ -36,7 +36,7 @@ class ProductGroup
         $sql = "
             INSERT IGNORE
               INTO `$table`
-            SELECT `asin`, `title`, `modified`
+            SELECT `product_id`, `title`, `modified`
               FROM `amazon`.`product`
              WHERE `amazon`.`product`.`product_group` = ?
                AND `amazon`.`product`.`modified` >= ?
