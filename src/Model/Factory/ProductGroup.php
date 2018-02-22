@@ -12,6 +12,12 @@ class ProductGroup
         $this->productGroupTable = $productGroupTable;
     }
 
+    /**
+     * Build from array.
+     *
+     * @param array $array
+     * @return AmazonEntity\ProductGroup
+     */
     public function buildFromArray(array $array) : AmazonEntity\ProductGroup
     {
         $productGroupEntity                 = new AmazonEntity\ProductGroup();
@@ -26,11 +32,16 @@ class ProductGroup
         return $productGroupEntity;
     }
 
-    public function buildFromProductGroupId(
-        int $productGroupId
-    ) : AmazonEntity\ProductGroup {
-        $arrayObject = $this->productGroupTable->selectWhereProductGroupId(
-            $productGroupId
+    /**
+     * Build from name.
+     *
+     * @param string $name
+     * @return AmazonEntity\ProductGroup
+     */
+    public function buildFromName(string $name)
+    {
+        $arrayObject = $this->productGroupTable->selectWhereName(
+            $name
         );
 
         $productGroupEntity                 = new AmazonEntity\ProductGroup();
@@ -45,10 +56,17 @@ class ProductGroup
         return $productGroupEntity;
     }
 
-    public function buildFromName(string $name)
-    {
-        $arrayObject = $this->productGroupTable->selectWhereName(
-            $name
+    /**
+     * Build from product group ID.
+     *
+     * @param int $productGroupId
+     * @return AmazonEntity\ProductGroup
+     */
+    public function buildFromProductGroupId(
+        int $productGroupId
+    ) : AmazonEntity\ProductGroup {
+        $arrayObject = $this->productGroupTable->selectWhereProductGroupId(
+            $productGroupId
         );
 
         $productGroupEntity                 = new AmazonEntity\ProductGroup();
