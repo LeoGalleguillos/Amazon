@@ -33,9 +33,27 @@ class ProductGroup
         return $this->searchTable;
     }
 
+    public function setName(string $name) : AmazonEntity\ProductGroup
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    public function setProductGroupId(int $productGroupId) : AmazonEntity\ProductGroup
+    {
+        $this->productGroupId = $productGroupId;
+        return $this;
+    }
+
     public function setSearchTable(string $searchTable) : AmazonEntity\ProductGroup
     {
         $this->searchTable = $searchTable;
+        return $this;
+    }
+
+    public function setSlug(string $slug) : AmazonEntity\ProductGroup
+    {
+        $this->slug = $slug;
         return $this;
     }
 }

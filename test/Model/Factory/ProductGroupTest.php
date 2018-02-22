@@ -30,6 +30,25 @@ class ProductGroupTest extends TestCase
         );
     }
 
+    public function testBuildFromArray()
+    {
+        $array = [
+            'product_group_id' => '123',
+            'name'             => 'the-name',
+            'slug'             => 'the-slug',
+            'search_table'     => 'the-search-table',
+        ];
+        $productGroupEntity = new AmazonEntity\ProductGroup();
+        $productGroupEntity->setProductGroupId($array['product_group_id'])
+                           ->setName($array['name'])
+                           ->setSlug($array['slug'])
+                           ->setSearchTable($array['search_table']);
+        $this->assertEquals(
+            $productGroupEntity,
+            $this->productGroupFactory->buildFromArray($array)
+        );
+    }
+
     public function testBuildFromProductGroupId()
     {
         $arrayObject = new ArrayObject([
