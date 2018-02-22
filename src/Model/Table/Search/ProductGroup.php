@@ -20,12 +20,15 @@ class ProductGroup
     /**
      * Insert into table where product and modified.
      *
+     * @param string $table
+     * @param string $productGroup
+     * @param string $modified
      * @return int
      */
     public function insertIntoTableWhereProductGroupAndModified(
-        $table,
-        $productGroup,
-        $modified
+        string $table,
+        string $productGroup,
+        string $modified
     ) : int {
         if (preg_match('/\W/', $table)) {
             throw new Exception('Invalid table name.');
@@ -39,8 +42,7 @@ class ProductGroup
                AND `amazon`.`product`.`modified` >= ?
                  ;
         ";
-        $result = $this->adapter->query($sql, [$productGroup, $modified]);
-        return $result->getAffectedRows();
+        return $this->adapter->query($sql, [$productGroup, $modified])->getAffectedRows();
     }
 
     public function selectProductIdWhereMatchTitleAgainst(
