@@ -82,7 +82,7 @@ class ProductGroup
     ) : array {
         $productIds = $this->searchProductGroupTable
             ->selectProductIdWhereMatchTitleAgainstAndProductIdDoesNotEqual(
-            $productEntity->productGroup->searchTable,
+            $productEntity->productGroup->getSearchTable(),
             $productEntity->title,
             $productEntity->productId
         );
