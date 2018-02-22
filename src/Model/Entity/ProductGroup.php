@@ -28,6 +28,11 @@ class ProductGroup
         return $this->name;
     }
 
+    public function getName() : string
+    {
+        return $this->name;
+    }
+
     public function getSearchTable() : string
     {
         return $this->searchTable;
