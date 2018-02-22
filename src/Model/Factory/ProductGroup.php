@@ -25,8 +25,8 @@ class ProductGroup
         $productGroupEntity->name           = $array['name'] ?? null;
         $productGroupEntity->slug           = $array['slug'] ?? null;
 
-        if (!empty($arrayObject['search_table'])) {
-            $productGroupEntity->setSearchTable($arrayObject['search_table']);
+        if (!empty($array['search_table'])) {
+            $productGroupEntity->setSearchTable($array['search_table']);
         }
 
         return $productGroupEntity;
