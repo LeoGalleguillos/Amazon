@@ -8,6 +8,14 @@ use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 
 class ProductGroup
 {
+    /**
+     * Construct.
+     *
+     * @param AmazonFactory\Product $productFactory,
+     * @param AmazonFactory\ProductGroup $productGroupFactory,
+     * @param AmazonTable\ProductGroup $productGroupTable,
+     * @param AmazonTable\Search\ProductGroup $searchProductGroupTable
+     */
     public function __construct(
         AmazonFactory\Product $productFactory,
         AmazonFactory\ProductGroup $productGroupFactory,
@@ -20,7 +28,13 @@ class ProductGroup
         $this->searchProductGroupTable = $searchProductGroupTable;
     }
 
-    public function getNumberOfPages($numberOfResults)
+    /**
+     * Get number of pages.
+     *
+     * @param int $numberOfResults
+     * @return int
+     */
+    public function getNumberOfPages(int $numberOfResults) : int
     {
         $numberOfPages = ceil($numberOfResults / 100);
         return ($numberOfPages > self::MAX_NUMBER_OF_PAGES)
