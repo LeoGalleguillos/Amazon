@@ -87,9 +87,9 @@ class ProductGroup
             INSERT IGNORE
               INTO `$table`
             SELECT `asin`, `title`, `modified`
-              FROM `onlinefr`.`amazon_product`
-             WHERE `onlinefr`.`amazon_product`.`product_group` = ?
-               AND `onlinefr`.`amazon_product`.`modified` >= ?
+              FROM `amazon`.`product`
+             WHERE `amazon`.`product`.`product_group` = ?
+               AND `amazon`.`product`.`modified` >= ?
                  ;
         ";
         $result = $this->adapter->query($sql, [$productGroup, $modified]);
