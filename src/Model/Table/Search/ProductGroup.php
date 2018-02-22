@@ -17,6 +17,32 @@ class ProductGroup
         $this->adapter          = $adapter;
     }
 
+    /**
+     * Insert into table where product and modified.
+     *
+     * @return int
+     */
+    public function insertIntoTableWhereProductGroupAndModified(
+        $table,
+        $productGroup,
+        $modified
+    ) : int {
+        if (preg_match('/\W/', $table)) {
+            throw new Exception('Invalid table name.');
+        }
+        $sql = "
+            INSERT IGNORE
+              INTO `$table`
+            SELECT `asin`, `title`, `modified`
+              FROM `amazon`.`product`
+             WHERE `amazon`.`product`.`product_group` = ?
+               AND `amazon`.`product`.`modified` >= ?
+                 ;
+        ";
+        $result = $this->adapter->query($sql, [$productGroup, $modified]);
+        return $result->getAffectedRows();
+    }
+
     public function selectProductIdWhereMatchTitleAgainst(
         string $table,
         string $query
@@ -76,24 +102,6 @@ class ProductGroup
             $productIds[] = $row['product_id'];
         }
         return $productIds;
-    }
-
-    public function insertIntoWhereModified($table, $productGroup, $modified) : int
-    {
-        if (preg_match('/\W/', $table)) {
-            throw new Exception('Invalid table name.');
-        }
-        $sql = "
-            INSERT IGNORE
-              INTO `$table`
-            SELECT `asin`, `title`, `modified`
-              FROM `amazon`.`product`
-             WHERE `amazon`.`product`.`product_group` = ?
-               AND `amazon`.`product`.`modified` >= ?
-                 ;
-        ";
-        $result = $this->adapter->query($sql, [$productGroup, $modified]);
-        return $result->getAffectedRows();
     }
 
     public function selectCountWhereMatchTitleAgainst($table, $query) : int
