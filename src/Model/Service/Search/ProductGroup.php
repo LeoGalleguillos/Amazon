@@ -61,7 +61,7 @@ class ProductGroup
 
         $productIds = $this->searchProductGroupTable
             ->selectProductIdWhereMatchTitleAgainst(
-                $productGroup->searchTable,
+                $productGroup->getSearchTable(),
                 $query
             );
 
