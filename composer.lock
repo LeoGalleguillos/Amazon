@@ -98,12 +98,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/Image.git",
-                "reference": "4884675c8dd1e374d515458c70d1f31a52f1aa52"
+                "reference": "4be51aff572f4cd63679853a3030c6d03c321dd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/Image/zipball/4884675c8dd1e374d515458c70d1f31a52f1aa52",
-                "reference": "4884675c8dd1e374d515458c70d1f31a52f1aa52",
+                "url": "https://api.github.com/repos/LeoGalleguillos/Image/zipball/4be51aff572f4cd63679853a3030c6d03c321dd7",
+                "reference": "4be51aff572f4cd63679853a3030c6d03c321dd7",
                 "shasum": ""
             },
             "require": {
@@ -120,7 +120,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2018-02-21 16:14:54"
+            "time": "2018-03-06 14:49:28"
         },
         {
             "name": "leo-galleguillos/memcached",
@@ -861,16 +861,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "6.5.6",
+            "version": "6.5.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "3330ef26ade05359d006041316ed0fa9e8e3cefe"
+                "reference": "6bd77b57707c236833d2b57b968e403df060c9d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3330ef26ade05359d006041316ed0fa9e8e3cefe",
-                "reference": "3330ef26ade05359d006041316ed0fa9e8e3cefe",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/6bd77b57707c236833d2b57b968e403df060c9d9",
+                "reference": "6bd77b57707c236833d2b57b968e403df060c9d9",
                 "shasum": ""
             },
             "require": {
@@ -941,7 +941,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-02-01 05:57:37"
+            "time": "2018-02-26 07:01:09"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
