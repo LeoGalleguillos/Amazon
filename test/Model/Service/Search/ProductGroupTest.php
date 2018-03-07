@@ -40,6 +40,22 @@ class ProductGroupTest extends TestCase
         );
     }
 
+    public function testGetNumberOfPages()
+    {
+        $this->assertSame(
+            1,
+            $this->searchProductGroupService->getNumberOfPages(34)
+        );
+        $this->assertSame(
+            4,
+            $this->searchProductGroupService->getNumberOfPages(345)
+        );
+        $this->assertSame(
+            100,
+            $this->searchProductGroupService->getNumberOfPages(34500)
+        );
+    }
+
     public function testGetProductGroupEntitiesWithSearchTables()
     {
         $this->productGroupTableMock->method('selectWhereSearchTableIsNotNull')->willReturn(

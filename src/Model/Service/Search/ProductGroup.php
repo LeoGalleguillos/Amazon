@@ -8,6 +8,8 @@ use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 
 class ProductGroup
 {
+    const MAX_NUMBER_OF_PAGES = 100;
+
     /**
      * Construct.
      *
