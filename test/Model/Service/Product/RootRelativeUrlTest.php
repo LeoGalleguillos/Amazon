@@ -34,7 +34,7 @@ class RootRelativeUrlTest extends TestCase
     {
         $productEntity            = new AmazonEntity\Product();
         $productEntity->productId = 12345;
-        $productEntity->title     = 'My Amazing Product\'s Title (Is Great)';
+        $productEntity->setTitle('My Amazing Product\'s Title (Is Great)');
 
         $this->urlFriendlyServiceMock->method('getUrlFriendly')->willReturn('My-Product-Title');
 

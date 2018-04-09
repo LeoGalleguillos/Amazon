@@ -23,7 +23,7 @@ class ModifiedTitleTest extends TestCase
     public function testGetModifiedTitle()
     {
         $productEntity        = new AmazonEntity\Product();
-        $productEntity->title = 'My Amazing Product\'s Title (Is Great)';
+        $productEntity->setTitle('My Amazing Product\'s Title (Is Great)');
         $productEntity->brand = new AmazonEntity\Brand('My', 'My');
 
         $this->assertSame(
@@ -31,25 +31,25 @@ class ModifiedTitleTest extends TestCase
             $this->productModifiedTitleService->getModifiedTitle($productEntity)
         );
 
-        $productEntity->title = ' My Amazing   Product\'s Title   [Is Great]';
+        $productEntity->setTitle(' My Amazing   Product\'s Title   [Is Great]');
         $this->assertSame(
             'Amazing Products Title',
             $this->productModifiedTitleService->getModifiedTitle($productEntity)
         );
 
-        $productEntity->title = '!This is a really long title! as it has more than nine words in it holy cow.';
+        $productEntity->setTitle('!This is a really long title! as it has more than nine words in it holy cow.');
         $this->assertSame(
             'This really long title has more than nine words',
             $this->productModifiedTitleService->getModifiedTitle($productEntity)
         );
 
-        $productEntity->title = 'Ratchet Noise maker Plastic 25 X 25 Pack Of 20';
+        $productEntity->setTitle('Ratchet Noise maker Plastic 25 X 25 Pack Of 20');
         $this->assertSame(
             'Ratchet Noise maker Plastic Pack',
             $this->productModifiedTitleService->getModifiedTitle($productEntity)
         );
 
-        $productEntity->title = 'Google Android Series With AND with';
+        $productEntity->setTitle('Google Android Series With AND with');
         $this->assertSame(
             'Google Android Series',
             $this->productModifiedTitleService->getModifiedTitle($productEntity)

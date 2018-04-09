@@ -98,7 +98,7 @@ class Product
         ';
         $parameters = [
             $product->asin,
-            substr($product->title, 0, 255),
+            substr($product->getTitle(), 0, 255),
             $product->productGroup,
             $product->binding,
             $product->brand,

@@ -58,7 +58,7 @@ class ProductTest extends AmazonTest\TableCase
     {
         $productEntity       = new AmazonEntity\Product();
         $productEntity->asin  = 'ASIN';
-        $productEntity->title = 'Test Product';
+        $productEntity->setTitle('Test Product');
         $productEntity->listPrice = 0.00;
         $productEntity->productGroup = 'Product Group';
         $productEntity->binding = 'Binding';
@@ -84,7 +84,7 @@ class ProductTest extends AmazonTest\TableCase
 
         $productEntity       = new AmazonEntity\Product();
         $productEntity->asin  = 'ASIN';
-        $productEntity->title = 'Test Product';
+        $productEntity->setTitle('Test Product');
         $productEntity->listPrice = 0.00;
         $productEntity->productGroup = 'Toy';
         $productEntity->binding = 'Binding';
@@ -103,7 +103,7 @@ class ProductTest extends AmazonTest\TableCase
     {
         $productEntity       = new AmazonEntity\Product();
         $productEntity->asin  = 'ASIN';
-        $productEntity->title = 'Test Product';
+        $productEntity->setTitle('Test Product');
         $productEntity->listPrice = 0.00;
         $productEntity->productGroup = 'Product Group';
         $productEntity->binding = 'Binding';

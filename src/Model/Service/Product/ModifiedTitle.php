@@ -7,7 +7,7 @@ class ModifiedTitle
 {
     public function getModifiedTitle(AmazonEntity\Product $product)
     {
-        $title = $product->title;
+        $title = $product->getTitle();
 
         // Remove brand.
         $brandRegularExpression = preg_quote($product->brand, '/');

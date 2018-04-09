@@ -46,11 +46,23 @@ class Product
     public $primaryImage;
 
     /**
+     * @var string
+     */
+    protected $title;
+
+    /**
      * @var ImageEntity[]
      */
     public $variantImages = [];
 
-    public function __construct()
+    public function getTitle() : string
     {
+        return $this->title;
+    }
+
+    public function setTitle(string $title) : AmazonEntity\Product
+    {
+        $this->title = $title;
+        return $this;
     }
 }
