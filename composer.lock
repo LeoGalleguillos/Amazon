@@ -1942,16 +1942,16 @@
         },
         {
             "name": "zendframework/zend-dom",
-            "version": "2.7.0",
+            "version": "2.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-dom.git",
-                "reference": "7a2d3ac8722951dc5ec8eec49f794afbe6a34ff8"
+                "reference": "ec2c66c2bb0046e895651b24f2ebb83058b9bbca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-dom/zipball/7a2d3ac8722951dc5ec8eec49f794afbe6a34ff8",
-                "reference": "7a2d3ac8722951dc5ec8eec49f794afbe6a34ff8",
+                "url": "https://api.github.com/repos/zendframework/zend-dom/zipball/ec2c66c2bb0046e895651b24f2ebb83058b9bbca",
+                "reference": "ec2c66c2bb0046e895651b24f2ebb83058b9bbca",
                 "shasum": ""
             },
             "require": {
@@ -1983,7 +1983,7 @@
                 "dom",
                 "zf"
             ],
-            "time": "2018-03-27 21:03:04"
+            "time": "2018-04-09 20:18:00"
         },
         {
             "name": "zendframework/zend-escaper",
