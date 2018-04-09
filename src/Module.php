@@ -21,7 +21,7 @@ class Module
                     'productAffiliateUrl'     => AmazonHelper\Product\AffiliateUrl::class,
                     'productModifiedFeature'  => AmazonHelper\Product\ModifiedFeature::class,
                     'productModifiedFeatures' => AmazonHelper\Product\ModifiedFeatures::class,
-                    'productModifiedTitle'    => AmazonHelper\Product\ModifiedTitle::class,
+                    'getModifiedTitle'        => AmazonHelper\Product\ModifiedTitle::class,
                     'productRootRelativeUrl'  => AmazonHelper\Product\RootRelativeUrl::class,
                 ],
                 'factories' => [
