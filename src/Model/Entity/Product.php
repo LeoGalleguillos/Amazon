@@ -41,7 +41,7 @@ class Product
     public $productId;
 
     /**
-     * @var ImageEntity
+     * @var ImageEntity\Image
      */
     public $primaryImage;
 
@@ -55,9 +55,21 @@ class Product
      */
     public $variantImages = [];
 
+    public function getPrimaryImage() : ImageEntity\Image
+    {
+        return $this->primaryImage;
+    }
+
     public function getTitle() : string
     {
         return $this->title;
+    }
+
+    public function setPrimaryImage(
+        ImageEntity\Image $primaryImage
+    ) : AmazonEntity\Product {
+        $this->primaryImage = $primaryImage;
+        return $this;
     }
 
     public function setTitle(string $title) : AmazonEntity\Product
