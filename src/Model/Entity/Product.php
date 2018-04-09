@@ -65,6 +65,11 @@ class Product
         return $this->title;
     }
 
+    public function getVariantImages() : array
+    {
+        return $this->variantImages;
+    }
+
     public function setPrimaryImage(
         ImageEntity\Image $primaryImage
     ) : AmazonEntity\Product {
@@ -75,6 +80,12 @@ class Product
     public function setTitle(string $title) : AmazonEntity\Product
     {
         $this->title = $title;
+        return $this;
+    }
+
+    public function setVariantImages(array $variantImages) : AmazonEntity\Product
+    {
+        $this->variantImages = $variantImages;
         return $this;
     }
 }
