@@ -6,7 +6,7 @@ use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use AmazonEntity\Binding as AmazonBindingEntity;
 use AmazonEntity\Brand as AmazonBrandEntity;
 use AmazonEntity\ProductGroup as AmazonProductGroupEntity;
-use ImageEntity\Image as ImageEntity;
+use LeoGalleguillos\Image\Model\Entity as ImageEntity;
 
 class Product
 {
@@ -51,7 +51,7 @@ class Product
     protected $title;
 
     /**
-     * @var ImageEntity[]
+     * @var ImageEntity\Image[]
      */
     public $variantImages = [];
 
