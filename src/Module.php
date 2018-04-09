@@ -22,7 +22,7 @@ class Module
                     'productModifiedFeature'  => AmazonHelper\Product\ModifiedFeature::class,
                     'productModifiedFeatures' => AmazonHelper\Product\ModifiedFeatures::class,
                     'getModifiedTitle'        => AmazonHelper\Product\ModifiedTitle::class,
-                    'productRootRelativeUrl'  => AmazonHelper\Product\RootRelativeUrl::class,
+                    'getPoductRootRelativeUrl'  => AmazonHelper\Product\RootRelativeUrl::class,
                 ],
                 'factories' => [
                     AmazonHelper\Product\AffiliateUrl::class => function ($serviceManager) {
