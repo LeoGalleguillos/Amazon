@@ -45,7 +45,7 @@ class Product
         $productArray             = $this->amazonProductTable->selectWhereAsin($asin);
         $productEntity->asin      = $productArray['asin'];
         $productEntity->productId = $productArray['product_id'];
-        $productEntity->title     = $productArray['title'];
+        $productEntity->setTitle($productArray['title']);
 
         $productEntity->productGroup = $this->amazonProductGroupFactory->buildFromName(
             $productArray['product_group']
@@ -106,7 +106,7 @@ class Product
         $productArray             = $this->amazonProductTable->selectWhereProductId($productId);
         $productEntity->asin      = $productArray['asin'];
         $productEntity->productId = $productArray['product_id'];
-        $productEntity->title     = $productArray['title'];
+        $productEntity->setTitle($productArray['title']);
 
         $productEntity->productGroup = $this->amazonProductGroupFactory->buildFromName(
             $productArray['product_group']
@@ -175,7 +175,7 @@ class Product
         $productEntity = new AmazonEntity\Product();
 
         $productEntity->asin         = (string) $xml->{'ASIN'};
-        $productEntity->title        = (string) $xml->{'ItemAttributes'}->{'Title'};
+        $productEntity->setTitle((string) $xml->{'ItemAttributes'}->{'Title'});
 
         $productEntity->productGroup = $this->amazonProductGroupFactory->buildFromName(
             (string) $xml->{'ItemAttributes'}->{'ProductGroup'}
