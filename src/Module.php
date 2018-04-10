@@ -212,12 +212,6 @@ class Module
                         $serviceManager->get('amazon')
                     );
                 },
-                AmazonTable\Product\Hashtag::class => function ($serviceManager) {
-                    return new AmazonTable\Product\Hashtag(
-                        $serviceManager->get(MemcachedService\Memcached::class),
-                        $serviceManager->get('amazon')
-                    );
-                },
                 AmazonTable\Product\Image::class => function ($serviceManager) {
                     return new AmazonTable\Product\Image(
                         $serviceManager->get(MemcachedService\Memcached::class),
@@ -248,6 +242,12 @@ class Module
                 },
                 AmazonTable\ProductGroup::class => function ($serviceManager) {
                     return new AmazonTable\ProductGroup(
+                        $serviceManager->get(MemcachedService\Memcached::class),
+                        $serviceManager->get('amazon')
+                    );
+                },
+                AmazonTable\ProductHashtag::class => function ($serviceManager) {
+                    return new AmazonTable\ProductHashtag(
                         $serviceManager->get(MemcachedService\Memcached::class),
                         $serviceManager->get('amazon')
                     );
