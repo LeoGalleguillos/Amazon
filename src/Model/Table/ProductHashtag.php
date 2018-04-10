@@ -119,33 +119,36 @@ class ProductHashtag
         return $hashtags;
     }
 
-    public function insertIgnore($asin, $hastagId, $productGroup, $binding, $brand)
-    {
+    public function insertIgnore(
+        int $productId,
+        int $hashtagId,
+        int $productGroupId,
+        int $bindingId,
+        int $brandId
+    ) {
         $sql = '
-            INSERT
+            INSERT IGNORE
               INTO `product_hashtag` (
-                       `asin`, `hashtag_id`
+                       `product_id`,
+                       `hashtag_id`,
+                       `product_group_id`,
+                       `binding_id`,
+                       `brand_id`
                    )
-                SELECT ?, ?
-                FROM `product_hashtag`
-               WHERE NOT EXISTS (
-                   SELECT `product_hashtag_id`
-                     FROM `product_hashtag`
-                    WHERE `asin` = ?
-                      AND `hashtag_id` = ?
-               )
-               LIMIT 1
-           ;
+            VALUES (?, ?, ?, ?, ?)
+                 ;
         ';
 
         $parameters = [
-            $asin,
-            $hastagId,
-            $asin,
-            $hastagId,
+            $productId,
+            $hashtagId,
+            $productGroupId,
+            $bindingId,
+            $brandId,
         ];
-        $this->adapter
-                ->query($sql, $parameters)
-                ->getGeneratedValue();
+        return $this->adapter
+                    ->query($sql)
+                    ->execute($parameters)
+                    ->getGeneratedValue();
     }
 }

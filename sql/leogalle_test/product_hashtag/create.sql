@@ -6,5 +6,6 @@ CREATE TABLE `product_hashtag` (
       `binding_id` int(10) unsigned DEFAULT NULL,
       `brand_id` int(10) unsigned DEFAULT NULL,
       PRIMARY KEY (`product_hashtag_id`),
+      UNIQUE KEY `product_id_hashtag_id` (`product_id`,`hashtag_id`),
       KEY `hashtag_id` (`hashtag_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
