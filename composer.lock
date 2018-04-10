@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0e64a22158990c38e2d2f9d1dd352569",
-    "content-hash": "bc0a7053cb15413e85cc4d98aed4b954",
+    "hash": "b358ed2ca17feb695b643d2684f71f2e",
+    "content-hash": "cd85831444af078f6f305835c0abce18",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -91,6 +91,37 @@
                 "instantiate"
             ],
             "time": "2015-06-14 21:17:01"
+        },
+        {
+            "name": "leo-galleguillos/hashtag",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LeoGalleguillos/Hashtag.git",
+                "reference": "0f3e76bf1651281a54645145dccb11f74d6a04be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LeoGalleguillos/Hashtag/zipball/0f3e76bf1651281a54645145dccb11f74d6a04be",
+                "reference": "0f3e76bf1651281a54645145dccb11f74d6a04be",
+                "shasum": ""
+            },
+            "require": {
+                "zendframework/zend-db": "^2.9",
+                "zendframework/zend-test": "^3.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LeoGalleguillos\\Hashtag\\": "src/",
+                    "LeoGalleguillos\\HashtagTest\\": "test/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2018-01-02 04:49:36"
         },
         {
             "name": "leo-galleguillos/image",
@@ -2767,6 +2798,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "leo-galleguillos/hashtag": 20,
         "leo-galleguillos/image": 20,
         "leo-galleguillos/memcached": 20,
         "leo-galleguillos/sentence": 20,

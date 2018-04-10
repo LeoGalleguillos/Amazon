@@ -8,6 +8,7 @@
     "license": "MIT",
     "name": "leo-galleguillos/amazon",
     "require": {
+        "leo-galleguillos/hashtag": "dev-master",
         "leo-galleguillos/image": "dev-master",
         "leo-galleguillos/memcached": "dev-master",
         "leo-galleguillos/sentence": "dev-master",
