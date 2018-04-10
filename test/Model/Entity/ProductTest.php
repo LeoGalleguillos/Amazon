@@ -22,6 +22,16 @@ class ProductTest extends TestCase
 
     public function testGettersAndSetters()
     {
+        $asin = 'ASIN';
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setAsin($asin)
+        );
+        $this->assertSame(
+            $asin,
+            $this->productEntity->getAsin()
+        );
+
         $imageEntity = new ImageEntity\Image();
         $this->assertSame(
             $this->productEntity,
