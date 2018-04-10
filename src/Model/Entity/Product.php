@@ -13,6 +13,11 @@ class Product
     /**
      * @var AmazonBindingEntity Binding.
      */
+    public $asin;
+
+    /**
+     * @var AmazonBindingEntity Binding.
+     */
     public $binding;
 
     /**
@@ -55,6 +60,11 @@ class Product
      */
     public $variantImages = [];
 
+    public function getAsin() : string
+    {
+        return $this->asin;
+    }
+
     public function getPrimaryImage() : ImageEntity\Image
     {
         return $this->primaryImage;
@@ -68,6 +78,12 @@ class Product
     public function getVariantImages() : array
     {
         return $this->variantImages;
+    }
+
+    public function setAsin(string $asin) : AmazonEntity\Product
+    {
+        $this->asin = $asin;
+        return $this;
     }
 
     public function setPrimaryImage(
