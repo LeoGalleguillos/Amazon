@@ -125,7 +125,7 @@ class ProductHashtag
         int $productGroupId,
         int $bindingId,
         int $brandId
-    ) {
+    ) :int {
         $sql = '
             INSERT IGNORE
               INTO `product_hashtag` (
@@ -146,9 +146,9 @@ class ProductHashtag
             $bindingId,
             $brandId,
         ];
-        return $this->adapter
-                    ->query($sql)
-                    ->execute($parameters)
-                    ->getGeneratedValue();
+        return (int) $this->adapter
+                          ->query($sql)
+                          ->execute($parameters)
+                          ->getGeneratedValue();
     }
 }
