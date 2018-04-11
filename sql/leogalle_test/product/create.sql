@@ -7,6 +7,7 @@ CREATE TABLE `product` (
   `brand` varchar(255) DEFAULT NULL,
   `list_price` float(16,2) DEFAULT NULL,
   `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `hashtags_retrieved` datetime DEFAULT NULL,
   `similar_retrieved` datetime DEFAULT NULL,
   PRIMARY KEY (`product_id`),
   UNIQUE KEY `asin` (`asin`),

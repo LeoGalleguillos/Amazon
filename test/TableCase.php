@@ -10,14 +10,21 @@ use PHPUnit\Framework\TestCase;
 
 class TableCase extends TestCase
 {
-    /**
-     * @var string
-     */
-    protected $sqlDirectory = __DIR__ . '/../../..' . '/sql/';
+    protected $adapter;
+    protected $sqlDirectory;
+
+    protected function setUp()
+    {
+        $this->sqlDirectory = $_SERVER['PWD'] . '/sql/';
+
+        $configArray        = require($_SERVER['PWD'] . '/config/autoload/local.php');
+        $configArray        = $configArray['db']['adapters']['leogalle_test'];
+        $this->adapter      = new Adapter($configArray);
+    }
 
     protected function setForeignKeyChecks0()
     {
-        $sql     = file_get_contents(
+        $sql = file_get_contents(
             $this->sqlDirectory . 'SetForeignKeyChecks0.sql'
         );
         $result = $this->adapter->query($sql)->execute();
@@ -25,7 +32,7 @@ class TableCase extends TestCase
 
     protected function setForeignKeyChecks1()
     {
-        $sql     = file_get_contents(
+        $sql = file_get_contents(
             $this->sqlDirectory . 'SetForeignKeyChecks1.sql'
         );
         $result = $this->adapter->query($sql)->execute();
