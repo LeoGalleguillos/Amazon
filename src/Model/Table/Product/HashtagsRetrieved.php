@@ -30,11 +30,11 @@ class HashtagsRetrieved
         ';
         $row = $this->adapter->query($sql)->execute([$productId])->current();
 
-        if (empty($row['similar_retrieved'])) {
+        if (empty($row['hashtags_retrieved'])) {
             throw new Exception('Hashtags have never been retrieved.');
         }
 
-        return $row['similar_retrieved'];
+        return $row['hashtags_retrieved'];
     }
 
     public function updateWhereProductId(int $productId) : int
