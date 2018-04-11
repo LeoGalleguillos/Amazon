@@ -140,6 +140,7 @@ class Module
                 },
                 AmazonService\Product\Hashtags::class => function ($serviceManager) {
                     return new AmazonService\Product\Hashtags(
+                        $serviceManager->get(AmazonTable\Product\HashtagsRetrieved::class)
                     );
                 },
                 AmazonService\Product\ModifiedTitle::class => function ($serviceManager) {
@@ -213,6 +214,11 @@ class Module
                 AmazonTable\Product\Feature::class => function ($serviceManager) {
                     return new AmazonTable\Product\Feature(
                         $serviceManager->get(MemcachedService\Memcached::class),
+                        $serviceManager->get('amazon')
+                    );
+                },
+                AmazonTable\Product\HashtagsRetrieved::class => function ($serviceManager) {
+                    return new AmazonTable\Product\HashtagsRetrieved(
                         $serviceManager->get('amazon')
                     );
                 },
