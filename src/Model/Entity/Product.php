@@ -36,9 +36,9 @@ class Product
     public $features = [];
 
     /**
-     * @var AmazonProductGroupEntity Product group.
+     * @var AmazonEntity\ProductGroup Product group entity.
      */
-    public $productGroup;
+    protected $productGroupEntity;
 
     /**
      * @var int Product ID.
@@ -63,6 +63,11 @@ class Product
     public function getAsin() : string
     {
         return $this->asin;
+    }
+
+    public function getProductGroupEntity() : AmazonEntity\ProductGroup
+    {
+        return $this->productGroupEntity;
     }
 
     public function getPrimaryImage() : ImageEntity\Image

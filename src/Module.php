@@ -138,6 +138,10 @@ class Module
                         $serviceManager->get(AmazonTable\Product\Image::class)
                     );
                 },
+                AmazonService\Product\Hashtags::class => function ($serviceManager) {
+                    return new AmazonService\Product\Hashtags(
+                    );
+                },
                 AmazonService\Product\ModifiedTitle::class => function ($serviceManager) {
                     return new AmazonService\Product\ModifiedTitle();
                 },
