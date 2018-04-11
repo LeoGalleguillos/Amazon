@@ -122,9 +122,9 @@ class ProductHashtag
     public function insertIgnore(
         int $productId,
         int $hashtagId,
-        int $productGroupId,
-        int $bindingId,
-        int $brandId
+        int $productGroupId = null,
+        int $bindingId = null,
+        int $brandId = null
     ) :int {
         $sql = '
             INSERT IGNORE

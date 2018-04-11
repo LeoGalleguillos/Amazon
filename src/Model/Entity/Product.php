@@ -81,6 +81,11 @@ class Product
         return $this->productGroupEntity;
     }
 
+    public function getProductId() : int
+    {
+        return $this->productId;
+    }
+
     public function getPrimaryImage() : ImageEntity\Image
     {
         return $this->primaryImage;
@@ -126,6 +131,13 @@ class Product
         ImageEntity\Image $primaryImage
     ) : AmazonEntity\Product {
         $this->primaryImage = $primaryImage;
+        return $this;
+    }
+
+    public function setProductId(
+        int $productId
+    ) : AmazonEntity\Product {
+        $this->productId = $productId;
         return $this;
     }
 
