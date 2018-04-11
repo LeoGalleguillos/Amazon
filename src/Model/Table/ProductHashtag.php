@@ -9,7 +9,7 @@ class ProductHashtag
     /**
      * @var Adapter
      */
-    private $adapter;
+    protected $adapter;
 
     public function __construct(
         MemcachedService $memcached,
@@ -89,7 +89,7 @@ class ProductHashtag
         return $asins;
     }
 
-    public function selectHashtagWhereAsin(string $asin)
+    public function selectHashtagWhereProductId(int $productId)
     {
         $cacheKey = md5(__METHOD__ . $asin);
         if (false != ($hashtags = $this->memcached->get($cacheKey))) {
@@ -101,12 +101,12 @@ class ProductHashtag
               FROM `hashtag`.`hashtag`
               JOIN `product_hashtag`
              USING (`hashtag_id`)
-             WHERE `product_hashtag`.`asin` = ?
+             WHERE `product_hashtag`.`product_id` = ?
              ORDER
                 BY `hashtag`.`hashtag`.`hashtag` ASC
                  ;
         ';
-        $results = $this->adapter->query($sql, [$asin]);
+        $results = $this->adapter->query($sql)->execute([$productId]);
 
         $hashtags = [];
         foreach ($results as $row) {
@@ -114,7 +114,7 @@ class ProductHashtag
         }
 
         if ($hashtags) {
-            $this->memcached->setForDays($cacheKey, $hashtags, 1);
+            $this->memcached->setForDays($cacheKey, $hashtags, 3);
         }
         return $hashtags;
     }

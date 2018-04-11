@@ -143,7 +143,8 @@ class Module
                     return new AmazonService\Product\Hashtags(
                         $serviceManager->get(AmazonService\Product\Hashtags\Insert::class),
                         $serviceManager->get(AmazonService\Product\Hashtags\ProductEntity::class),
-                        $serviceManager->get(AmazonTable\Product\HashtagsRetrieved::class)
+                        $serviceManager->get(AmazonTable\Product\HashtagsRetrieved::class),
+                        $serviceManager->get(AmazonTable\ProductHashtag::class)
                     );
                 },
                 AmazonService\Product\Hashtags\Insert::class => function ($serviceManager) {

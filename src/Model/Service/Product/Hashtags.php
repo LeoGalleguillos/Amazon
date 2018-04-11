@@ -9,11 +9,13 @@ class Hashtags
     public function __construct(
         AmazonService\Product\Hashtags\Insert $insertHashtagsService,
         AmazonService\Product\Hashtags\ProductEntity $productEntityHashtagsService,
-        AmazonTable\Product\HashtagsRetrieved $hashtagsRetrievedTable
+        AmazonTable\Product\HashtagsRetrieved $hashtagsRetrievedTable,
+        AmazonTable\ProductHashtag $productHashtagTable
     ) {
         $this->insertHashtagsService        = $insertHashtagsService;
         $this->productEntityHashtagsService = $productEntityHashtagsService;
         $this->hashtagsRetrievedTable       = $hashtagsRetrievedTable;
+        $this->productHashtagTable          = $productHashtagTable;
     }
 
     public function getHashtags(
@@ -30,11 +32,14 @@ class Hashtags
             $hashtags = $this->productEntityHashtagsService->getHashtags(
                 $productEntity
             );
-            // Insert hashtags into mysql.
+            $this->insertHashtagsService->insert(
+                $productEntity,
+                $hashtags
+            );
         }
 
-        // Get hashtags from mysql and return them.
-
-        return $hashtags;
+        return $this->productHashtagTable->selectWhereProductId(
+            $productEntity->getProductId()
+        );
     }
 }

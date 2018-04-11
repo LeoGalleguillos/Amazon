@@ -19,10 +19,14 @@ class HashtagsTest extends TestCase
         $this->productHashtagsRetrievedTableMock = $this->createMock(
             AmazonTable\Product\HashtagsRetrieved::class
         );
+        $this->productHashtagTableMock = $this->createMock(
+            AmazonTable\ProductHashtag::class
+        );
         $this->hashtagsService = new AmazonService\Product\Hashtags(
             $this->insertHashtagsServiceMock,
             $this->productEntityHashtagsServiceMock,
-            $this->productHashtagsRetrievedTableMock
+            $this->productHashtagsRetrievedTableMock,
+            $this->productHashtagTableMock
         );
     }
 
