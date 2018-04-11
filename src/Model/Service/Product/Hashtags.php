@@ -13,7 +13,20 @@ class Hashtags
 
     public function getHashtags(
         AmazonEntity\Product $productEntity
-    ) {
+    ) : array {
+        try {
+            $hashtagsRetrieved = $this->hashtagsRetrievedTable->selectWhereProductId(
+                $productEntity->getProductId()
+            );
+        } catch (Exception $exception) {
+            $this->hashtagsRetrievedTable->updateWhereProductId(
+                $productEntity->getProductId()
+            );
+            // Insert hashtags into mysql.
+        }
 
+        // Get hashtags from mysql and return them.
+
+        return $hashtags;
     }
 }
