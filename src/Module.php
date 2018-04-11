@@ -143,6 +143,9 @@ class Module
                         $serviceManager->get(AmazonTable\Product\HashtagsRetrieved::class)
                     );
                 },
+                AmazonService\Product\Hashtags\ProductEntity::class => function ($serviceManager) {
+                    return new AmazonService\Product\Hashtags\ProductEntity();
+                },
                 AmazonService\Product\ModifiedTitle::class => function ($serviceManager) {
                     return new AmazonService\Product\ModifiedTitle();
                 },

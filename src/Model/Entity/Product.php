@@ -2,28 +2,24 @@
 namespace LeoGalleguillos\Amazon\Model\Entity;
 
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
-
-use AmazonEntity\Binding as AmazonBindingEntity;
-use AmazonEntity\Brand as AmazonBrandEntity;
-use AmazonEntity\ProductGroup as AmazonProductGroupEntity;
 use LeoGalleguillos\Image\Model\Entity as ImageEntity;
 
 class Product
 {
     /**
-     * @var AmazonBindingEntity Binding.
+     * @var string
      */
     public $asin;
 
     /**
-     * @var AmazonBindingEntity Binding.
+     * @var AmazonEntity\Binding
      */
-    public $binding;
+    public $bindingEntity;
 
     /**
-     * @var AmazonBrandEntity Binding.
+     * @var AmazonEntity\Brand
      */
-    public $brand;
+    public $brandEntity;
 
     /**
      * @var array Array of editorial reviews.
@@ -65,6 +61,21 @@ class Product
         return $this->asin;
     }
 
+    public function getBindingEntity() : AmazonEntity\Binding
+    {
+        return $this->bindingEntity;
+    }
+
+    public function getBrandEntity() : AmazonEntity\Brand
+    {
+        return $this->brandEntity;
+    }
+
+    public function getFeatures() : array
+    {
+        return $this->features;
+    }
+
     public function getProductGroupEntity() : AmazonEntity\ProductGroup
     {
         return $this->productGroupEntity;
@@ -91,10 +102,37 @@ class Product
         return $this;
     }
 
+    public function setBindingEntity(
+        AmazonEntity\Binding $bindingEntity
+    ) : AmazonEntity\Product {
+        $this->bindingEntity = $bindingEntity;
+        return $this;
+    }
+
+    public function setBrandEntity(
+        AmazonEntity\Brand $brandEntity
+    ) : AmazonEntity\Product {
+        $this->brandEntity = $brandEntity;
+        return $this;
+    }
+
+    public function setFeatures(array $features) : AmazonEntity\Product
+    {
+        $this->features = $features;
+        return $this;
+    }
+
     public function setPrimaryImage(
         ImageEntity\Image $primaryImage
     ) : AmazonEntity\Product {
         $this->primaryImage = $primaryImage;
+        return $this;
+    }
+
+    public function setProductGroupEntity(
+        AmazonEntity\ProductGroup $productGroupEntity
+    ) : AmazonEntity\Product {
+        $this->productGroupEntity = $productGroupEntity;
         return $this;
     }
 
