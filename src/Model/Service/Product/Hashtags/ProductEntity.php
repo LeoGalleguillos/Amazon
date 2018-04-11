@@ -2,6 +2,7 @@
 namespace LeoGalleguillos\Amazon\Model\Service\Product\Hashtags;
 
 use Error;
+use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 
 class ProductEntity
@@ -30,7 +31,7 @@ class ProductEntity
         }
         $words = preg_replace('/\//', ' ', $words);
         $words = preg_replace('/[^A-Za-z0-9 ]/', '', $words);
-        $words = strtolower($word);
+        $words = strtolower($words);
 
         $words = preg_split('/\s+/', $words);
 
