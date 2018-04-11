@@ -3,6 +3,7 @@
 return [
     'modules' => [
         'LeoGalleguillos\Amazon',
+        'LeoGalleguillos\Hashtag',
         'LeoGalleguillos\Image',
         'LeoGalleguillos\Memcached',
         'LeoGalleguillos\Sentence',

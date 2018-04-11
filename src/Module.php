@@ -5,6 +5,7 @@ use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Amazon\View\Helper as AmazonHelper;
+use LeoGalleguillos\Hashtag\Model\Service as HashtagService;
 use LeoGalleguillos\Image\Model\Factory as ImageFactory;
 use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
 use LeoGalleguillos\Sentence\Model\Service as SentenceService;
@@ -140,8 +141,15 @@ class Module
                 },
                 AmazonService\Product\Hashtags::class => function ($serviceManager) {
                     return new AmazonService\Product\Hashtags(
+                        $serviceManager->get(AmazonService\Product\Hashtags\Insert::class),
                         $serviceManager->get(AmazonService\Product\Hashtags\ProductEntity::class),
                         $serviceManager->get(AmazonTable\Product\HashtagsRetrieved::class)
+                    );
+                },
+                AmazonService\Product\Hashtags\Insert::class => function ($serviceManager) {
+                    return new AmazonService\Product\Hashtags\Insert(
+                        $serviceManager->get(AmazonTable\ProductHashtag::class),
+                        $serviceManager->get(HashtagService\Hashtag::class)
                     );
                 },
                 AmazonService\Product\Hashtags\ProductEntity::class => function ($serviceManager) {

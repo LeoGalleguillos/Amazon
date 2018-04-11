@@ -7,9 +7,11 @@ use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 class Hashtags
 {
     public function __construct(
+        AmazonService\Product\Hashtags\Insert $insertHashtagsService,
         AmazonService\Product\Hashtags\ProductEntity $productEntityHashtagsService,
         AmazonTable\Product\HashtagsRetrieved $hashtagsRetrievedTable
     ) {
+        $this->insertHashtagsService        = $insertHashtagsService;
         $this->productEntityHashtagsService = $productEntityHashtagsService;
         $this->hashtagsRetrievedTable       = $hashtagsRetrievedTable;
     }
