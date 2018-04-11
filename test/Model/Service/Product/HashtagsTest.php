@@ -37,4 +37,15 @@ class HashtagsTest extends TestCase
             $this->hashtagsService
         );
     }
+
+    public function testGetHashtags()
+    {
+        $productEntity = new AmazonEntity\Product();
+        $productEntity->setProductId(1);
+
+        $this->assertSame(
+            [],
+            $this->hashtagsService->getHashtags($productEntity)
+        );
+    }
 }

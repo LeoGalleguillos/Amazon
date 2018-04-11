@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Service\Product;
 
+use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 
@@ -38,7 +39,7 @@ class Hashtags
             );
         }
 
-        return $this->productHashtagTable->selectWhereProductId(
+        return $this->productHashtagTable->selectHashtagWhereProductId(
             $productEntity->getProductId()
         );
     }

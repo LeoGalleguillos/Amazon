@@ -89,7 +89,7 @@ class ProductHashtag
         return $asins;
     }
 
-    public function selectHashtagWhereProductId(int $productId)
+    public function selectHashtagWhereProductId(int $productId) : array
     {
         $cacheKey = md5(__METHOD__ . $asin);
         if (false != ($hashtags = $this->memcached->get($cacheKey))) {
