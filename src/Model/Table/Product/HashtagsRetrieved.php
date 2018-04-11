@@ -30,7 +30,7 @@ class HashtagsRetrieved
         ';
         $row = $this->adapter->query($sql)->execute([$productId])->current();
 
-        if (empty($row)) {
+        if (empty($row['similar_retrieved'])) {
             throw new Exception('Hashtags have never been retrieved.');
         }
 
