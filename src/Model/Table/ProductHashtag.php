@@ -151,4 +151,27 @@ class ProductHashtag
                           ->execute($parameters)
                           ->getGeneratedValue();
     }
+
+    public function selectProductIdWhereHashtagIdProductGroupId(
+        int $hashtagId,
+        int $productGroupId
+    ) {
+        $sql = '
+            SELECT `product_hashtag`.`product_id`
+              FROM `product_hashtag`
+             WHERE `product_hashtag`.`hashtag_id` = ?
+               AND `product_hashtag`.`product_group_id` = ?
+             ORDER
+                BY `product_hashtag`.`product_id` DESC
+             LIMIT 0, 100
+                 ;
+        ';
+        $parameters = [
+            $hashtagId,
+            $productGroupId,
+        ];
+        foreach ($this->adapter->query($sql)->execute($parameters) as $row) {
+            yield $row['product_id'];
+        }
+    }
 }
