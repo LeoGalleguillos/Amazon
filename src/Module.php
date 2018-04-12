@@ -119,6 +119,11 @@ class Module
                         $serviceManager->get(AmazonTable\Brand::class)
                     );
                 },
+                AmazonService\Hashtag\Products\ProductGroup::class => function ($serviceManager) {
+                    return new AmazonService\Hashtag\Products\ProductGroup(
+                        $serviceManager->get(AmazonFactory\Product::class)
+                    );
+                },
                 AmazonService\Product::class => function ($serviceManager) {
                     return new AmazonService\Product(
                         $serviceManager->get(AmazonFactory\Product::class),
