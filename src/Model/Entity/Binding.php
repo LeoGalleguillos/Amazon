@@ -23,4 +23,9 @@ class Binding
     {
         return $this->name;
     }
+
+    public function getBindingId() : int
+    {
+        return $this->bindingId;
+    }
 }

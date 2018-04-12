@@ -23,4 +23,9 @@ class Brand
     {
         return $this->name;
     }
+
+    public function getBrandId() : int
+    {
+        return $this->brandId;
+    }
 }
