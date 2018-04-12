@@ -21,7 +21,7 @@ class ProductGroup
     public function buildFromArray(array $array) : AmazonEntity\ProductGroup
     {
         $productGroupEntity                 = new AmazonEntity\ProductGroup();
-        $productGroupEntity->productGroupId = $array['product_group_id'] ?? null;
+        $productGroupEntity->setProductGroupId($array['product_group_id']);
         $productGroupEntity->name           = $array['name'] ?? null;
         $productGroupEntity->slug           = $array['slug'] ?? null;
 
@@ -70,7 +70,7 @@ class ProductGroup
         );
 
         $productGroupEntity                 = new AmazonEntity\ProductGroup();
-        $productGroupEntity->productGroupId = $arrayObject['product_group_id'] ?? null;
+        $productGroupEntity->setProductGroupId($arrayObject['product_group_id']);
         $productGroupEntity->name           = $arrayObject['name'] ?? null;
         $productGroupEntity->slug           = $arrayObject['slug'] ?? null;
 

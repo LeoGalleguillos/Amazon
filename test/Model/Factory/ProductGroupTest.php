@@ -61,7 +61,7 @@ class ProductGroupTest extends TestCase
             $arrayObject
         );
         $productGroupEntity                 = new AmazonEntity\ProductGroup();
-        $productGroupEntity->productGroupId = 1;
+        $productGroupEntity->setProductGroupId(1);
         $productGroupEntity->name           = 'Test';
         $productGroupEntity->slug           = 'test';
 

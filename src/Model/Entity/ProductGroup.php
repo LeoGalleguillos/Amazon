@@ -10,6 +10,14 @@ class ProductGroup
      */
     public $name;
 
+    /**
+     * @var int
+     */
+    protected $productGroupId;
+
+    /**
+     * @var string
+     */
     protected $searchTable;
 
     /**
@@ -26,6 +34,11 @@ class ProductGroup
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getProductGroupId() : int
+    {
+        return $this->productGroupId;
     }
 
     public function getName() : string
