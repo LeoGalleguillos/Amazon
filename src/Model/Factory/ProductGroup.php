@@ -44,10 +44,10 @@ class ProductGroup
             $name
         );
 
-        $productGroupEntity                 = new AmazonEntity\ProductGroup();
-        $productGroupEntity->setProductGroupId($arrayObject['product_group_id']);
-        $productGroupEntity->name           = $arrayObject['name'] ?? null;
-        $productGroupEntity->slug           = $arrayObject['slug'] ?? null;
+        $productGroupEntity = new AmazonEntity\ProductGroup();
+        $productGroupEntity->setProductGroupId($arrayObject['product_group_id'])
+                           ->setName($arrayObject['name'])
+                           ->setSlug($arrayObject['slug']);
 
         if (!empty($arrayObject['search_table'])) {
             $productGroupEntity->setSearchTable($arrayObject['search_table']);
