@@ -51,6 +51,11 @@ class ProductGroup
         return $this->searchTable;
     }
 
+    public function getSlug() : string
+    {
+        return $this->slug;
+    }
+
     public function setName(string $name) : AmazonEntity\ProductGroup
     {
         $this->name = $name;
