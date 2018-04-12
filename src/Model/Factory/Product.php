@@ -108,20 +108,30 @@ class Product
         $productEntity->productId = $productArray['product_id'];
         $productEntity->setTitle($productArray['title']);
 
-        $productEntity->productGroup = $this->amazonProductGroupFactory->buildFromName(
-            $productArray['product_group']
+        $productEntity->setProductGroupEntity(
+            $this->amazonProductGroupFactory->buildFromName(
+                $productArray['product_group']
+            )
         );
+
         try {
-            $productEntity->binding      = $this->amazonBindingFactory->buildFromName(
-                $productArray['binding']
+            $productEntity->setBindingEntity(
+                $this->amazonBindingFactory->buildFromName(
+                    $productArray['binding']
+                )
             );
         } catch (Exception $exception) {
+            // Do nothing.
         }
+
         try {
-            $productEntity->brand      = $this->amazonBrandFactory->buildFromName(
-                $productArray['brand']
+            $productEntity->setBrandEntity(
+                $this->amazonBrandFactory->buildFromName(
+                    $productArray['brand']
+                )
             );
         } catch (Exception $exception) {
+            // Do nothing.
         }
         $productEntity->listPrice    = $productArray['list_price'];
 
