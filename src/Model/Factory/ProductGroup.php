@@ -45,7 +45,7 @@ class ProductGroup
         );
 
         $productGroupEntity                 = new AmazonEntity\ProductGroup();
-        $productGroupEntity->productGroupId = $arrayObject['product_group_id'] ?? null;
+        $productGroupEntity->setProductGroupId($arrayObject['product_group_id']);
         $productGroupEntity->name           = $arrayObject['name'] ?? null;
         $productGroupEntity->slug           = $arrayObject['slug'] ?? null;
 
