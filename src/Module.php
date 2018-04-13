@@ -121,7 +121,8 @@ class Module
                 },
                 AmazonService\Hashtag\Products\ProductGroup::class => function ($serviceManager) {
                     return new AmazonService\Hashtag\Products\ProductGroup(
-                        $serviceManager->get(AmazonFactory\Product::class)
+                        $serviceManager->get(AmazonFactory\Product::class),
+                        $serviceManager->get(AmazonTable\ProductHashtag::class)
                     );
                 },
                 AmazonService\Product::class => function ($serviceManager) {

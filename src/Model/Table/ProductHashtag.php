@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table;
 
+use Generator;
 use LeoGalleguillos\Memcached\Model\Service\Memcached as MemcachedService;
 use Zend\Db\Adapter\Adapter;
 
@@ -155,7 +156,7 @@ class ProductHashtag
     public function selectProductIdWhereHashtagIdProductGroupId(
         int $hashtagId,
         int $productGroupId
-    ) {
+    ) : Generator {
         $sql = '
             SELECT `product_hashtag`.`product_id`
               FROM `product_hashtag`
