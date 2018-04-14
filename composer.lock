@@ -98,12 +98,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/Hashtag.git",
-                "reference": "0f3e76bf1651281a54645145dccb11f74d6a04be"
+                "reference": "047c26910752341e98f9562bd4c99c9aeb698027"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/Hashtag/zipball/0f3e76bf1651281a54645145dccb11f74d6a04be",
-                "reference": "0f3e76bf1651281a54645145dccb11f74d6a04be",
+                "url": "https://api.github.com/repos/LeoGalleguillos/Hashtag/zipball/047c26910752341e98f9562bd4c99c9aeb698027",
+                "reference": "047c26910752341e98f9562bd4c99c9aeb698027",
                 "shasum": ""
             },
             "require": {
@@ -121,7 +121,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2018-01-02 04:49:36"
+            "time": "2018-04-12 21:33:40"
         },
         {
             "name": "leo-galleguillos/image",
