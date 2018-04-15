@@ -171,6 +171,9 @@ class Product
     /**
      * Build from XML.
      *
+     * @deprecated We should not be building product entities from XML.
+     * @deprecated We should insert XML into MySQL first, then build from MySQL.
+     *
      * @param SimpleXMLElement $xml
      * @return AmazonEntity\Product
      */
