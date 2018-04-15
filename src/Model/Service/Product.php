@@ -26,11 +26,7 @@ class Product
      */
     public function getProduct(string $asin)
     {
-        if ($this->isProductBanned($asin)) {
-            return false;
-        }
-
-        if ($this->isProductInTable($asin)) {
+        if ($this->productTable->isProductInTable($asin)) {
             return $this->productFactory->createFromMySql($asin);
         }
 
@@ -51,18 +47,5 @@ class Product
         $this->productDownloadService->downloadProduct($amazonProductEntity);
 
         return $amazonProductEntity;
-    }
-
-    /**
-     * @TODO
-     */
-    public function isProductBanned($asin)
-    {
-        return false;
-    }
-
-    public function isProductInTable($asin)
-    {
-        return $this->productTable->isProductInTable($asin);
     }
 }
