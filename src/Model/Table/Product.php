@@ -2,6 +2,7 @@
 namespace LeoGalleguillos\Amazon\Model\Table;
 
 use ArrayObject;
+use Generator;
 use LeoGalleguillos\Memcached\Model\Service\Memcached as MemcachedService;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use TypeError;
@@ -132,7 +133,7 @@ class Product
     /**
      * @yield array
      */
-    public function selectProductGroupGroupByProductGroup()
+    public function selectProductGroupGroupByProductGroup() : Generator
     {
         $sql = '
             SELECT `product`.`product_group`
@@ -144,9 +145,7 @@ class Product
                 BY `count` DESC
                  ;
         ';
-        $results = $this->adapter->query($sql)->execute();
-
-        foreach ($results as $row) {
+        foreach ($this->adapter->query($sql)->execute() as $row) {
             yield $row;
         }
     }
