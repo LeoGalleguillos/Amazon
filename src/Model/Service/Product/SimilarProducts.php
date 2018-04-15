@@ -65,10 +65,6 @@ class SimilarProducts
             foreach ($xml->{'Items'}->{'Item'} as $itemXml) {
                 $product = $this->productFactory->buildFromXml($itemXml);
 
-                if ($this->productService->isProductBanned($product->asin)) {
-                    continue;
-                }
-
                 if (!$this->productService->isProductInTable($product->asin)) {
                     $this->productDownloadService->downloadProduct($product);
                 }
