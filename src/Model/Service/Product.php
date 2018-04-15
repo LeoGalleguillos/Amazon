@@ -8,17 +8,17 @@ use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 class Product
 {
     public function __construct(
-        AmazonFactory\Product $amazonProductFactory,
-        AmazonService\Api $amazonApiService,
+        AmazonFactory\Product $productFactory,
+        AmazonService\Api $apiService,
         AmazonService\Api\Product\Xml $apiProductXmlService,
-        AmazonService\Product\Download $amazonProductDownloadService,
-        AmazonTable\Product $amazonProductTable
+        AmazonService\Product\Download $productDownloadService,
+        AmazonTable\Product $productTable
     ) {
-        $this->amazonProductFactory         = $amazonProductFactory;
-        $this->amazonApiService             = $amazonApiService;
-        $this->apiProductXmlService         = $apiProductXmlService;
-        $this->amazonProductDownloadService = $amazonProductDownloadService;
-        $this->amazonProductTable           = $amazonProductTable;
+        $this->productFactory         = $productFactory;
+        $this->apiService             = $apiService;
+        $this->apiProductXmlService   = $apiProductXmlService;
+        $this->productDownloadService = $productDownloadService;
+        $this->productTable           = $productTable;
     }
 
     /**
@@ -31,14 +31,14 @@ class Product
         }
 
         if ($this->isProductInTable($asin)) {
-            return $this->amazonProductFactory->createFromMySql($asin);
+            return $this->productFactory->createFromMySql($asin);
         }
 
         if (!AmazonService\Api::GET_NEW_PRODUCTS) {
             return false;
         }
 
-        if ($this->amazonApiService->wasAmazonApiCalledRecently()) {
+        if ($this->apiService->wasAmazonApiCalledRecently()) {
             return false;
         }
 
@@ -47,8 +47,8 @@ class Product
             return false;
         }
         $itemXml = $xml->{'Items'}->{'Item'};
-        $amazonProductEntity = $this->amazonProductFactory->createFromXml($itemXml);
-        $this->amazonProductDownloadService->downloadProduct($amazonProductEntity);
+        $amazonProductEntity = $this->productFactory->createFromXml($itemXml);
+        $this->productDownloadService->downloadProduct($amazonProductEntity);
 
         return $amazonProductEntity;
     }
@@ -63,6 +63,6 @@ class Product
 
     public function isProductInTable($asin)
     {
-        return $this->amazonProductTable->isProductInTable($asin);
+        return $this->productTable->isProductInTable($asin);
     }
 }
