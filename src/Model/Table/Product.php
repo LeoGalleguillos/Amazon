@@ -99,9 +99,9 @@ class Product
         $parameters = [
             $product->asin,
             substr($product->getTitle(), 0, 255),
-            $product->productGroup,
-            $product->binding,
-            $product->brand,
+            $product->getProductGroupEntity()->getName(),
+            $product->getBindingEntity()->getName(),
+            $product->getBrandEntity()->getName(),
             $product->listPrice,
         ];
         return (int) $this->adapter
