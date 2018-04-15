@@ -56,11 +56,14 @@ class ProductTest extends AmazonTest\TableCase
 
     public function testInsertOnDuplicateKeyUpdate()
     {
+        $productGroupEntity = new AmazonEntity\ProductGroup();
+        $productGroupEntity->setName('Test');
+
         $productEntity       = new AmazonEntity\Product();
         $productEntity->asin  = 'ASIN';
         $productEntity->setTitle('Test Product');
         $productEntity->listPrice = 0.00;
-        $productEntity->productGroup = 'Product Group';
+        $productEntity->setProductGroupEntity($productGroupEntity);
         $productEntity->binding = 'Binding';
         $productEntity->brand = 'Brand';
 
@@ -82,11 +85,14 @@ class ProductTest extends AmazonTest\TableCase
             )
         );
 
+        $productGroupEntity = new AmazonEntity\ProductGroup();
+        $productGroupEntity->setName('Toy');
+
         $productEntity       = new AmazonEntity\Product();
         $productEntity->asin  = 'ASIN';
         $productEntity->setTitle('Test Product');
         $productEntity->listPrice = 0.00;
-        $productEntity->productGroup = 'Toy';
+        $productEntity->setProductGroupEntity($productGroupEntity);
         $productEntity->binding = 'Binding';
         $productEntity->brand = 'Brand';
         $this->productTable->insertOnDuplicateKeyUpdate($productEntity);
@@ -101,11 +107,14 @@ class ProductTest extends AmazonTest\TableCase
 
     public function testSelectWhereProductId()
     {
+        $productGroupEntity = new AmazonEntity\ProductGroup();
+        $productGroupEntity->setName('Test');
+
         $productEntity       = new AmazonEntity\Product();
         $productEntity->asin  = 'ASIN';
         $productEntity->setTitle('Test Product');
         $productEntity->listPrice = 0.00;
-        $productEntity->productGroup = 'Product Group';
+        $productEntity->setProductGroupEntity($productGroupEntity);
         $productEntity->binding = 'Binding';
         $productEntity->brand = 'Brand';
 

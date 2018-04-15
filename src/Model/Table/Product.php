@@ -4,6 +4,7 @@ namespace LeoGalleguillos\Amazon\Model\Table;
 use ArrayObject;
 use LeoGalleguillos\Memcached\Model\Service\Memcached as MemcachedService;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
+use TypeError;
 use Zend\Db\Adapter\Adapter;
 
 class Product
@@ -96,12 +97,28 @@ class Product
                  , `list_price` = VALUES(`list_price`)
                  ;
         ';
+        try {
+            $productGroupName = $product->getProductGroupEntity()->getName();
+        } catch (TypeError $typeError) {
+            $productGroupName = null;
+        }
+        try {
+            $bindingName = $product->getBindingEntity()->getName();
+        } catch (TypeError $typeError) {
+            $bindingName = null;
+        }
+        try {
+            $brandName = $product->getBrandEntity()->getName();
+        } catch (TypeError $typeError) {
+            $brandName = null;
+        }
+
         $parameters = [
             $product->asin,
             substr($product->getTitle(), 0, 255),
-            $product->getProductGroupEntity()->getName(),
-            $product->getBindingEntity()->getName(),
-            $product->getBrandEntity()->getName(),
+            $productGroupName,
+            $bindingName,
+            $brandName,
             $product->listPrice,
         ];
         return (int) $this->adapter
