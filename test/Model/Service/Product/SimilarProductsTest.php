@@ -25,6 +25,9 @@ class SimilarProductsTest extends TestCase
         $this->productDownloadServiceMock = $this->createMock(
             AmazonService\Product\Download::class
         );
+        $this->productTableMock = $this->createMock(
+            AmazonTable\Product::class
+        );
         $this->productSimilarTableMock = $this->createMock(
             AmazonTable\Product\Similar::class
         );
@@ -38,6 +41,7 @@ class SimilarProductsTest extends TestCase
             $this->apiSimilarProductsXmlServiceMock,
             $this->productServiceMock,
             $this->productDownloadServiceMock,
+            $this->productTableMock,
             $this->productSimilarTableMock,
             $this->productSimilarRetrievedTableMock
         );

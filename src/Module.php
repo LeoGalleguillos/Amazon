@@ -172,6 +172,7 @@ class Module
                         $serviceManager->get(AmazonService\Api\SimilarProducts\Xml::class),
                         $serviceManager->get(AmazonService\Product::class),
                         $serviceManager->get(AmazonService\Product\Download::class),
+                        $serviceManager->get(AmazonTable\Product::class),
                         $serviceManager->get(AmazonTable\Product\Similar::class),
                         $serviceManager->get(AmazonTable\Product\SimilarRetrieved::class)
                     );

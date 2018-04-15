@@ -16,6 +16,7 @@ class SimilarProducts
         AmazonService\Api\SimilarProducts\Xml $apiSimilarProductsXmlService,
         AmazonService\Product $productService,
         AmazonService\Product\Download $productDownloadService,
+        AmazonTable\Product $productTable,
         AmazonTable\Product\Similar $productSimilarTable,
         AmazonTable\Product\SimilarRetrieved $productSimilarRetrievedTable
     ) {
@@ -24,6 +25,7 @@ class SimilarProducts
         $this->apiSimilarProductsXmlService = $apiSimilarProductsXmlService;
         $this->productService               = $productService;
         $this->productDownloadService       = $productDownloadService;
+        $this->productTable                 = $productTable;
         $this->productSimilarTable          = $productSimilarTable;
         $this->productSimilarRetrievedTable = $productSimilarRetrievedTable;
     }
@@ -65,7 +67,7 @@ class SimilarProducts
             foreach ($xml->{'Items'}->{'Item'} as $itemXml) {
                 $product = $this->productFactory->buildFromXml($itemXml);
 
-                if (!$this->productService->isProductInTable($product->asin)) {
+                if (!$this->productTable->isProductInTable($asin)) {
                     $this->productDownloadService->downloadProduct($product);
                 }
 
