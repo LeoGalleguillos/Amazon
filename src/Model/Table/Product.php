@@ -22,38 +22,6 @@ class Product
         $this->adapter   = $adapter;
     }
 
-    /**
-     * Select where ASIN.
-     *
-     * @param string $asin
-     * @return array
-     */
-    public function selectWhereAsin(string $asin)
-    {
-        $cacheKey = md5(__METHOD__ . $asin);
-        if (false != ($array = $this->memcached->get($cacheKey))) {
-            return $array;
-        }
-
-        $sql = '
-            SELECT `product`.`product_id`
-                 , `product`.`asin`
-                 , `product`.`title`
-                 , `product`.`product_group`
-                 , `product`.`binding`
-                 , `product`.`brand`
-                 , `product`.`list_price`
-                 , `product`.`modified`
-              FROM `product`
-             WHERE `asin` = ?
-                 ;
-        ';
-        $array = (array) $this->adapter->query($sql, [$asin])->current();
-
-        $this->memcached->setForDays($cacheKey, $array, 1);
-        return $array;
-    }
-
     public function getNewestAsins()
     {
         $cacheKey = md5(__METHOD__);
@@ -225,6 +193,38 @@ class Product
         foreach ($results as $row) {
             yield $row;
         }
+    }
+
+    /**
+     * Select where ASIN.
+     *
+     * @param string $asin
+     * @return array
+     */
+    public function selectWhereAsin(string $asin)
+    {
+        $cacheKey = md5(__METHOD__ . $asin);
+        if (false != ($array = $this->memcached->get($cacheKey))) {
+            return $array;
+        }
+
+        $sql = '
+            SELECT `product`.`product_id`
+                 , `product`.`asin`
+                 , `product`.`title`
+                 , `product`.`product_group`
+                 , `product`.`binding`
+                 , `product`.`brand`
+                 , `product`.`list_price`
+                 , `product`.`modified`
+              FROM `product`
+             WHERE `asin` = ?
+                 ;
+        ';
+        $array = (array) $this->adapter->query($sql, [$asin])->current();
+
+        $this->memcached->setForDays($cacheKey, $array, 1);
+        return $array;
     }
 
     /**
