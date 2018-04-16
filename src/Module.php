@@ -145,6 +145,9 @@ class Module
                         $serviceManager->get(AmazonTable\Product\Image::class)
                     );
                 },
+                AmazonService\Product\FirstImageEntity::class => function ($serviceManager) {
+                    return new AmazonService\Product\FirstImageEntity();
+                },
                 AmazonService\Product\Hashtags::class => function ($serviceManager) {
                     return new AmazonService\Product\Hashtags(
                         $serviceManager->get(AmazonService\Product\Hashtags\Insert::class),
