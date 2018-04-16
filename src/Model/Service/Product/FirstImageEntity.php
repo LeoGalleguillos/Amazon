@@ -10,7 +10,7 @@ use TypeError;
 
 class FirstImageEntity
 {
-    public function getFirstImage(
+    public function getFirstImageEntity(
         AmazonEntity\Product $productEntity
     ) : ImageEntity\Image {
         try {
