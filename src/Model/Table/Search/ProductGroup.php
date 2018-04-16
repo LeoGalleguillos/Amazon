@@ -66,7 +66,7 @@ class ProductGroup
              WHERE MATCH (`title`) AGAINST (?)
              ORDER
                 BY `score` DESC
-             LIMIT 0, 40
+             LIMIT 0, 100
                  ;
         ";
         $results = $this->adapter->query($sql, [$query, $query]);
