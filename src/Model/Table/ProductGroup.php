@@ -50,7 +50,7 @@ class ProductGroup
               FROM `product`
              WHERE `product`.`product_group` = ?
              ORDER
-                BY `product`.`modified` DESC
+                BY `product`.`created` DESC
              LIMIT $offset, 100
                  ;
         ";
