@@ -23,6 +23,7 @@ class Module
                     'productModifiedFeature'  => AmazonHelper\Product\ModifiedFeature::class,
                     'productModifiedFeatures' => AmazonHelper\Product\ModifiedFeatures::class,
                     'getModifiedTitle'        => AmazonHelper\Product\ModifiedTitle::class,
+                    'getProductAffiliateUrl'  => AmazonHelper\Product\AffiliateUrl::class,
                     'getProductFirstImageEntity'  => AmazonHelper\Product\FirstImageEntity::class,
                     'getProductRootRelativeUrl'  => AmazonHelper\Product\RootRelativeUrl::class,
                 ],
