@@ -23,11 +23,17 @@ class Module
                     'productModifiedFeature'  => AmazonHelper\Product\ModifiedFeature::class,
                     'productModifiedFeatures' => AmazonHelper\Product\ModifiedFeatures::class,
                     'getModifiedTitle'        => AmazonHelper\Product\ModifiedTitle::class,
+                    'getProductFirstImageEntity'  => AmazonHelper\Product\FirstImageEntity::class,
                     'getProductRootRelativeUrl'  => AmazonHelper\Product\RootRelativeUrl::class,
                 ],
                 'factories' => [
                     AmazonHelper\Product\AffiliateUrl::class => function ($serviceManager) {
                         return new AmazonHelper\Product\AffiliateUrl();
+                    },
+                    AmazonHelper\Product\FirstImageEntity::class => function ($serviceManager) {
+                        return new AmazonHelper\Product\FirstImageEntity(
+                            $serviceManager->get(AmazonService\Product\FirstImageEntity::class)
+                        );
                     },
                     AmazonHelper\Product\ModifiedFeature::class => function ($serviceManager) {
                         return new AmazonHelper\Product\ModifiedFeature(
