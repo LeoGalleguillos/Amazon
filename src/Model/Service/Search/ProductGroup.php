@@ -32,12 +32,15 @@ class ProductGroup
 
     /**
      * Get number of pages.
-     *
-     * @param int $numberOfResults
-     * @return int
      */
-    public function getNumberOfPages(int $numberOfResults) : int
-    {
+    public function getNumberOfPages(
+        AmazonEntity\ProductGroup $productGroupEntity,
+        string $query
+    ) : int {
+        $numberOfResults = $this->getNumberOfResults(
+            $productGroupEntity,
+            $query
+        );
         $numberOfPages = ceil($numberOfResults / 100);
         return ($numberOfPages > self::MAX_NUMBER_OF_PAGES)
              ? self::MAX_NUMBER_OF_PAGES

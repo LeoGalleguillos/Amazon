@@ -42,17 +42,16 @@ class ProductGroupTest extends TestCase
 
     public function testGetNumberOfPages()
     {
+        $productGroupEntity = new AmazonEntity\ProductGroup();
+        $productGroupEntity->setSearchTable('example_search_table');
+        $query = 'query';
+
         $this->assertSame(
-            1,
-            $this->searchProductGroupService->getNumberOfPages(34)
-        );
-        $this->assertSame(
-            4,
-            $this->searchProductGroupService->getNumberOfPages(345)
-        );
-        $this->assertSame(
-            100,
-            $this->searchProductGroupService->getNumberOfPages(34500)
+            0,
+            $this->searchProductGroupService->getNumberOfPages(
+                $productGroupEntity,
+                $query
+            )
         );
     }
 
