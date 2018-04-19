@@ -55,7 +55,8 @@ class ProductGroup
 
     public function getSearchResults(
         AmazonEntity\ProductGroup $productGroup,
-        string $query
+        string $query,
+        int $page
     ) : array {
         if (empty($query)) {
             return [];
