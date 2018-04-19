@@ -70,7 +70,9 @@ class ProductGroupTest extends TestCase
              ->selectProductIdWhereMatchTitleAgainstAndProductIdDoesNotEqual(
             'search_product_group_toy',
             'example search query',
-            1
+            123,
+            0,
+            100
         );
         $this->assertSame(
             [],

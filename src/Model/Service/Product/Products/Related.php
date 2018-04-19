@@ -23,7 +23,8 @@ class Related
     }
 
     public function getRelatedProducts(
-        AmazonEntity\Product $productEntity
+        AmazonEntity\Product $productEntity,
+        int $page
     ) {
         $modifiedTitle = $this->modifiedTitleService->getModifiedTitle(
             $productEntity
@@ -32,7 +33,9 @@ class Related
         ->selectProductIdWhereMatchTitleAgainstAndProductIdDoesNotEqual(
             $productEntity->getProductGroupEntity()->getSearchTable(),
             $modifiedTitle,
-            $productEntity->getProductId()
+            $productEntity->getProductId(),
+            ($page - 1) * 100,
+            100
         );
 
         foreach ($productIds as $productId) {

@@ -84,7 +84,9 @@ class ProductGroup
     public function selectProductIdWhereMatchTitleAgainstAndProductIdDoesNotEqual(
         string $table,
         string $query,
-        int $productId
+        int $productId,
+        int $offset,
+        int $rowCount
     ) {
         if (preg_match('/\W/', $table)) {
             throw new Exception('Invalid table name.');
@@ -94,7 +96,7 @@ class ProductGroup
               FROM $table
              WHERE MATCH(`title`) AGAINST (?)
                AND `product_id` != ?
-             LIMIT 16
+             LIMIT $offset, $rowCount
                  ;
         ";
         $rows = $this->adapter->query($sql, [$query, $productId]);
