@@ -44,11 +44,12 @@ class ProductGroup
              : $numberOfPages;
     }
 
-    public function getNumberOfResults($query) : int
-    {
-        $websiteEntity = $this->websiteService->getInstance();
-        return $this->searchTable->selectCountWhereMatchTitleAgainst(
-            $websiteEntity->searchTable,
+    public function getNumberOfResults(
+        AmazonEntity\ProductGroup $productGroupEntity,
+        string $query
+    ) : int {
+        return $this->searchProductGroupTable->selectCountWhereMatchTitleAgainst(
+            $productGroupEntity->getSearchTable(),
             $query
         );
     }
