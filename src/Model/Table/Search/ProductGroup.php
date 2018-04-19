@@ -47,7 +47,9 @@ class ProductGroup
 
     public function selectProductIdWhereMatchTitleAgainst(
         string $table,
-        string $query
+        string $query,
+        int $offset,
+        int $rowCount
     ) {
         if (preg_match('/\W/', $table)) {
             throw new Exception('Invalid table name.');
@@ -66,7 +68,7 @@ class ProductGroup
              WHERE MATCH (`title`) AGAINST (?)
              ORDER
                 BY `score` DESC
-             LIMIT 0, 100
+             LIMIT $offset, $rowCount
                  ;
         ";
         $results = $this->adapter->query($sql, [$query, $query]);

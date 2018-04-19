@@ -56,7 +56,8 @@ class ProductGroupTest extends TestCase
              ->selectProductIdWhereMatchTitleAgainst(
             'search_product_group_toy',
             'example search query',
-            1
+            1,
+            100
         );
         $this->assertSame(
             [],
