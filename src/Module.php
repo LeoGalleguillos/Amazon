@@ -172,6 +172,13 @@ class Module
                 AmazonService\Product\Hashtags\ProductEntity::class => function ($serviceManager) {
                     return new AmazonService\Product\Hashtags\ProductEntity();
                 },
+                AmazonService\Product\Products\Related::class => function ($serviceManager) {
+                    return new AmazonService\Product\Products\Related(
+                        $serviceManager->get(AmazonFactory\Product::class),
+                        $serviceManager->get(AmazonService\Product\ModifiedTitle::class),
+                        $serviceManager->get(AmazonTable\Search\ProductGroup::class)
+                    );
+                },
                 AmazonService\Product\ModifiedTitle::class => function ($serviceManager) {
                     return new AmazonService\Product\ModifiedTitle();
                 },
