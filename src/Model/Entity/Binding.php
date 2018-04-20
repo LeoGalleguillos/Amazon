@@ -1,6 +1,8 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Entity;
 
+use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
+
 class Binding
 {
     /**

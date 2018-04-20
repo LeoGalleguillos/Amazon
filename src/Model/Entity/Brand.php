@@ -1,6 +1,8 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Entity;
 
+use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
+
 class Brand
 {
     /**
@@ -27,5 +29,16 @@ class Brand
     public function getBrandId() : int
     {
         return $this->brandId;
+    }
+
+    public function getName() : string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name) : AmazonEntity\Brand
+    {
+        $this->name = $name;
+        return this;
     }
 }
