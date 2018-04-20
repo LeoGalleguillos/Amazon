@@ -2,6 +2,7 @@
 namespace LeoGalleguillos\Amazon\Model\Service\Product;
 
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
+use TypeError;
 
 class ModifiedTitle
 {
@@ -10,8 +11,15 @@ class ModifiedTitle
         $title = $product->getTitle();
 
         // Remove brand.
-        $brandRegularExpression = preg_quote($product->brand, '/');
-        $title = preg_replace("/^$brandRegularExpression/i", '', $title);
+        try {
+            $brandRegularExpression = preg_quote(
+                $product->getBrandEntity()->getName(),
+                '/'
+            );
+            $title = preg_replace("/^$brandRegularExpression/i", '', $title);
+        } catch (TypeError $typeError) {
+            // Do nothing.
+        }
 
         // Remove (...) and [...]
         $title = preg_replace('/\(.*\)?/', '', $title);
