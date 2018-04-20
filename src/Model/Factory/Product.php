@@ -7,6 +7,7 @@ use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Image\Model\Factory as ImageFactory;
 use SimpleXMLElement;
+use TypeError;
 
 class Product
 {
@@ -57,10 +58,13 @@ class Product
         } catch (Exception $exception) {
         }
         try {
-            $productEntity->brand      = $this->amazonBrandFactory->buildFromName(
-                $productArray['brand']
+            $productEntity->setBrandEntity(
+                $this->amazonBrandFactory->buildFromName(
+                    $productArray['brand']
+                )
             );
-        } catch (Exception $exception) {
+        } catch (TypeError $exception) {
+            // Do nothing.
         }
         $productEntity->listPrice    = $productArray['list_price'];
 
@@ -130,7 +134,7 @@ class Product
                     $productArray['brand']
                 )
             );
-        } catch (Exception $exception) {
+        } catch (TypeError $exception) {
             // Do nothing.
         }
         $productEntity->listPrice    = $productArray['list_price'];
