@@ -34,9 +34,20 @@ class Binding
         return $this->name;
     }
 
+    public function getSlug() : string
+    {
+        return $this->slug;
+    }
+
     public function setName(string $name) : AmazonEntity\Binding
     {
         $this->name = $name;
+        return this;
+    }
+
+    public function setSlug(string $slug) : AmazonEntity\Binding
+    {
+        $this->slug = $slug;
         return this;
     }
 }
