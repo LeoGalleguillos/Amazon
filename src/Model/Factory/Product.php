@@ -57,14 +57,12 @@ class Product
             );
         } catch (Exception $exception) {
         }
-        try {
+        if (!empty($productArray['brand'])) {
             $productEntity->setBrandEntity(
                 $this->amazonBrandFactory->buildFromName(
                     $productArray['brand']
                 )
             );
-        } catch (TypeError $exception) {
-            // Do nothing.
         }
         $productEntity->listPrice    = $productArray['list_price'];
 
