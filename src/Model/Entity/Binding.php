@@ -28,4 +28,15 @@ class Binding
     {
         return $this->bindingId;
     }
+
+    public function getName() : string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name) : AmazonEntity\Binding
+    {
+        $this->name = $name;
+        return this;
+    }
 }
