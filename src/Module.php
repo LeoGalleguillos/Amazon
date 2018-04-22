@@ -200,6 +200,12 @@ class Module
                         $serviceManager->get(StringService\UrlFriendly::class)
                     );
                 },
+                AmazonService\Product\Tweet::class => function ($serviceManager) {
+                    return new AmazonService\Product\Tweet(
+                        $serviceManager->get(AmazonService\Product\Hashtags::class),
+                        $serviceManager->get(AmazonService\Product\Url::class)
+                    );
+                },
                 AmazonService\Product\Url::class => function ($serviceManager) {
                     return new AmazonService\Product\Url(
                         $serviceManager->get(AmazonService\Product\RootRelativeUrl::class)
