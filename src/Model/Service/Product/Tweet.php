@@ -31,6 +31,18 @@ class Tweet
         $tweet = $productEntity->getTitle();
         $tweet .= ' ';
         $tweet .= $this->urlService->getUrl($productEntity);
+
+        $hashtags = $this->hashtagsService->getHashtags(
+            $productEntity
+        );
+
+        foreach ($hashtags as $hashtag) {
+            $append = " #$hashtag";
+            if ((strlen($tweet) + strlen($append)) <= self::TWEET_MAX_LENGTH) {
+                $tweet .= $append;
+            }
+        }
+
         return $tweet;
     }
 }
