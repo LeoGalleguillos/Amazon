@@ -35,7 +35,7 @@ class ProductId
         $sql = '
             SELECT `product`.`product_id`
               FROM `product`
-             WHERE `product`.`product_id` = >= :productIdLowerLimit
+             WHERE `product`.`product_id` >= :productIdLowerLimit
                AND `product`.`product_group` = :productGroup
              LIMIT 1
                  ;
