@@ -172,13 +172,6 @@ class Module
                 AmazonService\Product\Hashtags\ProductEntity::class => function ($serviceManager) {
                     return new AmazonService\Product\Hashtags\ProductEntity();
                 },
-                AmazonService\Product\Products\Related::class => function ($serviceManager) {
-                    return new AmazonService\Product\Products\Related(
-                        $serviceManager->get(AmazonFactory\Product::class),
-                        $serviceManager->get(AmazonService\Product\ModifiedTitle::class),
-                        $serviceManager->get(AmazonTable\Search\ProductGroup::class)
-                    );
-                },
                 AmazonService\Product\ModifiedTitle::class => function ($serviceManager) {
                     return new AmazonService\Product\ModifiedTitle();
                 },
@@ -215,6 +208,13 @@ class Module
                     return new AmazonService\ProductGroup(
                         $serviceManager->get(AmazonFactory\Product::class),
                         $serviceManager->get(AmazonTable\ProductGroup::class)
+                    );
+                },
+                AmazonService\ProductGroup\RelatedProductEntities::class => function ($serviceManager) {
+                    return new AmazonService\ProductGroup\RelatedProductEntities(
+                        $serviceManager->get(AmazonFactory\Product::class),
+                        $serviceManager->get(AmazonService\Product\ModifiedTitle::class),
+                        $serviceManager->get(AmazonTable\Search\ProductGroup::class)
                     );
                 },
                 AmazonService\ProductGroup\RandomProductEntity::class => function ($serviceManager) {

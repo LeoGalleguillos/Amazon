@@ -1,5 +1,5 @@
 <?php
-namespace LeoGalleguillos\Amazon\Model\Service\Product\Products;
+namespace LeoGalleguillos\Amazon\Model\Service\ProductGroup;
 
 use Generator;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
@@ -7,7 +7,7 @@ use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 
-class Related
+class RelatedProductEntities
 {
     /**
      * Construct.
@@ -22,10 +22,10 @@ class Related
         $this->searchProductGroupTable = $searchProductGroupTable;
     }
 
-    public function getRelatedProducts(
+    public function getRelatedProductEntities(
         AmazonEntity\Product $productEntity,
         int $page
-    ) {
+    ) : Generator {
         $modifiedTitle = $this->modifiedTitleService->getModifiedTitle(
             $productEntity
         );
