@@ -21,6 +21,14 @@ class NumberOfPages
     public function getNumberOfPages(
         AmazonEntity\Product $productEntity
     ) : int {
-        return 0;
+        $modifiedTitle = $this->modifiedTitleService->getModifiedTitle(
+            $productEntity
+        );
+        return $this->searchProductGroupTable
+        ->selectCountWhereMatchTitleAgainstAndProductIdDoesNotEqual(
+            $productEntity->getProductGroupEntity()->getSearchTable(),
+            $modifiedTitle,
+            $productEntity->getProductId()
+        );
     }
 }

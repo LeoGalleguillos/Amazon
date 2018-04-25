@@ -217,6 +217,12 @@ class Module
                         $serviceManager->get(AmazonTable\Search\ProductGroup::class)
                     );
                 },
+                AmazonService\ProductGroup\RelatedProductEntities\NumberOfPages::class => function ($serviceManager) {
+                    return new AmazonService\ProductGroup\RelatedProductEntities\NumberOfPages(
+                        $serviceManager->get(AmazonService\Product\ModifiedTitle::class),
+                        $serviceManager->get(AmazonTable\Search\ProductGroup::class)
+                    );
+                },
                 AmazonService\ProductGroup\RandomProductEntity::class => function ($serviceManager) {
                     return new AmazonService\ProductGroup\RandomProductEntity(
                         $serviceManager->get(AmazonFactory\Product::class),

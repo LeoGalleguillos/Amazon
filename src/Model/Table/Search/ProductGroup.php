@@ -110,6 +110,25 @@ class ProductGroup
         return $productIds;
     }
 
+    public function selectCountWhereMatchTitleAgainstAndProductIdDoesNotEqual(
+        string $table,
+        string $query,
+        int $productId
+    ) {
+        if (preg_match('/\W/', $table)) {
+            throw new Exception('Invalid table name.');
+        }
+        $sql = "
+            SELECT COUNT(*) AS `count`
+              FROM $table
+             WHERE MATCH(`title`) AGAINST (?)
+               AND `product_id` != ?
+                 ;
+        ";
+        $row = $this->adapter->query($sql)->execute([$query, $productId])->current();
+        return $row['count'];
+    }
+
     public function selectCountWhereMatchTitleAgainst($table, $query) : int
     {
         if (preg_match('/\W/', $table)) {
