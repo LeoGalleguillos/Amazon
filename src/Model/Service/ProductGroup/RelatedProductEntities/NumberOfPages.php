@@ -7,6 +7,8 @@ use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 
 class NumberOfPages
 {
+    const MAX_NUMBER_OF_PAGES = 100;
+
     /**
      * Construct.
      */
@@ -24,11 +26,16 @@ class NumberOfPages
         $modifiedTitle = $this->modifiedTitleService->getModifiedTitle(
             $productEntity
         );
-        return $this->searchProductGroupTable
+        $numberOfResults = $this->searchProductGroupTable
         ->selectCountWhereMatchTitleAgainstAndProductIdDoesNotEqual(
             $productEntity->getProductGroupEntity()->getSearchTable(),
             $modifiedTitle,
             $productEntity->getProductId()
         );
+
+        $numberOfPages = ceil($numberOfResults / 100);
+        return ($numberOfPages > self::MAX_NUMBER_OF_PAGES)
+             ? self::MAX_NUMBER_OF_PAGES
+             : $numberOfPages;
     }
 }
