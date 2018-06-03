@@ -21,10 +21,10 @@ class Module
                 'aliases' => [
                     'productAffiliateUrl'     => AmazonHelper\Product\AffiliateUrl::class,
                     'productModifiedFeature'  => AmazonHelper\Product\ModifiedFeature::class,
-                    'productModifiedFeatures' => AmazonHelper\Product\ModifiedFeatures::class,
                     'getModifiedTitle'        => AmazonHelper\Product\ModifiedTitle::class,
                     'getProductAffiliateUrl'  => AmazonHelper\Product\AffiliateUrl::class,
                     'getProductFirstImageEntity'  => AmazonHelper\Product\FirstImageEntity::class,
+                    'getProductModifiedFeatures' => AmazonHelper\Product\ModifiedFeatures::class,
                     'getProductRootRelativeUrl'  => AmazonHelper\Product\RootRelativeUrl::class,
                 ],
                 'factories' => [
