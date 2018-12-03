@@ -44,7 +44,7 @@ class Binding
 
         $products = [];
         foreach ($asins as $asin) {
-            $products[] = $this->amazonProductFactory->createFromMySql($asin);
+            $products[] = $this->amazonProductFactory->buildFromAsin($asin);
         }
 
         return $products;
