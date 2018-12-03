@@ -27,6 +27,8 @@ class XmlTest extends TestCase
 
     public function testGetXml()
     {
+        $this->markTestSkipped('Skip test unless you want to call Amazon.');
+
         $asin = 'B008FV5R2C';
         $xml  = $this->xmlService->getXml($asin);
 
