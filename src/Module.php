@@ -277,6 +277,11 @@ class Module
                         $serviceManager->get('amazon')
                     );
                 },
+                AmazonTable\Product\HiResImagesRetrieved::class => function ($serviceManager) {
+                    return new AmazonTable\Product\HiResImagesRetrieved(
+                        $serviceManager->get('amazon')
+                    );
+                },
                 AmazonTable\Product\Image::class => function ($serviceManager) {
                     return new AmazonTable\Product\Image(
                         $serviceManager->get(MemcachedService\Memcached::class),
