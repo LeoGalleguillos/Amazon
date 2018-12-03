@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table;
 
+use Generator;
 use Zend\Db\Adapter\Adapter;
 
 class ProductHiResImage
@@ -39,5 +40,23 @@ class ProductHiResImage
         ];
 
         return $this->adapter->query($sql)->execute($parameters)->getGeneratedValue();
+    }
+
+    public function selectWhereProductId(
+        int $productId
+    ): Generator {
+        $sql = '
+            SELECT `product_id`
+                 , `url`
+                 , `order`
+              FROM `product_hi_res_image`
+             WHERE `product_id` = ?
+             ORDER
+                BY `order` ASC
+                 ;
+        ';
+        foreach ($this->adapter->query($sql)->execute([$productId]) as $array) {
+            yield $array;
+        }
     }
 }
