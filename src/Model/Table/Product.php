@@ -67,7 +67,7 @@ class Product
                  ;
         ';
         try {
-            $productGroupName = $product->getProductGroupEntity()->getName();
+            $productGroupName = $product->getProductGroup()->getName();
         } catch (TypeError $typeError) {
             $productGroupName = null;
         }

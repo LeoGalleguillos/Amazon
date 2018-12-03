@@ -32,6 +32,11 @@ class Product
     public $features = [];
 
     /**
+     * @var AmazonEntity\ProductGroup
+     */
+    protected $productGroup;
+
+    /**
      * @var AmazonEntity\ProductGroup Product group entity.
      */
     protected $productGroupEntity;
@@ -74,6 +79,11 @@ class Product
     public function getFeatures() : array
     {
         return $this->features;
+    }
+
+    public function getProductGroup(): AmazonEntity\ProductGroup
+    {
+        return $this->productGroup;
     }
 
     public function getProductGroupEntity() : AmazonEntity\ProductGroup
@@ -138,6 +148,13 @@ class Product
         int $productId
     ) : AmazonEntity\Product {
         $this->productId = $productId;
+        return $this;
+    }
+
+    public function setProductGroup(
+        AmazonEntity\ProductGroup $productGroup
+    ): AmazonEntity\Product {
+        $this->productGroup = $productGroup;
         return $this;
     }
 
