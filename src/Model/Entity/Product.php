@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Entity;
 
+use DateTime;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Image\Model\Entity as ImageEntity;
 
@@ -35,6 +36,11 @@ class Product
      * var ImageEntity\Image[]
      */
     protected $hiResImages;
+
+    /**
+     * var DateTime
+     */
+    protected $hiResImagesRetrieved;
 
     /**
      * @var AmazonEntity\ProductGroup
@@ -89,6 +95,11 @@ class Product
     public function getHiResImages(): array
     {
         return $this->hiResImages;
+    }
+
+    public function getHiResImagesRetrieved(): DateTime
+    {
+        return $this->hiResImagesRetrieved;
     }
 
     public function getProductGroup(): AmazonEntity\ProductGroup
@@ -150,6 +161,12 @@ class Product
     public function setHiResImages(array $hiResImages): AmazonEntity\Product
     {
         $this->hiResImages = $hiResImages;
+        return $this;
+    }
+
+    public function setHiResImagesRetrieved(DateTime $hiResImagesRetrieved): AmazonEntity\Product
+    {
+        $this->hiResImagesRetrieved = $hiResImagesRetrieved;
         return $this;
     }
 
