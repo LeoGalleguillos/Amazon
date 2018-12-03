@@ -115,7 +115,7 @@ class Product
         $productEntity->productId = $productArray['product_id'];
         $productEntity->setTitle($productArray['title']);
 
-        $productEntity->setProductGroupEntity(
+        $productEntity->setProductGroup(
             $this->amazonProductGroupFactory->buildFromName(
                 $productArray['product_group']
             )
@@ -197,8 +197,10 @@ class Product
         $productEntity->asin         = (string) $xml->{'ASIN'};
         $productEntity->setTitle((string) $xml->{'ItemAttributes'}->{'Title'});
 
-        $productEntity->productGroup = $this->amazonProductGroupFactory->buildFromName(
-            (string) $xml->{'ItemAttributes'}->{'ProductGroup'}
+        $productEntity->setProductGroup(
+            $this->amazonProductGroupFactory->buildFromName(
+                (string) $xml->{'ItemAttributes'}->{'ProductGroup'}
+            )
         );
         try {
             $productEntity->binding  = $this->amazonBindingFactory->buildFromName(
