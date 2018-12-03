@@ -32,6 +32,11 @@ class Product
     public $features = [];
 
     /**
+     * var ImageEntity\Image[]
+     */
+    protected $hiResImages;
+
+    /**
      * @var AmazonEntity\ProductGroup
      */
     protected $productGroup;
@@ -79,6 +84,11 @@ class Product
     public function getFeatures() : array
     {
         return $this->features;
+    }
+
+    public function getHiResImages(): array
+    {
+        return $this->hiResImages;
     }
 
     public function getProductGroup(): AmazonEntity\ProductGroup
@@ -134,6 +144,12 @@ class Product
     public function setFeatures(array $features) : AmazonEntity\Product
     {
         $this->features = $features;
+        return $this;
+    }
+
+    public function setHiResImages(array $hiResImages): AmazonEntity\Product
+    {
+        $this->hiResImages = $hiResImages;
         return $this;
     }
 
