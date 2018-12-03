@@ -27,7 +27,7 @@ class Product
     public function getProduct(string $asin)
     {
         if ($this->productTable->isProductInTable($asin)) {
-            return $this->productFactory->createFromMySql($asin);
+            return $this->productFactory->buildFromAsin($asin);
         }
 
         if (!AmazonService\Api::GET_NEW_PRODUCTS) {
