@@ -9,6 +9,7 @@ CREATE TABLE `product` (
   `created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `hashtags_retrieved` datetime DEFAULT NULL,
+  `hi_res_images_retrieved` datetime DEFAULT NULL,
   `similar_retrieved` datetime DEFAULT NULL,
   PRIMARY KEY (`product_id`),
   UNIQUE KEY `asin` (`asin`),
