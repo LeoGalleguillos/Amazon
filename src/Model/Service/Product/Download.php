@@ -43,7 +43,7 @@ class Download
         }
 
         $this->productGroupService->insertIgnore(
-            $productEntity->productGroup
+            $productEntity->getProductGroup()
         );
         $this->bindingService->insertIgnore(
             $productEntity->binding
