@@ -38,7 +38,7 @@ class Product
             return false;
         }
 
-        $xml = $this->apiProductXmlService($asin);
+        $xml = $this->apiProductXmlService->getXml($asin);
         if (!isset($xml->{'Items'}->{'Item'})) {
             return false;
         }
