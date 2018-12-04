@@ -21,9 +21,6 @@ class Product
         $this->productTable           = $productTable;
     }
 
-    /**
-     * Get product.
-     */
     public function getProduct(string $asin)
     {
         if ($this->productTable->isProductInTable($asin)) {
