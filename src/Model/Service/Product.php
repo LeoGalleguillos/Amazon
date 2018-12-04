@@ -43,7 +43,7 @@ class Product
             return false;
         }
         $itemXml = $xml->{'Items'}->{'Item'};
-        $amazonProductEntity = $this->productFactory->createFromXml($itemXml);
+        $amazonProductEntity = $this->productFactory->buildFromXml($itemXml);
         $this->productDownloadService->downloadProduct($amazonProductEntity);
 
         return $amazonProductEntity;
