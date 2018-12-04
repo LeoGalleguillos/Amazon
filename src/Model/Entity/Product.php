@@ -15,7 +15,17 @@ class Product
     /**
      * @var AmazonEntity\Binding
      */
+    public $binding;
+
+    /**
+     * @var AmazonEntity\Binding
+     */
     public $bindingEntity;
+
+    /**
+     * @var AmazonEntity\Brand
+     */
+    public $brand;
 
     /**
      * @var AmazonEntity\Brand
