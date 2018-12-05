@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Factory;
 
+use DateTime;
 use Exception;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
@@ -32,13 +33,7 @@ class Product
         $this->amazonProductImageTable             = $amazonProductImageTable;
     }
 
-    /**
-     * Build from ASIN.
-     *
-     * @param string $asin
-     * @return AmazonEntity\Product
-     */
-    public function buildFromAsin(string $asin)
+    public function buildFromAsin(string $asin): AmazonEntity\Product
     {
         $productEntity = new AmazonEntity\Product();
 
@@ -46,6 +41,10 @@ class Product
         $productEntity->asin      = $productArray['asin'];
         $productEntity->productId = $productArray['product_id'];
         $productEntity->setTitle($productArray['title']);
+
+        if (isset($productArray['hi_res_images_retrieved'])) {
+            $productEntity->setHiResImagesRetrieved(new DateTime($productArray['hi_res_images_retrieved']));
+        }
 
         $productGroupEntity = $this->amazonProductGroupFactory->buildFromName(
             $productArray['product_group']
