@@ -4,6 +4,7 @@ namespace LeoGalleguillos\Amazon\Model\Service\Product;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
+use TypeError;
 
 class SimilarProducts
 {
