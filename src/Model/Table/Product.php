@@ -194,6 +194,9 @@ class Product
         }
     }
 
+    /**
+     * @throws TypeError
+     */
     public function selectWhereAsin(string $asin): array
     {
         $cacheKey = md5(__METHOD__ . $asin);
