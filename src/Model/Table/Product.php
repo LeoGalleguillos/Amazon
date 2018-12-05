@@ -214,9 +214,12 @@ class Product
              WHERE `asin` = ?
                  ;
         ';
-        $array = (array) $this->adapter->query($sql, [$asin])->current();
+        $array = $this->adapter->query($sql, [$asin])->current();
 
-        $this->memcached->setForDays($cacheKey, $array, 1);
+        if (is_array($array)) {
+            $this->memcached->setForDays($cacheKey, $array, 1);
+        }
+
         return $array;
     }
 
