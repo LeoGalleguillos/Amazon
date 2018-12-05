@@ -34,6 +34,7 @@ class Product
                  , `product`.`brand`
                  , `product`.`list_price`
                  , `product`.`modified`
+                 , `product`.`hi_res_images_retrieved`
         ';
     }
 
