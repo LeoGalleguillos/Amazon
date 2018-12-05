@@ -193,6 +193,9 @@ class Module
                         $serviceManager->get(StringService\UrlFriendly::class)
                     );
                 },
+                AmazonService\Product\SourceCode::class => function ($serviceManager) {
+                    return new AmazonService\Product\SourceCode();
+                },
                 AmazonService\Product\Tweet::class => function ($serviceManager) {
                     return new AmazonService\Product\Tweet(
                         $serviceManager->get(AmazonService\Product\Hashtags::class),
