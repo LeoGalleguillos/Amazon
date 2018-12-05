@@ -194,13 +194,7 @@ class Product
         }
     }
 
-    /**
-     * Select where ASIN.
-     *
-     * @param string $asin
-     * @return array
-     */
-    public function selectWhereAsin(string $asin)
+    public function selectWhereAsin(string $asin): array
     {
         $cacheKey = md5(__METHOD__ . $asin);
         if (false != ($array = $this->memcached->get($cacheKey))) {
