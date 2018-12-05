@@ -217,7 +217,7 @@ class Product
              WHERE `asin` = ?
                  ;
         ';
-        $array = $this->adapter->query($sql, [$asin])->current();
+        $array = $this->adapter->query($sql)->execute([$asin])->current();
 
         if (is_array($array)) {
             $this->memcached->setForDays($cacheKey, $array, 1);
