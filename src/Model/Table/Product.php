@@ -13,7 +13,7 @@ class Product
     /**
      * @var Adapter
      */
-    private $adapter;
+    protected $adapter;
 
     public function __construct(
         MemcachedService $memcached,
@@ -21,6 +21,20 @@ class Product
     ) {
         $this->memcached = $memcached;
         $this->adapter   = $adapter;
+    }
+
+    protected function getSelect(): string
+    {
+        return '
+            SELECT `product`.`product_id`
+                 , `product`.`asin`
+                 , `product`.`title`
+                 , `product`.`product_group`
+                 , `product`.`binding`
+                 , `product`.`brand`
+                 , `product`.`list_price`
+                 , `product`.`modified`
+        ';
     }
 
     public function getNewestAsins()
@@ -204,15 +218,8 @@ class Product
             return $array;
         }
 
-        $sql = '
-            SELECT `product`.`product_id`
-                 , `product`.`asin`
-                 , `product`.`title`
-                 , `product`.`product_group`
-                 , `product`.`binding`
-                 , `product`.`brand`
-                 , `product`.`list_price`
-                 , `product`.`modified`
+        $sql = $this->getSelect()
+             . '
               FROM `product`
              WHERE `asin` = ?
                  ;
