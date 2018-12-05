@@ -9,7 +9,7 @@ class ProductHiResImage
     /**
      * @var Adapter
      */
-    protected private $adapter;
+    protected $adapter;
 
     public function __construct(
         Adapter $adapter
@@ -17,13 +17,13 @@ class ProductHiResImage
         $this->adapter   = $adapter;
     }
 
-    public function insertIgnore(
+    public function insert(
         int $productId,
         string $url,
         int $order
     ): int {
         $sql = '
-            INSERT IGNORE
+            INSERT
               INTO `product_hi_res_image` (
                          `product_id`
                        , `url`

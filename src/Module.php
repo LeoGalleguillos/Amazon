@@ -232,6 +232,16 @@ class Module
                         $serviceManager->get(AmazonTable\Product\ProductId::class)
                     );
                 },
+                AmazonService\ProductHiResImage\ArrayFromSourceCode::class => function ($serviceManager) {
+                    return new AmazonService\ProductHiResImage\ArrayFromSourceCode();
+                },
+                AmazonService\ProductHiResImage\DownloadUrls::class => function ($sm) {
+                    return new AmazonService\ProductHiResImage\DownloadUrls(
+                        $sm->get(AmazonService\Product\SourceCode::class),
+                        $sm->get(AmazonService\ProductHiResImage\ArrayFromSourceCode::class),
+                        $sm->get(AmazonTable\ProductHiResImage::class)
+                    );
+                },
                 AmazonService\Search\ProductGroup::class => function ($serviceManager) {
                     return new AmazonService\Search\ProductGroup(
                         $serviceManager->get(AmazonFactory\Product::class),
@@ -328,6 +338,11 @@ class Module
                     return new AmazonTable\ProductHashtag(
                         $serviceManager->get(MemcachedService\Memcached::class),
                         $serviceManager->get('amazon')
+                    );
+                },
+                AmazonTable\ProductHiResImage::class => function ($sm) {
+                    return new AmazonTable\ProductHiResImage(
+                        $sm->get('amazon')
                     );
                 },
                 AmazonTable\Products::class => function ($serviceManager) {
