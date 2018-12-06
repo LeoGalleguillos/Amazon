@@ -1,7 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Service\Product;
 
-use LeoGalleguillos\Amazon\Model\Entity as ProductEntity;
+use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 
 class SourceCode
 {
