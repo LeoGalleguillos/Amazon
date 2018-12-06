@@ -40,12 +40,14 @@ class Product
         $productEntity = new AmazonEntity\Product();
 
         $productArray             = $this->amazonProductTable->selectWhereAsin($asin);
-        $productEntity->asin      = $productArray['asin'];
-        $productEntity->productId = $productArray['product_id'];
-        $productEntity->setTitle($productArray['title']);
+        $productEntity->setAsin($productArray['asin'])
+                      ->setProductId($productArray['product_id'])
+                      ->setTitle($productArray['title']);
 
         if (isset($productArray['hi_res_images_retrieved'])) {
-            $productEntity->setHiResImagesRetrieved(new DateTime($productArray['hi_res_images_retrieved']));
+            $productEntity->setHiResImagesRetrieved(
+                new DateTime($productArray['hi_res_images_retrieved'])
+            );
 
             $productEntity->setHiResImages(
                 iterator_to_array($this->productHiResImageTable->selectWhereProductId($productEntity->getProductId()))

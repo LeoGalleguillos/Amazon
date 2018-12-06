@@ -82,7 +82,7 @@ class Product
      */
     public $variantImages = [];
 
-    public function getAsin() : string
+    public function getAsin(): string
     {
         return $this->asin;
     }
@@ -122,7 +122,7 @@ class Product
         return $this->productGroupEntity;
     }
 
-    public function getProductId() : int
+    public function getProductId(): int
     {
         return $this->productId;
     }
@@ -142,7 +142,7 @@ class Product
         return $this->variantImages;
     }
 
-    public function setAsin(string $asin) : AmazonEntity\Product
+    public function setAsin(string $asin): AmazonEntity\Product
     {
         $this->asin = $asin;
         return $this;
@@ -187,9 +187,8 @@ class Product
         return $this;
     }
 
-    public function setProductId(
-        int $productId
-    ) : AmazonEntity\Product {
+    public function setProductId(int $productId): AmazonEntity\Product
+    {
         $this->productId = $productId;
         return $this;
     }
