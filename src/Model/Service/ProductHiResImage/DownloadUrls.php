@@ -1,9 +1,11 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Service\ProductHiResImage;
 
+use Exception;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
+use TypeError;
 
 class DownloadUrls
 {
@@ -19,6 +21,15 @@ class DownloadUrls
 
     public function downloadUrls(AmazonEntity\Product $productEntity)
     {
+        try {
+            $hiResImagesRetrieved = $productEntity->getHiResImages();
+            throw new Exception(
+                'Hi-res images were already retrieved for this product.'
+            );
+        } catch (TypeError $typeError) {
+            // Do nothing.
+        }
+
         $sourceCode = $this->sourceCodeService->getSourceCode(
             $productEntity
         );
