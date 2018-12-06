@@ -82,7 +82,8 @@ class Module
                         $serviceManager->get(AmazonTable\Product::class),
                         $serviceManager->get(AmazonTable\Product\EditorialReview::class),
                         $serviceManager->get(AmazonTable\Product\Feature::class),
-                        $serviceManager->get(AmazonTable\Product\Image::class)
+                        $serviceManager->get(AmazonTable\Product\Image::class),
+                        $serviceManager->get(AmazonTable\ProductHiResImage::class)
                     );
                 },
                 AmazonFactory\Product\EditorialReview::class => function ($serviceManager) {

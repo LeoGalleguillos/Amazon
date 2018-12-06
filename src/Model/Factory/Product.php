@@ -20,7 +20,8 @@ class Product
         AmazonTable\Product $amazonProductTable,
         AmazonTable\Product\EditorialReview $amazonProductEditorialReviewTable,
         AmazonTable\Product\Feature $amazonProductFeatureTable,
-        AmazonTable\Product\Image $amazonProductImageTable
+        AmazonTable\Product\Image $amazonProductImageTable,
+        AmazonTable\ProductHiResImage $productHiResImageTable
     ) {
         $this->amazonBindingFactory                = $amazonBindingFactory;
         $this->amazonBrandFactory                  = $amazonBrandFactory;
@@ -31,6 +32,7 @@ class Product
         $this->amazonProductEditorialReviewTable   = $amazonProductEditorialReviewTable;
         $this->amazonProductFeatureTable           = $amazonProductFeatureTable;
         $this->amazonProductImageTable             = $amazonProductImageTable;
+        $this->productHiResImageTable              = $productHiResImageTable;
     }
 
     public function buildFromAsin(string $asin): AmazonEntity\Product
@@ -44,6 +46,10 @@ class Product
 
         if (isset($productArray['hi_res_images_retrieved'])) {
             $productEntity->setHiResImagesRetrieved(new DateTime($productArray['hi_res_images_retrieved']));
+
+            $productEntity->selectHiResImages(
+                iterator_to_array($this->productHiResImageTable->selectWhereProductId($productEntity->getProductId()))
+            );
         }
 
         $productGroupEntity = $this->amazonProductGroupFactory->buildFromName(
@@ -89,11 +95,11 @@ class Product
             }
         }
 
-        $amazonProductEditorialReviewArrays = $this->amazonProductEditorialReviewTable->
+        $productEditorialReviewArrays = $this->amazonProductEditorialReviewTable->
             selectWhereAsin($asin);
-        foreach ($amazonProductEditorialReviewArrays as $array) {
+        foreach ($productEditorialReviewArrays as $productEditorialReviewArray) {
             $productEntity->editorialReviews[]
-                = $this->amazonProductEditorialReviewFactory->buildFromArray($array);
+                = $this->amazonProductEditorialReviewFactory->buildFromArray($productEditorialReviewArray);
         }
 
         return $productEntity;
@@ -164,11 +170,11 @@ class Product
             }
         }
 
-        $amazonProductEditorialReviewArrays = $this->amazonProductEditorialReviewTable->
+        $productEditorialReviewArrays = $this->amazonProductEditorialReviewTable->
             selectWhereAsin($productEntity->asin);
-        foreach ($amazonProductEditorialReviewArrays as $array) {
+        foreach ($productEditorialReviewArrays as $productEditorialReviewArray) {
             $productEntity->editorialReviews[]
-                = $this->amazonProductEditorialReviewFactory->buildFromArray($array);
+                = $this->amazonProductEditorialReviewFactory->buildFromArray($productEditorialReviewArray);
         }
 
         return $productEntity;
