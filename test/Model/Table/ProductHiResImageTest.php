@@ -24,8 +24,13 @@ class ProductHiResImageTest extends TableTestCase
         );
     }
 
-    public function testInsert()
+    public function testInsertAndSelectWhereProductId()
     {
+        $generator = $this->productHiResImageTable->selectWhereProductId(1);
+        $this->assertEmpty(
+            iterator_to_array($generator)
+        );
+
         $affectedRows = $this->productHiResImageTable->insert(
             1,
             'url',
@@ -34,6 +39,19 @@ class ProductHiResImageTest extends TableTestCase
         $this->assertSame(
             1,
             $affectedRows
+        );
+        $affectedRows = $this->productHiResImageTable->insert(
+            1,
+            'url-2',
+            2
+        );
+
+        $generator = $this->productHiResImageTable->selectWhereProductId(1);
+        $array = iterator_to_array($generator);
+
+        $this->assertSame(
+            2,
+            count($array)
         );
     }
 }
