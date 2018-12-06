@@ -49,9 +49,17 @@ class Product
                 new DateTime($productArray['hi_res_images_retrieved'])
             );
 
-            $productEntity->setHiResImages(
-                iterator_to_array($this->productHiResImageTable->selectWhereProductId($productEntity->getProductId()))
+            $hiResImages = [];
+            $generator = $this->productHiResImageTable->selectWhereProductId(
+                $productEntity->getProductId()
             );
+            foreach ($generator as $array) {
+                $imageEntity = new ImageEntity\Image();
+                $imageEntity->setUrl($array['url']);
+                $hiResImages[] = $imageEntity;
+            }
+
+            $productEntity->setHiResImages($hiResImages);
         }
 
         $productGroupEntity = $this->amazonProductGroupFactory->buildFromName(
