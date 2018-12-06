@@ -1,6 +1,8 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Service\Product;
 
+use LeoGalleguillos\Amazon\Model\Entity as ProductEntity;
+
 class SourceCode
 {
     public function getSourceCode(AmazonEntity\Product $productEntity): string
