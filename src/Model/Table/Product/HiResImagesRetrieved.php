@@ -36,6 +36,6 @@ class HiResImagesRetrieved
              WHERE `product`.`product_id` = ?
                  ;
         ';
-        return $this->adapter->query($sql)->execute([$productId])->getRowsAffected();
+        return $this->adapter->query($sql)->execute([$productId])->getAffectedRows();
     }
 }
