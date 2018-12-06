@@ -47,7 +47,7 @@ class Product
         if (isset($productArray['hi_res_images_retrieved'])) {
             $productEntity->setHiResImagesRetrieved(new DateTime($productArray['hi_res_images_retrieved']));
 
-            $productEntity->selectHiResImages(
+            $productEntity->setHiResImages(
                 iterator_to_array($this->productHiResImageTable->selectWhereProductId($productEntity->getProductId()))
             );
         }
