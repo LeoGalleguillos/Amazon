@@ -214,24 +214,13 @@ class Product
      */
     public function selectWhereAsin(string $asin): array
     {
-        $cacheKey = md5(__METHOD__ . $asin);
-        if (false != ($array = $this->memcached->get($cacheKey))) {
-            return $array;
-        }
-
         $sql = $this->getSelect()
              . '
               FROM `product`
              WHERE `asin` = ?
                  ;
         ';
-        $array = $this->adapter->query($sql)->execute([$asin])->current();
-
-        if (is_array($array)) {
-            $this->memcached->setForDays($cacheKey, $array, 1);
-        }
-
-        return $array;
+        return $this->adapter->query($sql)->execute([$asin])->current();
     }
 
     /**
@@ -239,27 +228,12 @@ class Product
      */
     public function selectWhereProductId(int $productId)
     {
-        $cacheKey = md5(__METHOD__ . $productId);
-        if (false != ($array = $this->memcached->get($cacheKey))) {
-            return $array;
-        }
-
-        $sql = '
-            SELECT `product`.`product_id`
-                 , `product`.`asin`
-                 , `product`.`title`
-                 , `product`.`product_group`
-                 , `product`.`binding`
-                 , `product`.`brand`
-                 , `product`.`list_price`
-                 , `product`.`modified`
+        $sql = $this->getSelect()
+             . '
               FROM `product`
              WHERE `product`.`product_id` = ?
                  ;
         ';
-        $array = $this->adapter->query($sql, [$productId])->current();
-
-        $this->memcached->setForDays($cacheKey, $array, 1);
-        return $array;
+        return $this->adapter->query($sql, [$productId])->current();
     }
 }
