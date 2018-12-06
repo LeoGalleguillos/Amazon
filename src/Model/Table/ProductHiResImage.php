@@ -29,7 +29,7 @@ class ProductHiResImage
                        , `url`
                        , `order`
                    )
-            VALUES ?, ?, ?
+            VALUES (?, ?, ?)
                  ;
         ';
 
