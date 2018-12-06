@@ -23,4 +23,17 @@ class ProductHiResImageTest extends TableTestCase
             $this->productHiResImageTable
         );
     }
+
+    public function testInsert()
+    {
+        $affectedRows = $this->productHiResImageTable->insert(
+            1,
+            'url',
+            1
+        );
+        $this->assertSame(
+            1,
+            $affectedRows
+        );
+    }
 }

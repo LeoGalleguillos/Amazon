@@ -39,7 +39,7 @@ class ProductHiResImage
             $order,
         ];
 
-        return $this->adapter->query($sql)->execute($parameters)->getGeneratedValue();
+        return $this->adapter->query($sql)->execute($parameters)->getAffectedRows();
     }
 
     public function selectWhereProductId(
