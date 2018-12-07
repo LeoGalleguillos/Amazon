@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table\Product;
 
+use Generator;
 use LeoGalleguillos\Memcached\Model\Service\Memcached as MemcachedService;
 use Zend\Db\Adapter\Adapter;
 
@@ -9,23 +10,16 @@ class EditorialReview
     /**
      * @var Adapter
      */
-    private $adapter;
+    protected $adapter;
 
     public function __construct(
-        MemcachedService $memcached,
         Adapter $adapter
     ) {
-        $this->memcached = $memcached;
         $this->adapter   = $adapter;
     }
 
-    public function selectWhereAsin($asin)
+    public function selectWhereAsin($asin): Generator
     {
-        $cacheKey = md5(__METHOD__ . $asin);
-        if (null !== ($rows = $this->memcached->get($cacheKey))) {
-            return $rows;
-        }
-
         $sql = '
             SELECT `product_editorial_review`.`asin`
                  , `product_editorial_review`.`source`
@@ -34,15 +28,9 @@ class EditorialReview
              WHERE `product_editorial_review`.`asin` = ?
                  ;
         ';
-        $results = $this->adapter->query($sql, [$asin]);
-
-        $rows = [];
-        foreach ($results as $row) {
-            $rows[] = (array) $row;
+        foreach ($this->adapter->query($sql)->execute([$asin]) as $array) {
+            yield $array;
         }
-
-        $this->memcached->setForDays($cacheKey, $rows, 3);
-        return $rows;
     }
 
     public function insert($asin, $source, $content)

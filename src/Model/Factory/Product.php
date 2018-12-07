@@ -36,11 +36,17 @@ class Product
         $this->productHiResImageTable              = $productHiResImageTable;
     }
 
+    protected function buildFromArrays(
+        array $productArray
+    ) {
+        // Coming soon.
+    }
+
     public function buildFromAsin(string $asin): AmazonEntity\Product
     {
         $productEntity = new AmazonEntity\Product();
 
-        $productArray             = $this->amazonProductTable->selectWhereAsin($asin);
+        $productArray = $this->amazonProductTable->selectWhereAsin($asin);
         $productEntity->setAsin($productArray['asin'])
                       ->setProductId($productArray['product_id'])
                       ->setTitle($productArray['title']);

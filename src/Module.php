@@ -276,7 +276,6 @@ class Module
                 },
                 AmazonTable\Product\EditorialReview::class => function ($serviceManager) {
                     return new AmazonTable\Product\EditorialReview(
-                        $serviceManager->get(MemcachedService\Memcached::class),
                         $serviceManager->get('amazon')
                     );
                 },
