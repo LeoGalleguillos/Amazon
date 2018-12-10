@@ -4,7 +4,7 @@ namespace LeoGalleguillos\Amazon\Model\Service\ProductHiResImage;
 use Exception;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 
-class DownloadImages
+class DownloadHiResImages
 {
     public function downloadImages(AmazonEntity\Product $productEntity)
     {
