@@ -6,7 +6,7 @@ use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 
 class DownloadHiResImages
 {
-    public function downloadImages(AmazonEntity\Product $productEntity)
+    public function downloadHiResImages(AmazonEntity\Product $productEntity)
     {
         $hiResImages = $productEntity->getHiResImages();
 
