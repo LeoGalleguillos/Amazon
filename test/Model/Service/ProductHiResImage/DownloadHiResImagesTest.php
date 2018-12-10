@@ -70,8 +70,9 @@ class DownloadHiResImagesTest extends TestCase
             );
         }
 
+        $productEntity->setAsin('B0000EZ9SE');
+
         // Uncomment to actually download from Amazon.
-        // $productEntity->setAsin('B0000EZ9SE');
         // $this->downloadHiResImagesService->downloadHiResImages($productEntity);
     }
 }
