@@ -246,8 +246,8 @@ class Module
                         $sm->get(AmazonTable\ProductHiResImage::class)
                     );
                 },
-                AmazonService\ProductVideo\Code::class => function ($sm) {
-                    return new AmazonService\ProductVideo\Code();
+                AmazonService\ProductVideo\Command::class => function ($sm) {
+                    return new AmazonService\ProductVideo\Command();
                 },
                 AmazonService\Search\ProductGroup::class => function ($serviceManager) {
                     return new AmazonService\Search\ProductGroup(

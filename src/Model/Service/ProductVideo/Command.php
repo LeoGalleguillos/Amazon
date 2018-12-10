@@ -4,9 +4,9 @@ namespace LeoGalleguillos\Amazon\Model\Service\ProductVideo;
 use Exception;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 
-class Code
+class Command
 {
-    public function getCode(AmazonEntity\Product $productEntity): string
+    public function getCommand(AmazonEntity\Product $productEntity): string
     {
 		$code = [];
 		$code[] = 'melt -verbose \\';
