@@ -236,6 +236,9 @@ class Module
                 AmazonService\ProductHiResImage\ArrayFromSourceCode::class => function ($serviceManager) {
                     return new AmazonService\ProductHiResImage\ArrayFromSourceCode();
                 },
+                AmazonService\ProductHiResImage\DownloadImages::class => function ($sm) {
+                    return new AmazonService\ProductHiResImage\DownloadImages();
+                },
                 AmazonService\ProductHiResImage\DownloadUrls::class => function ($sm) {
                     return new AmazonService\ProductHiResImage\DownloadUrls(
                         $sm->get(AmazonService\Product\SourceCode::class),
