@@ -65,7 +65,7 @@ class CommandTest extends TestCase
         }
 
         $imageEntity2->setUrl(
-            'https://images-na.ssl-images-amazon.com/images/I/81s5s2iDAfL._UL1500_.jpg'
+            'https://images-na.ssl-images-amazon.com/images/I/81s5s2i%2BDAfL._UL1500_.jpg'
         );
 
         $command = $this->commandService->getCommand($productEntity);
