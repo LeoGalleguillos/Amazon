@@ -8,6 +8,10 @@ class ArrayFromSourceCode
         $pattern = '/var data = \{\s+\'colorImages\': \{ \'initial\': (\[\{.*?\}\])\}/s';
         preg_match($pattern, $sourceCode, $matches);
 
+        if (empty($matches[1])) {
+            return [];
+        }
+
         $jsonString = $matches[1];
         $jsonArray = json_decode($jsonString, true);
 
