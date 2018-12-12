@@ -17,6 +17,9 @@ class ArrayFromSourceCode
 
         $array = [];
         foreach ($jsonArray as $variants) {
+            if (empty($variants['hiRes'])) {
+                continue;
+            }
             $array[] = $variants['hiRes'];
         }
 
