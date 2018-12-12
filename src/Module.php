@@ -257,6 +257,9 @@ class Module
                         $sm->get(AmazonService\ProductVideo\Command::class)
                     );
                 },
+                AmazonService\ProductVideo\Generated::class => function ($sm) {
+                    return new AmazonService\ProductVideo\Generated();
+                },
                 AmazonService\Search\ProductGroup::class => function ($serviceManager) {
                     return new AmazonService\Search\ProductGroup(
                         $serviceManager->get(AmazonFactory\Product::class),
