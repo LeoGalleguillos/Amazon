@@ -18,17 +18,19 @@ class ProductVideo
 
     public function insert(
         int $productId,
-        string $rru
+        string $asin,
+        string $title
     ): int {
         $sql = '
             INSERT
-              INTO `product_video` (`product_id`, `rru`)
-            VALUES (?, ?)
+              INTO `product_video` (`product_id`, `asin`, `title`)
+            VALUES (?, ?, ?)
                  ;
         ';
         $parameters = [
             $productId,
-            $rru,
+            $asin,
+            $title,
         ];
         return (int) $this->adapter
                           ->query($sql)
