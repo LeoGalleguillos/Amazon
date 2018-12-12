@@ -3,6 +3,7 @@ namespace LeoGalleguillos\Amazon\Model\Service\ProductHiResImage;
 
 use Exception;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
+use TypeError;
 
 class HiResImagesDownloaded
 {
@@ -13,7 +14,13 @@ class HiResImagesDownloaded
             throw new Exception('ASIN contains invalid characters');
         }
 
-        foreach ($productEntity->getHiResImages() as $hiResImage) {
+        try {
+            $hiResImages = $productEntity->getHiResImages();
+        } catch (TypeError $typeError) {
+            return false;
+        }
+
+        foreach ($hiResImages as $hiResImage) {
             $fileName = basename($hiResImage->getUrl());
             if (!preg_match('/^[\w\.\_\%\-]+$/', $fileName)) {
                 throw new Exception('Invalid file name (this should never happen)');
