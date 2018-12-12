@@ -20,7 +20,7 @@ class DownloadHiResImages
         }
 
         foreach ($hiResImages as $hiResImage) {
-            $fileName = basename($hiResImage->getUrl());
+            $fileName = urldecode(basename($hiResImage->getUrl()));
             if (!preg_match('/^[\w\.\_\%\-]+$/', $fileName)) {
                 throw new Exception('Invalid file name (this should never happen)');
             }
