@@ -18,8 +18,8 @@ class Command
         }
 
         foreach ($productEntity->getHiResImages() as $hiResImage) {
-            $fileName = basename($hiResImage->getUrl());
-            if (!preg_match('/^[\w\.\_\%\-]+$/', $fileName)) {
+            $fileName = urldecode(basename($hiResImage->getUrl()));
+            if (!preg_match('/^[\w\.\_\+\-]+$/', $fileName)) {
                 throw new Exception('Invalid file name (this should never happen)');
             }
 
