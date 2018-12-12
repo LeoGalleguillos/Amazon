@@ -252,6 +252,11 @@ class Module
                 AmazonService\ProductVideo\Command::class => function ($sm) {
                     return new AmazonService\ProductVideo\Command();
                 },
+                AmazonService\ProductVideo\Generate::class => function ($sm) {
+                    return new AmazonService\ProductVideo\Generate(
+                        $sm->get(AmazonService\ProductVideo\Command::class)
+                    );
+                },
                 AmazonService\Search\ProductGroup::class => function ($serviceManager) {
                     return new AmazonService\Search\ProductGroup(
                         $serviceManager->get(AmazonFactory\Product::class),
