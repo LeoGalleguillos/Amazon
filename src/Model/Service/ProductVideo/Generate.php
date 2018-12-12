@@ -13,7 +13,7 @@ class Generate
         $this->commandService = $commandService;
     }
 
-    public function generate(AmazonEntity\Product $productEntity): string
+    public function generate(AmazonEntity\Product $productEntity)
     {
         $command = $this->commandService->getCommand($productEntity);
 
