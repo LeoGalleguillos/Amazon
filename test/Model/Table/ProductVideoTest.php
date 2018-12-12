@@ -38,8 +38,8 @@ class ProductVideoTest extends TableTestCase
 
         $productVideoId = $this->productVideoTable->insert(
             67890,
-            'asin',
-            'title'
+            'asin 2',
+            'title 2'
         );
         $this->assertSame(
             2,
