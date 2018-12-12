@@ -21,7 +21,7 @@ class DownloadHiResImages
 
         foreach ($hiResImages as $hiResImage) {
             $fileName = urldecode(basename($hiResImage->getUrl()));
-            if (!preg_match('/^[\w\.\_\%\-]+$/', $fileName)) {
+            if (!preg_match('/^[\w\.\_\+\-]+$/', $fileName)) {
                 throw new Exception('Invalid file name (this should never happen)');
             }
             $destination = "/home/amazon/products/hi-res-images/$asin/$fileName";
