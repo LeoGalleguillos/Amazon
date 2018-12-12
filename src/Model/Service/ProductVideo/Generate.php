@@ -13,7 +13,7 @@ class Generate
         $this->commandService = $commandService;
     }
 
-    public function generateVideo(AmazonEntity\Product $productEntity): string
+    public function generate(AmazonEntity\Product $productEntity): string
     {
         $command = $this->commandService->getCommand($productEntity);
 
