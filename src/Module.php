@@ -246,6 +246,9 @@ class Module
                         $sm->get(AmazonTable\ProductHiResImage::class)
                     );
                 },
+                AmazonService\ProductHiResImage\HiResImagesDownloaded::class => function ($sm) {
+                    return new AmazonService\ProductHiResImage\HiResImagesDownloaded();
+                },
                 AmazonService\ProductVideo\Command::class => function ($sm) {
                     return new AmazonService\ProductVideo\Command();
                 },
