@@ -15,8 +15,8 @@ class DownloadHiResImages
             throw new Exception('ASIN contains invalid characters');
         }
 
-        if (!file_exists('/home/amazon/products/hi-res-images/')) {
-            mkdir('/home/amazon/products/hi-res-images/' . $asin);
+        if (!file_exists("/home/amazon/products/hi-res-images/$asin")) {
+            mkdir("/home/amazon/products/hi-res-images/$asin");
         }
 
         foreach ($hiResImages as $hiResImage) {
