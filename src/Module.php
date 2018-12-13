@@ -252,6 +252,14 @@ class Module
                 AmazonService\ProductVideo\Command::class => function ($sm) {
                     return new AmazonService\ProductVideo\Command();
                 },
+                AmazonService\ProductVideo\Everything::class => function ($sm) {
+                    return new AmazonService\ProductVideo\Everything(
+                        $sm->get(AmazonFactory\Product::class),
+                        $sm->get(AmazonService\ProductHiResImage\DownloadUrls::class),
+                        $sm->get(AmazonService\ProductHiResImage\DownloadHiResImages::class),
+                        $sm->get(AmazonService\ProductVideo\Generate::class)
+                    );
+                },
                 AmazonService\ProductVideo\Generate::class => function ($sm) {
                     return new AmazonService\ProductVideo\Generate(
                         $sm->get(AmazonService\ProductVideo\Command::class),
