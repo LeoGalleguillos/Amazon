@@ -69,6 +69,12 @@ class Product
             $productEntity->setHiResImages($hiResImages);
         }
 
+        if (isset($productArray['video_generated'])) {
+            $productEntity->setVideoGenerated(
+                new DateTime($productArray['video_generated'])
+            );
+        }
+
         $productGroupEntity = $this->amazonProductGroupFactory->buildFromName(
             $productArray['product_group']
         );

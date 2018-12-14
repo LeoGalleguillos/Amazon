@@ -82,6 +82,11 @@ class Product
      */
     public $variantImages = [];
 
+    /**
+     * var DateTime
+     */
+    protected $videoGenerated;
+
     public function getAsin(): string
     {
         return $this->asin;
@@ -140,6 +145,11 @@ class Product
     public function getVariantImages() : array
     {
         return $this->variantImages;
+    }
+
+    public function getVideoGenerated(): DateTime
+    {
+        return $this->videoGenerated;
     }
 
     public function setAsin(string $asin): AmazonEntity\Product
@@ -216,6 +226,12 @@ class Product
     public function setVariantImages(array $variantImages) : AmazonEntity\Product
     {
         $this->variantImages = $variantImages;
+        return $this;
+    }
+
+    public function setVideoGenerated(DateTime $videoGenerated): AmazonEntity\Product
+    {
+        $this->videoGenerated = $videoGenerated;
         return $this;
     }
 }
