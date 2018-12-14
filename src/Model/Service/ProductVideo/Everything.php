@@ -19,7 +19,8 @@ class Everything
         AmazonService\ProductHiResImage\DownloadHiResImages $downloadHiResImagesService,
         AmazonService\ProductVideo\Generate $generateService,
         AmazonTable\Product\HiResImagesRetrieved $hiResImagesRetrievedTable,
-        AmazonTable\Product\VideoGenerated $videoGeneratedTable
+        AmazonTable\Product\VideoGenerated $videoGeneratedTable,
+        AmazonTable\ProductVideo $productVideoTable
     ) {
         $this->productFactory             = $productFactory;
         $this->downloadUrlsService        = $downloadUrlsService;
@@ -27,6 +28,7 @@ class Everything
         $this->generateService            = $generateService;
         $this->hiResImagesRetrievedTable  = $hiResImagesRetrievedTable;
         $this->videoGeneratedTable        = $videoGeneratedTable;
+        $this->productVideoTable          = $productVideoTable;
     }
 
     public function doEverything(AmazonEntity\Product $productEntity): bool
@@ -52,7 +54,10 @@ class Everything
 
         $this->generateService->generate($productEntity);
 
-        // Insert into product_video table
+        $this->productVideoTable->insert(
+            $productEntity->getProductId(),
+            $productEntity->getTitle()
+        );
 
         return true;
     }

@@ -259,7 +259,8 @@ class Module
                         $sm->get(AmazonService\ProductHiResImage\DownloadHiResImages::class),
                         $sm->get(AmazonService\ProductVideo\Generate::class),
                         $sm->get(AmazonTable\Product\HiResImagesRetrieved::class),
-                        $sm->get(AmazonTable\Product\VideoGenerated::class)
+                        $sm->get(AmazonTable\Product\VideoGenerated::class),
+                        $sm->get(AmazonTable\ProductVideo::class)
                     );
                 },
                 AmazonService\ProductVideo\Generate::class => function ($sm) {
@@ -381,6 +382,11 @@ class Module
                 AmazonTable\Products::class => function ($serviceManager) {
                     return new AmazonTable\Products(
                         $serviceManager->get('amazon')
+                    );
+                },
+                AmazonTable\ProductVideo::class => function ($sm) {
+                    return new AmazonTable\ProductVideo(
+                        $sm->get('amazon')
                     );
                 },
                 AmazonTable\Search\ProductGroup::class => function ($serviceManager) {
