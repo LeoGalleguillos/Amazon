@@ -258,7 +258,8 @@ class Module
                         $sm->get(AmazonService\ProductHiResImage\DownloadUrls::class),
                         $sm->get(AmazonService\ProductHiResImage\DownloadHiResImages::class),
                         $sm->get(AmazonService\ProductVideo\Generate::class),
-                        $sm->get(AmazonTable\Product\HiResImagesRetrieved::class)
+                        $sm->get(AmazonTable\Product\HiResImagesRetrieved::class),
+                        $sm->get(AmazonTable\Product\VideoGenerated::class)
                     );
                 },
                 AmazonService\ProductVideo\Generate::class => function ($sm) {

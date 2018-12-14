@@ -18,13 +18,15 @@ class Everything
         AmazonService\ProductHiResImage\DownloadUrls $downloadUrlsService,
         AmazonService\ProductHiResImage\DownloadHiResImages $downloadHiResImagesService,
         AmazonService\ProductVideo\Generate $generateService,
-        AmazonTable\Product\HiResImagesRetrieved $hiResImagesRetrievedTable
+        AmazonTable\Product\HiResImagesRetrieved $hiResImagesRetrievedTable,
+        AmazonTable\Product\VideoGenerated $videoGeneratedTable
     ) {
         $this->productFactory             = $productFactory;
         $this->downloadUrlsService        = $downloadUrlsService;
         $this->downloadHiResImagesService = $downloadHiResImagesService;
         $this->generateService            = $generateService;
         $this->hiResImagesRetrievedTable  = $hiResImagesRetrievedTable;
+        $this->videoGeneratedTable        = $videoGeneratedTable;
     }
 
     public function doEverything(AmazonEntity\Product $productEntity): bool
@@ -44,7 +46,9 @@ class Everything
             $productEntity->getAsin()
         );
 
-        // Update video_generated timestamp in product table
+        $this->videoGeneratedTable->updateSetToUtcTimestampWhereProductId(
+            $productEntity->getProductId()
+        );
 
         $this->generateService->generate($productEntity);
 
