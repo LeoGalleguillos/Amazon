@@ -33,6 +33,13 @@ class Everything
 
     public function doEverything(AmazonEntity\Product $productEntity): bool
     {
+        try {
+            $videoGenerated = $productEntity->getVideoGenerated();
+            return false;
+        } catch (TypeError $typeError) {
+            // Do nothing.
+        }
+
         $this->downloadUrlsService->downloadUrls($productEntity);
         $this->hiResImagesRetrievedTable->updateSetToUtcTimestampWhereProductId(
             $productEntity->getProductId()
