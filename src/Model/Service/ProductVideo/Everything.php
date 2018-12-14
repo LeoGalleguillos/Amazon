@@ -28,13 +28,21 @@ class Everything
     {
         $this->downloadUrlsService->downloadUrls($productEntity);
 
+        $productEntity = $this->productFactory->buildFromAsin(
+            $productEntity->getAsin()
+        );
+
         $this->downloadHiResImagesService->downloadHiResImages($productEntity);
 
         $productEntity = $this->productFactory->buildFromAsin(
             $productEntity->getAsin()
         );
 
+        // Update video_generated timestamp in product table
+
         $this->generateService->generate($productEntity);
+
+        // Insert into product_video table
 
         return true;
     }
