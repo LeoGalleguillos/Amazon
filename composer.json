@@ -14,6 +14,7 @@
         "leo-galleguillos/sentence": "dev-master",
         "leo-galleguillos/string": "dev-master",
         "leo-galleguillos/test": "dev-master",
+        "leo-galleguillos/video": "dev-master",
         "leo-galleguillos/word": "dev-master",
         "zendframework/zend-test": "^3.1",
         "zendframework/zend-db": "^2.9"
