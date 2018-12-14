@@ -2,16 +2,18 @@
 namespace LeoGalleguillos\Amazon\Model\Service\ProductVideo\ProductVideos;
 
 use Exception;
-use LeoGalleguillos\Amazon\Model\Service as AmazonEntity;
-use LeoGalleguillos\Amazon\Model\Service as AmazonService;
+use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
+use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
+use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Video\Model\Entity as VideoEntity;
 
 class Newest
 {
     public function __construct(
-        AmazonFactory\ProductVideo $productVideoTable
+        AmazonFactory\Product $productFactory,
         AmazonTable\ProductVideo $productVideoTable
     ) {
+        $this->productFactory    = $productFactory;
         $this->productVideoTable = $productVideoTable;
     }
 

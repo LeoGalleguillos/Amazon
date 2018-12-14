@@ -272,6 +272,12 @@ class Module
                 AmazonService\ProductVideo\Generated::class => function ($sm) {
                     return new AmazonService\ProductVideo\Generated();
                 },
+                AmazonService\ProductVideo\ProductVideos\Newest::class => function ($sm) {
+                    return new AmazonService\ProductVideo\ProductVideos\Newest(
+                        $sm->get(AmazonFactory\Product::class),
+                        $sm->get(AmazonTable\ProductVideo::class)
+                    );
+                },
                 AmazonService\Search\ProductGroup::class => function ($serviceManager) {
                     return new AmazonService\Search\ProductGroup(
                         $serviceManager->get(AmazonFactory\Product::class),
