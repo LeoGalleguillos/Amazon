@@ -52,6 +52,10 @@ class Everything
             $productEntity->getProductId()
         );
 
+        if (empty($productEntity->getHiResImages())) {
+            return false;
+        }
+
         $this->generateService->generate($productEntity);
 
         $this->productVideoTable->insert(
