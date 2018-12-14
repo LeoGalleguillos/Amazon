@@ -5,6 +5,7 @@ use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use TypeError;
+use Zend\Db\Adapter\Exception\InvalidQueryException;
 
 class DownloadUrls
 {
@@ -38,11 +39,15 @@ class DownloadUrls
         $order = 0;
         foreach ($urls as $url) {
             $order++;
-            $this->productHiResImageTable->insert(
-                $productEntity->getProductId(),
-                $url,
-                $order
-            );
+            try {
+                $this->productHiResImageTable->insert(
+                    $productEntity->getProductId(),
+                    $url,
+                    $order
+                );
+            } catch (InvalidQueryException $invalidQueryException) {
+                // Do nothing.
+            }
         }
 
         return (bool) $order;
