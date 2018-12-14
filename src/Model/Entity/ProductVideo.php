@@ -2,6 +2,7 @@
 namespace LeoGalleguillos\Amazon\Model\Entity;
 
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
+use LeoGalleguillos\Video\Model\Entity as VideoEntity;
 
 class ProductVideo extends VideoEntity\Video
 {
