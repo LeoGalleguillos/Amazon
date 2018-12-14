@@ -16,12 +16,12 @@ class NewestTest extends TestCase
         $this->productFactoryMock = $this->createMock(
             AmazonFactory\Product::class
         );
-        $this->productVideoMock = $this->createMock(
+        $this->productVideoTableMock = $this->createMock(
             AmazonTable\ProductVideo::class
         );
         $this->newestService = new AmazonService\ProductVideo\ProductVideos\Newest(
             $this->productFactoryMock,
-            $this->productVideoMock
+            $this->productVideoTableMock
         );
     }
 
@@ -31,5 +31,45 @@ class NewestTest extends TestCase
             AmazonService\ProductVideo\ProductVideos\Newest::class,
             $this->newestService
         );
+    }
+
+    public function testGetNewest()
+    {
+        $this->productVideoTableMock->method('selectAsinOrderByCreatedDesc')->willReturn(
+            $this->yieldArrays()
+        );
+
+        $generator = $this->newestService->getNewest();
+        $array = iterator_to_array($generator);
+
+        $productVideoEntity = $array[0];
+        $this->assertInstanceOf(
+            AmazonEntity\ProductVideo::class,
+            $productVideoEntity
+        );
+        $this->assertSame(
+            '/videos/products/ABCDEFG.mp4',
+            $productVideoEntity->getRootRelativeUrl()
+        );
+
+        $productVideoEntity = $array[1];
+        $this->assertInstanceOf(
+            AmazonEntity\ProductVideo::class,
+            $productVideoEntity
+        );
+        $this->assertSame(
+            '/videos/products/HIJKLMNOP.mp4',
+            $productVideoEntity->getRootRelativeUrl()
+        );
+    }
+
+    protected function yieldArrays()
+    {
+        yield [
+            'asin' => 'ABCDEFG',
+        ];
+        yield [
+            'asin' => 'HIJKLMNOP',
+        ];
     }
 }
