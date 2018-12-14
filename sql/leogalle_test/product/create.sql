@@ -19,5 +19,6 @@ CREATE TABLE `product` (
   KEY `product_group_binding_modified` (`product_group`,`binding`,`modified`),
   KEY `product_group_brand_modified` (`product_group`,`brand`,`modified`),
   KEY `product_group_binding_brand_modified` (`product_group`,`binding`,`brand`,`modified`),
-  KEY `product_group_similar_retrieved` (`product_group`,`similar_retrieved`)
+  KEY `product_group_similar_retrieved` (`product_group`,`similar_retrieved`),
+  KEY `hi_res_images_retrieved_video_generated` (`hi_res_images_retrieved`,`video_generated`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8
