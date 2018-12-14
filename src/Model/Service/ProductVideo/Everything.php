@@ -30,7 +30,9 @@ class Everything
 
         $this->downloadHiResImagesService->downloadHiResImages($productEntity);
 
-        // Need to re-build product entity because hi-res images are not set yet.
+        $productEntity = $this->productFactory->buildFromAsin(
+            $productEntity->getAsin()
+        );
 
         $this->generateService->generate($productEntity);
 
