@@ -15,6 +15,7 @@ CREATE TABLE `product` (
   PRIMARY KEY (`product_id`),
   UNIQUE KEY `asin` (`asin`),
   KEY `product_group_modified` (`product_group`,`modified`),
+  KEY `created` (`created`),
   KEY `modified` (`modified`),
   KEY `product_group_binding_modified` (`product_group`,`binding`,`modified`),
   KEY `product_group_brand_modified` (`product_group`,`brand`,`modified`),
