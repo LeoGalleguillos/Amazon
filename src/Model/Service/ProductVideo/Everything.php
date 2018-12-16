@@ -5,6 +5,7 @@ use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
+use LeoGalleguillos\Video\Model\Service as VideoService;
 use TypeError;
 
 /**
@@ -21,15 +22,17 @@ class Everything
         AmazonService\ProductVideo\Generate $generateService,
         AmazonTable\Product\HiResImagesRetrieved $hiResImagesRetrievedTable,
         AmazonTable\Product\VideoGenerated $videoGeneratedTable,
-        AmazonTable\ProductVideo $productVideoTable
+        AmazonTable\ProductVideo $productVideoTable,
+        VideoService\DurationMilliseconds $durationMillisecondsService
     ) {
-        $this->productFactory             = $productFactory;
-        $this->downloadUrlsService        = $downloadUrlsService;
-        $this->downloadHiResImagesService = $downloadHiResImagesService;
-        $this->generateService            = $generateService;
-        $this->hiResImagesRetrievedTable  = $hiResImagesRetrievedTable;
-        $this->videoGeneratedTable        = $videoGeneratedTable;
-        $this->productVideoTable          = $productVideoTable;
+        $this->productFactory              = $productFactory;
+        $this->downloadUrlsService         = $downloadUrlsService;
+        $this->downloadHiResImagesService  = $downloadHiResImagesService;
+        $this->generateService             = $generateService;
+        $this->hiResImagesRetrievedTable   = $hiResImagesRetrievedTable;
+        $this->videoGeneratedTable         = $videoGeneratedTable;
+        $this->productVideoTable           = $productVideoTable;
+        $this->durationMillisecondsService = $durationMillisecondsService;
     }
 
     public function doEverything(AmazonEntity\Product $productEntity): bool
@@ -66,9 +69,13 @@ class Everything
 
         $this->generateService->generate($productEntity);
 
+        $asin = $productEntity->getAsin();
+        $rru  = "/home/amazon/products/videos/$asin.mp4";
+
         $this->productVideoTable->insert(
             $productEntity->getProductId(),
-            $productEntity->getTitle()
+            $productEntity->getTitle(),
+            $this->durationMillisecondsService->getDurationMilliseconds($rru)
         );
 
         return true;

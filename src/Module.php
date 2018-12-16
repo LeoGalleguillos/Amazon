@@ -10,6 +10,7 @@ use LeoGalleguillos\Image\Model\Factory as ImageFactory;
 use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
 use LeoGalleguillos\Sentence\Model\Service as SentenceService;
 use LeoGalleguillos\String\Model\Service as StringService;
+use LeoGalleguillos\Video\Model\Service as VideoService;
 use LeoGalleguillos\Word\Model\Service as WordService;
 
 class Module
@@ -260,7 +261,8 @@ class Module
                         $sm->get(AmazonService\ProductVideo\Generate::class),
                         $sm->get(AmazonTable\Product\HiResImagesRetrieved::class),
                         $sm->get(AmazonTable\Product\VideoGenerated::class),
-                        $sm->get(AmazonTable\ProductVideo::class)
+                        $sm->get(AmazonTable\ProductVideo::class),
+                        $sm->get(VideoService\DurationMilliseconds::class)
                     );
                 },
                 AmazonService\ProductVideo\Generate::class => function ($sm) {

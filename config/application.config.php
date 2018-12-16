@@ -8,6 +8,7 @@ return [
         'LeoGalleguillos\Memcached',
         'LeoGalleguillos\Sentence',
         'LeoGalleguillos\String',
+        'LeoGalleguillos\Video',
         'LeoGalleguillos\Word',
         'Zend\Db',
         'Zend\Router',
