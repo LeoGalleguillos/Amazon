@@ -65,6 +65,42 @@ class Product
         return $newestAsins;
     }
 
+    public function insert(
+        string $asin,
+        string $title,
+        string $productGroup,
+        string $binding = null,
+        string $brand = null,
+        float $listPrice
+    ): int {
+        $sql = '
+            INSERT
+              INTO `product` (
+                       `asin`
+                     , `title`
+                     , `product_group`
+                     , `binding`
+                     , `brand`
+                     , `list_price`
+                   )
+            VALUES (?, ?, ?, ?, ?, ?)
+                 ;
+        ';
+
+        $parameters = [
+            $asin,
+            $title,
+            $productGroup,
+            $binding,
+            $brand,
+            $listPrice,
+        ];
+        return (int) $this->adapter
+                          ->query($sql)
+                          ->execute($parameters)
+                          ->getGeneratedValue();
+    }
+
     public function insertOnDuplicateKeyUpdate(AmazonEntity\Product $product)
     {
         $sql = '
@@ -100,7 +136,7 @@ class Product
 
         $parameters = [
             $product->asin,
-            substr($product->getTitle(), 0, 255),
+            $product->getTitle(),
             $productGroupName,
             $bindingName,
             $brandName,
