@@ -284,12 +284,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/Video.git",
-                "reference": "81e807f12e2053e7d18a9e2e80f0387b08ec9be8"
+                "reference": "c481acb7bd5cc69f762366be502fd552bc1f65d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/Video/zipball/81e807f12e2053e7d18a9e2e80f0387b08ec9be8",
-                "reference": "81e807f12e2053e7d18a9e2e80f0387b08ec9be8",
+                "url": "https://api.github.com/repos/LeoGalleguillos/Video/zipball/c481acb7bd5cc69f762366be502fd552bc1f65d5",
+                "reference": "c481acb7bd5cc69f762366be502fd552bc1f65d5",
                 "shasum": ""
             },
             "require": {
@@ -308,7 +308,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2018-12-14T18:26:03+00:00"
+            "time": "2018-12-16T06:59:36+00:00"
         },
         {
             "name": "leo-galleguillos/word",
