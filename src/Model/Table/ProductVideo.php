@@ -19,17 +19,24 @@ class ProductVideo
 
     public function insert(
         int $productId,
-        string $title
+        string $title,
+        int $durationMilliseconds = null
     ): int {
         $sql = '
             INSERT
-              INTO `product_video` (`product_id`, `title`, `created`)
-            VALUES (?, ?, UTC_TIMESTAMP())
+              INTO `product_video` (
+                       `product_id`
+                     , `title`
+                     , `duration_milliseconds`
+                     , `created`
+                   )
+            VALUES (?, ?, ?, UTC_TIMESTAMP())
                  ;
         ';
         $parameters = [
             $productId,
             $title,
+            $durationMilliseconds,
         ];
         return (int) $this->adapter
                           ->query($sql)
