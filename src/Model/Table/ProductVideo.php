@@ -60,4 +60,26 @@ class ProductVideo
             yield $array;
         }
     }
+
+    public function selectAsinWhereMatchAgainst(string $query): Generator
+    {
+        $sql = '
+            SELECT `product`.`asin`
+                 , MATCH(`product_video`.`title`) AGAINST (?) AS `score`
+              FROM `product`
+              JOIN `product_video`
+             USING (`product_id`)
+             WHERE MATCH(`product_video`.`title`) AGAINST (?)
+             ORDER
+                BY `score` DESC
+             LIMIT 10
+
+        ';
+        $parameters = [
+            $query,
+        ];
+        foreach ($this->adapter->query($sql)->execute($parameters) as $array) {
+            yield $array;
+        }
+    }
 }
