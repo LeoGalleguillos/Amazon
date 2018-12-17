@@ -25,6 +25,10 @@ class Download
         $this->productImageTable           = $productImageTable;
     }
 
+    /**
+     * @deprecated We should download XML into MySQL.
+     *             We should not download a Product entity into MySQL.
+     */
     public function downloadProduct(AmazonEntity\Product $productEntity)
     {
         $this->productTable->insertOnDuplicateKeyUpdate($productEntity);

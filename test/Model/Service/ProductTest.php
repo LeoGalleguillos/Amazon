@@ -21,8 +21,8 @@ class ProductTest extends TestCase
         $this->apiProductXmlServiceMock = $this->createMock(
             AmazonService\Api\Product\Xml::class
         );
-        $this->productDownloadServiceMock = $this->createMock(
-            AmazonService\Product\Download::class
+        $this->downloadToMySqlServiceMock = $this->createMock(
+            AmazonService\Api\Product\Xml\DownloadToMySql::class
         );
         $this->productTableMock = $this->createMock(
             AmazonTable\Product::class
@@ -32,7 +32,7 @@ class ProductTest extends TestCase
             $this->productFactoryMock,
             $this->apiServiceMock,
             $this->apiProductXmlServiceMock,
-            $this->productDownloadServiceMock,
+            $this->downloadToMySqlServiceMock,
             $this->productTableMock
         );
     }

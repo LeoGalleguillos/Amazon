@@ -146,7 +146,7 @@ class Module
                         $serviceManager->get(AmazonFactory\Product::class),
                         $serviceManager->get(AmazonService\Api::class),
                         $serviceManager->get(AmazonService\Api\Product\Xml::class),
-                        $serviceManager->get(AmazonService\Product\Download::class),
+                        $serviceManager->get(AmazonService\Api\Product\Xml\DownloadToMySql::class),
                         $serviceManager->get(AmazonTable\Product::class)
                     );
                 },

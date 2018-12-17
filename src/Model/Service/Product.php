@@ -11,13 +11,13 @@ class Product
         AmazonFactory\Product $productFactory,
         AmazonService\Api $apiService,
         AmazonService\Api\Product\Xml $apiProductXmlService,
-        AmazonService\Product\Download $productDownloadService,
+        AmazonService\Api\Product\Xml\DownloadToMySql $downloadToMySqlService,
         AmazonTable\Product $productTable
     ) {
         $this->productFactory         = $productFactory;
         $this->apiService             = $apiService;
         $this->apiProductXmlService   = $apiProductXmlService;
-        $this->productDownloadService = $productDownloadService;
+        $this->downloadToMySqlService = $downloadToMySqlService;
         $this->productTable           = $productTable;
     }
 
@@ -40,9 +40,9 @@ class Product
             return false;
         }
         $itemXml = $xml->{'Items'}->{'Item'};
-        $amazonProductEntity = $this->productFactory->buildFromXml($itemXml);
-        $this->productDownloadService->downloadProduct($amazonProductEntity);
 
-        return $amazonProductEntity;
+        $this->downloadToMySqlService->downloadToMySql($itemXml);
+
+        return $this->productFactory->buildFromAsin($asin);
     }
 }
