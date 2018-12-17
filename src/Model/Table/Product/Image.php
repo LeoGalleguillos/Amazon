@@ -48,6 +48,35 @@ class Image
         return $rows;
     }
 
+    public function insert(
+        string $asin,
+        string $category,
+        string $url,
+        int $width,
+        int $height
+    ): int {
+        $sql = '
+            INSERT
+              INTO `product_image` (
+                         `asin`
+                       , `category`
+                       , `url`
+                       , `width`
+                       , `height`
+                   )
+            VALUES (?, ?, ?, ?, ?)
+                 ;
+        ';
+        $parameters = [
+            $asin,
+            $category,
+            $url,
+            $width,
+            $height,
+        ];
+        $this->adapter->query($sql)->execute($parameters)->getAffectedRows();
+    }
+
     public function insertProductIfNotExists(AmazonEntity\Product $product)
     {
         return $this->insertWhereNotExists($product);
