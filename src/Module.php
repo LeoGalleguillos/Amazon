@@ -150,18 +150,6 @@ class Module
                         $serviceManager->get(AmazonTable\Product::class)
                     );
                 },
-                // Delete this if new similar products class works
-                AmazonService\Product\Download::class => function ($serviceManager) {
-                    return new AmazonService\Product\Download(
-                        $serviceManager->get(AmazonService\Binding::class),
-                        $serviceManager->get(AmazonService\Brand::class),
-                        $serviceManager->get(AmazonService\ProductGroup::class),
-                        $serviceManager->get(AmazonTable\Product::class),
-                        $serviceManager->get(AmazonTable\Product\EditorialReview::class),
-                        $serviceManager->get(AmazonTable\ProductFeature::class),
-                        $serviceManager->get(AmazonTable\ProductImage::class)
-                    );
-                },
                 AmazonService\Product\FirstImageEntity::class => function ($serviceManager) {
                     return new AmazonService\Product\FirstImageEntity();
                 },
