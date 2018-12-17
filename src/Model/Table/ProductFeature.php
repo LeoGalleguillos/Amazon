@@ -51,6 +51,23 @@ class ProductFeature
         return $rows;
     }
 
+    public function insert(
+        string $asin,
+        string $feature
+    ): int {
+        $sql = '
+            INSERT
+              INTO `product_feature` (`asin`, `feature`)
+            VALUES (?, ?)
+           ;
+        ';
+        $parameters = [
+            $asin,
+            $feature,
+        ];
+        $this->adapter->query($sql)->execute($parameters)->getAffectedRows();
+    }
+
     public function insertProductIfNotExists(AmazonEntity\Product $product)
     {
         return $this->insertWhereNotExists($product);
