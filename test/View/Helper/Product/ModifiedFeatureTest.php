@@ -13,12 +13,7 @@ class ModifiedFeatureTest extends TestCase
 {
     protected function setUp()
     {
-        $this->replaceWordsServiceMock = $this->createMock(
-            SentenceService\ReplaceWords::class
-        );
-        $this->productModifiedFeatureHelper = new AmazonHelper\Product\ModifiedFeature(
-            $this->replaceWordsServiceMock
-        );
+        $this->productModifiedFeatureHelper = new AmazonHelper\Product\ModifiedFeature();
 
         $this->wordEntity1         = new WordEntity\Word();
         $this->wordEntity1->wordId = 1;
@@ -43,14 +38,13 @@ class ModifiedFeatureTest extends TestCase
 
     public function testInvoke()
     {
-        $this->replaceWordsServiceMock->method('replaceWords')->willReturn('ok');
         $feature = 'This is a <i>feature</i> and it\'s great.';
         $modifiedFeature = $this->productModifiedFeatureHelper->__invoke(
             $feature
         );
 
         $this->assertSame(
-            'ok',
+            'Is a feature, it\'s great.',
             $modifiedFeature
         );
     }

@@ -7,12 +7,6 @@ use Zend\View\Helper\AbstractHelper;
 
 class ModifiedFeature extends AbstractHelper
 {
-    public function __construct(
-        SentenceService\ReplaceWords $replaceWordsService
-    ) {
-        $this->replaceWordsService   = $replaceWordsService;
-    }
-
     public function __invoke(string $feature)
     {
         // Change unicode spaces to ASCII spaces.
@@ -46,11 +40,6 @@ class ModifiedFeature extends AbstractHelper
 
         // Trim.
         $feature = trim($feature);
-
-        $feature = $this->replaceWordsService->replaceWords(
-            $feature,
-            strlen($feature)
-        );
 
         return $feature;
     }

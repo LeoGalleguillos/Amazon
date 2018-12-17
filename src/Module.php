@@ -8,10 +8,8 @@ use LeoGalleguillos\Amazon\View\Helper as AmazonHelper;
 use LeoGalleguillos\Hashtag\Model\Service as HashtagService;
 use LeoGalleguillos\Image\Model\Factory as ImageFactory;
 use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
-use LeoGalleguillos\Sentence\Model\Service as SentenceService;
 use LeoGalleguillos\String\Model\Service as StringService;
 use LeoGalleguillos\Video\Model\Service as VideoService;
-use LeoGalleguillos\Word\Model\Service as WordService;
 
 class Module
 {
@@ -38,9 +36,7 @@ class Module
                         );
                     },
                     AmazonHelper\Product\ModifiedFeature::class => function ($serviceManager) {
-                        return new AmazonHelper\Product\ModifiedFeature(
-                            $serviceManager->get(SentenceService\ReplaceWords::class)
-                        );
+                        return new AmazonHelper\Product\ModifiedFeature();
                     },
                     AmazonHelper\Product\ModifiedFeatures::class => function ($serviceManager) {
                         $viewHelperManager = $serviceManager->get('ViewHelperManager');
