@@ -53,7 +53,7 @@ class ProductVideo
              USING (`product_id`)
              ORDER
                 BY `product_video`.`created` DESC
-             LIMIT 10
+             LIMIT 100
 
         ';
         foreach ($this->adapter->query($sql)->execute() as $array) {
