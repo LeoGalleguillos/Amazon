@@ -19,7 +19,8 @@ class Everything
         AmazonFactory\Product $productFactory,
         AmazonService\ProductHiResImage\DownloadUrls $downloadUrlsService,
         AmazonService\ProductHiResImage\DownloadHiResImages $downloadHiResImagesService,
-        AmazonService\ProductVideo\Generate $generateService,
+        AmazonService\ProductVideo\Generate $generateProductVideoService,
+        AmazonService\ProductVideo\Thumbnail\Generate $generateThumbnail,
         AmazonTable\Product\HiResImagesRetrieved $hiResImagesRetrievedTable,
         AmazonTable\Product\VideoGenerated $videoGeneratedTable,
         AmazonTable\ProductVideo $productVideoTable,
@@ -28,7 +29,8 @@ class Everything
         $this->productFactory              = $productFactory;
         $this->downloadUrlsService         = $downloadUrlsService;
         $this->downloadHiResImagesService  = $downloadHiResImagesService;
-        $this->generateService             = $generateService;
+        $this->generateProductVideoService = $generateProductVideoService;
+        $this->generateThumbnail           = $generateThumbnail;
         $this->hiResImagesRetrievedTable   = $hiResImagesRetrievedTable;
         $this->videoGeneratedTable         = $videoGeneratedTable;
         $this->productVideoTable           = $productVideoTable;
@@ -67,7 +69,7 @@ class Everything
             return false;
         }
 
-        $this->generateService->generate($productEntity);
+        $this->generateProductVideoService->generate($productEntity);
 
         $asin = $productEntity->getAsin();
         $rru  = "/home/amazon/products/videos/$asin.mp4";
@@ -77,6 +79,10 @@ class Everything
             $productEntity->getTitle(),
             $this->durationMillisecondsService->getDurationMilliseconds($rru)
         );
+
+        $productVideoEntity = new AmazonEntity\ProductVideo();
+        $productVideoEntity->setProduct($productEntity);
+        $this->generateThumbnailService->generate($productVideoEntity);
 
         return true;
     }
