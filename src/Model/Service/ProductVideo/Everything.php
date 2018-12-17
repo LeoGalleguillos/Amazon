@@ -20,7 +20,7 @@ class Everything
         AmazonService\ProductHiResImage\DownloadUrls $downloadUrlsService,
         AmazonService\ProductHiResImage\DownloadHiResImages $downloadHiResImagesService,
         AmazonService\ProductVideo\Generate $generateProductVideoService,
-        AmazonService\ProductVideo\Thumbnail\Generate $generateThumbnail,
+        AmazonService\ProductVideo\Thumbnail\Generate $generateThumbnailService,
         AmazonTable\Product\HiResImagesRetrieved $hiResImagesRetrievedTable,
         AmazonTable\Product\VideoGenerated $videoGeneratedTable,
         AmazonTable\ProductVideo $productVideoTable,
@@ -30,7 +30,7 @@ class Everything
         $this->downloadUrlsService         = $downloadUrlsService;
         $this->downloadHiResImagesService  = $downloadHiResImagesService;
         $this->generateProductVideoService = $generateProductVideoService;
-        $this->generateThumbnail           = $generateThumbnail;
+        $this->generateThumbnailService    = $generateThumbnailService;
         $this->hiResImagesRetrievedTable   = $hiResImagesRetrievedTable;
         $this->videoGeneratedTable         = $videoGeneratedTable;
         $this->productVideoTable           = $productVideoTable;
