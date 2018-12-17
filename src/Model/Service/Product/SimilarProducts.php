@@ -14,18 +14,18 @@ class SimilarProducts
     public function __construct(
         AmazonFactory\Product $productFactory,
         AmazonService\Api $apiService,
+        AmazonService\Api\Product\Xml\DownloadToMySql $downloadToMySqlService,
         AmazonService\Api\SimilarProducts\Xml $apiSimilarProductsXmlService,
         AmazonService\Product $productService,
-        AmazonService\Product\Download $productDownloadService,
         AmazonTable\Product $productTable,
         AmazonTable\Product\Similar $productSimilarTable,
         AmazonTable\Product\SimilarRetrieved $productSimilarRetrievedTable
     ) {
         $this->productFactory               = $productFactory;
         $this->apiService                   = $apiService;
+        $this->downloadToMySqlService       = $downloadToMySqlService;
         $this->apiSimilarProductsXmlService = $apiSimilarProductsXmlService;
         $this->productService               = $productService;
-        $this->productDownloadService       = $productDownloadService;
         $this->productTable                 = $productTable;
         $this->productSimilarTable          = $productSimilarTable;
         $this->productSimilarRetrievedTable = $productSimilarRetrievedTable;
@@ -70,14 +70,17 @@ class SimilarProducts
 
         if (!empty($xml->{'Items'}->{'Item'})) {
             foreach ($xml->{'Items'}->{'Item'} as $itemXml) {
-                $product = $this->productFactory->buildFromXml($itemXml);
+                $similarAsin = (string) $itemXml->{'ASIN'};
 
-                if (!$this->productTable->isProductInTable($asin)) {
-                    $this->productDownloadService->downloadProduct($product);
+                if (!$this->productTable->isProductInTable($similarAsin)) {
+                    $this->downloadToMySqlService->downloadToMySql($itemXml);
                 }
 
-                $this->productSimilarTable->insertIfNotExists($asin, $product->asin);
-                $products[] = $product;
+                $this->productSimilarTable->insertIfNotExists($asin, $similarAsin);
+
+                $productEntity = $this->productFactory->buildFromAsin($similarAsin);
+
+                $products[] = $productEntity;
             }
         }
 
