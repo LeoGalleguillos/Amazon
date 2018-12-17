@@ -26,7 +26,7 @@ class DownloadTest extends TestCase
             AmazonTable\Product\EditorialReview::class
         );
         $this->productFeatureTableMock = $this->createMock(
-            AmazonTable\Product\Feature::class
+            AmazonTable\ProductFeature::class
         );
         $this->productImageTableMock = $this->createMock(
             AmazonTable\ProductImage::class

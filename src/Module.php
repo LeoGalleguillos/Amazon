@@ -82,7 +82,7 @@ class Module
                         $serviceManager->get(ImageFactory\Image::class),
                         $serviceManager->get(AmazonTable\Product::class),
                         $serviceManager->get(AmazonTable\Product\EditorialReview::class),
-                        $serviceManager->get(AmazonTable\Product\Feature::class),
+                        $serviceManager->get(AmazonTable\ProductFeature::class),
                         $serviceManager->get(AmazonTable\ProductImage::class),
                         $serviceManager->get(AmazonTable\ProductHiResImage::class)
                     );
@@ -150,7 +150,7 @@ class Module
                         $serviceManager->get(AmazonService\ProductGroup::class),
                         $serviceManager->get(AmazonTable\Product::class),
                         $serviceManager->get(AmazonTable\Product\EditorialReview::class),
-                        $serviceManager->get(AmazonTable\Product\Feature::class),
+                        $serviceManager->get(AmazonTable\ProductFeature::class),
                         $serviceManager->get(AmazonTable\ProductImage::class)
                     );
                 },
@@ -320,8 +320,8 @@ class Module
                         $serviceManager->get('amazon')
                     );
                 },
-                AmazonTable\Product\Feature::class => function ($serviceManager) {
-                    return new AmazonTable\Product\Feature(
+                AmazonTable\ProductFeature::class => function ($serviceManager) {
+                    return new AmazonTable\ProductFeature(
                         $serviceManager->get(MemcachedService\Memcached::class),
                         $serviceManager->get('amazon')
                     );

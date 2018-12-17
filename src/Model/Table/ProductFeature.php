@@ -1,11 +1,11 @@
 <?php
-namespace LeoGalleguillos\Amazon\Model\Table\Product;
+namespace LeoGalleguillos\Amazon\Model\Table;
 
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Memcached\Model\Service\Memcached as MemcachedService;
 use Zend\Db\Adapter\Adapter;
 
-class Feature
+class ProductFeature
 {
     /**
      * @var Adapter

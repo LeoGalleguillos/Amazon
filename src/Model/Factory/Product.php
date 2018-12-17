@@ -20,7 +20,7 @@ class Product
         ImageFactory\Image $imageFactory,
         AmazonTable\Product $amazonProductTable,
         AmazonTable\Product\EditorialReview $amazonProductEditorialReviewTable,
-        AmazonTable\Product\Feature $amazonProductFeatureTable,
+        AmazonTable\ProductFeature $amazonProductFeatureTable,
         AmazonTable\ProductImage $amazonProductImageTable,
         AmazonTable\ProductHiResImage $productHiResImageTable
     ) {
