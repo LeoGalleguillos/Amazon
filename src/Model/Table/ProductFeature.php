@@ -65,7 +65,7 @@ class ProductFeature
             $asin,
             $feature,
         ];
-        $this->adapter->query($sql)->execute($parameters)->getAffectedRows();
+        return $this->adapter->query($sql)->execute($parameters)->getAffectedRows();
     }
 
     public function insertProductIfNotExists(AmazonEntity\Product $product)
