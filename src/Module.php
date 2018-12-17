@@ -108,6 +108,13 @@ class Module
                         $config['amazon']['secret_access_key']
                     );
                 },
+                AmazonService\Api\Product\Xml\DownloadToMySql::class => function ($sm) {
+                    return new AmazonService\Api\Product\Xml\DownloadToMySql(
+                        $sm->get(AmazonTable\Product::class),
+                        $sm->get(AmazonTable\ProductFeature::class),
+                        $sm->get(AmazonTable\ProductImage::class)
+                    );
+                },
                 AmazonService\Api\SimilarProducts\Xml::class => function ($serviceManager) {
                     $config = $serviceManager->get('Config');
                     return new AmazonService\Api\SimilarProducts\Xml(
