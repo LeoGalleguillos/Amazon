@@ -31,26 +31,20 @@ class SimilarProducts
         $this->productSimilarRetrievedTable = $productSimilarRetrievedTable;
     }
 
-    /**
-     * Get similar products.
-     *
-     * @param string $asin
-     * @return array
-     */
-    public function getSimilarProducts(string $asin) : array
+    public function getSimilarProducts(string $asin): array
     {
-        $products = [];
+        $similarProducts = [];
 
         $asins = $this->productSimilarTable->getSimilarAsins($asin);
         if (!empty($asins)) {
             foreach ($asins as $asin) {
                 try {
-                    $products[] = $this->productFactory->buildFromAsin($asin);
+                    $similarProducts[] = $this->productFactory->buildFromAsin($asin);
                 } catch (TypeError $typeError) {
                     // Do nothing.
                 }
             }
-            return $products;
+            return $similarProducts;
         }
 
         if (!AmazonService\Api::GET_NEW_PRODUCTS
@@ -78,13 +72,11 @@ class SimilarProducts
 
                 $this->productSimilarTable->insertIfNotExists($asin, $similarAsin);
 
-                $productEntity = $this->productFactory->buildFromAsin($similarAsin);
-
-                $products[] = $productEntity;
+                $similarProducts[] = $this->productFactory->buildFromAsin($similarAsin);
             }
         }
 
-        return $products;
+        return $similarProducts;
     }
 
     /**
