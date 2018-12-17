@@ -150,6 +150,7 @@ class Module
                         $serviceManager->get(AmazonTable\Product::class)
                     );
                 },
+                // Delete this if new similar products class works
                 AmazonService\Product\Download::class => function ($serviceManager) {
                     return new AmazonService\Product\Download(
                         $serviceManager->get(AmazonService\Binding::class),
@@ -361,7 +362,6 @@ class Module
                 },
                 AmazonTable\Product\Similar::class => function ($serviceManager) {
                     return new AmazonTable\Product\Similar(
-                        $serviceManager->get(MemcachedService\Memcached::class),
                         $serviceManager->get('amazon')
                     );
                 },

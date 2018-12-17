@@ -1,7 +1,6 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table\Product;
 
-use LeoGalleguillos\Memcached\Model\Service\Memcached as MemcachedService;
 use Zend\Db\Adapter\Adapter;
 
 class Similar
@@ -9,13 +8,11 @@ class Similar
     /**
      * @var Adapter
      */
-    private $adapter;
+    protected $adapter;
 
     public function __construct(
-        MemcachedService $memcached,
         Adapter $adapter
     ) {
-        $this->memcached = $memcached;
         $this->adapter   = $adapter;
     }
 
@@ -27,11 +24,6 @@ class Similar
      */
     public function getSimilarAsins($asin)
     {
-        $cacheKey = md5(__METHOD__ . $asin);
-        if (false != ($asins = $this->memcached->get($cacheKey))) {
-            return $asins;
-        }
-
         $sql = '
             SELECT `product_similar`.`similar_asin`
               FROM `product_similar`
@@ -43,10 +35,6 @@ class Similar
         $asins = [];
         foreach ($results as $row) {
             $asins[] = $row['similar_asin'];
-        }
-
-        if ($asins) {
-            $this->memcached->setForDays($cacheKey, $asins, 3);
         }
 
         return $asins;
