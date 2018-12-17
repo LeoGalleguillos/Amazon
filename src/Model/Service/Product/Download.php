@@ -14,7 +14,7 @@ class Download
         AmazonTable\Product $productTable,
         AmazonTable\Product\EditorialReview $productEditorialReviewTable,
         AmazonTable\Product\Feature $productFeatureTable,
-        AmazonTable\Product\Image $productImageTable
+        AmazonTable\ProductImage $productImageTable
     ) {
         $this->bindingService              = $bindingService;
         $this->brandService                = $brandService;

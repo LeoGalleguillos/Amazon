@@ -83,7 +83,7 @@ class Module
                         $serviceManager->get(AmazonTable\Product::class),
                         $serviceManager->get(AmazonTable\Product\EditorialReview::class),
                         $serviceManager->get(AmazonTable\Product\Feature::class),
-                        $serviceManager->get(AmazonTable\Product\Image::class),
+                        $serviceManager->get(AmazonTable\ProductImage::class),
                         $serviceManager->get(AmazonTable\ProductHiResImage::class)
                     );
                 },
@@ -151,7 +151,7 @@ class Module
                         $serviceManager->get(AmazonTable\Product::class),
                         $serviceManager->get(AmazonTable\Product\EditorialReview::class),
                         $serviceManager->get(AmazonTable\Product\Feature::class),
-                        $serviceManager->get(AmazonTable\Product\Image::class)
+                        $serviceManager->get(AmazonTable\ProductImage::class)
                     );
                 },
                 AmazonService\Product\FirstImageEntity::class => function ($serviceManager) {
@@ -336,12 +336,6 @@ class Module
                         $serviceManager->get('amazon')
                     );
                 },
-                AmazonTable\Product\Image::class => function ($serviceManager) {
-                    return new AmazonTable\Product\Image(
-                        $serviceManager->get(MemcachedService\Memcached::class),
-                        $serviceManager->get('amazon')
-                    );
-                },
                 AmazonTable\Product\ProductId::class => function ($serviceManager) {
                     return new AmazonTable\Product\ProductId(
                         $serviceManager->get('amazon')
@@ -389,6 +383,12 @@ class Module
                 AmazonTable\ProductHiResImage::class => function ($sm) {
                     return new AmazonTable\ProductHiResImage(
                         $sm->get('amazon')
+                    );
+                },
+                AmazonTable\ProductImage::class => function ($serviceManager) {
+                    return new AmazonTable\ProductImage(
+                        $serviceManager->get(MemcachedService\Memcached::class),
+                        $serviceManager->get('amazon')
                     );
                 },
                 AmazonTable\Products::class => function ($serviceManager) {

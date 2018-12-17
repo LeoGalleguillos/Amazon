@@ -21,7 +21,7 @@ class Product
         AmazonTable\Product $amazonProductTable,
         AmazonTable\Product\EditorialReview $amazonProductEditorialReviewTable,
         AmazonTable\Product\Feature $amazonProductFeatureTable,
-        AmazonTable\Product\Image $amazonProductImageTable,
+        AmazonTable\ProductImage $amazonProductImageTable,
         AmazonTable\ProductHiResImage $productHiResImageTable
     ) {
         $this->amazonBindingFactory                = $amazonBindingFactory;

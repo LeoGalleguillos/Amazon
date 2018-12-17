@@ -29,7 +29,7 @@ class DownloadTest extends TestCase
             AmazonTable\Product\Feature::class
         );
         $this->productImageTableMock = $this->createMock(
-            AmazonTable\Product\Image::class
+            AmazonTable\ProductImage::class
         );
 
         $this->downloadService = new AmazonService\Product\Download(
