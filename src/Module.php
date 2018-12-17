@@ -280,6 +280,9 @@ class Module
                         $sm->get(AmazonTable\ProductVideo::class)
                     );
                 },
+                AmazonService\ProductVideo\Thumbnail\Generate::class => function ($sm) {
+                    return new AmazonService\ProductVideo\Thumbnail\Generate();
+                },
                 AmazonService\Search\ProductGroup::class => function ($serviceManager) {
                     return new AmazonService\Search\ProductGroup(
                         $serviceManager->get(AmazonFactory\Product::class),
