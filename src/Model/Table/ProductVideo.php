@@ -105,6 +105,6 @@ class ProductVideo
         $parameters = [
             $productId,
         ];
-        return $this->adapter->query($sql)->execute($parameters);
+        return $this->adapter->query($sql)->execute($parameters)->current();
     }
 }
