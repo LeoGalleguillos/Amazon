@@ -93,7 +93,8 @@ class Module
                 },
                 AmazonFactory\ProductVideo::class => function ($sm) {
                     return new AmazonFactory\ProductVideo(
-                        $sm->get(AmazonFactory\Product::class)
+                        $sm->get(AmazonFactory\Product::class),
+                        $sm->get(AmazonTable\ProductVideo::class)
                     );
                 },
                 AmazonService\Api::class => function ($serviceManager) {
