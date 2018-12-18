@@ -9,11 +9,11 @@ use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 class Similar
 {
     public function __construct(
-        AmazonFactory\Product $productFactory,
+        AmazonFactory\ProductVideo $productVideoFactory,
         AmazonTable\ProductVideo $productVideoTable
     ) {
-        $this->productFactory    = $productFactory;
-        $this->productVideoTable = $productVideoTable;
+        $this->productVideoFactory = $productVideoFactory;
+        $this->productVideoTable   = $productVideoTable;
     }
 
     public function getSimilar(AmazonEntity\ProductVideo $productVideo): Generator
@@ -21,7 +21,7 @@ class Similar
         $query = $productVideo->getTitle();
         $asins = $this->productVideoTable->selectAsinWhereMatchAgainst($query);
         foreach ($asins as $asin) {
-            return $this->productFactory->buildFromAsin($asin);
+            return $this->productVideoFactory->buildFromAsin($asin);
         }
     }
 }

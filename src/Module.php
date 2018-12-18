@@ -280,7 +280,7 @@ class Module
                 },
                 AmazonService\ProductVideo\ProductVideos\Similar::class => function ($sm) {
                     return new AmazonService\ProductVideo\ProductVideos\Similar(
-                        $sm->get(AmazonFactory\Product::class),
+                        $sm->get(AmazonFactory\ProductVideo::class),
                         $sm->get(AmazonTable\ProductVideo::class)
                     );
                 },
