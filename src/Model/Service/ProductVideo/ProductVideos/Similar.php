@@ -21,7 +21,7 @@ class Similar
         $query = $productVideo->getTitle();
         $asins = $this->productVideoTable->selectAsinWhereMatchAgainst($query);
         foreach ($asins as $asin) {
-            return $this->productVideoFactory->buildFromAsin($asin);
+            yield $this->productVideoFactory->buildFromAsin($asin);
         }
     }
 }
