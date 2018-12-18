@@ -98,6 +98,7 @@ class ProductVideo
     {
         $sql = $this->getSelect()
              . '
+              FROM `product_video`
              WHERE `product_id` = ?
                  ;
         ';
