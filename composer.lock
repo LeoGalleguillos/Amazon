@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5efedaf902e9018bb28747fafb226dfc",
+    "content-hash": "a6b87a0a0f7c8c7a137bf1c6c5fb685d",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -185,39 +185,6 @@
             "time": "2018-10-26T00:44:12+00:00"
         },
         {
-            "name": "leo-galleguillos/sentence",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/LeoGalleguillos/Sentence.git",
-                "reference": "57f24a373b917b1a8270dd473001242875eacb83"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/Sentence/zipball/57f24a373b917b1a8270dd473001242875eacb83",
-                "reference": "57f24a373b917b1a8270dd473001242875eacb83",
-                "shasum": ""
-            },
-            "require": {
-                "leo-galleguillos/memcached": "dev-master",
-                "leo-galleguillos/word": "dev-master",
-                "zendframework/zend-db": "^2.9",
-                "zendframework/zend-test": "^3.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "LeoGalleguillos\\Sentence\\": "src/",
-                    "LeoGalleguillos\\SentenceTest\\": "test/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "time": "2018-01-28T16:27:33+00:00"
-        },
-        {
             "name": "leo-galleguillos/string",
             "version": "dev-master",
             "source": {
@@ -309,38 +276,6 @@
                 "MIT"
             ],
             "time": "2018-12-16T18:13:59+00:00"
-        },
-        {
-            "name": "leo-galleguillos/word",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/LeoGalleguillos/Word.git",
-                "reference": "25f724e338cb3cddd46bf8a1826791263f5b97ff"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/Word/zipball/25f724e338cb3cddd46bf8a1826791263f5b97ff",
-                "reference": "25f724e338cb3cddd46bf8a1826791263f5b97ff",
-                "shasum": ""
-            },
-            "require": {
-                "leo-galleguillos/memcached": "dev-master",
-                "zendframework/zend-db": "^2.9",
-                "zendframework/zend-test": "^3.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "LeoGalleguillos\\Word\\": "src/",
-                    "LeoGalleguillos\\WordTest\\": "test/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "time": "2018-01-28T16:38:08+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -3030,11 +2965,9 @@
         "leo-galleguillos/hashtag": 20,
         "leo-galleguillos/image": 20,
         "leo-galleguillos/memcached": 20,
-        "leo-galleguillos/sentence": 20,
         "leo-galleguillos/string": 20,
         "leo-galleguillos/test": 20,
-        "leo-galleguillos/video": 20,
-        "leo-galleguillos/word": 20
+        "leo-galleguillos/video": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

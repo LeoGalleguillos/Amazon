@@ -14,18 +14,6 @@ class ModifiedFeatureTest extends TestCase
     protected function setUp()
     {
         $this->productModifiedFeatureHelper = new AmazonHelper\Product\ModifiedFeature();
-
-        $this->wordEntity1         = new WordEntity\Word();
-        $this->wordEntity1->wordId = 1;
-        $this->wordEntity1->word   = 'test';
-
-        $this->wordEntity2         = new WordEntity\Word();
-        $this->wordEntity2->wordId = 2;
-        $this->wordEntity2->word   = 'essay';
-
-        $this->wordEntity3         = new WordEntity\Word();
-        $this->wordEntity3->wordId = 3;
-        $this->wordEntity3->word   = 'trial';
     }
 
     public function testInitialize()

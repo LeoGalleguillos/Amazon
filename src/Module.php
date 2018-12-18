@@ -273,6 +273,12 @@ class Module
                         $sm->get(AmazonTable\ProductVideo::class)
                     );
                 },
+                AmazonService\ProductVideo\ProductVideos\Similar::class => function ($sm) {
+                    return new AmazonService\ProductVideo\ProductVideos\Similar(
+                        $sm->get(AmazonFactory\Product::class),
+                        $sm->get(AmazonTable\ProductVideo::class)
+                    );
+                },
                 AmazonService\ProductVideo\Thumbnail\Generate::class => function ($sm) {
                     return new AmazonService\ProductVideo\Thumbnail\Generate();
                 },
