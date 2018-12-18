@@ -16,7 +16,8 @@ class ProductVideo
     public function buildFromAsin(string $asin): AmazonEntity\ProductVideo
     {
         $productVideoEntity = new AmazonEntity\ProductVideo();
-        $productVideoEntity->setProduct(
+
+        return $productVideoEntity->setProduct(
             $this->productFactory->buildFromAsin($asin)
         );
     }
