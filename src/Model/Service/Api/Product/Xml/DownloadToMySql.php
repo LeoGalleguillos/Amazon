@@ -3,6 +3,7 @@ namespace LeoGalleguillos\Amazon\Model\Service\Api\Product\Xml;
 
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use SimpleXMLElement;
+use Zend\Db\Adapter\Exception\InvalidQueryException;
 
 class DownloadToMySql
 {
