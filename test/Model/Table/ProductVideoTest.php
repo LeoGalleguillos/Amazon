@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\AmazonTest\Model\Table;
 
+use Generator;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Test\TableTestCase;
 use TypeError;
@@ -43,6 +44,15 @@ class ProductVideoTest extends TableTestCase
         $this->assertSame(
             2,
             $productVideoId
+        );
+    }
+
+    public function testSelectAsinWhereMatchAgainst()
+    {
+        $generator = $this->productVideoTable->selectAsinWhereMatchAgainst('query');
+        $this->assertInstanceOf(
+            Generator::class,
+            $generator
         );
     }
 

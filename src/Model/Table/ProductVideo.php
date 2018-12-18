@@ -84,9 +84,10 @@ class ProductVideo
              ORDER
                 BY `score` DESC
              LIMIT 10
-
+                 ;
         ';
         $parameters = [
+            $query,
             $query,
         ];
         foreach ($this->adapter->query($sql)->execute($parameters) as $array) {
