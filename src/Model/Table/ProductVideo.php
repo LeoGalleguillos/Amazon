@@ -17,6 +17,17 @@ class ProductVideo
         $this->adapter   = $adapter;
     }
 
+    protected function getSelect(): string
+    {
+        return '
+            SELECT `product_video_id`
+                 , `product_id`
+                 , `title`
+                 , `duration_milliseconds`
+                 , `created`
+        ';
+    }
+
     public function insert(
         int $productId,
         string $title,
@@ -81,5 +92,18 @@ class ProductVideo
         foreach ($this->adapter->query($sql)->execute($parameters) as $array) {
             yield $array['asin'];
         }
+    }
+
+    public function selectWhereProductId(int $productId): array
+    {
+        $sql = $this->getSelect()
+             . '
+             WHERE `product_id` = ?
+                 ;
+        ';
+        $parameters = [
+            $productId,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
     }
 }
