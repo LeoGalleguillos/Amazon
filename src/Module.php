@@ -91,6 +91,11 @@ class Module
                         $serviceManager->get(AmazonTable\ProductGroup::class)
                     );
                 },
+                AmazonFactory\ProductVideo::class => function ($sm) {
+                    return new AmazonFactory\ProductVideo(
+                        $sm->get(AmazonFactory\Product::class)
+                    );
+                },
                 AmazonService\Api::class => function ($serviceManager) {
                     return new AmazonService\Api(
                         $serviceManager->get(AmazonTable\Api::class)
