@@ -4,6 +4,7 @@ namespace LeoGalleguillos\Amazon\Model\Table;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Memcached\Model\Service\Memcached as MemcachedService;
 use Zend\Db\Adapter\Adapter;
+use Zend\Db\Adapter\Exception\InvalidQueryException;
 
 class ProductImage
 {
@@ -48,6 +49,9 @@ class ProductImage
         return $rows;
     }
 
+    /**
+     * @throws InvalidQueryException
+     */
     public function insert(
         string $asin,
         string $category,

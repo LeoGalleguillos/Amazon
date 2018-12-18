@@ -53,13 +53,17 @@ class DownloadToMySql
 
                 $url = str_replace('http://ecx.', 'https://images-na.ssl-', $url);
 
-                $this->productImageTable->insert(
-                    $asin,
-                    $category,
-                    $url,
-                    $width,
-                    $height
-                );
+                try {
+                    $this->productImageTable->insert(
+                        $asin,
+                        $category,
+                        $url,
+                        $width,
+                        $height
+                    );
+                } catch (InvalidQueryException $invalidQueryException) {
+                    // Do nothing.
+                }
             }
         }
     }
