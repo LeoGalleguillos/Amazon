@@ -198,6 +198,12 @@ class Module
                         $serviceManager->get(StringService\UrlFriendly::class)
                     );
                 },
+                AmazonService\Product\Slug::class => function ($serviceManager) {
+                    return new AmazonService\Product\Slug(
+                        $serviceManager->get(AmazonService\Product\ModifiedTitle::class),
+                        $serviceManager->get(StringService\UrlFriendly::class)
+                    );
+                },
                 AmazonService\Product\SourceCode::class => function ($serviceManager) {
                     return new AmazonService\Product\SourceCode();
                 },
