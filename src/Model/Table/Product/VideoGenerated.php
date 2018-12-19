@@ -26,4 +26,18 @@ class VideoGenerated
         ';
         return $this->adapter->query($sql)->execute([$productId])->getAffectedRows();
     }
+
+    public function selectAsinWhereVideoGeneratedIsNullOrderByCreatedDescLimit1(): string
+    {
+        $sql = '
+            SELECT `asin`
+              FROM `product`
+             WHERE `video_generated` IS NULL
+             ORDER
+                BY `created` DESC
+             LIMIT 1
+        ';
+        $array = $this->adapter->query($sql)->execute()->current();
+        return $array['asin'];
+    }
 }
