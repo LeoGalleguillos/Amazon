@@ -285,6 +285,9 @@ class Module
                         $sm->get(AmazonTable\ProductVideo::class)
                     );
                 },
+                AmazonService\ProductVideo\Thumbnail\Exists::class => function ($sm) {
+                    return new AmazonService\ProductVideo\Thumbnail\Exists();
+                },
                 AmazonService\ProductVideo\Thumbnail\Generate::class => function ($sm) {
                     return new AmazonService\ProductVideo\Thumbnail\Generate();
                 },
