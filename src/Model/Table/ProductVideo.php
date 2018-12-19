@@ -55,6 +55,18 @@ class ProductVideo
                           ->getGeneratedValue();
     }
 
+    public function select(): Generator
+    {
+        $sql = $this->getSelect()
+             . '
+              FROM `product_video`
+                 ;
+        ';
+        foreach ($this->adapter->query($sql)->execute() as $array) {
+            yield $array;
+        }
+    }
+
     public function selectAsinOrderByCreatedDesc(): Generator
     {
         $sql = '
