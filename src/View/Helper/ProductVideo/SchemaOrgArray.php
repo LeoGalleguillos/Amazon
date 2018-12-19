@@ -33,7 +33,7 @@ class SchemaOrgArray extends AbstractHelper
                 'isFamilyFriendly' => 'https://schema.org/True',
                 'genre' => 'Shopping',
                 'datePublished' => $productVideoEntity->getCreated()->format('Y-m-d'),
-                'updateDate' => $productVideoEntity->getCreated()->format('Y-m-d'),
+                'uploadDate' => $productVideoEntity->getCreated()->format('Y-m-d'),
                 'thumbnail' => [
                     '@type' => 'ImageObject',
                     'url' => $this->getThumbnailUrl($productVideoEntity),
