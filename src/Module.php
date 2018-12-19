@@ -425,6 +425,11 @@ class Module
                         $sm->get('amazon')
                     );
                 },
+                AmazonTable\ProductVideo\DurationMilliseconds::class => function ($sm) {
+                    return new AmazonTable\ProductVideo\DurationMilliseconds(
+                        $sm->get('amazon')
+                    );
+                },
                 AmazonTable\Search\ProductGroup::class => function ($serviceManager) {
                     return new AmazonTable\Search\ProductGroup(
                         $serviceManager->get(MemcachedService\Memcached::class),
