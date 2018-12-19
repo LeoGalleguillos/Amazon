@@ -35,5 +35,20 @@ class ArrayFromSourceCodeTest extends TestCase
             $array,
             $this->arrayFromSourceCodeService->getArrayFromSourceCode($sourceCode)
         );
+
+        $sourceCode = file_get_contents($_SERVER['PWD'] . '/test/B07L4FQ9HK.html');
+        $array = [
+            'https://images-na.ssl-images-amazon.com/images/I/61on2ud7alL._SL1500_.jpg',
+            'https://images-na.ssl-images-amazon.com/images/I/81P%2B6AUBuML._SL1500_.jpg',
+            'https://images-na.ssl-images-amazon.com/images/I/710YDiJ9gyL._SL1500_.jpg',
+            'https://images-na.ssl-images-amazon.com/images/I/712GvhsiBOL._SL1500_.jpg',
+            'https://images-na.ssl-images-amazon.com/images/I/7175qdjfEzL._SL1500_.jpg',
+            'https://images-na.ssl-images-amazon.com/images/I/71LHVy67PrL._SL1500_.jpg',
+            'https://images-na.ssl-images-amazon.com/images/I/71ua8I6xS9L._SL1500_.jpg',
+        ];
+        $this->assertSame(
+            $array,
+            $this->arrayFromSourceCodeService->getArrayFromSourceCode($sourceCode)
+        );
     }
 }
