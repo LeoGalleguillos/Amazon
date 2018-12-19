@@ -27,9 +27,8 @@ class ProductVideo
             $productVideoEntity->getProduct()->getProductId()
         );
 
-        $productVideoEntity->setTitle(
-            $array['title']
-        );
+        $productVideoEntity->setDurationMilliseconds($array['duration_milliseconds'])
+                           ->setTitle($array['title']);
 
         return $productVideoEntity;
     }
