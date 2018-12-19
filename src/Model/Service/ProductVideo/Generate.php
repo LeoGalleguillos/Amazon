@@ -24,6 +24,6 @@ class Generate
         }
 
         $command = $this->commandService->getCommand($productEntity);
-        exec($command);
+        exec($command, $output);
     }
 }
