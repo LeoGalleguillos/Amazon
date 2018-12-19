@@ -55,8 +55,10 @@ class Module
                             $serviceManager->get(AmazonService\Product\RootRelativeUrl::class)
                         );
                     },
-                    AmazonHelper\ProductVideo\SchemaOrgArray::class => function ($serviceManager) {
+                    AmazonHelper\ProductVideo\SchemaOrgArray::class => function ($sm) {
                         return new AmazonHelper\ProductVideo\SchemaOrgArray(
+                            $sm->get(AmazonService\Product\ModifiedTitle::class),
+                            $sm->get(AmazonService\Product\Slug::class)
                         );
                     },
                 ],
