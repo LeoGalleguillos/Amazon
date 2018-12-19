@@ -10,6 +10,10 @@ class DownloadHiResImages
     {
         $hiResImages = $productEntity->getHiResImages();
 
+        if (empty($hiResImages)) {
+            return;
+        }
+
         $asin = $productEntity->getAsin();
         if (preg_match('/\W/', $asin)) {
             throw new Exception('ASIN contains invalid characters');
