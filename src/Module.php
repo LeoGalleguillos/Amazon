@@ -25,6 +25,7 @@ class Module
                     'getProductFirstImageEntity'  => AmazonHelper\Product\FirstImageEntity::class,
                     'getProductModifiedFeatures' => AmazonHelper\Product\ModifiedFeatures::class,
                     'getProductRootRelativeUrl'  => AmazonHelper\Product\RootRelativeUrl::class,
+                    'getProductVideoSchemaOrgArray'  => AmazonHelper\ProductVideo\SchemaOrgArray::class,
                 ],
                 'factories' => [
                     AmazonHelper\Product\AffiliateUrl::class => function ($serviceManager) {
@@ -52,6 +53,10 @@ class Module
                     AmazonHelper\Product\RootRelativeUrl::class => function ($serviceManager) {
                         return new AmazonHelper\Product\RootRelativeUrl(
                             $serviceManager->get(AmazonService\Product\RootRelativeUrl::class)
+                        );
+                    },
+                    AmazonHelper\ProductVideo\SchemaOrgArray::class => function ($serviceManager) {
+                        return new AmazonHelper\ProductVideo\SchemaOrgArray(
                         );
                     },
                 ],
