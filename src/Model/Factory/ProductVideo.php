@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Factory;
 
+use DateTime;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
@@ -27,7 +28,8 @@ class ProductVideo
             $productVideoEntity->getProduct()->getProductId()
         );
 
-        $productVideoEntity->setDurationMilliseconds($array['duration_milliseconds'])
+        $productVideoEntity->setCreated(new DateTime($array['created']))
+                           ->setDurationMilliseconds($array['duration_milliseconds'])
                            ->setTitle($array['title']);
 
         return $productVideoEntity;
