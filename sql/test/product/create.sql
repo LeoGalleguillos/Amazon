@@ -23,5 +23,5 @@ CREATE TABLE `product` (
   KEY `product_group_similar_retrieved` (`product_group`,`similar_retrieved`),
   KEY `hi_res_images_retrieved_video_generated_created` (`hi_res_images_retrieved`,`video_generated`, `created`),
   KEY `similar_retrieved_created` (`similar_retrieved`, `created`),
-  KEY `similar_retrieved_created` (`video_generated`, `created`)
+  KEY `video_generated_created` (`video_generated`, `created`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8
