@@ -51,7 +51,12 @@ class SchemaOrgArray extends AbstractHelper
 
         $minutes = floor($durationSeconds / 60);
         $seconds = $durationSeconds - $minutes * 60;
-        return "PT{$minutes}M{$seconds}S";
+
+        if ($minutes) {
+            return "PT{$minutes}M{$seconds}S";
+        } else {
+            return "PT{$seconds}S";
+        }
     }
 
     protected function getThumbnailUrl(AmazonEntity\ProductVideo $productVideoEntity): string
