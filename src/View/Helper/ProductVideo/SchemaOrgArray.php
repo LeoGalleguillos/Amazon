@@ -23,8 +23,9 @@ class SchemaOrgArray extends AbstractHelper
                 '@type' => 'VideoObject',
                 'url' => $this->getUrl($productVideoEntity),
                 'name' => $this->modifiedTitleService->getModifiedTitle($productVideoEntity->getProduct()),
+                'description' => $this->modifiedTitleService->getModifiedTitle($productVideoEntity->getProduct()),
 
-                'duation' => $this->getDuration($productVideoEntity),
+                'duration' => $this->getDuration($productVideoEntity),
                 'thumbnailUrl' => $this->getThumbnailUrl($productVideoEntity),
                 'playerType' => 'HTML5',
                 'width' => '1280',
@@ -32,6 +33,7 @@ class SchemaOrgArray extends AbstractHelper
                 'isFamilyFriendly' => 'https://schema.org/True',
                 'genre' => 'Shopping',
                 'datePublished' => $productVideoEntity->getCreated()->format('Y-m-d'),
+                'updateDate' => $productVideoEntity->getCreated()->format('Y-m-d'),
                 'thumbnail' => [
                     '@type' => 'ImageObject',
                     'url' => $this->getThumbnailUrl($productVideoEntity),
