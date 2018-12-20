@@ -52,7 +52,9 @@ class Product
         }
 
         if (isset($productArray['brand'])) {
-            $productEntity->brand = $productArray['brand'];
+            $productEntity->setBrandEntity(
+                $this->amazonBrandFactory->buildFromName($productArray['brand'])
+            );
         }
 
         if (isset($productArray['hi_res_images_retrieved'])) {
