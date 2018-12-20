@@ -52,9 +52,7 @@ class Product
         }
 
         if (isset($productArray['brand'])) {
-            $productEntity->brand(
-                $productArray['brand']
-            );
+            $productEntity->brand = $productArray['brand'];
         }
 
         if (isset($productArray['hi_res_images_retrieved'])) {
