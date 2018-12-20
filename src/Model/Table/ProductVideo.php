@@ -20,11 +20,11 @@ class ProductVideo
     protected function getSelect(): string
     {
         return '
-            SELECT `product_video_id`
-                 , `product_id`
-                 , `title`
-                 , `duration_milliseconds`
-                 , `created`
+            SELECT `product_video`.`product_video_id`
+                 , `product_video`.`product_id`
+                 , `product_video`.`title`
+                 , `product_video`.`duration_milliseconds`
+                 , `product_video`.`created`
         ';
     }
 
@@ -59,7 +59,18 @@ class ProductVideo
     {
         $sql = $this->getSelect()
              . '
+                 , `product`.`product_id`
+                 , `product`.`asin`
+                 , `product`.`title`
+                 , `product`.`product_group`
+                 , `product`.`binding`
+                 , `product`.`brand`
+                 , `product`.`list_price`
               FROM `product_video`
+              JOIN `product`
+             USING (`product_id`)
+             ORDER
+                BY `product_video`.`created` ASC
                  ;
         ';
         foreach ($this->adapter->query($sql)->execute() as $array) {
