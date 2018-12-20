@@ -51,7 +51,7 @@ class Product
             $productEntity->binding = $productArray['binding'];
         }
 
-        if (isset($productArray['brand'])) {
+        if (!empty($productArray['brand'])) {
             $productEntity->setBrandEntity(
                 $this->amazonBrandFactory->buildFromName($productArray['brand'])
             );
