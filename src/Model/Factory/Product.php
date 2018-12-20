@@ -45,7 +45,7 @@ class Product
                       ->setProductId($productArray['product_id'])
                       ->setTitle($productArray['title']);
 
-        $productGroupEntity->setProductGroup(
+        $productEntity->productGroup(
             $productArray['product_group']
         );
 
@@ -54,7 +54,7 @@ class Product
         }
 
         if (isset($productArray['brand'])) {
-            $productEntity->setBrand(
+            $productEntity->brand(
                 $productArray['brand']
             );
         }
