@@ -60,7 +60,7 @@ class Product
     /**
      * @var AmazonEntity\ProductGroup
      */
-    protected $productGroup;
+    public $productGroup;
 
     /**
      * @var AmazonEntity\ProductGroup Product group entity.

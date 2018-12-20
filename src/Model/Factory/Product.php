@@ -45,9 +45,7 @@ class Product
                       ->setProductId($productArray['product_id'])
                       ->setTitle($productArray['title']);
 
-        $productEntity->productGroup(
-            $productArray['product_group']
-        );
+        $productEntity->productGroup = $productArray['product_group'];
 
         if (isset($productArray['binding'])) {
             $productEntity->binding = $productArray['binding'];

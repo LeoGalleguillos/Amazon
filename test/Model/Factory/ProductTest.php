@@ -40,4 +40,21 @@ class ProductTest extends TestCase
     {
         $this->assertInstanceOf(AmazonFactory\Product::class, $this->productFactory);
     }
+
+    public function testBuildFromArray()
+    {
+        $array = [
+            'product_id' => '12345',
+            'asin' => 'ASIN',
+            'title' => 'Title',
+            'list_price' => '1.23',
+            'product_group' => 'Apparel',
+        ];
+        $productEntity = $this->productFactory->buildFromArray($array);
+
+        $this->assertSame(
+            'ASIN',
+            $productEntity->getAsin()
+        );
+    }
 }
