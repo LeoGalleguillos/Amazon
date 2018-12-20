@@ -43,14 +43,19 @@ class Product
     public $features = [];
 
     /**
-     * var ImageEntity\Image[]
+     * @var ImageEntity\Image[]
      */
     protected $hiResImages;
 
     /**
-     * var DateTime
+     * @var DateTime
      */
     protected $hiResImagesRetrieved;
+
+    /**
+     * @var float
+     */
+    public $listPrice;
 
     /**
      * @var AmazonEntity\ProductGroup
@@ -115,6 +120,11 @@ class Product
     public function getHiResImagesRetrieved(): DateTime
     {
         return $this->hiResImagesRetrieved;
+    }
+
+    public function getListPrice(): float
+    {
+        return $this->listPrice;
     }
 
     public function getProductGroup(): AmazonEntity\ProductGroup
@@ -187,6 +197,12 @@ class Product
     public function setHiResImagesRetrieved(DateTime $hiResImagesRetrieved): AmazonEntity\Product
     {
         $this->hiResImagesRetrieved = $hiResImagesRetrieved;
+        return $this;
+    }
+
+    public function setListPrice(float $listPrice): AmazonEntity\Product
+    {
+        $this->listPrice = $listPrice;
         return $this;
     }
 

@@ -35,8 +35,50 @@ class Product
         $this->productHiResImageTable              = $productHiResImageTable;
     }
 
-    protected function buildFromArray(
+    public function buildFromArray(
         array $productArray
+    ) {
+        $productEntity = new AmazonEntity\Product();
+
+        $productEntity->setAsin($productArray['asin'])
+                      ->setListPrice($productArray['list_price'])
+                      ->setProductId($productArray['product_id'])
+                      ->setTitle($productArray['title']);
+
+        $productGroupEntity->setProductGroup(
+            $productArray['product_group']
+        );
+
+        if (isset($productArray['binding'])) {
+            $productEntity->binding = $productArray['binding'];
+        }
+
+        if (isset($productArray['brand'])) {
+            $productEntity->setBrand(
+                $productArray['brand']
+            );
+        }
+
+        if (isset($productArray['hi_res_images_retrieved'])) {
+            $productEntity->setHiResImagesRetrieved(
+                new DateTime($productArray['hi_res_images_retrieved'])
+            );
+        }
+
+        if (isset($productArray['video_generated'])) {
+            $productEntity->setVideoGenerated(
+                new DateTime($productArray['video_generated'])
+            );
+        }
+
+        return $productEntity;
+    }
+
+    protected function buildFromArrays(
+        array $productArray,
+        Generator $productFeatureArrays,
+        Generator $productHiResImageArrays,
+        Generator $productImageArrays
     ) {
         // In progress, do not use yet.
 
