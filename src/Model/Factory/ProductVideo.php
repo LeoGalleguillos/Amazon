@@ -16,6 +16,20 @@ class ProductVideo
         $this->productVideoTable = $productVideoTable;
     }
 
+    public function buildFromArray(array $array): AmazonEntity\ProductVideo
+    {
+        $productVideoEntity = new AmazonEntity\ProductVideo();
+        $productVideoEntity->setCreated(new DateTime($array['created']))
+                           ->setDurationMilliseconds($array['duration_milliseconds'])
+                           ->setTitle($array['title']);
+
+        $productVideoEntity->setProduct(
+            $this->productFactory->buildFromArray($array)
+        );
+
+        return $productVideoEntity;
+    }
+
     public function buildFromAsin(string $asin): AmazonEntity\ProductVideo
     {
         $productVideoEntity = new AmazonEntity\ProductVideo();
