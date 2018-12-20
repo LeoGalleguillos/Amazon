@@ -27,7 +27,7 @@ class SchemaOrgArray extends AbstractHelper
 
                 'duration' => $this->getDuration($productVideoEntity),
                 'thumbnailUrl' => $this->getThumbnailUrl($productVideoEntity),
-                'playerType' => 'HTML5',
+                'playerType' => 'HTML5 Flash',
                 'width' => '1280',
                 'height' => '720',
                 'isFamilyFriendly' => 'https://schema.org/True',
