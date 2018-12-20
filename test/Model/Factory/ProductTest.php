@@ -44,11 +44,13 @@ class ProductTest extends TestCase
     public function testBuildFromArray()
     {
         $array = [
-            'product_id' => '12345',
-            'asin' => 'ASIN',
-            'title' => 'Title',
-            'list_price' => '1.23',
-            'product_group' => 'Apparel',
+            'product_id'    => '12345',
+            'asin'          => 'ASIN',
+            'title'         => 'Title',
+            'list_price'    => '1.23',
+            'product_group' => 'Product Group',
+            'Binding'       => 'Binding',
+            'Brand'         => 'Brand',
         ];
         $productEntity = $this->productFactory->buildFromArray($array);
 
