@@ -8,7 +8,6 @@ use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Image\Model\Entity as ImageEntity;
 use LeoGalleguillos\Image\Model\Factory as ImageFactory;
-use SimpleXMLElement;
 
 class Product
 {
@@ -273,99 +272,6 @@ class Product
         foreach ($productEditorialReviewArrays as $productEditorialReviewArray) {
             $productEntity->editorialReviews[]
                 = $this->amazonProductEditorialReviewFactory->buildFromArray($productEditorialReviewArray);
-        }
-
-        return $productEntity;
-    }
-
-    /**
-     * Build from XML.
-     *
-     * @deprecated We should not be building product entities from XML.
-     * @deprecated We should insert XML into MySQL first, then build from MySQL.
-     *
-     * @param SimpleXMLElement $xml
-     * @return AmazonEntity\Product
-     */
-    public function buildFromXml(SimpleXMLElement $xml)
-    {
-        /**
-         * Maybe add:
-         * A few more item attributes (color, genre, label, language,
-         * manufacturer, publisher, studio, etc.)
-         */
-
-        $productEntity = new AmazonEntity\Product();
-
-        $productEntity->asin         = (string) $xml->{'ASIN'};
-        $productEntity->setTitle((string) $xml->{'ItemAttributes'}->{'Title'});
-
-        $productEntity->setProductGroup(
-            $this->amazonProductGroupFactory->buildFromName(
-                (string) $xml->{'ItemAttributes'}->{'ProductGroup'}
-            )
-        );
-        try {
-            $productEntity->binding  = $this->amazonBindingFactory->buildFromName(
-                (string) $xml->{'ItemAttributes'}->{'Binding'}
-            );
-        } catch (Exception $exception) {
-        }
-        try {
-            $productEntity->brand  = $this->amazonBrandFactory->buildFromName(
-                (string) $xml->{'ItemAttributes'}->{'Brand'}
-            );
-        } catch (Exception $exception) {
-        }
-
-        // List price
-        $listPriceCents = $xml->{'ItemAttributes'}->{'ListPrice'}->{'Amount'} ?? 0;
-        $productEntity->listPrice = $listPriceCents / 100;
-
-        // Images
-        if (!empty($xml->{'ImageSets'}->{'ImageSet'})) {
-            foreach ($xml->{'ImageSets'}->{'ImageSet'} as $imageSet) {
-                $category = (string) $imageSet['Category'];
-                $url      = (string) $imageSet->{'LargeImage'}->{'URL'};
-                $width    = (int) $imageSet->{'LargeImage'}->{'Width'};
-                $height   = (int) $imageSet->{'LargeImage'}->{'Height'};
-                if ($category == 'primary') {
-                    $url = str_replace('http://ecx.', 'https://images-na.ssl-', $url);
-                    $productEntity->primaryImage = $this->imageFactory->buildFromArray(
-                        [
-                            'url'    => $url,
-                            'width'  => $width,
-                            'height' => $height,
-                        ]
-                    );
-                } else {
-                    $url = str_replace('http://ecx.', 'https://images-na.ssl-', $url);
-                    $productEntity->variantImages[] = $this->imageFactory->buildFromArray(
-                        [
-                            'url'    => $url,
-                            'width'  => $width,
-                            'height' => $height,
-                        ]
-                    );
-                }
-            }
-        }
-
-        // Features
-        $features = [];
-        if (!empty($xml->{'ItemAttributes'}->{'Feature'})) {
-            foreach ($xml->{'ItemAttributes'}->{'Feature'} as $feature) {
-                $features[] = (string) $feature;
-            }
-        }
-        $productEntity->features = $features;
-
-        // Editorial reviews.
-        if (!empty($xml->{'EditorialReviews'}->{'EditorialReview'})) {
-            foreach ($xml->{'EditorialReviews'}->{'EditorialReview'} as $editorialReviewXml) {
-                $productEntity->editorialReviews[]
-                    = $this->amazonProductEditorialReviewFactory->buildFromXml($editorialReviewXml);
-            }
         }
 
         return $productEntity;
