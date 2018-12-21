@@ -142,7 +142,7 @@ class Product
         return $this->productId;
     }
 
-    public function getPrimaryImage() : ImageEntity\Image
+    public function getPrimaryImage(): ImageEntity\Image
     {
         return $this->primaryImage;
     }
@@ -152,7 +152,7 @@ class Product
         return $this->title;
     }
 
-    public function getVariantImages() : array
+    public function getVariantImages(): array
     {
         return $this->variantImages;
     }
@@ -208,7 +208,7 @@ class Product
 
     public function setPrimaryImage(
         ImageEntity\Image $primaryImage
-    ) : AmazonEntity\Product {
+    ): AmazonEntity\Product {
         $this->primaryImage = $primaryImage;
         return $this;
     }
