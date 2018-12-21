@@ -367,6 +367,11 @@ class Module
                         $serviceManager->get('amazon')
                     );
                 },
+                AmazonTable\Product\ProductGroupVideoGeneratedCreated::class => function ($serviceManager) {
+                    return new AmazonTable\Product\ProductGroupVideoGeneratedCreated(
+                        $serviceManager->get('amazon')
+                    );
+                },
                 AmazonTable\Product\ProductId::class => function ($serviceManager) {
                     return new AmazonTable\Product\ProductId(
                         $serviceManager->get('amazon')
