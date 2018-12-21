@@ -21,6 +21,7 @@ CREATE TABLE `product` (
   KEY `product_group_brand_modified` (`product_group`,`brand`,`modified`),
   KEY `product_group_binding_brand_modified` (`product_group`,`binding`,`brand`,`modified`),
   KEY `product_group_similar_retrieved_created` (`product_group`,`similar_retrieved`, `created`),
+  KEY `product_group_video_generated_created` (`product_group`,`video_generated`, `created`),
   KEY `hi_res_images_retrieved_video_generated_created` (`hi_res_images_retrieved`,`video_generated`, `created`),
   KEY `similar_retrieved_created` (`similar_retrieved`, `created`),
   KEY `video_generated_created` (`video_generated`, `created`)
