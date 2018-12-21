@@ -245,6 +245,14 @@ class Module
                         $serviceManager->get(AmazonTable\Product\ProductId::class)
                     );
                 },
+                AmazonService\ProductImage\DownloadFile::class => function ($sm) {
+                    return new AmazonService\ProductImage\DownloadFile();
+                },
+                AmazonService\ProductImage\ProductImages\DownloadFiles::class => function ($sm) {
+                    return new AmazonService\ProductImage\ProductImages\DownloadFiles(
+                        $sm->get(AmazonService\ProductImage\DownloadFile::class)
+                    );
+                },
                 AmazonService\ProductHiResImage\ArrayFromSourceCode::class => function ($serviceManager) {
                     return new AmazonService\ProductHiResImage\ArrayFromSourceCode();
                 },
