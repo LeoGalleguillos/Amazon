@@ -362,6 +362,11 @@ class Module
                         $serviceManager->get('amazon')
                     );
                 },
+                AmazonTable\Product\ProductGroupSimilarRetrievedCreated::class => function ($serviceManager) {
+                    return new AmazonTable\Product\ProductGroupSimilarRetrievedCreated(
+                        $serviceManager->get('amazon')
+                    );
+                },
                 AmazonTable\Product\ProductId::class => function ($serviceManager) {
                     return new AmazonTable\Product\ProductId(
                         $serviceManager->get('amazon')
