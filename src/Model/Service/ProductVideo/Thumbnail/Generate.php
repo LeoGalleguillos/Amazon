@@ -3,14 +3,30 @@ namespace LeoGalleguillos\Amazon\Model\Service\ProductVideo\Thumbnail;
 
 use Imagick;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
+use TypeError;
 
 class Generate
 {
     public function generate(AmazonEntity\ProductVideo $productVideoEntity): bool
     {
         $productEntity = $productVideoEntity->getProduct();
-        $hiResImageUrl = $productEntity->getHiResImages()[0]->getUrl();
-        $fileName      = urldecode(basename($hiResImageUrl));
+
+        $imageEntities = [];
+        try {
+            $imageEntities[] = $productEntity->getPrimaryImage();
+        } catch (TypeError $typeError) {
+            // Do nothing.
+        }
+        try {
+            $imageEntities = array_merge(
+                $imageEntities,
+                $productEntity->getVariantImages()
+            );
+        } catch (TypeError $typeError) {
+            // Do nothing.
+        }
+
+        $fileName      = urldecode(basename($imageEntities[0]->getUrl()));
         $asin          = $productEntity->getAsin();
         $source        = "/home/amazon/products/hi-res-images/$asin/$fileName";
         $destination   = "/home/amazon/products/videos/thumbnails/$asin.jpg";
