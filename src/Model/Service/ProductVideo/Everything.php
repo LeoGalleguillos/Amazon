@@ -35,10 +35,6 @@ class Everything
 
     public function doEverything(AmazonEntity\Product $productEntity): bool
     {
-        if (!$this->hasImageService->doesProductHaveImage($productEntity)) {
-            return false;
-        }
-
         try {
             $videoGenerated = $productEntity->getVideoGenerated();
             return false;
@@ -46,11 +42,15 @@ class Everything
             // Do nothing.
         }
 
-        $this->downloadFilesService->downloadFiles($productEntity);
-
         $this->videoGeneratedTable->updateSetToUtcTimestampWhereProductId(
             $productEntity->getProductId()
         );
+
+        if (!$this->hasImageService->doesProductHaveImage($productEntity)) {
+            return false;
+        }
+
+        $this->downloadFilesService->downloadFiles($productEntity);
 
         $this->generateProductVideoService->generate($productEntity);
 
