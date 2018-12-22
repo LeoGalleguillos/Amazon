@@ -179,6 +179,9 @@ class Module
                 AmazonService\Product\Hashtags\ProductEntity::class => function ($serviceManager) {
                     return new AmazonService\Product\Hashtags\ProductEntity();
                 },
+                AmazonService\Product\HasImage::class => function ($sm) {
+                    return new AmazonService\Product\HasImage();
+                },
                 AmazonService\Product\ModifiedTitle::class => function ($serviceManager) {
                     return new AmazonService\Product\ModifiedTitle();
                 },
