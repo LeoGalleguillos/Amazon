@@ -27,7 +27,7 @@ class GenerateTest extends TestCase
         $imageEntity->setUrl('https://images-na.ssl-images-amazon.com/images/I/71NZRr%2BnbCL._UL1500_.jpg');
         $productEntity      = new AmazonEntity\Product();
         $productEntity->setAsin('B07J1Q4GZC')
-                      ->setHiResImages([$imageEntity]);
+                      ->setVariantImages([$imageEntity]);
         $productVideoEntity = new AmazonEntity\ProductVideo();
         $productVideoEntity->setProduct($productEntity);
 
