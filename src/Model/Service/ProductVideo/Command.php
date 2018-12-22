@@ -3,6 +3,7 @@ namespace LeoGalleguillos\Amazon\Model\Service\ProductVideo;
 
 use Exception;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
+use TypeError;
 
 class Command
 {
@@ -17,18 +18,33 @@ class Command
             throw new Exception('Invalid ASIN (this should never happen)');
         }
 
-        foreach ($productEntity->getHiResImages() as $hiResImage) {
-            $fileName = urldecode(basename($hiResImage->getUrl()));
+        $imageEntities = [];
+        try {
+            $imageEntities[] = $productEntity->getPrimaryImage();
+        } catch (TypeError $typeError) {
+            // Do nothing.
+        }
+        try {
+            $imageEntities = array_merge(
+                $imageEntities,
+                $productEntity->getVariantImages()
+            );
+        } catch (TypeError $typeError) {
+            // Do nothing.
+        }
+
+        foreach ($imageEntities as $imageEntity) {
+            $fileName = urldecode(basename($imageEntity->getUrl()));
             if (!preg_match('/^[\w\.\_\+\-]+$/', $fileName)) {
                 throw new Exception('Invalid file name (this should never happen)');
             }
 
-            $rru = "/home/amazon/products/hi-res-images/$asin/$fileName";
+            $rru = "/home/amazon/products/images/$asin/$fileName";
 
             $code[] = "$rru out=250 -mix 25 -mixer luma \\";
         }
 
-        $audioLength    = count($productEntity->getHiResImages()) * 229;
+        $audioLength    = count($imageEntities) * 229;
         $startFadingOut = $audioLength - 100;
 
         $code[] = "-track /home/amazon/products/videos/ukelele.mp3 out=$audioLength \\";

@@ -17,9 +17,7 @@ class Generate
 
     public function generate(AmazonEntity\Product $productEntity)
     {
-        if ($this->generatedService->wasGenerated($productEntity)
-            || empty($productEntity->getHiResImages())
-        ) {
+        if ($this->generatedService->wasGenerated($productEntity)) {
             return;
         }
 

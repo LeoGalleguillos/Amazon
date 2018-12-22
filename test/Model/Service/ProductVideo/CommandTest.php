@@ -49,10 +49,9 @@ class CommandTest extends TestCase
         $imageEntity2->setUrl(
             'https://images-na.ssl-images-amazon.com/images/I/8*1s5s2iDAfL._UL1500_.jpg'
         );
-        $productEntity->setHiResImages([
-            $imageEntity1,
-            $imageEntity2
-        ]);
+
+        $productEntity->setPrimaryImage($imageEntity1);
+        $productEntity->setVariantImages([$imageEntity2]);
 
         try {
             $this->commandService->getCommand($productEntity);
@@ -74,6 +73,5 @@ class CommandTest extends TestCase
             'string',
             $command
         );
-
     }
 }
