@@ -33,6 +33,10 @@ class Everything
 
     public function doEverything(AmazonEntity\Product $productEntity): bool
     {
+        if (!$this->hasImageService->doesProductHaveImage($productEntity)) {
+            return false;
+        }
+
         try {
             $videoGenerated = $productEntity->getVideoGenerated();
             return false;
