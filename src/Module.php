@@ -277,6 +277,7 @@ class Module
                 },
                 AmazonService\ProductVideo\Everything::class => function ($sm) {
                     return new AmazonService\ProductVideo\Everything(
+                        $sm->get(AmazonService\Product\HasImage::class),
                         $sm->get(AmazonService\ProductImage\ProductImages\DownloadFiles::class),
                         $sm->get(AmazonService\ProductVideo\Generate::class),
                         $sm->get(AmazonService\ProductVideo\Thumbnail\Generate::class),

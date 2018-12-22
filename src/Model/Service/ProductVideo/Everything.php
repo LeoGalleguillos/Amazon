@@ -16,6 +16,7 @@ use TypeError;
 class Everything
 {
     public function __construct(
+        AmazonService\Product\HasImage $hasImageService,
         AmazonService\ProductImage\ProductImages\DownloadFiles $downloadFilesService,
         AmazonService\ProductVideo\Generate $generateProductVideoService,
         AmazonService\ProductVideo\Thumbnail\Generate $generateThumbnailService,
@@ -23,6 +24,7 @@ class Everything
         AmazonTable\ProductVideo $productVideoTable,
         VideoService\DurationMilliseconds $durationMillisecondsService
     ) {
+        $this->hasImageService             = $hasImageService;
         $this->downloadFilesService        = $downloadFilesService;
         $this->generateProductVideoService = $generateProductVideoService;
         $this->generateThumbnailService    = $generateThumbnailService;
