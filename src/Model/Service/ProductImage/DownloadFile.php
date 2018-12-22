@@ -3,6 +3,7 @@ namespace LeoGalleguillos\Amazon\Model\Service\ProductImage;
 
 use Exception;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
+use LeoGalleguillos\Image\Model\Entity as ImageEntity;
 use TypeError;
 
 class DownloadFile
