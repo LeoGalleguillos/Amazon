@@ -28,7 +28,7 @@ class Generate
 
         $fileName      = urldecode(basename($imageEntities[0]->getUrl()));
         $asin          = $productEntity->getAsin();
-        $source        = "/home/amazon/products/hi-res-images/$asin/$fileName";
+        $source        = "/home/amazon/products/images/$asin/$fileName";
         $destination   = "/home/amazon/products/videos/thumbnails/$asin.jpg";
 
         if (file_exists($destination)) {
