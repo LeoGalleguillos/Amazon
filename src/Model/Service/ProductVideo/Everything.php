@@ -11,27 +11,20 @@ use TypeError;
 /**
  * Everything
  *
- * Everything required to generated a product video from hi-res photos
+ * Do everything required to generate a product video.
  */
 class Everything
 {
     public function __construct(
-        AmazonFactory\Product $productFactory,
-        AmazonService\ProductHiResImage\DownloadUrls $downloadUrlsService,
-        AmazonService\ProductHiResImage\DownloadHiResImages $downloadHiResImagesService,
+        AmazonService\ProductImage\ProductImages\DownloadFiles $downloadFilesService,
         AmazonService\ProductVideo\Generate $generateProductVideoService,
         AmazonService\ProductVideo\Thumbnail\Generate $generateThumbnailService,
-        AmazonTable\Product\HiResImagesRetrieved $hiResImagesRetrievedTable,
         AmazonTable\Product\VideoGenerated $videoGeneratedTable,
         AmazonTable\ProductVideo $productVideoTable,
         VideoService\DurationMilliseconds $durationMillisecondsService
     ) {
-        $this->productFactory              = $productFactory;
-        $this->downloadUrlsService         = $downloadUrlsService;
-        $this->downloadHiResImagesService  = $downloadHiResImagesService;
         $this->generateProductVideoService = $generateProductVideoService;
         $this->generateThumbnailService    = $generateThumbnailService;
-        $this->hiResImagesRetrievedTable   = $hiResImagesRetrievedTable;
         $this->videoGeneratedTable         = $videoGeneratedTable;
         $this->productVideoTable           = $productVideoTable;
         $this->durationMillisecondsService = $durationMillisecondsService;
@@ -46,28 +39,11 @@ class Everything
             // Do nothing.
         }
 
-        $this->downloadUrlsService->downloadUrls($productEntity);
-        $this->hiResImagesRetrievedTable->updateSetToUtcTimestampWhereProductId(
-            $productEntity->getProductId()
-        );
-
-        $productEntity = $this->productFactory->buildFromAsin(
-            $productEntity->getAsin()
-        );
-
-        $this->downloadHiResImagesService->downloadHiResImages($productEntity);
-
-        $productEntity = $this->productFactory->buildFromAsin(
-            $productEntity->getAsin()
-        );
+        $this->downloadFilesService->downloadFiles($productEntity);
 
         $this->videoGeneratedTable->updateSetToUtcTimestampWhereProductId(
             $productEntity->getProductId()
         );
-
-        if (empty($productEntity->getHiResImages())) {
-            return false;
-        }
 
         $this->generateProductVideoService->generate($productEntity);
 

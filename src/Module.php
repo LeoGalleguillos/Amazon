@@ -274,12 +274,9 @@ class Module
                 },
                 AmazonService\ProductVideo\Everything::class => function ($sm) {
                     return new AmazonService\ProductVideo\Everything(
-                        $sm->get(AmazonFactory\Product::class),
-                        $sm->get(AmazonService\ProductHiResImage\DownloadUrls::class),
-                        $sm->get(AmazonService\ProductHiResImage\DownloadHiResImages::class),
+                        $sm->get(AmazonService\ProductImage\ProductImages\DownloadFiles::class),
                         $sm->get(AmazonService\ProductVideo\Generate::class),
                         $sm->get(AmazonService\ProductVideo\Thumbnail\Generate::class),
-                        $sm->get(AmazonTable\Product\HiResImagesRetrieved::class),
                         $sm->get(AmazonTable\Product\VideoGenerated::class),
                         $sm->get(AmazonTable\ProductVideo::class),
                         $sm->get(VideoService\DurationMilliseconds::class)
