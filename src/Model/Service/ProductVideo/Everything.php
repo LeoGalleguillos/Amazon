@@ -23,6 +23,7 @@ class Everything
         AmazonTable\ProductVideo $productVideoTable,
         VideoService\DurationMilliseconds $durationMillisecondsService
     ) {
+        $this->downloadFilesService        = $downloadFilesService;
         $this->generateProductVideoService = $generateProductVideoService;
         $this->generateThumbnailService    = $generateThumbnailService;
         $this->videoGeneratedTable         = $videoGeneratedTable;
