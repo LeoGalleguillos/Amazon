@@ -50,7 +50,7 @@ class Command
         $code[] = "-track /home/amazon/products/videos/ukelele.mp3 out=$audioLength \\";
         $code[] = "-attach-track volume:0db end=-70db in=$startFadingOut out=$audioLength \\";
         $code[] = "-transition mix \\";
-        $code[] = "-consumer avformat:/home/amazon/products/videos/$asin.mp4 acodec=libmp3lame vcodec=libx264";
+        $code[] = "-consumer avformat:/home/amazon/products/videos/$asin.mp4 acodec=aac vcodec=libx264";
 
         return implode("\n", $code);
     }
