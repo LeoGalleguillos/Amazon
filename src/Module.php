@@ -344,6 +344,11 @@ class Module
                         $serviceManager->get('amazon')
                     );
                 },
+                AmazonTable\BrowseNode::class => function ($serviceManager) {
+                    return new AmazonTable\BrowseNode(
+                        $serviceManager->get('amazon')
+                    );
+                },
                 AmazonTable\Product::class => function ($serviceManager) {
                     return new AmazonTable\Product(
                         $serviceManager->get(MemcachedService\Memcached::class),
