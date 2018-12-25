@@ -1,0 +1,403 @@
+<?xml version="1.0" ?>
+<ItemLookupResponse
+    xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01">
+    <OperationRequest>
+        <HTTPHeaders>
+            <Header Name="UserAgent" Value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"></Header>
+        </HTTPHeaders>
+        <RequestId>b22f2a17-2c43-4dee-8ea4-1aa840f3c3db</RequestId>
+        <Arguments>
+            <Argument Name="AWSAccessKeyId" Value="AKIAIOEDHLKWPAC2DC5A"></Argument>
+            <Argument Name="AssociateTag" Value="onlinefreestore-20"></Argument>
+            <Argument Name="IdType" Value="ASIN"></Argument>
+            <Argument Name="ItemId" Value="B0070UXDHU"></Argument>
+            <Argument Name="Operation" Value="ItemLookup"></Argument>
+            <Argument Name="ResponseGroup" Value="Large"></Argument>
+            <Argument Name="Service" Value="AWSECommerceService"></Argument>
+            <Argument Name="Timestamp" Value="2018-12-25T22:42:00.000Z"></Argument>
+            <Argument Name="Signature" Value="fgRCELpvflQtSYr4epGTNCJYUZvEs6ujiXs5sO5KWvA="></Argument>
+        </Arguments>
+        <RequestProcessingTime>0.1027732780000000</RequestProcessingTime>
+    </OperationRequest>
+    <Items>
+        <Request>
+            <IsValid>True</IsValid>
+            <ItemLookupRequest>
+                <IdType>ASIN</IdType>
+                <ItemId>B0070UXDHU</ItemId>
+                <ResponseGroup>Large</ResponseGroup>
+                <VariationPage>All</VariationPage>
+            </ItemLookupRequest>
+        </Request>
+        <Item>
+            <ASIN>B0070UXDHU</ASIN>
+            <ParentASIN>B01GGCROF4</ParentASIN>
+            <DetailPageURL>https://www.amazon.com/Aubade-Womens-Boite-Desir-Triangle/dp/B0070UXDHU?psc=1&amp;SubscriptionId=AKIAIOEDHLKWPAC2DC5A&amp;tag=onlinefreestore-20&amp;linkCode=xm2&amp;camp=2025&amp;creative=165953&amp;creativeASIN=B0070UXDHU</DetailPageURL>
+            <ItemLinks>
+                <ItemLink>
+                    <Description>Technical Details</Description>
+                    <URL>https://www.amazon.com/Aubade-Womens-Boite-Desir-Triangle/dp/tech-data/B0070UXDHU?SubscriptionId=AKIAIOEDHLKWPAC2DC5A&amp;tag=onlinefreestore-20&amp;linkCode=xm2&amp;camp=2025&amp;creative=386001&amp;creativeASIN=B0070UXDHU</URL>
+                </ItemLink>
+                <ItemLink>
+                    <Description>Add To Baby Registry</Description>
+                    <URL>https://www.amazon.com/gp/registry/baby/add-item.html?asin.0=B0070UXDHU&amp;SubscriptionId=AKIAIOEDHLKWPAC2DC5A&amp;tag=onlinefreestore-20&amp;linkCode=xm2&amp;camp=2025&amp;creative=386001&amp;creativeASIN=B0070UXDHU</URL>
+                </ItemLink>
+                <ItemLink>
+                    <Description>Add To Wedding Registry</Description>
+                    <URL>https://www.amazon.com/gp/registry/wedding/add-item.html?asin.0=B0070UXDHU&amp;SubscriptionId=AKIAIOEDHLKWPAC2DC5A&amp;tag=onlinefreestore-20&amp;linkCode=xm2&amp;camp=2025&amp;creative=386001&amp;creativeASIN=B0070UXDHU</URL>
+                </ItemLink>
+                <ItemLink>
+                    <Description>Add To Wishlist</Description>
+                    <URL>https://www.amazon.com/gp/registry/wishlist/add-item.html?asin.0=B0070UXDHU&amp;SubscriptionId=AKIAIOEDHLKWPAC2DC5A&amp;tag=onlinefreestore-20&amp;linkCode=xm2&amp;camp=2025&amp;creative=386001&amp;creativeASIN=B0070UXDHU</URL>
+                </ItemLink>
+                <ItemLink>
+                    <Description>Tell A Friend</Description>
+                    <URL>https://www.amazon.com/gp/pdp/taf/B0070UXDHU?SubscriptionId=AKIAIOEDHLKWPAC2DC5A&amp;tag=onlinefreestore-20&amp;linkCode=xm2&amp;camp=2025&amp;creative=386001&amp;creativeASIN=B0070UXDHU</URL>
+                </ItemLink>
+                <ItemLink>
+                    <Description>All Customer Reviews</Description>
+                    <URL>https://www.amazon.com/review/product/B0070UXDHU?SubscriptionId=AKIAIOEDHLKWPAC2DC5A&amp;tag=onlinefreestore-20&amp;linkCode=xm2&amp;camp=2025&amp;creative=386001&amp;creativeASIN=B0070UXDHU</URL>
+                </ItemLink>
+                <ItemLink>
+                    <Description>All Offers</Description>
+                    <URL>https://www.amazon.com/gp/offer-listing/B0070UXDHU?SubscriptionId=AKIAIOEDHLKWPAC2DC5A&amp;tag=onlinefreestore-20&amp;linkCode=xm2&amp;camp=2025&amp;creative=386001&amp;creativeASIN=B0070UXDHU</URL>
+                </ItemLink>
+            </ItemLinks>
+            <SalesRank>4022304</SalesRank>
+            <SmallImage>
+                <URL>https://images-na.ssl-images-amazon.com/images/I/41C6MzbbpdL._SL75_.jpg</URL>
+                <Height Units="pixels">75</Height>
+                <Width Units="pixels">58</Width>
+            </SmallImage>
+            <MediumImage>
+                <URL>https://images-na.ssl-images-amazon.com/images/I/41C6MzbbpdL._SL160_.jpg</URL>
+                <Height Units="pixels">160</Height>
+                <Width Units="pixels">123</Width>
+            </MediumImage>
+            <LargeImage>
+                <URL>https://images-na.ssl-images-amazon.com/images/I/41C6MzbbpdL.jpg</URL>
+                <Height Units="pixels">500</Height>
+                <Width Units="pixels">385</Width>
+            </LargeImage>
+            <ImageSets>
+                <ImageSet Category="swatch">
+                    <SwatchImage>
+                        <URL>https://images-na.ssl-images-amazon.com/images/I/41C6MzbbpdL._SL30_.jpg</URL>
+                        <Height Units="pixels">30</Height>
+                        <Width Units="pixels">23</Width>
+                    </SwatchImage>
+                    <SmallImage>
+                        <URL>https://images-na.ssl-images-amazon.com/images/I/41C6MzbbpdL._SL75_.jpg</URL>
+                        <Height Units="pixels">75</Height>
+                        <Width Units="pixels">58</Width>
+                    </SmallImage>
+                    <ThumbnailImage>
+                        <URL>https://images-na.ssl-images-amazon.com/images/I/41C6MzbbpdL._SL75_.jpg</URL>
+                        <Height Units="pixels">75</Height>
+                        <Width Units="pixels">58</Width>
+                    </ThumbnailImage>
+                    <TinyImage>
+                        <URL>https://images-na.ssl-images-amazon.com/images/I/41C6MzbbpdL._SL110_.jpg</URL>
+                        <Height Units="pixels">110</Height>
+                        <Width Units="pixels">85</Width>
+                    </TinyImage>
+                    <MediumImage>
+                        <URL>https://images-na.ssl-images-amazon.com/images/I/41C6MzbbpdL._SL160_.jpg</URL>
+                        <Height Units="pixels">160</Height>
+                        <Width Units="pixels">123</Width>
+                    </MediumImage>
+                    <LargeImage>
+                        <URL>https://images-na.ssl-images-amazon.com/images/I/41C6MzbbpdL.jpg</URL>
+                        <Height Units="pixels">500</Height>
+                        <Width Units="pixels">385</Width>
+                    </LargeImage>
+                </ImageSet>
+                <ImageSet Category="variant">
+                    <SwatchImage>
+                        <URL>https://images-na.ssl-images-amazon.com/images/I/41VnTezsHSL._SL30_.jpg</URL>
+                        <Height Units="pixels">30</Height>
+                        <Width Units="pixels">23</Width>
+                    </SwatchImage>
+                    <SmallImage>
+                        <URL>https://images-na.ssl-images-amazon.com/images/I/41VnTezsHSL._SL75_.jpg</URL>
+                        <Height Units="pixels">75</Height>
+                        <Width Units="pixels">58</Width>
+                    </SmallImage>
+                    <ThumbnailImage>
+                        <URL>https://images-na.ssl-images-amazon.com/images/I/41VnTezsHSL._SL75_.jpg</URL>
+                        <Height Units="pixels">75</Height>
+                        <Width Units="pixels">58</Width>
+                    </ThumbnailImage>
+                    <TinyImage>
+                        <URL>https://images-na.ssl-images-amazon.com/images/I/41VnTezsHSL._SL110_.jpg</URL>
+                        <Height Units="pixels">110</Height>
+                        <Width Units="pixels">85</Width>
+                    </TinyImage>
+                    <MediumImage>
+                        <URL>https://images-na.ssl-images-amazon.com/images/I/41VnTezsHSL._SL160_.jpg</URL>
+                        <Height Units="pixels">160</Height>
+                        <Width Units="pixels">123</Width>
+                    </MediumImage>
+                    <LargeImage>
+                        <URL>https://images-na.ssl-images-amazon.com/images/I/41VnTezsHSL.jpg</URL>
+                        <Height Units="pixels">500</Height>
+                        <Width Units="pixels">385</Width>
+                    </LargeImage>
+                </ImageSet>
+                <ImageSet Category="primary">
+                    <SwatchImage>
+                        <URL>https://images-na.ssl-images-amazon.com/images/I/41C6MzbbpdL._SL30_.jpg</URL>
+                        <Height Units="pixels">30</Height>
+                        <Width Units="pixels">23</Width>
+                    </SwatchImage>
+                    <SmallImage>
+                        <URL>https://images-na.ssl-images-amazon.com/images/I/41C6MzbbpdL._SL75_.jpg</URL>
+                        <Height Units="pixels">75</Height>
+                        <Width Units="pixels">58</Width>
+                    </SmallImage>
+                    <ThumbnailImage>
+                        <URL>https://images-na.ssl-images-amazon.com/images/I/41C6MzbbpdL._SL75_.jpg</URL>
+                        <Height Units="pixels">75</Height>
+                        <Width Units="pixels">58</Width>
+                    </ThumbnailImage>
+                    <TinyImage>
+                        <URL>https://images-na.ssl-images-amazon.com/images/I/41C6MzbbpdL._SL110_.jpg</URL>
+                        <Height Units="pixels">110</Height>
+                        <Width Units="pixels">85</Width>
+                    </TinyImage>
+                    <MediumImage>
+                        <URL>https://images-na.ssl-images-amazon.com/images/I/41C6MzbbpdL._SL160_.jpg</URL>
+                        <Height Units="pixels">160</Height>
+                        <Width Units="pixels">123</Width>
+                    </MediumImage>
+                    <LargeImage>
+                        <URL>https://images-na.ssl-images-amazon.com/images/I/41C6MzbbpdL.jpg</URL>
+                        <Height Units="pixels">500</Height>
+                        <Width Units="pixels">385</Width>
+                    </LargeImage>
+                </ImageSet>
+            </ImageSets>
+            <ItemAttributes>
+                <Binding>Apparel</Binding>
+                <Brand>Aubade</Brand>
+                <CatalogNumberList>
+                    <CatalogNumberListElement>28178-1</CatalogNumberListElement>
+                    <CatalogNumberListElement>SKU</CatalogNumberListElement>
+                </CatalogNumberList>
+                <ClothingSize>One Size</ClothingSize>
+                <Color>Black</Color>
+                <Creator Role="Designer">Aubade</Creator>
+                <Department>womens</Department>
+                <EAN>3102061387353</EAN>
+                <EANList>
+                    <EANListElement>3102061387353</EANListElement>
+                    <EANListElement>5055686319620</EANListElement>
+                </EANList>
+                <Feature>Triangular lace cup with simple hook fasteners between the cups</Feature>
+                <Feature>Lace braid for tying at back</Feature>
+                <IsAdultProduct>0</IsAdultProduct>
+                <ItemDimensions>
+                    <Height Units="hundredths-inches">79</Height>
+                    <Length Units="hundredths-inches">394</Length>
+                    <Weight Units="Hundredths Pounds">11</Weight>
+                    <Width Units="hundredths-inches">197</Width>
+                </ItemDimensions>
+                <Label>Aubade Women's Apparel</Label>
+                <ListPrice>
+                    <Amount>8900</Amount>
+                    <CurrencyCode>USD</CurrencyCode>
+                    <FormattedPrice>$89.00</FormattedPrice>
+                </ListPrice>
+                <Manufacturer>Aubade Women's Apparel</Manufacturer>
+                <Model>P067</Model>
+                <MPN>P067-NOIR</MPN>
+                <PackageDimensions>
+                    <Height Units="hundredths-inches">200</Height>
+                    <Length Units="hundredths-inches">610</Length>
+                    <Weight Units="Hundredths Pounds">30</Weight>
+                    <Width Units="hundredths-inches">600</Width>
+                </PackageDimensions>
+                <PackageQuantity>1</PackageQuantity>
+                <PartNumber>P067-NOIR</PartNumber>
+                <ProductGroup>Apparel</ProductGroup>
+                <ProductTypeName>UNDERWEAR</ProductTypeName>
+                <Publisher>Aubade Women's Apparel</Publisher>
+                <Size>One Size</Size>
+                <Studio>Aubade Women's Apparel</Studio>
+                <Title>Aubade Women's Boite a Desir Triangle Bra and Thong Set, Black, One Size</Title>
+            </ItemAttributes>
+            <OfferSummary>
+                <LowestNewPrice>
+                    <Amount>8900</Amount>
+                    <CurrencyCode>USD</CurrencyCode>
+                    <FormattedPrice>$89.00</FormattedPrice>
+                </LowestNewPrice>
+                <TotalNew>2</TotalNew>
+                <TotalUsed>0</TotalUsed>
+                <TotalCollectible>0</TotalCollectible>
+                <TotalRefurbished>0</TotalRefurbished>
+            </OfferSummary>
+            <Offers>
+                <TotalOffers>1</TotalOffers>
+                <TotalOfferPages>1</TotalOfferPages>
+                <MoreOffersUrl>https://www.amazon.com/gp/offer-listing/B0070UXDHU?SubscriptionId=AKIAIOEDHLKWPAC2DC5A&amp;tag=onlinefreestore-20&amp;linkCode=xm2&amp;camp=2025&amp;creative=386001&amp;creativeASIN=B0070UXDHU</MoreOffersUrl>
+                <Offer>
+                    <OfferAttributes>
+                        <Condition>New</Condition>
+                    </OfferAttributes>
+                    <OfferListing>
+                        <OfferListingId>Y6TJLF9dgmxJkIzY52F9KJcwqAIwpMH6jnpsk7r2q0%2F0ffiVIM0Sl%2FmEogVFUlNAGU4cZeQGeNuDzZg8x13UfVWjd%2FnCMHmdZt110HipI1YVqJZFhUm2tA%3D%3D</OfferListingId>
+                        <Price>
+                            <Amount>8900</Amount>
+                            <CurrencyCode>USD</CurrencyCode>
+                            <FormattedPrice>$89.00</FormattedPrice>
+                        </Price>
+                        <Availability>Usually ships in 24 hours</Availability>
+                        <AvailabilityAttributes>
+                            <AvailabilityType>now</AvailabilityType>
+                            <MinimumHours>0</MinimumHours>
+                            <MaximumHours>0</MaximumHours>
+                        </AvailabilityAttributes>
+                        <IsEligibleForSuperSaverShipping>1</IsEligibleForSuperSaverShipping>
+                        <IsEligibleForPrime>1</IsEligibleForPrime>
+                    </OfferListing>
+                </Offer>
+            </Offers>
+            <CustomerReviews>
+                <IFrameURL>https://www.amazon.com/reviews/iframe?akid=AKIAIOEDHLKWPAC2DC5A&amp;alinkCode=xm2&amp;asin=B0070UXDHU&amp;atag=onlinefreestore-20&amp;exp=2018-12-26T22%3A42%3A00Z&amp;v=2&amp;sig=9sKdIHTAQxWiOQcjoUVG%252FyJ1EWSdJb%252BhKJde9MR3xq8%253D</IFrameURL>
+                <HasReviews>false</HasReviews>
+            </CustomerReviews>
+            <EditorialReviews>
+                <EditorialReview>
+                    <Source>Product Description</Source>
+                    <Content>Super-sexy three-piece ensemble composed of a wireless triangle bra with a simple hook between the breasts and two straps of black lace reaching down to the panties</Content>
+                    <IsLinkSuppressed>0</IsLinkSuppressed>
+                </EditorialReview>
+            </EditorialReviews>
+            <BrowseNodes>
+                <BrowseNode>
+                    <BrowseNodeId>14333511</BrowseNodeId>
+                    <Name>Lingerie</Name>
+                    <Children>
+                        <BrowseNode>
+                            <BrowseNodeId>1044960</BrowseNodeId>
+                            <Name>Bras</Name>
+                        </BrowseNode>
+                        <BrowseNode>
+                            <BrowseNodeId>1044958</BrowseNodeId>
+                            <Name>Panties</Name>
+                        </BrowseNode>
+                        <BrowseNode>
+                            <BrowseNodeId>1044968</BrowseNodeId>
+                            <Name>Baby Dolls &amp; Chemises</Name>
+                        </BrowseNode>
+                        <BrowseNode>
+                            <BrowseNodeId>1044970</BrowseNodeId>
+                            <Name>Camisoles &amp; Tanks</Name>
+                        </BrowseNode>
+                        <BrowseNode>
+                            <BrowseNodeId>1045010</BrowseNodeId>
+                            <Name>Shapewear</Name>
+                        </BrowseNode>
+                        <BrowseNode>
+                            <BrowseNodeId>1044964</BrowseNodeId>
+                            <Name>Slips</Name>
+                        </BrowseNode>
+                        <BrowseNode>
+                            <BrowseNodeId>1044966</BrowseNodeId>
+                            <Name>Bustiers &amp; Corsets</Name>
+                        </BrowseNode>
+                        <BrowseNode>
+                            <BrowseNodeId>10703772011</BrowseNodeId>
+                            <Name>Garters &amp; Garter Belts</Name>
+                        </BrowseNode>
+                        <BrowseNode>
+                            <BrowseNodeId>2364767011</BrowseNodeId>
+                            <Name>Accessories</Name>
+                        </BrowseNode>
+                    </Children>
+                    <Ancestors>
+                        <BrowseNode>
+                            <BrowseNodeId>9522931011</BrowseNodeId>
+                            <Name>Lingerie, Sleep &amp; Lounge</Name>
+                            <Ancestors>
+                                <BrowseNode>
+                                    <BrowseNodeId>1040660</BrowseNodeId>
+                                    <Name>Clothing</Name>
+                                    <Ancestors>
+                                        <BrowseNode>
+                                            <BrowseNodeId>7147440011</BrowseNodeId>
+                                            <Name>Women</Name>
+                                            <Ancestors>
+                                                <BrowseNode>
+                                                    <BrowseNodeId>7141124011</BrowseNodeId>
+                                                    <Name>Departments</Name>
+                                                    <IsCategoryRoot>1</IsCategoryRoot>
+                                                    <Ancestors>
+                                                        <BrowseNode>
+                                                            <BrowseNodeId>7141123011</BrowseNodeId>
+                                                            <Name>Clothing, Shoes &amp; Jewelry</Name>
+                                                        </BrowseNode>
+                                                    </Ancestors>
+                                                </BrowseNode>
+                                            </Ancestors>
+                                        </BrowseNode>
+                                    </Ancestors>
+                                </BrowseNode>
+                            </Ancestors>
+                        </BrowseNode>
+                    </Ancestors>
+                </BrowseNode>
+                <BrowseNode>
+                    <BrowseNodeId>7581668011</BrowseNodeId>
+                    <Name>Shops</Name>
+                    <Children>
+                        <BrowseNode>
+                            <BrowseNodeId>11300394011</BrowseNodeId>
+                            <Name>Contemporary &amp; Designer</Name>
+                        </BrowseNode>
+                        <BrowseNode>
+                            <BrowseNodeId>7581674011</BrowseNodeId>
+                            <Name>Juniors</Name>
+                        </BrowseNode>
+                        <BrowseNode>
+                            <BrowseNodeId>7581675011</BrowseNodeId>
+                            <Name>Maternity</Name>
+                        </BrowseNode>
+                        <BrowseNode>
+                            <BrowseNodeId>7581676011</BrowseNodeId>
+                            <Name>Petite</Name>
+                        </BrowseNode>
+                        <BrowseNode>
+                            <BrowseNodeId>7581677011</BrowseNodeId>
+                            <Name>Plus-Size</Name>
+                        </BrowseNode>
+                        <BrowseNode>
+                            <BrowseNodeId>7581679011</BrowseNodeId>
+                            <Name>Uniforms, Work &amp; Safety</Name>
+                        </BrowseNode>
+                    </Children>
+                    <Ancestors>
+                        <BrowseNode>
+                            <BrowseNodeId>7147440011</BrowseNodeId>
+                            <Name>Women</Name>
+                            <Ancestors>
+                                <BrowseNode>
+                                    <BrowseNodeId>7141124011</BrowseNodeId>
+                                    <Name>Departments</Name>
+                                    <IsCategoryRoot>1</IsCategoryRoot>
+                                    <Ancestors>
+                                        <BrowseNode>
+                                            <BrowseNodeId>7141123011</BrowseNodeId>
+                                            <Name>Clothing, Shoes &amp; Jewelry</Name>
+                                        </BrowseNode>
+                                    </Ancestors>
+                                </BrowseNode>
+                            </Ancestors>
+                        </BrowseNode>
+                    </Ancestors>
+                </BrowseNode>
+            </BrowseNodes>
+        </Item>
+    </Items>
+</ItemLookupResponse>
