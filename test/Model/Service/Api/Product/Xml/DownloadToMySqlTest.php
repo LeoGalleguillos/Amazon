@@ -10,10 +10,12 @@ class DownloadToMySqlTest extends TestCase
 {
     protected function setUp()
     {
+        $this->browseNodeTableMock = $this->createMock(AmazonTable\BrowseNode::class);
         $this->productTableMock = $this->createMock(AmazonTable\Product::class);
         $this->productFeatureTableMock = $this->createMock(AmazonTable\ProductFeature::class);
         $this->productImageTableMock = $this->createMock(AmazonTable\ProductImage::class);
         $this->downloadToMySqlService = new AmazonService\Api\Product\Xml\DownloadToMySql(
+            $this->browseNodeTableMock,
             $this->productTableMock,
             $this->productFeatureTableMock,
             $this->productImageTableMock
@@ -30,11 +32,18 @@ class DownloadToMySqlTest extends TestCase
 
     public function testDownloadToMySql()
     {
-        $null = $this->downloadToMySqlService->downloadToMySql(
+        $this->browseNodeTableMock
+            ->expects($this->at(0))
+            ->method('insertIgnore')
+            ->with(14333511, 'Lingerie');
+        $this->browseNodeTableMock
+            ->expects($this->at(1))
+            ->method('insertIgnore')
+            ->with(7581668011, 'Shops');
+        $this->productTableMock->expects($this->once())->method('insert');
+
+        $this->downloadToMySqlService->downloadToMySql(
             simplexml_load_file($_SERVER['PWD'] . '/test/B0070UXDHU.xml')
-        );
-        $this->assertNull(
-            $null
         );
     }
 }

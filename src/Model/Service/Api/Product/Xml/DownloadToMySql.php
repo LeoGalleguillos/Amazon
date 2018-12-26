@@ -8,10 +8,12 @@ use Zend\Db\Adapter\Exception\InvalidQueryException;
 class DownloadToMySql
 {
     public function __construct(
+        AmazonTable\BrowseNode $browseNodeTable,
         AmazonTable\Product $productTable,
         AmazonTable\ProductFeature $productFeatureTable,
         AmazonTable\ProductImage $productImageTable
     ) {
+        $this->browseNodeTable     = $browseNodeTable;
         $this->productTable        = $productTable;
         $this->productFeatureTable = $productFeatureTable;
         $this->productImageTable   = $productImageTable;
@@ -20,6 +22,15 @@ class DownloadToMySql
     public function downloadToMySql(
         SimpleXMLElement $xml
     ) {
+        foreach ($xml->{'BrowseNodes'}->{'BrowseNode'} as $browseNode) {
+            $browseNodeId = (int) $browseNode->{'BrowseNodeId'};
+            $name         = (string) $browseNode->{'Name'};
+            $this->browseNodeTable->insertIgnore(
+                $browseNodeId,
+                $name
+            );
+        }
+
         $asin    = (string) $xml->{'ASIN'};
         $binding = $xml->{'ItemAttributes'}->{'Binding'} ?? null;
         $brand   = $xml->{'ItemAttributes'}->{'Brand'} ?? null;

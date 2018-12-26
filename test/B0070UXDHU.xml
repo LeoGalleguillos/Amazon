@@ -1,34 +1,4 @@
 <?xml version="1.0" ?>
-<ItemLookupResponse
-    xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01">
-    <OperationRequest>
-        <HTTPHeaders>
-            <Header Name="UserAgent" Value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"></Header>
-        </HTTPHeaders>
-        <RequestId>b22f2a17-2c43-4dee-8ea4-1aa840f3c3db</RequestId>
-        <Arguments>
-            <Argument Name="AWSAccessKeyId" Value="AKIAIOEDHLKWPAC2DC5A"></Argument>
-            <Argument Name="AssociateTag" Value="onlinefreestore-20"></Argument>
-            <Argument Name="IdType" Value="ASIN"></Argument>
-            <Argument Name="ItemId" Value="B0070UXDHU"></Argument>
-            <Argument Name="Operation" Value="ItemLookup"></Argument>
-            <Argument Name="ResponseGroup" Value="Large"></Argument>
-            <Argument Name="Service" Value="AWSECommerceService"></Argument>
-            <Argument Name="Timestamp" Value="2018-12-25T22:42:00.000Z"></Argument>
-            <Argument Name="Signature" Value="fgRCELpvflQtSYr4epGTNCJYUZvEs6ujiXs5sO5KWvA="></Argument>
-        </Arguments>
-        <RequestProcessingTime>0.1027732780000000</RequestProcessingTime>
-    </OperationRequest>
-    <Items>
-        <Request>
-            <IsValid>True</IsValid>
-            <ItemLookupRequest>
-                <IdType>ASIN</IdType>
-                <ItemId>B0070UXDHU</ItemId>
-                <ResponseGroup>Large</ResponseGroup>
-                <VariationPage>All</VariationPage>
-            </ItemLookupRequest>
-        </Request>
         <Item>
             <ASIN>B0070UXDHU</ASIN>
             <ParentASIN>B01GGCROF4</ParentASIN>
@@ -399,5 +369,3 @@
                 </BrowseNode>
             </BrowseNodes>
         </Item>
-    </Items>
-</ItemLookupResponse>
