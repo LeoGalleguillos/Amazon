@@ -11,11 +11,13 @@ class DownloadToMySqlTest extends TestCase
     protected function setUp()
     {
         $this->browseNodeTableMock = $this->createMock(AmazonTable\BrowseNode::class);
+        $this->browseNodeProductTableMock = $this->createMock(AmazonTable\BrowseNodeProduct::class);
         $this->productTableMock = $this->createMock(AmazonTable\Product::class);
         $this->productFeatureTableMock = $this->createMock(AmazonTable\ProductFeature::class);
         $this->productImageTableMock = $this->createMock(AmazonTable\ProductImage::class);
         $this->downloadToMySqlService = new AmazonService\Api\Product\Xml\DownloadToMySql(
             $this->browseNodeTableMock,
+            $this->browseNodeProductTableMock,
             $this->productTableMock,
             $this->productFeatureTableMock,
             $this->productImageTableMock

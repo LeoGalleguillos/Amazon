@@ -9,28 +9,21 @@ class DownloadToMySql
 {
     public function __construct(
         AmazonTable\BrowseNode $browseNodeTable,
+        AmazonTable\BrowseNodeProduct $browseNodeProductTable,
         AmazonTable\Product $productTable,
         AmazonTable\ProductFeature $productFeatureTable,
         AmazonTable\ProductImage $productImageTable
     ) {
-        $this->browseNodeTable     = $browseNodeTable;
-        $this->productTable        = $productTable;
-        $this->productFeatureTable = $productFeatureTable;
-        $this->productImageTable   = $productImageTable;
+        $this->browseNodeTable        = $browseNodeTable;
+        $this->browseNodeProductTable = $browseNodeProductTable;
+        $this->productTable           = $productTable;
+        $this->productFeatureTable    = $productFeatureTable;
+        $this->productImageTable      = $productImageTable;
     }
 
     public function downloadToMySql(
         SimpleXMLElement $xml
     ) {
-        foreach ($xml->{'BrowseNodes'}->{'BrowseNode'} as $browseNode) {
-            $browseNodeId = (int) $browseNode->{'BrowseNodeId'};
-            $name         = (string) $browseNode->{'Name'};
-            $this->browseNodeTable->insertIgnore(
-                $browseNodeId,
-                $name
-            );
-        }
-
         $asin    = (string) $xml->{'ASIN'};
         $binding = $xml->{'ItemAttributes'}->{'Binding'} ?? null;
         $brand   = $xml->{'ItemAttributes'}->{'Brand'} ?? null;
@@ -46,6 +39,19 @@ class DownloadToMySql
             (string) $brand,
             (float) $listPrice
         );
+
+        foreach ($xml->{'BrowseNodes'}->{'BrowseNode'} as $browseNode) {
+            $browseNodeId = (int) $browseNode->{'BrowseNodeId'};
+            $name         = (string) $browseNode->{'Name'};
+            $this->browseNodeTable->insertIgnore(
+                $browseNodeId,
+                $name
+            );
+            $this->browseNodeProductTable->insertIgnore(
+                $browseNodeId,
+                $productId
+            );
+        }
 
         if (!empty($xml->{'ItemAttributes'}->{'Feature'})) {
             foreach ($xml->{'ItemAttributes'}->{'Feature'} as $feature) {

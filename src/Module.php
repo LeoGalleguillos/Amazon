@@ -120,6 +120,7 @@ class Module
                 AmazonService\Api\Product\Xml\DownloadToMySql::class => function ($sm) {
                     return new AmazonService\Api\Product\Xml\DownloadToMySql(
                         $sm->get(AmazonTable\BrowseNode::class),
+                        $sm->get(AmazonTable\BrowseNodeProduct::class),
                         $sm->get(AmazonTable\Product::class),
                         $sm->get(AmazonTable\ProductFeature::class),
                         $sm->get(AmazonTable\ProductImage::class)
