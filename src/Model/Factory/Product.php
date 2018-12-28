@@ -13,27 +13,23 @@ use LeoGalleguillos\Image\Model\Factory as ImageFactory;
 class Product
 {
     public function __construct(
-        AmazonFactory\Binding $amazonBindingFactory,
-        AmazonFactory\Brand $amazonBrandFactory,
-        AmazonFactory\Product\EditorialReview $amazonProductEditorialReviewFactory,
-        AmazonFactory\ProductGroup $amazonProductGroupFactory,
+        AmazonFactory\Binding $bindingFactory,
+        AmazonFactory\Brand $brandFactory,
+        AmazonFactory\ProductGroup $productGroupFactory,
         ImageFactory\Image $imageFactory,
-        AmazonTable\Product $amazonProductTable,
-        AmazonTable\Product\EditorialReview $amazonProductEditorialReviewTable,
-        AmazonTable\ProductFeature $amazonProductFeatureTable,
-        AmazonTable\ProductImage $amazonProductImageTable,
+        AmazonTable\Product $productTable,
+        AmazonTable\ProductFeature $productFeatureTable,
+        AmazonTable\ProductImage $productImageTable,
         AmazonTable\ProductHiResImage $productHiResImageTable
     ) {
-        $this->amazonBindingFactory                = $amazonBindingFactory;
-        $this->amazonBrandFactory                  = $amazonBrandFactory;
-        $this->amazonProductEditorialReviewFactory = $amazonProductEditorialReviewFactory;
-        $this->amazonProductGroupFactory           = $amazonProductGroupFactory;
-        $this->imageFactory                        = $imageFactory;
-        $this->amazonProductTable                  = $amazonProductTable;
-        $this->amazonProductEditorialReviewTable   = $amazonProductEditorialReviewTable;
-        $this->amazonProductFeatureTable           = $amazonProductFeatureTable;
-        $this->amazonProductImageTable             = $amazonProductImageTable;
-        $this->productHiResImageTable              = $productHiResImageTable;
+        $this->bindingFactory         = $bindingFactory;
+        $this->brandFactory           = $brandFactory;
+        $this->productGroupFactory    = $productGroupFactory;
+        $this->imageFactory           = $imageFactory;
+        $this->productTable           = $productTable;
+        $this->productFeatureTable    = $productFeatureTable;
+        $this->productImageTable      = $productImageTable;
+        $this->productHiResImageTable = $productHiResImageTable;
     }
 
     public function buildFromArray(
@@ -47,7 +43,7 @@ class Product
                       ->setTitle($productArray['title']);
 
         $productEntity->setProductGroup(
-            $this->amazonProductGroupFactory->buildFromArray([
+            $this->productGroupFactory->buildFromArray([
                 'name' => $productArray['product_group']
             ])
         );
@@ -58,7 +54,7 @@ class Product
 
         if (!empty($productArray['brand'])) {
             $productEntity->setBrandEntity(
-                $this->amazonBrandFactory->buildFromName($productArray['brand'])
+                $this->brandFactory->buildFromName($productArray['brand'])
             );
         }
 
@@ -86,7 +82,7 @@ class Product
         $productEntity = $this->buildFromArray($productArray);
 
         $productEntity->setProductGroup(
-            $this->amazonProductGroupFactory->buildFromName(
+            $this->productGroupFactory->buildFromName(
                 $productArray['product_group']
             )
         );
@@ -119,9 +115,9 @@ class Product
 
     public function buildFromAsin(string $asin): AmazonEntity\Product
     {
-        $productArray            = $this->amazonProductTable->selectWhereAsin($asin);
-        $productFeatureArrays    = $this->amazonProductFeatureTable->selectWhereAsin($asin);
-        $productImageArrays      = $this->amazonProductImageTable->selectWhereAsin($asin);
+        $productArray            = $this->productTable->selectWhereAsin($asin);
+        $productFeatureArrays    = $this->productFeatureTable->selectWhereAsin($asin);
+        $productImageArrays      = $this->productImageTable->selectWhereAsin($asin);
         $productHiResImageArrays = $this->productHiResImageTable->selectWhereProductId($productArray['product_id']);
 
         return $this->buildFromArraysAndGenerators(
@@ -134,9 +130,9 @@ class Product
 
     public function buildFromProductId(int $productId)
     {
-        $productArray            = $this->amazonProductTable->selectWhereProductId($productId);
-        $productFeatureArrays    = $this->amazonProductFeatureTable->selectWhereAsin($productArray['asin']);
-        $productImageArrays      = $this->amazonProductImageTable->selectWhereAsin($productArray['asin']);
+        $productArray            = $this->productTable->selectWhereProductId($productId);
+        $productFeatureArrays    = $this->productFeatureTable->selectWhereAsin($productArray['asin']);
+        $productImageArrays      = $this->productImageTable->selectWhereAsin($productArray['asin']);
         $productHiResImageArrays = $this->productHiResImageTable->selectWhereProductId($productId);
 
         return $this->buildFromArraysAndGenerators(

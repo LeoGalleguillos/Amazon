@@ -80,11 +80,9 @@ class Module
                     return new AmazonFactory\Product(
                         $serviceManager->get(AmazonFactory\Binding::class),
                         $serviceManager->get(AmazonFactory\Brand::class),
-                        $serviceManager->get(AmazonFactory\Product\EditorialReview::class),
                         $serviceManager->get(AmazonFactory\ProductGroup::class),
                         $serviceManager->get(ImageFactory\Image::class),
                         $serviceManager->get(AmazonTable\Product::class),
-                        $serviceManager->get(AmazonTable\Product\EditorialReview::class),
                         $serviceManager->get(AmazonTable\ProductFeature::class),
                         $serviceManager->get(AmazonTable\ProductImage::class),
                         $serviceManager->get(AmazonTable\ProductHiResImage::class)
