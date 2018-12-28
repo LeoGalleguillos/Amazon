@@ -78,73 +78,30 @@ class Product
 
     protected function buildFromArrays(
         array $productArray,
+        array $productGroupArray,
         Generator $productFeatureArrays,
         Generator $productHiResImageArrays,
         Generator $productImageArrays
     ) {
-        // In progress, do not use yet.
+        $productEntity = $this->buildFromArray($productArray);
 
-        $productEntity = new AmazonEntity\Product();
-
-        $productEntity->setAsin($productArray['asin'])
-                      ->setProductId($productArray['product_id'])
-                      ->setTitle($productArray['title']);
-
-        if (isset($productArray['hi_res_images_retrieved'])) {
-            $productEntity->setHiResImagesRetrieved(
-                new DateTime($productArray['hi_res_images_retrieved'])
-            );
-
-            $hiResImages = [];
-            $generator = $this->productHiResImageTable->selectWhereProductId(
-                $productEntity->getProductId()
-            );
-            foreach ($generator as $productHiResImageArray) {
-                $imageEntity = new ImageEntity\Image();
-                $imageEntity->setUrl($productHiResImageArray['url']);
-                $hiResImages[] = $imageEntity;
-            }
-
-            $productEntity->setHiResImages($hiResImages);
-        }
-
-        if (isset($productArray['video_generated'])) {
-            $productEntity->setVideoGenerated(
-                new DateTime($productArray['video_generated'])
-            );
-        }
-
-        $productGroupEntity = $this->amazonProductGroupFactory->buildFromName(
-            $productArray['product_group']
-        );
         $productEntity->setProductGroup(
-            $productGroupEntity
+            $this->amazonProductGroupFactory->buildFromArray(
+                $productGroupArray
+            )
         );
-        try {
-            $productEntity->binding      = $this->amazonBindingFactory->buildFromName(
-                $productArray['binding']
-            );
-        } catch (Exception $exception) {
-            // Do nothing.
-        }
-        try {
-            $productEntity->setBrandEntity(
-                $this->amazonBrandFactory->buildFromName(
-                    $productArray['brand']
-                )
-            );
-        } catch (Exception $exception) {
-            // Do nothing.
-        }
-        $productEntity->listPrice    = $productArray['list_price'];
 
-        $amazonProductFeatureArrays = $this->amazonProductFeatureTable->getArraysFromAsin($asin);
-        foreach ($amazonProductFeatureArrays as $array) {
+        foreach ($productFeatureArrays as $array) {
             $productEntity->features[] = $array['feature'];
         }
 
-        $amazonProductImageArrays = $this->amazonProductImageTable->getArraysFromAsin($asin);
-        foreach ($amazonProductImageArrays as $array) {
+        foreach ($productHiResImageArrays as $productHiResImageArray) {
+            $imageEntity = new ImageEntity\Image();
+            $imageEntity->setUrl($productHiResImageArray['url']);
+            $hiResImages[] = $imageEntity;
+        }
+
+        foreach ($productImageArrays as $array) {
             $array['url'] = str_replace('http://ecx.', 'https://images-na.ssl-', $array['url']);
             if ($array['category'] == 'primary') {
                 $productEntity->primaryImage = $this->imageFactory->buildFromArray(
@@ -246,12 +203,6 @@ class Product
         return $productEntity;
     }
 
-    /**
-     * Build from product ID.
-     *
-     * @param int $productId
-     * @return AmazonEntity\Product
-     */
     public function buildFromProductId(int $productId)
     {
         $productEntity = new AmazonEntity\Product();
