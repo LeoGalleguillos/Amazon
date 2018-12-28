@@ -117,14 +117,14 @@ class Product
     {
         $productArray            = $this->productTable->selectWhereAsin($asin);
         $productFeatureArrays    = $this->productFeatureTable->selectWhereAsin($asin);
-        $productImageArrays      = $this->productImageTable->selectWhereAsin($asin);
         $productHiResImageArrays = $this->productHiResImageTable->selectWhereProductId($productArray['product_id']);
+        $productImageArrays      = $this->productImageTable->selectWhereAsin($asin);
 
         return $this->buildFromArraysAndGenerators(
             $productArray,
             $productFeatureArrays,
-            $productImageArrays,
-            $productHiResImageArrays
+            $productHiResImageArrays,
+            $productImageArrays
         );
     }
 
@@ -132,14 +132,14 @@ class Product
     {
         $productArray            = $this->productTable->selectWhereProductId($productId);
         $productFeatureArrays    = $this->productFeatureTable->selectWhereAsin($productArray['asin']);
-        $productImageArrays      = $this->productImageTable->selectWhereAsin($productArray['asin']);
         $productHiResImageArrays = $this->productHiResImageTable->selectWhereProductId($productId);
+        $productImageArrays      = $this->productImageTable->selectWhereAsin($productArray['asin']);
 
         return $this->buildFromArraysAndGenerators(
             $productArray,
             $productFeatureArrays,
-            $productImageArrays,
-            $productHiResImageArrays
+            $productHiResImageArrays,
+            $productImageArrays
         );
     }
 }
