@@ -142,7 +142,19 @@ class ProductVideo
     {
         $sql = $this->getSelect()
              . '
+                 , `product`.`product_id`
+                 , `product`.`asin`
+                 , `product`.`title`
+                 , `product`.`product_group`
+                 , `product`.`binding`
+                 , `product`.`brand`
+                 , `product`.`list_price`
+
               FROM `product_video`
+
+              JOIN `product`
+             USING (`product_id`)
+
              WHERE `product_video_id` = ?
                  ;
         ';
