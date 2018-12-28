@@ -132,11 +132,6 @@ class Product
         return $this->productGroup;
     }
 
-    public function getProductGroupEntity() : AmazonEntity\ProductGroup
-    {
-        return $this->productGroupEntity;
-    }
-
     public function getProductId(): int
     {
         return $this->productId;
@@ -223,13 +218,6 @@ class Product
         AmazonEntity\ProductGroup $productGroup
     ): AmazonEntity\Product {
         $this->productGroup = $productGroup;
-        return $this;
-    }
-
-    public function setProductGroupEntity(
-        AmazonEntity\ProductGroup $productGroupEntity
-    ) : AmazonEntity\Product {
-        $this->productGroupEntity = $productGroupEntity;
         return $this;
     }
 

@@ -25,7 +25,7 @@ class Insert
                 $hashtag
             );
             try {
-                $productGroupId = $productEntity->getProductGroupEntity()
+                $productGroupId = $productEntity->getProductGroup()
                                                 ->getProductGroupId();
             } catch (TypeError $error) {
                 $productGroupId = null;

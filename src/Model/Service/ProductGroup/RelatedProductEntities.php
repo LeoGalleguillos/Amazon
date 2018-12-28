@@ -31,7 +31,7 @@ class RelatedProductEntities
         );
         $productIds = $this->searchProductGroupTable
         ->selectProductIdWhereMatchTitleAgainstAndProductIdDoesNotEqual(
-            $productEntity->getProductGroupEntity()->getSearchTable(),
+            $productEntity->getProductGroup()->getSearchTable(),
             $modifiedTitle,
             $productEntity->getProductId(),
             ($page - 1) * 100,

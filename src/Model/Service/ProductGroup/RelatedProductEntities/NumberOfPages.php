@@ -28,7 +28,7 @@ class NumberOfPages
         );
         $numberOfResults = $this->searchProductGroupTable
         ->selectCountWhereMatchTitleAgainstAndProductIdDoesNotEqual(
-            $productEntity->getProductGroupEntity()->getSearchTable(),
+            $productEntity->getProductGroup()->getSearchTable(),
             $modifiedTitle,
             $productEntity->getProductId()
         );

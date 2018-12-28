@@ -33,7 +33,10 @@ class ProductEntityTest extends TestCase
 
         $productGroupEntity = new AmazonEntity\ProductGroup();
         $productGroupEntity->setName('Example Product Group');
-        $productEntity->setProductGroupEntity($productGroupEntity);
+
+        $productEntity->setProductGroup(
+            $productGroupEntity
+        );
 
         $this->assertSame(
             ['example', 'product'],

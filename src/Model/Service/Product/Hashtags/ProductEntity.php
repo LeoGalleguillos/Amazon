@@ -15,7 +15,7 @@ class ProductEntity
             $words .= ' ' . $feature;
         }
         try {
-            $words .= ' ' . $productEntity->getProductGroupEntity();
+            $words .= ' ' . $productEntity->getProductGroup();
         } catch (Error $error) {
             // Do nothing.
         }
