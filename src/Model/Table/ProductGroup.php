@@ -4,6 +4,7 @@ namespace LeoGalleguillos\Amazon\Model\Table;
 use Exception;
 use Generator;
 use LeoGalleguillos\Memcached\Model\Service\Memcached as MemcachedService;
+use TypeError;
 use Zend\Db\Adapter\Adapter;
 
 class ProductGroup
@@ -156,7 +157,10 @@ class ProductGroup
         return $row;
     }
 
-    public function selectWhereName(string $name)
+    /**
+     * @throws TypeError
+     */
+    public function selectWhereName(string $name): array
     {
         $sql = '
             SELECT `product_group`.`product_group_id`
@@ -167,11 +171,7 @@ class ProductGroup
              WHERE `product_group`.`name` = ?
                  ;
         ';
-        $row = $this->adapter->query($sql, [$name])->current();
-        if (empty($row)) {
-            throw new Exception('Product group ID not found.');
-        }
-        return $row;
+        return $this->adapter->query($sql)->execute([$name])->current();
     }
 
     /**
