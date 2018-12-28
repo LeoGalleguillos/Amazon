@@ -53,7 +53,7 @@ class ProductVideo
         int $productVideoId
     ): AmazonEntity\ProductVideo {
         return $this->buildFromArray(
-            $this->productVideoTable->selectWhereProductId($productVideoId)
+            $this->productVideoTable->selectWhereProductVideoId($productVideoId)
         );
     }
 }

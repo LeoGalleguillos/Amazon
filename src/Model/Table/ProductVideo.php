@@ -118,6 +118,9 @@ class ProductVideo
         }
     }
 
+    /**
+     * @throws TypeError
+     */
     public function selectWhereProductId(int $productId): array
     {
         $sql = $this->getSelect()
@@ -128,6 +131,23 @@ class ProductVideo
         ';
         $parameters = [
             $productId,
+        ];
+        return $this->adapter->query($sql)->execute($parameters)->current();
+    }
+
+    /**
+     * @throws TypeError
+     */
+    public function selectWhereProductVideoId(int $productVideoId): array
+    {
+        $sql = $this->getSelect()
+             . '
+              FROM `product_video`
+             WHERE `product_video_id` = ?
+                 ;
+        ';
+        $parameters = [
+            $productVideoId,
         ];
         return $this->adapter->query($sql)->execute($parameters)->current();
     }
