@@ -261,9 +261,9 @@ class Product
     }
 
     /**
-     * @return ArrayObject
+     * @throws TypeError
      */
-    public function selectWhereProductId(int $productId)
+    public function selectWhereProductId(int $productId): array
     {
         $sql = $this->getSelect()
              . '
@@ -271,6 +271,6 @@ class Product
              WHERE `product`.`product_id` = ?
                  ;
         ';
-        return $this->adapter->query($sql, [$productId])->current();
+        return $this->adapter->query($sql)->execute([$productId])->current();
     }
 }

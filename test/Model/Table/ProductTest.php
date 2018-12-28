@@ -96,8 +96,8 @@ class ProductTest extends TableTestCase
 
         $this->productTable->insertOnDuplicateKeyUpdate($productEntity);
 
-        $this->assertInstanceOf(
-            ArrayObject::class,
+        $this->assertInternalType(
+            'array',
             $this->productTable->selectWhereProductId(1)
         );
     }
