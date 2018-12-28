@@ -45,7 +45,11 @@ class Product
                       ->setProductId($productArray['product_id'])
                       ->setTitle($productArray['title']);
 
-        $productEntity->productGroup = $productArray['product_group'];
+        $productEntity->setProductGroup(
+            $this->amazonProductGroupFactory->buildFromArray([
+                'name' => $productArray['product_group']
+            ])
+        );
 
         if (isset($productArray['binding'])) {
             $productEntity->binding = $productArray['binding'];
