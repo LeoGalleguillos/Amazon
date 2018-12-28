@@ -32,28 +32,11 @@ class ProductGroup
         return $productGroupEntity;
     }
 
-    /**
-     * Build from name.
-     *
-     * @param string $name
-     * @return AmazonEntity\ProductGroup
-     */
-    public function buildFromName(string $name)
+    public function buildFromName(string $name): AmazonEntity\ProductGroup
     {
-        $arrayObject = $this->productGroupTable->selectWhereName(
-            $name
+        return $this->buildFromArray(
+            $this->productGroupTable->selectWhereName($name)
         );
-
-        $productGroupEntity = new AmazonEntity\ProductGroup();
-        $productGroupEntity->setProductGroupId($arrayObject['product_group_id'])
-                           ->setName($arrayObject['name'])
-                           ->setSlug($arrayObject['slug']);
-
-        if (!empty($arrayObject['search_table'])) {
-            $productGroupEntity->setSearchTable($arrayObject['search_table']);
-        }
-
-        return $productGroupEntity;
     }
 
     /**
