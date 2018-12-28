@@ -364,7 +364,6 @@ class Module
                 },
                 AmazonTable\ProductFeature::class => function ($serviceManager) {
                     return new AmazonTable\ProductFeature(
-                        $serviceManager->get(MemcachedService\Memcached::class),
                         $serviceManager->get('amazon')
                     );
                 },

@@ -3,7 +3,6 @@ namespace LeoGalleguillos\Amazon\Model\Table;
 
 use Generator;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
-use LeoGalleguillos\Memcached\Model\Service\Memcached as MemcachedService;
 use Zend\Db\Adapter\Adapter;
 
 class ProductFeature
@@ -11,19 +10,11 @@ class ProductFeature
     /**
      * @var Adapter
      */
-    private $adapter;
+    protected $adapter;
 
-    /**
-     * Construct.
-     *
-     * @param MemcachedService $memcached,
-     * @param Adapter $adapter
-     */
     public function __construct(
-        MemcachedService $memcached,
         Adapter $adapter
     ) {
-        $this->memcached = $memcached;
         $this->adapter   = $adapter;
     }
 
