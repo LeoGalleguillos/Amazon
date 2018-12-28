@@ -48,4 +48,12 @@ class ProductVideo
 
         return $productVideoEntity;
     }
+
+    public function buildFromProductVideoId(
+        int $productVideoId
+    ): AmazonEntity\ProductVideo {
+        return $this->buildFromArray(
+            $this->productVideoTable->selectWhereProductId($productVideoId)
+        );
+    }
 }
