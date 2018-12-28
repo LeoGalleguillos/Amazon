@@ -24,7 +24,7 @@ class ProductVideo
                            ->setTitle($array['title']);
 
         $productVideoEntity->setProduct(
-            $this->productFactory->buildFromArray($array)
+            $this->productFactory->buildFromProductId($array['product_id'])
         );
 
         return $productVideoEntity;
