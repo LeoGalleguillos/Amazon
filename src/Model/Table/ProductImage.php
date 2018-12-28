@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table;
 
+use Generator;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Memcached\Model\Service\Memcached as MemcachedService;
 use Zend\Db\Adapter\Adapter;
@@ -21,13 +22,8 @@ class ProductImage
         $this->adapter   = $adapter;
     }
 
-    public function getArraysFromAsin($asin)
+    public function selectWhereAsin($asin): Generator
     {
-        $cacheKey = md5(__METHOD__ . $asin);
-        if (null !== ($rows = $this->memcached->get($cacheKey))) {
-            return $rows;
-        }
-
         $sql = '
             SELECT `product_image`.`asin`
                  , `product_image`.`category`
@@ -38,15 +34,9 @@ class ProductImage
              WHERE `asin` = ?
                  ;
         ';
-        $results = $this->adapter->query($sql, [$asin]);
-
-        $rows = [];
-        foreach ($results as $row) {
-            $rows[] = (array) $row;
+        foreach ($this->adapter->query($sql)->execute([$asin]) as $array) {
+            yield $array;
         }
-
-        $this->memcached->setForDays($cacheKey, $rows, 3);
-        return $rows;
     }
 
     /**
