@@ -31,7 +31,7 @@ class ProductGroup
         $this->slug = $slug;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->name;
     }
