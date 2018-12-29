@@ -1,6 +1,8 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table\Product;
 
+use Exception;
+use Generator;
 use Zend\Db\Adapter\Adapter;
 
 class ProductId
@@ -8,12 +10,29 @@ class ProductId
     /**
      * @var Adapter
      */
-    private $adapter;
+    protected $adapter;
 
     public function __construct(
         Adapter $adapter
     ) {
         $this->adapter = $adapter;
+    }
+
+    public function selectAsinWhereProductIdIn(array $productIds): Generator
+    {
+        $questionMarks = array_fill(0, count($productIds), '?');
+        $questionMarks = implode(', ', $questionMarks);
+
+        $sql = "
+            SELECT `asin`
+              FROM `product`
+             WHERE `product_id` IN ($questionMarks)
+        ";
+        $parameters = $productIds;
+
+        foreach ($this->adapter->query($sql)->execute($parameters) as $array) {
+            yield $array;
+        }
     }
 
     public function selectMaxWhereProductGroup(string $productGroup) : int

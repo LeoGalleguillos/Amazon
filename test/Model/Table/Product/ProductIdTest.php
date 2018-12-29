@@ -2,41 +2,22 @@
 namespace LeoGalleguillos\AmazonTest\Model\Table\Product;
 
 use Exception;
+use Generator;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
-use LeoGalleguillos\AmazonTest as AmazonTest;
-use Zend\Db\Adapter\Adapter;
-use PHPUnit\Framework\TestCase;
+use LeoGalleguillos\Test\TableTestCase as TableTestCase;
 
-class ProductIdTest extends AmazonTest\TableCase
+class ProductIdTest extends TableTestCase
 {
     protected function setUp()
     {
-        parent::setup();
-
         $this->productIdTable = new AmazonTable\Product\ProductId(
-            $this->adapter
+            $this->getAdapter()
         );
 
         $this->setForeignKeyChecks0();
-        $this->dropTable();
-        $this->createTable();
+        $this->dropTable('product');
+        $this->createTable('product');
         $this->setForeignKeyChecks1();
-    }
-
-    protected function dropTable()
-    {
-        $sql    = file_get_contents(
-            $this->sqlDirectory . 'leogalle_test/product/drop.sql'
-        );
-        $result = $this->adapter->query($sql)->execute();
-    }
-
-    protected function createTable()
-    {
-        $sql    = file_get_contents(
-            $this->sqlDirectory . 'leogalle_test/product/create.sql'
-        );
-        $result = $this->adapter->query($sql)->execute();
     }
 
     public function testInitialize()
@@ -45,5 +26,15 @@ class ProductIdTest extends AmazonTest\TableCase
             AmazonTable\Product\ProductId::class,
             $this->productIdTable
         );
+    }
+
+    public function testSelectAsinWhereProductIdIn()
+    {
+        $generator = $this->productIdTable->selectAsinWhereProductIdIn([1, 2, 3]);
+        $this->assertSame(
+            [],
+            iterator_to_array($generator)
+        );
+
     }
 }
