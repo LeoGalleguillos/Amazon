@@ -365,6 +365,11 @@ class Module
                         $serviceManager->get('amazon')
                     );
                 },
+                AmazonTable\Product\Asin::class => function ($serviceManager) {
+                    return new AmazonTable\Product\Asin(
+                        $serviceManager->get('amazon')
+                    );
+                },
                 AmazonTable\Product\EditorialReview::class => function ($serviceManager) {
                     return new AmazonTable\Product\EditorialReview(
                         $serviceManager->get('amazon')
