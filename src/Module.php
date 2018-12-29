@@ -107,6 +107,14 @@ class Module
                         $serviceManager->get(AmazonTable\Api::class)
                     );
                 },
+                AmazonService\Api\ItemLookup\BrowseNodes\Xml::class => function ($sm) {
+                    $amazonConfig = $sm->get('Config')['amazon'];
+                    return new AmazonService\Api\ItemLookup\BrowseNodes\Xml(
+                        $amazonConfig['access_key_id'],
+                        $amazonConfig['associate_tag'],
+                        $amazonConfig['secret_access_key']
+                    );
+                },
                 AmazonService\Api\Product\Xml::class => function ($serviceManager) {
                     $config = $serviceManager->get('Config');
                     return new AmazonService\Api\Product\Xml(
