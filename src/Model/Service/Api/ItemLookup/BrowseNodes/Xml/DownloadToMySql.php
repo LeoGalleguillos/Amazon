@@ -24,6 +24,10 @@ class DownloadToMySql
 
         $productId = $this->asinTable->selectProductIdWhereAsin($asin);
 
+        if (empty($itemXml->{'BrowseNodes'})) {
+            return;
+        }
+
         foreach ($itemXml->{'BrowseNodes'}->{'BrowseNode'} as $browseNode) {
             $browseNodeId = (int) $browseNode->{'BrowseNodeId'};
             $name         = (string) $browseNode->{'Name'};
