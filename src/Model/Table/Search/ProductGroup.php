@@ -93,6 +93,12 @@ class ProductGroup
         if (preg_match('/\W/', $table)) {
             throw new Exception('Invalid table name.');
         }
+
+        $cacheKey = md5(__METHOD__ . $table . $query . $productId . $offset . $rowCount);
+        if (null !== ($productIds = $this->memcachedService->get($cacheKey))) {
+            return $productIds;
+        }
+
         $sql = "
             SELECT `product_id`
               FROM $table
@@ -107,6 +113,8 @@ class ProductGroup
         foreach ($rows as $row) {
             $productIds[] = $row['product_id'];
         }
+
+        $this->memcachedService->setForDays($cacheKey, $productIds, 5);
         return $productIds;
     }
 
