@@ -319,6 +319,11 @@ class Module
                         $sm->get(AmazonTable\ProductVideo::class)
                     );
                 },
+                AmazonService\ProductVideo\ProductVideos\NumberOfPages::class => function ($sm) {
+                    return new AmazonService\ProductVideo\ProductVideos\NumberOfPages(
+                        $sm->get(AmazonTable\ProductVideo::class)
+                    );
+                },
                 AmazonService\ProductVideo\ProductVideos\Similar::class => function ($sm) {
                     return new AmazonService\ProductVideo\ProductVideos\Similar(
                         $sm->get(AmazonFactory\ProductVideo::class),
