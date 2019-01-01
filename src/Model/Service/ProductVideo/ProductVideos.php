@@ -15,9 +15,16 @@ class ProductVideos
         $this->productVideoTable   = $productVideoTable;
     }
 
-    public function getProductVideos(): Generator
+    public function getProductVideos(int $page): Generator
     {
-        foreach ($this->productVideoTable->select() as $array) {
+        $limitOffset   = ($page - 1) * 100;
+        $limitRowCount = 100;
+
+        $generator = $this->productVideoTable->select(
+            $limitOffset,
+            $limitRowCount
+        );
+        foreach ($generator as $array) {
             yield $this->productVideoFactory->buildFromArray($array);
         }
     }
