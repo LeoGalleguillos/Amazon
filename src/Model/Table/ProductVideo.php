@@ -121,6 +121,16 @@ class ProductVideo
         }
     }
 
+    public function selectCount(): int
+    {
+        $sql = '
+            SELECT COUNT(*) AS `count`
+              FROM `product_video`
+                 ;
+        ';
+        return (int) $this->adapter->query($sql)->execute()->current()['count'];
+    }
+
     /**
      * @throws TypeError
      */
