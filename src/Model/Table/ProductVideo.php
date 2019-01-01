@@ -55,10 +55,12 @@ class ProductVideo
                           ->getGeneratedValue();
     }
 
-    public function select(): Generator
-    {
+    public function select(
+        int $limitOffset,
+        int $limitRowCount
+    ): Generator {
         $sql = $this->getSelect()
-             . '
+             . "
                  , `product`.`product_id`
                  , `product`.`asin`
                  , `product`.`title`
@@ -71,8 +73,9 @@ class ProductVideo
              USING (`product_id`)
              ORDER
                 BY `product_video`.`created` ASC
+             LIMIT $limitOffset, $limitRowCount
                  ;
-        ';
+        ";
         foreach ($this->adapter->query($sql)->execute() as $array) {
             yield $array;
         }
