@@ -39,4 +39,15 @@ class BrowseNodeProductTest extends TableTestCase
             $this->browseNodeProductTable->insertIgnore(2, 1)
         );
     }
+
+    public function testSelectProductIdWhereVideoGeneratedIsNullAndBrowseNodeId()
+    {
+        $productId = $this->browseNodeProductTable->selectProductIdWhereVideoGeneratedIsNullAndBrowseNodeId(
+            12345
+        );
+        $this->assertSame(
+            0,
+            $productId
+        );
+    }
 }
