@@ -29,7 +29,6 @@ class BrowseNodeProduct
             VALUES (?, ?)
                  ;
         ';
-
         $parameters = [
             $browseNodeId,
             $productId,
@@ -38,5 +37,27 @@ class BrowseNodeProduct
                           ->query($sql)
                           ->execute($parameters)
                           ->getAffectedRows();
+    }
+
+    public function selectProductIdWhereVideoGeneratedIsNullAndBrowseNodeId(
+        int $browseNodeId
+    ): int {
+        $sql = '
+            SELECT `product`.`product_id`
+
+              FROM `product`
+
+              JOIN `browse_node_product`
+             USING (`product_id`)
+
+             WHERE `video_generated` IS NULL
+               AND `browse_node_id` = ?
+                 ;
+        ';
+        $parameters = [
+            $browseNodeId,
+        ];
+        $array = $this->adapter->query($sql)->execute($parameters)->current();
+        return (int) $array['product_id'];
     }
 }
