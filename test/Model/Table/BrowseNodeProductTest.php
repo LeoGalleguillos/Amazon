@@ -40,6 +40,17 @@ class BrowseNodeProductTest extends TableTestCase
         );
     }
 
+    public function testSelectProductIdWhereSimilarRetrievedIsNullAndBrowseNodeId()
+    {
+        $productId = $this->browseNodeProductTable->selectProductIdWhereSimilarRetrievedIsNullAndBrowseNodeId(
+            12345
+        );
+        $this->assertSame(
+            0,
+            $productId
+        );
+    }
+
     public function testSelectProductIdWhereVideoGeneratedIsNullAndBrowseNodeId()
     {
         $productId = $this->browseNodeProductTable->selectProductIdWhereVideoGeneratedIsNullAndBrowseNodeId(
