@@ -40,9 +40,9 @@ class BrowseNodeProductTest extends TableTestCase
         );
     }
 
-    public function testSelectProductIdWhereSimilarRetrievedIsNullAndBrowseNodeId()
+    public function testSelectProductIdWhereSimilarRetrievedIsNullAndBrowseNodeIdLimit1()
     {
-        $productId = $this->browseNodeProductTable->selectProductIdWhereSimilarRetrievedIsNullAndBrowseNodeId(
+        $productId = $this->browseNodeProductTable->selectProductIdWhereSimilarRetrievedIsNullAndBrowseNodeIdLimit1(
             12345
         );
         $this->assertSame(
@@ -51,9 +51,9 @@ class BrowseNodeProductTest extends TableTestCase
         );
     }
 
-    public function testSelectProductIdWhereVideoGeneratedIsNullAndBrowseNodeId()
+    public function testSelectProductIdWhereVideoGeneratedIsNullAndBrowseNodeIdLimit1()
     {
-        $productId = $this->browseNodeProductTable->selectProductIdWhereVideoGeneratedIsNullAndBrowseNodeId(
+        $productId = $this->browseNodeProductTable->selectProductIdWhereVideoGeneratedIsNullAndBrowseNodeIdLimit1(
             12345
         );
         $this->assertSame(

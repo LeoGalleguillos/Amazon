@@ -39,7 +39,7 @@ class BrowseNodeProduct
                           ->getAffectedRows();
     }
 
-    public function selectProductIdWhereSimilarRetrievedIsNullAndBrowseNodeId(
+    public function selectProductIdWhereSimilarRetrievedIsNullAndBrowseNodeIdLimit1(
         int $browseNodeId
     ): int {
         $sql = '
@@ -52,6 +52,8 @@ class BrowseNodeProduct
 
              WHERE `similar_retrieved` IS NULL
                AND `browse_node_id` = ?
+
+             LIMIT 1
                  ;
         ';
         $parameters = [
@@ -61,7 +63,7 @@ class BrowseNodeProduct
         return (int) $array['product_id'];
     }
 
-    public function selectProductIdWhereVideoGeneratedIsNullAndBrowseNodeId(
+    public function selectProductIdWhereVideoGeneratedIsNullAndBrowseNodeIdLimit1(
         int $browseNodeId
     ): int {
         $sql = '
@@ -74,6 +76,8 @@ class BrowseNodeProduct
 
              WHERE `video_generated` IS NULL
                AND `browse_node_id` = ?
+
+             LIMIT 1
                  ;
         ';
         $parameters = [
