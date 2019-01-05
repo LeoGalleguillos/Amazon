@@ -1,13 +1,9 @@
 <?php
 namespace LeoGalleguillos\AmazonTest\Model\Table;
 
-use ArrayObject;
-use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
 use LeoGalleguillos\Test\TableTestCase;
-use Zend\Db\Adapter\Adapter;
-use PHPUnit\Framework\TestCase;
 
 class ProductTest extends TableTestCase
 {
@@ -27,6 +23,10 @@ class ProductTest extends TableTestCase
 
     public function testInitialize()
     {
-        $this->assertInstanceOf(AmazonTable\Product::class, $this->productTable);
+        $this->assertInstanceOf(
+            AmazonTable\Product::class,
+            $this->productTable
+        );
+
     }
 }
