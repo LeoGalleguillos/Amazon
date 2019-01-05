@@ -101,52 +101,6 @@ class Product
                           ->getGeneratedValue();
     }
 
-    public function insertOnDuplicateKeyUpdate(AmazonEntity\Product $product)
-    {
-        $sql = '
-            INSERT
-              INTO `product` (`asin`, `title`, `product_group`, `binding`, `brand`, `list_price`)
-            VALUES (?, ?, ?, ?, ?, ?)
-                ON
-         DUPLICATE
-               KEY
-            UPDATE `asin`  = VALUES(`asin`)
-                 , `title` = VALUES(`title`)
-                 , `product_group` = VALUES(`product_group`)
-                 , `binding` = VALUES(`binding`)
-                 , `brand` = VALUES(`brand`)
-                 , `list_price` = VALUES(`list_price`)
-                 ;
-        ';
-        try {
-            $productGroupName = $product->getProductGroup()->getName();
-        } catch (TypeError $typeError) {
-            $productGroupName = null;
-        }
-        try {
-            $bindingName = $product->getBindingEntity()->getName();
-        } catch (TypeError $typeError) {
-            $bindingName = null;
-        }
-        try {
-            $brandName = $product->getBrandEntity()->getName();
-        } catch (TypeError $typeError) {
-            $brandName = null;
-        }
-
-        $parameters = [
-            $product->asin,
-            $product->getTitle(),
-            $productGroupName,
-            $bindingName,
-            $brandName,
-            $product->listPrice,
-        ];
-        return (int) $this->adapter
-                    ->query($sql, $parameters)
-                    ->getGeneratedValue();
-    }
-
     public function isProductInTable($asin)
     {
         $sql = '
