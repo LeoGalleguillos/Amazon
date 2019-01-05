@@ -76,6 +76,11 @@ class Module
                 AmazonFactory\Brand::class => function ($serviceManager) {
                     return new AmazonFactory\Brand();
                 },
+                AmazonFactory\BrowseNode::class => function ($serviceManager) {
+                    return new AmazonFactory\BrowseNode(
+                        $serviceManager->get(AmazonTable\BrowseNode::class)
+                    );
+                },
                 AmazonFactory\Product::class => function ($serviceManager) {
                     return new AmazonFactory\Product(
                         $serviceManager->get(AmazonFactory\Binding::class),
