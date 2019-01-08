@@ -88,6 +88,31 @@ class BrowseNodeProduct
         return (int) $array['product_id'];
     }
 
+    public function selectProductIdWhereVideoGeneratedIsNullAndBrowseNodeIdInLimit1(
+        array $browseNodeIds
+    ): int {
+        $questionMarks = array_fill(0, count($browseNodeIds), '?');
+        $questionMarks = implode(', ', $questionMarks);
+
+        $sql = "
+            SELECT `product`.`product_id`
+
+              FROM `product`
+
+              JOIN `browse_node_product`
+             USING (`product_id`)
+
+             WHERE `video_generated` IS NULL
+               AND `browse_node_id` IN ($questionMarks)
+
+             LIMIT 1
+                 ;
+        ";
+        $parameters = $browseNodeIds;
+        $array = $this->adapter->query($sql)->execute($parameters)->current();
+        return (int) $array['product_id'];
+    }
+
     public function selectProductIdWhereVideoGeneratedIsNullAndBrowseNodeIdLimit1(
         int $browseNodeId
     ): int {

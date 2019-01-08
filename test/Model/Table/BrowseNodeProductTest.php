@@ -62,6 +62,17 @@ class BrowseNodeProductTest extends TableTestCase
         );
     }
 
+    public function testSelectProductIdWhereVideoGeneratedIsNullAndBrowseNodeIdInLimit1()
+    {
+        $productId = $this->browseNodeProductTable->selectProductIdWhereVideoGeneratedIsNullAndBrowseNodeIdInLimit1(
+            [1, 2, 3, 4, 5]
+        );
+        $this->assertSame(
+            0,
+            $productId
+        );
+    }
+
     public function testSelectProductIdWhereVideoGeneratedIsNullAndBrowseNodeIdLimit1()
     {
         $productId = $this->browseNodeProductTable->selectProductIdWhereVideoGeneratedIsNullAndBrowseNodeIdLimit1(
