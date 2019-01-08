@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table;
 
+use Exception;
 use Zend\Db\Adapter\Adapter;
 
 class BrowseNodeProduct
@@ -66,6 +67,10 @@ class BrowseNodeProduct
     public function selectProductIdWhereSimilarRetrievedIsNullAndBrowseNodeIdInLimit1(
         array $browseNodeIds
     ): int {
+        if (empty($browseNodeIds)) {
+            throw new Exception('Browse node IDs array is empty');
+        }
+
         $questionMarks = array_fill(0, count($browseNodeIds), '?');
         $questionMarks = implode(', ', $questionMarks);
 
@@ -91,6 +96,10 @@ class BrowseNodeProduct
     public function selectProductIdWhereVideoGeneratedIsNullAndBrowseNodeIdInLimit1(
         array $browseNodeIds
     ): int {
+        if (empty($browseNodeIds)) {
+            throw new Exception('Browse node IDs array is empty');
+        }
+
         $questionMarks = array_fill(0, count($browseNodeIds), '?');
         $questionMarks = implode(', ', $questionMarks);
 
