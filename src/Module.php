@@ -164,6 +164,12 @@ class Module
                         $serviceManager->get(AmazonTable\Brand::class)
                     );
                 },
+                AmazonService\BrowseNode\BrowseNodes\ByName::class => function ($serviceManager) {
+                    return new AmazonService\BrowseNode\BrowseNodes\ByName(
+                        $serviceManager->get(AmazonFactory\BrowseNode::class),
+                        $serviceManager->get(AmazonTable\BrowseNode::class)
+                    );
+                },
                 AmazonService\Hashtag\Products\ProductGroup::class => function ($serviceManager) {
                     return new AmazonService\Hashtag\Products\ProductGroup(
                         $serviceManager->get(AmazonFactory\Product::class),
