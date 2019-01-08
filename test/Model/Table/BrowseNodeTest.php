@@ -39,4 +39,32 @@ class BrowseNodeTest extends TableTestCase
             $this->browseNodeTable->insertIgnore(5, 'name')
         );
     }
+
+    public function testSelectWhereName()
+    {
+        $generator = $this->browseNodeTable->selectWhereName('Name');
+        $this->assertSame(
+            [],
+            iterator_to_array($generator)
+        );
+
+        $this->browseNodeTable->insertIgnore(98, 'Foo');
+        $this->browseNodeTable->insertIgnore(35791, 'Bar');
+        $this->browseNodeTable->insertIgnore(2468, 'Foo');
+
+        $generator = $this->browseNodeTable->selectWhereName('Foo');
+        $this->assertSame(
+            [
+                [
+                    'browse_node_id' => '98',
+                    'name' => 'Foo'
+                ],
+                [
+                    'browse_node_id' => '2468',
+                    'name' => 'Foo'
+                ],
+            ],
+            iterator_to_array($generator)
+        );
+    }
 }
