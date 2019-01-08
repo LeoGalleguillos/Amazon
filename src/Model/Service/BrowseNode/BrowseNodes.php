@@ -1,11 +1,11 @@
 <?php
-namespace LeoGalleguillos\Amazon\Model\Service\BrowseNode\BrowseNodes;
+namespace LeoGalleguillos\Amazon\Model\Service\BrowseNode;
 
 use Generator;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 
-class ByName
+class BrowseNodes
 {
     public function __construct(
         AmazonFactory\BrowseNode $browseNodeFactory,
@@ -15,7 +15,7 @@ class ByName
         $this->browseNodeTable   = $browseNodeTable;
     }
 
-    public function getByName(string $name): Generator
+    public function getBrowseNodes(string $name): Generator
     {
         foreach ($this->browseNodeTable->selectWhereName($name) as $array) {
             yield $this->browseNodeFactory->buildFromArray($array);

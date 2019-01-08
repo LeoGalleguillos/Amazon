@@ -164,8 +164,8 @@ class Module
                         $serviceManager->get(AmazonTable\Brand::class)
                     );
                 },
-                AmazonService\BrowseNode\BrowseNodes\ByName::class => function ($serviceManager) {
-                    return new AmazonService\BrowseNode\BrowseNodes\ByName(
+                AmazonService\BrowseNode\BrowseNodes::class => function ($serviceManager) {
+                    return new AmazonService\BrowseNode\BrowseNodes(
                         $serviceManager->get(AmazonFactory\BrowseNode::class),
                         $serviceManager->get(AmazonTable\BrowseNode::class)
                     );
