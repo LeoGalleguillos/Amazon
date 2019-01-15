@@ -152,6 +152,12 @@ class Module
                         $config['amazon']['secret_access_key']
                     );
                 },
+                AmazonService\Api\Xml\BrowseNode\DownloadToMySql::class => function ($sm) {
+                    return new AmazonService\Api\Xml\BrowseNode\DownloadToMySql(
+                        $sm->get(AmazonTable\BrowseNode::class),
+                        $sm->get(AmazonTable\BrowseNodeProduct::class)
+                    );
+                },
                 AmazonService\Binding::class => function ($serviceManager) {
                     return new AmazonService\Binding(
                         $serviceManager->get(AmazonFactory\Product::class),

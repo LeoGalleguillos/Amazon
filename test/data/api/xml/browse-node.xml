@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<BrowseNode>
+    <BrowseNodeId>7581669011</BrowseNodeId>
+    <Name>Shops</Name>
+    <Children>
+        <BrowseNode>
+            <BrowseNodeId>11307730011</BrowseNodeId>
+            <Name>Contemporary &amp; Designer</Name>
+        </BrowseNode>
+        <BrowseNode>
+            <BrowseNodeId>7581681011</BrowseNodeId>
+            <Name>Big &amp; Tall</Name>
+        </BrowseNode>
+        <BrowseNode>
+            <BrowseNodeId>7581682011</BrowseNodeId>
+            <Name>Uniforms, Work &amp; Safety</Name>
+        </BrowseNode>
+        <BrowseNode>
+            <BrowseNodeId>9564525011</BrowseNodeId>
+            <Name>Surf, Skate &amp; Street</Name>
+        </BrowseNode>
+    </Children>
+    <Ancestors>
+        <BrowseNode>
+            <BrowseNodeId>7147441011</BrowseNodeId>
+            <Name>Men</Name>
+            <Ancestors>
+                <BrowseNode>
+                    <BrowseNodeId>7141124011</BrowseNodeId>
+                    <Name>Departments</Name>
+                    <IsCategoryRoot>1</IsCategoryRoot>
+                    <Ancestors>
+                        <BrowseNode>
+                            <BrowseNodeId>7141123011</BrowseNodeId>
+                            <Name>Clothing, Shoes &amp; Jewelry</Name>
+                        </BrowseNode>
+                    </Ancestors>
+                </BrowseNode>
+            </Ancestors>
+        </BrowseNode>
+    </Ancestors>
+</BrowseNode>
