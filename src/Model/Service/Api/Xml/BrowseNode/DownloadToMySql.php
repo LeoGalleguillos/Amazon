@@ -29,5 +29,12 @@ class DownloadToMySql
                 );
             }
         }
+
+        if (isset($browseNodeXml->{'Ancestors'}->{'BrowseNode'})) {
+            $parent = $browseNodeXml->{'Ancestors'}->{'BrowseNode'};
+            $this->downloadToMySql(
+                $parent
+            );
+        }
     }
 }

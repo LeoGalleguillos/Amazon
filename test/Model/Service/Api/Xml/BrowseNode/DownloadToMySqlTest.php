@@ -31,14 +31,17 @@ class DownloadToMySqlTest extends TestCase
         $xml = simplexml_load_file($_SERVER['PWD'] . '/test/data/api/xml/browse-node.xml');
 
         $this->browseNodeTableMock
-            ->expects($this->exactly(5))
+            ->expects($this->exactly(8))
             ->method('insertIgnore')
             ->withConsecutive(
                 [7581669011, 'Shops'],
                 [11307730011, 'Contemporary & Designer'],
                 [7581681011, 'Big & Tall'],
                 [7581682011, 'Uniforms, Work & Safety'],
-                [9564525011, 'Surf, Skate & Street']
+                [9564525011, 'Surf, Skate & Street'],
+                [7147441011, 'Men'],
+                [7141124011, 'Departments'],
+                [7141123011, 'Clothing, Shoes & Jewelry']
             );
 
         $this->assertNull(
