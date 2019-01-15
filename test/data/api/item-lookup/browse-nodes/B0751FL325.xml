@@ -1,0 +1,121 @@
+<?xml version="1.0" ?>
+<ItemLookupResponse
+    xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01">
+    <OperationRequest>
+        <HTTPHeaders>
+            <Header Name="UserAgent" Value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"></Header>
+        </HTTPHeaders>
+        <RequestId>fcace57d-596f-4dde-b1dc-8d6137cda88a</RequestId>
+        <Arguments>
+            <Argument Name="AWSAccessKeyId" Value="AKIAIOEDHLKWPAC2DC5A"></Argument>
+            <Argument Name="AssociateTag" Value="onlinefreestore-20"></Argument>
+            <Argument Name="IdType" Value="ASIN"></Argument>
+            <Argument Name="ItemId" Value="B0751FL325"></Argument>
+            <Argument Name="Operation" Value="ItemLookup"></Argument>
+            <Argument Name="ResponseGroup" Value="BrowseNodes"></Argument>
+            <Argument Name="Service" Value="AWSECommerceService"></Argument>
+            <Argument Name="Timestamp" Value="2019-01-15T11:47:37.000Z"></Argument>
+            <Argument Name="Signature" Value="l39w27EjcBzsCuUIV1c8WRYbDPtjF7JnUAmtKm1pCDs="></Argument>
+        </Arguments>
+        <RequestProcessingTime>0.0150714850000000</RequestProcessingTime>
+    </OperationRequest>
+    <Items>
+        <Request>
+            <IsValid>True</IsValid>
+            <ItemLookupRequest>
+                <IdType>ASIN</IdType>
+                <ItemId>B0751FL325</ItemId>
+                <ResponseGroup>BrowseNodes</ResponseGroup>
+                <VariationPage>All</VariationPage>
+            </ItemLookupRequest>
+        </Request>
+        <Item>
+            <ASIN>B0751FL325</ASIN>
+            <ParentASIN>B077H2M1T4</ParentASIN>
+            <BrowseNodes>
+                <BrowseNode>
+                    <BrowseNodeId>14210389011</BrowseNodeId>
+                    <Name>Road Running</Name>
+                    <Ancestors>
+                        <BrowseNode>
+                            <BrowseNodeId>679286011</BrowseNodeId>
+                            <Name>Running</Name>
+                            <Ancestors>
+                                <BrowseNode>
+                                    <BrowseNodeId>6127770011</BrowseNodeId>
+                                    <Name>Athletic</Name>
+                                    <Ancestors>
+                                        <BrowseNode>
+                                            <BrowseNodeId>679255011</BrowseNodeId>
+                                            <Name>Shoes</Name>
+                                            <Ancestors>
+                                                <BrowseNode>
+                                                    <BrowseNodeId>7147441011</BrowseNodeId>
+                                                    <Name>Men</Name>
+                                                    <Ancestors>
+                                                        <BrowseNode>
+                                                            <BrowseNodeId>7141124011</BrowseNodeId>
+                                                            <Name>Departments</Name>
+                                                            <IsCategoryRoot>1</IsCategoryRoot>
+                                                            <Ancestors>
+                                                                <BrowseNode>
+                                                                    <BrowseNodeId>7141123011</BrowseNodeId>
+                                                                    <Name>Clothing, Shoes &amp; Jewelry</Name>
+                                                                </BrowseNode>
+                                                            </Ancestors>
+                                                        </BrowseNode>
+                                                    </Ancestors>
+                                                </BrowseNode>
+                                            </Ancestors>
+                                        </BrowseNode>
+                                    </Ancestors>
+                                </BrowseNode>
+                            </Ancestors>
+                        </BrowseNode>
+                    </Ancestors>
+                </BrowseNode>
+                <BrowseNode>
+                    <BrowseNodeId>7581669011</BrowseNodeId>
+                    <Name>Shops</Name>
+                    <Children>
+                        <BrowseNode>
+                            <BrowseNodeId>11307730011</BrowseNodeId>
+                            <Name>Contemporary &amp; Designer</Name>
+                        </BrowseNode>
+                        <BrowseNode>
+                            <BrowseNodeId>7581681011</BrowseNodeId>
+                            <Name>Big &amp; Tall</Name>
+                        </BrowseNode>
+                        <BrowseNode>
+                            <BrowseNodeId>7581682011</BrowseNodeId>
+                            <Name>Uniforms, Work &amp; Safety</Name>
+                        </BrowseNode>
+                        <BrowseNode>
+                            <BrowseNodeId>9564525011</BrowseNodeId>
+                            <Name>Surf, Skate &amp; Street</Name>
+                        </BrowseNode>
+                    </Children>
+                    <Ancestors>
+                        <BrowseNode>
+                            <BrowseNodeId>7147441011</BrowseNodeId>
+                            <Name>Men</Name>
+                            <Ancestors>
+                                <BrowseNode>
+                                    <BrowseNodeId>7141124011</BrowseNodeId>
+                                    <Name>Departments</Name>
+                                    <IsCategoryRoot>1</IsCategoryRoot>
+                                    <Ancestors>
+                                        <BrowseNode>
+                                            <BrowseNodeId>7141123011</BrowseNodeId>
+                                            <Name>Clothing, Shoes &amp; Jewelry</Name>
+                                        </BrowseNode>
+                                    </Ancestors>
+                                </BrowseNode>
+                            </Ancestors>
+                        </BrowseNode>
+                    </Ancestors>
+                </BrowseNode>
+            </BrowseNodes>
+        </Item>
+    </Items>
+</ItemLookupResponse>
