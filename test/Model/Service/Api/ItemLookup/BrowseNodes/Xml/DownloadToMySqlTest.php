@@ -38,6 +38,8 @@ class DownloadToMySqlTest extends TestCase
     {
         $xml = simplexml_load_file($_SERVER['PWD'] . '/test/data/api/item-lookup/browse-nodes/B0751FL325.xml');
 
-        $this->downloadToMySqlService->downloadToMySql($xml);
+        $this->assertNull(
+            $this->downloadToMySqlService->downloadToMySql($xml)
+        );
     }
 }

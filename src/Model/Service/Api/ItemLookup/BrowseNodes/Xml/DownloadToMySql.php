@@ -28,9 +28,9 @@ class DownloadToMySql
             return;
         }
 
-        foreach ($itemXml->{'BrowseNodes'}->{'BrowseNode'} as $browseNode) {
-            $browseNodeId = (int) $browseNode->{'BrowseNodeId'};
-            $name         = (string) $browseNode->{'Name'};
+        foreach ($itemXml->{'BrowseNodes'}->{'BrowseNode'} as $browseNodeXml) {
+            $browseNodeId = (int) $browseNodeXml->{'BrowseNodeId'};
+            $name         = (string) $browseNodeXml->{'Name'};
             $this->browseNodeTable->insertIgnore(
                 $browseNodeId,
                 $name
