@@ -1,18 +1,17 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Service\Api\ItemLookup\BrowseNodes\Xml;
 
+use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use SimpleXMLElement;
 
 class DownloadToMySql
 {
     public function __construct(
-        AmazonTable\BrowseNode $browseNodeTable,
-        AmazonTable\BrowseNodeProduct $browseNodeProductTable,
+        AmazonService\Api\Xml\BrowseNode\DownloadToMySql $downloadToMySqlService,
         AmazonTable\Product\Asin $asinTable
     ) {
-        $this->browseNodeTable        = $browseNodeTable;
-        $this->browseNodeProductTable = $browseNodeProductTable;
+        $this->downloadToMySqlService = $downloadToMySqlService;
         $this->asinTable              = $asinTable;
     }
 
@@ -29,15 +28,9 @@ class DownloadToMySql
         }
 
         foreach ($itemXml->{'BrowseNodes'}->{'BrowseNode'} as $browseNodeXml) {
-            $browseNodeId = (int) $browseNodeXml->{'BrowseNodeId'};
-            $name         = (string) $browseNodeXml->{'Name'};
-            $this->browseNodeTable->insertIgnore(
-                $browseNodeId,
-                $name
-            );
-            $this->browseNodeProductTable->insertIgnore(
-                $browseNodeId,
-                $productId
+            $this->downloadToMySqlService->downloadToMySql(
+                $productId,
+                $browseNodeXml
             );
         }
     }

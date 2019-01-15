@@ -122,8 +122,7 @@ class Module
                 },
                 AmazonService\Api\ItemLookup\BrowseNodes\Xml\DownloadToMySql::class => function ($sm) {
                     return new AmazonService\Api\ItemLookup\BrowseNodes\Xml\DownloadToMySql(
-                        $sm->get(AmazonTable\BrowseNode::class),
-                        $sm->get(AmazonTable\BrowseNodeProduct::class),
+                        $sm->get(AmazonService\Api\Xml\BrowseNode\DownloadToMySql::class),
                         $sm->get(AmazonTable\Product\Asin::class)
                     );
                 },
