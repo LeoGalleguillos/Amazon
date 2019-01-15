@@ -9,9 +9,11 @@ class DownloadToMySql
 {
     public function __construct(
         AmazonService\Api\Xml\BrowseNode\DownloadToMySql $downloadToMySqlService,
+        AmazonTable\BrowseNodeProduct $browseNodeProductTable,
         AmazonTable\Product\Asin $asinTable
     ) {
         $this->downloadToMySqlService = $downloadToMySqlService;
+        $this->browseNodeProductTable = $browseNodeProductTable;
         $this->asinTable              = $asinTable;
     }
 
@@ -28,8 +30,13 @@ class DownloadToMySql
         }
 
         foreach ($itemXml->{'BrowseNodes'}->{'BrowseNode'} as $browseNodeXml) {
+            $browseNodeId = (int) $browseNodeXml->{'BrowseNodeId'};
+
+            $this->browseNodeProductTable->insertIgnore(
+                $browseNodeId,
+                $productId
+            );
             $this->downloadToMySqlService->downloadToMySql(
-                $productId,
                 $browseNodeXml
             );
         }

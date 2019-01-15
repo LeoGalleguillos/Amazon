@@ -7,15 +7,12 @@ use SimpleXMLElement;
 class DownloadToMySql
 {
     public function __construct(
-        AmazonTable\BrowseNode $browseNodeTable,
-        AmazonTable\BrowseNodeProduct $browseNodeProductTable
+        AmazonTable\BrowseNode $browseNodeTable
     ) {
-        $this->browseNodeTable        = $browseNodeTable;
-        $this->browseNodeProductTable = $browseNodeProductTable;
+        $this->browseNodeTable = $browseNodeTable;
     }
 
     public function downloadToMySql(
-        int $productId,
         SimpleXMLElement $browseNodeXml
     ) {
         $browseNodeId = (int) $browseNodeXml->{'BrowseNodeId'};
@@ -24,9 +21,13 @@ class DownloadToMySql
             $browseNodeId,
             $name
         );
-        $this->browseNodeProductTable->insertIgnore(
-            $browseNodeId,
-            $productId
-        );
+
+        if (isset($browseNodeXml->{'Children'}->{'BrowseNode'})) {
+            foreach ($browseNodeXml->{'Children'}->{'BrowseNode'} as $child) {
+                $this->downloadToMySql(
+                    $child
+                );
+            }
+        }
     }
 }

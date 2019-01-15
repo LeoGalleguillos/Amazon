@@ -13,12 +13,8 @@ class DownloadToMySqlTest extends TestCase
         $this->browseNodeTableMock = $this->createMock(
             AmazonTable\BrowseNode::class
         );
-        $this->browseNodeProductTableMock = $this->createMock(
-            AmazonTable\BrowseNodeProduct::class
-        );
         $this->downloadToMySqlService = new AmazonService\Api\Xml\BrowseNode\DownloadToMySql(
-            $this->browseNodeTableMock,
-            $this->browseNodeProductTableMock
+            $this->browseNodeTableMock
         );
     }
 
@@ -35,17 +31,18 @@ class DownloadToMySqlTest extends TestCase
         $xml = simplexml_load_file($_SERVER['PWD'] . '/test/data/api/xml/browse-node.xml');
 
         $this->browseNodeTableMock
-            ->expects($this->once())
+            ->expects($this->exactly(5))
             ->method('insertIgnore')
-            ->with(7581669011, 'Shops');
-        $this->browseNodeProductTableMock
-            ->expects($this->once())
-            ->method('insertIgnore')
-            ->with(7581669011, 12345);
+            ->withConsecutive(
+                [7581669011, 'Shops'],
+                [11307730011, 'Contemporary & Designer'],
+                [7581681011, 'Big & Tall'],
+                [7581682011, 'Uniforms, Work & Safety'],
+                [9564525011, 'Surf, Skate & Street']
+            );
 
         $this->assertNull(
             $this->downloadToMySqlService->downloadToMySql(
-                12345,
                 $xml
             )
         );

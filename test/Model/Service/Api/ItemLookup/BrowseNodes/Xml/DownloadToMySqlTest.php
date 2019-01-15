@@ -13,11 +13,15 @@ class DownloadToMySqlTest extends TestCase
         $this->downloadToMySqlServiceMock = $this->createMock(
             AmazonService\Api\Xml\BrowseNode\DownloadToMySql::class
         );
+        $this->browseNodeProductTableMock = $this->createMock(
+            AmazonTable\BrowseNodeProduct::class
+        );
         $this->asinTableMock = $this->createMock(
             AmazonTable\Product\Asin::class
         );
         $this->downloadToMySqlService = new AmazonService\Api\ItemLookup\BrowseNodes\Xml\DownloadToMySql(
             $this->downloadToMySqlServiceMock,
+            $this->browseNodeProductTableMock,
             $this->asinTableMock
         );
     }
