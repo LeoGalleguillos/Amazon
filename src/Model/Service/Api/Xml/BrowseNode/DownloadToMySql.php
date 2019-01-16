@@ -7,9 +7,11 @@ use SimpleXMLElement;
 class DownloadToMySql
 {
     public function __construct(
-        AmazonTable\BrowseNode $browseNodeTable
+        AmazonTable\BrowseNode $browseNodeTable,
+        AmazonTable\BrowseNodeHierarchy $browseNodeHierarchyTable
     ) {
-        $this->browseNodeTable = $browseNodeTable;
+        $this->browseNodeTable          = $browseNodeTable;
+        $this->browseNodeHierarchyTable = $browseNodeHierarchyTable;
     }
 
     public function downloadToMySql(
@@ -24,6 +26,11 @@ class DownloadToMySql
 
         if (isset($browseNodeXml->{'Children'}->{'BrowseNode'})) {
             foreach ($browseNodeXml->{'Children'}->{'BrowseNode'} as $child) {
+                $childBrowseNodeId = (int) $child->{'BrowseNodeId'};
+                $this->browseNodeHierarchyTable->insertIgnore(
+                    $browseNodeId,
+                    $childBrowseNodeId
+                );
                 $this->downloadToMySql(
                     $child
                 );
@@ -32,6 +39,11 @@ class DownloadToMySql
 
         if (isset($browseNodeXml->{'Ancestors'}->{'BrowseNode'})) {
             $parent = $browseNodeXml->{'Ancestors'}->{'BrowseNode'};
+            $parentBrowseNodeId = (int) $parent->{'BrowseNodeId'};
+            $this->browseNodeHierarchyTable->insertIgnore(
+                $parentBrowseNodeId,
+                $browseNodeId
+            );
             $this->downloadToMySql(
                 $parent
             );

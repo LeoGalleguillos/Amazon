@@ -155,7 +155,7 @@ class Module
                 AmazonService\Api\Xml\BrowseNode\DownloadToMySql::class => function ($sm) {
                     return new AmazonService\Api\Xml\BrowseNode\DownloadToMySql(
                         $sm->get(AmazonTable\BrowseNode::class),
-                        $sm->get(AmazonTable\BrowseNodeProduct::class)
+                        $sm->get(AmazonTable\BrowseNodeHierarchy::class)
                     );
                 },
                 AmazonService\Binding::class => function ($serviceManager) {
@@ -385,6 +385,11 @@ class Module
                 },
                 AmazonTable\BrowseNode::class => function ($serviceManager) {
                     return new AmazonTable\BrowseNode(
+                        $serviceManager->get('amazon')
+                    );
+                },
+                AmazonTable\BrowseNodeHierarchy::class => function ($serviceManager) {
+                    return new AmazonTable\BrowseNodeHierarchy(
                         $serviceManager->get('amazon')
                     );
                 },

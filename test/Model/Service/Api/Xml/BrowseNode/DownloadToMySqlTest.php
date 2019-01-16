@@ -13,16 +13,12 @@ class DownloadToMySqlTest extends TestCase
         $this->browseNodeTableMock = $this->createMock(
             AmazonTable\BrowseNode::class
         );
-        $this->downloadToMySqlService = new AmazonService\Api\Xml\BrowseNode\DownloadToMySql(
-            $this->browseNodeTableMock
+        $this->browseNodeHierarchyTableMock = $this->createMock(
+            AmazonTable\BrowseNodeHierarchy::class
         );
-    }
-
-    public function testInitialize()
-    {
-        $this->assertInstanceOf(
-            AmazonService\Api\Xml\BrowseNode\DownloadToMySql::class,
-            $this->downloadToMySqlService
+        $this->downloadToMySqlService = new AmazonService\Api\Xml\BrowseNode\DownloadToMySql(
+            $this->browseNodeTableMock,
+            $this->browseNodeHierarchyTableMock
         );
     }
 
@@ -42,6 +38,19 @@ class DownloadToMySqlTest extends TestCase
                 [7147441011, 'Men'],
                 [7141124011, 'Departments'],
                 [7141123011, 'Clothing, Shoes & Jewelry']
+            );
+
+        $this->browseNodeHierarchyTableMock
+            ->expects($this->exactly(7))
+            ->method('insertIgnore')
+            ->withConsecutive(
+                [7581669011, 11307730011],
+                [7581669011, 7581681011],
+                [7581669011, 7581682011],
+                [7581669011, 9564525011],
+                [7147441011, 7581669011],
+                [7141124011, 7147441011],
+                [7141123011, 7141124011]
             );
 
         $this->assertNull(
