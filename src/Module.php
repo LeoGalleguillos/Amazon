@@ -170,6 +170,11 @@ class Module
                         $serviceManager->get(AmazonTable\Brand::class)
                     );
                 },
+                AmazonService\BrowseNode\Name\NumberOfVideosNotGenerated::class => function ($sm) {
+                    return new AmazonService\BrowseNode\Name\NumberOfVideosNotGenerated(
+                        $sm->get(AmazonTable\ProductBrowseNodeProductBrowseNode::class)
+                    );
+                },
                 AmazonService\BrowseNode\BrowseNodes::class => function ($serviceManager) {
                     return new AmazonService\BrowseNode\BrowseNodes(
                         $serviceManager->get(AmazonFactory\BrowseNode::class),
