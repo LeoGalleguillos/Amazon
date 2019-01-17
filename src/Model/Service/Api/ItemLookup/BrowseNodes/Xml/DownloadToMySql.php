@@ -30,14 +30,14 @@ class DownloadToMySql
         }
 
         foreach ($itemXml->{'BrowseNodes'}->{'BrowseNode'} as $browseNodeXml) {
-            $browseNodeId = (int) $browseNodeXml->{'BrowseNodeId'};
+            $this->downloadToMySqlService->downloadToMySql(
+                $browseNodeXml
+            );
 
+            $browseNodeId = (int) $browseNodeXml->{'BrowseNodeId'};
             $this->browseNodeProductTable->insertIgnore(
                 $browseNodeId,
                 $productId
-            );
-            $this->downloadToMySqlService->downloadToMySql(
-                $browseNodeXml
             );
         }
     }

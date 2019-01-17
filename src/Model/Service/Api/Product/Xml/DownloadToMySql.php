@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Service\Api\Product\Xml;
 
+use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use SimpleXMLElement;
 use Zend\Db\Adapter\Exception\InvalidQueryException;
@@ -8,13 +9,13 @@ use Zend\Db\Adapter\Exception\InvalidQueryException;
 class DownloadToMySql
 {
     public function __construct(
-        AmazonTable\BrowseNode $browseNodeTable,
+        AmazonService\Api\Xml\BrowseNode\DownloadToMySql $downloadToMySqlService,
         AmazonTable\BrowseNodeProduct $browseNodeProductTable,
         AmazonTable\Product $productTable,
         AmazonTable\ProductFeature $productFeatureTable,
         AmazonTable\ProductImage $productImageTable
     ) {
-        $this->browseNodeTable        = $browseNodeTable;
+        $this->downloadToMySqlService = $downloadToMySqlService;
         $this->browseNodeProductTable = $browseNodeProductTable;
         $this->productTable           = $productTable;
         $this->productFeatureTable    = $productFeatureTable;
@@ -41,12 +42,11 @@ class DownloadToMySql
         );
 
         foreach ($xml->{'BrowseNodes'}->{'BrowseNode'} as $browseNodeXml) {
-            $browseNodeId = (int) $browseNodeXml->{'BrowseNodeId'};
-            $name         = (string) $browseNodeXml->{'Name'};
-            $this->browseNodeTable->insertIgnore(
-                $browseNodeId,
-                $name
+            $this->downloadToMySqlService->downloadToMySql(
+                $browseNodeXml
             );
+
+            $browseNodeId = (int) $browseNodeXml->{'BrowseNodeId'};
             $this->browseNodeProductTable->insertIgnore(
                 $browseNodeId,
                 $productId
