@@ -414,6 +414,11 @@ class Module
                         $serviceManager->get('amazon')
                     );
                 },
+                AmazonTable\ProductBrowseNodeProductBrowseNode::class => function ($sm) {
+                    return new AmazonTable\ProductBrowseNodeProductBrowseNode(
+                        $sm->get('amazon')
+                    );
+                },
                 AmazonTable\ProductFeature::class => function ($serviceManager) {
                     return new AmazonTable\ProductFeature(
                         $serviceManager->get('amazon')
