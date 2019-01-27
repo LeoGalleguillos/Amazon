@@ -21,6 +21,7 @@ class ProductVideo
         $productVideoEntity = new AmazonEntity\ProductVideo();
         $productVideoEntity->setCreated(new DateTime($array['created']))
                            ->setDurationMilliseconds($array['duration_milliseconds'])
+                           ->setProductVideoId($array['product_video_id'])
                            ->setTitle($array['title']);
 
         $productVideoEntity->setProduct(
@@ -44,6 +45,7 @@ class ProductVideo
 
         $productVideoEntity->setCreated(new DateTime($array['created']))
                            ->setDurationMilliseconds($array['duration_milliseconds'])
+                           ->setProductVideoId($array['product_video_id'])
                            ->setTitle($array['title']);
 
         return $productVideoEntity;
