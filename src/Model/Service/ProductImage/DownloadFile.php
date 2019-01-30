@@ -23,7 +23,7 @@ class DownloadFile
 
         $fileName = urldecode(basename($imageEntity->getUrl()));
         if (!preg_match('/^[\w\.\_\+\-]+$/', $fileName)) {
-            throw new Exception('Invalid file name (this should never happen)');
+            throw new Exception('Invalid file name (this should never happen): ' . $fileName);
         }
 
         $destination = "/home/amazon/products/images/$asin/$fileName";
