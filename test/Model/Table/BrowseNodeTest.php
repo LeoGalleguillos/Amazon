@@ -3,6 +3,7 @@ namespace LeoGalleguillos\AmazonTest\Model\Table;
 
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Test\TableTestCase;
+use TypeError;
 
 class BrowseNodeTest extends TableTestCase
 {
@@ -14,14 +15,6 @@ class BrowseNodeTest extends TableTestCase
 
         $this->dropTable('browse_node');
         $this->createTable('browse_node');
-    }
-
-    public function testInitialize()
-    {
-        $this->assertInstanceOf(
-            AmazonTable\BrowseNode::class,
-            $this->browseNodeTable
-        );
     }
 
     public function testInsertIgnore()
@@ -37,6 +30,28 @@ class BrowseNodeTest extends TableTestCase
         $this->assertSame(
             1,
             $this->browseNodeTable->insertIgnore(5, 'name')
+        );
+    }
+
+    public function testSelectWhereBrowseNodeId()
+    {
+        try {
+            $array = $this->browseNodeTable->selectWhereBrowseNodeId(12345);
+            $this->fail();
+        } catch (TypeError $typeError) {
+            $this->assertSame(
+                'Return value of',
+                substr($typeError->getMessage(), 0, 15)
+            );
+        }
+
+        $this->browseNodeTable->insertIgnore(12345, 'Browse Node Name');
+        $this->assertSame(
+            [
+                'browse_node_id' => '12345',
+                'name' => 'Browse Node Name',
+            ],
+            $this->browseNodeTable->selectWhereBrowseNodeId(12345)
         );
     }
 

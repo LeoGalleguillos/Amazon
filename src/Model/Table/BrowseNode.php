@@ -42,6 +42,21 @@ class BrowseNode
                           ->getAffectedRows();
     }
 
+    public function selectWhereBrowseNodeId(int $browseNodeId): array
+    {
+        $sql = '
+            SELECT `browse_node_id`
+                 , `name`
+              FROM `browse_node`
+             WHERE `browse_node_id` = ?
+                 ;
+        ';
+        $parameters = [
+            $browseNodeId,
+        ];
+        return $this->adapter->query($sql)->execute($parameters)->current();
+    }
+
     public function selectWhereName(string $name): Generator
     {
         $sql = '
