@@ -83,4 +83,30 @@ class BrowseNodeProductTest extends TableTestCase
             $productId
         );
     }
+
+    public function testSelectWhereProductId()
+    {
+        $this->assertSame(
+            [],
+            iterator_to_array($this->browseNodeProductTable->selectWhereProductId(12345))
+        );
+
+        $this->browseNodeProductTable->insertIgnore(948, 12345);
+        $this->browseNodeProductTable->insertIgnore(12345, 38576);
+        $this->browseNodeProductTable->insertIgnore(11, 12345);
+
+        $this->assertSame(
+            [
+                0 => [
+                    'browse_node_id' => '11',
+                    'product_id' => '12345',
+                ],
+                1 => [
+                    'browse_node_id' => '948',
+                    'product_id' => '12345',
+                ],
+            ],
+            iterator_to_array($this->browseNodeProductTable->selectWhereProductId(12345))
+        );
+    }
 }

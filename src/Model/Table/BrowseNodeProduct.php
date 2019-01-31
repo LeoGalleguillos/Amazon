@@ -2,6 +2,7 @@
 namespace LeoGalleguillos\Amazon\Model\Table;
 
 use Exception;
+use Generator;
 use Zend\Db\Adapter\Adapter;
 
 class BrowseNodeProduct
@@ -144,5 +145,24 @@ class BrowseNodeProduct
         ];
         $array = $this->adapter->query($sql)->execute($parameters)->current();
         return (int) $array['product_id'];
+    }
+
+    public function selectWhereProductId(int $productId): Generator
+    {
+        $sql = '
+            SELECT `browse_node_id`
+                 , `product_id`
+              FROM `browse_node_product`
+             WHERE `product_id` = ?
+             ORDER
+                BY `browse_node_id` ASC
+                 ;
+        ';
+        $parameters = [
+            $productId,
+        ];
+        foreach ($this->adapter->query($sql)->execute($parameters) as $array) {
+            yield $array;
+        }
     }
 }
