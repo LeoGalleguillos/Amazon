@@ -11,18 +11,28 @@ class BrowseNode
     protected $browseNodeId;
 
     /**
+     * @var array
+     */
+    protected $children;
+
+    /**
      * @var string
      */
     protected $name;
+
+    /**
+     * @var array
+     */
+    protected $parents;
 
     public function getBrowseNodeId(): int
     {
         return $this->browseNodeId;
     }
 
-    public function getChild(): AmazonEntity\BrowseNode
+    public function getChildren(array $children): array
     {
-        return $this->child;
+        return $this->children;
     }
 
     public function getName(): string
@@ -30,9 +40,9 @@ class BrowseNode
         return $this->name;
     }
 
-    public function getParent(): AmazonEntity\BrowseNode
+    public function getParents(): array
     {
-        return $this->parent;
+        return $this->parents;
     }
 
     public function setBrowseNodeId(int $browseNodeId): AmazonEntity\BrowseNode
@@ -41,9 +51,9 @@ class BrowseNode
         return $this;
     }
 
-    public function setChild(AmazonEntity\BrowseNode $child): AmazonEntity\BrowseNode
+    public function setChildren(array $children): AmazonEntity\BrowseNode
     {
-        $this->child = $child;
+        $this->children = $children;
         return $this;
     }
 
@@ -53,9 +63,9 @@ class BrowseNode
         return $this;
     }
 
-    public function setParent(AmazonEntity\BrowseNode $parent): AmazonEntity\BrowseNode
+    public function setParents(array $parents): AmazonEntity\BrowseNode
     {
-        $this->parent = $parent;
+        $this->parents = $parents;
         return $this;
     }
 }

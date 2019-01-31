@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table;
 
+use Generator;
 use Zend\Db\Adapter\Adapter;
 
 class BrowseNodeHierarchy
@@ -40,19 +41,43 @@ class BrowseNodeHierarchy
                           ->getAffectedRows();
     }
 
+    public function selectWhereBrowseNodeIdChild(
+        int $browseNodeIdChild
+    ): Generator {
+        $sql = '
+            SELECT `browse_node_id_parent`
+                 , `browse_node_id_child`
+              FROM `browse_node_hierarchy`
+             WHERE `browse_node_id_child` = ?
+             ORDER
+                BY `browse_node_id_parent` ASC
+                 ;
+        ';
+        $parameters = [
+            $browseNodeIdChild,
+        ];
+        foreach ($this->adapter->query($sql)->execute($parameters) as $array) {
+            yield $array;
+        }
+    }
+
     public function selectWhereBrowseNodeIdParent(
         int $browseNodeIdParent
-    ): array {
+    ): Generator {
         $sql = '
             SELECT `browse_node_id_parent`
                  , `browse_node_id_child`
               FROM `browse_node_hierarchy`
              WHERE `browse_node_id_parent` = ?
+             ORDER
+                BY `browse_node_id_child` ASC
                  ;
         ';
         $parameters = [
             $browseNodeIdParent,
         ];
-        return $this->adapter->query($sql)->execute($parameters)->current();
+        foreach ($this->adapter->query($sql)->execute($parameters) as $array) {
+            yield $array;
+        }
     }
 }

@@ -27,17 +27,19 @@ class BrowseNode
         $browseNodeEntity->setBrowseNodeId((int) $array['browse_node_id'])
             ->setName($array['name']);
 
-        try {
-            $array = $this->browseNodeHierarchyTable->selectWhereBrowseNodeIdParent(
-                $browseNodeEntity->getBrowseNodeId()
+        $generator = $this->browseNodeHierarchyTable->selectWhereBrowseNodeIdChild(
+            $browseNodeEntity->getBrowseNodeId()
+        );
+
+        $parents = [];
+        foreach ($generator as $array) {
+            $parents[] = $this->buildFromBrowseNodeId(
+                $array['browse_node_id_parent']
             );
-            $browseNodeEntity->setChild(
-                $this->buildFromBrowseNodeId(
-                    $array['browse_node_id_child']
-                )
-            );
-        } catch (TypeError $typeError) {
-            // Do nothing.
+        }
+
+        if (!empty($parents)) {
+            $browseNodeEntity->setParents($parents);
         }
 
         return $browseNodeEntity;

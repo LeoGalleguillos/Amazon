@@ -33,26 +33,67 @@ class BrowseNodeHierarchyTest extends TableTestCase
         );
     }
 
-    public function testSelectWhereBrowseNodeIdParent()
+    public function testSelectWhereBrowseNodeIdChild()
     {
-        try {
-            $this->browseNodeHierarchyTable->selectWhereBrowseNodeIdParent(27182);
-            $this->fail();
-        } catch (TypeError $typeError) {
-            $this->assertSame(
-                'Return value of',
-                substr($typeError->getMessage(), 0, 15)
-            );
-        }
+        $generator = $this->browseNodeHierarchyTable->selectWhereBrowseNodeIdChild(27182);
+        $this->assertSame(
+            [],
+            iterator_to_array($generator)
+        );
 
         $this->browseNodeHierarchyTable->insertIgnore(27182, 31415);
+        $this->browseNodeHierarchyTable->insertIgnore(93857, 9475);
+        $this->browseNodeHierarchyTable->insertIgnore(27182, 9475);
+        $this->browseNodeHierarchyTable->insertIgnore(27182, 99928);
+
+        $generator = $this->browseNodeHierarchyTable->selectWhereBrowseNodeIdChild(9475);
 
         $this->assertSame(
             [
-                'browse_node_id_parent' => '27182',
-                'browse_node_id_child'  => '31415',
+                0 => [
+                    'browse_node_id_parent' => '27182',
+                    'browse_node_id_child'  => '9475',
+                ],
+                1 => [
+                    'browse_node_id_parent' => '93857',
+                    'browse_node_id_child'  => '9475',
+                ],
             ],
-            $this->browseNodeHierarchyTable->selectWhereBrowseNodeIdParent(27182)
+            iterator_to_array($generator)
+        );
+    }
+
+    public function testSelectWhereBrowseNodeIdParent()
+    {
+        $generator = $this->browseNodeHierarchyTable->selectWhereBrowseNodeIdParent(27182);
+        $this->assertSame(
+            [],
+            iterator_to_array($generator)
+        );
+
+        $this->browseNodeHierarchyTable->insertIgnore(27182, 31415);
+        $this->browseNodeHierarchyTable->insertIgnore(93857, 9475);
+        $this->browseNodeHierarchyTable->insertIgnore(27182, 9475);
+        $this->browseNodeHierarchyTable->insertIgnore(27182, 99928);
+
+        $generator = $this->browseNodeHierarchyTable->selectWhereBrowseNodeIdParent(27182);
+
+        $this->assertSame(
+            [
+                0 => [
+                    'browse_node_id_parent' => '27182',
+                    'browse_node_id_child'  => '9475',
+                ],
+                1 => [
+                    'browse_node_id_parent' => '27182',
+                    'browse_node_id_child'  => '31415',
+                ],
+                2 => [
+                    'browse_node_id_parent' => '27182',
+                    'browse_node_id_child'  => '99928',
+                ],
+            ],
+            iterator_to_array($generator)
         );
     }
 }
