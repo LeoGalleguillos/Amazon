@@ -14,9 +14,13 @@ class BrowseNodeTest extends TestCase
         $this->browseNodeTableMock = $this->createMock(
             AmazonTable\BrowseNode::class
         );
+        $this->browseNodeHierarchyTableMock = $this->createMock(
+            AmazonTable\BrowseNodeHierarchy::class
+        );
 
         $this->browseNodeFactory = new AmazonFactory\BrowseNode(
-            $this->browseNodeTableMock
+            $this->browseNodeTableMock,
+            $this->browseNodeHierarchyTableMock
         );
     }
 

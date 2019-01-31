@@ -78,7 +78,8 @@ class Module
                 },
                 AmazonFactory\BrowseNode::class => function ($serviceManager) {
                     return new AmazonFactory\BrowseNode(
-                        $serviceManager->get(AmazonTable\BrowseNode::class)
+                        $serviceManager->get(AmazonTable\BrowseNode::class),
+                        $serviceManager->get(AmazonTable\BrowseNodeHierarchy::class)
                     );
                 },
                 AmazonFactory\Product::class => function ($serviceManager) {
