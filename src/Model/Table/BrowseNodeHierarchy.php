@@ -39,4 +39,20 @@ class BrowseNodeHierarchy
                           ->execute($parameters)
                           ->getAffectedRows();
     }
+
+    public function selectWhereBrowseNodeIdParent(
+        int $browseNodeIdParent
+    ): array {
+        $sql = '
+            SELECT `browse_node_id_parent`
+                 , `browse_node_id_child`
+              FROM `browse_node_hierarchy`
+             WHERE `browse_node_id_parent` = ?
+                 ;
+        ';
+        $parameters = [
+            $browseNodeIdParent,
+        ];
+        return $this->adapter->query($sql)->execute($parameters)->current();
+    }
 }

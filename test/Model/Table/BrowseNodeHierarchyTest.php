@@ -3,6 +3,7 @@ namespace LeoGalleguillos\AmazonTest\Model\Table;
 
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Test\TableTestCase;
+use TypeError;
 
 class BrowseNodeHierarchyTest extends TableTestCase
 {
@@ -29,6 +30,29 @@ class BrowseNodeHierarchyTest extends TableTestCase
         $this->assertSame(
             1,
             $this->browseNodeHierarchyTable->insertIgnore(31415, 27182)
+        );
+    }
+
+    public function testSelectWhereBrowseNodeIdParent()
+    {
+        try {
+            $this->browseNodeHierarchyTable->selectWhereBrowseNodeIdParent(27182);
+            $this->fail();
+        } catch (TypeError $typeError) {
+            $this->assertSame(
+                'Return value of',
+                substr($typeError->getMessage(), 0, 15)
+            );
+        }
+
+        $this->browseNodeHierarchyTable->insertIgnore(27182, 31415);
+
+        $this->assertSame(
+            [
+                'browse_node_id_parent' => '27182',
+                'browse_node_id_child'  => '31415',
+            ],
+            $this->browseNodeHierarchyTable->selectWhereBrowseNodeIdParent(27182)
         );
     }
 }
