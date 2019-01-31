@@ -39,6 +39,8 @@ class BrowseNode
         } catch (TypeError $typeError) {
             // Do nothing.
         }
+
+        return $browseNodeEntity;
     }
 
     public function buildFromArray(
