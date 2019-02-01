@@ -33,6 +33,11 @@ class Product
     public $brandEntity;
 
     /**
+     * @var array
+     */
+    protected $browseNodes;
+
+    /**
      * @var array Array of editorial reviews.
      */
     public $editorialReviews = [];
@@ -107,6 +112,11 @@ class Product
         return $this->brandEntity;
     }
 
+    public function getBrowseNodes(): array
+    {
+        return $this->browseNodes;
+    }
+
     public function getFeatures() : array
     {
         return $this->features;
@@ -174,6 +184,12 @@ class Product
         AmazonEntity\Brand $brandEntity
     ) : AmazonEntity\Product {
         $this->brandEntity = $brandEntity;
+        return $this;
+    }
+
+    public function setBrowseNodes(array $browseNodes): AmazonEntity\Product
+    {
+        $this->browseNodes = $browseNodes;
         return $this;
     }
 
