@@ -15,8 +15,10 @@ class Product
     public function __construct(
         AmazonFactory\Binding $bindingFactory,
         AmazonFactory\Brand $brandFactory,
+        AmazonFactory\BrowseNode $browseNodeFactory,
         AmazonFactory\ProductGroup $productGroupFactory,
         ImageFactory\Image $imageFactory,
+        AmazonTable\BrowseNodeProduct $browseNodeProductTable,
         AmazonTable\Product $productTable,
         AmazonTable\ProductFeature $productFeatureTable,
         AmazonTable\ProductImage $productImageTable,
@@ -24,8 +26,10 @@ class Product
     ) {
         $this->bindingFactory         = $bindingFactory;
         $this->brandFactory           = $brandFactory;
+        $this->browseNodeFactory      = $browseNodeFactory;
         $this->productGroupFactory    = $productGroupFactory;
         $this->imageFactory           = $imageFactory;
+        $this->browseNodeProductTable = $browseNodeProductTable;
         $this->productTable           = $productTable;
         $this->productFeatureTable    = $productFeatureTable;
         $this->productImageTable      = $productImageTable;
@@ -74,12 +78,26 @@ class Product
     }
 
     protected function buildFromArraysAndGenerators(
+        Generator $browseNodeProductArrays,
         array $productArray,
         Generator $productFeatureArrays,
         Generator $productHiResImageArrays,
         Generator $productImageArrays
     ) {
         $productEntity = $this->buildFromArray($productArray);
+
+        $browseNodeProductArrays = iterator_to_array($browseNodeProductArrays);
+        if (!empty($browseNodeProductArrays)) {
+            $browseNodeEntities = [];
+
+            foreach ($browseNodeProductArrays as $browseNodeProductArray) {
+                $browseNodeEntities[] = $this->browseNodeFactory->buildFromBrowseNodeId(
+                    $browseNodeProductArray['browse_node_id']
+                );
+            }
+
+            $productEntity->setBrowseNodes($browseNodeEntities);
+        }
 
         $productEntity->setProductGroup(
             $this->productGroupFactory->buildFromName(
@@ -130,12 +148,14 @@ class Product
 
     public function buildFromProductId(int $productId)
     {
+        $browseNodeProductArrays = $this->browseNodeProductTable->selectWhereProductId($productId);
         $productArray            = $this->productTable->selectWhereProductId($productId);
         $productFeatureArrays    = $this->productFeatureTable->selectWhereAsin($productArray['asin']);
         $productHiResImageArrays = $this->productHiResImageTable->selectWhereProductId($productId);
         $productImageArrays      = $this->productImageTable->selectWhereAsin($productArray['asin']);
 
         return $this->buildFromArraysAndGenerators(
+            $browseNodeProductArrays,
             $productArray,
             $productFeatureArrays,
             $productHiResImageArrays,
