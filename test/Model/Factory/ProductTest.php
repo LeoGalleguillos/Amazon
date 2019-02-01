@@ -11,24 +11,20 @@ class ProductTest extends TestCase
 {
     protected function setUp()
     {
-        $this->bindingFactoryMock         = $this->createMock(AmazonFactory\Binding::class);
-        $this->brandFactoryMock           = $this->createMock(AmazonFactory\Brand::class);
-        $this->browseNodeFactoryMock      = $this->createMock(AmazonFactory\BrowseNode::class);
-        $this->productGroupFactoryMock    = $this->createMock(AmazonFactory\ProductGroup::class);
-        $this->imageFactoryMock           = $this->createMock(ImageFactory\Image::class);
-        $this->browseNodeProductTableMock = $this->createMock(AmazonTable\BrowseNodeProduct::class);
-        $this->productTableMock           = $this->createMock(AmazonTable\Product::class);
-        $this->productFeatureTableMock    = $this->createMock(AmazonTable\ProductFeature::class);
-        $this->productImageTableMock      = $this->createMock(AmazonTable\ProductImage::class);
+        $this->bindingFactoryMock = $this->createMock(AmazonFactory\Binding::class);
+        $this->brandFactoryMock = $this->createMock(AmazonFactory\Brand::class);
+        $this->productGroupFactoryMock = $this->createMock(AmazonFactory\ProductGroup::class);
+        $this->imageFactoryMock = $this->createMock(ImageFactory\Image::class);
+        $this->productTableMock = $this->createMock(AmazonTable\Product::class);
+        $this->productFeatureTableMock = $this->createMock(AmazonTable\ProductFeature::class);
+        $this->productImageTableMock = $this->createMock(AmazonTable\ProductImage::class);
         $this->productHiResImageTableMock = $this->createMock(AmazonTable\ProductHiResImage::class);
 
         $this->productFactory = new AmazonFactory\Product(
             $this->bindingFactoryMock,
             $this->brandFactoryMock,
-            $this->browseNodeFactoryMock,
             $this->productGroupFactoryMock,
             $this->imageFactoryMock,
-            $this->browseNodeProductTableMock,
             $this->productTableMock,
             $this->productFeatureTableMock,
             $this->productImageTableMock,

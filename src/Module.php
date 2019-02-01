@@ -86,10 +86,8 @@ class Module
                     return new AmazonFactory\Product(
                         $serviceManager->get(AmazonFactory\Binding::class),
                         $serviceManager->get(AmazonFactory\Brand::class),
-                        $serviceManager->get(AmazonFactory\BrowseNode::class),
                         $serviceManager->get(AmazonFactory\ProductGroup::class),
                         $serviceManager->get(ImageFactory\Image::class),
-                        $serviceManager->get(AmazonTable\BrowseNodeProduct::class),
                         $serviceManager->get(AmazonTable\Product::class),
                         $serviceManager->get(AmazonTable\ProductFeature::class),
                         $serviceManager->get(AmazonTable\ProductImage::class),
