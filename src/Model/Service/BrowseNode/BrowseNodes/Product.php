@@ -2,6 +2,7 @@
 namespace LeoGalleguillos\Amazon\Model\Service\BrowseNode\BrowseNodes;
 
 use Generator;
+use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 
