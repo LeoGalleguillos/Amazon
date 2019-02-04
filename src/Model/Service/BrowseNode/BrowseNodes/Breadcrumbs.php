@@ -12,8 +12,8 @@ class Breadcrumbs
     public function getBrowseNodes(AmazonEntity\BrowseNode $browseNodeEntity): Generator
     {
         try {
-            $child = $browseNodeEntity->getChildren()[0];
-            yield $this->getBrowseNodes($child);
+            $parent = $browseNodeEntity->getParents()[0];
+            yield $this->getBrowseNodes($parent);
         } catch (TypeError $typeError) {
             // Do nothing.
         }
