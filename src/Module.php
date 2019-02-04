@@ -182,6 +182,9 @@ class Module
                         $serviceManager->get(AmazonTable\BrowseNode::class)
                     );
                 },
+                AmazonService\BrowseNode\BrowseNodes\Breadcrumbs::class => function ($sm) {
+                    return new AmazonService\BrowseNode\BrowseNodes\Breadcrumbs();
+                },
                 AmazonService\BrowseNode\BrowseNodes\BrowseNodeIds::class => function ($serviceManager) {
                     return new AmazonService\BrowseNode\BrowseNodes\BrowseNodeIds(
                         $serviceManager->get(AmazonService\BrowseNode\BrowseNodes::class)
