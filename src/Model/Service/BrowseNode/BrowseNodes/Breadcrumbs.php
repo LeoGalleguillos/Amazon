@@ -13,7 +13,7 @@ class Breadcrumbs
     {
         try {
             $parent = $browseNodeEntity->getParents()[0];
-            yield $this->getBrowseNodes($parent);
+            return $this->getBrowseNodes($parent);
         } catch (TypeError $typeError) {
             // Do nothing.
         }
