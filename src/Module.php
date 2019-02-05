@@ -20,6 +20,7 @@ class Module
                 'aliases' => [
                     'productAffiliateUrl'     => AmazonHelper\Product\AffiliateUrl::class,
                     'productModifiedFeature'  => AmazonHelper\Product\ModifiedFeature::class,
+                    'getBreadcrumbsHtml'      => AmazonHelper\Product\BreadcrumbsHtml::class,
                     'getModifiedTitle'        => AmazonHelper\Product\ModifiedTitle::class,
                     'getProductAffiliateUrl'  => AmazonHelper\Product\AffiliateUrl::class,
                     'getProductFirstImageEntity'  => AmazonHelper\Product\FirstImageEntity::class,
@@ -30,6 +31,13 @@ class Module
                 'factories' => [
                     AmazonHelper\Product\AffiliateUrl::class => function ($serviceManager) {
                         return new AmazonHelper\Product\AffiliateUrl();
+                    },
+                    AmazonHelper\Product\BreadcrumbsHtml::class => function ($sm) {
+                        return new AmazonHelper\Product\BreadcrumbsHtml(
+                            $sm->get(AmazonService\BrowseNode\BrowseNodes\Breadcrumbs::class),
+                            $sm->get(AmazonService\BrowseNode\BrowseNodes\Product::class),
+                            $sm->get(StringService\Escape::class)
+                        );
                     },
                     AmazonHelper\Product\FirstImageEntity::class => function ($serviceManager) {
                         return new AmazonHelper\Product\FirstImageEntity(
