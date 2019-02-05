@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\View\Helper\Product;
 
+use Exception;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\String\Model\Service as StringService;
@@ -23,6 +24,11 @@ class BreadcrumbsHtml extends AbstractHelper
         $browseNodeEntities = $this->productService->getBrowseNodes(
             $productEntity
         );
+
+        if (get_class($browseNodeEntities->current() != AmazonEntity\BrowseNode::class) {
+            throw new Exception('No browse nodes found.');
+        }
+
         $browseNodeEntities = $this->breadcrumbsService->getBrowseNodes(
             $browseNodeEntities->current()
         );
