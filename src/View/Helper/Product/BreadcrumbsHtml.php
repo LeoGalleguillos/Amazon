@@ -25,7 +25,7 @@ class BreadcrumbsHtml extends AbstractHelper
             $productEntity
         );
 
-        if (get_class($browseNodeEntities->current() != AmazonEntity\BrowseNode::class) {
+        if (get_class($browseNodeEntities->current() != AmazonEntity\BrowseNode::class)) {
             throw new Exception('No browse nodes found.');
         }
 
