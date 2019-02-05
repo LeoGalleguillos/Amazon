@@ -20,11 +20,11 @@ class BreadcrumbsHtml extends AbstractHelper
 
     public function __invoke(AmazonEntity\Product $productEntity): string
     {
-        $browseNodesEntities = $this->productService->getBrowseNodes(
+        $browseNodeEntities = $this->productService->getBrowseNodes(
             $productEntity
         );
-        $browseNodesEntities = $this->breadcrumbsService->getBrowseNodes(
-            $browseNodesEntities->current()
+        $browseNodeEntities = $this->breadcrumbsService->getBrowseNodes(
+            $browseNodeEntities->current()
         );
 
         $html = "<ol class=\"breadcrumbs\">\n";
