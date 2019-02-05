@@ -24,7 +24,7 @@ class BreadcrumbsHtml extends AbstractHelper
             $productEntity
         );
         $browseNodesEntities = $this->breadcrumbsService->getBrowseNodes(
-            $browseNodesEntities[0]
+            $browseNodesEntities->current()
         );
 
         $html = "<ol class=\"breadcrumbs\">\n";
