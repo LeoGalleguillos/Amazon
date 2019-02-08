@@ -358,6 +358,12 @@ class Module
                         $sm->get(AmazonTable\ProductVideo::class)
                     );
                 },
+                AmazonService\ProductVideo\ProductVideos\BrowseNode::class => function ($sm) {
+                    return new AmazonService\ProductVideo\ProductVideos\BrowseNode(
+                        $sm->get(AmazonFactory\ProductVideo::class),
+                        $sm->get(AmazonTable\ProductVideo::class)
+                    );
+                },
                 AmazonService\ProductVideo\ProductVideos\Newest::class => function ($sm) {
                     return new AmazonService\ProductVideo\ProductVideos\Newest(
                         $sm->get(AmazonFactory\Product::class),
