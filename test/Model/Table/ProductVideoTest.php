@@ -56,6 +56,19 @@ class ProductVideoTest extends TableTestCase
         );
     }
 
+    public function testSelectWhereBrowseNodeId()
+    {
+        $generator = $this->productVideoTable->selectWhereBrowseNodeId(
+            123,
+            0,
+            100
+        );
+        $this->assertSame(
+            iterator_to_array($generator),
+            []
+        );
+    }
+
     public function testSelectWhereProductId()
     {
         try {
