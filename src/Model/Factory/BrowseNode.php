@@ -30,16 +30,27 @@ class BrowseNode
         $generator = $this->browseNodeHierarchyTable->selectWhereBrowseNodeIdChild(
             $browseNodeEntity->getBrowseNodeId()
         );
-
         $parents = [];
         foreach ($generator as $array) {
             $parents[] = $this->buildFromBrowseNodeId(
                 $array['browse_node_id_parent']
             );
         }
-
         if (!empty($parents)) {
             $browseNodeEntity->setParents($parents);
+        }
+
+        $generator = $this->browseNodeHierarchyTable->selectWhereBrowseNodeIdParent(
+            $browseNodeEntity->getBrowseNodeId()
+        );
+        $children = [];
+        foreach ($generator as $array) {
+            $children[] = $this->buildFromBrowseNodeId(
+                $array['browse_node_id_child']
+            );
+        }
+        if (!empty($children)) {
+            $browseNodeEntity->setParents($children);
         }
 
         return $browseNodeEntity;
