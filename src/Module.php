@@ -205,6 +205,11 @@ class Module
                         $sm->get(AmazonTable\BrowseNodeProduct::class)
                     );
                 },
+                AmazonService\BrowseNode\RootRelativeUrl::class => function ($sm) {
+                    return new AmazonService\BrowseNode\RootRelativeUrl(
+                        $sm->get(AmazonService\BrowseNode\BrowseNodes\Breadcrumbs::class)
+                    );
+                },
                 AmazonService\Hashtag\Products\ProductGroup::class => function ($serviceManager) {
                     return new AmazonService\Hashtag\Products\ProductGroup(
                         $serviceManager->get(AmazonFactory\Product::class),
