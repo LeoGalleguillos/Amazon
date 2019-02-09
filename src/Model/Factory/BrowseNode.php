@@ -45,9 +45,10 @@ class BrowseNode
         );
         $children = [];
         foreach ($generator as $array) {
-            $children[] = $this->buildFromBrowseNodeId(
+            $browseNodeArray = $this->browseNodeTable->selectWhereBrowseNodeId(
                 $array['browse_node_id_child']
             );
+            $children[] = $this->buildFromArray($browseNodeArray);
         }
         if (!empty($children)) {
             $browseNodeEntity->setParents($children);
