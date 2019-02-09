@@ -18,17 +18,23 @@ class Module
         return [
             'view_helpers' => [
                 'aliases' => [
-                    'productAffiliateUrl'     => AmazonHelper\Product\AffiliateUrl::class,
-                    'productModifiedFeature'  => AmazonHelper\Product\ModifiedFeature::class,
-                    'getBreadcrumbsHtml'      => AmazonHelper\Product\BreadcrumbsHtml::class,
-                    'getModifiedTitle'        => AmazonHelper\Product\ModifiedTitle::class,
-                    'getProductAffiliateUrl'  => AmazonHelper\Product\AffiliateUrl::class,
-                    'getProductFirstImageEntity'  => AmazonHelper\Product\FirstImageEntity::class,
-                    'getProductModifiedFeatures' => AmazonHelper\Product\ModifiedFeatures::class,
-                    'getProductRootRelativeUrl'  => AmazonHelper\Product\RootRelativeUrl::class,
-                    'getProductVideoSchemaOrgArray'  => AmazonHelper\ProductVideo\SchemaOrgArray::class,
+                    'productAffiliateUrl'           => AmazonHelper\Product\AffiliateUrl::class,
+                    'productModifiedFeature'        => AmazonHelper\Product\ModifiedFeature::class,
+                    'getBreadcrumbsHtml'            => AmazonHelper\Product\BreadcrumbsHtml::class,
+                    'getBrowseNodeRootRelativeUrl'  => AmazonHelper\BrowseNode\RootRelativeUrl::class,
+                    'getModifiedTitle'              => AmazonHelper\Product\ModifiedTitle::class,
+                    'getProductAffiliateUrl'        => AmazonHelper\Product\AffiliateUrl::class,
+                    'getProductFirstImageEntity'    => AmazonHelper\Product\FirstImageEntity::class,
+                    'getProductModifiedFeatures'    => AmazonHelper\Product\ModifiedFeatures::class,
+                    'getProductRootRelativeUrl'     => AmazonHelper\Product\RootRelativeUrl::class,
+                    'getProductVideoSchemaOrgArray' => AmazonHelper\ProductVideo\SchemaOrgArray::class,
                 ],
                 'factories' => [
+                    AmazonHelper\BrowseNode\RootRelativeUrl::class => function ($serviceManager) {
+                        return new AmazonHelper\BrowseNode\RootRelativeUrl(
+                            $serviceManager->get(AmazonService\BrowseNode\RootRelativeUrl::class)
+                        );
+                    },
                     AmazonHelper\Product\AffiliateUrl::class => function ($serviceManager) {
                         return new AmazonHelper\Product\AffiliateUrl();
                     },
