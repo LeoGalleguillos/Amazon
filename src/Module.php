@@ -207,7 +207,8 @@ class Module
                 },
                 AmazonService\BrowseNode\RootRelativeUrl::class => function ($sm) {
                     return new AmazonService\BrowseNode\RootRelativeUrl(
-                        $sm->get(AmazonService\BrowseNode\BrowseNodes\Breadcrumbs::class)
+                        $sm->get(AmazonService\BrowseNode\BrowseNodes\Breadcrumbs::class),
+                        $sm->get(StringService\UrlFriendly::class)
                     );
                 },
                 AmazonService\Hashtag\Products\ProductGroup::class => function ($serviceManager) {
