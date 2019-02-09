@@ -12,11 +12,13 @@ class BreadcrumbsHtml extends AbstractHelper
     public function __construct(
         AmazonService\BrowseNode\BrowseNodes\Breadcrumbs $breadcrumbsService,
         AmazonService\BrowseNode\BrowseNodes\Product $productService,
-        StringService\Escape $escapeService
+        StringService\Escape $escapeService,
+        StringService\UrlFriendly $urlFriendlyService
     ) {
         $this->breadcrumbsService = $breadcrumbsService;
         $this->productService     = $productService;
         $this->escapeService      = $escapeService;
+        $this->urlFriendlyService = $urlFriendlyService;
     }
 
     public function __invoke(AmazonEntity\Product $productEntity): string
@@ -33,13 +35,23 @@ class BreadcrumbsHtml extends AbstractHelper
             $browseNodeEntities->current()
         );
 
+        $href = '/categories';
         $html = "<ol class=\"breadcrumbs\">\n";
+
         foreach ($browseNodeEntities as $browseNodeEntity) {
+            $nameUrlFriendly = $this->urlFriendlyService->getUrlFriendly(
+                $browseNodeEntity->getName()
+            );
+            $href .= '/'
+                . $browseNodeEntity->getBrowseNodeId()
+                . '/'
+                . $nameUrlFriendly;
             $nameEscaped = $this->escapeService->escape(
                 $browseNodeEntity->getName()
             );
-            $html .= "<li>$nameEscaped</li>\n";
+            $html .= "<li><a href=\"$href\">$nameEscaped</a></li>\n";
         }
+
         $html .= '</ol>';
 
         return $html;

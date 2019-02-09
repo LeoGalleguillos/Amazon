@@ -36,7 +36,8 @@ class Module
                         return new AmazonHelper\Product\BreadcrumbsHtml(
                             $sm->get(AmazonService\BrowseNode\BrowseNodes\Breadcrumbs::class),
                             $sm->get(AmazonService\BrowseNode\BrowseNodes\Product::class),
-                            $sm->get(StringService\Escape::class)
+                            $sm->get(StringService\Escape::class),
+                            $sm->get(StringService\UrlFriendly::class)
                         );
                     },
                     AmazonHelper\Product\FirstImageEntity::class => function ($serviceManager) {
