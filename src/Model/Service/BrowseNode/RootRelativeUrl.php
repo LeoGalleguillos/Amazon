@@ -12,7 +12,7 @@ class RootRelativeUrl
         $this->breadcrumbsBrowseNodesService = $breadcrumbsBrowseNodesService;
     }
 
-    public function getRootRelativeUrl(AmazonEntity $browseNodeEntity): string
+    public function getRootRelativeUrl(AmazonEntity\BrowseNode $browseNodeEntity): string
     {
         $browseNodeEntities = $this->breadcrumbsBrowseNodesService->getBrowseNodes(
             $browseNodeEntity
