@@ -51,7 +51,7 @@ class BrowseNode
             $children[] = $this->buildFromArray($browseNodeArray);
         }
         if (!empty($children)) {
-            $browseNodeEntity->setParents($children);
+            $browseNodeEntity->setChildren($children);
         }
 
         return $browseNodeEntity;
