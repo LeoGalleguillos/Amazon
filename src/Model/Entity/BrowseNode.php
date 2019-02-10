@@ -30,7 +30,7 @@ class BrowseNode
         return $this->browseNodeId;
     }
 
-    public function getChildren(array $children): array
+    public function getChildren(): array
     {
         return $this->children;
     }
