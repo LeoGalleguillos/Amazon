@@ -21,6 +21,7 @@ class Module
                     'productAffiliateUrl'           => AmazonHelper\Product\AffiliateUrl::class,
                     'productModifiedFeature'        => AmazonHelper\Product\ModifiedFeature::class,
                     'getBreadcrumbsHtml'            => AmazonHelper\Product\BreadcrumbsHtml::class,
+                    'getBrowseNodeBreadcrumbsHtml'  => AmazonHelper\BrowseNode\BreadcrumbsHtml::class,
                     'getBrowseNodeRootRelativeUrl'  => AmazonHelper\BrowseNode\RootRelativeUrl::class,
                     'getModifiedTitle'              => AmazonHelper\Product\ModifiedTitle::class,
                     'getProductAffiliateUrl'        => AmazonHelper\Product\AffiliateUrl::class,
@@ -30,6 +31,13 @@ class Module
                     'getProductVideoSchemaOrgArray' => AmazonHelper\ProductVideo\SchemaOrgArray::class,
                 ],
                 'factories' => [
+                    AmazonHelper\BrowseNode\BreadcrumbsHtml::class => function ($sm) {
+                        return new AmazonHelper\BrowseNode\BreadcrumbsHtml(
+                            $sm->get(AmazonService\BrowseNode\BrowseNodes\Breadcrumbs::class),
+                            $sm->get(StringService\Escape::class),
+                            $sm->get(StringService\UrlFriendly::class)
+                        );
+                    },
                     AmazonHelper\BrowseNode\RootRelativeUrl::class => function ($serviceManager) {
                         return new AmazonHelper\BrowseNode\RootRelativeUrl(
                             $serviceManager->get(AmazonService\BrowseNode\RootRelativeUrl::class)
