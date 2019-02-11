@@ -24,6 +24,8 @@ class BreadcrumbsHtml extends AbstractHelper
             $browseNodeEntity
         );
 
+        array_pop($browseNodeEntities);
+
         $href = '/categories';
         $html = "<ol class=\"breadcrumbs\">\n";
 
