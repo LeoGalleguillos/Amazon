@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\View\Helper\BrowseNode;
 
+use Exception;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\String\Model\Service as StringService;
@@ -18,6 +19,9 @@ class BreadcrumbsHtml extends AbstractHelper
         $this->urlFriendlyService = $urlFriendlyService;
     }
 
+    /**
+     * @throws Excecption
+     */
     public function __invoke(AmazonEntity\BrowseNode $browseNodeEntity): string
     {
         $browseNodeEntities = $this->breadcrumbsService->getBrowseNodes(
@@ -25,6 +29,10 @@ class BreadcrumbsHtml extends AbstractHelper
         );
 
         array_pop($browseNodeEntities);
+
+        if (empty($browseNodeEntities)) {
+            throw new Exception('Parent browse nodes not found for breadcrumbs.');
+        }
 
         $href = '/categories';
         $html = "<ol class=\"breadcrumbs\">\n";
