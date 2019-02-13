@@ -8,11 +8,9 @@ use Zend\View\Helper\AbstractHelper;
 class SchemaOrgArray extends AbstractHelper
 {
     public function __construct(
-        AmazonService\Product\ModifiedTitle $modifiedTitleService,
         AmazonService\Product\Slug $slugService
     ) {
-        $this->modifiedTitleService = $modifiedTitleService;
-        $this->slugService          = $slugService;
+        $this->slugService = $slugService;
     }
 
     public function __invoke(AmazonEntity\ProductVideo $productVideoEntity): array
@@ -22,8 +20,8 @@ class SchemaOrgArray extends AbstractHelper
                 '@context' => 'https://schema.org',
                 '@type' => 'VideoObject',
                 'url' => $this->getUrl($productVideoEntity),
-                'name' => $this->modifiedTitleService->getModifiedTitle($productVideoEntity->getProduct()),
-                'description' => $this->modifiedTitleService->getModifiedTitle($productVideoEntity->getProduct()),
+                'name' => $productVideoEntity->getProduct()->getTitle(),
+                'description' => $productVideoEntity->getProduct()->getTitle(),
 
                 'duration' => $this->getDuration($productVideoEntity),
                 'thumbnailUrl' => $this->getThumbnailUrl($productVideoEntity),

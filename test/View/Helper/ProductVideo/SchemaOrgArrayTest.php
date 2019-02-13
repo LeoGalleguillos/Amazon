@@ -11,15 +11,11 @@ class SchemaOrgArrayTest extends TestCase
 {
     protected function setUp()
     {
-        $this->modifiedTitleServiceMock = $this->createMock(
-            AmazonService\Product\ModifiedTitle::class
-        );
         $this->slugServiceMock = $this->createMock(
             AmazonService\Product\Slug::class
         );
 
         $this->schemaOrgArrayHelper = new AmazonHelper\ProductVideo\SchemaOrgArray(
-            $this->modifiedTitleServiceMock,
             $this->slugServiceMock
         );
     }
@@ -35,7 +31,8 @@ class SchemaOrgArrayTest extends TestCase
     public function testInvoke()
     {
         $productEntity = new AmazonEntity\Product();
-        $productEntity->setAsin('LEO12345');
+        $productEntity->setAsin('LEO12345')
+            ->setTitle('Product Title');
 
         $productVideoEntity = new AmazonEntity\ProductVideo();
         $productVideoEntity->setCreated(new DateTime('2018-12-18 12:34:56'))
