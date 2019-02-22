@@ -19,14 +19,14 @@ class DownloadToMySql
 
     public function downloadToMySql(
         SimpleXMLElement $xml
-    ) {
+    ): bool {
         $itemXml = $xml->{'Items'}->{'Item'};
         $asin    = (string) $itemXml->{'ASIN'};
 
         $productId = $this->asinTable->selectProductIdWhereAsin($asin);
 
         if (empty($itemXml->{'BrowseNodes'})) {
-            return;
+            return false;
         }
 
         foreach ($itemXml->{'BrowseNodes'}->{'BrowseNode'} as $browseNodeXml) {
@@ -40,5 +40,6 @@ class DownloadToMySql
                 $productId
             );
         }
+        return true;
     }
 }
