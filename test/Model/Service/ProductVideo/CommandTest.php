@@ -43,7 +43,7 @@ class CommandTest extends TestCase
 
         $imageEntity1 = new ImageEntity\Image();
         $imageEntity1->setUrl(
-            'https://images-na.ssl-images-amazon.com/images/I/91cOKoVgnJL._UL1500_.jpg'
+            'https://images-na.ssl-images-amazon.com/images/I/41YwIZ9tCqL.jpg'
         );
         $imageEntity2 = new ImageEntity\Image();
         $imageEntity2->setUrl(
@@ -64,8 +64,14 @@ class CommandTest extends TestCase
         }
 
         $imageEntity2->setUrl(
-            'https://images-na.ssl-images-amazon.com/images/I/81s5s2i%2BDAfL._UL1500_.jpg'
+            'https://images-na.ssl-images-amazon.com/images/I/415ZM5agQYL.jpg'
         );
+
+        $imageEntity3 = new ImageEntity\Image();
+        $imageEntity3->setUrl(
+            'https://images-na.ssl-images-amazon.com/images/I/41q0F0KJdkL.jpg'
+        );
+        $productEntity->setVariantImages([$imageEntity2, $imageEntity3]);
 
         $command = $this->commandService->getCommand($productEntity);
 
@@ -73,5 +79,11 @@ class CommandTest extends TestCase
             'string',
             $command
         );
+
+        /*
+        echo "\n";
+        echo $command;
+        echo "\n";
+         */
     }
 }

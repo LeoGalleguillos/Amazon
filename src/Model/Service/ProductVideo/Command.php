@@ -33,6 +33,10 @@ class Command
             // Do nothing.
         }
 
+        $imageDuration = count($imageEntities) > 1
+            ? 125
+            : 250;
+
         foreach ($imageEntities as $imageEntity) {
             $fileName = urldecode(basename($imageEntity->getUrl()));
             if (!preg_match('/^[\w\.\_\+\-]+$/', $fileName)) {
@@ -41,11 +45,13 @@ class Command
 
             $rru = "/home/amazon/products/images/$asin/$fileName";
 
-            $code[] = "$rru out=250 -mix 25 -mixer luma \\";
+            $code[] = "$rru out=$imageDuration -mix 25 -mixer luma \\";
         }
 
-        $audioLength    = count($imageEntities) * 229;
-        $startFadingOut = $audioLength - 100;
+        $audioLength = (count($imageEntities) > 1)
+            ? count($imageEntities) * 100
+            : 229;
+        $startFadingOut = $audioLength - 50;
 
         $code[] = "-track /home/amazon/products/videos/ukelele.mp3 out=$audioLength \\";
         $code[] = "-attach-track volume:0db end=-70db in=$startFadingOut out=$audioLength \\";
