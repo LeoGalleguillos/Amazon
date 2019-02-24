@@ -4,6 +4,7 @@ CREATE TABLE `product_video` (
   `title` text not null,
   `duration_milliseconds` int(10) default null,
   `created` datetime not null,
+  `modified` datetime default null,
   PRIMARY KEY (`product_video_id`),
   UNIQUE (`product_id`),
   INDEX (`created`),
