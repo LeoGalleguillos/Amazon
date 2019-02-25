@@ -6,7 +6,6 @@ use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Video\Model\Service as VideoService;
-use TypeError;
 
 /**
  * Everything
@@ -35,13 +34,6 @@ class Everything
 
     public function doEverything(AmazonEntity\Product $productEntity): bool
     {
-        try {
-            $videoGenerated = $productEntity->getVideoGenerated();
-            return false;
-        } catch (TypeError $typeError) {
-            // Do nothing.
-        }
-
         $this->videoGeneratedTable->updateSetToUtcTimestampWhereProductId(
             $productEntity->getProductId()
         );
