@@ -57,7 +57,7 @@ class Everything
         $asin = $productEntity->getAsin();
         $rru  = "/home/amazon/products/videos/$asin.mp4";
 
-        $this->productVideoTable->insert(
+        $this->productVideoTable->insertOnDuplicateKeyUpdate(
             $productEntity->getProductId(),
             $productEntity->getTitle(),
             $this->durationMillisecondsService->getDurationMilliseconds($rru)
