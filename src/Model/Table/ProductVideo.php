@@ -2,6 +2,7 @@
 namespace LeoGalleguillos\Amazon\Model\Table;
 
 use Generator;
+use TypeError;
 use Zend\Db\Adapter\Adapter;
 
 class ProductVideo
@@ -138,6 +139,21 @@ class ProductVideo
                  ;
         ';
         return (int) $this->adapter->query($sql)->execute()->current()['count'];
+    }
+
+    /**
+     * @throws TypeError
+     */
+    public function selectProductIdWhereModifiedIsNullLimit1(): array
+    {
+        $sql = '
+            SELECT `product_id`
+              FROM `product_video`
+             WHERE `modified` IS NULL
+             LIMIT 1
+                 ;
+        ';
+        return $this->adapter->query($sql)->execute()->current();
     }
 
     public function selectWhereBrowseNodeId(
