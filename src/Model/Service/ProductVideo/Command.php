@@ -56,7 +56,16 @@ class Command
         $code[] = "-track /home/amazon/products/videos/ukelele.mp3 out=$audioLength \\";
         $code[] = "-attach-track volume:0db end=-70db in=$startFadingOut out=$audioLength \\";
         $code[] = "-transition mix \\";
-        $code[] = "-consumer avformat:/home/amazon/products/videos/$asin.mp4 acodec=aac vcodec=libx264";
+
+        $rru = "/home/amazon/products/videos/$asin.mp4";
+        if (file_exists($rru)) {
+            $tmpRru = "/home/amazon/tmp/$asin.mp4";
+
+            $code[] = "-consumer avformat:$tmpRru acodec=aac vcodec=libx264 \\";
+            $code[] = "&& mv $tmpRru $rru";
+        } else {
+            $code[] = "-consumer avformat:$rru acodec=aac vcodec=libx264";
+        }
 
         return implode("\n", $code);
     }
