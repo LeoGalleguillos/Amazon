@@ -144,7 +144,7 @@ class ProductVideo
     /**
      * @throws TypeError
      */
-    public function selectProductIdWhereModifiedIsNullLimit1(): array
+    public function selectProductIdWhereModifiedIsNullLimit1(): int
     {
         $sql = '
             SELECT `product_id`
@@ -153,7 +153,8 @@ class ProductVideo
              LIMIT 1
                  ;
         ';
-        return $this->adapter->query($sql)->execute()->current();
+        $array = $this->adapter->query($sql)->execute()->current();
+        return (int) $array['product_id'];
     }
 
     public function selectWhereBrowseNodeId(
