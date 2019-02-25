@@ -365,12 +365,8 @@ class Module
                 },
                 AmazonService\ProductVideo\Generate::class => function ($sm) {
                     return new AmazonService\ProductVideo\Generate(
-                        $sm->get(AmazonService\ProductVideo\Command::class),
-                        $sm->get(AmazonService\ProductVideo\Generated::class)
+                        $sm->get(AmazonService\ProductVideo\Command::class)
                     );
-                },
-                AmazonService\ProductVideo\Generated::class => function ($sm) {
-                    return new AmazonService\ProductVideo\Generated();
                 },
                 AmazonService\ProductVideo\ProductVideos::class => function ($sm) {
                     return new AmazonService\ProductVideo\ProductVideos(

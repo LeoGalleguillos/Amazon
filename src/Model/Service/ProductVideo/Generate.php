@@ -8,19 +8,13 @@ use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 class Generate
 {
     public function __construct(
-        AmazonService\ProductVideo\Command $commandService,
-        AmazonService\ProductVideo\Generated $generatedService
+        AmazonService\ProductVideo\Command $commandService
     ) {
-        $this->commandService   = $commandService;
-        $this->generatedService = $generatedService;
+        $this->commandService = $commandService;
     }
 
     public function generate(AmazonEntity\Product $productEntity)
     {
-        if ($this->generatedService->wasGenerated($productEntity)) {
-            return;
-        }
-
         $command = $this->commandService->getCommand($productEntity);
         exec($command, $output, $return);
     }
