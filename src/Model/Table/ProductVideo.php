@@ -25,13 +25,14 @@ class ProductVideo
                  , `product_video`.`title`
                  , `product_video`.`duration_milliseconds`
                  , `product_video`.`created`
+                 , `product_video`.`modified`
         ';
     }
 
-    public function insert(
+    public function insertOnDuplicateKeyUpdate(
         int $productId,
         string $title,
-        int $durationMilliseconds = null
+        int $durationMilliseconds
     ): int {
         $sql = '
             INSERT
@@ -42,10 +43,18 @@ class ProductVideo
                      , `created`
                    )
             VALUES (?, ?, ?, UTC_TIMESTAMP())
+
+                ON DUPLICATE KEY UPDATE
+                   `title` = ?
+                 , `duration_milliseconds` = ?
+                 , `modified` = UTC_TIMESTAMP()
+
                  ;
         ';
         $parameters = [
             $productId,
+            $title,
+            $durationMilliseconds,
             $title,
             $durationMilliseconds,
         ];

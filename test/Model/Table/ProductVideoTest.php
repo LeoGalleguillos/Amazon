@@ -3,6 +3,7 @@ namespace LeoGalleguillos\AmazonTest\Model\Table;
 
 use Generator;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
+use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
 use LeoGalleguillos\Test\TableTestCase;
 use TypeError;
 
@@ -10,39 +11,78 @@ class ProductVideoTest extends TableTestCase
 {
     protected function setUp()
     {
+        $this->productTable = new AmazonTable\Product(
+            $this->createMock(MemcachedService\Memcached::class),
+            $this->getAdapter()
+        );
         $this->productVideoTable = new AmazonTable\ProductVideo(
             $this->getAdapter()
         );
+
+        $this->setForeignKeyChecks0();
+        $this->dropTable('product');
+        $this->createTable('product');
+        $this->setForeignKeyChecks1();
 
         $this->dropTable('product_video');
         $this->createTable('product_video');
     }
 
-    public function testInitialize()
-    {
-        $this->assertInstanceOf(
-            AmazonTable\ProductVideo::class,
-            $this->productVideoTable
-        );
-    }
-
     public function testInsert()
     {
-        $productVideoId = $this->productVideoTable->insert(
-            12345,
-            'title'
+        $this->productTable->insert(
+            'asin',
+            'product title',
+            'product group',
+            null,
+            null,
+            0
+        );
+
+        $productVideoId = $this->productVideoTable->insertOnDuplicateKeyUpdate(
+            1,
+            'video title',
+            1000
         );
         $this->assertSame(
             1,
             $productVideoId
         );
 
-        $productVideoId = $this->productVideoTable->insert(
-            67890,
-            'title 2'
+        $array = $this->productVideoTable->selectWhereProductVideoId(1);
+        $this->assertSame(
+            '1000',
+            $array['duration_milliseconds']
+        );
+        $this->assertNull(
+            $array['modified']
+        );
+
+        $productVideoId = $this->productVideoTable->insertOnDuplicateKeyUpdate(
+            1,
+            'video title',
+            12345
         );
         $this->assertSame(
-            2,
+            1,
+            $productVideoId
+        );
+        $array = $this->productVideoTable->selectWhereProductVideoId(1);
+        $this->assertSame(
+            '12345',
+            $array['duration_milliseconds']
+        );
+        $this->assertNotNull(
+            $array['modified']
+        );
+
+        $productVideoId = $this->productVideoTable->insertOnDuplicateKeyUpdate(
+            67890,
+            'title 2',
+            2000
+        );
+        $this->assertSame(
+            3,
             $productVideoId
         );
     }
@@ -81,9 +121,10 @@ class ProductVideoTest extends TableTestCase
             );
         }
 
-        $productVideoId = $this->productVideoTable->insert(
+        $productVideoId = $this->productVideoTable->insertOnDuplicateKeyUpdate(
             12345,
-            'title'
+            'title',
+            3000
         );
         $array = $this->productVideoTable->selectWhereProductId(12345);
 
