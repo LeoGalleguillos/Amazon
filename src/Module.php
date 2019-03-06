@@ -469,11 +469,6 @@ class Module
                         $serviceManager->get('amazon')
                     );
                 },
-                AmazonTable\Product\HashtagsRetrieved::class => function ($serviceManager) {
-                    return new AmazonTable\Product\HashtagsRetrieved(
-                        $serviceManager->get('amazon')
-                    );
-                },
                 AmazonTable\Product\HiResImagesRetrieved::class => function ($serviceManager) {
                     return new AmazonTable\Product\HiResImagesRetrieved(
                         $serviceManager->get('amazon')
