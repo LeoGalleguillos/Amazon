@@ -154,6 +154,11 @@ class ProductVideo
                  ;
         ';
         $array = $this->adapter->query($sql)->execute()->current();
+
+        if (empty($array)) {
+            throw new TypeError('Product ID not found.');
+        }
+
         return (int) $array['product_id'];
     }
 
