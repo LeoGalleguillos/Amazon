@@ -171,4 +171,25 @@ class BrowseNodeProduct
             yield $array;
         }
     }
+
+    public function selectWhereOrderIsNullLimit1(): array
+    {
+        $sql = $this->getSelect()
+             . '
+              FROM `browse_node_product`
+             WHERE `order` IS NULL
+             LIMIT 1
+                 ;
+        ';
+        return $this->adapter->query($sql)->execute()->current();
+    }
+
+    protected function getSelect(): string
+    {
+        return '
+            SELECT `browse_node_id`
+                 , `product_id`
+                 , `order`
+        ';
+    }
 }
