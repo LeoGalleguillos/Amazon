@@ -172,16 +172,20 @@ class BrowseNodeProduct
         }
     }
 
-    public function selectWhereOrderIsNullLimit1(): array
+    public function selectProductIdWhereOrderIsNullLimit1(): int
     {
-        $sql = $this->getSelect()
-             . '
+        $sql = '
+            SELECT `product_id`
+                 , MAX(`order`) AS `max_order`
               FROM `browse_node_product`
-             WHERE `order` IS NULL
+             GROUP
+                BY `product_id`
+             HAVING `max_order` IS NULL
              LIMIT 1
                  ;
         ';
-        return $this->adapter->query($sql)->execute()->current();
+        $array = $this->adapter->query($sql)->execute()->current();
+        return (int) $array['product_id'];
     }
 
     protected function getSelect(): string
