@@ -10,22 +10,19 @@ class ProductIdTest extends TableTestCase
 {
     protected function setUp()
     {
-        $this->productIdTable = new AmazonTable\Product\ProductId(
-            $this->getAdapter()
+        $this->productTableMock = $this->createMock(
+            AmazonTable\Product::class
         );
+        $this->productIdTable = new AmazonTable\Product\ProductId(
+            $this->getAdapter(),
+            $this->productTableMock
+        );
+
 
         $this->setForeignKeyChecks0();
         $this->dropTable('product');
         $this->createTable('product');
         $this->setForeignKeyChecks1();
-    }
-
-    public function testInitialize()
-    {
-        $this->assertInstanceOf(
-            AmazonTable\Product\ProductId::class,
-            $this->productIdTable
-        );
     }
 
     public function testSelectAsinWhereProductIdIn()

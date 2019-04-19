@@ -3,6 +3,7 @@ namespace LeoGalleguillos\Amazon\Model\Table\Product;
 
 use Exception;
 use Generator;
+use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use Zend\Db\Adapter\Adapter;
 
 class ProductId
@@ -13,9 +14,11 @@ class ProductId
     protected $adapter;
 
     public function __construct(
-        Adapter $adapter
+        Adapter $adapter,
+        AmazonTable\Product $productTable
     ) {
-        $this->adapter = $adapter;
+        $this->adapter      = $adapter;
+        $this->productTable = $productTable;
     }
 
     public function selectAsinWhereProductIdIn(array $productIds): Generator
@@ -65,5 +68,19 @@ class ProductId
         ];
         $row = $this->adapter->query($sql)->execute($parameters)->current();
         return $row['product_id'];
+    }
+
+    /**
+     * @throws TypeError
+     */
+    public function selectWhereProductId(int $productId): array
+    {
+        $sql = $this->productTable->getSelect()
+             . '
+              FROM `product`
+             WHERE `product`.`product_id` = ?
+                 ;
+        ';
+        return $this->adapter->query($sql)->execute([$productId])->current();
     }
 }

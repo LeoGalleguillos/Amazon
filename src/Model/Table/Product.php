@@ -216,6 +216,8 @@ class Product
 
     /**
      * @throws TypeError
+     *
+     * @deprecated use AmazonTable\Product\ProductId::selectWhereProductId
      */
     public function selectWhereProductId(int $productId): array
     {

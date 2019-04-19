@@ -484,9 +484,10 @@ class Module
                         $serviceManager->get('amazon')
                     );
                 },
-                AmazonTable\Product\ProductId::class => function ($serviceManager) {
+                AmazonTable\Product\ProductId::class => function ($sm) {
                     return new AmazonTable\Product\ProductId(
-                        $serviceManager->get('amazon')
+                        $sm->get('amazon'),
+                        $sm->get(AmazonTable\Product::class)
                     );
                 },
                 AmazonTable\Product\Review::class => function ($serviceManager) {
