@@ -30,6 +30,10 @@ class BrowseNodeProductTest extends TableTestCase
             1,
             $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(2, 1, 1)
         );
+        $this->assertSame(
+            0,
+            $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(2, 1, 1)
+        );
     }
 
     public function testSelectProductIdWhereSimilarRetrievedIsNullAndBrowseNodeIdLimit1()
