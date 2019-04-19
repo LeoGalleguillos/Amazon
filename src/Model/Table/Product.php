@@ -23,22 +23,6 @@ class Product
         $this->adapter   = $adapter;
     }
 
-    protected function getSelect(): string
-    {
-        return '
-            SELECT `product`.`product_id`
-                 , `product`.`asin`
-                 , `product`.`title`
-                 , `product`.`product_group`
-                 , `product`.`binding`
-                 , `product`.`brand`
-                 , `product`.`list_price`
-                 , `product`.`modified`
-                 , `product`.`hi_res_images_retrieved`
-                 , `product`.`video_generated`
-        ';
-    }
-
     public function getNewestAsins()
     {
         $cacheKey = md5(__METHOD__);
@@ -63,6 +47,22 @@ class Product
 
         $this->memcached->setForDays($cacheKey, $newestAsins, 1);
         return $newestAsins;
+    }
+
+    public function getSelect(): string
+    {
+        return '
+            SELECT `product`.`product_id`
+                 , `product`.`asin`
+                 , `product`.`title`
+                 , `product`.`product_group`
+                 , `product`.`binding`
+                 , `product`.`brand`
+                 , `product`.`list_price`
+                 , `product`.`modified`
+                 , `product`.`hi_res_images_retrieved`
+                 , `product`.`video_generated`
+        ';
     }
 
     public function insert(
