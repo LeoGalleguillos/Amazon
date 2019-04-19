@@ -172,7 +172,7 @@ class BrowseNodeProduct
         }
     }
 
-    public function selectProductIdWhereOrderIsNullLimit1(): int
+    public function selectProductIdHavingMaxOrderIsNullLimit1(): int
     {
         $sql = '
             SELECT `product_id`
