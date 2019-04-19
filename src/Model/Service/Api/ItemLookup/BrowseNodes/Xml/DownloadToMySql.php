@@ -29,16 +29,20 @@ class DownloadToMySql
             return false;
         }
 
+        $order = 1;
         foreach ($itemXml->{'BrowseNodes'}->{'BrowseNode'} as $browseNodeXml) {
             $this->downloadToMySqlService->downloadToMySql(
                 $browseNodeXml
             );
 
             $browseNodeId = (int) $browseNodeXml->{'BrowseNodeId'};
-            $this->browseNodeProductTable->insertIgnore(
+            $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
                 $browseNodeId,
-                $productId
+                $productId,
+                $order
             );
+
+            $order++;
         }
         return true;
     }

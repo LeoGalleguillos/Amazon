@@ -16,27 +16,19 @@ class BrowseNodeProductTest extends TableTestCase
         $this->createTable('browse_node_product');
     }
 
-    public function testInitialize()
-    {
-        $this->assertInstanceOf(
-            AmazonTable\BrowseNodeProduct::class,
-            $this->browseNodeProductTable
-        );
-    }
-
     public function testInsertIgnore()
     {
         $this->assertSame(
             1,
-            $this->browseNodeProductTable->insertIgnore(1, 1)
+            $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(1, 1, 1)
         );
         $this->assertSame(
-            0,
-            $this->browseNodeProductTable->insertIgnore(1, 1)
+            2,
+            $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(1, 1, 2)
         );
         $this->assertSame(
             1,
-            $this->browseNodeProductTable->insertIgnore(2, 1)
+            $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(2, 1, 1)
         );
     }
 
@@ -91,9 +83,9 @@ class BrowseNodeProductTest extends TableTestCase
             iterator_to_array($this->browseNodeProductTable->selectWhereProductId(12345))
         );
 
-        $this->browseNodeProductTable->insertIgnore(948, 12345);
-        $this->browseNodeProductTable->insertIgnore(12345, 38576);
-        $this->browseNodeProductTable->insertIgnore(11, 12345);
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(948, 12345, 1);
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(12345, 38576, 1);
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(11, 12345, 1);
 
         $this->assertSame(
             [

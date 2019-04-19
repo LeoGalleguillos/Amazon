@@ -18,22 +18,28 @@ class BrowseNodeProduct
         $this->adapter   = $adapter;
     }
 
-    public function insertIgnore(
+    public function insertOnDuplicateKeyUpdate(
         int $browseNodeId,
-        int $productId
+        int $productId,
+        int $order
     ): int {
         $sql = '
             INSERT IGNORE
               INTO `browse_node_product` (
                        `browse_node_id`
                      , `product_id`
+                     , `order`
                    )
-            VALUES (?, ?)
+            VALUES (?, ?, ?)
+                ON DUPLICATE KEY
+            UPDATE `order` = ?
                  ;
         ';
         $parameters = [
             $browseNodeId,
             $productId,
+            $order,
+            $order,
         ];
         return (int) $this->adapter
                           ->query($sql)

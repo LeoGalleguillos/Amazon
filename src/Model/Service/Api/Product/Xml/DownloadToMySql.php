@@ -41,16 +41,20 @@ class DownloadToMySql
             (float) $listPrice
         );
 
+        $order = 1;
         foreach ($xml->{'BrowseNodes'}->{'BrowseNode'} as $browseNodeXml) {
             $this->downloadToMySqlService->downloadToMySql(
                 $browseNodeXml
             );
 
             $browseNodeId = (int) $browseNodeXml->{'BrowseNodeId'};
-            $this->browseNodeProductTable->insertIgnore(
+            $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
                 $browseNodeId,
-                $productId
+                $productId,
+                $order
             );
+
+            $order++;
         }
 
         if (!empty($xml->{'ItemAttributes'}->{'Feature'})) {

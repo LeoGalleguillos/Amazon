@@ -45,10 +45,10 @@ class DownloadToMySqlTest extends TestCase
 
         $this->browseNodeProductTableMock
             ->expects($this->exactly(2))
-            ->method('insertIgnore')
+            ->method('insertOnDuplicateKeyUpdate')
             ->withConsecutive(
-                [14333511, 12345],
-                [7581668011, 12345]
+                [14333511, 12345, 1],
+                [7581668011, 12345, 2]
             );
 
         $this->downloadToMySqlService->downloadToMySql(
