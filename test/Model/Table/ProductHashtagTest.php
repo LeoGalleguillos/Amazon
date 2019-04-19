@@ -6,55 +6,24 @@ use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\AmazonTest as AmazonTest;
 use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
+use LeoGalleguillos\Test\TableTestCase;
 use Zend\Db\Adapter\Adapter;
 use PHPUnit\Framework\TestCase;
 
-class ProductHashtagTest extends AmazonTest\TableCase
+class ProductHashtagTest extends TableTestCase
 {
-    /**
-     * @var string
-     */
-    protected $sqlDirectory = __DIR__ . '/../../..' . '/sql/';
-
     protected function setUp()
     {
         $this->memcachedService = $this->createMock(
             MemcachedService\Memcached::class
         );
-        $configArray            = require(__DIR__ . '/../../../config/autoload/local.php');
-        $configArray            = $configArray['db']['adapters']['leogalle_test'];
-        $this->adapter          = new Adapter($configArray);
         $this->productHashtagTable     = new AmazonTable\ProductHashtag(
             $this->memcachedService,
-            $this->adapter
+            $this->getAdapter()
         );
 
-        $this->dropTable();
-        $this->createTable();
-    }
-
-    protected function dropTable()
-    {
-        $sql    = file_get_contents(
-            $this->sqlDirectory . 'leogalle_test/product_hashtag/drop.sql'
-        );
-        $result = $this->adapter->query($sql)->execute();
-    }
-
-    protected function createTable()
-    {
-        $sql    = file_get_contents(
-            $this->sqlDirectory . 'leogalle_test/product_hashtag/create.sql'
-        );
-        $result = $this->adapter->query($sql)->execute();
-    }
-
-    public function testInitialize()
-    {
-        $this->assertInstanceOf(
-            AmazonTable\ProductHashtag::class,
-            $this->productHashtagTable
-        );
+        $this->dropTable('product_hashtag');
+        $this->createTable('product_hashtag');
     }
 
     public function testInsertIgnore()
