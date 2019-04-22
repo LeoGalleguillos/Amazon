@@ -161,7 +161,7 @@ class BrowseNodeProduct
               FROM `browse_node_product`
              WHERE `product_id` = ?
              ORDER
-                BY `browse_node_id` ASC
+                BY `order` ASC
                  ;
         ';
         $parameters = [
