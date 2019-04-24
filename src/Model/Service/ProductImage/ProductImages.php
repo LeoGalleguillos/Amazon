@@ -22,7 +22,10 @@ class ProductImages
         }
 
         try {
-            array_merge($imageEntities, $productEntity->getVariantImages());
+            $imageEntities = array_merge(
+                $imageEntities,
+                $productEntity->getVariantImages()
+            );
         } catch (TypeError $typeError) {
             // Do nothing.
         }

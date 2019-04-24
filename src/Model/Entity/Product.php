@@ -243,7 +243,7 @@ class Product
         return $this;
     }
 
-    public function setVariantImages(array $variantImages) : AmazonEntity\Product
+    public function setVariantImages(array $variantImages): AmazonEntity\Product
     {
         $this->variantImages = $variantImages;
         return $this;
