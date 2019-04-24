@@ -87,7 +87,7 @@ class BrowseNodeProductTest extends TableTestCase
             iterator_to_array($this->browseNodeProductTable->selectWhereProductId(12345))
         );
 
-        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(948, 12345, 1);
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(948, 12345, 2);
         $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(12345, 38576, 1);
         $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(11, 12345, 1);
 
