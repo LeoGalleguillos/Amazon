@@ -328,6 +328,9 @@ class Module
                 AmazonService\ProductImage\DownloadFile::class => function ($sm) {
                     return new AmazonService\ProductImage\DownloadFile();
                 },
+                AmazonService\ProductImage\ProductImages::class => function ($sm) {
+                    return new AmazonService\ProductImage\ProductImages();
+                },
                 AmazonService\ProductImage\ProductImages\DownloadFiles::class => function ($sm) {
                     return new AmazonService\ProductImage\ProductImages\DownloadFiles(
                         $sm->get(AmazonService\ProductImage\DownloadFile::class)
