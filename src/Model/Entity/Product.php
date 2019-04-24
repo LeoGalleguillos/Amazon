@@ -90,7 +90,7 @@ class Product
     /**
      * @var ImageEntity\Image[]
      */
-    public $variantImages = [];
+    public $variantImages;
 
     /**
      * var DateTime
