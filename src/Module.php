@@ -26,6 +26,7 @@ class Module
                     'getModifiedTitle'              => AmazonHelper\Product\ModifiedTitle::class,
                     'getProductAffiliateUrl'        => AmazonHelper\Product\AffiliateUrl::class,
                     'getProductFirstImageEntity'    => AmazonHelper\Product\FirstImageEntity::class,
+                    'getProductImages'              => AmazonHelper\ProductImage\ProductImages::class,
                     'getProductModifiedFeatures'    => AmazonHelper\Product\ModifiedFeatures::class,
                     'getProductRootRelativeUrl'     => AmazonHelper\Product\RootRelativeUrl::class,
                     'getProductVideoSchemaOrgArray' => AmazonHelper\ProductVideo\SchemaOrgArray::class,
@@ -76,6 +77,11 @@ class Module
                     AmazonHelper\Product\RootRelativeUrl::class => function ($serviceManager) {
                         return new AmazonHelper\Product\RootRelativeUrl(
                             $serviceManager->get(AmazonService\Product\RootRelativeUrl::class)
+                        );
+                    },
+                    AmazonHelper\ProductImage\ProductImages::class => function ($sm) {
+                        return new AmazonHelper\ProductImage\ProductImages(
+                            $sm->get(AmazonService\ProductImage\ProductImages::class)
                         );
                     },
                     AmazonHelper\ProductVideo\SchemaOrgArray::class => function ($sm) {
