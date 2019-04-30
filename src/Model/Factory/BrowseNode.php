@@ -3,7 +3,6 @@ namespace LeoGalleguillos\Amazon\Model\Factory;
 
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
-use TypeError;
 
 class BrowseNode
 {
@@ -62,7 +61,7 @@ class BrowseNode
     ): AmazonEntity\BrowseNode {
         $browseNodeEntity = new AmazonEntity\BrowseNode();
 
-        $browseNodeEntity->setBrowseNodeId($array['browse_node_id'])
+        $browseNodeEntity->setBrowseNodeId((int) $array['browse_node_id'])
                          ->setName($array['name']);
 
         return $browseNodeEntity;
