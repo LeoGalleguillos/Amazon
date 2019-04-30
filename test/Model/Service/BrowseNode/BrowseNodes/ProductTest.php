@@ -35,9 +35,9 @@ class ProductTest extends TestCase
             $this->yieldArrays()
         );
 
-        $browseNodeEntities = iterator_to_array($this->productService->getBrowseNodes(
+        $browseNodeEntities = $this->productService->getBrowseNodes(
             $productEntity
-        ));
+        );
 
         $this->assertSame(
             2,

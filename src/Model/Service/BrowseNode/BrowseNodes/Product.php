@@ -5,6 +5,7 @@ use Generator;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
+use TypeError;
 
 class Product
 {
@@ -16,15 +17,25 @@ class Product
         $this->browseNodeProductTable = $browseNodeProductTable;
     }
 
-    public function getBrowseNodes(AmazonEntity\Product $productEntity): Generator
+    public function getBrowseNodes(AmazonEntity\Product $productEntity): array
     {
+        try {
+            return $productEntity->getBrowseNodes();
+        } catch (TypeError $typeError) {
+            // Do nothing.
+        }
+
+        $browseNodeEntities = [];
         $generator = $this->browseNodeProductTable->selectWhereProductId(
             $productEntity->getProductId()
         );
         foreach ($generator as $array) {
-            yield $this->browseNodeFactory->buildFromBrowseNodeId(
+            $browseNodeEntities[] = $this->browseNodeFactory->buildFromBrowseNodeId(
                 $array['browse_node_id']
             );
         }
+        $productEntity->setBrowseNodes($browseNodeEntities);
+
+        return $browseNodeEntities;
     }
 }
