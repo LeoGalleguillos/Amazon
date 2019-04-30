@@ -190,6 +190,37 @@ class ProductVideo
         }
     }
 
+    public function selectWhereBrowseNodeName(
+        string $name,
+        int $limitOffset,
+        int $limitRowCount
+    ): Generator {
+        $sql = $this->getSelect()
+             . "
+              FROM `product_video`
+
+              JOIN `browse_node_product`
+             USING (`product_id`)
+
+              JOIN `browse_node`
+             USING (`browse_node_id`)
+
+             WHERE `browse_node`.`name` = ?
+
+             ORDER
+                BY `product_video`.`created` DESC
+
+             LIMIT $limitOffset, $limitRowCount
+                 ;
+        ";
+        $parameters = [
+            $name,
+        ];
+        foreach ($this->adapter->query($sql)->execute($parameters) as $array) {
+            yield $array;
+        }
+    }
+
     /**
      * @throws TypeError
      */
