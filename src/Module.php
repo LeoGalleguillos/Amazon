@@ -452,6 +452,11 @@ class Module
                         $serviceManager->get('amazon')
                     );
                 },
+                AmazonTable\BrowseNodeProduct\BrowseNodeId::class => function ($sm) {
+                    return new AmazonTable\BrowseNodeProduct\BrowseNodeId(
+                        $sm->get('amazon')
+                    );
+                },
                 AmazonTable\Product::class => function ($serviceManager) {
                     return new AmazonTable\Product(
                         $serviceManager->get(MemcachedService\Memcached::class),
