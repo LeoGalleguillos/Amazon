@@ -27,12 +27,8 @@ class BreadcrumbsHtml extends AbstractHelper
             $productEntity
         );
 
-        if (!($browseNodeEntities->current() instanceof AmazonEntity\BrowseNode)) {
-            throw new Exception('No browse nodes found.');
-        }
-
         $browseNodeEntities = $this->breadcrumbsService->getBrowseNodes(
-            $browseNodeEntities->current()
+            $browseNodeEntities[0]
         );
 
         $href = '/categories';
