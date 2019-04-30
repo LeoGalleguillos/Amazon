@@ -21,11 +21,18 @@ class BreadcrumbsHtml extends AbstractHelper
         $this->urlFriendlyService = $urlFriendlyService;
     }
 
+    /**
+     * @throws Exception
+     */
     public function __invoke(AmazonEntity\Product $productEntity): string
     {
         $browseNodeEntities = $this->productService->getBrowseNodes(
             $productEntity
         );
+
+        if (empty($browseNodeEntities)) {
+            throw new Exception('No browse nodes found for product.');
+        }
 
         $browseNodeEntities = $this->breadcrumbsService->getBrowseNodes(
             $browseNodeEntities[0]
