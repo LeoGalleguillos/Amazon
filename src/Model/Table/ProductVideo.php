@@ -254,14 +254,16 @@ class ProductVideo
               JOIN `product`
              USING (`product_id`)
 
+              LEFT
               JOIN `browse_node_product`
-             USING (`product_id`)
+                ON `browse_node_product`.`product_id` = `product`.`product_id`
+               AND `browse_node_product`.`order` = 1
 
+              LEFT
               JOIN `browse_node`
              USING (`browse_node_id`)
 
              WHERE `product_video_id` = ?
-               AND `browse_node_product`.`order` = 1
                  ;
         ';
         $parameters = [
