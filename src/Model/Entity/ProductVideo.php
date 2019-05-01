@@ -7,6 +7,16 @@ use LeoGalleguillos\Video\Model\Entity as VideoEntity;
 class ProductVideo extends VideoEntity\Video
 {
     /**
+     * @var string
+     */
+    protected $asin;
+
+    /**
+     * @var string
+     */
+    protected $browseNodeName;
+
+    /**
      * @var AmazonEntity\Product
      */
     protected $product;
@@ -14,11 +24,31 @@ class ProductVideo extends VideoEntity\Video
     /**
      * @var int
      */
+    protected $productId;
+
+    /**
+     * @var int
+     */
     protected $productVideoId;
+
+    public function getAsin(): string
+    {
+        return $this->asin;
+    }
+
+    public function getBrowseNodeName(): string
+    {
+        return $this->browseNodeName;
+    }
 
     public function getProduct(): AmazonEntity\Product
     {
         return $this->product;
+    }
+
+    public function getProductId(): int
+    {
+        return $this->productId;
     }
 
     public function getProductVideoId(): int
@@ -26,9 +56,27 @@ class ProductVideo extends VideoEntity\Video
         return $this->productVideoId;
     }
 
+    public function setAsin(string $asin): AmazonEntity\ProductVideo
+    {
+        $this->asin = $asin;
+        return $this;
+    }
+
+    public function setBrowseNodeName(string $browseNodeName): AmazonEntity\ProductVideo
+    {
+        $this->browseNodeName = $browseNodeName;
+        return $this;
+    }
+
     public function setProduct(AmazonEntity\Product $product): AmazonEntity\ProductVideo
     {
         $this->product = $product;
+        return $this;
+    }
+
+    public function setProductId(int $productId): AmazonEntity\ProductVideo
+    {
+        $this->productId = $productId;
         return $this;
     }
 
