@@ -91,39 +91,6 @@ class ProductVideo
         }
     }
 
-    public function selectOrderByCreatedDesc(): Generator
-    {
-        $sql = $this->getSelect()
-            . '
-                 , `product`.`product_id`
-                 , `product`.`asin`
-                 , `browse_node`.`name` AS `browse_node.name`
-
-              FROM `product_video`
-
-              JOIN `product`
-             USING (`product_id`)
-
-              LEFT
-              JOIN `browse_node_product`
-                ON `browse_node_product`.`product_id` = `product`.`product_id`
-               AND `browse_node_product`.`order` = 1
-
-              LEFT
-              JOIN `browse_node`
-             USING (`browse_node_id`)
-
-             ORDER
-                BY `product_video`.`created` DESC
-
-             LIMIT 100
-
-        ';
-        foreach ($this->adapter->query($sql)->execute() as $array) {
-            yield $array;
-        }
-    }
-
     public function selectAsinWhereMatchAgainst(string $query): Generator
     {
         $sql = '
@@ -155,6 +122,39 @@ class ProductVideo
                  ;
         ';
         return (int) $this->adapter->query($sql)->execute()->current()['count'];
+    }
+
+    public function selectOrderByCreatedDesc(): Generator
+    {
+        $sql = $this->getSelect()
+            . '
+                 , `product`.`product_id`
+                 , `product`.`asin`
+                 , `browse_node`.`name` AS `browse_node.name`
+
+              FROM `product_video`
+
+              JOIN `product`
+             USING (`product_id`)
+
+              LEFT
+              JOIN `browse_node_product`
+                ON `browse_node_product`.`product_id` = `product`.`product_id`
+               AND `browse_node_product`.`order` = 1
+
+              LEFT
+              JOIN `browse_node`
+             USING (`browse_node_id`)
+
+             ORDER
+                BY `product_video`.`created` DESC
+
+             LIMIT 100
+
+        ';
+        foreach ($this->adapter->query($sql)->execute() as $array) {
+            yield $array;
+        }
     }
 
     /**
