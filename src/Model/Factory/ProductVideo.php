@@ -36,22 +36,9 @@ class ProductVideo
 
     public function buildFromAsin(string $asin): AmazonEntity\ProductVideo
     {
-        $productVideoEntity = new AmazonEntity\ProductVideo();
-
-        $productVideoEntity->setProduct(
-            $this->productFactory->buildFromAsin($asin)
+        return $this->buildFromArray(
+            $this->productVideoTable->selectWhereAsin($asin)
         );
-
-        $array = $this->productVideoTable->selectWhereProductId(
-            $productVideoEntity->getProduct()->getProductId()
-        );
-
-        $productVideoEntity->setCreated(new DateTime($array['created']))
-                           ->setDurationMilliseconds($array['duration_milliseconds'])
-                           ->setProductVideoId($array['product_video_id'])
-                           ->setTitle($array['title']);
-
-        return $productVideoEntity;
     }
 
     public function buildFromProductVideoId(

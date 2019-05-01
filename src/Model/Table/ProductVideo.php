@@ -178,6 +178,40 @@ class ProductVideo
         return (int) $array['product_id'];
     }
 
+    /**
+     * @throws TypeError
+     */
+    public function selectWhereAsin(string $asin): array
+    {
+        $sql = $this->getSelect()
+             . '
+                 , `product`.`product_id`
+                 , `product`.`asin`
+                 , `browse_node`.`name` AS `browse_node.name`
+
+              FROM `product_video`
+
+              JOIN `product`
+             USING (`product_id`)
+
+              LEFT
+              JOIN `browse_node_product`
+                ON `browse_node_product`.`product_id` = `product`.`product_id`
+               AND `browse_node_product`.`order` = 1
+
+              LEFT
+              JOIN `browse_node`
+             USING (`browse_node_id`)
+
+             WHERE `product`.`asin` = ?
+                 ;
+        ';
+        $parameters = [
+            $asin,
+        ];
+        return $this->adapter->query($sql)->execute($parameters)->current();
+    }
+
     public function selectWhereBrowseNodeId(
         int $browseNodeId,
         int $limitOffset,
