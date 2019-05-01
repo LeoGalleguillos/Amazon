@@ -20,8 +20,8 @@ class SchemaOrgArray extends AbstractHelper
                 '@context' => 'https://schema.org',
                 '@type' => 'VideoObject',
                 'url' => $this->getUrl($productVideoEntity),
-                'name' => $productVideoEntity->getProduct()->getTitle(),
-                'description' => $productVideoEntity->getProduct()->getTitle(),
+                'name' => $productVideoEntity->getTitle(),
+                'description' => $productVideoEntity->getTitle(),
 
                 'duration' => $this->getDuration($productVideoEntity),
                 'thumbnailUrl' => $this->getThumbnailUrl($productVideoEntity),
