@@ -86,7 +86,7 @@ class Module
                     },
                     AmazonHelper\ProductVideo\SchemaOrgArray::class => function ($sm) {
                         return new AmazonHelper\ProductVideo\SchemaOrgArray(
-                            $sm->get(AmazonService\Product\Slug::class)
+                            $sm->get(StringService\UrlFriendly::class)
                         );
                     },
                 ],

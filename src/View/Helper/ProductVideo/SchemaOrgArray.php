@@ -3,14 +3,15 @@ namespace LeoGalleguillos\Amazon\View\Helper\ProductVideo;
 
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
+use LeoGalleguillos\String\Model\Service as StringService;
 use Zend\View\Helper\AbstractHelper;
 
 class SchemaOrgArray extends AbstractHelper
 {
     public function __construct(
-        AmazonService\Product\Slug $slugService
+        StringService\UrlFriendly $urlFriendlyService
     ) {
-        $this->slugService = $slugService;
+        $this->urlFriendlyService = $urlFriendlyService;
     }
 
     public function __invoke(AmazonEntity\ProductVideo $productVideoEntity): array
@@ -64,7 +65,7 @@ class SchemaOrgArray extends AbstractHelper
         return 'https://'
             . $_SERVER['HTTP_HOST']
             . '/videos/products/thumbnails/'
-            . $productVideoEntity->getProduct()->getAsin()
+            . $productVideoEntity->getAsin()
             . '.jpg';
     }
 
@@ -73,8 +74,10 @@ class SchemaOrgArray extends AbstractHelper
         return 'https://'
             . $_SERVER['HTTP_HOST']
             . '/watch/'
-            . $productVideoEntity->getProduct()->getAsin()
+            . $productVideoEntity->getAsin()
             . '/'
-            . $this->slugService->getSlug($productVideoEntity->getProduct());
+            . $this->urlFriendlyService->getUrlFriendly(
+                $productVideoEntity->getTitle()
+            );
     }
 }
