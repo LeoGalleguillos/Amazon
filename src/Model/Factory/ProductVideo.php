@@ -19,14 +19,14 @@ class ProductVideo
     public function buildFromArray(array $array): AmazonEntity\ProductVideo
     {
         $productVideoEntity = new AmazonEntity\ProductVideo();
-        $productVideoEntity->setCreated(new DateTime($array['created']))
-                           ->setDurationMilliseconds($array['duration_milliseconds'])
-                           ->setProductVideoId($array['product_video_id'])
-                           ->setTitle($array['title']);
-
-        $productVideoEntity->setProduct(
-            $this->productFactory->buildFromProductId($array['product_id'])
-        );
+        $productVideoEntity
+            ->setAsin($array['asin'])
+            ->setBrowseNodeName($array['browse_node.name'])
+            ->setCreated(new DateTime($array['created']))
+            ->setDurationMilliseconds((int) $array['duration_milliseconds'])
+            ->setProductId((int) $array['product_id'])
+            ->setProductVideoId((int) $array['product_video_id'])
+            ->setTitle($array['title']);
 
         return $productVideoEntity;
     }
