@@ -21,12 +21,15 @@ class ProductVideo
         $productVideoEntity = new AmazonEntity\ProductVideo();
         $productVideoEntity
             ->setAsin($array['asin'])
-            ->setBrowseNodeName($array['browse_node.name'])
             ->setCreated(new DateTime($array['created']))
             ->setDurationMilliseconds((int) $array['duration_milliseconds'])
             ->setProductId((int) $array['product_id'])
             ->setProductVideoId((int) $array['product_video_id'])
             ->setTitle($array['title']);
+
+        if (isset($array['browse_node.name'])) {
+            $productVideoEntity->setBrowseNodeName($array['browse_node.name']);
+        }
 
         return $productVideoEntity;
     }
