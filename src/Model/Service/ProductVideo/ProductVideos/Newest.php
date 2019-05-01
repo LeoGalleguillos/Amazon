@@ -9,26 +9,22 @@ use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 class Newest
 {
     public function __construct(
-        AmazonFactory\Product $productFactory,
+        AmazonFactory\ProductVideo $productVideoFactory,
         AmazonTable\ProductVideo $productVideoTable
     ) {
-        $this->productFactory    = $productFactory;
-        $this->productVideoTable = $productVideoTable;
+        $this->productVideoFactory = $productVideoFactory;
+        $this->productVideoTable   = $productVideoTable;
     }
 
     public function getNewest()
     {
-        foreach ($this->productVideoTable->selectAsinOrderByCreatedDesc() as $array) {
+        foreach ($this->productVideoTable->selectOrderByCreatedDesc() as $array) {
             $asin = $array['asin'];
-            $productEntity = $this->productFactory->buildFromAsin($asin);
-            $productVideoEntity = new AmazonEntity\ProductVideo();
+            $productVideoEntity = $this->productVideoFactory->buildFromArray(
+                $array
+            );
 
-            if (!preg_match('/^\w+$/', $asin)) {
-                throw new Exception('Invalid ASIN (this should never happen)');
-            }
-
-            $productVideoEntity->setProduct($productEntity)
-                               ->setRootRelativeUrl("/videos/products/$asin.mp4");
+            $productVideoEntity->setRootRelativeUrl("/videos/products/$asin.mp4");
 
             yield $productVideoEntity;
         }

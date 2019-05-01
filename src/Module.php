@@ -397,7 +397,7 @@ class Module
                 },
                 AmazonService\ProductVideo\ProductVideos\Newest::class => function ($sm) {
                     return new AmazonService\ProductVideo\ProductVideos\Newest(
-                        $sm->get(AmazonFactory\Product::class),
+                        $sm->get(AmazonFactory\ProductVideo::class),
                         $sm->get(AmazonTable\ProductVideo::class)
                     );
                 },

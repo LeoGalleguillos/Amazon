@@ -13,29 +13,21 @@ class NewestTest extends TestCase
 {
     protected function setUp()
     {
-        $this->productFactoryMock = $this->createMock(
-            AmazonFactory\Product::class
+        $this->productVideoFactoryMock = $this->createMock(
+            AmazonFactory\ProductVideo::class
         );
         $this->productVideoTableMock = $this->createMock(
             AmazonTable\ProductVideo::class
         );
         $this->newestService = new AmazonService\ProductVideo\ProductVideos\Newest(
-            $this->productFactoryMock,
+            $this->productVideoFactoryMock,
             $this->productVideoTableMock
-        );
-    }
-
-    public function testInitialize()
-    {
-        $this->assertInstanceOf(
-            AmazonService\ProductVideo\ProductVideos\Newest::class,
-            $this->newestService
         );
     }
 
     public function testGetNewest()
     {
-        $this->productVideoTableMock->method('selectAsinOrderByCreatedDesc')->willReturn(
+        $this->productVideoTableMock->method('selectOrderByCreatedDesc')->willReturn(
             $this->yieldArrays()
         );
 
@@ -47,19 +39,11 @@ class NewestTest extends TestCase
             AmazonEntity\ProductVideo::class,
             $productVideoEntity
         );
-        $this->assertSame(
-            '/videos/products/ABCDEFG.mp4',
-            $productVideoEntity->getRootRelativeUrl()
-        );
 
         $productVideoEntity = $array[1];
         $this->assertInstanceOf(
             AmazonEntity\ProductVideo::class,
             $productVideoEntity
-        );
-        $this->assertSame(
-            '/videos/products/HIJKLMNOP.mp4',
-            $productVideoEntity->getRootRelativeUrl()
         );
     }
 

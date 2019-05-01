@@ -91,15 +91,31 @@ class ProductVideo
         }
     }
 
-    public function selectAsinOrderByCreatedDesc(): Generator
+    public function selectOrderByCreatedDesc(): Generator
     {
-        $sql = '
-            SELECT `product`.`asin`
-              FROM `product`
-              JOIN `product_video`
+        $sql = $this->getSelect()
+            . '
+                 , `product`.`product_id`
+                 , `product`.`asin`
+                 , `browse_node`.`name` AS `browse_node.name`
+
+              FROM `product_video`
+
+              JOIN `product`
              USING (`product_id`)
+
+              LEFT
+              JOIN `browse_node_product`
+                ON `browse_node_product`.`product_id` = `product`.`product_id`
+               AND `browse_node_product`.`order` = 1
+
+              LEFT
+              JOIN `browse_node`
+             USING (`browse_node_id`)
+
              ORDER
                 BY `product_video`.`created` DESC
+
              LIMIT 100
 
         ';
