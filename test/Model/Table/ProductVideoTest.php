@@ -11,6 +11,12 @@ class ProductVideoTest extends TableTestCase
 {
     protected function setUp()
     {
+        $this->browseNodeTable = new AmazonTable\BrowseNode(
+            $this->getAdapter()
+        );
+        $this->browseNodeProductTable = new AmazonTable\BrowseNodeProduct(
+            $this->getAdapter()
+        );
         $this->productTable = new AmazonTable\Product(
             $this->createMock(MemcachedService\Memcached::class),
             $this->getAdapter()
@@ -30,6 +36,10 @@ class ProductVideoTest extends TableTestCase
 
     public function testInsert()
     {
+        $this->browseNodeTable->insertIgnore(
+            12345,
+            'Browse Node Name'
+        );
         $this->productTable->insert(
             'asin',
             'product title',
@@ -37,6 +47,11 @@ class ProductVideoTest extends TableTestCase
             null,
             null,
             0
+        );
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
+            12345,
+            1,
+            1
         );
 
         $productVideoId = $this->productVideoTable->insertOnDuplicateKeyUpdate(
@@ -53,6 +68,14 @@ class ProductVideoTest extends TableTestCase
         $this->assertSame(
             '1000',
             $array['duration_milliseconds']
+        );
+        $this->assertSame(
+            'video title',
+            $array['title']
+        );
+        $this->assertSame(
+            'Browse Node Name',
+            $array['browse_node.name']
         );
         $this->assertNull(
             $array['modified']

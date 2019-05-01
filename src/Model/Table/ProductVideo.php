@@ -247,18 +247,21 @@ class ProductVideo
              . '
                  , `product`.`product_id`
                  , `product`.`asin`
-                 , `product`.`title`
-                 , `product`.`product_group`
-                 , `product`.`binding`
-                 , `product`.`brand`
-                 , `product`.`list_price`
+                 , `browse_node`.`name` AS `browse_node.name`
 
               FROM `product_video`
 
               JOIN `product`
              USING (`product_id`)
 
+              JOIN `browse_node_product`
+             USING (`product_id`)
+
+              JOIN `browse_node`
+             USING (`browse_node_id`)
+
              WHERE `product_video_id` = ?
+               AND `browse_node_product`.`order` = 1
                  ;
         ';
         $parameters = [
