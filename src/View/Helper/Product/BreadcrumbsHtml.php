@@ -18,7 +18,7 @@ class BreadcrumbsHtml extends AbstractHelper
     ) {
         $this->breadcrumbsService = $breadcrumbsService;
         $this->productService     = $productService;
-        $this->$domain            = $domain;
+        $this->domain             = $domain;
         $this->escapeService      = $escapeService;
         $this->urlFriendlyService = $urlFriendlyService;
     }
