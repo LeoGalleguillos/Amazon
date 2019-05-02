@@ -12,11 +12,13 @@ class BreadcrumbsHtml extends AbstractHelper
     public function __construct(
         AmazonService\BrowseNode\BrowseNodes\Breadcrumbs $breadcrumbsService,
         AmazonService\BrowseNode\BrowseNodes\Product $productService,
+        string $domain,
         StringService\Escape $escapeService,
         StringService\UrlFriendly $urlFriendlyService
     ) {
         $this->breadcrumbsService = $breadcrumbsService;
         $this->productService     = $productService;
+        $this->$domain            = $domain;
         $this->escapeService      = $escapeService;
         $this->urlFriendlyService = $urlFriendlyService;
     }
@@ -38,7 +40,11 @@ class BreadcrumbsHtml extends AbstractHelper
             $browseNodeEntities[0]
         );
 
-        $href = '/categories';
+        $href = ($_SERVER['HTTP_HOST'] == $domain)
+            ? ''
+            : 'https://' . $domain;
+        $href .= '/categories';
+
         $html = "<ol class=\"breadcrumbs\">\n";
 
         foreach ($browseNodeEntities as $browseNodeEntity) {
