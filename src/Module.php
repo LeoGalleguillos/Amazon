@@ -29,7 +29,6 @@ class Module
                     'getProductImages'              => AmazonHelper\ProductImage\ProductImages::class,
                     'getProductModifiedFeatures'    => AmazonHelper\Product\ModifiedFeatures::class,
                     'getProductRootRelativeUrl'     => AmazonHelper\Product\RootRelativeUrl::class,
-                    'getProductVideoSchemaOrgArray' => AmazonHelper\ProductVideo\SchemaOrgArray::class,
                 ],
                 'factories' => [
                     AmazonHelper\BrowseNode\BreadcrumbsHtml::class => function ($sm) {
@@ -82,11 +81,6 @@ class Module
                     AmazonHelper\ProductImage\ProductImages::class => function ($sm) {
                         return new AmazonHelper\ProductImage\ProductImages(
                             $sm->get(AmazonService\ProductImage\ProductImages::class)
-                        );
-                    },
-                    AmazonHelper\ProductVideo\SchemaOrgArray::class => function ($sm) {
-                        return new AmazonHelper\ProductVideo\SchemaOrgArray(
-                            $sm->get(StringService\UrlFriendly::class)
                         );
                     },
                 ],
