@@ -40,9 +40,9 @@ class BreadcrumbsHtml extends AbstractHelper
             $browseNodeEntities[0]
         );
 
-        $href = ($_SERVER['HTTP_HOST'] == $domain)
+        $href = ($_SERVER['HTTP_HOST'] == $this->domain)
             ? ''
-            : 'https://' . $domain;
+            : 'https://' . $this->domain;
         $href .= '/categories';
 
         $html = "<ol class=\"breadcrumbs\">\n";
