@@ -10,17 +10,17 @@ use Zend\View\Helper\AbstractHelper;
 class BreadcrumbsHtml extends AbstractHelper
 {
     public function __construct(
+        array $browseNodeNameDomains,
         AmazonService\BrowseNode\BrowseNodes\Breadcrumbs $breadcrumbsService,
         AmazonService\BrowseNode\BrowseNodes\Product $productService,
-        string $domain,
         StringService\Escape $escapeService,
         StringService\UrlFriendly $urlFriendlyService
     ) {
-        $this->breadcrumbsService = $breadcrumbsService;
-        $this->productService     = $productService;
-        $this->domain             = $domain;
-        $this->escapeService      = $escapeService;
-        $this->urlFriendlyService = $urlFriendlyService;
+        $this->browseNodeNameDomains = $browseNodeNameDomains;
+        $this->breadcrumbsService    = $breadcrumbsService;
+        $this->productService        = $productService;
+        $this->escapeService         = $escapeService;
+        $this->urlFriendlyService    = $urlFriendlyService;
     }
 
     /**
@@ -40,10 +40,11 @@ class BreadcrumbsHtml extends AbstractHelper
             $browseNodeEntities[0]
         );
 
-        $href = ($_SERVER['HTTP_HOST'] == $this->domain)
-            ? ''
-            : 'https://' . $this->domain;
-        $href .= '/categories';
+        $defaultDomain = $this->browseNodeNameDomains['default'];
+
+        $href = ($_SERVER['HTTP_HOST'] == $defaultDomain)
+            ? '/categories'
+            : 'https://' . $defaultDomain . '/categories';
 
         $html = "<ol class=\"breadcrumbs\">\n";
 

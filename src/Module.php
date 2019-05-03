@@ -48,9 +48,9 @@ class Module
                     },
                     AmazonHelper\Product\BreadcrumbsHtml::class => function ($sm) {
                         return new AmazonHelper\Product\BreadcrumbsHtml(
+                            $sm->get('Config')['amazon']['browse-node-name-domain'],
                             $sm->get(AmazonService\BrowseNode\BrowseNodes\Breadcrumbs::class),
                             $sm->get(AmazonService\BrowseNode\BrowseNodes\Product::class),
-                            $sm->get('Config')['amazon']['domain'],
                             $sm->get(StringService\Escape::class),
                             $sm->get(StringService\UrlFriendly::class)
                         );
