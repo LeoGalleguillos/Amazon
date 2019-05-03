@@ -260,7 +260,14 @@ class ProductVideo
     ): Generator {
         $sql = $this->getSelect()
              . "
+                 , `product`.`product_id`
+                 , `product`.`asin`
+                 , `browse_node`.`name` AS `browse_node.name`
+
               FROM `product_video`
+
+              JOIN `product`
+             USING (`product_id`)
 
               JOIN `browse_node_product`
              USING (`product_id`)
