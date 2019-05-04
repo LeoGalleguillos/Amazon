@@ -49,8 +49,9 @@ class BreadcrumbsHtml extends AbstractHelper
         $html = "<ol class=\"breadcrumbs\">\n";
 
         foreach ($browseNodeEntities as $browseNodeEntity) {
+            $browseNodeName  = $browseNodeEntity->getName();
             $nameUrlFriendly = $this->urlFriendlyService->getUrlFriendly(
-                $browseNodeEntity->getName()
+                $browseNodeName
             );
             $href .= '/'
                 . $browseNodeEntity->getBrowseNodeId()
@@ -59,7 +60,13 @@ class BreadcrumbsHtml extends AbstractHelper
             $nameEscaped = $this->escapeService->escape(
                 $browseNodeEntity->getName()
             );
-            $html .= "<li><a href=\"$href\">$nameEscaped</a></li>\n";
+
+            if (isset($this->browseNodeNameDomains[$browseNodeName])) {
+                $domain = $this->browseNodeNameDomains[$browseNodeName];
+                $html .= "<li><a href=\"https://$domain\">$nameEscaped</a></li>\n";
+            } else {
+                $html .= "<li><a href=\"$href\">$nameEscaped</a></li>\n";
+            }
         }
 
         $html .= '</ol>';
