@@ -141,7 +141,7 @@ class ProductVideo
         $parameters = [
             $browseNodeId,
         ];
-        $array = $this->adapter->query($sql)->execute($parameters);
+        $array = $this->adapter->query($sql)->execute($parameters)->current();
         return (int) $array['count'];
     }
 
