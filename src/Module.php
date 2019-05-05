@@ -384,6 +384,11 @@ class Module
                         $sm->get(AmazonTable\ProductVideo::class)
                     );
                 },
+                AmazonService\ProductVideo\ProductVideos\BrowseNode\NumberOfVideos::class => function ($sm) {
+                    return new AmazonService\ProductVideo\ProductVideos\BrowseNode\NumberOfVideos(
+                        $sm->get(AmazonTable\ProductVideo::class)
+                    );
+                },
                 AmazonService\ProductVideo\ProductVideos\BrowseNode\Name::class => function ($sm) {
                     return new AmazonService\ProductVideo\ProductVideos\BrowseNode\Name(
                         $sm->get(AmazonFactory\ProductVideo::class),

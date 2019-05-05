@@ -124,6 +124,27 @@ class ProductVideo
         return (int) $this->adapter->query($sql)->execute()->current()['count'];
     }
 
+    public function selectCountWhereBrowseNodeId(
+        int $browseNodeId
+    ): int {
+        $sql = '
+            SELECT COUNT(*) AS `count`
+
+              FROM `product_video`
+
+              JOIN `browse_node_product`
+             USING (`product_id`)
+
+             WHERE `browse_node_product`.`browse_node_id` = ?
+                 ;
+        ';
+        $parameters = [
+            $browseNodeId,
+        ];
+        $array = $this->adapter->query($sql)->execute($parameters);
+        return (int) $array['count'];
+    }
+
     public function selectOrderByCreatedDesc(): Generator
     {
         $sql = $this->getSelect()
@@ -228,12 +249,9 @@ class ProductVideo
               JOIN `product`
              USING (`product_id`)
 
-              LEFT
               JOIN `browse_node_product`
-                ON `browse_node_product`.`product_id` = `product`.`product_id`
-               AND `browse_node_product`.`order` = 1
+             USING (`product_id`)
 
-              LEFT
               JOIN `browse_node`
              USING (`browse_node_id`)
 
