@@ -40,36 +40,23 @@ class Similar
         return $asins;
     }
 
-    public function insertIfNotExists($asin, $similarAsin)
-    {
-        return $this->insertWhereNotExists($asin, $similarAsin);
-    }
-
-    private function insertWhereNotExists($asin, $similarAsin)
+    public function insertIgnore($asin, $similarAsin): int
     {
         $sql = '
-            INSERT
-              INTO `product_similar` (`asin`, `similar_asin`)
-                SELECT ?, ?
-                FROM `product_similar`
-               WHERE NOT EXISTS (
-                   SELECT `asin`
-                     FROM `product_similar`
-                    WHERE `asin` = ?
-                      AND `similar_asin` = ?
-               )
-               LIMIT 1
-           ;
+            INSERT IGNORE
+              INTO `product_similar`
+                   (`asin`, `similar_asin`)
+            VALUES (?, ?)
+                 ;
         ';
 
         $parameters = [
             $asin,
             $similarAsin,
-            $asin,
-            $similarAsin,
         ];
-        $this->adapter
-                ->query($sql, $parameters)
-                ->getGeneratedValue();
+        return $this->adapter
+            ->query($sql)
+            ->execute($parameters)
+            ->getAffectedRows();
     }
 }

@@ -70,7 +70,7 @@ class SimilarProducts
                     $this->downloadToMySqlService->downloadToMySql($itemXml);
                 }
 
-                $this->productSimilarTable->insertIfNotExists($asin, $similarAsin);
+                $this->productSimilarTable->insertIgnore($asin, $similarAsin);
 
                 $similarProducts[] = $this->productFactory->buildFromAsin($similarAsin);
             }
