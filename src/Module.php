@@ -38,12 +38,12 @@ class Module
                             $sm->get(StringService\UrlFriendly::class)
                         );
                     },
-                    AmazonHelper\BrowseNode\RootRelativeUrl::class => function ($serviceManager) {
+                    AmazonHelper\BrowseNode\RootRelativeUrl::class => function ($sm) {
                         return new AmazonHelper\BrowseNode\RootRelativeUrl(
-                            $serviceManager->get(AmazonService\BrowseNode\RootRelativeUrl::class)
+                            $sm->get(AmazonService\BrowseNode\RootRelativeUrl::class)
                         );
                     },
-                    AmazonHelper\Product\AffiliateUrl::class => function ($serviceManager) {
+                    AmazonHelper\Product\AffiliateUrl::class => function ($sm) {
                         return new AmazonHelper\Product\AffiliateUrl();
                     },
                     AmazonHelper\Product\BreadcrumbsHtml::class => function ($sm) {
@@ -55,28 +55,28 @@ class Module
                             $sm->get(StringService\UrlFriendly::class)
                         );
                     },
-                    AmazonHelper\Product\FirstImageEntity::class => function ($serviceManager) {
+                    AmazonHelper\Product\FirstImageEntity::class => function ($sm) {
                         return new AmazonHelper\Product\FirstImageEntity(
-                            $serviceManager->get(AmazonService\Product\FirstImageEntity::class)
+                            $sm->get(AmazonService\Product\FirstImageEntity::class)
                         );
                     },
-                    AmazonHelper\Product\ModifiedFeature::class => function ($serviceManager) {
+                    AmazonHelper\Product\ModifiedFeature::class => function ($sm) {
                         return new AmazonHelper\Product\ModifiedFeature();
                     },
-                    AmazonHelper\Product\ModifiedFeatures::class => function ($serviceManager) {
-                        $viewHelperManager = $serviceManager->get('ViewHelperManager');
+                    AmazonHelper\Product\ModifiedFeatures::class => function ($sm) {
+                        $viewHelperManager = $sm->get('ViewHelperManager');
                         return new AmazonHelper\Product\ModifiedFeatures(
                             $viewHelperManager->get(AmazonHelper\Product\ModifiedFeature::class)
                         );
                     },
-                    AmazonHelper\Product\ModifiedTitle::class => function ($serviceManager) {
+                    AmazonHelper\Product\ModifiedTitle::class => function ($sm) {
                         return new AmazonHelper\Product\ModifiedTitle(
-                            $serviceManager->get(AmazonService\Product\ModifiedTitle::class)
+                            $sm->get(AmazonService\Product\ModifiedTitle::class)
                         );
                     },
-                    AmazonHelper\Product\RootRelativeUrl::class => function ($serviceManager) {
+                    AmazonHelper\Product\RootRelativeUrl::class => function ($sm) {
                         return new AmazonHelper\Product\RootRelativeUrl(
-                            $serviceManager->get(AmazonService\Product\RootRelativeUrl::class)
+                            $sm->get(AmazonService\Product\RootRelativeUrl::class)
                         );
                     },
                     AmazonHelper\ProductImage\ProductImages::class => function ($sm) {
@@ -93,36 +93,36 @@ class Module
     {
         return [
             'factories' => [
-                AmazonFactory\Binding::class => function ($serviceManager) {
+                AmazonFactory\Binding::class => function ($sm) {
                     return new AmazonFactory\Binding();
                 },
-                AmazonFactory\Brand::class => function ($serviceManager) {
+                AmazonFactory\Brand::class => function ($sm) {
                     return new AmazonFactory\Brand();
                 },
-                AmazonFactory\BrowseNode::class => function ($serviceManager) {
+                AmazonFactory\BrowseNode::class => function ($sm) {
                     return new AmazonFactory\BrowseNode(
-                        $serviceManager->get(AmazonTable\BrowseNode::class),
-                        $serviceManager->get(AmazonTable\BrowseNodeHierarchy::class)
+                        $sm->get(AmazonTable\BrowseNode::class),
+                        $sm->get(AmazonTable\BrowseNodeHierarchy::class)
                     );
                 },
-                AmazonFactory\Product::class => function ($serviceManager) {
+                AmazonFactory\Product::class => function ($sm) {
                     return new AmazonFactory\Product(
-                        $serviceManager->get(AmazonFactory\Binding::class),
-                        $serviceManager->get(AmazonFactory\Brand::class),
-                        $serviceManager->get(AmazonFactory\ProductGroup::class),
-                        $serviceManager->get(ImageFactory\Image::class),
-                        $serviceManager->get(AmazonTable\Product::class),
-                        $serviceManager->get(AmazonTable\ProductFeature::class),
-                        $serviceManager->get(AmazonTable\ProductImage::class),
-                        $serviceManager->get(AmazonTable\ProductHiResImage::class)
+                        $sm->get(AmazonFactory\Binding::class),
+                        $sm->get(AmazonFactory\Brand::class),
+                        $sm->get(AmazonFactory\ProductGroup::class),
+                        $sm->get(ImageFactory\Image::class),
+                        $sm->get(AmazonTable\Product::class),
+                        $sm->get(AmazonTable\ProductFeature::class),
+                        $sm->get(AmazonTable\ProductImage::class),
+                        $sm->get(AmazonTable\ProductHiResImage::class)
                     );
                 },
-                AmazonFactory\Product\EditorialReview::class => function ($serviceManager) {
+                AmazonFactory\Product\EditorialReview::class => function ($sm) {
                     return new AmazonFactory\Product\EditorialReview();
                 },
-                AmazonFactory\ProductGroup::class => function ($serviceManager) {
+                AmazonFactory\ProductGroup::class => function ($sm) {
                     return new AmazonFactory\ProductGroup(
-                        $serviceManager->get(AmazonTable\ProductGroup::class)
+                        $sm->get(AmazonTable\ProductGroup::class)
                     );
                 },
                 AmazonFactory\ProductVideo::class => function ($sm) {
@@ -131,9 +131,9 @@ class Module
                         $sm->get(AmazonTable\ProductVideo::class)
                     );
                 },
-                AmazonService\Api::class => function ($serviceManager) {
+                AmazonService\Api::class => function ($sm) {
                     return new AmazonService\Api(
-                        $serviceManager->get(AmazonTable\Api::class)
+                        $sm->get(AmazonTable\Api::class)
                     );
                 },
                 AmazonService\Api\ItemLookup\BrowseNodes\Xml::class => function ($sm) {
@@ -151,8 +151,8 @@ class Module
                         $sm->get(AmazonTable\Product\Asin::class)
                     );
                 },
-                AmazonService\Api\Product\Xml::class => function ($serviceManager) {
-                    $config = $serviceManager->get('Config');
+                AmazonService\Api\Product\Xml::class => function ($sm) {
+                    $config = $sm->get('Config');
                     return new AmazonService\Api\Product\Xml(
                         $config['amazon']['access_key_id'],
                         $config['amazon']['associate_tag'],
@@ -168,8 +168,8 @@ class Module
                         $sm->get(AmazonTable\ProductImage::class)
                     );
                 },
-                AmazonService\Api\SimilarProducts\Xml::class => function ($serviceManager) {
-                    $config = $serviceManager->get('Config');
+                AmazonService\Api\SimilarProducts\Xml::class => function ($sm) {
+                    $config = $sm->get('Config');
                     return new AmazonService\Api\SimilarProducts\Xml(
                         $config['amazon']['access_key_id'],
                         $config['amazon']['associate_tag'],
@@ -182,16 +182,16 @@ class Module
                         $sm->get(AmazonTable\BrowseNodeHierarchy::class)
                     );
                 },
-                AmazonService\Binding::class => function ($serviceManager) {
+                AmazonService\Binding::class => function ($sm) {
                     return new AmazonService\Binding(
-                        $serviceManager->get(AmazonFactory\Product::class),
-                        $serviceManager->get(AmazonTable\Binding::class)
+                        $sm->get(AmazonFactory\Product::class),
+                        $sm->get(AmazonTable\Binding::class)
                     );
                 },
-                AmazonService\Brand::class => function ($serviceManager) {
+                AmazonService\Brand::class => function ($sm) {
                     return new AmazonService\Brand(
-                        $serviceManager->get(AmazonFactory\Product::class),
-                        $serviceManager->get(AmazonTable\Brand::class)
+                        $sm->get(AmazonFactory\Product::class),
+                        $sm->get(AmazonTable\Brand::class)
                     );
                 },
                 AmazonService\BrowseNode\Name\NumberOfVideosNotGenerated::class => function ($sm) {
@@ -199,18 +199,18 @@ class Module
                         $sm->get(AmazonTable\ProductBrowseNodeProductBrowseNode::class)
                     );
                 },
-                AmazonService\BrowseNode\BrowseNodes::class => function ($serviceManager) {
+                AmazonService\BrowseNode\BrowseNodes::class => function ($sm) {
                     return new AmazonService\BrowseNode\BrowseNodes(
-                        $serviceManager->get(AmazonFactory\BrowseNode::class),
-                        $serviceManager->get(AmazonTable\BrowseNode::class)
+                        $sm->get(AmazonFactory\BrowseNode::class),
+                        $sm->get(AmazonTable\BrowseNode::class)
                     );
                 },
                 AmazonService\BrowseNode\BrowseNodes\Breadcrumbs::class => function ($sm) {
                     return new AmazonService\BrowseNode\BrowseNodes\Breadcrumbs();
                 },
-                AmazonService\BrowseNode\BrowseNodes\BrowseNodeIds::class => function ($serviceManager) {
+                AmazonService\BrowseNode\BrowseNodes\BrowseNodeIds::class => function ($sm) {
                     return new AmazonService\BrowseNode\BrowseNodes\BrowseNodeIds(
-                        $serviceManager->get(AmazonService\BrowseNode\BrowseNodes::class)
+                        $sm->get(AmazonService\BrowseNode\BrowseNodes::class)
                     );
                 },
                 AmazonService\BrowseNode\BrowseNodes\Product::class => function ($sm) {
@@ -225,19 +225,19 @@ class Module
                         $sm->get(StringService\UrlFriendly::class)
                     );
                 },
-                AmazonService\Hashtag\Products\ProductGroup::class => function ($serviceManager) {
+                AmazonService\Hashtag\Products\ProductGroup::class => function ($sm) {
                     return new AmazonService\Hashtag\Products\ProductGroup(
-                        $serviceManager->get(AmazonFactory\Product::class),
-                        $serviceManager->get(AmazonTable\ProductHashtag::class)
+                        $sm->get(AmazonFactory\Product::class),
+                        $sm->get(AmazonTable\ProductHashtag::class)
                     );
                 },
-                AmazonService\Product::class => function ($serviceManager) {
+                AmazonService\Product::class => function ($sm) {
                     return new AmazonService\Product(
-                        $serviceManager->get(AmazonFactory\Product::class),
-                        $serviceManager->get(AmazonService\Api::class),
-                        $serviceManager->get(AmazonService\Api\Product\Xml::class),
-                        $serviceManager->get(AmazonService\Api\Product\Xml\DownloadToMySql::class),
-                        $serviceManager->get(AmazonTable\Product::class)
+                        $sm->get(AmazonFactory\Product::class),
+                        $sm->get(AmazonService\Api::class),
+                        $sm->get(AmazonService\Api\Product\Xml::class),
+                        $sm->get(AmazonService\Api\Product\Xml\DownloadToMySql::class),
+                        $sm->get(AmazonTable\Product::class)
                     );
                 },
                 AmazonService\Product\Breadcrumbs::class => function ($sm) {
@@ -246,90 +246,90 @@ class Module
                         $sm->get(AmazonService\BrowseNode\BrowseNodes\Product::class)
                     );
                 },
-                AmazonService\Product\FirstImageEntity::class => function ($serviceManager) {
+                AmazonService\Product\FirstImageEntity::class => function ($sm) {
                     return new AmazonService\Product\FirstImageEntity();
                 },
-                AmazonService\Product\Hashtags::class => function ($serviceManager) {
+                AmazonService\Product\Hashtags::class => function ($sm) {
                     return new AmazonService\Product\Hashtags(
-                        $serviceManager->get(AmazonService\Product\Hashtags\ProductEntity::class)
+                        $sm->get(AmazonService\Product\Hashtags\ProductEntity::class)
                     );
                 },
-                AmazonService\Product\Hashtags\Insert::class => function ($serviceManager) {
+                AmazonService\Product\Hashtags\Insert::class => function ($sm) {
                     return new AmazonService\Product\Hashtags\Insert(
-                        $serviceManager->get(AmazonTable\ProductHashtag::class),
-                        $serviceManager->get(HashtagService\Hashtag::class)
+                        $sm->get(AmazonTable\ProductHashtag::class),
+                        $sm->get(HashtagService\Hashtag::class)
                     );
                 },
-                AmazonService\Product\Hashtags\ProductEntity::class => function ($serviceManager) {
+                AmazonService\Product\Hashtags\ProductEntity::class => function ($sm) {
                     return new AmazonService\Product\Hashtags\ProductEntity();
                 },
                 AmazonService\Product\HasImage::class => function ($sm) {
                     return new AmazonService\Product\HasImage();
                 },
-                AmazonService\Product\ModifiedTitle::class => function ($serviceManager) {
+                AmazonService\Product\ModifiedTitle::class => function ($sm) {
                     return new AmazonService\Product\ModifiedTitle();
                 },
-                AmazonService\Product\SimilarProducts::class => function ($serviceManager) {
+                AmazonService\Product\SimilarProducts::class => function ($sm) {
                     return new AmazonService\Product\SimilarProducts(
-                        $serviceManager->get(AmazonFactory\Product::class),
-                        $serviceManager->get(AmazonService\Api::class),
-                        $serviceManager->get(AmazonService\Api\Product\Xml\DownloadToMySql::class),
-                        $serviceManager->get(AmazonService\Api\SimilarProducts\Xml::class),
-                        $serviceManager->get(AmazonService\Product::class),
-                        $serviceManager->get(AmazonTable\Product::class),
-                        $serviceManager->get(AmazonTable\Product\Similar::class),
-                        $serviceManager->get(AmazonTable\Product\SimilarRetrieved::class)
+                        $sm->get(AmazonFactory\Product::class),
+                        $sm->get(AmazonService\Api::class),
+                        $sm->get(AmazonService\Api\Product\Xml\DownloadToMySql::class),
+                        $sm->get(AmazonService\Api\SimilarProducts\Xml::class),
+                        $sm->get(AmazonService\Product::class),
+                        $sm->get(AmazonTable\Product::class),
+                        $sm->get(AmazonTable\Product\Similar::class),
+                        $sm->get(AmazonTable\Product\SimilarRetrieved::class)
                     );
                 },
-                AmazonService\Product\RootRelativeUrl::class => function ($serviceManager) {
+                AmazonService\Product\RootRelativeUrl::class => function ($sm) {
                     return new AmazonService\Product\RootRelativeUrl(
-                        $serviceManager->get(AmazonService\Product\ModifiedTitle::class),
-                        $serviceManager->get(StringService\UrlFriendly::class)
+                        $sm->get(AmazonService\Product\ModifiedTitle::class),
+                        $sm->get(StringService\UrlFriendly::class)
                     );
                 },
-                AmazonService\Product\Slug::class => function ($serviceManager) {
+                AmazonService\Product\Slug::class => function ($sm) {
                     return new AmazonService\Product\Slug(
-                        $serviceManager->get(AmazonService\Product\ModifiedTitle::class),
-                        $serviceManager->get(StringService\UrlFriendly::class)
+                        $sm->get(AmazonService\Product\ModifiedTitle::class),
+                        $sm->get(StringService\UrlFriendly::class)
                     );
                 },
-                AmazonService\Product\SourceCode::class => function ($serviceManager) {
+                AmazonService\Product\SourceCode::class => function ($sm) {
                     return new AmazonService\Product\SourceCode();
                 },
-                AmazonService\Product\Tweet::class => function ($serviceManager) {
+                AmazonService\Product\Tweet::class => function ($sm) {
                     return new AmazonService\Product\Tweet(
-                        $serviceManager->get(AmazonService\Product\Hashtags::class),
-                        $serviceManager->get(AmazonService\Product\Url::class)
+                        $sm->get(AmazonService\Product\Hashtags::class),
+                        $sm->get(AmazonService\Product\Url::class)
                     );
                 },
-                AmazonService\Product\Url::class => function ($serviceManager) {
+                AmazonService\Product\Url::class => function ($sm) {
                     return new AmazonService\Product\Url(
-                        $serviceManager->get(AmazonService\Product\RootRelativeUrl::class)
+                        $sm->get(AmazonService\Product\RootRelativeUrl::class)
                     );
                 },
-                AmazonService\ProductGroup::class => function ($serviceManager) {
+                AmazonService\ProductGroup::class => function ($sm) {
                     return new AmazonService\ProductGroup(
-                        $serviceManager->get(AmazonFactory\Product::class),
-                        $serviceManager->get(AmazonTable\ProductGroup::class)
+                        $sm->get(AmazonFactory\Product::class),
+                        $sm->get(AmazonTable\ProductGroup::class)
                     );
                 },
-                AmazonService\ProductGroup\RelatedProductEntities::class => function ($serviceManager) {
+                AmazonService\ProductGroup\RelatedProductEntities::class => function ($sm) {
                     return new AmazonService\ProductGroup\RelatedProductEntities(
-                        $serviceManager->get(AmazonFactory\Product::class),
-                        $serviceManager->get(AmazonService\Product\ModifiedTitle::class),
-                        $serviceManager->get(AmazonTable\Search\ProductGroup::class)
+                        $sm->get(AmazonFactory\Product::class),
+                        $sm->get(AmazonService\Product\ModifiedTitle::class),
+                        $sm->get(AmazonTable\Search\ProductGroup::class)
                     );
                 },
-                AmazonService\ProductGroup\RelatedProductEntities\NumberOfPages::class => function ($serviceManager) {
+                AmazonService\ProductGroup\RelatedProductEntities\NumberOfPages::class => function ($sm) {
                     return new AmazonService\ProductGroup\RelatedProductEntities\NumberOfPages(
-                        $serviceManager->get(AmazonService\Product\ModifiedTitle::class),
-                        $serviceManager->get(AmazonTable\Search\ProductGroup::class)
+                        $sm->get(AmazonService\Product\ModifiedTitle::class),
+                        $sm->get(AmazonTable\Search\ProductGroup::class)
                     );
                 },
-                AmazonService\ProductGroup\RandomProductEntity::class => function ($serviceManager) {
+                AmazonService\ProductGroup\RandomProductEntity::class => function ($sm) {
                     return new AmazonService\ProductGroup\RandomProductEntity(
-                        $serviceManager->get(AmazonFactory\Product::class),
-                        $serviceManager->get(AmazonTable\Product\ProductId::class)
+                        $sm->get(AmazonFactory\Product::class),
+                        $sm->get(AmazonTable\Product\ProductId::class)
                     );
                 },
                 AmazonService\ProductImage\DownloadFile::class => function ($sm) {
@@ -343,7 +343,7 @@ class Module
                         $sm->get(AmazonService\ProductImage\DownloadFile::class)
                     );
                 },
-                AmazonService\ProductHiResImage\ArrayFromSourceCode::class => function ($serviceManager) {
+                AmazonService\ProductHiResImage\ArrayFromSourceCode::class => function ($sm) {
                     return new AmazonService\ProductHiResImage\ArrayFromSourceCode();
                 },
                 AmazonService\ProductHiResImage\DownloadHiResImages::class => function ($sm) {
@@ -424,44 +424,44 @@ class Module
                 AmazonService\ProductVideo\Thumbnail\Generate::class => function ($sm) {
                     return new AmazonService\ProductVideo\Thumbnail\Generate();
                 },
-                AmazonService\Search\ProductGroup::class => function ($serviceManager) {
+                AmazonService\Search\ProductGroup::class => function ($sm) {
                     return new AmazonService\Search\ProductGroup(
-                        $serviceManager->get(AmazonFactory\Product::class),
-                        $serviceManager->get(AmazonFactory\ProductGroup::class),
-                        $serviceManager->get(AmazonTable\ProductGroup::class),
-                        $serviceManager->get(AmazonTable\Search\ProductGroup::class)
+                        $sm->get(AmazonFactory\Product::class),
+                        $sm->get(AmazonFactory\ProductGroup::class),
+                        $sm->get(AmazonTable\ProductGroup::class),
+                        $sm->get(AmazonTable\Search\ProductGroup::class)
                     );
                 },
-                AmazonTable\Api::class => function ($serviceManager) {
+                AmazonTable\Api::class => function ($sm) {
                     return new AmazonTable\Api(
-                        $serviceManager->get('amazon')
+                        $sm->get('amazon')
                     );
                 },
-                AmazonTable\Binding::class => function ($serviceManager) {
+                AmazonTable\Binding::class => function ($sm) {
                     return new AmazonTable\Binding(
-                        $serviceManager->get(MemcachedService\Memcached::class),
-                        $serviceManager->get('amazon')
+                        $sm->get(MemcachedService\Memcached::class),
+                        $sm->get('amazon')
                     );
                 },
-                AmazonTable\Brand::class => function ($serviceManager) {
+                AmazonTable\Brand::class => function ($sm) {
                     return new AmazonTable\Brand(
-                        $serviceManager->get(MemcachedService\Memcached::class),
-                        $serviceManager->get('amazon')
+                        $sm->get(MemcachedService\Memcached::class),
+                        $sm->get('amazon')
                     );
                 },
-                AmazonTable\BrowseNode::class => function ($serviceManager) {
+                AmazonTable\BrowseNode::class => function ($sm) {
                     return new AmazonTable\BrowseNode(
-                        $serviceManager->get('amazon')
+                        $sm->get('amazon')
                     );
                 },
-                AmazonTable\BrowseNodeHierarchy::class => function ($serviceManager) {
+                AmazonTable\BrowseNodeHierarchy::class => function ($sm) {
                     return new AmazonTable\BrowseNodeHierarchy(
-                        $serviceManager->get('amazon')
+                        $sm->get('amazon')
                     );
                 },
-                AmazonTable\BrowseNodeProduct::class => function ($serviceManager) {
+                AmazonTable\BrowseNodeProduct::class => function ($sm) {
                     return new AmazonTable\BrowseNodeProduct(
-                        $serviceManager->get('amazon')
+                        $sm->get('amazon')
                     );
                 },
                 AmazonTable\BrowseNodeProduct\BrowseNodeId::class => function ($sm) {
@@ -469,20 +469,20 @@ class Module
                         $sm->get('amazon')
                     );
                 },
-                AmazonTable\Product::class => function ($serviceManager) {
+                AmazonTable\Product::class => function ($sm) {
                     return new AmazonTable\Product(
-                        $serviceManager->get(MemcachedService\Memcached::class),
-                        $serviceManager->get('amazon')
+                        $sm->get(MemcachedService\Memcached::class),
+                        $sm->get('amazon')
                     );
                 },
-                AmazonTable\Product\Asin::class => function ($serviceManager) {
+                AmazonTable\Product\Asin::class => function ($sm) {
                     return new AmazonTable\Product\Asin(
-                        $serviceManager->get('amazon')
+                        $sm->get('amazon')
                     );
                 },
-                AmazonTable\Product\EditorialReview::class => function ($serviceManager) {
+                AmazonTable\Product\EditorialReview::class => function ($sm) {
                     return new AmazonTable\Product\EditorialReview(
-                        $serviceManager->get('amazon')
+                        $sm->get('amazon')
                     );
                 },
                 AmazonTable\ProductBrowseNodeProductBrowseNode::class => function ($sm) {
@@ -490,24 +490,24 @@ class Module
                         $sm->get('amazon')
                     );
                 },
-                AmazonTable\ProductFeature::class => function ($serviceManager) {
+                AmazonTable\ProductFeature::class => function ($sm) {
                     return new AmazonTable\ProductFeature(
-                        $serviceManager->get('amazon')
+                        $sm->get('amazon')
                     );
                 },
-                AmazonTable\Product\HiResImagesRetrieved::class => function ($serviceManager) {
+                AmazonTable\Product\HiResImagesRetrieved::class => function ($sm) {
                     return new AmazonTable\Product\HiResImagesRetrieved(
-                        $serviceManager->get('amazon')
+                        $sm->get('amazon')
                     );
                 },
-                AmazonTable\Product\ProductGroupSimilarRetrievedCreated::class => function ($serviceManager) {
+                AmazonTable\Product\ProductGroupSimilarRetrievedCreated::class => function ($sm) {
                     return new AmazonTable\Product\ProductGroupSimilarRetrievedCreated(
-                        $serviceManager->get('amazon')
+                        $sm->get('amazon')
                     );
                 },
-                AmazonTable\Product\ProductGroupVideoGeneratedCreated::class => function ($serviceManager) {
+                AmazonTable\Product\ProductGroupVideoGeneratedCreated::class => function ($sm) {
                     return new AmazonTable\Product\ProductGroupVideoGeneratedCreated(
-                        $serviceManager->get('amazon')
+                        $sm->get('amazon')
                     );
                 },
                 AmazonTable\Product\ProductId::class => function ($sm) {
@@ -516,47 +516,47 @@ class Module
                         $sm->get(AmazonTable\Product::class)
                     );
                 },
-                AmazonTable\Product\Review::class => function ($serviceManager) {
+                AmazonTable\Product\Review::class => function ($sm) {
                     return new AmazonTable\Product\Review(
-                        $serviceManager->get('amazon')
+                        $sm->get('amazon')
                     );
                 },
-                AmazonTable\Product\Search::class => function ($serviceManager) {
+                AmazonTable\Product\Search::class => function ($sm) {
                     return new AmazonTable\Product\Search(
-                        $serviceManager->get(MemcachedService\Memcached::class),
-                        $serviceManager->get('amazon')
+                        $sm->get(MemcachedService\Memcached::class),
+                        $sm->get('amazon')
                     );
                 },
-                AmazonTable\Product\Similar::class => function ($serviceManager) {
+                AmazonTable\Product\Similar::class => function ($sm) {
                     return new AmazonTable\Product\Similar(
-                        $serviceManager->get('amazon')
+                        $sm->get('amazon')
                     );
                 },
-                AmazonTable\Product\SimilarRetrieved::class => function ($serviceManager) {
+                AmazonTable\Product\SimilarRetrieved::class => function ($sm) {
                     return new AmazonTable\Product\SimilarRetrieved(
-                        $serviceManager->get('amazon')
+                        $sm->get('amazon')
                     );
                 },
-                AmazonTable\Product\SimilarRetrievedCreated::class => function ($serviceManager) {
+                AmazonTable\Product\SimilarRetrievedCreated::class => function ($sm) {
                     return new AmazonTable\Product\SimilarRetrievedCreated(
-                        $serviceManager->get('amazon')
+                        $sm->get('amazon')
                     );
                 },
-                AmazonTable\Product\VideoGenerated::class => function ($serviceManager) {
+                AmazonTable\Product\VideoGenerated::class => function ($sm) {
                     return new AmazonTable\Product\VideoGenerated(
-                        $serviceManager->get('amazon')
+                        $sm->get('amazon')
                     );
                 },
-                AmazonTable\ProductGroup::class => function ($serviceManager) {
+                AmazonTable\ProductGroup::class => function ($sm) {
                     return new AmazonTable\ProductGroup(
-                        $serviceManager->get(MemcachedService\Memcached::class),
-                        $serviceManager->get('amazon')
+                        $sm->get(MemcachedService\Memcached::class),
+                        $sm->get('amazon')
                     );
                 },
-                AmazonTable\ProductHashtag::class => function ($serviceManager) {
+                AmazonTable\ProductHashtag::class => function ($sm) {
                     return new AmazonTable\ProductHashtag(
-                        $serviceManager->get(MemcachedService\Memcached::class),
-                        $serviceManager->get('amazon')
+                        $sm->get(MemcachedService\Memcached::class),
+                        $sm->get('amazon')
                     );
                 },
                 AmazonTable\ProductHiResImage::class => function ($sm) {
@@ -564,15 +564,15 @@ class Module
                         $sm->get('amazon')
                     );
                 },
-                AmazonTable\ProductImage::class => function ($serviceManager) {
+                AmazonTable\ProductImage::class => function ($sm) {
                     return new AmazonTable\ProductImage(
-                        $serviceManager->get(MemcachedService\Memcached::class),
-                        $serviceManager->get('amazon')
+                        $sm->get(MemcachedService\Memcached::class),
+                        $sm->get('amazon')
                     );
                 },
-                AmazonTable\Products::class => function ($serviceManager) {
+                AmazonTable\Products::class => function ($sm) {
                     return new AmazonTable\Products(
-                        $serviceManager->get('amazon')
+                        $sm->get('amazon')
                     );
                 },
                 AmazonTable\ProductVideo::class => function ($sm) {
@@ -585,10 +585,10 @@ class Module
                         $sm->get('amazon')
                     );
                 },
-                AmazonTable\Search\ProductGroup::class => function ($serviceManager) {
+                AmazonTable\Search\ProductGroup::class => function ($sm) {
                     return new AmazonTable\Search\ProductGroup(
-                        $serviceManager->get(MemcachedService\Memcached::class),
-                        $serviceManager->get('amazon')
+                        $sm->get(MemcachedService\Memcached::class),
+                        $sm->get('amazon')
                     );
                 },
             ],
