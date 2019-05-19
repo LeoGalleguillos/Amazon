@@ -240,6 +240,12 @@ class Module
                         $serviceManager->get(AmazonTable\Product::class)
                     );
                 },
+                AmazonService\Product\Breadcrumbs::class => function ($sm) {
+                    return new AmazonService\Product\Breadcrumbs(
+                        $sm->get(AmazonService\BrowseNode\BrowseNodes\Breadcrumbs::class),
+                        $sm->get(AmazonService\BrowseNode\BrowseNodes\Product::class)
+                    );
+                },
                 AmazonService\Product\FirstImageEntity::class => function ($serviceManager) {
                     return new AmazonService\Product\FirstImageEntity();
                 },
