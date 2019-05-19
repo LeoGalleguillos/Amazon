@@ -11,14 +11,12 @@ class BreadcrumbsHtml extends AbstractHelper
 {
     public function __construct(
         array $browseNodeNameDomains,
-        AmazonService\BrowseNode\BrowseNodes\Breadcrumbs $breadcrumbsService,
-        AmazonService\BrowseNode\BrowseNodes\Product $productService,
+        AmazonService\Product\Breadcrumbs $breadcrumbsService,
         StringService\Escape $escapeService,
         StringService\UrlFriendly $urlFriendlyService
     ) {
         $this->browseNodeNameDomains = $browseNodeNameDomains;
         $this->breadcrumbsService    = $breadcrumbsService;
-        $this->productService        = $productService;
         $this->escapeService         = $escapeService;
         $this->urlFriendlyService    = $urlFriendlyService;
     }
@@ -28,17 +26,13 @@ class BreadcrumbsHtml extends AbstractHelper
      */
     public function __invoke(AmazonEntity\Product $productEntity): string
     {
-        $browseNodeEntities = $this->productService->getBrowseNodes(
+        $browseNodeEntities = $this->breadcrumbsService->getBreadcrumbs(
             $productEntity
         );
 
         if (empty($browseNodeEntities)) {
             throw new Exception('No browse nodes found for product.');
         }
-
-        $browseNodeEntities = $this->breadcrumbsService->getBrowseNodes(
-            $browseNodeEntities[0]
-        );
 
         $defaultDomain = $this->browseNodeNameDomains['default'];
 

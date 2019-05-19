@@ -13,13 +13,11 @@ class BreadcrumbsHtmlTest extends TestCase
     protected function setUp()
     {
         $this->browseNodeNameDomains = [
+            'default' => 'www.example.com',
             'Browse Node Name' => 'www.example.com',
         ];
         $this->breadcrumbsServiceMock = $this->createMock(
-            AmazonService\BrowseNode\BrowseNodes\Breadcrumbs::class
-        );
-        $this->productServiceMock = $this->createMock(
-            AmazonService\BrowseNode\BrowseNodes\Product::class
+            AmazonService\Product\Breadcrumbs::class
         );
         $this->escapeService = new StringService\Escape();
         $this->urlFriendlyService = new StringService\UrlFriendly();
@@ -27,7 +25,6 @@ class BreadcrumbsHtmlTest extends TestCase
         $this->breadcrumbsHtmlHelper = new AmazonHelper\Product\BreadcrumbsHtml(
             $this->browseNodeNameDomains,
             $this->breadcrumbsServiceMock,
-            $this->productServiceMock,
             $this->escapeService,
             $this->urlFriendlyService
         );
