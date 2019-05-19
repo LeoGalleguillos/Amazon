@@ -1,8 +1,6 @@
 <?php
 namespace LeoGalleguillos\AmazonTest\Model\Table\Product;
 
-use Exception;
-use Generator;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Test\TableTestCase as TableTestCase;
 
@@ -17,7 +15,6 @@ class ProductIdTest extends TableTestCase
             $this->getAdapter(),
             $this->productTableMock
         );
-
 
         $this->setForeignKeyChecks0();
         $this->dropTable('product');

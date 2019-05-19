@@ -48,7 +48,7 @@ class ApiTest extends TableTestCase
         );
     }
 
-    public function selectValueWhereKey()
+    public function testSelectValueWhereKey()
     {
         $key   = 'key';
         $value = 'value';

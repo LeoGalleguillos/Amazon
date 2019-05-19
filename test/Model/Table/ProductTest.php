@@ -27,6 +27,5 @@ class ProductTest extends TableTestCase
             AmazonTable\Product::class,
             $this->productTable
         );
-
     }
 }
