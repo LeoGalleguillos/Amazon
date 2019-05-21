@@ -23,6 +23,10 @@ class Breadcrumbs
             $productEntity
         );
 
+        if (empty($browseNodeEntities)) {
+            return [];
+        }
+
         return $this->breadcrumbsService->getBrowseNodes(
             $browseNodeEntities[0]
         );
