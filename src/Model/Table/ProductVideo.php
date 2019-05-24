@@ -73,14 +73,22 @@ class ProductVideo
              . "
                  , `product`.`product_id`
                  , `product`.`asin`
-                 , `product`.`title`
-                 , `product`.`product_group`
-                 , `product`.`binding`
-                 , `product`.`brand`
-                 , `product`.`list_price`
+                 , `browse_node`.`name` AS `browse_node.name`
+
               FROM `product_video`
+
               JOIN `product`
              USING (`product_id`)
+
+              LEFT
+              JOIN `browse_node_product`
+                ON `browse_node_product`.`product_id` = `product`.`product_id`
+               AND `browse_node_product`.`order` = 1
+
+              LEFT
+              JOIN `browse_node`
+             USING (`browse_node_id`)
+
              ORDER
                 BY `product_video`.`created` ASC
              LIMIT $limitOffset, $limitRowCount
