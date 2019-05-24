@@ -411,6 +411,12 @@ class Module
                         $sm->get(AmazonTable\ProductVideo::class)
                     );
                 },
+                AmazonService\ProductVideo\ProductVideos\BrowseNode\Name\NotInBrowseNodeNameDomainArray::class => function ($sm) {
+                    return new AmazonService\ProductVideo\ProductVideos\BrowseNode\Name\NotInBrowseNodeNameDomainArray(
+                        $sm->get(AmazonService\BrowseNodeNameDomain\Names::class),
+                        $sm->get(AmazonService\ProductVideo\ProductVideos\BrowseNode\Name\NotIn::class)
+                    );
+                },
                 AmazonService\ProductVideo\ProductVideos\Newest::class => function ($sm) {
                     return new AmazonService\ProductVideo\ProductVideos\Newest(
                         $sm->get(AmazonFactory\ProductVideo::class),
