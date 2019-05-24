@@ -317,6 +317,45 @@ class ProductVideo
         }
     }
 
+    public function selectWhereBrowseNodeNameNotIn(
+        string $browseNodeNames,
+        int $limitOffset,
+        int $limitRowCount
+    ): Generator {
+        $questionMarks = array_fill(0, count($browseNodeNames), '?');
+        $questionMarks = implode(', ', $questionMarks);
+
+        $sql = $this->getSelect()
+             . "
+                 , `product`.`product_id`
+                 , `product`.`asin`
+                 , `browse_node`.`name` AS `browse_node.name`
+
+              FROM `product_video`
+
+              JOIN `product`
+             USING (`product_id`)
+
+              JOIN `browse_node_product`
+             USING (`product_id`)
+
+              JOIN `browse_node`
+             USING (`browse_node_id`)
+
+             WHERE `browse_node`.`name` NOT IN ($questionMarks)
+
+             ORDER
+                BY `product_video`.`created` DESC
+
+             LIMIT $limitOffset, $limitRowCount
+                 ;
+        ";
+        $parameters = $browseNodeNames;
+        foreach ($this->adapter->query($sql)->execute($parameters) as $array) {
+            yield $array;
+        }
+    }
+
     /**
      * @throws TypeError
      */
