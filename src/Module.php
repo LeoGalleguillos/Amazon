@@ -224,6 +224,11 @@ class Module
                         $sm->get(StringService\UrlFriendly::class)
                     );
                 },
+                AmazonService\BrowseNodeNameDomain\Names::class => function ($sm) {
+                    return new AmazonService\BrowseNodeNameDomain\Names(
+                        $sm->get('Config')['amazon']['browse-node-name-domain']
+                    );
+                },
                 AmazonService\Hashtag\Products\ProductGroup::class => function ($sm) {
                     return new AmazonService\Hashtag\Products\ProductGroup(
                         $sm->get(AmazonFactory\Product::class),
