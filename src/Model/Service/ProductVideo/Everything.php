@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Service\ProductVideo;
 
+use Exception;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
@@ -47,7 +48,15 @@ class Everything
         $this->generateProductVideoService->generate($productEntity);
 
         $asin = $productEntity->getAsin();
+
+        if (!preg_match('/^\w+$/', $asin)) {
+            throw new Exception('Invalid ASIN (this should never happen)');
+        }
+
         $rru  = "/home/amazon/products/videos/$asin.mp4";
+
+        $command = "/home/onlinefr/s3cmd-master/s3cmd put $rru s3://videosofproducts/products/videos --acl-public --recursive --verbose";
+        exec($command);
 
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
             $productEntity->getProductId(),
@@ -58,6 +67,10 @@ class Everything
         $productVideoEntity = new AmazonEntity\ProductVideo();
         $productVideoEntity->setProduct($productEntity);
         $this->generateThumbnailService->generate($productVideoEntity);
+
+        $rru     = "/home/amazon/products/videos/thumbnails/$asin.jpg";
+        $command = "/home/onlinefr/s3cmd-master/s3cmd put $rru s3://videosofproducts/products/videos/thumbnails --acl-public --recursive --verbose";
+        exec($command);
 
         return true;
     }
