@@ -318,7 +318,7 @@ class ProductVideo
     }
 
     public function selectWhereBrowseNodeNameNotIn(
-        string $browseNodeNames,
+        array $browseNodeNames,
         int $limitOffset,
         int $limitRowCount
     ): Generator {
