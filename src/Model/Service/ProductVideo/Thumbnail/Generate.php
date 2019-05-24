@@ -31,7 +31,9 @@ class Generate
         $source        = "/home/amazon/products/images/$asin/$fileName";
         $destination   = "/home/amazon/products/videos/thumbnails/$asin.jpg";
 
-        if (file_exists($destination)) {
+        if (!file_exists($source)
+            || file_exists($destination)
+        ) {
             return false;
         }
 
