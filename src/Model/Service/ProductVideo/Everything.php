@@ -55,7 +55,7 @@ class Everything
 
         $rru  = "/home/amazon/products/videos/$asin.mp4";
 
-        $command = "/home/onlinefr/s3cmd-master/s3cmd put $rru s3://videosofproducts/products/videos --acl-public --recursive --verbose";
+        $command = "/home/onlinefr/s3cmd-master/s3cmd put $rru s3://videosofproducts/products/videos/ --acl-public --recursive --verbose";
         exec($command);
 
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
@@ -69,7 +69,7 @@ class Everything
         $this->generateThumbnailService->generate($productVideoEntity);
 
         $rru     = "/home/amazon/products/videos/thumbnails/$asin.jpg";
-        $command = "/home/onlinefr/s3cmd-master/s3cmd put $rru s3://videosofproducts/products/videos/thumbnails --acl-public --recursive --verbose";
+        $command = "/home/onlinefr/s3cmd-master/s3cmd put $rru s3://videosofproducts/products/videos/thumbnails/ --acl-public --recursive --verbose";
         exec($command);
 
         return true;
