@@ -337,7 +337,8 @@ class ProductVideo
              USING (`product_id`)
 
               JOIN `browse_node_product`
-             USING (`product_id`)
+                ON `browse_node_product`.`product_id` = `product`.`product_id`
+               AND `browse_node_product`.`order` = 1
 
               JOIN `browse_node`
              USING (`browse_node_id`)
