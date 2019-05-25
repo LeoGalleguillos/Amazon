@@ -405,6 +405,11 @@ class Module
                         $sm->get(AmazonTable\ProductVideo::class)
                     );
                 },
+                AmazonService\ProductVideo\ProductVideos\BrowseNode\Name\NumberOfPages::class => function ($sm) {
+                    return new AmazonService\ProductVideo\ProductVideos\BrowseNode\Name\NumberOfPages(
+                        $sm->get(AmazonTable\ProductVideo::class)
+                    );
+                },
                 AmazonService\ProductVideo\ProductVideos\BrowseNode\Name\NotIn::class => function ($sm) {
                     return new AmazonService\ProductVideo\ProductVideos\BrowseNode\Name\NotIn(
                         $sm->get(AmazonFactory\ProductVideo::class),
@@ -415,6 +420,12 @@ class Module
                     return new AmazonService\ProductVideo\ProductVideos\BrowseNode\Name\NotInBrowseNodeNameDomainArray(
                         $sm->get(AmazonService\BrowseNodeNameDomain\Names::class),
                         $sm->get(AmazonService\ProductVideo\ProductVideos\BrowseNode\Name\NotIn::class)
+                    );
+                },
+                AmazonService\ProductVideo\ProductVideos\BrowseNode\Name\NotInBrowseNodeNameDomainArray\NumberOfPages::class => function ($sm) {
+                    return new AmazonService\ProductVideo\ProductVideos\BrowseNode\Name\NotInBrowseNodeNameDomainArray\NumberOfPages(
+                        $sm->get(AmazonService\BrowseNodeNameDomain\Names::class),
+                        $sm->get(AmazonTable\ProductVideo::class)
                     );
                 },
                 AmazonService\ProductVideo\ProductVideos\Newest::class => function ($sm) {
