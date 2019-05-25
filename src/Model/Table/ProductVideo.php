@@ -153,6 +153,56 @@ class ProductVideo
         return (int) $array['count'];
     }
 
+    public function selectCountWhereBrowseNodeName(
+        string $name
+    ): int {
+        $sql = "
+            SELECT COUNT(*) AS `count`
+              FROM `product_video`
+
+              JOIN `browse_node_product`
+                ON `browse_node_product`.`product_id` = `product_video`.`product_id`
+               AND `browse_node_product`.`order` = 1
+
+              JOIN `browse_node`
+             USING (`browse_node_id`)
+
+             WHERE `browse_node`.`name` = ?
+                 ;
+        ";
+        $parameters = [
+            $name,
+        ];
+        $array = $this->adapter->query($sql)->execute($parameters)->current();
+        return (int) $array['count'];
+    }
+
+    public function selectCountWhereBrowseNodeNameNotIn(
+        array $browseNodeNames
+    ): int {
+        $questionMarks = array_fill(0, count($browseNodeNames), '?');
+        $questionMarks = implode(', ', $questionMarks);
+
+        $sql = "
+            SELECT COUNT(*) AS `count`
+
+              FROM `product_video`
+
+              JOIN `browse_node_product`
+                ON `browse_node_product`.`product_id` = `product_video`.`product_id`
+               AND `browse_node_product`.`order` = 1
+
+              JOIN `browse_node`
+             USING (`browse_node_id`)
+
+             WHERE `browse_node`.`name` NOT IN ($questionMarks)
+                 ;
+        ";
+        $parameters = $browseNodeNames;
+        $array = $this->adapter->query($sql)->execute($parameters)->current();
+        return (int) $array['count'];
+    }
+
     public function selectOrderByCreatedDesc(): Generator
     {
         $sql = $this->getSelect()
