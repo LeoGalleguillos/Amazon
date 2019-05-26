@@ -17,6 +17,11 @@ class ProductVideo extends VideoEntity\Video
     protected $browseNodeName;
 
     /**
+     * @var string
+     */
+    protected $description;
+
+    /**
      * @var AmazonEntity\Product
      */
     protected $product;
@@ -39,6 +44,11 @@ class ProductVideo extends VideoEntity\Video
     public function getBrowseNodeName(): string
     {
         return $this->browseNodeName;
+    }
+
+    public function getDescription(): string
+    {
+        return $this->description;
     }
 
     public function getProduct(): AmazonEntity\Product
@@ -65,6 +75,12 @@ class ProductVideo extends VideoEntity\Video
     public function setBrowseNodeName(string $browseNodeName): AmazonEntity\ProductVideo
     {
         $this->browseNodeName = $browseNodeName;
+        return $this;
+    }
+
+    public function setDescription(string $description): AmazonEntity\ProductVideo
+    {
+        $this->description = $description;
         return $this;
     }
 
