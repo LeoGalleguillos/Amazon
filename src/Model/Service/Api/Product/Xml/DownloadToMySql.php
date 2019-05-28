@@ -60,6 +60,7 @@ class DownloadToMySql
         if (!empty($xml->{'ItemAttributes'}->{'Feature'})) {
             foreach ($xml->{'ItemAttributes'}->{'Feature'} as $feature) {
                 $this->productFeatureTable->insert(
+                    $productId,
                     $asin,
                     (string) $feature
                 );

@@ -33,19 +33,24 @@ class ProductFeature
     }
 
     public function insert(
+        int $productId,
         string $asin,
         string $feature
     ): int {
         $sql = '
             INSERT
-              INTO `product_feature` (`asin`, `feature`)
-            VALUES (?, ?)
+              INTO `product_feature` (`product_id`, `asin`, `feature`)
+            VALUES (?, ?, ?)
            ;
         ';
         $parameters = [
+            $productId,
             $asin,
             $feature,
         ];
-        return $this->adapter->query($sql)->execute($parameters)->getAffectedRows();
+        return (int) $this->adapter
+            ->query($sql)
+            ->execute($parameters)
+            ->getAffectedRows();
     }
 }
