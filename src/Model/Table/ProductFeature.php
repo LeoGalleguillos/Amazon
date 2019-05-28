@@ -32,6 +32,23 @@ class ProductFeature
         }
     }
 
+    public function selectWhereProductId(int $productId): Generator
+    {
+        $sql = '
+            SELECT `product_feature`.`product_id`
+                 , `product_feature`.`feature`
+              FROM `product_feature`
+             WHERE `product_id` = ?
+                 ;
+        ';
+        $parameters = [
+            $productId,
+        ];
+        foreach ($this->adapter->query($sql)->execute($parameters) as $array) {
+            yield $array;
+        }
+    }
+
     public function insert(
         int $productId,
         string $asin,
