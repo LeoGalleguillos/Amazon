@@ -71,68 +71,6 @@ class ProductImage
         return $this->adapter->query($sql)->execute($parameters)->getAffectedRows();
     }
 
-    public function insertProductIfNotExists(AmazonEntity\Product $product)
-    {
-        return $this->insertWhereNotExists($product);
-    }
-
-    private function insertWhereNotExists(AmazonEntity\Product $product)
-    {
-        $sql = '
-            INSERT
-              INTO `product_image` (
-                         `asin`
-                       , `category`
-                       , `url`
-                       , `width`
-                       , `height`
-                   )
-                SELECT ?, ?, ?, ?, ?
-                FROM `product_image`
-               WHERE NOT EXISTS (
-                   SELECT `asin`
-                     FROM `product_image`
-                    WHERE `asin` = ?
-                      AND `category` = ?
-                      AND `url` = ?
-               )
-               LIMIT 1
-           ;
-        ';
-
-        if ($product->primaryImage) {
-            $parameters = [
-                $product->asin,
-                'primary',
-                $product->primaryImage->getUrl(),
-                $product->primaryImage->getWidth(),
-                $product->primaryImage->getHeight(),
-                $product->asin,
-                'primary',
-                $product->primaryImage->getUrl(),
-            ];
-            $this->adapter
-                        ->query($sql, $parameters)
-                        ->getGeneratedValue();
-        }
-
-        foreach ($product->variantImages as $imageEntity) {
-            $parameters = [
-                $product->asin,
-                'variant',
-                $imageEntity->getUrl(),
-                $imageEntity->getWidth(),
-                $imageEntity->getHeight(),
-                $product->asin,
-                'variant',
-                $imageEntity->getUrl(),
-            ];
-            $this->adapter
-                        ->query($sql, $parameters)
-                        ->getGeneratedValue();
-        }
-    }
-
     /**
      * Select width and height where ASIN and URL.
      *
