@@ -190,12 +190,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/String.git",
-                "reference": "9a2660231f6c56f7bbfa47ec23e18f340346d62d"
+                "reference": "842b0f4b979323b154ac90e94428161a927af59d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/String/zipball/9a2660231f6c56f7bbfa47ec23e18f340346d62d",
-                "reference": "9a2660231f6c56f7bbfa47ec23e18f340346d62d",
+                "url": "https://api.github.com/repos/LeoGalleguillos/String/zipball/842b0f4b979323b154ac90e94428161a927af59d",
+                "reference": "842b0f4b979323b154ac90e94428161a927af59d",
                 "shasum": ""
             },
             "require": {
@@ -212,7 +212,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2019-05-22T02:06:21+00:00"
+            "time": "2019-05-26T00:59:49+00:00"
         },
         {
             "name": "leo-galleguillos/test",
