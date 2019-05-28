@@ -8,7 +8,8 @@ CREATE TABLE `product_video` (
   `modified` datetime default null,
   PRIMARY KEY (`product_video_id`),
   UNIQUE (`product_id`),
+  FULLTEXT `title` (`title`),
+  FULLTEXT `description` (`description`),
   INDEX (`created`),
-  INDEX (`modified`),
-  FULLTEXT (`title`)
+  INDEX (`modified`)
 ) ENGINE=InnoDB CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
