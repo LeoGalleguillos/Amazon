@@ -121,7 +121,8 @@ class Module
                 },
                 AmazonFactory\ProductGroup::class => function ($sm) {
                     return new AmazonFactory\ProductGroup(
-                        $sm->get(AmazonTable\ProductGroup::class)
+                        $sm->get(AmazonTable\ProductGroup::class),
+                        $sm->get(StringService\UrlFriendly::class)
                     );
                 },
                 AmazonFactory\ProductVideo::class => function ($sm) {

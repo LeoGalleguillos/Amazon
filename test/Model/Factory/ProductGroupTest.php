@@ -7,6 +7,7 @@ use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Image\Model\Factory as ImageFactory;
+use LeoGalleguillos\String\Model\Service as StringService;
 use PHPUnit\Framework\TestCase;
 
 class ProductGroupTest extends TestCase
@@ -16,17 +17,12 @@ class ProductGroupTest extends TestCase
         $this->productGroupTableMock = $this->createMock(
             AmazonTable\ProductGroup::class
         );
-
-        $this->productGroupFactory = new AmazonFactory\ProductGroup(
-            $this->productGroupTableMock
+        $this->urlFriendlyServiceMock = $this->createMock(
+            StringService\UrlFriendly::class
         );
-    }
-
-    public function testInitialize()
-    {
-        $this->assertInstanceOf(
-            AmazonFactory\ProductGroup::class,
-            $this->productGroupFactory
+        $this->productGroupFactory = new AmazonFactory\ProductGroup(
+            $this->productGroupTableMock,
+            $this->urlFriendlyServiceMock
         );
     }
 

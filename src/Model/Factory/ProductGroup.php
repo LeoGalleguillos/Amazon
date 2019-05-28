@@ -3,13 +3,17 @@ namespace LeoGalleguillos\Amazon\Model\Factory;
 
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
+use LeoGalleguillos\String\Model\Service as StringService;
+use TypeError;
 
 class ProductGroup
 {
     public function __construct(
-        AmazonTable\ProductGroup $productGroupTable
+        AmazonTable\ProductGroup $productGroupTable,
+        StringService\UrlFriendly $urlFriendlyService
     ) {
-        $this->productGroupTable = $productGroupTable;
+        $this->productGroupTable  = $productGroupTable;
+        $this->urlFriendlyService = $urlFriendlyService;
     }
 
     public function buildFromArray(array $array): AmazonEntity\ProductGroup
@@ -36,9 +40,23 @@ class ProductGroup
 
     public function buildFromName(string $name): AmazonEntity\ProductGroup
     {
-        return $this->buildFromArray(
-            $this->productGroupTable->selectWhereName($name)
-        );
+        try {
+            return $this->buildFromArray(
+                $this->productGroupTable->selectWhereName($name)
+            );
+        } catch (TypeError $typeError) {
+            $nameUrlFriendly = $this->urlFriendlyService->getUrlFriendly(
+                $name
+            );
+            $this->productGroupTable->insertIgnore(
+                $name,
+                $nameUrlFriendly,
+                null
+            );
+            return $this->buildFromArray(
+                $this->productGroupTable->selectWhereName($name)
+            );
+        }
     }
 
     /**
