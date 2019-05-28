@@ -65,7 +65,7 @@ class Everything
         );
         $features = [];
         foreach ($productFeatureArrays as $productFeatureArray) {
-            $features .= $productFeatureArray['feature'];
+            $features[] = $productFeatureArray['feature'];
         }
         $description = empty($features)
             ? null
