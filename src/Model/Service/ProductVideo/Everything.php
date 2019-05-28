@@ -60,13 +60,13 @@ class Everything
         $command = "/home/onlinefr/s3cmd-master/s3cmd put $rru s3://videosofproducts/products/videos/ --acl-public --recursive --verbose";
         exec($command);
 
-        $productFeatures = $this->productFeatureTable->selectWhereProductId(
+        $productFeatureArrays = $this->productFeatureTable->selectWhereProductId(
             $productEntity->getProductId()
         );
-        $productFeatures = iterator_to_array($productFeatures);
-        $description = empty($productFeatures)
-            ? null
-            : implode("\n", $productFeatures);
+        $description = null;
+        foreach ($productFeatureArrays as $productFeatureArray) {
+            $description .= $productFeatureArray['description'];
+        }
 
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
             $productEntity->getProductId(),
