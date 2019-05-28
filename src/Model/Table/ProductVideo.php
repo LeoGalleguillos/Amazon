@@ -33,6 +33,7 @@ class ProductVideo
     public function insertOnDuplicateKeyUpdate(
         int $productId,
         string $title,
+        string $description = null,
         int $durationMilliseconds
     ): int {
         $sql = '
@@ -40,13 +41,15 @@ class ProductVideo
               INTO `product_video` (
                        `product_id`
                      , `title`
+                     , `description`
                      , `duration_milliseconds`
                      , `created`
                    )
-            VALUES (?, ?, ?, UTC_TIMESTAMP())
+            VALUES (?, ?, ?, ?, UTC_TIMESTAMP())
 
                 ON DUPLICATE KEY UPDATE
                    `title` = ?
+                 , `description` = ?
                  , `duration_milliseconds` = ?
                  , `modified` = UTC_TIMESTAMP()
 
@@ -55,8 +58,10 @@ class ProductVideo
         $parameters = [
             $productId,
             $title,
+            $description,
             $durationMilliseconds,
             $title,
+            $description,
             $durationMilliseconds,
         ];
         return (int) $this->adapter

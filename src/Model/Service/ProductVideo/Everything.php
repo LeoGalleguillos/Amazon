@@ -21,6 +21,7 @@ class Everything
         AmazonService\ProductVideo\Generate $generateProductVideoService,
         AmazonService\ProductVideo\Thumbnail\Generate $generateThumbnailService,
         AmazonTable\Product\VideoGenerated $videoGeneratedTable,
+        AmazonTable\ProductFeature $productFeatureTable,
         AmazonTable\ProductVideo $productVideoTable,
         VideoService\DurationMilliseconds $durationMillisecondsService
     ) {
@@ -29,6 +30,7 @@ class Everything
         $this->generateProductVideoService = $generateProductVideoService;
         $this->generateThumbnailService    = $generateThumbnailService;
         $this->videoGeneratedTable         = $videoGeneratedTable;
+        $this->productFeatureTable         = $productFeatureTable;
         $this->productVideoTable           = $productVideoTable;
         $this->durationMillisecondsService = $durationMillisecondsService;
     }
@@ -58,9 +60,17 @@ class Everything
         $command = "/home/onlinefr/s3cmd-master/s3cmd put $rru s3://videosofproducts/products/videos/ --acl-public --recursive --verbose";
         exec($command);
 
+        $productFeatures = $this->productFeatureTable->selectWhereProductId(
+            $productEntity->getProductId()
+        );
+        $description = empty($productFeatures)
+            ? null
+            : implode("\n", $productFeatures);
+
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
             $productEntity->getProductId(),
             $productEntity->getTitle(),
+            $description,
             $this->durationMillisecondsService->getDurationMilliseconds($rru)
         );
 

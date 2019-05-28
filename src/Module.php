@@ -373,6 +373,7 @@ class Module
                         $sm->get(AmazonService\ProductVideo\Generate::class),
                         $sm->get(AmazonService\ProductVideo\Thumbnail\Generate::class),
                         $sm->get(AmazonTable\Product\VideoGenerated::class),
+                        $sm->get(AmazonTable\ProductFeature::class),
                         $sm->get(AmazonTable\ProductVideo::class),
                         $sm->get(VideoService\DurationMilliseconds::class)
                     );

@@ -57,6 +57,7 @@ class ProductVideoTest extends TableTestCase
         $productVideoId = $this->productVideoTable->insertOnDuplicateKeyUpdate(
             1,
             'video title',
+            'video description',
             1000
         );
         $this->assertSame(
@@ -84,6 +85,7 @@ class ProductVideoTest extends TableTestCase
         $productVideoId = $this->productVideoTable->insertOnDuplicateKeyUpdate(
             1,
             'video title',
+            'video description',
             12345
         );
         $this->assertSame(
@@ -102,6 +104,7 @@ class ProductVideoTest extends TableTestCase
         $productVideoId = $this->productVideoTable->insertOnDuplicateKeyUpdate(
             67890,
             'title 2',
+            'description 2',
             2000
         );
         $this->assertSame(
@@ -147,6 +150,7 @@ class ProductVideoTest extends TableTestCase
         $productVideoId = $this->productVideoTable->insertOnDuplicateKeyUpdate(
             12345,
             'title',
+            'description',
             3000
         );
         $array = $this->productVideoTable->selectWhereProductId(12345);
