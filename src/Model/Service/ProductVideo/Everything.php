@@ -63,6 +63,7 @@ class Everything
         $productFeatures = $this->productFeatureTable->selectWhereProductId(
             $productEntity->getProductId()
         );
+        $productFeatures = iterator_to_array($productFeatures);
         $description = empty($productFeatures)
             ? null
             : implode("\n", $productFeatures);
