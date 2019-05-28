@@ -63,10 +63,13 @@ class Everything
         $productFeatureArrays = $this->productFeatureTable->selectWhereProductId(
             $productEntity->getProductId()
         );
-        $description = null;
+        $features = [];
         foreach ($productFeatureArrays as $productFeatureArray) {
-            $description .= $productFeatureArray['feature'];
+            $features .= $productFeatureArray['feature'];
         }
+        $description = empty($features)
+            ? null
+            : implode("\n", $features);
 
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
             $productEntity->getProductId(),
