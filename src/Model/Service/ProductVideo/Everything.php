@@ -65,7 +65,7 @@ class Everything
         );
         $description = null;
         foreach ($productFeatureArrays as $productFeatureArray) {
-            $description .= $productFeatureArray['description'];
+            $description .= $productFeatureArray['feature'];
         }
 
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
