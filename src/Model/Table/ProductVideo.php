@@ -483,4 +483,24 @@ class ProductVideo
         ];
         return $this->adapter->query($sql)->execute($parameters)->current();
     }
+
+    public function updateSetDescriptionWhereProductId(
+        string $description,
+        int $productId
+    ): int {
+        $sql = '
+            UPDATE `product_video`
+               SET `product_video`.`description` = ?
+             WHERE `product_video`.`product_id` = ?
+                 ;
+        ';
+        $parameters = [
+            $description,
+            $productId,
+        ];
+        return (int) $this->adapter
+                          ->query($sql)
+                          ->execute($parameters)
+                          ->getAffectedRows();
+    }
 }
