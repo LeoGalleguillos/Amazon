@@ -208,6 +208,27 @@ class ProductVideo
         return (int) $array['count'];
     }
 
+    /**
+     * @throws TypeError
+     */
+    public function selectProductIdWhereDescriptionIsNullLimit1(): int
+    {
+        $sql = '
+            SELECT `product_video`.`product_id`
+              FROM `product_video`
+             WHERE `product_video`.`description` IS NULL
+             LIMIT 1
+                 ;
+        ';
+        $array = $this->adapter->query($sql)->execute()->current();
+
+        if (empty($array)) {
+            throw new TypeError('Product ID not found.');
+        }
+
+        return (int) $array['product_id'];
+    }
+
     public function selectOrderByCreatedDesc(): Generator
     {
         $sql = $this->getSelect()
