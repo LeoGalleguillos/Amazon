@@ -73,6 +73,7 @@ class Everything
 
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
             $productEntity->getProductId(),
+            $productEntity->getAsin(),
             $productEntity->getTitle(),
             $description,
             $this->durationMillisecondsService->getDurationMilliseconds($rru)

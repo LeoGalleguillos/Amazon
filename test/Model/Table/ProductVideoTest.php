@@ -56,6 +56,7 @@ class ProductVideoTest extends TableTestCase
 
         $productVideoId = $this->productVideoTable->insertOnDuplicateKeyUpdate(
             1,
+            'ASIN',
             'video title',
             'video description',
             1000
@@ -84,6 +85,7 @@ class ProductVideoTest extends TableTestCase
 
         $productVideoId = $this->productVideoTable->insertOnDuplicateKeyUpdate(
             1,
+            'ASIN',
             'video title',
             'video description',
             12345
@@ -103,6 +105,7 @@ class ProductVideoTest extends TableTestCase
 
         $productVideoId = $this->productVideoTable->insertOnDuplicateKeyUpdate(
             67890,
+            'ASIN',
             'title 2',
             'description 2',
             2000
@@ -149,6 +152,7 @@ class ProductVideoTest extends TableTestCase
 
         $productVideoId = $this->productVideoTable->insertOnDuplicateKeyUpdate(
             12345,
+            'ASIN',
             'title',
             'description',
             3000

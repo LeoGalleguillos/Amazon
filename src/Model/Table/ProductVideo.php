@@ -33,6 +33,7 @@ class ProductVideo
 
     public function insertOnDuplicateKeyUpdate(
         int $productId,
+        string $asin,
         string $title,
         string $description = null,
         int $durationMilliseconds
@@ -41,12 +42,13 @@ class ProductVideo
             INSERT
               INTO `product_video` (
                        `product_id`
+                     , `asin`
                      , `title`
                      , `description`
                      , `duration_milliseconds`
                      , `created`
                    )
-            VALUES (?, ?, ?, ?, UTC_TIMESTAMP())
+            VALUES (?, ?, ?, ?, ?, UTC_TIMESTAMP())
 
                 ON DUPLICATE KEY UPDATE
                    `title` = ?
@@ -58,6 +60,7 @@ class ProductVideo
         ';
         $parameters = [
             $productId,
+            $asin,
             $title,
             $description,
             $durationMilliseconds,
