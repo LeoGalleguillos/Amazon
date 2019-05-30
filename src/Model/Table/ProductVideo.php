@@ -24,6 +24,7 @@ class ProductVideo
             SELECT `product_video`.`product_video_id`
                  , `product_video`.`product_id`
                  , `product_video`.`title`
+                 , `product_video`.`description`
                  , `product_video`.`duration_milliseconds`
                  , `product_video`.`created`
                  , `product_video`.`modified`

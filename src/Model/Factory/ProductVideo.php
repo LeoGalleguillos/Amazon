@@ -22,6 +22,7 @@ class ProductVideo
         $productVideoEntity
             ->setAsin($array['asin'])
             ->setCreated(new DateTime($array['created']))
+            ->setDescription($array['description'])
             ->setDurationMilliseconds((int) $array['duration_milliseconds'])
             ->setProductId((int) $array['product_id'])
             ->setProductVideoId((int) $array['product_video_id'])
