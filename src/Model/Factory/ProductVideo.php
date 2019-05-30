@@ -22,7 +22,6 @@ class ProductVideo
         $productVideoEntity
             ->setAsin($array['asin'])
             ->setCreated(new DateTime($array['created']))
-            ->setDescription($array['description'])
             ->setDurationMilliseconds((int) $array['duration_milliseconds'])
             ->setProductId((int) $array['product_id'])
             ->setProductVideoId((int) $array['product_video_id'])
@@ -30,6 +29,9 @@ class ProductVideo
 
         if (isset($array['browse_node.name'])) {
             $productVideoEntity->setBrowseNodeName($array['browse_node.name']);
+        }
+        if (isset($array['description'])) {
+            $productVideoEntity->setDescription($array['description']);
         }
 
         return $productVideoEntity;
