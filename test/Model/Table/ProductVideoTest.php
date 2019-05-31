@@ -105,7 +105,7 @@ class ProductVideoTest extends TableTestCase
 
         $productVideoId = $this->productVideoTable->insertOnDuplicateKeyUpdate(
             67890,
-            'ASIN',
+            'ASIN2',
             'title 2',
             'description 2',
             2000
