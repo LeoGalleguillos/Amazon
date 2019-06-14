@@ -26,12 +26,17 @@ class ProductVideoTest extends TableTestCase
         );
 
         $this->setForeignKeyChecks0();
+
+        $this->dropTable('browse_node_product');
+        $this->createTable('browse_node_product');
+
         $this->dropTable('product');
         $this->createTable('product');
-        $this->setForeignKeyChecks1();
 
         $this->dropTable('product_video');
         $this->createTable('product_video');
+
+        $this->setForeignKeyChecks1();
     }
 
     public function testInsert()
@@ -135,6 +140,37 @@ class ProductVideoTest extends TableTestCase
         $this->assertSame(
             iterator_to_array($generator),
             []
+        );
+    }
+
+    public function testSelectWhereModifiedIsNullAndBrowseNodeIdIsNullLimit1()
+    {
+        try {
+            $this->productVideoTable->selectWhereModifiedIsNullAndBrowseNodeIdIsNullLimit1();
+            $this->fail();
+        } catch (TypeError $typeError) {
+            $this->assertSame(
+                'Return value of',
+               substr($typeError->getMessage(), 0, 15)
+            );
+        }
+
+        $productVideoId = $this->productVideoTable->insertOnDuplicateKeyUpdate(
+            12345,
+            'ASIN',
+            'title',
+            'description',
+            3000
+        );
+        $array = $this->productVideoTable->selectWhereModifiedIsNullAndBrowseNodeIdIsNullLimit1();
+
+        $this->assertSame(
+            '1',
+            $array['product_video_id']
+        );
+        $this->assertSame(
+            '12345',
+            $array['product_id']
         );
     }
 

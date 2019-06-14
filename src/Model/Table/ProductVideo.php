@@ -281,25 +281,6 @@ class ProductVideo
     /**
      * @throws TypeError
      */
-    public function selectWhereModifiedIsNullAndBrowseNodeIdIsNullLimit1(): array
-    {
-        $sql = $this->getSelect()
-             . '
-              LEFT
-              JOIN `browse_node_product`
-             USING (`product_id`)
-
-             WHERE `product_video`.`modified` IS NULL
-               AND `browse_node_product`.`browse_node_id` IS NULL
-
-             LIMIT 1
-        ';
-        return $this->adapter->query($sql)->execute()->current();
-    }
-
-    /**
-     * @throws TypeError
-     */
     public function selectWhereAsin(string $asin): array
     {
         $sql = $this->getSelect()
@@ -425,6 +406,27 @@ class ProductVideo
         foreach ($this->adapter->query($sql)->execute($parameters) as $array) {
             yield $array;
         }
+    }
+
+    /**
+     * @throws TypeError
+     */
+    public function selectWhereModifiedIsNullAndBrowseNodeIdIsNullLimit1(): array
+    {
+        $sql = $this->getSelect()
+             . '
+              FROM `product_video`
+
+              LEFT
+              JOIN `browse_node_product`
+             USING (`product_id`)
+
+             WHERE `product_video`.`modified` IS NULL
+               AND `browse_node_product`.`browse_node_id` IS NULL
+
+             LIMIT 1
+        ';
+        return $this->adapter->query($sql)->execute()->current();
     }
 
     /**
