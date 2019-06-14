@@ -614,6 +614,11 @@ class Module
                         $sm->get('amazon')
                     );
                 },
+                AmazonTable\ProductVideo\ProductVideoId::class => function ($sm) {
+                    return new AmazonTable\ProductVideo\ProductVideoId(
+                        $sm->get('amazon')
+                    );
+                },
                 AmazonTable\Search\ProductGroup::class => function ($sm) {
                     return new AmazonTable\Search\ProductGroup(
                         $sm->get(MemcachedService\Memcached::class),
