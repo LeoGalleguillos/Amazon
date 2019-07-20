@@ -447,6 +447,9 @@ class Module
                         $sm->get(AmazonTable\ProductVideo::class)
                     );
                 },
+                AmazonService\ProductVideo\RandomMp3Rru::class => function ($sm) {
+                    return new AmazonService\ProductVideo\RandomMp3Rru();
+                },
                 AmazonService\ProductVideo\Thumbnail\Exists::class => function ($sm) {
                     return new AmazonService\ProductVideo\Thumbnail\Exists();
                 },
