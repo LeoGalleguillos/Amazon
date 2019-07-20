@@ -13,7 +13,12 @@ class CommandTest extends TestCase
 {
     protected function setUp()
     {
-        $this->commandService = new AmazonService\ProductVideo\Command();
+        $this->randomMp3RruServiceMock = $this->createMock(
+            AmazonService\ProductVideo\RandomMp3Rru::class
+        );
+        $this->commandService = new AmazonService\ProductVideo\Command(
+            $this->randomMp3RruServiceMock
+        );
     }
 
     public function testInitialize()

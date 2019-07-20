@@ -3,10 +3,17 @@ namespace LeoGalleguillos\Amazon\Model\Service\ProductVideo;
 
 use Exception;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
+use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use TypeError;
 
 class Command
 {
+    public function __construct(
+        AmazonService\ProductVideo\RandomMp3Rru $randomMp3RruService
+    ) {
+        $this->randomMp3RruService = $randomMp3RruService;
+    }
+
     public function getCommand(AmazonEntity\Product $productEntity): string
     {
         $code = [];
@@ -53,7 +60,9 @@ class Command
             : 229;
         $startFadingOut = $audioLength - 50;
 
-        $code[] = "-track /home/amazon/products/videos/ukelele.mp3 out=$audioLength \\";
+        $randomMp3Rru = $this->randomMp3RruService->getRandomMp3Rru();
+
+        $code[] = "-track \"$randomMp3Rru\" out=$audioLength \\";
         $code[] = "-attach-track volume:0db end=-70db in=$startFadingOut out=$audioLength \\";
         $code[] = "-transition mix \\";
 

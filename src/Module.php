@@ -365,7 +365,9 @@ class Module
                     return new AmazonService\ProductHiResImage\HiResImagesDownloaded();
                 },
                 AmazonService\ProductVideo\Command::class => function ($sm) {
-                    return new AmazonService\ProductVideo\Command();
+                    return new AmazonService\ProductVideo\Command(
+                        $sm->get(AmazonService\ProductVideo\RandomMp3Rru::class)
+                    );
                 },
                 AmazonService\ProductVideo\Everything::class => function ($sm) {
                     return new AmazonService\ProductVideo\Everything(
