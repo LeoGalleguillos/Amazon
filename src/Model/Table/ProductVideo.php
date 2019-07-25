@@ -18,7 +18,7 @@ class ProductVideo
         $this->adapter   = $adapter;
     }
 
-    protected function getSelect(): string
+    public function getSelect(): string
     {
         return '
             SELECT `product_video`.`product_video_id`
