@@ -1,5 +1,5 @@
 <?php
-namespace LeoGalleguillos\AmazonTest\Model\Table;
+namespace LeoGalleguillos\AmazonTest\Model\Table\ProductVideo;
 
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Test\TableTestCase;
