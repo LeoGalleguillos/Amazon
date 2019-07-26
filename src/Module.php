@@ -619,6 +619,12 @@ class Module
                         $sm->get('amazon')
                     );
                 },
+                AmazonTable\ProductVideo\ProductGroup::class => function ($sm) {
+                    return new AmazonTable\ProductVideo\ProductGroup(
+                        $sm->get('amazon'),
+                        $sm->get(AmazonTable\ProductVideo::class)
+                    );
+                },
                 AmazonTable\ProductVideo\ProductId::class => function ($sm) {
                     return new AmazonTable\ProductVideo\ProductId(
                         $sm->get('amazon')
