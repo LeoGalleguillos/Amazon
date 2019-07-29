@@ -84,7 +84,7 @@ class ProductVideo
               FROM `product_video`
 
              ORDER
-                BY `product_video`.`created` ASC
+                BY `product_video`.`product_video_id` ASC
              LIMIT $limitOffset, $limitRowCount
                  ;
         ";
