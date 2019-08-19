@@ -386,6 +386,9 @@ class Module
                         $sm->get(AmazonService\ProductVideo\Command::class)
                     );
                 },
+                AmazonService\ProductVideo\ProductGroupExcluded::class => function ($sm) {
+                    return new AmazonService\ProductVideo\ProductGroupExcluded();
+                },
                 AmazonService\ProductVideo\ProductVideos::class => function ($sm) {
                     return new AmazonService\ProductVideo\ProductVideos(
                         $sm->get(AmazonFactory\ProductVideo::class),
