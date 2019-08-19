@@ -19,6 +19,7 @@ class Everything
         AmazonService\Product\HasImage $hasImageService,
         AmazonService\ProductImage\ProductImages\DownloadFiles $downloadFilesService,
         AmazonService\ProductVideo\Generate $generateProductVideoService,
+        AmazonService\ProductVideo\ProductGroupExcluded $productGroupExcludedService,
         AmazonService\ProductVideo\Thumbnail\Generate $generateThumbnailService,
         AmazonTable\Product\VideoGenerated $videoGeneratedTable,
         AmazonTable\ProductFeature $productFeatureTable,
@@ -28,6 +29,7 @@ class Everything
         $this->hasImageService             = $hasImageService;
         $this->downloadFilesService        = $downloadFilesService;
         $this->generateProductVideoService = $generateProductVideoService;
+        $this->productGroupExcludedService = $productGroupExcludedService;
         $this->generateThumbnailService    = $generateThumbnailService;
         $this->videoGeneratedTable         = $videoGeneratedTable;
         $this->productFeatureTable         = $productFeatureTable;
@@ -40,6 +42,10 @@ class Everything
         $this->videoGeneratedTable->updateSetToUtcTimestampWhereProductId(
             $productEntity->getProductId()
         );
+
+        if ($this->productGroupExcludedService->isProductGroupExcluded($productEntity)) {
+            return false;
+        }
 
         if (!$this->hasImageService->doesProductHaveImage($productEntity)) {
             return false;

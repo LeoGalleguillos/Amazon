@@ -374,6 +374,7 @@ class Module
                         $sm->get(AmazonService\Product\HasImage::class),
                         $sm->get(AmazonService\ProductImage\ProductImages\DownloadFiles::class),
                         $sm->get(AmazonService\ProductVideo\Generate::class),
+                        $sm->get(AmazonService\ProductVideo\ProductGroupExcluded::class),
                         $sm->get(AmazonService\ProductVideo\Thumbnail\Generate::class),
                         $sm->get(AmazonTable\Product\VideoGenerated::class),
                         $sm->get(AmazonTable\ProductFeature::class),
