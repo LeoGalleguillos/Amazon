@@ -25,6 +25,8 @@ class ProductGroupExcluded
             'eBooks',
             'Movie',
             'Music',
+            'Single Detail Page Misc',
+            'Television',
             'TV Series Season Video on Demand',
             'TV Series Video on Demand',
             'Video',
