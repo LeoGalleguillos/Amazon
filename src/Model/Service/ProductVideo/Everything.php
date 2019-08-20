@@ -51,7 +51,9 @@ class Everything
             return false;
         }
 
-        $this->downloadFilesService->downloadFiles($productEntity);
+        if (!$this->downloadFilesService->downloadFiles($productEntity)) {
+            return false;
+        }
 
         $this->generateProductVideoService->generate($productEntity);
 
