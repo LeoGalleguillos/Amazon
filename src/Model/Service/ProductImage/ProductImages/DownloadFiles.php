@@ -14,8 +14,10 @@ class DownloadFiles
         $this->downloadFileService = $downloadFileService;
     }
 
-    public function downloadFiles(AmazonEntity\Product $productEntity)
+    public function downloadFiles(AmazonEntity\Product $productEntity): bool
     {
+        $allFilesDownloadedSuccessfully = true;
+
         $asin = $productEntity->getAsin();
         if (preg_match('/\W/', $asin)) {
             throw new Exception('ASIN contains invalid characters (this should never happen)');
@@ -27,10 +29,13 @@ class DownloadFiles
 
         try {
             $primaryImage = $productEntity->getPrimaryImage();
-            $this->downloadFileService->downloadFile(
+            $fileDownloadedSuccessfully = $this->downloadFileService->downloadFile(
                 $productEntity,
                 $primaryImage
             );
+            if (!$fileDownloadedSuccessfully) {
+                $allFilesDownloadedSuccessfully = false;
+            }
         } catch (TypeError $typeError) {
             // Do nothing.
         }
@@ -38,13 +43,18 @@ class DownloadFiles
         try {
             $variantImages = $productEntity->getVariantImages();
             foreach ($variantImages as $variantImage) {
-                $this->downloadFileService->downloadFile(
+                $fileDownloadedSuccessfully = $this->downloadFileService->downloadFile(
                     $productEntity,
                     $variantImage
                 );
+                if (!$fileDownloadedSuccessfully) {
+                    $allFilesDownloadedSuccessfully = false;
+                }
             }
         } catch (TypeError $typeError) {
             // Do nothing.
         }
+
+        return $allFilesDownloadedSuccessfully;
     }
 }
