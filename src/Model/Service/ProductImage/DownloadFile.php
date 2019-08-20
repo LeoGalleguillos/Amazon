@@ -11,7 +11,7 @@ class DownloadFile
     public function downloadFile(
         AmazonEntity\Product $productEntity,
         ImageEntity\Image $imageEntity
-    ) {
+    ): bool {
         $asin = $productEntity->getAsin();
         if (preg_match('/\W/', $asin)) {
             throw new Exception('ASIN contains invalid characters (this should never happen)');
@@ -28,8 +28,10 @@ class DownloadFile
 
         $destination = "/home/amazon/products/images/$asin/$fileName";
 
-        if (!file_exists($destination)) {
-            copy($imageEntity->getUrl(), $destination);
+        if (file_exists($destination)) {
+            return true;
+        } else {
+            return copy($imageEntity->getUrl(), $destination);
         }
     }
 }
