@@ -104,7 +104,7 @@ class ProductVideo
              WHERE MATCH(`product_video`.`title`) AGAINST (?)
              ORDER
                 BY `score` DESC
-             LIMIT 10
+             LIMIT 11
                  ;
         ';
         $parameters = [
