@@ -14,7 +14,9 @@ class Breadcrumbs
 
         try {
             $parent = $browseNodeEntity->getParents()[0];
-            $browseNodes += $this->getBrowseNodes($parent);
+            if (!empty($parent->getName())) {
+                $browseNodes += $this->getBrowseNodes($parent);
+            }
         } catch (TypeError $typeError) {
             // Do nothing.
         }
