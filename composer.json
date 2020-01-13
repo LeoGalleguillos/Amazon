@@ -8,13 +8,13 @@
     "license": "MIT",
     "name": "leo-galleguillos/amazon",
     "require": {
+        "laminas/laminas-test": "^3.1",
+        "laminas/laminas-db": "^2.9",
         "leo-galleguillos/hashtag": "dev-master",
         "leo-galleguillos/image": "dev-master",
         "leo-galleguillos/memcached": "dev-master",
         "leo-galleguillos/string": "dev-master",
         "leo-galleguillos/test": "dev-master",
-        "leo-galleguillos/video": "dev-master",
-        "zendframework/zend-test": "^3.1",
-        "zendframework/zend-db": "^2.9"
+        "leo-galleguillos/video": "dev-master"
     }
 }
