@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5d65a94b5dd96dfcaaba8d317f48290a",
+    "content-hash": "6c491aa3fc7c05c4d7a7038679118342",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -302,16 +302,16 @@
         },
         {
             "name": "laminas/laminas-db",
-            "version": "2.11.1",
+            "version": "2.11.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-db.git",
-                "reference": "8ed705724d1b03d9a7ab59dc110a43ed1781c7e4"
+                "reference": "76f9527da996c2fef32ef1f3a939e18ca5e9d962"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-db/zipball/8ed705724d1b03d9a7ab59dc110a43ed1781c7e4",
-                "reference": "8ed705724d1b03d9a7ab59dc110a43ed1781c7e4",
+                "url": "https://api.github.com/repos/laminas/laminas-db/zipball/76f9527da996c2fef32ef1f3a939e18ca5e9d962",
+                "reference": "76f9527da996c2fef32ef1f3a939e18ca5e9d962",
                 "shasum": ""
             },
             "require": {
@@ -360,7 +360,7 @@
                 "db",
                 "laminas"
             ],
-            "time": "2020-01-10T22:07:11+00:00"
+            "time": "2020-01-14T13:07:26+00:00"
         },
         {
             "name": "laminas/laminas-dom",
