@@ -96,11 +96,9 @@ class ProductVideo
     public function selectAsinWhereMatchAgainst(string $query): Generator
     {
         $sql = '
-            SELECT `product`.`asin`
+            SELECT `product_video`.`asin`
                  , MATCH(`product_video`.`title`) AGAINST (?) AS `score`
-              FROM `product`
-              JOIN `product_video`
-             USING (`product_id`)
+              FROM `product_video`
              WHERE MATCH(`product_video`.`title`) AGAINST (?)
              ORDER
                 BY `score` DESC

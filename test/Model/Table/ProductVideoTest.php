@@ -123,10 +123,11 @@ class ProductVideoTest extends TableTestCase
 
     public function testSelectAsinWhereMatchAgainst()
     {
-        $generator = $this->productVideoTable->selectAsinWhereMatchAgainst('query');
-        $this->assertInstanceOf(
-            Generator::class,
-            $generator
+        $array = iterator_to_array(
+            $this->productVideoTable->selectAsinWhereMatchAgainst('query')
+        );
+        $this->assertEmpty(
+            $array
         );
     }
 
