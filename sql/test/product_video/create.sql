@@ -1,7 +1,7 @@
 CREATE TABLE `product_video` (
   `product_video_id` int(10) unsigned NOT NULL auto_increment,
   `product_id` int(10) unsigned not null,
-  `asin` varchar(10) DEFAULT NULL,
+  `asin` varchar(10) NOT NULL,
   `title` text not null,
   `description` text DEFAULT NULL,
   `duration_milliseconds` int(10) default null,
