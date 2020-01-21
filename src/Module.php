@@ -450,7 +450,8 @@ class Module
                 AmazonService\ProductVideo\ProductVideos\Similar::class => function ($sm) {
                     return new AmazonService\ProductVideo\ProductVideos\Similar(
                         $sm->get(AmazonFactory\ProductVideo::class),
-                        $sm->get(AmazonTable\ProductVideo::class)
+                        $sm->get(AmazonTable\ProductVideo::class),
+                        $sm->get(StringService\KeepFirstWords::class)
                     );
                 },
                 AmazonService\ProductVideo\RandomMp3Rru::class => function ($sm) {
