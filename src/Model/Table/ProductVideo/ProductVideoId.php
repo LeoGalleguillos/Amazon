@@ -32,4 +32,21 @@ class ProductVideoId
             ->execute($parameters)
             ->getAffectedRows();
     }
+
+    public function updateSetViewsToViewsPlusOneWhereProductVideoId(
+        int $productVideoId
+    ): int {
+        $sql = '
+            UPDATE `product_video`
+               SET `views` = `views` + 1
+             WHERE `product_video_id` = ?
+        ';
+        $parameters = [
+            $productVideoId,
+        ];
+        return (int) $this->adapter
+            ->query($sql)
+            ->execute($parameters)
+            ->getAffectedRows();
+    }
 }
