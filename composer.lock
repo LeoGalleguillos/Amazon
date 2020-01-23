@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6c491aa3fc7c05c4d7a7038679118342",
+    "content-hash": "ed59a256ffa247d30969d01e02db3b27",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -1507,7 +1507,7 @@
         },
         {
             "name": "leo-galleguillos/video",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/Video.git",
@@ -3148,8 +3148,7 @@
         "leo-galleguillos/image": 20,
         "leo-galleguillos/memcached": 20,
         "leo-galleguillos/string": 20,
-        "leo-galleguillos/test": 20,
-        "leo-galleguillos/video": 20
+        "leo-galleguillos/test": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
