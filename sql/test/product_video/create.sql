@@ -5,6 +5,7 @@ CREATE TABLE `product_video` (
   `title` text not null,
   `description` text DEFAULT NULL,
   `duration_milliseconds` int(10) default null,
+  `views` int(10) unsigned NOT NULL DEFAULT '0',
   `created` datetime not null,
   `modified` datetime default null,
   PRIMARY KEY (`product_video_id`),
