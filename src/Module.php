@@ -463,6 +463,11 @@ class Module
                 AmazonService\ProductVideo\Thumbnail\Generate::class => function ($sm) {
                     return new AmazonService\ProductVideo\Thumbnail\Generate();
                 },
+                AmazonService\ProductVideo\Views\Increment::class => function ($sm) {
+                    return new AmazonService\ProductVideo\Views\Increment(
+                        $sm->get(AmazonTable\ProductVideo\ProductVideoId::class)
+                    );
+                },
                 AmazonService\Search\ProductGroup::class => function ($sm) {
                     return new AmazonService\Search\ProductGroup(
                         $sm->get(AmazonFactory\Product::class),
