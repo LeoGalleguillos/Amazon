@@ -27,6 +27,7 @@ class ProductVideo
                  , `product_video`.`title`
                  , `product_video`.`description`
                  , `product_video`.`duration_milliseconds`
+                 , `product_video`.`views`
                  , `product_video`.`created`
                  , `product_video`.`modified`
         ';
