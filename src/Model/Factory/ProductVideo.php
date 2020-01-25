@@ -25,7 +25,8 @@ class ProductVideo
             ->setDurationMilliseconds((int) $array['duration_milliseconds'])
             ->setProductId((int) $array['product_id'])
             ->setProductVideoId((int) $array['product_video_id'])
-            ->setTitle($array['title']);
+            ->setTitle($array['title'])
+            ->setViews((int) $array['views']);
 
         if (isset($array['browse_node.name'])) {
             $productVideoEntity->setBrowseNodeName($array['browse_node.name']);
