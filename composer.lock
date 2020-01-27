@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed59a256ffa247d30969d01e02db3b27",
+    "content-hash": "023b4ce777eeddf069d68e65ebae5ad6",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -1353,16 +1353,16 @@
         },
         {
             "name": "leo-galleguillos/hashtag",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/Hashtag.git",
-                "reference": "e9c1cd79eddddfb624b47a6f7e7a2be9b5e8be93"
+                "reference": "78721fc4851d5ca85763ceadd53acfa191f2aab1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/Hashtag/zipball/e9c1cd79eddddfb624b47a6f7e7a2be9b5e8be93",
-                "reference": "e9c1cd79eddddfb624b47a6f7e7a2be9b5e8be93",
+                "url": "https://api.github.com/repos/LeoGalleguillos/Hashtag/zipball/78721fc4851d5ca85763ceadd53acfa191f2aab1",
+                "reference": "78721fc4851d5ca85763ceadd53acfa191f2aab1",
                 "shasum": ""
             },
             "require": {
@@ -1380,25 +1380,25 @@
             "license": [
                 "MIT"
             ],
-            "time": "2020-01-13T08:04:49+00:00"
+            "time": "2020-01-27T06:22:50+00:00"
         },
         {
             "name": "leo-galleguillos/image",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/Image.git",
-                "reference": "d187a53992e949417414d8f723e71a765a9c6724"
+                "reference": "f339ecd903feb279ad9f678c37f6df424edc089b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/Image/zipball/d187a53992e949417414d8f723e71a765a9c6724",
-                "reference": "d187a53992e949417414d8f723e71a765a9c6724",
+                "url": "https://api.github.com/repos/LeoGalleguillos/Image/zipball/f339ecd903feb279ad9f678c37f6df424edc089b",
+                "reference": "f339ecd903feb279ad9f678c37f6df424edc089b",
                 "shasum": ""
             },
             "require": {
                 "laminas/laminas-test": "^3.1",
-                "leo-galleguillos/test": "dev-master"
+                "leo-galleguillos/test": "^1.0"
             },
             "type": "library",
             "autoload": {
@@ -1411,20 +1411,20 @@
             "license": [
                 "MIT"
             ],
-            "time": "2020-01-13T12:42:26+00:00"
+            "time": "2020-01-27T06:25:25+00:00"
         },
         {
             "name": "leo-galleguillos/memcached",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/Memcached.git",
-                "reference": "914037c4246aec58224c1771fa3add5fbca77922"
+                "reference": "f41aa92ff8a9d4fce1490f3f3c738b41950c7809"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/Memcached/zipball/914037c4246aec58224c1771fa3add5fbca77922",
-                "reference": "914037c4246aec58224c1771fa3add5fbca77922",
+                "url": "https://api.github.com/repos/LeoGalleguillos/Memcached/zipball/f41aa92ff8a9d4fce1490f3f3c738b41950c7809",
+                "reference": "f41aa92ff8a9d4fce1490f3f3c738b41950c7809",
                 "shasum": ""
             },
             "require": {
@@ -1442,20 +1442,20 @@
             "license": [
                 "MIT"
             ],
-            "time": "2020-01-13T12:30:10+00:00"
+            "time": "2020-01-25T09:37:50+00:00"
         },
         {
             "name": "leo-galleguillos/string",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/String.git",
-                "reference": "9a3f01741eea81ca120499b42b9b42ebf3bca6eb"
+                "reference": "cd4d14a2571d1778a8d7a4bb39b75675b1570bcb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/String/zipball/9a3f01741eea81ca120499b42b9b42ebf3bca6eb",
-                "reference": "9a3f01741eea81ca120499b42b9b42ebf3bca6eb",
+                "url": "https://api.github.com/repos/LeoGalleguillos/String/zipball/cd4d14a2571d1778a8d7a4bb39b75675b1570bcb",
+                "reference": "cd4d14a2571d1778a8d7a4bb39b75675b1570bcb",
                 "shasum": ""
             },
             "require": {
@@ -1472,20 +1472,20 @@
             "license": [
                 "MIT"
             ],
-            "time": "2020-01-13T08:00:21+00:00"
+            "time": "2020-01-25T09:17:34+00:00"
         },
         {
             "name": "leo-galleguillos/test",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/Test.git",
-                "reference": "4bc9e130a1c03b72f93329e75ff4bf519f03a4c4"
+                "reference": "34e71d6fd5e13c7bfae0632a9599ae0534ce0b94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/Test/zipball/4bc9e130a1c03b72f93329e75ff4bf519f03a4c4",
-                "reference": "4bc9e130a1c03b72f93329e75ff4bf519f03a4c4",
+                "url": "https://api.github.com/repos/LeoGalleguillos/Test/zipball/34e71d6fd5e13c7bfae0632a9599ae0534ce0b94",
+                "reference": "34e71d6fd5e13c7bfae0632a9599ae0534ce0b94",
                 "shasum": ""
             },
             "require": {
@@ -1503,26 +1503,26 @@
             "license": [
                 "MIT"
             ],
-            "time": "2020-01-13T07:41:45+00:00"
+            "time": "2020-01-26T07:24:54+00:00"
         },
         {
             "name": "leo-galleguillos/video",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/Video.git",
-                "reference": "ee3753d7b3b9b0af0e64db9e4db794c5025e94dc"
+                "reference": "d3b62f9272601f3c42cbd3a157d5e5cba6135962"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/Video/zipball/ee3753d7b3b9b0af0e64db9e4db794c5025e94dc",
-                "reference": "ee3753d7b3b9b0af0e64db9e4db794c5025e94dc",
+                "url": "https://api.github.com/repos/LeoGalleguillos/Video/zipball/d3b62f9272601f3c42cbd3a157d5e5cba6135962",
+                "reference": "d3b62f9272601f3c42cbd3a157d5e5cba6135962",
                 "shasum": ""
             },
             "require": {
                 "laminas/laminas-db": "^2.9",
                 "laminas/laminas-test": "^3.1",
-                "leo-galleguillos/test": "dev-master"
+                "leo-galleguillos/test": "^1.0"
             },
             "type": "library",
             "autoload": {
@@ -1535,7 +1535,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2020-01-13T07:58:19+00:00"
+            "time": "2020-01-27T06:10:11+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -3143,13 +3143,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "leo-galleguillos/hashtag": 20,
-        "leo-galleguillos/image": 20,
-        "leo-galleguillos/memcached": 20,
-        "leo-galleguillos/string": 20,
-        "leo-galleguillos/test": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
