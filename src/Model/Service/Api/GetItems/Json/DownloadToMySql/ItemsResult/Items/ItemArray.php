@@ -1,20 +1,27 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Service\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items;
 
-use LeoGalleguillos\Amazon\Model\Service as AmazonService;
-use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
+use LeoGalleguillos\Amazon\{
+    Model\Service as AmazonService,
+    Model\Table as AmazonTable
+};
 
 class ItemArray
 {
     public function __construct(
-        AmazonTable\Product $productTable
+        AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\BrowseNodeInfo\BrowseNodes\BrowseNodeArray $browseNodeArrayService
     ) {
-        $this->productTable = $productTable;
+        $this->browseNodeArrayService = $browseNodeArrayService;
     }
 
     public function downloadToMySql(
         array $itemArray
     ): bool {
+        $browseNodesArray = $itemArray['BrowseNodeInfo']['BrowseNodes'];
+        foreach ($browseNodesArray as $browseNodeArray) {
+            $this->browseNodeArrayService->downloadToMySql($browseNodeArray);
+        }
+
         return true;
     }
 }
