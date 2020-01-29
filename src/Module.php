@@ -144,6 +144,22 @@ class Module
                         $amazonConfig['secret_access_key']
                     );
                 },
+                AmazonService\Api\GetItems\Json\DownloadToMySql::class => function ($sm) {
+                    return new AmazonService\Api\GetItems\Json\DownloadToMySql(
+                        $sm->get(AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray::class)
+                    );
+                },
+                AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray::class => function ($sm) {
+                    return new AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray(
+                        $sm->get(AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\BrowseNodeInfo\BrowseNodes\BrowseNodeArray::class)
+                    );
+                },
+                AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\BrowseNodeInfo\BrowseNodes\BrowseNodeArray::class => function ($sm) {
+                    return new AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\BrowseNodeInfo\BrowseNodes\BrowseNodeArray(
+                        $sm->get(AmazonTable\BrowseNode::class),
+                        $sm->get(AmazonTable\BrowseNodeHierarchy::class)
+                    );
+                },
                 AmazonService\Api\ItemLookup\BrowseNodes\Xml::class => function ($sm) {
                     $amazonConfig = $sm->get('Config')['amazon'];
                     return new AmazonService\Api\ItemLookup\BrowseNodes\Xml(
