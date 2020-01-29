@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table;
 
+use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use Generator;
 use TypeError;
 use Zend\Db\Adapter\Adapter;
@@ -397,6 +398,9 @@ class ProductVideo
     }
 
     /**
+     * @deprecated Instead of this method, use the following method:
+     * AmazonTable\ProductVideo\Modified::selectWhereModifiedIsNullAndBrowseNodeIdIsNullLimit
+     *
      * @throws TypeError
      */
     public function selectWhereModifiedIsNullAndBrowseNodeIdIsNullLimit1(): array
