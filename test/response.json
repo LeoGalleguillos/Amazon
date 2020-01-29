@@ -1,0 +1,1288 @@
+{
+ "ItemsResult": {
+  "Items": [
+   {
+    "ASIN": "B009UOMNE8",
+    "BrowseNodeInfo": {
+     "BrowseNodes": [
+      {
+       "Ancestor": {
+        "Ancestor": {
+         "Ancestor": {
+          "ContextFreeName": "Arts, Crafts & Sewing",
+          "DisplayName": "Arts, Crafts & Sewing",
+          "Id": "2617941011"
+         },
+         "ContextFreeName": "Categories",
+         "DisplayName": "Categories",
+         "Id": "2617942011"
+        },
+        "ContextFreeName": "Arts, Crafts & Sewing Storage",
+        "DisplayName": "Organization, Storage & Transport",
+        "Id": "2237594011"
+       },
+       "ContextFreeName": "Craft & Sewing Supplies Storage",
+       "DisplayName": "Craft & Sewing Supplies Storage",
+       "Id": "262666011",
+       "IsRoot": false,
+       "SalesRank": 1
+      },
+      {
+       "Ancestor": {
+        "Ancestor": {
+         "Ancestor": {
+          "ContextFreeName": "Arts, Crafts & Sewing",
+          "DisplayName": "Arts, Crafts & Sewing",
+          "Id": "2617941011"
+         },
+         "ContextFreeName": "Categories",
+         "DisplayName": "Categories",
+         "Id": "2617942011"
+        },
+        "ContextFreeName": "Arts, Crafts & Sewing Storage",
+        "DisplayName": "Organization, Storage & Transport",
+        "Id": "2237594011"
+       },
+       "ContextFreeName": "Arts & Crafts Storage Boxes & Organizers",
+       "DisplayName": "Storage Boxes & Organizers",
+       "Id": "8090944011",
+       "IsRoot": false,
+       "SalesRank": 1
+      }
+     ]
+    },
+    "DetailPageURL": "https://www.amazon.com/dp/B009UOMNE8?tag=testing-12345-20&linkCode=ogi&th=1&psc=1",
+    "Images": {
+     "Primary": {
+      "Large": {
+       "Height": 500,
+       "URL": "https://m.media-amazon.com/images/I/61lLQJ5rERL.jpg",
+       "Width": 500
+      },
+      "Medium": {
+       "Height": 160,
+       "URL": "https://m.media-amazon.com/images/I/61lLQJ5rERL._SL160_.jpg",
+       "Width": 160
+      },
+      "Small": {
+       "Height": 75,
+       "URL": "https://m.media-amazon.com/images/I/61lLQJ5rERL._SL75_.jpg",
+       "Width": 75
+      }
+     },
+     "Variants": [
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/61YOl+7Jv1L.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/61YOl+7Jv1L._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/61YOl+7Jv1L._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/619xLNIGikL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/619xLNIGikL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/619xLNIGikL._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/51wRu6D-nHL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/51wRu6D-nHL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/51wRu6D-nHL._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/412lstuVJFL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/412lstuVJFL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/412lstuVJFL._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/4152X1hE4NL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/4152X1hE4NL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/4152X1hE4NL._SL75_.jpg",
+        "Width": 75
+       }
+      }
+     ]
+    },
+    "ItemInfo": {
+     "ByLineInfo": {
+      "Brand": {
+       "DisplayValue": "Made By Me",
+       "Label": "Brand",
+       "Locale": "en_US"
+      },
+      "Manufacturer": {
+       "DisplayValue": "Horizon Group",
+       "Label": "Manufacturer",
+       "Locale": "en_US"
+      }
+     },
+     "Classifications": {
+      "Binding": {
+       "DisplayValue": "Toy",
+       "Label": "Binding",
+       "Locale": "en_US"
+      },
+      "ProductGroup": {
+       "DisplayValue": "Toy",
+       "Label": "ProductGroup",
+       "Locale": "en_US"
+      }
+     },
+     "ContentInfo": {
+      "Languages": {
+       "DisplayValues": [
+        {
+         "DisplayValue": "English",
+         "Type": "Unknown"
+        }
+       ],
+       "Label": "Language",
+       "Locale": "en_US"
+      }
+     },
+     "ExternalIds": {
+      "EANs": {
+       "DisplayValues": [
+        "0765940548974",
+        "0793631826759",
+        "0352609524457",
+        "0765940213537",
+        "0352609524464",
+        "0352609524471",
+        "0885416290074",
+        "0787551210743",
+        "0792736366054",
+        "0885737902274"
+       ],
+       "Label": "EAN",
+       "Locale": "en_US"
+      },
+      "UPCs": {
+       "DisplayValues": [
+        "352609524464",
+        "885416290074",
+        "787551210743",
+        "793631826759",
+        "352609524471",
+        "765940548974",
+        "765940213537",
+        "885737902274",
+        "792736366054",
+        "352609524457"
+       ],
+       "Label": "UPC",
+       "Locale": "en_US"
+      }
+     },
+     "Features": {
+      "DisplayValues": [
+       "Ideal for beginners",
+       "Easy to follow instructions included",
+       "Promotes creativity",
+       "165 loops included",
+       "Create 4 weaving loom projects!"
+      ],
+      "Label": "Features",
+      "Locale": "en_US"
+     },
+     "ManufactureInfo": {
+      "ItemPartNumber": {
+       "DisplayValue": "765940213537",
+       "Label": "PartNumber",
+       "Locale": "en_US"
+      },
+      "Model": {
+       "DisplayValue": "765940213537",
+       "Label": "Model",
+       "Locale": "en_US"
+      },
+      "Warranty": {
+       "DisplayValue": "No Warranty",
+       "Label": "Warranty",
+       "Locale": "en_US"
+      }
+     },
+     "ProductInfo": {
+      "Color": {
+       "DisplayValue": "Purple",
+       "Label": "Color",
+       "Locale": "en_US"
+      },
+      "IsAdultProduct": {
+       "DisplayValue": false,
+       "Label": "IsAdultProduct",
+       "Locale": "en_US"
+      },
+      "ItemDimensions": {
+       "Height": {
+        "DisplayValue": 2,
+        "Label": "Height",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Length": {
+        "DisplayValue": 10.5,
+        "Label": "Length",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Width": {
+        "DisplayValue": 10.5,
+        "Label": "Width",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       }
+      },
+      "ReleaseDate": {
+       "DisplayValue": "2012-10-18T00:00:01Z",
+       "Label": "ReleaseDate",
+       "Locale": "en_US"
+      },
+      "UnitCount": {
+       "DisplayValue": 1,
+       "Label": "NumberOfItems",
+       "Locale": "en_US"
+      }
+     },
+     "Title": {
+      "DisplayValue": "Made By Me Weaving Loom by Horizon Group USA",
+      "Label": "Title",
+      "Locale": "en_US"
+     }
+    },
+    "Offers": {
+     "Listings": [
+      {
+       "Availability": {
+        "MaxOrderQuantity": 3,
+        "Message": "In Stock.",
+        "MinOrderQuantity": 1,
+        "Type": "Now"
+       },
+       "Condition": {
+        "SubCondition": {
+         "Value": "New"
+        },
+        "Value": "New"
+       },
+       "DeliveryInfo": {
+        "IsAmazonFulfilled": true,
+        "IsFreeShippingEligible": true,
+        "IsPrimeEligible": true
+       },
+       "Id": "OMmZV6%2FICDOdSoFc6KhK8%2FLapFeWCEa%2FXBtehE1GR2fIAlP3sm7jNPGAHUE3msDzO8cDLSq%2FL8S6sNbYc95uF0Vusrj0hABtdPJING0ABDf2UaaW9XjSNw%3D%3D",
+       "IsBuyBoxWinner": true,
+       "MerchantInfo": {
+        "Id": "ATVPDKIKX0DER",
+        "Name": "Amazon.com"
+       },
+       "Price": {
+        "Amount": 4,
+        "Currency": "USD",
+        "DisplayAmount": "$4.00",
+        "Savings": {
+         "Amount": 3.99,
+         "Currency": "USD",
+         "DisplayAmount": "$3.99 (50%)",
+         "Percentage": 50
+        }
+       },
+       "ProgramEligibility": {
+        "IsPrimeExclusive": false,
+        "IsPrimePantry": false
+       },
+       "SavingBasis": {
+        "Amount": 7.99,
+        "Currency": "USD",
+        "DisplayAmount": "$7.99"
+       },
+       "ViolatesMAP": false
+      }
+     ],
+     "Summaries": [
+      {
+       "Condition": {
+        "Value": "New"
+       },
+       "HighestPrice": {
+        "Amount": 21.65,
+        "Currency": "USD",
+        "DisplayAmount": "$21.65"
+       },
+       "LowestPrice": {
+        "Amount": 4,
+        "Currency": "USD",
+        "DisplayAmount": "$4.00"
+       },
+       "OfferCount": 11
+      }
+     ]
+    },
+    "ParentASIN": "B07PWHYYMD"
+   },
+   {
+    "ASIN": "B07MMZ2LTB",
+    "BrowseNodeInfo": {
+     "BrowseNodes": [
+      {
+       "Ancestor": {
+        "ContextFreeName": "Electronics",
+        "DisplayName": "Electronics",
+        "Id": "172282"
+       },
+       "ContextFreeName": "Electronics",
+       "DisplayName": "Categories",
+       "Id": "493964",
+       "IsRoot": false
+      },
+      {
+       "Ancestor": {
+        "Ancestor": {
+         "Ancestor": {
+          "ContextFreeName": "Amazon Devices & Accessories",
+          "DisplayName": "Amazon Devices & Accessories",
+          "Id": "16333372011"
+         },
+         "ContextFreeName": "Categories",
+         "DisplayName": "Categories",
+         "Id": "16333373011"
+        },
+        "ContextFreeName": "Amazon Devices",
+        "DisplayName": "Amazon Devices",
+        "Id": "2102313011"
+       },
+       "ContextFreeName": "Home Security from Amazon",
+       "DisplayName": "Home Security from Amazon",
+       "Id": "17386948011",
+       "IsRoot": false,
+       "SalesRank": 7
+      }
+     ]
+    },
+    "DetailPageURL": "https://www.amazon.com/dp/B07MMZ2LTB?tag=testing-12345-20&linkCode=ogi&th=1&psc=1",
+    "Images": {
+     "Primary": {
+      "Large": {
+       "Height": 500,
+       "URL": "https://m.media-amazon.com/images/I/31XjoE6OpqL.jpg",
+       "Width": 500
+      },
+      "Medium": {
+       "Height": 160,
+       "URL": "https://m.media-amazon.com/images/I/31XjoE6OpqL._SL160_.jpg",
+       "Width": 160
+      },
+      "Small": {
+       "Height": 75,
+       "URL": "https://m.media-amazon.com/images/I/31XjoE6OpqL._SL75_.jpg",
+       "Width": 75
+      }
+     },
+     "Variants": [
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/41+-DHZDMnL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/41+-DHZDMnL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/41+-DHZDMnL._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/41hrGysNz8L.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/41hrGysNz8L._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/41hrGysNz8L._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/41PiBhHuFjL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/41PiBhHuFjL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/41PiBhHuFjL._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/419+lnbKzXL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/419+lnbKzXL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/419+lnbKzXL._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/41PiUa3l5PL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/41PiUa3l5PL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/41PiUa3l5PL._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/41y4waL3UDL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/41y4waL3UDL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/41y4waL3UDL._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/51tPh6w+nCL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/51tPh6w+nCL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/51tPh6w+nCL._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/41KxbQVIoML.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/41KxbQVIoML._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/41KxbQVIoML._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/41L7OyVcW3L.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/41L7OyVcW3L._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/41L7OyVcW3L._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/41Sob-2irML.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/41Sob-2irML._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/41Sob-2irML._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 286,
+        "URL": "https://m.media-amazon.com/images/I/31mJXgBo8rL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 92,
+        "URL": "https://m.media-amazon.com/images/I/31mJXgBo8rL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 43,
+        "URL": "https://m.media-amazon.com/images/I/31mJXgBo8rL._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 286,
+        "URL": "https://m.media-amazon.com/images/I/4117eIlqN5L.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 92,
+        "URL": "https://m.media-amazon.com/images/I/4117eIlqN5L._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 43,
+        "URL": "https://m.media-amazon.com/images/I/4117eIlqN5L._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 286,
+        "URL": "https://m.media-amazon.com/images/I/41f3yyWuaXL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 92,
+        "URL": "https://m.media-amazon.com/images/I/41f3yyWuaXL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 43,
+        "URL": "https://m.media-amazon.com/images/I/41f3yyWuaXL._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 286,
+        "URL": "https://m.media-amazon.com/images/I/31wxN54xpLL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 92,
+        "URL": "https://m.media-amazon.com/images/I/31wxN54xpLL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 43,
+        "URL": "https://m.media-amazon.com/images/I/31wxN54xpLL._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 286,
+        "URL": "https://m.media-amazon.com/images/I/31cipVQ6gTL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 92,
+        "URL": "https://m.media-amazon.com/images/I/31cipVQ6gTL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 43,
+        "URL": "https://m.media-amazon.com/images/I/31cipVQ6gTL._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/51P0O2RVhUL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/51P0O2RVhUL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/51P0O2RVhUL._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 286,
+        "URL": "https://m.media-amazon.com/images/I/41n2C7YgNSL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 92,
+        "URL": "https://m.media-amazon.com/images/I/41n2C7YgNSL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 43,
+        "URL": "https://m.media-amazon.com/images/I/41n2C7YgNSL._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 286,
+        "URL": "https://m.media-amazon.com/images/I/31xcmSfZ6NL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 92,
+        "URL": "https://m.media-amazon.com/images/I/31xcmSfZ6NL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 43,
+        "URL": "https://m.media-amazon.com/images/I/31xcmSfZ6NL._SL75_.jpg",
+        "Width": 75
+       }
+      }
+     ]
+    },
+    "ItemInfo": {
+     "ByLineInfo": {
+      "Brand": {
+       "DisplayValue": "Blink Home Security",
+       "Label": "Brand",
+       "Locale": "en_US"
+      },
+      "Manufacturer": {
+       "DisplayValue": "Immedia",
+       "Label": "Manufacturer",
+       "Locale": "en_US"
+      }
+     },
+     "Classifications": {
+      "Binding": {
+       "DisplayValue": "Electronics",
+       "Label": "Binding",
+       "Locale": "en_US"
+      },
+      "ProductGroup": {
+       "DisplayValue": "VDO Devices",
+       "Label": "ProductGroup",
+       "Locale": "en_US"
+      }
+     },
+     "ExternalIds": {
+      "EANs": {
+       "DisplayValues": [
+        "0841667143910"
+       ],
+       "Label": "EAN",
+       "Locale": "en_US"
+      },
+      "UPCs": {
+       "DisplayValues": [
+        "841667143910"
+       ],
+       "Label": "UPC",
+       "Locale": "en_US"
+      }
+     },
+     "Features": {
+      "DisplayValues": [
+       "Extended battery life – 2 year battery life on two AA lithium batteries with a combination of two-way talk, live view, and motion recording. Double the usage of the XT on a single set of batteries when recording video.",
+       "2-way audio – Talk to visitors through the Blink app on your smartphone or tablet.",
+       "Customizable motion detection – Use activity zones to choose where motion is detected so you receive the alerts that matter.",
+       "Free cloud storage – Keep hundreds of clips stored up to a year with no monthly fees or service contract required.",
+       "Works with Alexa – View live streams, motion clips, or arm and disarm your system through select Alexa-enabled devices.",
+       "Day and night coverage – Record and view in up to 1080p HD video during the day and with infrared HD night vision after dark.",
+       "Use indoors/outdoors – Blink XT2 stands up to the elements. Place or mount it inside or outside for whole home security.",
+       "Easy setup – No tools, wiring, or professional installation required."
+      ],
+      "Label": "Features",
+      "Locale": "en_US"
+     },
+     "ManufactureInfo": {
+      "ItemPartNumber": {
+       "DisplayValue": "53-020304",
+       "Label": "PartNumber",
+       "Locale": "en_US"
+      },
+      "Model": {
+       "DisplayValue": "BCM00200U",
+       "Label": "Model",
+       "Locale": "en_US"
+      }
+     },
+     "ProductInfo": {
+      "Color": {
+       "DisplayValue": "BLACK",
+       "Label": "Color",
+       "Locale": "en_US"
+      },
+      "IsAdultProduct": {
+       "DisplayValue": false,
+       "Label": "IsAdultProduct",
+       "Locale": "en_US"
+      },
+      "ItemDimensions": {
+       "Height": {
+        "DisplayValue": 2.8,
+        "Label": "Height",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Length": {
+        "DisplayValue": 1.34,
+        "Label": "Length",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Weight": {
+        "DisplayValue": 0.19,
+        "Label": "Weight",
+        "Locale": "en_US",
+        "Unit": "Pounds"
+       },
+       "Width": {
+        "DisplayValue": 2.8,
+        "Label": "Width",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       }
+      },
+      "ReleaseDate": {
+       "DisplayValue": "2019-05-22T00:00:01Z",
+       "Label": "ReleaseDate",
+       "Locale": "en_US"
+      }
+     },
+     "Title": {
+      "DisplayValue": "Blink XT2 Outdoor/Indoor Smart Security Camera with cloud storage included, 2-way audio, 2-year battery life – 1 camera kit",
+      "Label": "Title",
+      "Locale": "en_US"
+     }
+    },
+    "Offers": {
+     "Listings": [
+      {
+       "Availability": {
+        "MaxOrderQuantity": 20,
+        "Message": "In Stock.",
+        "MinOrderQuantity": 1,
+        "Type": "Now"
+       },
+       "Condition": {
+        "SubCondition": {
+         "Value": "New"
+        },
+        "Value": "New"
+       },
+       "DeliveryInfo": {
+        "IsAmazonFulfilled": true,
+        "IsFreeShippingEligible": true,
+        "IsPrimeEligible": true
+       },
+       "Id": "OMmZV6%2FICDOFpp4nrCBvYx2gqA0A1%2BuRHWWCvp1fidvjQWZbKdzxKa9csvcSsQV0R3c99aZWH7e7Fb7vm08r51i9PHkObndM2gtEUNYmJ7A%2ByYB0T%2BLQNQ%3D%3D",
+       "IsBuyBoxWinner": true,
+       "MerchantInfo": {
+        "Id": "ATVPDKIKX0DER",
+        "Name": "Amazon.com"
+       },
+       "Price": {
+        "Amount": 79.99,
+        "Currency": "USD",
+        "DisplayAmount": "$79.99",
+        "Savings": {
+         "Amount": 20,
+         "Currency": "USD",
+         "DisplayAmount": "$20.00 (20%)",
+         "Percentage": 20
+        }
+       },
+       "ProgramEligibility": {
+        "IsPrimeExclusive": false,
+        "IsPrimePantry": false
+       },
+       "SavingBasis": {
+        "Amount": 99.99,
+        "Currency": "USD",
+        "DisplayAmount": "$99.99"
+       },
+       "ViolatesMAP": false
+      }
+     ],
+     "Summaries": [
+      {
+       "Condition": {
+        "Value": "New"
+       },
+       "HighestPrice": {
+        "Amount": 79.99,
+        "Currency": "USD",
+        "DisplayAmount": "$79.99"
+       },
+       "LowestPrice": {
+        "Amount": 79.99,
+        "Currency": "USD",
+        "DisplayAmount": "$79.99"
+       },
+       "OfferCount": 1
+      },
+      {
+       "Condition": {
+        "Value": "Used"
+       },
+       "HighestPrice": {
+        "Amount": 75.55,
+        "Currency": "USD",
+        "DisplayAmount": "$75.55"
+       },
+       "LowestPrice": {
+        "Amount": 69.99,
+        "Currency": "USD",
+        "DisplayAmount": "$69.99"
+       },
+       "OfferCount": 3
+      }
+     ]
+    },
+    "ParentASIN": "B07N86MCD2"
+   },
+   {
+    "ASIN": "B07D5J6Z2C",
+    "BrowseNodeInfo": {
+     "BrowseNodes": [
+      {
+       "Ancestor": {
+        "Ancestor": {
+         "Ancestor": {
+          "Ancestor": {
+           "Ancestor": {
+            "ContextFreeName": "Clothing, Shoes & Jewelry",
+            "DisplayName": "Clothing, Shoes & Jewelry",
+            "Id": "7141123011"
+           },
+           "ContextFreeName": "Clothing, Shoes & Jewelry",
+           "DisplayName": "Departments",
+           "Id": "7141124011"
+          },
+          "ContextFreeName": "Women's Fashion",
+          "DisplayName": "Women",
+          "Id": "7147440011"
+         },
+         "ContextFreeName": "Women's Clothing",
+         "DisplayName": "Clothing",
+         "Id": "1040660"
+        },
+        "ContextFreeName": "Women's Tops, Tees & Blouses",
+        "DisplayName": "Tops, Tees & Blouses",
+        "Id": "2368343011"
+       },
+       "ContextFreeName": "Women's Tunics",
+       "DisplayName": "Tunics",
+       "Id": "5418125011",
+       "IsRoot": false,
+       "SalesRank": 22
+      },
+      {
+       "Ancestor": {
+        "Ancestor": {
+         "Ancestor": {
+          "ContextFreeName": "Clothing, Shoes & Jewelry",
+          "DisplayName": "Clothing, Shoes & Jewelry",
+          "Id": "7141123011"
+         },
+         "ContextFreeName": "Clothing, Shoes & Jewelry",
+         "DisplayName": "Departments",
+         "Id": "7141124011"
+        },
+        "ContextFreeName": "Women's Fashion",
+        "DisplayName": "Women",
+        "Id": "7147440011"
+       },
+       "ContextFreeName": "Women's Shops",
+       "DisplayName": "Shops",
+       "Id": "7581668011",
+       "IsRoot": false,
+       "SalesRank": 499
+      }
+     ]
+    },
+    "DetailPageURL": "https://www.amazon.com/dp/B07D5J6Z2C?tag=testing-12345-20&linkCode=ogi&th=1&psc=1",
+    "Images": {
+     "Primary": {
+      "Large": {
+       "Height": 500,
+       "URL": "https://m.media-amazon.com/images/I/31mJCkfqlqL.jpg",
+       "Width": 385
+      },
+      "Medium": {
+       "Height": 160,
+       "URL": "https://m.media-amazon.com/images/I/31mJCkfqlqL._SL160_.jpg",
+       "Width": 123
+      },
+      "Small": {
+       "Height": 75,
+       "URL": "https://m.media-amazon.com/images/I/31mJCkfqlqL._SL75_.jpg",
+       "Width": 58
+      }
+     },
+     "Variants": [
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/31esobxDZ6L.jpg",
+        "Width": 385
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/31esobxDZ6L._SL160_.jpg",
+        "Width": 123
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/31esobxDZ6L._SL75_.jpg",
+        "Width": 58
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/31MhRrhsg5L.jpg",
+        "Width": 385
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/31MhRrhsg5L._SL160_.jpg",
+        "Width": 123
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/31MhRrhsg5L._SL75_.jpg",
+        "Width": 58
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/31vfBY99wGL.jpg",
+        "Width": 385
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/31vfBY99wGL._SL160_.jpg",
+        "Width": 123
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/31vfBY99wGL._SL75_.jpg",
+        "Width": 58
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/310bpjW8XcL.jpg",
+        "Width": 385
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/310bpjW8XcL._SL160_.jpg",
+        "Width": 123
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/310bpjW8XcL._SL75_.jpg",
+        "Width": 58
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/31KTLG2zogL.jpg",
+        "Width": 385
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/31KTLG2zogL._SL160_.jpg",
+        "Width": 123
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/31KTLG2zogL._SL75_.jpg",
+        "Width": 58
+       }
+      }
+     ]
+    },
+    "ItemInfo": {
+     "ByLineInfo": {
+      "Brand": {
+       "DisplayValue": "Daily Ritual",
+       "Label": "Brand",
+       "Locale": "en_US"
+      },
+      "Manufacturer": {
+       "DisplayValue": "Daily Ritual",
+       "Label": "Manufacturer",
+       "Locale": "en_US"
+      }
+     },
+     "Classifications": {
+      "Binding": {
+       "DisplayValue": "Apparel",
+       "Label": "Binding",
+       "Locale": "en_US"
+      },
+      "ProductGroup": {
+       "DisplayValue": "Softlines Private Label",
+       "Label": "ProductGroup",
+       "Locale": "en_US"
+      }
+     },
+     "ContentInfo": {
+      "Edition": {
+       "DisplayValue": "acd",
+       "Label": "Edition",
+       "Locale": "en_US"
+      }
+     },
+     "ExternalIds": {
+      "EANs": {
+       "DisplayValues": [
+        "0191770760635"
+       ],
+       "Label": "EAN",
+       "Locale": "en_US"
+      },
+      "UPCs": {
+       "DisplayValues": [
+        "191770760635"
+       ],
+       "Label": "UPC",
+       "Locale": "en_US"
+      }
+     },
+     "Features": {
+      "DisplayValues": [
+       "Made in Vietnam",
+       "A perfect match for leggings, this slouchy tee is cut generously with a wide crewneck and a curved drop-tail hem for extra coverage",
+       "Luxe Jersey - Perfectly rich, smooth fabric that beautifully drapes",
+       "Start every outfit with Daily Ritual's range of elevated basics",
+       "Model is 5'11\" and wearing a size Small"
+      ],
+      "Label": "Features",
+      "Locale": "en_US"
+     },
+     "ManufactureInfo": {
+      "ItemPartNumber": {
+       "DisplayValue": "PIRD-1703134-white-Medium",
+       "Label": "PartNumber",
+       "Locale": "en_US"
+      },
+      "Model": {
+       "DisplayValue": "PIRD-1703134M",
+       "Label": "Model",
+       "Locale": "en_US"
+      }
+     },
+     "ProductInfo": {
+      "Color": {
+       "DisplayValue": "White",
+       "Label": "Color",
+       "Locale": "en_US"
+      },
+      "ItemDimensions": {
+       "Height": {
+        "DisplayValue": 1,
+        "Label": "Height",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Length": {
+        "DisplayValue": 11,
+        "Label": "Length",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Width": {
+        "DisplayValue": 13,
+        "Label": "Width",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       }
+      },
+      "ReleaseDate": {
+       "DisplayValue": "2018-11-29T00:00:01Z",
+       "Label": "ReleaseDate",
+       "Locale": "en_US"
+      },
+      "Size": {
+       "DisplayValue": "Medium",
+       "Label": "Size",
+       "Locale": "en_US"
+      }
+     },
+     "Title": {
+      "DisplayValue": "Amazon Brand - Daily Ritual Women's Jersey Short-Sleeve Open Crew Neck Tunic, White, Medium",
+      "Label": "Title",
+      "Locale": "en_US"
+     }
+    },
+    "Offers": {
+     "Listings": [
+      {
+       "Availability": {
+        "Message": "In Stock.",
+        "MinOrderQuantity": 1,
+        "Type": "Now"
+       },
+       "Condition": {
+        "SubCondition": {
+         "Value": "New"
+        },
+        "Value": "New"
+       },
+       "DeliveryInfo": {
+        "IsAmazonFulfilled": true,
+        "IsFreeShippingEligible": true,
+        "IsPrimeEligible": true
+       },
+       "Id": "OMmZV6%2FICDOFpp4nrCBvY%2FqmKXD6yFbVWqRQ4qIDSHmAVx3iLElqVmpXaasdn14GLCZOjQG9isWiXDUx%2BOBmJReAmauqhJXiCg45lq08fl2iLaw6AV4HZw%3D%3D",
+       "IsBuyBoxWinner": true,
+       "MerchantInfo": {
+        "Id": "ATVPDKIKX0DER",
+        "Name": "Amazon.com"
+       },
+       "Price": {
+        "Amount": 19.04,
+        "Currency": "USD",
+        "DisplayAmount": "$19.04"
+       },
+       "ProgramEligibility": {
+        "IsPrimeExclusive": false,
+        "IsPrimePantry": false
+       },
+       "ViolatesMAP": false
+      }
+     ],
+     "Summaries": [
+      {
+       "Condition": {
+        "Value": "New"
+       },
+       "HighestPrice": {
+        "Amount": 19.04,
+        "Currency": "USD",
+        "DisplayAmount": "$19.04"
+       },
+       "LowestPrice": {
+        "Amount": 19.04,
+        "Currency": "USD",
+        "DisplayAmount": "$19.04"
+       },
+       "OfferCount": 1
+      }
+     ]
+    },
+    "ParentASIN": "B076XHFDGZ"
+   }
+  ]
+ }
+}
