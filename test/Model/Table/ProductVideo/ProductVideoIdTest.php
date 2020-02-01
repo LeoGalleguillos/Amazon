@@ -19,6 +19,34 @@ class ProductVideoIdTest extends TableTestCase
         $this->createTable('product_video');
     }
 
+    public function testUpdateSetModifiedToUtcTimestampWhereProductId()
+    {
+        $affectedRows = $this->productVideoIdTable
+            ->updateSetModifiedToUtcTimestampWhereProductVideoId(
+                1
+            );
+        $this->assertSame(
+            0,
+            $affectedRows
+        );
+
+        $this->productVideoTable->insertOnDuplicateKeyUpdate(
+            123,
+            'ASIN',
+            'Title',
+            'Description',
+            9999
+        );
+        $affectedRows = $this->productVideoIdTable
+            ->updateSetModifiedToUtcTimestampWhereProductVideoId(
+                1
+            );
+        $this->assertSame(
+            1,
+            $affectedRows
+        );
+    }
+
     public function testUpdateSetViewsToViewsPlusOneWhereProductVideoId()
     {
         $affectedRows = $this->productVideoIdTable->updateSetViewsToViewsPlusOneWhereProductVideoId(

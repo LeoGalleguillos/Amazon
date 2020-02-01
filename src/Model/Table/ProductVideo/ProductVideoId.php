@@ -33,6 +33,23 @@ class ProductVideoId
             ->getAffectedRows();
     }
 
+    public function updateSetModifiedToUtcTimestampWhereProductVideoId(
+        int $productVideoId
+    ): int {
+        $sql = '
+            UPDATE `product_video`
+               SET `modified` = UTC_TIMESTAMP()
+             WHERE `product_video_id` = ?
+        ';
+        $parameters = [
+            $productVideoId,
+        ];
+        return (int) $this->adapter
+            ->query($sql)
+            ->execute($parameters)
+            ->getAffectedRows();
+    }
+
     public function updateSetViewsToViewsPlusOneWhereProductVideoId(
         int $productVideoId
     ): int {
