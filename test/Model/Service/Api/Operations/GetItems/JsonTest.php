@@ -1,5 +1,5 @@
 <?php
-namespace LeoGalleguillos\AmazonTest\Model\Service\Api\GetItems;
+namespace LeoGalleguillos\AmazonTest\Model\Service\Api\Operations\GetItems;
 
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use PHPUnit\Framework\TestCase;
