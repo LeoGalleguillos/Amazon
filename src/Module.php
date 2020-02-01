@@ -169,6 +169,12 @@ class Module
                         $sm->get(AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray::class)
                     );
                 },
+                AmazonService\Api\Operations\GetItems\GetJsonAndDownloadJsonToMySql::class => function ($sm) {
+                    return new AmazonService\Api\Operations\GetItems\GetJsonAndDownloadJsonToMySql(
+                        $sm->get(AmazonService\Api\Operations\GetItems\DownloadJsonToMySql::class),
+                        $sm->get(AmazonService\Api\Operations\GetItems\Json::class)
+                    );
+                },
                 AmazonService\Api\Operations\GetItems\Json::class => function ($sm) {
                     $amazonConfig = $sm->get('Config')['amazon'];
                     return new AmazonService\Api\Operations\GetItems\Json(
