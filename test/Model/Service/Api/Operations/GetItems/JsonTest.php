@@ -9,14 +9,14 @@ class JsonTest extends TestCase
     protected function setUp()
     {
         $configArray = require($_SERVER['PWD'] . '/config/autoload/local.php');
-        $this->jsonService = new AmazonService\Api\GetItems\Json(
+        $this->jsonService = new AmazonService\Api\Operations\GetItems\Json(
             $configArray['amazon']['associate_tag'],
             $configArray['amazon']['access_key_id'],
             $configArray['amazon']['secret_access_key']
         );
     }
 
-    public function testGetXml()
+    public function testGetJson()
     {
         $this->markTestSkipped(
             'Skip test unless you want to call Amazon Product Advertising API v5.'

@@ -1,5 +1,5 @@
 <?php
-namespace LeoGalleguillos\Amazon\Model\Service\Api\GetItems;
+namespace LeoGalleguillos\Amazon\Model\Service\Api\Operations\GetItems;
 
 use Exception;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;

@@ -136,14 +136,6 @@ class Module
                         $sm->get(AmazonTable\Api::class)
                     );
                 },
-                AmazonService\Api\GetItems\Json::class => function ($sm) {
-                    $amazonConfig = $sm->get('Config')['amazon'];
-                    return new AmazonService\Api\GetItems\Json(
-                        $amazonConfig['access_key_id'],
-                        $amazonConfig['associate_tag'],
-                        $amazonConfig['secret_access_key']
-                    );
-                },
                 AmazonService\Api\GetItems\Json\DownloadToMySql::class => function ($sm) {
                     return new AmazonService\Api\GetItems\Json\DownloadToMySql(
                         $sm->get(AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray::class)
@@ -175,6 +167,14 @@ class Module
                         $sm->get(AmazonService\Api\Xml\BrowseNode\DownloadToMySql::class),
                         $sm->get(AmazonTable\BrowseNodeProduct::class),
                         $sm->get(AmazonTable\Product\Asin::class)
+                    );
+                },
+                AmazonService\Api\Operations\GetItems\Json::class => function ($sm) {
+                    $amazonConfig = $sm->get('Config')['amazon'];
+                    return new AmazonService\Api\Operations\GetItems\Json(
+                        $amazonConfig['access_key_id'],
+                        $amazonConfig['associate_tag'],
+                        $amazonConfig['secret_access_key']
                     );
                 },
                 AmazonService\Api\Product\Xml::class => function ($sm) {
