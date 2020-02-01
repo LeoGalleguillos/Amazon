@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table\ProductVideo;
 
+use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use Zend\Db\Adapter\Adapter;
 
 class ProductVideoId
@@ -16,6 +17,10 @@ class ProductVideoId
         $this->adapter = $adapter;
     }
 
+    /**
+     * @deprecated Instead, use the following method:
+     * AmazonTable\ProductVideo\ProductId::updateSetModifiedToUtcTimestampWhereProductId
+     */
     public function updateSetModifiedToUtcTimestampWhereProductId(
         int $productId
     ): int {

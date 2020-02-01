@@ -47,4 +47,32 @@ class ProductIdTest extends TableTestCase
             $affectedRows
         );
     }
+
+    public function testUpdateSetModifiedToUtcTimestampWhereProductId()
+    {
+        $affectedRows = $this->productIdTable
+            ->updateSetModifiedToUtcTimestampWhereProductId(
+                123
+            );
+        $this->assertSame(
+            0,
+            $affectedRows
+        );
+
+        $this->productVideoTable->insertOnDuplicateKeyUpdate(
+            123,
+            'ASIN',
+            'Title',
+            'Description',
+            9999
+        );
+        $affectedRows = $this->productIdTable
+            ->updateSetModifiedToUtcTimestampWhereProductId(
+                123
+            );
+        $this->assertSame(
+            1,
+            $affectedRows
+        );
+    }
 }

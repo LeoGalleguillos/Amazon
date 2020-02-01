@@ -32,4 +32,21 @@ class ProductId
             ->execute($parameters)
             ->getAffectedRows();
     }
+
+    public function updateSetModifiedToUtcTimestampWhereProductId(
+        int $productId
+    ): int {
+        $sql = '
+            UPDATE `product_video`
+               SET `modified` = UTC_TIMESTAMP()
+             WHERE `product_id` = ?
+        ';
+        $parameters = [
+            $productId,
+        ];
+        return (int) $this->adapter
+            ->query($sql)
+            ->execute($parameters)
+            ->getAffectedRows();
+    }
 }
