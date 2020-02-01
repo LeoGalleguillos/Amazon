@@ -26,9 +26,7 @@ class DownloadToMySqlTest extends TestCase
         $jsonString = file_get_contents(
             $_SERVER['PWD'] . '/test/data/api/get-items/one-invalid-item.json'
         );
-        $this->assertFalse(
-            $this->downloadToMySqlService->downloadToMySql($jsonString)
-        );
+        $this->downloadToMySqlService->downloadToMySql($jsonString);
     }
 
     public function testDownloadToMySqlThreeValidItems()
@@ -40,9 +38,7 @@ class DownloadToMySqlTest extends TestCase
         $jsonString = file_get_contents(
             $_SERVER['PWD'] . '/test/data/api/get-items/three-valid-items.json'
         );
-        $this->downloadToMySqlService->downloadToMySql(
-            $jsonString
-        );
+        $this->downloadToMySqlService->downloadToMySql($jsonString);
     }
 
     public function testDownloadToMySqlTwoInvalidAndThreeValidItems()

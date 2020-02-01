@@ -16,16 +16,13 @@ class DownloadToMySql
     ): bool {
         $jsonArray = json_decode($json, true);
 
-        if (empty($jsonArray['ItemsResult']['Items'])) {
-            return false;
-        }
-
-        $itemsArray = $jsonArray['ItemsResult']['Items'];
-
-        foreach ($itemsArray as $itemArray) {
-            $this->itemArrayService->downloadToMySql(
-                $itemArray
-            );
+        if (isset($jsonArray['ItemsResult']['Items'])) {
+            $itemsArray = $jsonArray['ItemsResult']['Items'];
+            foreach ($itemsArray as $itemArray) {
+                $this->itemArrayService->downloadToMySql(
+                    $itemArray
+                );
+            }
         }
 
         return true;
