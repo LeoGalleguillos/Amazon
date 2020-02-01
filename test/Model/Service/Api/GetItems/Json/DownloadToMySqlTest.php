@@ -17,13 +17,46 @@ class DownloadToMySqlTest extends TestCase
         );
     }
 
-    public function testDownloadToMySql()
+    public function testDownloadToMySqlOneInvalidItem()
+    {
+        $this->itemArrayServiceMock
+            ->expects($this->exactly(0))
+            ->method('downloadToMySql');
+
+        $jsonString = file_get_contents(
+            $_SERVER['PWD'] . '/test/data/api/get-items/one-invalid-item.json'
+        );
+
+        $this->assertFalse(
+            $this->downloadToMySqlService->downloadToMySql($jsonString)
+        );
+
+    }
+
+    public function testDownloadToMySqlThreeValidItems()
     {
         $this->itemArrayServiceMock
             ->expects($this->exactly(3))
             ->method('downloadToMySql');
 
-        $jsonString = file_get_contents($_SERVER['PWD'] . '/test/response.json');
+        $jsonString = file_get_contents(
+            $_SERVER['PWD'] . '/test/data/api/get-items/three-valid-items.json'
+        );
+        $this->downloadToMySqlService->downloadToMySql(
+            $jsonString
+        );
+
+    }
+
+    public function testDownloadToMySqlTwoInvalidAndThreeValidItems()
+    {
+        $this->itemArrayServiceMock
+            ->expects($this->exactly(3))
+            ->method('downloadToMySql');
+
+        $jsonString = file_get_contents(
+            $_SERVER['PWD'] . '/test/data/api/get-items/two-invalid-and-three-valid-items.json'
+        );
         $this->downloadToMySqlService->downloadToMySql(
             $jsonString
         );

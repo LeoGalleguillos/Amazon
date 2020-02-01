@@ -14,7 +14,12 @@ class DownloadToMySql
     public function downloadToMySql(
         string $json
     ): bool {
-        $jsonArray  = json_decode($json, true);
+        $jsonArray = json_decode($json, true);
+
+        if (empty($jsonArray['ItemsResult']['Items'])) {
+            return false;
+        }
+
         $itemsArray = $jsonArray['ItemsResult']['Items'];
 
         foreach ($itemsArray as $itemArray) {

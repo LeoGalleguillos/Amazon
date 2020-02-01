@@ -1,0 +1,98 @@
+{
+ "Errors": [
+  {
+   "__type": "com.amazon.paapi5#ErrorData",
+   "Code": "InvalidParameterValue",
+   "Message": "The ItemId B00388Q3WU provided in the request is invalid."
+  },
+  {
+   "__type": "com.amazon.paapi5#ErrorData",
+   "Code": "InvalidParameterValue",
+   "Message": "The ItemId B071K8P186 provided in the request is invalid."
+  }
+ ],
+ "ItemsResult": {
+  "Items": [
+   {
+    "ASIN": "B07MMZ2LTB",
+    "BrowseNodeInfo": {
+     "BrowseNodes": [
+      {
+       "Ancestor": {
+        "ContextFreeName": "Electronics",
+        "DisplayName": "Electronics",
+        "Id": "172282"
+       },
+       "ContextFreeName": "Electronics",
+       "DisplayName": "Categories",
+       "Id": "493964",
+       "IsRoot": false
+      },
+      {
+       "Ancestor": {
+        "Ancestor": {
+         "Ancestor": {
+          "ContextFreeName": "Amazon Devices & Accessories",
+          "DisplayName": "Amazon Devices & Accessories",
+          "Id": "16333372011"
+         },
+         "ContextFreeName": "Categories",
+         "DisplayName": "Categories",
+         "Id": "16333373011"
+        },
+        "ContextFreeName": "Amazon Devices",
+        "DisplayName": "Amazon Devices",
+        "Id": "2102313011"
+       },
+       "ContextFreeName": "Home Security from Amazon",
+       "DisplayName": "Home Security from Amazon",
+       "Id": "17386948011",
+       "IsRoot": false,
+       "SalesRank": 7
+      }
+     ]
+    },
+    "DetailPageURL": "https://www.amazon.com/dp/B07MMZ2LTB?tag=onlinefreestore-20&linkCode=ogi&th=1&psc=1"
+   },
+   {
+    "ASIN": "B00B0PIXIK",
+    "DetailPageURL": "https://www.amazon.com/dp/B00B0PIXIK?tag=onlinefreestore-20&linkCode=ogi&th=1&psc=1"
+   },
+   {
+    "ASIN": "B002LVAC5Y",
+    "BrowseNodeInfo": {
+     "BrowseNodes": [
+      {
+       "Ancestor": {
+        "Ancestor": {
+         "Ancestor": {
+          "ContextFreeName": "Grocery & Gourmet Food",
+          "DisplayName": "Grocery & Gourmet Food",
+          "Id": "16310101"
+         },
+         "ContextFreeName": "Categories",
+         "DisplayName": "Categories",
+         "Id": "16310211"
+        },
+        "ContextFreeName": "Breakfast Foods",
+        "DisplayName": "Breakfast Foods",
+        "Id": "16310251"
+       },
+       "ContextFreeName": "Breakfast Cereals",
+       "DisplayName": "Cereals",
+       "Id": "16318891",
+       "IsRoot": false,
+       "SalesRank": 1520
+      }
+     ],
+     "WebsiteSalesRank": {
+      "ContextFreeName": "Grocery & Gourmet Food",
+      "DisplayName": "Grocery & Gourmet Food",
+      "SalesRank": 68443
+     }
+    },
+    "DetailPageURL": "https://www.amazon.com/dp/B002LVAC5Y?tag=onlinefreestore-20&linkCode=ogi&th=1&psc=1"
+   }
+  ]
+ }
+}
