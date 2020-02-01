@@ -151,7 +151,9 @@ class Module
                 },
                 AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray::class => function ($sm) {
                     return new AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray(
-                        $sm->get(AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\BrowseNodeInfo\BrowseNodes\BrowseNodeArray::class)
+                        $sm->get(AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\BrowseNodeInfo\BrowseNodes\BrowseNodeArray::class),
+                        $sm->get(AmazonTable\BrowseNodeProduct::class),
+                        $sm->get(AmazonTable\Product\Asin::class)
                     );
                 },
                 AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\BrowseNodeInfo\BrowseNodes\BrowseNodeArray::class => function ($sm) {

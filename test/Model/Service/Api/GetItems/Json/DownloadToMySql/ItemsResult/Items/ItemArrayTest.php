@@ -14,17 +14,43 @@ class ItemArrayTest extends TestCase
         $this->browseNodeArrayServiceMock = $this->createMock(
             AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\BrowseNodeInfo\BrowseNodes\BrowseNodeArray::class
         );
+        $this->browseNodeProductTableMock = $this->createMock(
+            AmazonTable\BrowseNodeProduct::class
+        );
+        $this->asinTableMock = $this->createMock(
+            AmazonTable\Product\Asin::class
+        );
 
         $this->itemArrayService = new AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray(
-            $this->browseNodeArrayServiceMock
+            $this->browseNodeArrayServiceMock,
+            $this->browseNodeProductTableMock,
+            $this->asinTableMock
         );
     }
 
     public function testDownloadToMySqlWhereItemHasBrowseNodeInfo()
     {
+        $this->asinTableMock
+            ->expects($this->exactly(1))
+            ->method('selectProductIdWhereAsin')
+            ->with('B07MMZ2LTB')
+            ->will(
+                $this->returnValue(12345)
+            );
         $this->browseNodeArrayServiceMock
             ->expects($this->exactly(2))
-            ->method('downloadToMySql');
+            ->method('downloadToMySql')
+            ->withConsecutive(
+                [$this->getArrayWhereItemHasBrowseNodeInfo()['BrowseNodeInfo']['BrowseNodes'][0]],
+                [$this->getArrayWhereItemHasBrowseNodeInfo()['BrowseNodeInfo']['BrowseNodes'][1]]
+            );
+        $this->browseNodeProductTableMock
+            ->expects($this->exactly(2))
+            ->method('insertOnDuplicateKeyUpdate')
+            ->withConsecutive(
+                [493964, 12345, 1],
+                [17386948011, 12345, 2]
+            );
 
         $this->itemArrayService->downloadToMySql(
             $this->getArrayWhereItemHasBrowseNodeInfo()
@@ -33,9 +59,19 @@ class ItemArrayTest extends TestCase
 
     public function testDownloadToMySqlWhereItemDoesNotHaveBrowseNodeInfo()
     {
+        $this->asinTableMock
+            ->expects($this->exactly(1))
+            ->method('selectProductIdWhereAsin')
+            ->with('B00B0PIXIK')
+            ->will(
+                $this->returnValue(67890)
+            );
         $this->browseNodeArrayServiceMock
             ->expects($this->exactly(0))
             ->method('downloadToMySql');
+        $this->browseNodeProductTableMock
+            ->expects($this->exactly(0))
+            ->method('insertOnDuplicateKeyUpdate');
 
         $this->itemArrayService->downloadToMySql(
             $this->getArrayWhereItemDoesNotHaveBrowseNodeInfo()
@@ -752,11 +788,8 @@ class ItemArrayTest extends TestCase
     protected function getArrayWhereItemDoesNotHaveBrowseNodeInfo()
     {
         return array (
-          0 =>
-          array (
             'ASIN' => 'B00B0PIXIK',
             'DetailPageURL' => 'https://www.amazon.com/dp/B00B0PIXIK?tag=onlinefreestore-20&linkCode=ogi&th=1&psc=1',
-          ),
         );
     }
 }
