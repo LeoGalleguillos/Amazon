@@ -19,7 +19,7 @@ class ProductVideoIdTest extends TableTestCase
         $this->createTable('product_video');
     }
 
-    public function testUpdateSetModifiedToUtcTimestampWhereProductId()
+    public function testUpdateSetModifiedToUtcTimestampWhereProductVideoId()
     {
         $affectedRows = $this->productVideoIdTable
             ->updateSetModifiedToUtcTimestampWhereProductVideoId(
