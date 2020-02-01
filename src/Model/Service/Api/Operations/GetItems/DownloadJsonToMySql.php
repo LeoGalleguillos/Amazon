@@ -1,9 +1,9 @@
 <?php
-namespace LeoGalleguillos\Amazon\Model\Service\Api\GetItems\Json;
+namespace LeoGalleguillos\Amazon\Model\Service\Api\Operations\GetItems;
 
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 
-class DownloadToMySql
+class DownloadJsonToMySql
 {
     public function __construct(
         AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray $itemArrayService
@@ -11,7 +11,7 @@ class DownloadToMySql
         $this->itemArrayService = $itemArrayService;
     }
 
-    public function downloadToMySql(
+    public function downloadJsonToMySql(
         string $json
     ): bool {
         $jsonArray = json_decode($json, true);

@@ -1,10 +1,10 @@
 <?php
-namespace LeoGalleguillos\AmazonTest\Model\Service\Api\GetItems\Json;
+namespace LeoGalleguillos\AmazonTest\Model\Service\Api\Operations\GetItems;
 
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use PHPUnit\Framework\TestCase;
 
-class DownloadToMySqlTest extends TestCase
+class DownloadJsonToMySqlTest extends TestCase
 {
     protected function setUp()
     {
@@ -12,7 +12,7 @@ class DownloadToMySqlTest extends TestCase
             AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray::class
         );
 
-        $this->downloadToMySqlService = new AmazonService\Api\GetItems\Json\DownloadToMySql(
+        $this->downloadJsonToMySqlService = new AmazonService\Api\Operations\GetItems\DownloadJsonToMySql(
             $this->itemArrayServiceMock
         );
     }
@@ -26,7 +26,7 @@ class DownloadToMySqlTest extends TestCase
         $jsonString = file_get_contents(
             $_SERVER['PWD'] . '/test/data/api/get-items/one-invalid-item.json'
         );
-        $this->downloadToMySqlService->downloadToMySql($jsonString);
+        $this->downloadJsonToMySqlService->downloadJsonToMySql($jsonString);
     }
 
     public function testDownloadToMySqlThreeValidItems()
@@ -38,7 +38,7 @@ class DownloadToMySqlTest extends TestCase
         $jsonString = file_get_contents(
             $_SERVER['PWD'] . '/test/data/api/get-items/three-valid-items.json'
         );
-        $this->downloadToMySqlService->downloadToMySql($jsonString);
+        $this->downloadJsonToMySqlService->downloadJsonToMySql($jsonString);
     }
 
     public function testDownloadToMySqlTwoInvalidAndThreeValidItems()
@@ -50,7 +50,7 @@ class DownloadToMySqlTest extends TestCase
         $jsonString = file_get_contents(
             $_SERVER['PWD'] . '/test/data/api/get-items/two-invalid-and-three-valid-items.json'
         );
-        $this->downloadToMySqlService->downloadToMySql(
+        $this->downloadJsonToMySqlService->downloadJsonToMySql(
             $jsonString
         );
     }
