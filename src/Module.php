@@ -172,8 +172,8 @@ class Module
                 AmazonService\Api\Operations\GetItems\Json::class => function ($sm) {
                     $amazonConfig = $sm->get('Config')['amazon'];
                     return new AmazonService\Api\Operations\GetItems\Json(
-                        $amazonConfig['access_key_id'],
                         $amazonConfig['associate_tag'],
+                        $amazonConfig['access_key_id'],
                         $amazonConfig['secret_access_key']
                     );
                 },
