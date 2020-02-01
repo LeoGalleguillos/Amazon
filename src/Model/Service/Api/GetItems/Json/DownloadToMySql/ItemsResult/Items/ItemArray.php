@@ -17,9 +17,11 @@ class ItemArray
     public function downloadToMySql(
         array $itemArray
     ): bool {
-        $browseNodesArray = $itemArray['BrowseNodeInfo']['BrowseNodes'];
-        foreach ($browseNodesArray as $browseNodeArray) {
-            $this->browseNodeArrayService->downloadToMySql($browseNodeArray);
+        if (isset($itemArray['BrowseNodeInfo']['BrowseNodes'])) {
+            $browseNodesArray = $itemArray['BrowseNodeInfo']['BrowseNodes'];
+            foreach ($browseNodesArray as $browseNodeArray) {
+                $this->browseNodeArrayService->downloadToMySql($browseNodeArray);
+            }
         }
 
         return true;

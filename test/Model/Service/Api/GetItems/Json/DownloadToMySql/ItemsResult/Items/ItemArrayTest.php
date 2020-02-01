@@ -20,16 +20,29 @@ class ItemArrayTest extends TestCase
         );
     }
 
-    public function testDownloadToMySql()
+    public function testDownloadToMySqlWhereItemHasBrowseNodeInfo()
     {
         $this->browseNodeArrayServiceMock
             ->expects($this->exactly(2))
             ->method('downloadToMySql');
 
-        $this->itemArrayService->downloadToMySql($this->getArray());
+        $this->itemArrayService->downloadToMySql(
+            $this->getArrayWhereItemHasBrowseNodeInfo()
+        );
     }
 
-    protected function getArray(): array
+    public function testDownloadToMySqlWhereItemDoesNotHaveBrowseNodeInfo()
+    {
+        $this->browseNodeArrayServiceMock
+            ->expects($this->exactly(0))
+            ->method('downloadToMySql');
+
+        $this->itemArrayService->downloadToMySql(
+            $this->getArrayWhereItemDoesNotHaveBrowseNodeInfo()
+        );
+    }
+
+    protected function getArrayWhereItemHasBrowseNodeInfo(): array
     {
         return array (
           'ASIN' => 'B07MMZ2LTB',
@@ -733,6 +746,17 @@ class ItemArrayTest extends TestCase
             ),
           ),
           'ParentASIN' => 'B07N86MCD2',
+        );
+    }
+
+    protected function getArrayWhereItemDoesNotHaveBrowseNodeInfo()
+    {
+        return array (
+          0 =>
+          array (
+            'ASIN' => 'B00B0PIXIK',
+            'DetailPageURL' => 'https://www.amazon.com/dp/B00B0PIXIK?tag=onlinefreestore-20&linkCode=ogi&th=1&psc=1',
+          ),
         );
     }
 }
