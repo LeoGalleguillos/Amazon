@@ -2,14 +2,14 @@
 
 return [
     'modules' => [
+        'Laminas\Db',
+        'Laminas\Router',
         'LeoGalleguillos\Amazon',
         'LeoGalleguillos\Hashtag',
         'LeoGalleguillos\Image',
         'LeoGalleguillos\Memcached',
         'LeoGalleguillos\String',
         'LeoGalleguillos\Video',
-        'Zend\Db',
-        'Zend\Router',
     ],
     // These are various options for the listeners attached to the ModuleManager
     'module_listener_options' => array(
