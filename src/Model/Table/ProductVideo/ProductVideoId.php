@@ -17,12 +17,12 @@ class ProductVideoId
         $this->adapter = $adapter;
     }
 
-    public function selectCountWhereProductVideoIdLessThan(int $maxProductVideoId): int
+    public function selectCountWhereProductVideoIdLessThanOrEqualTo(int $maxProductVideoId): int
     {
         $sql = '
             SELECT COUNT(*) AS `count`
               FROM `product_video`
-             WHERE `product_video_id` < ?
+             WHERE `product_video_id` <= ?
         ';
         $parameters = [
             $maxProductVideoId,

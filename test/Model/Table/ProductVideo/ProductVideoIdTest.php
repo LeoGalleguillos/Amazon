@@ -19,11 +19,11 @@ class ProductVideoIdTest extends TableTestCase
         $this->createTable('product_video');
     }
 
-    public function testSelectCountWhereProductVideoIdLessThan()
+    public function testSlectCountWhereProductVideoIdLessThanOrEqualTo()
     {
         $this->assertSame(
             0,
-            $this->productVideoIdTable->selectCountWhereProductVideoIdLessThan(10)
+            $this->productVideoIdTable->selectCountWhereProductVideoIdLessThanOrEqualTo(10)
         );
 
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
@@ -35,7 +35,7 @@ class ProductVideoIdTest extends TableTestCase
         );
         $this->assertSame(
             1,
-            $this->productVideoIdTable->selectCountWhereProductVideoIdLessThan(10)
+            $this->productVideoIdTable->selectCountWhereProductVideoIdLessThanOrEqualTo(10)
         );
 
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
@@ -45,7 +45,7 @@ class ProductVideoIdTest extends TableTestCase
             'Description 123',
             9999
         );
-        $result = $this->productVideoTable->insertOnDuplicateKeyUpdate(
+        $this->productVideoTable->insertOnDuplicateKeyUpdate(
             456,
             'ASIN456',
             'Title 456',
@@ -54,7 +54,7 @@ class ProductVideoIdTest extends TableTestCase
         );
         $this->assertSame(
             2,
-            $this->productVideoIdTable->selectCountWhereProductVideoIdLessThan(10)
+            $this->productVideoIdTable->selectCountWhereProductVideoIdLessThanOrEqualTo(10)
         );
 
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
@@ -66,7 +66,7 @@ class ProductVideoIdTest extends TableTestCase
         );
         $this->assertSame(
             2,
-            $this->productVideoIdTable->selectCountWhereProductVideoIdLessThan(4)
+            $this->productVideoIdTable->selectCountWhereProductVideoIdLessThanOrEqualTo(3)
         );
     }
 
