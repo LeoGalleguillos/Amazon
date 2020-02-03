@@ -19,7 +19,7 @@ class ProductVideoIdTest extends TableTestCase
         $this->createTable('product_video');
     }
 
-    public function testSlectCountWhereProductVideoIdLessThanOrEqualTo()
+    public function testSelectCountWhereProductVideoIdLessThanOrEqualTo()
     {
         $this->assertSame(
             0,
