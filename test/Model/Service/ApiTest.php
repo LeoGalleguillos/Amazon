@@ -1,8 +1,10 @@
 <?php
 namespace LeoGalleguillos\AmazonTest\Model\Service;
 
-use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
-use LeoGalleguillos\Amazon\Model\Service as AmazonService;
+use LeoGalleguillos\Amazon\{
+    Model\Table as AmazonTable,
+    Model\Service as AmazonService
+};
 use PHPUnit\Framework\TestCase;
 
 class ApiTest extends TestCase
@@ -15,14 +17,11 @@ class ApiTest extends TestCase
         );
     }
 
-    public function testInitialize()
-    {
-        $this->assertInstanceOf(AmazonService\Api::class, $this->apiService);
-    }
-
     public function testInsertOnDuplicateKeyUpdate()
     {
-        $this->assertNull($this->apiService->insertOnDuplicateKeyUpdate('foo', 'bar'));
+        $this->assertNull(
+            $this->apiService->insertOnDuplicateKeyUpdate('foo', 'bar')
+        );
     }
 
     public function testWasAmazonApiCalledRecently()
