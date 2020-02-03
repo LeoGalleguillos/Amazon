@@ -22,11 +22,9 @@ class ProductVideos
         $limitOffset   = ($page - 1) * 100;
         $limitRowCount = 100;
 
-        $numberOfGaps = $limitOffset - $this->productVideoIdTable
-            ->selectCountWhereProductVideoIdLessThanOrEqualTo(
-                $limitOffset
-            );
-        $minProductVideoId = $limitOffset + 1 + $numberOfGaps;
+        $minProductVideoId = $this->productVideoIdTable->selectProductVideoIdLimitOffsetLimit1(
+            $limitOffset
+        );
 
         $generator = $this->productVideoIdTable->selectWhereProductVideoIdGreaterThanOrEqualToLimitRowCount(
             $minProductVideoId,

@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\AmazonTest\Model\Table\ProductVideo;
 
+use Exception;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Test\TableTestCase;
 
@@ -20,24 +21,17 @@ class ProductVideoIdTest extends TableTestCase
         $this->createTable('product_video');
     }
 
-    public function testSelectCountWhereProductVideoIdLessThanOrEqualTo()
+    public function testSelectProductVideoIdLimitOffsetLimit1()
     {
-        $this->assertSame(
-            0,
-            $this->productVideoIdTable->selectCountWhereProductVideoIdLessThanOrEqualTo(10)
-        );
-
-        $this->productVideoTable->insertOnDuplicateKeyUpdate(
-            123,
-            'ASIN123',
-            'Title 123',
-            'Description 123',
-            9999
-        );
-        $this->assertSame(
-            1,
-            $this->productVideoIdTable->selectCountWhereProductVideoIdLessThanOrEqualTo(10)
-        );
+        try {
+            $this->productVideoIdTable->selectProductVideoIdLimitOffsetLimit1(10);
+            $this->fail();
+        } catch (Exception $exception) {
+            $this->assertSame(
+                'No rows found.',
+                $exception->getMessage()
+            );
+        }
 
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
             123,
@@ -53,22 +47,24 @@ class ProductVideoIdTest extends TableTestCase
             'Description 456',
             9999
         );
-        $this->assertSame(
-            2,
-            $this->productVideoIdTable->selectCountWhereProductVideoIdLessThanOrEqualTo(10)
-        );
 
-        $this->productVideoTable->insertOnDuplicateKeyUpdate(
-            789,
-            'ASIN789',
-            'Title 789',
-            'Description 789',
-            9999
+        $this->assertSame(
+            1,
+            $this->productVideoIdTable->selectProductVideoIdLimitOffsetLimit1(0)
         );
         $this->assertSame(
             2,
-            $this->productVideoIdTable->selectCountWhereProductVideoIdLessThanOrEqualTo(3)
+            $this->productVideoIdTable->selectProductVideoIdLimitOffsetLimit1(1)
         );
+        try {
+            $this->productVideoIdTable->selectProductVideoIdLimitOffsetLimit1(2);
+            $this->fail();
+        } catch (Exception $exception) {
+            $this->assertSame(
+                'No rows found.',
+                $exception->getMessage()
+            );
+        }
     }
 
     public function testSelectWhereProductVideoIdGreaterThanOrEqualToLimitRowCount()

@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table\ProductVideo;
 
+use Exception;
 use Generator;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use Zend\Db\Adapter\Adapter;
@@ -20,18 +21,25 @@ class ProductVideoId
         $this->productVideoTable = $productVideoTable;
     }
 
-    public function selectCountWhereProductVideoIdLessThanOrEqualTo(int $maxProductVideoId): int
+    public function selectProductVideoIdLimitOffsetLimit1(int $limitOffset): int
     {
         $sql = '
-            SELECT COUNT(*) AS `count`
+            SELECT `product_video_id`
               FROM `product_video`
-             WHERE `product_video_id` <= ?
+             ORDER
+                BY `product_video_id` ASC
+             LIMIT ?, 1
         ';
         $parameters = [
-            $maxProductVideoId,
+            $limitOffset,
         ];
         $row = $this->adapter->query($sql)->execute($parameters)->current();
-        return (int) $row['count'];
+
+        if ($row === false) {
+            throw new Exception('No rows found.');
+        }
+
+        return (int) $row['product_video_id'];
     }
 
     /**
