@@ -19,6 +19,57 @@ class ProductVideoIdTest extends TableTestCase
         $this->createTable('product_video');
     }
 
+    public function testSelectCountWhereProductVideoIdLessThan()
+    {
+        $this->assertSame(
+            0,
+            $this->productVideoIdTable->selectCountWhereProductVideoIdLessThan(10)
+        );
+
+        $this->productVideoTable->insertOnDuplicateKeyUpdate(
+            123,
+            'ASIN123',
+            'Title 123',
+            'Description 123',
+            9999
+        );
+        $this->assertSame(
+            1,
+            $this->productVideoIdTable->selectCountWhereProductVideoIdLessThan(10)
+        );
+
+        $this->productVideoTable->insertOnDuplicateKeyUpdate(
+            123,
+            'ASIN123',
+            'Title 123',
+            'Description 123',
+            9999
+        );
+        $result = $this->productVideoTable->insertOnDuplicateKeyUpdate(
+            456,
+            'ASIN456',
+            'Title 456',
+            'Description 456',
+            9999
+        );
+        $this->assertSame(
+            2,
+            $this->productVideoIdTable->selectCountWhereProductVideoIdLessThan(10)
+        );
+
+        $this->productVideoTable->insertOnDuplicateKeyUpdate(
+            789,
+            'ASIN789',
+            'Title 789',
+            'Description 789',
+            9999
+        );
+        $this->assertSame(
+            2,
+            $this->productVideoIdTable->selectCountWhereProductVideoIdLessThan(4)
+        );
+    }
+
     public function testUpdateSetModifiedToUtcTimestampWhereProductVideoId()
     {
         $affectedRows = $this->productVideoIdTable

@@ -17,6 +17,20 @@ class ProductVideoId
         $this->adapter = $adapter;
     }
 
+    public function selectCountWhereProductVideoIdLessThan(int $maxProductVideoId): int
+    {
+        $sql = '
+            SELECT COUNT(*) AS `count`
+              FROM `product_video`
+             WHERE `product_video_id` < ?
+        ';
+        $parameters = [
+            $maxProductVideoId,
+        ];
+        $row = $this->adapter->query($sql)->execute($parameters)->current();
+        return (int) $row['count'];
+    }
+
     /**
      * @deprecated Instead, use the following method:
      * AmazonTable\ProductVideo\ProductId::updateSetModifiedToUtcTimestampWhereProductId
