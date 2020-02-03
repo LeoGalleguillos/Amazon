@@ -2,17 +2,19 @@
 namespace LeoGalleguillos\Amazon\Model\Service\ProductVideo;
 
 use Generator;
-use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
-use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
+use LeoGalleguillos\Amazon\{
+    Model\Factory as AmazonFactory,
+    Model\Table as AmazonTable
+};
 
 class ProductVideos
 {
     public function __construct(
         AmazonFactory\ProductVideo $productVideoFactory,
-        AmazonTable\ProductVideo $productVideoTable
+        AmazonTable\ProductVideo\ProductVideoId $productVideoIdTable
     ) {
         $this->productVideoFactory = $productVideoFactory;
-        $this->productVideoTable   = $productVideoTable;
+        $this->productVideoIdTable = $productVideoIdTable;
     }
 
     public function getProductVideos(int $page): Generator
@@ -20,8 +22,14 @@ class ProductVideos
         $limitOffset   = ($page - 1) * 100;
         $limitRowCount = 100;
 
-        $generator = $this->productVideoTable->select(
-            $limitOffset,
+        $numberOfGaps = $limitOffset - $this->productVideoIdTable
+            ->selectCountWhereProductVideoIdLessThanOrEqualTo(
+                $limitOffset
+            );
+        $minProductVideoId = $limitOffset + 1 + $numberOfGaps;
+
+        $generator = $this->productVideoIdTable->selectWhereProductVideoIdGreaterThanOrEqualToLimitRowCount(
+            $minProductVideoId,
             $limitRowCount
         );
         foreach ($generator as $array) {

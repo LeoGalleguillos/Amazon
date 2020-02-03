@@ -425,7 +425,7 @@ class Module
                 AmazonService\ProductVideo\ProductVideos::class => function ($sm) {
                     return new AmazonService\ProductVideo\ProductVideos(
                         $sm->get(AmazonFactory\ProductVideo::class),
-                        $sm->get(AmazonTable\ProductVideo::class)
+                        $sm->get(AmazonTable\ProductVideo\ProductVideoId::class)
                     );
                 },
                 AmazonService\ProductVideo\ProductVideos\BrowseNode::class => function ($sm) {
@@ -680,7 +680,8 @@ class Module
                 },
                 AmazonTable\ProductVideo\ProductVideoId::class => function ($sm) {
                     return new AmazonTable\ProductVideo\ProductVideoId(
-                        $sm->get('amazon')
+                        $sm->get('amazon'),
+                        $sm->get(AmazonTable\ProductVideo::class)
                     );
                 },
                 AmazonTable\Search\ProductGroup::class => function ($sm) {
