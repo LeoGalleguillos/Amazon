@@ -43,7 +43,19 @@ class ProductVideoId
     ): Generator {
         $sql = $this->productVideoTable->getSelect()
             . '
+                 , `browse_node`.`name` AS `browse_node.name`
+
               FROM `product_video`
+
+              LEFT
+              JOIN `browse_node_product`
+                ON `browse_node_product`.`product_id` = `product_video`.`product_id`
+               AND `browse_node_product`.`order` = 1
+
+              LEFT
+              JOIN `browse_node`
+             USING (`browse_node_id`)
+
              WHERE `product_video_id` >= ?
              ORDER
                 BY `product_video_id` ASC

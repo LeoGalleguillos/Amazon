@@ -103,9 +103,13 @@ class ProductVideoIdTest extends TableTestCase
                 0,
                 100
             );
+        $array = iterator_to_array($generator);
         $this->assertCount(
             2,
-            iterator_to_array($generator)
+            $array
+        );
+        $this->assertNull(
+            $array[0]['browse_node.name']
         );
 
         $generator = $this->productVideoIdTable
