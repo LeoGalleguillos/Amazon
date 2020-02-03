@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table\ProductVideo;
 
+use Generator;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use Zend\Db\Adapter\Adapter;
 
@@ -12,9 +13,11 @@ class ProductVideoId
     protected $adapter;
 
     public function __construct(
-        Adapter $adapter
+        Adapter $adapter,
+        AmazonTable\ProductVideo $productVideoTable
     ) {
-        $this->adapter = $adapter;
+        $this->adapter           = $adapter;
+        $this->productVideoTable = $productVideoTable;
     }
 
     public function selectCountWhereProductVideoIdLessThanOrEqualTo(int $maxProductVideoId): int
@@ -29,6 +32,28 @@ class ProductVideoId
         ];
         $row = $this->adapter->query($sql)->execute($parameters)->current();
         return (int) $row['count'];
+    }
+
+    /**
+     * @yield array
+     */
+    public function selectWhereProductVideoIdGreaterThanOrEqualToLimitRowCount(
+        int $minProductVideoId,
+        int $limitRowCount
+    ): Generator {
+        $sql = $this->productVideoTable->getSelect()
+            . '
+              FROM `product_video`
+             WHERE `product_video_id` >= ?
+             LIMIT ?
+        ';
+        $parameters = [
+            $minProductVideoId,
+            $limitRowCount,
+        ];
+        foreach ($this->adapter->query($sql)->execute($parameters) as $array) {
+            yield $array;
+        }
     }
 
     /**
