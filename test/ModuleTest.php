@@ -13,11 +13,6 @@ class ModuleTest extends TestCase
         $this->module = new Module();
     }
 
-    public function testInstance()
-    {
-        $this->assertInstanceOf(Module::class, $this->module);
-    }
-
     public function testGetConfig()
     {
         $applicationConfig = include(__DIR__ . '/../config/application.config.php');
