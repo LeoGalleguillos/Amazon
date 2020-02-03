@@ -45,6 +45,8 @@ class ProductVideoId
             . '
               FROM `product_video`
              WHERE `product_video_id` >= ?
+             ORDER
+                BY `product_video_id` ASC
              LIMIT ?
         ';
         $parameters = [
