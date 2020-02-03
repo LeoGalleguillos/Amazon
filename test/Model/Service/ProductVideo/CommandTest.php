@@ -1,5 +1,5 @@
 <?php
-namespace LeoGalleguillos\AmazonTest\Model\Service;
+namespace LeoGalleguillos\AmazonTest\Model\Service\ProductVideo;
 
 use Exception;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
@@ -18,14 +18,6 @@ class CommandTest extends TestCase
         );
         $this->commandService = new AmazonService\ProductVideo\Command(
             $this->randomMp3RruServiceMock
-        );
-    }
-
-    public function testInitialize()
-    {
-        $this->assertInstanceOf(
-            AmazonService\ProductVideo\Command::class,
-            $this->commandService
         );
     }
 
