@@ -136,6 +136,11 @@ class Module
                         $sm->get(AmazonTable\Api::class)
                     );
                 },
+                AmazonService\Api\Errors\DownloadArrayToMySql::class => function ($sm) {
+                    return new AmazonService\Api\Errors\DownloadArrayToMySql(
+                        $sm->get(AmazonTable\Product\Asin::class)
+                    );
+                },
                 AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray::class => function ($sm) {
                     return new AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray(
                         $sm->get(AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\BrowseNodeInfo\BrowseNodes\BrowseNodeArray::class),
