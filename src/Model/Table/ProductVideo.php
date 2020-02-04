@@ -302,27 +302,24 @@ class ProductVideo
         int $limitRowCount
     ): Generator {
         $sql = $this->getSelect()
-             . "
-                 , `browse_node`.`name` AS `browse_node.name`
-
+             . '
               FROM `product_video`
 
               JOIN `browse_node_product`
              USING (`product_id`)
-
-              JOIN `browse_node`
-             USING (`browse_node_id`)
 
              WHERE `browse_node_product`.`browse_node_id` = ?
 
              ORDER
                 BY `product_video`.`created` DESC
 
-             LIMIT $limitOffset, $limitRowCount
+             LIMIT ?, ?
                  ;
-        ";
+        ';
         $parameters = [
             $browseNodeId,
+            $limitOffset,
+            $limitRowCount,
         ];
         foreach ($this->adapter->query($sql)->execute($parameters) as $array) {
             yield $array;
