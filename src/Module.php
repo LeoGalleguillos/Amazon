@@ -166,7 +166,8 @@ class Module
                 },
                 AmazonService\Api\Operations\GetItems\DownloadJsonToMySql::class => function ($sm) {
                     return new AmazonService\Api\Operations\GetItems\DownloadJsonToMySql(
-                        $sm->get(AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray::class)
+                        $sm->get(AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray::class),
+                        $sm->get(AmazonTable\Product\Asin::class)
                     );
                 },
                 AmazonService\Api\Operations\GetItems\GetJsonAndDownloadJsonToMySql::class => function ($sm) {
