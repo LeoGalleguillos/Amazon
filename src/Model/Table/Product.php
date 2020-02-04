@@ -1,10 +1,9 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table;
 
-use ArrayObject;
 use Generator;
-use LeoGalleguillos\Memcached\Model\Service\Memcached as MemcachedService;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
+use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
 use TypeError;
 use Zend\Db\Adapter\Adapter;
 
@@ -16,7 +15,7 @@ class Product
     protected $adapter;
 
     public function __construct(
-        MemcachedService $memcached,
+        MemcachedService\Memcached $memcached,
         Adapter $adapter
     ) {
         $this->memcached = $memcached;
