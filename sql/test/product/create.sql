@@ -38,5 +38,6 @@ CREATE TABLE `product` (
   KEY `brand` (`brand`),
   KEY `hi_res_images_retrieved_video_generated_created` (`hi_res_images_retrieved`,`video_generated`, `created`),
   KEY `similar_retrieved_created` (`similar_retrieved`, `created`),
-  KEY `video_generated_created` (`video_generated`, `created`)
+  KEY `video_generated_created` (`video_generated`, `created`),
+  KEY `invalid` (`invalid`)
 ) ENGINE=InnoDB CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
