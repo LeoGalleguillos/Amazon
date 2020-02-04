@@ -31,4 +31,22 @@ class Asin
         $array = $this->adapter->query($sql)->execute($parameters)->current();
         return (int) $array['product_id'];
     }
+
+    public function updateSetInvalidWhereAsin(int $invalid, string $asin): int
+    {
+        $sql = '
+            UPDATE `product`
+               SET `invalid` = ?
+             WHERE `asin` = ?
+                 ;
+        ';
+        $parameters = [
+            $invalid,
+            $asin,
+        ];
+        return (int) $this->adapter
+            ->query($sql)
+            ->execute($parameters)
+            ->getAffectedRows();
+    }
 }
