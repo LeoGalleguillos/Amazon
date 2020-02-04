@@ -11,25 +11,24 @@ class DownloadJsonToMySqlTest extends TestCase
 {
     protected function setUp()
     {
+        $this->downloadErrorsArrayToMySqlServiceMock = $this->createMock(
+            AmazonService\Api\Errors\DownloadArrayToMySql::class
+        );
         $this->itemArrayServiceMock = $this->createMock(
             AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray::class
         );
-        $this->asinTableMock = $this->createMock(
-            AmazonTable\Product\Asin::class
-        );
 
         $this->downloadJsonToMySqlService = new AmazonService\Api\Operations\GetItems\DownloadJsonToMySql(
-            $this->itemArrayServiceMock,
-            $this->asinTableMock
+            $this->downloadErrorsArrayToMySqlServiceMock,
+            $this->itemArrayServiceMock
         );
     }
 
     public function testDownloadToMySqlOneInvalidItem()
     {
-        $this->asinTableMock
+        $this->downloadErrorsArrayToMySqlServiceMock
             ->expects($this->exactly(1))
-            ->method('updateSetInvalidWhereAsin')
-            ->with(0, 'B01MF9L9V3');
+            ->method('downloadArrayToMySql');
 
         $this->itemArrayServiceMock
             ->expects($this->exactly(0))
@@ -43,9 +42,9 @@ class DownloadJsonToMySqlTest extends TestCase
 
     public function testDownloadToMySqlThreeValidItems()
     {
-        $this->asinTableMock
+        $this->downloadErrorsArrayToMySqlServiceMock
             ->expects($this->exactly(0))
-            ->method('updateSetInvalidWhereAsin');
+            ->method('downloadArrayToMySql');
 
         $this->itemArrayServiceMock
             ->expects($this->exactly(3))
@@ -59,13 +58,9 @@ class DownloadJsonToMySqlTest extends TestCase
 
     public function testDownloadToMySqlTwoInvalidAndThreeValidItems()
     {
-        $this->asinTableMock
-            ->expects($this->exactly(2))
-            ->method('updateSetInvalidWhereAsin')
-            ->withConsecutive(
-                [0, 'B00388Q3WU'],
-                [0, 'B071K8P186']
-            );
+        $this->downloadErrorsArrayToMySqlServiceMock
+            ->expects($this->exactly(1))
+            ->method('downloadArrayToMySql');
 
         $this->itemArrayServiceMock
             ->expects($this->exactly(3))

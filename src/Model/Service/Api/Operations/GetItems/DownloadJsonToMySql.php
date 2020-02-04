@@ -9,29 +9,22 @@ use LeoGalleguillos\Amazon\{
 class DownloadJsonToMySql
 {
     public function __construct(
-        AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray $itemArrayService,
-        AmazonTable\Product\Asin $asinTable
+        AmazonService\Api\Errors\DownloadArrayToMySql $downloadErrorsArrayToMySqlService,
+        AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray $itemArrayService
     ) {
-        $this->itemArrayService = $itemArrayService;
-        $this->asinTable        = $asinTable;
+        $this->downloadErrorsArrayToMySqlService = $downloadErrorsArrayToMySqlService;
+        $this->itemArrayService                  = $itemArrayService;
     }
 
     public function downloadJsonToMySql(
         string $json
-    ): bool {
+    ) {
         $jsonArray = json_decode($json, true);
 
         if (isset($jsonArray['Errors'])) {
-            foreach ($jsonArray['Errors'] as $errorArray) {
-                $pattern = '/The ItemId (\w+) provided in the request is invalid./';
-                if (preg_match($pattern, $errorArray['Message'], $matches)) {
-                    $asin = $matches[1];
-                    $this->asinTable->updateSetInvalidWhereAsin(
-                        0,
-                        $asin
-                    );
-                }
-            }
+            $this->downloadErrorsArrayToMySqlService->downloadArrayToMySql(
+                $jsonArray['Errors']
+            );
         }
 
         if (isset($jsonArray['ItemsResult']['Items'])) {
@@ -42,7 +35,5 @@ class DownloadJsonToMySql
                 );
             }
         }
-
-        return true;
     }
 }
