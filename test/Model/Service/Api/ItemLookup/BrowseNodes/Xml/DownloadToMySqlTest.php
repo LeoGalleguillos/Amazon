@@ -26,14 +26,6 @@ class DownloadToMySqlTest extends TestCase
         );
     }
 
-    public function testInitialize()
-    {
-        $this->assertInstanceOf(
-            AmazonService\Api\ItemLookup\BrowseNodes\Xml\DownloadToMySql::class,
-            $this->downloadToMySqlService
-        );
-    }
-
     public function testDownloadToMySql()
     {
         $xml = simplexml_load_file($_SERVER['PWD'] . '/test/data/api/item-lookup/browse-nodes/B0751FL325.xml');
