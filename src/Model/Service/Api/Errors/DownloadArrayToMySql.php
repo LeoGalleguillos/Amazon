@@ -21,7 +21,7 @@ class DownloadArrayToMySql
             ) {
                 $asin = $matches[1];
                 $this->asinTable->updateSetInvalidWhereAsin(
-                    0,
+                    1,
                     $asin
                 );
             }
