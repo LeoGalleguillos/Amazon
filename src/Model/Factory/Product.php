@@ -17,6 +17,7 @@ class Product
         AmazonFactory\ProductGroup $productGroupFactory,
         ImageFactory\Image $imageFactory,
         AmazonTable\Product $productTable,
+        AmazonTable\Product\Asin $asinTable,
         AmazonTable\ProductFeature $productFeatureTable,
         AmazonTable\ProductImage $productImageTable,
         AmazonTable\ProductHiResImage $productHiResImageTable
@@ -26,6 +27,7 @@ class Product
         $this->productGroupFactory    = $productGroupFactory;
         $this->imageFactory           = $imageFactory;
         $this->productTable           = $productTable;
+        $this->asinTable              = $asinTable;
         $this->productFeatureTable    = $productFeatureTable;
         $this->productImageTable      = $productImageTable;
         $this->productHiResImageTable = $productHiResImageTable;
@@ -114,7 +116,7 @@ class Product
 
     public function buildFromAsin(string $asin): AmazonEntity\Product
     {
-        $productArray            = $this->productTable->selectWhereAsin($asin);
+        $productArray            = $this->asinTable->selectWhereAsin($asin);
         $productFeatureArrays    = $this->productFeatureTable->selectWhereAsin($asin);
         $productHiResImageArrays = $this->productHiResImageTable->selectWhereProductId($productArray['product_id']);
         $productImageArrays      = $this->productImageTable->selectWhereAsin($asin);

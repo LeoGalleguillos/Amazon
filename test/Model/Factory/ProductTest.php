@@ -16,6 +16,9 @@ class ProductTest extends TestCase
         $this->productGroupFactoryMock = $this->createMock(AmazonFactory\ProductGroup::class);
         $this->imageFactoryMock = $this->createMock(ImageFactory\Image::class);
         $this->productTableMock = $this->createMock(AmazonTable\Product::class);
+        $this->asinTableMock = $this->createMock(
+            AmazonTable\Product\Asin::class
+        );
         $this->productFeatureTableMock = $this->createMock(AmazonTable\ProductFeature::class);
         $this->productImageTableMock = $this->createMock(AmazonTable\ProductImage::class);
         $this->productHiResImageTableMock = $this->createMock(AmazonTable\ProductHiResImage::class);
@@ -26,15 +29,11 @@ class ProductTest extends TestCase
             $this->productGroupFactoryMock,
             $this->imageFactoryMock,
             $this->productTableMock,
+            $this->asinTableMock,
             $this->productFeatureTableMock,
             $this->productImageTableMock,
             $this->productHiResImageTableMock
         );
-    }
-
-    public function testInitialize()
-    {
-        $this->assertInstanceOf(AmazonFactory\Product::class, $this->productFactory);
     }
 
     public function testBuildFromArray()

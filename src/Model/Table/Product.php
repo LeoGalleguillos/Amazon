@@ -201,20 +201,6 @@ class Product
 
     /**
      * @throws TypeError
-     */
-    public function selectWhereAsin(string $asin): array
-    {
-        $sql = $this->getSelect()
-             . '
-              FROM `product`
-             WHERE `asin` = ?
-                 ;
-        ';
-        return $this->adapter->query($sql)->execute([$asin])->current();
-    }
-
-    /**
-     * @throws TypeError
      *
      * @deprecated use AmazonTable\Product\ProductId::selectWhereProductId
      */

@@ -111,6 +111,7 @@ class Module
                         $sm->get(AmazonFactory\ProductGroup::class),
                         $sm->get(ImageFactory\Image::class),
                         $sm->get(AmazonTable\Product::class),
+                        $sm->get(AmazonTable\Product\Asin::class),
                         $sm->get(AmazonTable\ProductFeature::class),
                         $sm->get(AmazonTable\ProductImage::class),
                         $sm->get(AmazonTable\ProductHiResImage::class)

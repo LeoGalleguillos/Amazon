@@ -51,6 +51,42 @@ class AsinTest extends TableTestCase
         );
     }
 
+    public function testSelectWhereAsin()
+    {
+        try {
+            $array = $this->asinTable->selectWhereAsin('ASIN001');
+            $this->fail();
+        } catch (TypeError $typeError) {
+            $this->assertSame(
+                'Return value of',
+                substr($typeError->getMessage(), 0, 15)
+            );
+        }
+
+        $this->productTable->insert(
+            'ASIN001',
+            'Title',
+            'Product Group',
+            null,
+            null,
+            4.99
+        );
+
+        $array = $this->asinTable->selectWhereAsin('ASIN001');
+        $this->assertSame(
+            '1',
+            $array['product_id']
+        );
+        $this->assertSame(
+            'ASIN001',
+            $array['asin']
+        );
+        $this->assertSame(
+            'Product Group',
+            $array['product_group']
+        );
+    }
+
     public function testUpdateSetModifiedToUtcTimestampWhereAsin()
     {
         $affectedRows = $this->asinTable->updateSetModifiedToUtcTimestampWhereAsin('ASIN001');

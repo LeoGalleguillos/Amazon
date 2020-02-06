@@ -38,6 +38,24 @@ class Asin
         return $this->adapter->query($sql)->execute($parameters)->current();
     }
 
+    /**
+     * @throws TypeError
+     */
+    public function selectWhereAsin(string $asin): array
+    {
+        $sql = $this->productTable->getSelect()
+             . '
+              FROM `product`
+             WHERE `asin` = ?
+                 ;
+        ';
+        $parameters = [
+            $asin,
+        ];
+        return $this->adapter->query($sql)->execute($parameters)->current();
+    }
+
+
     public function updateSetModifiedToUtcTimestampWhereAsin(string $asin): int
     {
         $sql = '
