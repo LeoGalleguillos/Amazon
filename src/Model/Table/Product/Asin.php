@@ -32,6 +32,23 @@ class Asin
         return (int) $array['product_id'];
     }
 
+    public function updateSetModifiedToUtcTimestampWhereAsin(string $asin): int
+    {
+        $sql = '
+            UPDATE `product`
+               SET `modified` = UTC_TIMESTAMP()
+             WHERE `asin` = ?
+                 ;
+        ';
+        $parameters = [
+            $asin,
+        ];
+        return (int) $this->adapter
+            ->query($sql)
+            ->execute($parameters)
+            ->getAffectedRows();
+    }
+
     public function updateSetInvalidWhereAsin(int $invalid, string $asin): int
     {
         $sql = '

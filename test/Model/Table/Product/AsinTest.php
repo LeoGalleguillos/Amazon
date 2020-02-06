@@ -21,6 +21,30 @@ class AsinTest extends TableTestCase
         $this->createTable('product');
     }
 
+    public function testUpdateSetModifiedToUtcTimestampWhereAsin()
+    {
+        $affectedRows = $this->asinTable->updateSetModifiedToUtcTimestampWhereAsin('ASIN001');
+        $this->assertSame(
+            0,
+            $affectedRows
+        );
+
+        $this->productTable->insert(
+            'ASIN001',
+            'Title',
+            'Product Group',
+            null,
+            null,
+            4.99
+        );
+
+        $affectedRows = $this->asinTable->updateSetModifiedToUtcTimestampWhereAsin('ASIN001');
+        $this->assertSame(
+            1,
+            $affectedRows
+        );
+    }
+
     public function testUpdateSetInvalidWhereAsin()
     {
         $affectedRows = $this->asinTable->updateSetInvalidWhereAsin(0, 'ASIN001');
