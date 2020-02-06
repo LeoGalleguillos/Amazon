@@ -23,7 +23,7 @@ class DownloadToMySql
         $itemXml = $xml->{'Items'}->{'Item'};
         $asin    = (string) $itemXml->{'ASIN'};
 
-        $productId = $this->asinTable->selectProductIdWhereAsin($asin);
+        $productId = $this->asinTable->selectProductIdWhereAsin($asin)['product_id'];
 
         if (empty($itemXml->{'BrowseNodes'})) {
             return false;

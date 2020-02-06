@@ -35,7 +35,9 @@ class ItemArrayTest extends TestCase
             ->method('selectProductIdWhereAsin')
             ->with('B07MMZ2LTB')
             ->will(
-                $this->returnValue(12345)
+                $this->returnValue(
+                    ['product_id' => 12345]
+                )
             );
         $this->browseNodeArrayServiceMock
             ->expects($this->exactly(2))
@@ -64,8 +66,11 @@ class ItemArrayTest extends TestCase
             ->method('selectProductIdWhereAsin')
             ->with('B00B0PIXIK')
             ->will(
-                $this->returnValue(67890)
+                $this->returnValue(
+                    ['product_id' => 67890]
+                )
             );
+
         $this->browseNodeArrayServiceMock
             ->expects($this->exactly(0))
             ->method('downloadToMySql');

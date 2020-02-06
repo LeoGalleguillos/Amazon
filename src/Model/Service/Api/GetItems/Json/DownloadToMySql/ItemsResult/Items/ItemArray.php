@@ -22,7 +22,7 @@ class ItemArray
         array $itemArray
     ): bool {
         $asin      = $itemArray['ASIN'];
-        $productId = $this->asinTable->selectProductIdWhereAsin($asin);
+        $productId = $this->asinTable->selectProductIdWhereAsin($asin)['product_id'];
 
         if (isset($itemArray['BrowseNodeInfo']['BrowseNodes'])) {
             $order = 1;

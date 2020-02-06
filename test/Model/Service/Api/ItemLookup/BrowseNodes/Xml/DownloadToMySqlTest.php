@@ -28,6 +28,14 @@ class DownloadToMySqlTest extends TestCase
 
     public function testDownloadToMySql()
     {
+        $this->asinTableMock
+            ->method('selectProductIdWhereAsin')
+            ->will(
+                $this->returnValue(
+                    ['product_id' => 1]
+                )
+            );
+
         $xml = simplexml_load_file($_SERVER['PWD'] . '/test/data/api/item-lookup/browse-nodes/B0751FL325.xml');
 
         $this->assertTrue(

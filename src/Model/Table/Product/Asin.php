@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table\Product;
 
+use TypeError;
 use Zend\Db\Adapter\Adapter;
 
 class Asin
@@ -16,9 +17,12 @@ class Asin
         $this->adapter = $adapter;
     }
 
+    /**
+     * @throws TypeError
+     */
     public function selectProductIdWhereAsin(
         string $asin
-    ): int {
+    ): array {
         $sql = '
             SELECT `product_id`
               FROM `product`
@@ -28,8 +32,7 @@ class Asin
         $parameters = [
             $asin,
         ];
-        $array = $this->adapter->query($sql)->execute($parameters)->current();
-        return (int) $array['product_id'];
+        return $this->adapter->query($sql)->execute($parameters)->current();
     }
 
     public function updateSetModifiedToUtcTimestampWhereAsin(string $asin): int
