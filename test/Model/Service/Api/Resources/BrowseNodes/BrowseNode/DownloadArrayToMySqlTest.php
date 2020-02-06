@@ -23,7 +23,7 @@ class DownloadArrayToMySqlTest extends TestCase
         );
     }
 
-    public function testDownloadToMySql()
+    public function testDownloadArrayToMySql()
     {
         $this->browseNodeTableMock
             ->expects($this->exactly(4))
