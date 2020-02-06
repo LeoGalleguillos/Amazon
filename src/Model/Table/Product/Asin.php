@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table\Product;
 
+use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use TypeError;
 use Zend\Db\Adapter\Adapter;
 
@@ -12,9 +13,11 @@ class Asin
     protected $adapter;
 
     public function __construct(
-        Adapter $adapter
+        Adapter $adapter,
+        AmazonTable\Product $productTable
     ) {
-        $this->adapter = $adapter;
+        $this->adapter      = $adapter;
+        $this->productTable = $productTable;
     }
 
     /**

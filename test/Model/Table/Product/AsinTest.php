@@ -15,7 +15,8 @@ class AsinTest extends TableTestCase
             $this->getAdapter()
         );
         $this->asinTable = new AmazonTable\Product\Asin(
-            $this->getAdapter()
+            $this->getAdapter(),
+            $this->productTable
         );
 
         $this->dropTable('product');

@@ -559,7 +559,8 @@ class Module
                 },
                 AmazonTable\Product\Asin::class => function ($sm) {
                     return new AmazonTable\Product\Asin(
-                        $sm->get('amazon')
+                        $sm->get('amazon'),
+                        $sm->get(AmazonTable\Product::class)
                     );
                 },
                 AmazonTable\Product\EditorialReview::class => function ($sm) {

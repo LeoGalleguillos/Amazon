@@ -14,7 +14,8 @@ class ModifiedProductIdTest extends TableTestCase
             $this->getAdapter()
         );
         $this->asinTable = new AmazonTable\Product\Asin(
-            $this->getAdapter()
+            $this->getAdapter(),
+            $this->productTable
         );
         $this->modifiedProductIdTable = new AmazonTable\Product\ModifiedProductId(
             $this->getAdapter()
