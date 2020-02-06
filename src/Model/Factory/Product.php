@@ -2,7 +2,6 @@
 namespace LeoGalleguillos\Amazon\Model\Factory;
 
 use DateTime;
-use Exception;
 use Generator;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
