@@ -9,9 +9,11 @@ use LeoGalleguillos\Amazon\{
 class DownloadJsonToMySql
 {
     public function __construct(
+        AmazonTable\Product\Asin $asinTable,
         AmazonService\Api\Errors\DownloadArrayToMySql $downloadErrorsArrayToMySqlService,
         AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray $itemArrayService
     ) {
+        $this->asinTable                         = $asinTable;
         $this->downloadErrorsArrayToMySqlService = $downloadErrorsArrayToMySqlService;
         $this->itemArrayService                  = $itemArrayService;
     }
@@ -30,6 +32,10 @@ class DownloadJsonToMySql
         if (isset($jsonArray['ItemsResult']['Items'])) {
             $itemsArray = $jsonArray['ItemsResult']['Items'];
             foreach ($itemsArray as $itemArray) {
+                $asin = $itemArray['ASIN'];
+
+                $this->asinTable->updateSetInvalidWhereAsin(0, $asin);
+
                 $this->itemArrayService->downloadToMySql(
                     $itemArray
                 );

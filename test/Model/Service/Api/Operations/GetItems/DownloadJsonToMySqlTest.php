@@ -11,6 +11,9 @@ class DownloadJsonToMySqlTest extends TestCase
 {
     protected function setUp()
     {
+        $this->asinTableMock = $this->createMock(
+            AmazonTable\Product\Asin::class
+        );
         $this->downloadErrorsArrayToMySqlServiceMock = $this->createMock(
             AmazonService\Api\Errors\DownloadArrayToMySql::class
         );
@@ -19,6 +22,7 @@ class DownloadJsonToMySqlTest extends TestCase
         );
 
         $this->downloadJsonToMySqlService = new AmazonService\Api\Operations\GetItems\DownloadJsonToMySql(
+            $this->asinTableMock,
             $this->downloadErrorsArrayToMySqlServiceMock,
             $this->itemArrayServiceMock
         );
@@ -29,6 +33,10 @@ class DownloadJsonToMySqlTest extends TestCase
         $this->downloadErrorsArrayToMySqlServiceMock
             ->expects($this->exactly(1))
             ->method('downloadArrayToMySql');
+
+        $this->asinTableMock
+            ->expects($this->exactly(0))
+            ->method('updateSetInvalidWhereAsin');
 
         $this->itemArrayServiceMock
             ->expects($this->exactly(0))
@@ -46,6 +54,15 @@ class DownloadJsonToMySqlTest extends TestCase
             ->expects($this->exactly(0))
             ->method('downloadArrayToMySql');
 
+        $this->asinTableMock
+            ->expects($this->exactly(3))
+            ->method('updateSetInvalidWhereAsin')
+            ->withConsecutive(
+                [0, 'B009UOMNE8'],
+                [0, 'B07MMZ2LTB'],
+                [0, 'B07D5J6Z2C']
+            );
+
         $this->itemArrayServiceMock
             ->expects($this->exactly(3))
             ->method('downloadToMySql');
@@ -61,6 +78,15 @@ class DownloadJsonToMySqlTest extends TestCase
         $this->downloadErrorsArrayToMySqlServiceMock
             ->expects($this->exactly(1))
             ->method('downloadArrayToMySql');
+
+        $this->asinTableMock
+            ->expects($this->exactly(3))
+            ->method('updateSetInvalidWhereAsin')
+            ->withConsecutive(
+                [0, 'B07MMZ2LTB'],
+                [0, 'B00B0PIXIK'],
+                [0, 'B002LVAC5Y']
+            );
 
         $this->itemArrayServiceMock
             ->expects($this->exactly(3))
