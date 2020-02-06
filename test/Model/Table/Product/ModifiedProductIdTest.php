@@ -13,6 +13,9 @@ class ModifiedProductIdTest extends TableTestCase
             $this->createMock(MemcachedService\Memcached::class),
             $this->getAdapter()
         );
+        $this->asinTable = new AmazonTable\Product\Asin(
+            $this->getAdapter()
+        );
         $this->modifiedProductIdTable = new AmazonTable\Product\ModifiedProductId(
             $this->getAdapter()
         );
@@ -21,10 +24,10 @@ class ModifiedProductIdTest extends TableTestCase
         $this->createTable('product');
     }
 
-    public function testSelectAsinOrderByModifiedAscProductIdAscLimitRowCount()
+    public function testSelectAsinOrderByModifiedIsNullDescModifiedAscProductIdAscLimitRowCount()
     {
         $generator = $this->modifiedProductIdTable
-            ->selectAsinOrderByModifiedAscProductIdAscLimitRowCount(0);
+            ->selectAsinOrderByModifiedIsNullDescModifiedAscProductIdAscLimitRowCount(0);
         $this->assertEmpty(
             iterator_to_array($generator)
         );
@@ -39,7 +42,7 @@ class ModifiedProductIdTest extends TableTestCase
         );
 
         $generator = $this->modifiedProductIdTable
-            ->selectAsinOrderByModifiedAscProductIdAscLimitRowCount(1);
+            ->selectAsinOrderByModifiedIsNullDescModifiedAscProductIdAscLimitRowCount(1);
         $this->assertCount(
             1,
             iterator_to_array($generator)
@@ -63,16 +66,29 @@ class ModifiedProductIdTest extends TableTestCase
         );
 
         $generator = $this->modifiedProductIdTable
-            ->selectAsinOrderByModifiedAscProductIdAscLimitRowCount(2);
+            ->selectAsinOrderByModifiedIsNullDescModifiedAscProductIdAscLimitRowCount(2);
+        $array = iterator_to_array($generator);
         $this->assertCount(
             2,
-            iterator_to_array($generator)
+            $array
         );
+        $this->assertSame(
+            'ASIN001',
+            $array[0]['asin']
+        );
+
+        $this->asinTable->updateSetModifiedToUtcTimestampWhereAsin('ASIN001');
+
         $generator = $this->modifiedProductIdTable
-            ->selectAsinOrderByModifiedAscProductIdAscLimitRowCount(3);
+            ->selectAsinOrderByModifiedIsNullDescModifiedAscProductIdAscLimitRowCount(3);
+        $array = iterator_to_array($generator);
         $this->assertCount(
             3,
-            iterator_to_array($generator)
+            $array
+        );
+        $this->assertSame(
+            'ASIN001',
+            $array[2]['asin']
         );
     }
 }

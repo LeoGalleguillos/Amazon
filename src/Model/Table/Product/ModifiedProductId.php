@@ -17,14 +17,15 @@ class ModifiedProductId
         $this->adapter = $adapter;
     }
 
-    public function selectAsinOrderByModifiedAscProductIdAscLimitRowCount(
+    public function selectAsinOrderByModifiedIsNullDescModifiedAscProductIdAscLimitRowCount(
         int $limitRowCount
     ): Generator {
         $sql = '
             SELECT `asin`
               FROM `product`
              ORDER
-                BY `modified` ASC
+                BY `modified` IS NULL DESC
+                 , `modified` ASC
                  , `product_id` ASC
              LIMIT ?
                  ;
