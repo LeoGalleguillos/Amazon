@@ -11,8 +11,8 @@ class ItemArrayTest extends TestCase
 {
     protected function setUp()
     {
-        $this->browseNodeArrayServiceMock = $this->createMock(
-            AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\BrowseNodeInfo\BrowseNodes\BrowseNodeArray::class
+        $this->downloadArrayToMySqlServiceMock = $this->createMock(
+            AmazonService\Api\Resources\BrowseNodes\BrowseNode\DownloadArrayToMySql::class
         );
         $this->browseNodeProductTableMock = $this->createMock(
             AmazonTable\BrowseNodeProduct::class
@@ -22,7 +22,7 @@ class ItemArrayTest extends TestCase
         );
 
         $this->itemArrayService = new AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray(
-            $this->browseNodeArrayServiceMock,
+            $this->downloadArrayToMySqlServiceMock,
             $this->browseNodeProductTableMock,
             $this->asinTableMock
         );
@@ -39,9 +39,9 @@ class ItemArrayTest extends TestCase
                     ['product_id' => 12345]
                 )
             );
-        $this->browseNodeArrayServiceMock
+        $this->downloadArrayToMySqlServiceMock
             ->expects($this->exactly(2))
-            ->method('downloadToMySql')
+            ->method('downloadArrayToMySql')
             ->withConsecutive(
                 [$this->getArrayWhereItemHasBrowseNodeInfo()['BrowseNodeInfo']['BrowseNodes'][0]],
                 [$this->getArrayWhereItemHasBrowseNodeInfo()['BrowseNodeInfo']['BrowseNodes'][1]]
@@ -71,9 +71,9 @@ class ItemArrayTest extends TestCase
                 )
             );
 
-        $this->browseNodeArrayServiceMock
+        $this->downloadArrayToMySqlServiceMock
             ->expects($this->exactly(0))
-            ->method('downloadToMySql');
+            ->method('downloadArrayToMySql');
         $this->browseNodeProductTableMock
             ->expects($this->exactly(0))
             ->method('insertOnDuplicateKeyUpdate');

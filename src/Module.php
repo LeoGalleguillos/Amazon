@@ -144,15 +144,9 @@ class Module
                 },
                 AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray::class => function ($sm) {
                     return new AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray(
-                        $sm->get(AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\BrowseNodeInfo\BrowseNodes\BrowseNodeArray::class),
+                        $sm->get(AmazonService\Api\Resources\BrowseNodes\BrowseNode\DownloadArrayToMySql::class),
                         $sm->get(AmazonTable\BrowseNodeProduct::class),
                         $sm->get(AmazonTable\Product\Asin::class)
-                    );
-                },
-                AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\BrowseNodeInfo\BrowseNodes\BrowseNodeArray::class => function ($sm) {
-                    return new AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\BrowseNodeInfo\BrowseNodes\BrowseNodeArray(
-                        $sm->get(AmazonTable\BrowseNode::class),
-                        $sm->get(AmazonTable\BrowseNodeHierarchy::class)
                     );
                 },
                 AmazonService\Api\ItemLookup\BrowseNodes\Xml::class => function ($sm) {
@@ -206,6 +200,12 @@ class Module
                         $sm->get(AmazonTable\Product::class),
                         $sm->get(AmazonTable\ProductFeature::class),
                         $sm->get(AmazonTable\ProductImage::class)
+                    );
+                },
+                AmazonService\Api\Resources\BrowseNodes\BrowseNode\DownloadArrayToMySql::class => function ($sm) {
+                    return new AmazonService\Api\Resources\BrowseNodes\BrowseNode\DownloadArrayToMySql(
+                        $sm->get(AmazonTable\BrowseNode::class),
+                        $sm->get(AmazonTable\BrowseNodeHierarchy::class)
                     );
                 },
                 AmazonService\Api\SimilarProducts\Xml::class => function ($sm) {

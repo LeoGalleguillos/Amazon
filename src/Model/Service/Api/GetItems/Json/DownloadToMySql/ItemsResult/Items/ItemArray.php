@@ -9,13 +9,13 @@ use LeoGalleguillos\Amazon\{
 class ItemArray
 {
     public function __construct(
-        AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\BrowseNodeInfo\BrowseNodes\BrowseNodeArray $browseNodeArrayService,
+        AmazonService\Api\Resources\BrowseNodes\BrowseNode\DownloadArrayToMySql $downloadArrayToMySqlService,
         AmazonTable\BrowseNodeProduct $browseNodeProductTable,
         AmazonTable\Product\Asin $asinTable
     ) {
-        $this->browseNodeArrayService = $browseNodeArrayService;
-        $this->browseNodeProductTable = $browseNodeProductTable;
-        $this->asinTable              = $asinTable;
+        $this->downloadArrayToMySqlService = $downloadArrayToMySqlService;
+        $this->browseNodeProductTable      = $browseNodeProductTable;
+        $this->asinTable                   = $asinTable;
     }
 
     public function downloadToMySql(
@@ -27,7 +27,7 @@ class ItemArray
         if (isset($itemArray['BrowseNodeInfo']['BrowseNodes'])) {
             $order = 1;
             foreach ($itemArray['BrowseNodeInfo']['BrowseNodes'] as $browseNodeArray) {
-                $this->browseNodeArrayService->downloadToMySql($browseNodeArray);
+                $this->downloadArrayToMySqlService->downloadArrayToMySql($browseNodeArray);
 
                 $browseNodeId = $browseNodeArray['Id'];
                 $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(

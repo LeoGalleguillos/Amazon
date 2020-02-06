@@ -1,5 +1,5 @@
 <?php
-namespace LeoGalleguillos\AmazonTest\Model\Service\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\BrowseNodeInfo\BrowseNodes;
+namespace LeoGalleguillos\AmazonTest\Model\Service\Api\Resources\BrowseNodes\BrowseNode;
 
 use LeoGalleguillos\Amazon\{
     Model\Service as AmazonService,
@@ -7,7 +7,7 @@ use LeoGalleguillos\Amazon\{
 };
 use PHPUnit\Framework\TestCase;
 
-class BrowseNodeArrayTest extends TestCase
+class DownloadArrayToMySqlTest extends TestCase
 {
     protected function setUp()
     {
@@ -17,7 +17,7 @@ class BrowseNodeArrayTest extends TestCase
         $this->browseNodeHierarchyTableMock = $this->createMock(
             AmazonTable\BrowseNodeHierarchy::class
         );
-        $this->browseNodeArrayService = new AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\BrowseNodeInfo\BrowseNodes\BrowseNodeArray(
+        $this->downloadArrayToMySqlService = new AmazonService\Api\Resources\BrowseNodes\BrowseNode\DownloadArrayToMySql(
             $this->browseNodeTableMock,
             $this->browseNodeHierarchyTableMock
         );
@@ -44,7 +44,7 @@ class BrowseNodeArrayTest extends TestCase
                 [16333372011, 16333373011]
             );
 
-        $this->browseNodeArrayService->downloadToMySql(
+        $this->downloadArrayToMySqlService->downloadArrayToMySql(
             $this->getArray()
         );
     }

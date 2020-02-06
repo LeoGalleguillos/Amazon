@@ -1,9 +1,9 @@
 <?php
-namespace LeoGalleguillos\Amazon\Model\Service\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\BrowseNodeInfo\BrowseNodes;
+namespace LeoGalleguillos\Amazon\Model\Service\Api\Resources\BrowseNodes\BrowseNode;
 
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 
-class BrowseNodeArray
+class DownloadArrayToMySql
 {
     public function __construct(
         AmazonTable\BrowseNode $browseNodeTable,
@@ -13,7 +13,7 @@ class BrowseNodeArray
         $this->browseNodeHierarchyTable = $browseNodeHierarchyTable;
     }
 
-    public function downloadToMySql(
+    public function downloadArrayToMySql(
         array $browseNodeArray
     ) {
         $browseNodeId = (int) $browseNodeArray['Id'];
@@ -30,7 +30,7 @@ class BrowseNodeArray
                 $parentBrowseNodeId,
                 $browseNodeId
             );
-            $this->downloadToMySql(
+            $this->downloadArrayToMySql(
                 $parentArray
             );
         }
