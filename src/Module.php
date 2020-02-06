@@ -567,6 +567,11 @@ class Module
                         $sm->get('amazon')
                     );
                 },
+                AmazonTable\Product\ModifiedProductId::class => function ($sm) {
+                    return new AmazonTable\Product\ModifiedProductId(
+                        $sm->get('amazon')
+                    );
+                },
                 AmazonTable\ProductBrowseNodeProductBrowseNode::class => function ($sm) {
                     return new AmazonTable\ProductBrowseNodeProductBrowseNode(
                         $sm->get('amazon')
