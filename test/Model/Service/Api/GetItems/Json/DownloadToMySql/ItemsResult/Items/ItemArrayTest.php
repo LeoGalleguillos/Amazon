@@ -11,19 +11,15 @@ class ItemArrayTest extends TestCase
 {
     protected function setUp()
     {
-        $this->downloadBrowseNodeArrayToMySqlServiceMock = $this->createMock(
-            AmazonService\Api\Resources\BrowseNodes\BrowseNode\DownloadArrayToMySql::class
-        );
-        $this->browseNodeProductTableMock = $this->createMock(
-            AmazonTable\BrowseNodeProduct::class
+        $this->downloadBrowseNodeInfoArrayToMySqlServiceMock = $this->createMock(
+            AmazonService\Api\Resources\BrowseNodeInfo\DownloadArrayToMySql::class
         );
         $this->asinTableMock = $this->createMock(
             AmazonTable\Product\Asin::class
         );
 
         $this->itemArrayService = new AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray(
-            $this->downloadBrowseNodeArrayToMySqlServiceMock,
-            $this->browseNodeProductTableMock,
+            $this->downloadBrowseNodeInfoArrayToMySqlServiceMock,
             $this->asinTableMock
         );
     }
@@ -39,20 +35,10 @@ class ItemArrayTest extends TestCase
                     ['product_id' => 12345]
                 )
             );
-        $this->downloadBrowseNodeArrayToMySqlServiceMock
-            ->expects($this->exactly(2))
+        $this->downloadBrowseNodeInfoArrayToMySqlServiceMock
+            ->expects($this->exactly(1))
             ->method('downloadArrayToMySql')
-            ->withConsecutive(
-                [$this->getArrayWhereItemHasBrowseNodeInfo()['BrowseNodeInfo']['BrowseNodes'][0]],
-                [$this->getArrayWhereItemHasBrowseNodeInfo()['BrowseNodeInfo']['BrowseNodes'][1]]
-            );
-        $this->browseNodeProductTableMock
-            ->expects($this->exactly(2))
-            ->method('insertOnDuplicateKeyUpdate')
-            ->withConsecutive(
-                [493964, 12345, 1],
-                [17386948011, 12345, 2]
-            );
+            ->with($this->getArrayWhereItemHasBrowseNodeInfo()['BrowseNodeInfo']);
 
         $this->itemArrayService->downloadToMySql(
             $this->getArrayWhereItemHasBrowseNodeInfo()
@@ -70,13 +56,9 @@ class ItemArrayTest extends TestCase
                     ['product_id' => 67890]
                 )
             );
-
-        $this->downloadBrowseNodeArrayToMySqlServiceMock
+        $this->downloadBrowseNodeInfoArrayToMySqlServiceMock
             ->expects($this->exactly(0))
             ->method('downloadArrayToMySql');
-        $this->browseNodeProductTableMock
-            ->expects($this->exactly(0))
-            ->method('insertOnDuplicateKeyUpdate');
 
         $this->itemArrayService->downloadToMySql(
             $this->getArrayWhereItemDoesNotHaveBrowseNodeInfo()
