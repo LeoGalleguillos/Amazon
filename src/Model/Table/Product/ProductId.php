@@ -1,7 +1,6 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table\Product;
 
-use Exception;
 use Generator;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use Zend\Db\Adapter\Adapter;
