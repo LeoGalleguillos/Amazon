@@ -11,7 +11,7 @@ class ItemArrayTest extends TestCase
 {
     protected function setUp()
     {
-        $this->downloadArrayToMySqlServiceMock = $this->createMock(
+        $this->downloadBrowseNodeArrayToMySqlServiceMock = $this->createMock(
             AmazonService\Api\Resources\BrowseNodes\BrowseNode\DownloadArrayToMySql::class
         );
         $this->browseNodeProductTableMock = $this->createMock(
@@ -22,7 +22,7 @@ class ItemArrayTest extends TestCase
         );
 
         $this->itemArrayService = new AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray(
-            $this->downloadArrayToMySqlServiceMock,
+            $this->downloadBrowseNodeArrayToMySqlServiceMock,
             $this->browseNodeProductTableMock,
             $this->asinTableMock
         );
@@ -39,7 +39,7 @@ class ItemArrayTest extends TestCase
                     ['product_id' => 12345]
                 )
             );
-        $this->downloadArrayToMySqlServiceMock
+        $this->downloadBrowseNodeArrayToMySqlServiceMock
             ->expects($this->exactly(2))
             ->method('downloadArrayToMySql')
             ->withConsecutive(
@@ -71,7 +71,7 @@ class ItemArrayTest extends TestCase
                 )
             );
 
-        $this->downloadArrayToMySqlServiceMock
+        $this->downloadBrowseNodeArrayToMySqlServiceMock
             ->expects($this->exactly(0))
             ->method('downloadArrayToMySql');
         $this->browseNodeProductTableMock
