@@ -3,28 +3,34 @@ namespace LeoGalleguillos\AmazonTest\Model\Service\Api\Resources\ItemInfo;
 
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\TableGateway as AmazonTableGateway;
-use LeoGalleguillos\Test\TableTestCase;
 use PHPUnit\Framework\TestCase;
 
-class DownloadArrayToMySqlTest extends TableTestCase
+class DownloadArrayToMySqlTest extends TestCase
 {
     protected function setUp()
     {
-        $this->downloadArrayToMySqlService = new AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql(
-            new AmazonTableGateway\Product('product', $this->getAdapter())
+        $this->productTableGatewayMock = $this->createMock(
+            AmazonTableGateway\Product::class
         );
-
-        $this->dropTable('product');
-        $this->createTable('product');
+        $this->downloadArrayToMySqlService = new AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql(
+            $this->productTableGatewayMock
+        );
     }
 
     public function testDownloadArrayToMySql()
     {
-        $this->assertNull(
-            $this->downloadArrayToMySqlService->downloadArrayToMySql(
-                $this->getArray(),
-                12345
-            )
+        $this->productTableGatewayMock
+            ->expects($this->exactly(1))
+            ->method('update')
+            ->with(
+                [
+                    'color' => 'BLACK',
+                ],
+                ['product_id' => 12345]
+            );
+        $this->downloadArrayToMySqlService->downloadArrayToMySql(
+            $this->getArray(),
+            12345
         );
     }
 

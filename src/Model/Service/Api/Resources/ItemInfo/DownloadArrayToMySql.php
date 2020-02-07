@@ -16,5 +16,11 @@ class DownloadArrayToMySql
         array $itemInfoArray,
         int $productId
     ) {
+        $affectedRows = $this->productTableGateway->update(
+            [
+                'color' => $itemInfoArray['ProductInfo']['Color']['DisplayValue'] ?? null,
+            ],
+            ['product_id' => $productId]
+        );
     }
 }
