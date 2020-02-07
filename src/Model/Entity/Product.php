@@ -38,6 +38,11 @@ class Product
     protected $browseNodes;
 
     /**
+     * @var string
+     */
+    protected $color;
+
+    /**
      * @var array Array of editorial reviews.
      */
     public $editorialReviews = [];
@@ -117,6 +122,11 @@ class Product
         return $this->browseNodes;
     }
 
+    public function getColor(): string
+    {
+        return $this->color;
+    }
+
     public function getFeatures() : array
     {
         return $this->features;
@@ -190,6 +200,12 @@ class Product
     public function setBrowseNodes(array $browseNodes): AmazonEntity\Product
     {
         $this->browseNodes = $browseNodes;
+        return $this;
+    }
+
+    public function setColor(string $color): self
+    {
+        $this->color = $color;
         return $this;
     }
 

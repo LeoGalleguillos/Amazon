@@ -32,6 +32,16 @@ class ProductTest extends TestCase
             $this->productEntity->getAsin()
         );
 
+        $color = 'red, white, & blue';
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setColor($color)
+        );
+        $this->assertSame(
+            $color,
+            $this->productEntity->getColor()
+        );
+
         $imageEntity = new ImageEntity\Image();
         $this->assertSame(
             $this->productEntity,
