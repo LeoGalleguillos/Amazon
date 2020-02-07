@@ -57,6 +57,7 @@ class Product
                  , `product`.`product_group`
                  , `product`.`binding`
                  , `product`.`brand`
+                 , `product`.`color`
                  , `product`.`list_price`
                  , `product`.`modified`
                  , `product`.`hi_res_images_retrieved`
