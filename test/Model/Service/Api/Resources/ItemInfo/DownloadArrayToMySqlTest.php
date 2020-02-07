@@ -28,6 +28,14 @@ class DownloadArrayToMySqlTest extends TestCase
                     [
                         'color'            => 'BLACK',
                         'is_adult_product' => 0,
+                        'height_value'     => 2.8,
+                        'height_units'     => 'Inches',
+                        'length_value'     => 1.34,
+                        'length_units'     => 'Inches',
+                        'weight_value'     => 0.19,
+                        'weight_units'     => 'Pounds',
+                        'width_value'      => 2.8,
+                        'width_units'      => 'Inches',
                     ],
                     ['product_id' => 12345]
                 )
@@ -141,14 +149,14 @@ class DownloadArrayToMySqlTest extends TestCase
             array (
               'Height' =>
               array (
-                'DisplayValue' => 2.7999999999999998,
+                'DisplayValue' => 2.8,
                 'Label' => 'Height',
                 'Locale' => 'en_US',
                 'Unit' => 'Inches',
               ),
               'Length' =>
               array (
-                'DisplayValue' => 1.3400000000000001,
+                'DisplayValue' => 1.34,
                 'Label' => 'Length',
                 'Locale' => 'en_US',
                 'Unit' => 'Inches',
@@ -162,7 +170,7 @@ class DownloadArrayToMySqlTest extends TestCase
               ),
               'Width' =>
               array (
-                'DisplayValue' => 2.7999999999999998,
+                'DisplayValue' => 2.8,
                 'Label' => 'Width',
                 'Locale' => 'en_US',
                 'Unit' => 'Inches',

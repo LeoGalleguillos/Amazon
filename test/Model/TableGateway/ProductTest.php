@@ -20,17 +20,26 @@ class ProductTest extends TableTestCase
     {
         $affectedRows = $this->productTableGateway->update(
             [
-                'color' => 'BLACK',
+                'color'            => 'BLACK',
+                'is_adult_product' => 0,
+                'height_value'     => 2.8,
+                'height_units'     => 'Inches',
+                'length_value'     => 1.34,
+                'length_units'     => 'Inches',
+                'weight_value'     => 0.19,
+                'weight_units'     => 'Pounds',
+                'width_value'      => 2.8,
+                'width_units'      => 'Inches',
             ],
             ['product_id' => 12345]
         );
         $this->assertSame(0, $affectedRows);
         $affectedRows = $this->productTableGateway->insert(
             [
-                'asin' => 'ASIN',
-                'title' => 'Title',
+                'asin'          => 'ASIN',
+                'title'         => 'Title',
                 'product_group' => 'Product Group',
-                'color' => 'BLACK',
+                'color'         => 'BLACK',
             ]
         );
         $this->assertSame(1, $affectedRows);

@@ -626,14 +626,14 @@ class ItemArrayTest extends TestCase
               array (
                 'Height' =>
                 array (
-                  'DisplayValue' => 2.7999999999999998,
+                  'DisplayValue' => 2.8,
                   'Label' => 'Height',
                   'Locale' => 'en_US',
                   'Unit' => 'Inches',
                 ),
                 'Length' =>
                 array (
-                  'DisplayValue' => 1.3400000000000001,
+                  'DisplayValue' => 1.34,
                   'Label' => 'Length',
                   'Locale' => 'en_US',
                   'Unit' => 'Inches',
@@ -647,7 +647,7 @@ class ItemArrayTest extends TestCase
                 ),
                 'Width' =>
                 array (
-                  'DisplayValue' => 2.7999999999999998,
+                  'DisplayValue' => 2.8,
                   'Label' => 'Width',
                   'Locale' => 'en_US',
                   'Unit' => 'Inches',
