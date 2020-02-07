@@ -5,7 +5,6 @@ return [
         'Laminas\Db',
         'Laminas\Router',
         'LeoGalleguillos\Amazon',
-        'LeoGalleguillos\Hashtag',
         'LeoGalleguillos\Image',
         'LeoGalleguillos\Memcached',
         'LeoGalleguillos\String',

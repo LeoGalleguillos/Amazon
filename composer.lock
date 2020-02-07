@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "023b4ce777eeddf069d68e65ebae5ad6",
+    "content-hash": "be00cb9687cc73160fd5687ab7bae840",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -1350,37 +1350,6 @@
                 "zf"
             ],
             "time": "2020-01-07T22:58:31+00:00"
-        },
-        {
-            "name": "leo-galleguillos/hashtag",
-            "version": "v1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/LeoGalleguillos/Hashtag.git",
-                "reference": "78721fc4851d5ca85763ceadd53acfa191f2aab1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/Hashtag/zipball/78721fc4851d5ca85763ceadd53acfa191f2aab1",
-                "reference": "78721fc4851d5ca85763ceadd53acfa191f2aab1",
-                "shasum": ""
-            },
-            "require": {
-                "laminas/laminas-db": "^2.9",
-                "laminas/laminas-test": "^3.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "LeoGalleguillos\\Hashtag\\": "src/",
-                    "LeoGalleguillos\\HashtagTest\\": "test/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "time": "2020-01-27T06:22:50+00:00"
         },
         {
             "name": "leo-galleguillos/image",

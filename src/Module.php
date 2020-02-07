@@ -6,7 +6,6 @@ use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Amazon\Model\TableGateway as AmazonTableGateway;
 use LeoGalleguillos\Amazon\View\Helper as AmazonHelper;
-use LeoGalleguillos\Hashtag\Model\Service as HashtagService;
 use LeoGalleguillos\Image\Model\Factory as ImageFactory;
 use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
 use LeoGalleguillos\String\Model\Service as StringService;
@@ -282,12 +281,6 @@ class Module
                         $sm->get('Config')['amazon']['browse-node-name-domain']
                     );
                 },
-                AmazonService\Hashtag\Products\ProductGroup::class => function ($sm) {
-                    return new AmazonService\Hashtag\Products\ProductGroup(
-                        $sm->get(AmazonFactory\Product::class),
-                        $sm->get(AmazonTable\ProductHashtag::class)
-                    );
-                },
                 AmazonService\Product::class => function ($sm) {
                     return new AmazonService\Product(
                         $sm->get(AmazonFactory\Product::class),
@@ -309,12 +302,6 @@ class Module
                 AmazonService\Product\Hashtags::class => function ($sm) {
                     return new AmazonService\Product\Hashtags(
                         $sm->get(AmazonService\Product\Hashtags\ProductEntity::class)
-                    );
-                },
-                AmazonService\Product\Hashtags\Insert::class => function ($sm) {
-                    return new AmazonService\Product\Hashtags\Insert(
-                        $sm->get(AmazonTable\ProductHashtag::class),
-                        $sm->get(HashtagService\Hashtag::class)
                     );
                 },
                 AmazonService\Product\Hashtags\ProductEntity::class => function ($sm) {
@@ -651,12 +638,6 @@ class Module
                 },
                 AmazonTable\ProductGroup::class => function ($sm) {
                     return new AmazonTable\ProductGroup(
-                        $sm->get(MemcachedService\Memcached::class),
-                        $sm->get('amazon')
-                    );
-                },
-                AmazonTable\ProductHashtag::class => function ($sm) {
-                    return new AmazonTable\ProductHashtag(
                         $sm->get(MemcachedService\Memcached::class),
                         $sm->get('amazon')
                     );
