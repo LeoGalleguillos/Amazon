@@ -46,12 +46,17 @@ class ProductTest extends TestCase
             'product_group' => 'Product Group',
             'Binding'       => 'Binding',
             'Brand'         => 'Brand',
+            'color'         => 'Red',
         ];
         $productEntity = $this->productFactory->buildFromArray($array);
 
         $this->assertSame(
             'ASIN',
             $productEntity->getAsin()
+        );
+        $this->assertSame(
+            'Red',
+            $productEntity->getColor()
         );
     }
 }

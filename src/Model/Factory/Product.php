@@ -59,6 +59,12 @@ class Product
             );
         }
 
+        if (isset($productArray['color'])) {
+            $productEntity->setColor(
+                $productArray['color']
+            );
+        }
+
         if (isset($productArray['hi_res_images_retrieved'])) {
             $productEntity->setHiResImagesRetrieved(
                 new DateTime($productArray['hi_res_images_retrieved'])
