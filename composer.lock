@@ -1007,16 +1007,16 @@
         },
         {
             "name": "laminas/laminas-test",
-            "version": "3.3.0",
+            "version": "3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-test.git",
-                "reference": "42cdc13c2bf78199ed01f24f5cee735bcedaaad9"
+                "reference": "e2d0dec7872bbee214b9f2a9448e429d71b0e668"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-test/zipball/42cdc13c2bf78199ed01f24f5cee735bcedaaad9",
-                "reference": "42cdc13c2bf78199ed01f24f5cee735bcedaaad9",
+                "url": "https://api.github.com/repos/laminas/laminas-test/zipball/e2d0dec7872bbee214b9f2a9448e429d71b0e668",
+                "reference": "e2d0dec7872bbee214b9f2a9448e429d71b0e668",
                 "shasum": ""
             },
             "require": {
@@ -1031,8 +1031,7 @@
                 "laminas/laminas-view": "^2.6.3",
                 "laminas/laminas-zendframework-bridge": "^1.0",
                 "php": "^5.6 || ^7.0",
-                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0",
-                "sebastian/version": "^1.0.4 || ^2.0"
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0"
             },
             "replace": {
                 "zendframework/zend-test": "self.version"
@@ -1047,8 +1046,7 @@
                 "laminas/laminas-serializer": "^2.6.1",
                 "laminas/laminas-session": "^2.8.5",
                 "laminas/laminas-validator": "^2.8",
-                "mikey179/vfsstream": "~1.2",
-                "symfony/finder": "^2.2"
+                "mikey179/vfsstream": "~1.2"
             },
             "suggest": {
                 "laminas/laminas-mvc-console": "^1.1.8, to test MVC <-> console integration"
@@ -1056,8 +1054,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.3.x-dev",
-                    "dev-develop": "3.4.x-dev"
+                    "dev-master": "3.4.x-dev",
+                    "dev-develop": "3.5.x-dev"
                 }
             },
             "autoload": {
@@ -1078,7 +1076,7 @@
                 "laminas",
                 "test"
             ],
-            "time": "2019-12-31T17:53:52+00:00"
+            "time": "2020-02-07T16:14:56+00:00"
         },
         {
             "name": "laminas/laminas-uri",
