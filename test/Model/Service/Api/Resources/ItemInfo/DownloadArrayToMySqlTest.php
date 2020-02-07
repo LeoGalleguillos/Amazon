@@ -23,11 +23,14 @@ class DownloadArrayToMySqlTest extends TestCase
             ->expects($this->exactly(1))
             ->method('update')
             ->with(
-                [
-                    'color'            => 'BLACK',
-                    'is_adult_product' => 0,
-                ],
-                ['product_id' => 12345]
+                // Use identicalTo to ensure 0 xor null
+                $this->identicalTo(
+                    [
+                        'color'            => 'BLACK',
+                        'is_adult_product' => 0,
+                    ],
+                    ['product_id' => 12345]
+                )
             );
         $this->downloadArrayToMySqlService->downloadArrayToMySql(
             $this->getArray(),
