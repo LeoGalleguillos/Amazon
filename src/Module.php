@@ -145,6 +145,7 @@ class Module
                 AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray::class => function ($sm) {
                     return new AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray(
                         $sm->get(AmazonService\Api\Resources\BrowseNodeInfo\DownloadArrayToMySql::class),
+                        $sm->get(AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql::class),
                         $sm->get(AmazonTable\Product\Asin::class)
                     );
                 },
@@ -212,6 +213,9 @@ class Module
                         $sm->get(AmazonTable\BrowseNode::class),
                         $sm->get(AmazonTable\BrowseNodeHierarchy::class)
                     );
+                },
+                AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql::class => function ($sm) {
+                    return new AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql();
                 },
                 AmazonService\Api\SimilarProducts\Xml::class => function ($sm) {
                     $config = $sm->get('Config');

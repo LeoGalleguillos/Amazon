@@ -14,12 +14,16 @@ class ItemArrayTest extends TestCase
         $this->downloadBrowseNodeInfoArrayToMySqlServiceMock = $this->createMock(
             AmazonService\Api\Resources\BrowseNodeInfo\DownloadArrayToMySql::class
         );
+        $this->downloadItemInfoArrayToMySqlServiceMock = $this->createMock(
+            AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql::class
+        );
         $this->asinTableMock = $this->createMock(
             AmazonTable\Product\Asin::class
         );
 
         $this->itemArrayService = new AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray(
             $this->downloadBrowseNodeInfoArrayToMySqlServiceMock,
+            $this->downloadItemInfoArrayToMySqlServiceMock,
             $this->asinTableMock
         );
     }

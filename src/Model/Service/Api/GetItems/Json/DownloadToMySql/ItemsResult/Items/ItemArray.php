@@ -8,9 +8,11 @@ class ItemArray
 {
     public function __construct(
         AmazonService\Api\Resources\BrowseNodeInfo\DownloadArrayToMySql $downloadBrowseNodeInfoArrayToMySqlService,
+        AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql $downloadItemInfoArrayToMySqlService,
         AmazonTable\Product\Asin $asinTable
     ) {
         $this->downloadBrowseNodeInfoArrayToMySqlService = $downloadBrowseNodeInfoArrayToMySqlService;
+        $this->downloadItemInfoArrayToMySqlService       = $downloadItemInfoArrayToMySqlService;
         $this->asinTable                                 = $asinTable;
     }
 
@@ -23,6 +25,13 @@ class ItemArray
         if (isset($itemArray['BrowseNodeInfo'])) {
             $this->downloadBrowseNodeInfoArrayToMySqlService->downloadArrayToMySql(
                 $itemArray['BrowseNodeInfo'],
+                $productId
+            );
+        }
+
+        if (isset($itemArray['ItemInfo'])) {
+            $this->downloadItemInfoArrayToMySqlService->downloadArrayToMySql(
+                $itemArray['ItemInfo'],
                 $productId
             );
         }
