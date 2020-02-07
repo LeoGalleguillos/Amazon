@@ -4,6 +4,7 @@ namespace LeoGalleguillos\Amazon;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
+use LeoGalleguillos\Amazon\Model\TableGateway as AmazonTableGateway;
 use LeoGalleguillos\Amazon\View\Helper as AmazonHelper;
 use LeoGalleguillos\Hashtag\Model\Service as HashtagService;
 use LeoGalleguillos\Image\Model\Factory as ImageFactory;
@@ -215,7 +216,9 @@ class Module
                     );
                 },
                 AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql::class => function ($sm) {
-                    return new AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql();
+                    return new AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql(
+                        $sm->get(AmazonTableGateway\Product::class)
+                    );
                 },
                 AmazonService\Api\SimilarProducts\Xml::class => function ($sm) {
                     $config = $sm->get('Config');
@@ -713,6 +716,12 @@ class Module
                         $sm->get('amazon')
                     );
                 },
+                AmazonTableGateway\Product::class => function($sm) {
+                    return new AmazonTableGateway\Product(
+                        'product',
+                        $sm->get('amazon')
+                    );
+                }
             ],
         ];
     }

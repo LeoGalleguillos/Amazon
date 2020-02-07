@@ -2,12 +2,14 @@
 namespace LeoGalleguillos\Amazon\Model\Service\Api\Resources\ItemInfo;
 
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
-use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
+use LeoGalleguillos\Amazon\Model\TableGateway as AmazonTableGateway;
 
 class DownloadArrayToMySql
 {
     public function __construct(
+        AmazonTableGateway\Product $productTableGateway
     ) {
+        $this->productTableGateway = $productTableGateway;
     }
 
     public function downloadArrayToMySql(
