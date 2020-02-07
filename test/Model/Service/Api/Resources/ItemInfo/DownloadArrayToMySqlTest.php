@@ -24,7 +24,8 @@ class DownloadArrayToMySqlTest extends TestCase
             ->method('update')
             ->with(
                 [
-                    'color' => 'BLACK',
+                    'color'            => 'BLACK',
+                    'is_adult_product' => 0,
                 ],
                 ['product_id' => 12345]
             );
