@@ -5,7 +5,7 @@ CREATE TABLE `product` (
   `product_group` varchar(255) NOT NULL,
   `binding` varchar(255) DEFAULT NULL,
   `brand` varchar(255) DEFAULT NULL,
-  `color` varchar(255) DEFAULT NULL,
+  `color` varchar(512) DEFAULT NULL,
   `is_adult_product` tinyint(1) unsigned DEFAULT NULL,
   `height_value` float(16,2) DEFAULT NULL,
   `height_units` varchar(16) DEFAULT NULL,
