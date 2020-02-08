@@ -58,6 +58,16 @@ class Product
     protected $hiResImages;
 
     /**
+     * @var string
+     */
+    protected $heightUnits;
+
+    /**
+     * @var float
+     */
+    protected $heightValue;
+
+    /**
      * @var DateTime
      */
     protected $hiResImagesRetrieved;
@@ -66,6 +76,16 @@ class Product
      * @var bool
      */
     protected $isAdultProduct;
+
+    /**
+     * @var string
+     */
+    protected $lengthUnits;
+
+    /**
+     * @var float
+     */
+    protected $lengthValue;
 
     /**
      * @var float
@@ -107,6 +127,26 @@ class Product
      */
     protected $videoGenerated;
 
+    /**
+     * @var string
+     */
+    protected $weightUnits;
+
+    /**
+     * @var float
+     */
+    protected $weightValue;
+
+    /**
+     * @var string
+     */
+    protected $widthUnits;
+
+    /**
+     * @var float
+     */
+    protected $widthValue;
+
     public function getAsin(): string
     {
         return $this->asin;
@@ -137,6 +177,16 @@ class Product
         return $this->features;
     }
 
+    public function getHeightUnits(): string
+    {
+        return $this->heightUnits;
+    }
+
+    public function getHeightValue(): float
+    {
+        return $this->heightValue;
+    }
+
     public function getHiResImages(): array
     {
         return $this->hiResImages;
@@ -150,6 +200,16 @@ class Product
     public function getIsAdultProduct(): bool
     {
         return $this->isAdultProduct;
+    }
+
+    public function getLengthUnits(): string
+    {
+        return $this->lengthUnits;
+    }
+
+    public function getLengthValue(): float
+    {
+        return $this->lengthValue;
     }
 
     public function getListPrice(): float
@@ -185,6 +245,26 @@ class Product
     public function getVideoGenerated(): DateTime
     {
         return $this->videoGenerated;
+    }
+
+    public function getWeightUnits(): string
+    {
+        return $this->weightUnits;
+    }
+
+    public function getWeightValue(): float
+    {
+        return $this->weightValue;
+    }
+
+    public function getWidthUnits(): string
+    {
+        return $this->widthUnits;
+    }
+
+    public function getWidthValue(): float
+    {
+        return $this->widthValue;
     }
 
     public function setAsin(string $asin): AmazonEntity\Product
@@ -225,6 +305,18 @@ class Product
         return $this;
     }
 
+    public function setHeightUnits(string $heightUnits): self
+    {
+        $this->heightUnits = $heightUnits;
+        return $this;
+    }
+
+    public function setHeightValue(float $heightValue): self
+    {
+        $this->heightValue = $heightValue;
+        return $this;
+    }
+
     public function setHiResImages(array $hiResImages): AmazonEntity\Product
     {
         $this->hiResImages = $hiResImages;
@@ -240,6 +332,18 @@ class Product
     public function setIsAdultProduct(bool $isAdultProduct): self
     {
         $this->isAdultProduct = $isAdultProduct;
+        return $this;
+    }
+
+    public function setLengthUnits(string $lengthUnits): self
+    {
+        $this->lengthUnits = $lengthUnits;
+        return $this;
+    }
+
+    public function setLengthValue(float $lengthValue): self
+    {
+        $this->lengthValue = $lengthValue;
         return $this;
     }
 
@@ -284,6 +388,30 @@ class Product
     public function setVideoGenerated(DateTime $videoGenerated): AmazonEntity\Product
     {
         $this->videoGenerated = $videoGenerated;
+        return $this;
+    }
+
+    public function setWeightUnits(string $weightUnits): self
+    {
+        $this->weightUnits = $weightUnits;
+        return $this;
+    }
+
+    public function setWeightValue(float $weightValue): self
+    {
+        $this->weightValue = $weightValue;
+        return $this;
+    }
+
+    public function setWidthUnits(string $widthUnits): self
+    {
+        $this->widthUnits = $widthUnits;
+        return $this;
+    }
+
+    public function setWidthValue(float $widthValue): self
+    {
+        $this->widthValue = $widthValue;
         return $this;
     }
 }

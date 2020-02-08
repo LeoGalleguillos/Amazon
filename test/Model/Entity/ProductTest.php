@@ -42,6 +42,26 @@ class ProductTest extends TestCase
             $this->productEntity->getColor()
         );
 
+        $heightUnits = 'Centimeters';
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setHeightUnits($heightUnits)
+        );
+        $this->assertSame(
+            $heightUnits,
+            $this->productEntity->getHeightUnits()
+        );
+
+        $heightValue = 3.14159;
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setHeightValue($heightValue)
+        );
+        $this->assertSame(
+            $heightValue,
+            $this->productEntity->getHeightValue()
+        );
+
         $isAdultProduct = false;
         $this->assertSame(
             $this->productEntity,
@@ -60,6 +80,66 @@ class ProductTest extends TestCase
         $this->assertSame(
             $imageEntity,
             $this->productEntity->getPrimaryImage()
+        );
+
+        $lengthUnits = 'Inches';
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setLengthUnits($lengthUnits)
+        );
+        $this->assertSame(
+            $lengthUnits,
+            $this->productEntity->getLengthUnits()
+        );
+
+        $lengthValue = 2.718;
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setLengthValue($lengthValue)
+        );
+        $this->assertSame(
+            $lengthValue,
+            $this->productEntity->getLengthValue()
+        );
+
+        $weightUnits = 'Pounds';
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setWeightUnits($weightUnits)
+        );
+        $this->assertSame(
+            $weightUnits,
+            $this->productEntity->getWeightUnits()
+        );
+
+        $weightValue = 50.5;
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setWeightValue($weightValue)
+        );
+        $this->assertSame(
+            $weightValue,
+            $this->productEntity->getWeightValue()
+        );
+
+        $widthUnits = 'Feet';
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setWidthUnits($widthUnits)
+        );
+        $this->assertSame(
+            $widthUnits,
+            $this->productEntity->getWidthUnits()
+        );
+
+        $widthValue = 7.0;
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setWidthValue($widthValue)
+        );
+        $this->assertSame(
+            $widthValue,
+            $this->productEntity->getWidthValue()
         );
     }
 }
