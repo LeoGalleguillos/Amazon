@@ -58,6 +58,18 @@ class Product
                  , `product`.`binding`
                  , `product`.`brand`
                  , `product`.`color`
+                 , `product`.`is_adult_product`
+                 , `product`.`height_value`
+                 , `product`.`height_units`
+                 , `product`.`length_value`
+                 , `product`.`length_units`
+                 , `product`.`weight_value`
+                 , `product`.`weight_units`
+                 , `product`.`width_value`
+                 , `product`.`width_units`
+                 , `product`.`released`
+                 , `product`.`size`
+                 , `product`.`unit_count`
                  , `product`.`list_price`
                  , `product`.`modified`
                  , `product`.`hi_res_images_retrieved`
