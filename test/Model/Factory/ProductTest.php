@@ -39,14 +39,15 @@ class ProductTest extends TestCase
     public function testBuildFromArray()
     {
         $array = [
-            'product_id'    => '12345',
-            'asin'          => 'ASIN',
-            'title'         => 'Title',
-            'list_price'    => '1.23',
-            'product_group' => 'Product Group',
-            'Binding'       => 'Binding',
-            'Brand'         => 'Brand',
-            'color'         => 'Red',
+            'product_id'       => '12345',
+            'asin'             => 'ASIN',
+            'title'            => 'Title',
+            'list_price'       => '1.23',
+            'product_group'    => 'Product Group',
+            'Binding'          => 'Binding',
+            'Brand'            => 'Brand',
+            'color'            => 'Red',
+            'is_adult_product' => false,
         ];
         $productEntity = $this->productFactory->buildFromArray($array);
 
@@ -57,6 +58,10 @@ class ProductTest extends TestCase
         $this->assertSame(
             'Red',
             $productEntity->getColor()
+        );
+        $this->assertSame(
+            false,
+            $productEntity->getIsAdultProduct()
         );
     }
 }

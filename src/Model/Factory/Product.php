@@ -65,6 +65,12 @@ class Product
             );
         }
 
+        if (isset($productArray['is_adult_product'])) {
+            $productEntity->setIsAdultProduct(
+                $productArray['is_adult_product']
+            );
+        }
+
         if (isset($productArray['hi_res_images_retrieved'])) {
             $productEntity->setHiResImagesRetrieved(
                 new DateTime($productArray['hi_res_images_retrieved'])
