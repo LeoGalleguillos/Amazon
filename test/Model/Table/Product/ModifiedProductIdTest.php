@@ -25,10 +25,10 @@ class ModifiedProductIdTest extends TableTestCase
         $this->createTable('product');
     }
 
-    public function testSelectAsinOrderByModifiedIsNullDescModifiedAscProductIdAscLimitRowCount()
+    public function testSelectAsinOrderByModifiedAscProductIdAscLimitRowCount()
     {
         $generator = $this->modifiedProductIdTable
-            ->selectAsinOrderByModifiedIsNullDescModifiedAscProductIdAscLimitRowCount(0);
+            ->selectAsinOrderByModifiedAscProductIdAscLimitRowCount(0);
         $this->assertEmpty(
             iterator_to_array($generator)
         );
@@ -43,7 +43,7 @@ class ModifiedProductIdTest extends TableTestCase
         );
 
         $generator = $this->modifiedProductIdTable
-            ->selectAsinOrderByModifiedIsNullDescModifiedAscProductIdAscLimitRowCount(1);
+            ->selectAsinOrderByModifiedAscProductIdAscLimitRowCount(1);
         $this->assertCount(
             1,
             iterator_to_array($generator)
@@ -67,7 +67,7 @@ class ModifiedProductIdTest extends TableTestCase
         );
 
         $generator = $this->modifiedProductIdTable
-            ->selectAsinOrderByModifiedIsNullDescModifiedAscProductIdAscLimitRowCount(2);
+            ->selectAsinOrderByModifiedAscProductIdAscLimitRowCount(2);
         $array = iterator_to_array($generator);
         $this->assertCount(
             2,
@@ -81,7 +81,7 @@ class ModifiedProductIdTest extends TableTestCase
         $this->asinTable->updateSetModifiedToUtcTimestampWhereAsin('ASIN001');
 
         $generator = $this->modifiedProductIdTable
-            ->selectAsinOrderByModifiedIsNullDescModifiedAscProductIdAscLimitRowCount(3);
+            ->selectAsinOrderByModifiedAscProductIdAscLimitRowCount(3);
         $array = iterator_to_array($generator);
         $this->assertCount(
             3,
