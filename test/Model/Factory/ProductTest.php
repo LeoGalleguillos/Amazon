@@ -1,9 +1,9 @@
 <?php
 namespace LeoGalleguillos\AmazonTest\Model\Factory;
 
+use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
-use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Image\Model\Factory as ImageFactory;
 use PHPUnit\Framework\TestCase;
 
@@ -43,25 +43,38 @@ class ProductTest extends TestCase
             'asin'             => 'ASIN',
             'title'            => 'Title',
             'list_price'       => '1.23',
-            'product_group'    => 'Product Group',
-            'Binding'          => 'Binding',
-            'Brand'            => 'Brand',
             'color'            => 'Red',
-            'is_adult_product' => false,
+            'is_adult_product' => '0',
+            'height_units'     => 'inches',
+            'height_value'     => '1.0',
+            'length_units'     => 'cm',
+            'length_value'     => '3.14159',
+            'weight_units'     => 'LBS',
+            'weight_value'     => '1000',
+            'width_units'      => 'feet',
+            'width_value'      => '10.0',
         ];
-        $productEntity = $this->productFactory->buildFromArray($array);
+        $productEntity = (new AmazonEntity\Product())
+            ->setAsin('ASIN')
+            ->setColor('Red')
+            ->setIsAdultProduct(false)
+            ->setHeightUnits('inches')
+            ->setHeightValue('1.0')
+            ->setLengthUnits('cm')
+            ->setLengthValue('3.14159')
+            ->setProductId('12345')
+            ->setListPrice('1.23')
+            ->setTitle('Title')
+            ->setWeightUnits('LBS')
+            ->setWeightValue('1000')
+            ->setWidthUnits('feet')
+            ->setWidthValue('10.0')
+            ;
 
-        $this->assertSame(
-            'ASIN',
-            $productEntity->getAsin()
+        $this->assertEquals(
+            $productEntity,
+            $this->productFactory->buildFromArray($array)
         );
-        $this->assertSame(
-            'Red',
-            $productEntity->getColor()
-        );
-        $this->assertSame(
-            false,
-            $productEntity->getIsAdultProduct()
-        );
+
     }
 }

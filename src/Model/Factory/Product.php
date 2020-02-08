@@ -43,11 +43,13 @@ class Product
                       ->setProductId($productArray['product_id'])
                       ->setTitle($productArray['title']);
 
-        $productEntity->setProductGroup(
-            $this->productGroupFactory->buildFromArray([
-                'name' => $productArray['product_group']
-            ])
-        );
+        if (isset($productArray['product_group'])) {
+            $productEntity->setProductGroup(
+                $this->productGroupFactory->buildFromArray([
+                    'name' => $productArray['product_group']
+                ])
+            );
+        }
 
         if (isset($productArray['binding'])) {
             $productEntity->binding = $productArray['binding'];
@@ -65,9 +67,27 @@ class Product
             );
         }
 
-        if (isset($productArray['is_adult_product'])) {
-            $productEntity->setIsAdultProduct(
-                $productArray['is_adult_product']
+        if (isset($productArray['height_units'])) {
+            $productEntity->setHeightUnits(
+                $productArray['height_units']
+            );
+        }
+
+        if (isset($productArray['height_value'])) {
+            $productEntity->setHeightValue(
+                $productArray['height_value']
+            );
+        }
+
+        if (isset($productArray['length_units'])) {
+            $productEntity->setLengthUnits(
+                $productArray['length_units']
+            );
+        }
+
+        if (isset($productArray['length_value'])) {
+            $productEntity->setLengthValue(
+                $productArray['length_value']
             );
         }
 
@@ -77,9 +97,39 @@ class Product
             );
         }
 
+        if (isset($productArray['is_adult_product'])) {
+            $productEntity->setIsAdultProduct(
+                $productArray['is_adult_product']
+            );
+        }
+
         if (isset($productArray['video_generated'])) {
             $productEntity->setVideoGenerated(
                 new DateTime($productArray['video_generated'])
+            );
+        }
+
+        if (isset($productArray['weight_units'])) {
+            $productEntity->setWeightUnits(
+                $productArray['weight_units']
+            );
+        }
+
+        if (isset($productArray['weight_value'])) {
+            $productEntity->setWeightValue(
+                $productArray['weight_value']
+            );
+        }
+
+        if (isset($productArray['width_units'])) {
+            $productEntity->setWidthUnits(
+                $productArray['width_units']
+            );
+        }
+
+        if (isset($productArray['width_value'])) {
+            $productEntity->setWidthValue(
+                $productArray['width_value']
             );
         }
 
