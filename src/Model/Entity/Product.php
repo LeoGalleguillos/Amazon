@@ -63,6 +63,11 @@ class Product
     protected $hiResImagesRetrieved;
 
     /**
+     * @var bool
+     */
+    protected $isAdultProduct;
+
+    /**
      * @var float
      */
     public $listPrice;
@@ -140,6 +145,11 @@ class Product
     public function getHiResImagesRetrieved(): DateTime
     {
         return $this->hiResImagesRetrieved;
+    }
+
+    public function getIsAdultProduct(): bool
+    {
+        return $this->isAdultProduct;
     }
 
     public function getListPrice(): float
@@ -224,6 +234,12 @@ class Product
     public function setHiResImagesRetrieved(DateTime $hiResImagesRetrieved): AmazonEntity\Product
     {
         $this->hiResImagesRetrieved = $hiResImagesRetrieved;
+        return $this;
+    }
+
+    public function setIsAdultProduct(bool $isAdultProduct): self
+    {
+        $this->isAdultProduct = $isAdultProduct;
         return $this;
     }
 

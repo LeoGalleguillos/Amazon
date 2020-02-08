@@ -42,6 +42,16 @@ class ProductTest extends TestCase
             $this->productEntity->getColor()
         );
 
+        $isAdultProduct = false;
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setIsAdultProduct($isAdultProduct)
+        );
+        $this->assertSame(
+            $isAdultProduct,
+            $this->productEntity->getIsAdultProduct()
+        );
+
         $imageEntity = new ImageEntity\Image();
         $this->assertSame(
             $this->productEntity,
