@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\AmazonTest\Model\Factory;
 
+use DateTime;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
@@ -53,6 +54,7 @@ class ProductTest extends TestCase
             'weight_value'     => '1000',
             'width_units'      => 'feet',
             'width_value'      => '10.0',
+            'released'         => '2020-02-08 12:12:45',
         ];
         $productEntity = (new AmazonEntity\Product())
             ->setAsin('ASIN')
@@ -64,6 +66,7 @@ class ProductTest extends TestCase
             ->setLengthValue('3.14159')
             ->setProductId('12345')
             ->setListPrice('1.23')
+            ->setReleased(new DateTime('2020-02-08 12:12:45'))
             ->setTitle('Title')
             ->setWeightUnits('LBS')
             ->setWeightValue('1000')

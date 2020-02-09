@@ -36,12 +36,12 @@ class Product
     public function buildFromArray(
         array $productArray
     ) {
-        $productEntity = new AmazonEntity\Product();
-
-        $productEntity->setAsin($productArray['asin'])
-                      ->setListPrice($productArray['list_price'])
-                      ->setProductId($productArray['product_id'])
-                      ->setTitle($productArray['title']);
+        $productEntity = (new AmazonEntity\Product())
+            ->setAsin($productArray['asin'])
+            ->setListPrice($productArray['list_price'])
+            ->setProductId($productArray['product_id'])
+            ->setTitle($productArray['title'])
+            ;
 
         if (isset($productArray['product_group'])) {
             $productEntity->setProductGroup(
@@ -100,6 +100,12 @@ class Product
         if (isset($productArray['is_adult_product'])) {
             $productEntity->setIsAdultProduct(
                 $productArray['is_adult_product']
+            );
+        }
+
+        if (isset($productArray['released'])) {
+            $productEntity->setReleased(
+                new DateTime($productArray['released'])
             );
         }
 
