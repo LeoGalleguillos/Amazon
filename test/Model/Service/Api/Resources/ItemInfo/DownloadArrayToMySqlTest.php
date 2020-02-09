@@ -36,6 +36,7 @@ class DownloadArrayToMySqlTest extends TestCase
                         'weight_units'     => 'Pounds',
                         'width_value'      => 2.8,
                         'width_units'      => 'Inches',
+                        'released'         => '2019-05-22 01:00:01',
                     ],
                     ['product_id' => 12345]
                 )
@@ -178,7 +179,7 @@ class DownloadArrayToMySqlTest extends TestCase
             ),
             'ReleaseDate' =>
             array (
-              'DisplayValue' => '2019-05-22T00:00:01Z',
+              'DisplayValue' => '2019-05-22T01:00:01Z',
               'Label' => 'ReleaseDate',
               'Locale' => 'en_US',
             ),

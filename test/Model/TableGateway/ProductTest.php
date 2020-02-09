@@ -30,6 +30,7 @@ class ProductTest extends TableTestCase
                 'weight_units'     => 'Pounds',
                 'width_value'      => 2.8,
                 'width_units'      => 'Inches',
+                'released'         => '2019-05-22 01:00:01',
             ],
             ['product_id' => 12345]
         );

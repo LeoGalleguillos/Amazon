@@ -42,6 +42,12 @@ class DownloadArrayToMySql
                     : null,
                     'width_units' => $itemInfoArray['ProductInfo']['ItemDimensions']['Width']['Unit']
                     ?? null,
+                'released' => isset($itemInfoArray['ProductInfo']['ReleaseDate']['DisplayValue'])
+                    ? date(
+                        'Y-m-d H:i:s',
+                        strtotime($itemInfoArray['ProductInfo']['ReleaseDate']['DisplayValue'])
+                      )
+                    : null,
             ],
             ['product_id' => $productId]
         );
