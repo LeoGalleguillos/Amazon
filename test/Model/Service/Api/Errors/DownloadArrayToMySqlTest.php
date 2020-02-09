@@ -24,10 +24,10 @@ class DownloadArrayToMySqlTest extends TestCase
     {
         $this->asinTableMock
             ->expects($this->exactly(2))
-            ->method('updateSetInvalidWhereAsin')
+            ->method('updateSetIsValidWhereAsin')
             ->withConsecutive(
-                [1, 'B00388Q3WU'],
-                [1, 'B071K8P186']
+                [0, 'B00388Q3WU'],
+                [0, 'B071K8P186']
             );
 
         $this->downloadArrayToMySqlService->downloadArrayToMySql(

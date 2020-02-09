@@ -74,7 +74,7 @@ class Product
                  , `product`.`modified`
                  , `product`.`hi_res_images_retrieved`
                  , `product`.`video_generated`
-                 , `product`.`invalid`
+                 , `product`.`is_valid`
         ';
     }
 

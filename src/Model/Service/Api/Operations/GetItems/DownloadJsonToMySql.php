@@ -34,7 +34,7 @@ class DownloadJsonToMySql
             foreach ($itemsArray as $itemArray) {
                 $asin = $itemArray['ASIN'];
 
-                $this->asinTable->updateSetInvalidWhereAsin(0, $asin);
+                $this->asinTable->updateSetIsValidWhereAsin(1, $asin);
 
                 $this->itemArrayService->downloadToMySql(
                     $itemArray

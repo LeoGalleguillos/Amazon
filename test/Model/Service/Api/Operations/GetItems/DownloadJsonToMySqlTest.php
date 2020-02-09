@@ -36,7 +36,7 @@ class DownloadJsonToMySqlTest extends TestCase
 
         $this->asinTableMock
             ->expects($this->exactly(0))
-            ->method('updateSetInvalidWhereAsin');
+            ->method('updateSetIsValidWhereAsin');
 
         $this->itemArrayServiceMock
             ->expects($this->exactly(0))
@@ -56,11 +56,11 @@ class DownloadJsonToMySqlTest extends TestCase
 
         $this->asinTableMock
             ->expects($this->exactly(3))
-            ->method('updateSetInvalidWhereAsin')
+            ->method('updateSetIsValidWhereAsin')
             ->withConsecutive(
-                [0, 'B009UOMNE8'],
-                [0, 'B07MMZ2LTB'],
-                [0, 'B07D5J6Z2C']
+                [1, 'B009UOMNE8'],
+                [1, 'B07MMZ2LTB'],
+                [1, 'B07D5J6Z2C']
             );
 
         $this->itemArrayServiceMock
@@ -81,11 +81,11 @@ class DownloadJsonToMySqlTest extends TestCase
 
         $this->asinTableMock
             ->expects($this->exactly(3))
-            ->method('updateSetInvalidWhereAsin')
+            ->method('updateSetIsValidWhereAsin')
             ->withConsecutive(
-                [0, 'B07MMZ2LTB'],
-                [0, 'B00B0PIXIK'],
-                [0, 'B002LVAC5Y']
+                [1, 'B07MMZ2LTB'],
+                [1, 'B00B0PIXIK'],
+                [1, 'B002LVAC5Y']
             );
 
         $this->itemArrayServiceMock

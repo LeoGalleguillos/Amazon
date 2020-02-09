@@ -20,8 +20,8 @@ class DownloadArrayToMySql
                 && (preg_match($pattern, $errorArray['Message'], $matches))
             ) {
                 $asin = $matches[1];
-                $this->asinTable->updateSetInvalidWhereAsin(
-                    1,
+                $this->asinTable->updateSetIsValidWhereAsin(
+                    0,
                     $asin
                 );
             }

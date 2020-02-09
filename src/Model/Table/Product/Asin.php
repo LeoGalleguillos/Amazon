@@ -73,16 +73,16 @@ class Asin
             ->getAffectedRows();
     }
 
-    public function updateSetInvalidWhereAsin(int $invalid, string $asin): int
+    public function updateSetIsValidWhereAsin(int $isValid, string $asin): int
     {
         $sql = '
             UPDATE `product`
-               SET `invalid` = ?
+               SET `is_valid` = ?
              WHERE `asin` = ?
                  ;
         ';
         $parameters = [
-            $invalid,
+            $isValid,
             $asin,
         ];
         return (int) $this->adapter

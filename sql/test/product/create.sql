@@ -24,7 +24,7 @@ CREATE TABLE `product` (
   `hi_res_images_retrieved` datetime DEFAULT NULL,
   `similar_retrieved` datetime DEFAULT NULL,
   `video_generated` datetime DEFAULT NULL,
-  `invalid` tinyint(1) unsigned DEFAULT NULL,
+  `is_valid` tinyint(1) unsigned DEFAULT NULL,
   PRIMARY KEY (`product_id`),
   UNIQUE KEY `asin` (`asin`),
   KEY `product_group_modified` (`product_group`,`modified`),
@@ -38,6 +38,5 @@ CREATE TABLE `product` (
   KEY `modified_product_id` (`modified`, `product_id`),
   KEY `hi_res_images_retrieved_video_generated_created` (`hi_res_images_retrieved`,`video_generated`, `created`),
   KEY `similar_retrieved_created` (`similar_retrieved`, `created`),
-  KEY `video_generated_created` (`video_generated`, `created`),
-  KEY `invalid` (`invalid`)
+  KEY `video_generated_created` (`video_generated`, `created`)
 ) ENGINE=InnoDB CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
