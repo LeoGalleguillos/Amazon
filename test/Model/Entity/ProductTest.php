@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\AmazonTest\Model\Entity;
 
+use DateTime;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Image\Model\Entity as ImageEntity;
 use PHPUnit\Framework\TestCase;
@@ -100,6 +101,16 @@ class ProductTest extends TestCase
         $this->assertSame(
             $lengthValue,
             $this->productEntity->getLengthValue()
+        );
+
+        $released = new DateTime('1983-10-22 19:45:01');
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setReleased($released)
+        );
+        $this->assertSame(
+            $released,
+            $this->productEntity->getReleased()
         );
 
         $weightUnits = 'Pounds';

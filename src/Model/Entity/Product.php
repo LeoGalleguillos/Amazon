@@ -113,6 +113,11 @@ class Product
     public $primaryImage;
 
     /**
+     * @var DateTime
+     */
+    protected $released;
+
+    /**
      * @var string
      */
     protected $title;
@@ -230,6 +235,11 @@ class Product
     public function getPrimaryImage(): ImageEntity\Image
     {
         return $this->primaryImage;
+    }
+
+    public function getReleased(): DateTime
+    {
+        return $this->released;
     }
 
     public function getTitle() : string
@@ -370,6 +380,12 @@ class Product
         AmazonEntity\ProductGroup $productGroup
     ): AmazonEntity\Product {
         $this->productGroup = $productGroup;
+        return $this;
+    }
+
+    public function setReleased(DateTime $released): self
+    {
+        $this->released = $released;
         return $this;
     }
 
