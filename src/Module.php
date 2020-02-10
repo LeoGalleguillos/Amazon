@@ -569,8 +569,8 @@ class Module
                         $sm->get('amazon')
                     );
                 },
-                AmazonTable\Product\ModifiedProductId::class => function ($sm) {
-                    return new AmazonTable\Product\ModifiedProductId(
+                AmazonTable\Product\IsValidModifiedProductId::class => function ($sm) {
+                    return new AmazonTable\Product\IsValidModifiedProductId(
                         $sm->get('amazon')
                     );
                 },

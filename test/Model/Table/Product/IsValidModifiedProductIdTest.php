@@ -5,7 +5,7 @@ use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
 use LeoGalleguillos\Test\TableTestCase as TableTestCase;
 
-class ModifiedProductIdTest extends TableTestCase
+class IsValidModifiedProductIdTest extends TableTestCase
 {
     protected function setUp()
     {
@@ -17,18 +17,17 @@ class ModifiedProductIdTest extends TableTestCase
             $this->getAdapter(),
             $this->productTable
         );
-        $this->modifiedProductIdTable = new AmazonTable\Product\ModifiedProductId(
+        $this->isValidModifiedProductIdTable = new AmazonTable\Product\IsValidModifiedProductId(
             $this->getAdapter()
         );
 
-        $this->dropTable('product');
-        $this->createTable('product');
+        $this->dropAndCreateTable('product');
     }
 
-    public function testSelectAsinOrderByModifiedAscProductIdAscLimitRowCount()
+    public function testSelectAsinWhereIsValidIsNullOrIsValidIs1()
     {
-        $generator = $this->modifiedProductIdTable
-            ->selectAsinOrderByModifiedAscProductIdAscLimitRowCount(0);
+        $generator = $this->isValidModifiedProductIdTable
+            ->selectAsinWhereIsValidIsNullOrIsValidIs1(0);
         $this->assertEmpty(
             iterator_to_array($generator)
         );
@@ -42,8 +41,8 @@ class ModifiedProductIdTest extends TableTestCase
             4.99
         );
 
-        $generator = $this->modifiedProductIdTable
-            ->selectAsinOrderByModifiedAscProductIdAscLimitRowCount(1);
+        $generator = $this->isValidModifiedProductIdTable
+            ->selectAsinWhereIsValidIsNullOrIsValidIs1(1);
         $this->assertCount(
             1,
             iterator_to_array($generator)
@@ -66,8 +65,8 @@ class ModifiedProductIdTest extends TableTestCase
             4.99
         );
 
-        $generator = $this->modifiedProductIdTable
-            ->selectAsinOrderByModifiedAscProductIdAscLimitRowCount(2);
+        $generator = $this->isValidModifiedProductIdTable
+            ->selectAsinWhereIsValidIsNullOrIsValidIs1(2);
         $array = iterator_to_array($generator);
         $this->assertCount(
             2,
@@ -80,8 +79,8 @@ class ModifiedProductIdTest extends TableTestCase
 
         $this->asinTable->updateSetModifiedToUtcTimestampWhereAsin('ASIN001');
 
-        $generator = $this->modifiedProductIdTable
-            ->selectAsinOrderByModifiedAscProductIdAscLimitRowCount(3);
+        $generator = $this->isValidModifiedProductIdTable
+            ->selectAsinWhereIsValidIsNullOrIsValidIs1(3);
         $array = iterator_to_array($generator);
         $this->assertCount(
             3,
@@ -90,6 +89,20 @@ class ModifiedProductIdTest extends TableTestCase
         $this->assertSame(
             'ASIN001',
             $array[2]['asin']
+        );
+
+        $this->asinTable->updateSetIsValidWhereAsin(0, 'ASIN001');
+
+        $generator = $this->isValidModifiedProductIdTable
+            ->selectAsinWhereIsValidIsNullOrIsValidIs1(3);
+        $array = iterator_to_array($generator);
+        $this->assertCount(
+            2,
+            $array
+        );
+        $this->assertSame(
+            'ASIN003',
+            $array[1]['asin']
         );
     }
 }

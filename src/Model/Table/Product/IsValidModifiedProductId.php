@@ -4,7 +4,7 @@ namespace LeoGalleguillos\Amazon\Model\Table\Product;
 use Generator;
 use Zend\Db\Adapter\Adapter;
 
-class ModifiedProductId
+class IsValidModifiedProductId
 {
     /**
      * @var Adapter
@@ -17,12 +17,13 @@ class ModifiedProductId
         $this->adapter = $adapter;
     }
 
-    public function selectAsinOrderByModifiedAscProductIdAscLimitRowCount(
+    public function selectAsinWhereIsValidIsNullOrIsValidIs1(
         int $limitRowCount
     ): Generator {
         $sql = '
             SELECT `asin`
               FROM `product`
+             WHERE `is_valid` IS NULL OR `is_valid` = 1
              ORDER
                 BY `modified` ASC
                  , `product_id` ASC
