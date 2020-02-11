@@ -17,13 +17,17 @@ class IsValidModifiedProductId
         $this->adapter = $adapter;
     }
 
-    public function selectAsinWhereIsValidIsNullOrIsValidIs1LimitRowCount(
+    /**
+     * This method can be deprecated once all `is_valid` values are updated to
+     * either 1 or 0.
+     */
+    public function selectAsinWhereIsValidIsNullLimitRowCount(
         int $limitRowCount
     ): Generator {
         $sql = '
             SELECT `asin`
               FROM `product`
-             WHERE `is_valid` IS NULL OR `is_valid` = 1
+             WHERE `is_valid` IS NULL
              ORDER
                 BY `modified` ASC
                  , `product_id` ASC

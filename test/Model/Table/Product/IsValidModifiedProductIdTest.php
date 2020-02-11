@@ -24,10 +24,10 @@ class IsValidModifiedProductIdTest extends TableTestCase
         $this->dropAndCreateTable('product');
     }
 
-    public function testselectAsinWhereIsValidIsNullOrIsValidIs1LimitRowCount()
+    public function testSelectAsinWhereIsValidIsNullLimitRowCount()
     {
         $generator = $this->isValidModifiedProductIdTable
-            ->selectAsinWhereIsValidIsNullOrIsValidIs1LimitRowCount(0);
+            ->selectAsinWhereIsValidIsNullLimitRowCount(0);
         $this->assertEmpty(
             iterator_to_array($generator)
         );
@@ -42,7 +42,7 @@ class IsValidModifiedProductIdTest extends TableTestCase
         );
 
         $generator = $this->isValidModifiedProductIdTable
-            ->selectAsinWhereIsValidIsNullOrIsValidIs1LimitRowCount(1);
+            ->selectAsinWhereIsValidIsNullLimitRowCount(1);
         $this->assertCount(
             1,
             iterator_to_array($generator)
@@ -66,7 +66,7 @@ class IsValidModifiedProductIdTest extends TableTestCase
         );
 
         $generator = $this->isValidModifiedProductIdTable
-            ->selectAsinWhereIsValidIsNullOrIsValidIs1LimitRowCount(2);
+            ->selectAsinWhereIsValidIsNullLimitRowCount(2);
         $array = iterator_to_array($generator);
         $this->assertCount(
             2,
@@ -80,7 +80,7 @@ class IsValidModifiedProductIdTest extends TableTestCase
         $this->asinTable->updateSetModifiedToUtcTimestampWhereAsin('ASIN001');
 
         $generator = $this->isValidModifiedProductIdTable
-            ->selectAsinWhereIsValidIsNullOrIsValidIs1LimitRowCount(3);
+            ->selectAsinWhereIsValidIsNullLimitRowCount(3);
         $array = iterator_to_array($generator);
         $this->assertCount(
             3,
@@ -94,7 +94,7 @@ class IsValidModifiedProductIdTest extends TableTestCase
         $this->asinTable->updateSetIsValidWhereAsin(0, 'ASIN001');
 
         $generator = $this->isValidModifiedProductIdTable
-            ->selectAsinWhereIsValidIsNullOrIsValidIs1LimitRowCount(3);
+            ->selectAsinWhereIsValidIsNullLimitRowCount(3);
         $array = iterator_to_array($generator);
         $this->assertCount(
             2,
