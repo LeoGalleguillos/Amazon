@@ -109,6 +109,12 @@ class Product
             );
         }
 
+        if (isset($productArray['size'])) {
+            $productEntity->setSize(
+                $productArray['size']
+            );
+        }
+
         if (isset($productArray['video_generated'])) {
             $productEntity->setVideoGenerated(
                 new DateTime($productArray['video_generated'])
