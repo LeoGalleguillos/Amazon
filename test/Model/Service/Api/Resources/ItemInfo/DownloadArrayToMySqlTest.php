@@ -35,15 +35,16 @@ class DownloadArrayToMySqlTest extends TestCase
                     [
                         'color'            => 'RED',
                         'is_adult_product' => 0,
-                        'height_value'     => 2.8,
+                        'height_value'     => 18.6,
                         'height_units'     => 'Inches',
-                        'length_value'     => 1.34,
+                        'length_value'     => 187.5,
                         'length_units'     => 'Inches',
-                        'weight_value'     => 0.19,
+                        'weight_value'     => 95.0,
                         'weight_units'     => 'Pounds',
-                        'width_value'      => 2.8,
+                        'width_value'      => 42.0,
                         'width_units'      => 'Inches',
-                        'released'         => '2019-05-22 01:00:01',
+                        'released'         => null,
+                        'size'             => '15.6\'',
                     ],
                     ['product_id' => 12345]
                 )
@@ -54,149 +55,152 @@ class DownloadArrayToMySqlTest extends TestCase
         );
     }
 
-    protected function getArray()
+    protected function getArray(): array
     {
-        return array (
-          'ByLineInfo' =>
+      return array (
+        'ByLineInfo' =>
+        array (
+          'Brand' =>
           array (
-            'Brand' =>
-            array (
-              'DisplayValue' => 'Blink Home Security',
-              'Label' => 'Brand',
-              'Locale' => 'en_US',
-            ),
-            'Manufacturer' =>
-            array (
-              'DisplayValue' => 'Immedia',
-              'Label' => 'Manufacturer',
-              'Locale' => 'en_US',
-            ),
+            'DisplayValue' => 'SUNDOLPHIN',
+            'Label' => 'Brand',
+            'Locale' => 'en_US',
           ),
-          'Classifications' =>
+          'Manufacturer' =>
           array (
-            'Binding' =>
-            array (
-              'DisplayValue' => 'Electronics',
-              'Label' => 'Binding',
-              'Locale' => 'en_US',
-            ),
-            'ProductGroup' =>
-            array (
-              'DisplayValue' => 'VDO Devices',
-              'Label' => 'ProductGroup',
-              'Locale' => 'en_US',
-            ),
+            'DisplayValue' => 'KL Industries',
+            'Label' => 'Manufacturer',
+            'Locale' => 'en_US',
           ),
-          'ExternalIds' =>
+        ),
+        'Classifications' =>
+        array (
+          'Binding' =>
           array (
-            'EANs' =>
-            array (
-              'DisplayValues' =>
-              array (
-                0 => '0841667143910',
-              ),
-              'Label' => 'EAN',
-              'Locale' => 'en_US',
-            ),
-            'UPCs' =>
-            array (
-              'DisplayValues' =>
-              array (
-                0 => '841667143910',
-              ),
-              'Label' => 'UPC',
-              'Locale' => 'en_US',
-            ),
+            'DisplayValue' => 'Sports',
+            'Label' => 'Binding',
+            'Locale' => 'en_US',
           ),
-          'Features' =>
+          'ProductGroup' =>
+          array (
+            'DisplayValue' => 'Outdoors',
+            'Label' => 'ProductGroup',
+            'Locale' => 'en_US',
+          ),
+        ),
+        'ExternalIds' =>
+        array (
+          'EANs' =>
           array (
             'DisplayValues' =>
             array (
-              0 => 'Extended battery life – 2 year battery life on two AA lithium batteries with a combination of two-way talk, live view, and motion recording. Double the usage of the XT on a single set of batteries when recording video.',
-              1 => '2-way audio – Talk to visitors through the Blink app on your smartphone or tablet.',
-              2 => 'Customizable motion detection – Use activity zones to choose where motion is detected so you receive the alerts that matter.',
-              3 => 'Free cloud storage – Keep hundreds of clips stored up to a year with no monthly fees or service contract required.',
-              4 => 'Works with Alexa – View live streams, motion clips, or arm and disarm your system through select Alexa-enabled devices.',
-              5 => 'Day and night coverage – Record and view in up to 1080p HD video during the day and with infrared HD night vision after dark.',
-              6 => 'Use indoors/outdoors – Blink XT2 stands up to the elements. Place or mount it inside or outside for whole home security.',
-              7 => 'Easy setup – No tools, wiring, or professional installation required.',
+              0 => '0019862511203',
             ),
-            'Label' => 'Features',
+            'Label' => 'EAN',
             'Locale' => 'en_US',
           ),
-          'ManufactureInfo' =>
+          'UPCs' =>
           array (
-            'ItemPartNumber' =>
+            'DisplayValues' =>
             array (
-              'DisplayValue' => '53-020304',
-              'Label' => 'PartNumber',
-              'Locale' => 'en_US',
+              0 => '019862511203',
             ),
-            'Model' =>
-            array (
-              'DisplayValue' => 'BCM00200U',
-              'Label' => 'Model',
-              'Locale' => 'en_US',
-            ),
-          ),
-          'ProductInfo' =>
-          array (
-            'Color' =>
-            array (
-              'DisplayValue' => 'BLACK',
-              'Label' => 'Color',
-              'Locale' => 'en_US',
-            ),
-            'IsAdultProduct' =>
-            array (
-              'DisplayValue' => false,
-              'Label' => 'IsAdultProduct',
-              'Locale' => 'en_US',
-            ),
-            'ItemDimensions' =>
-            array (
-              'Height' =>
-              array (
-                'DisplayValue' => 2.8,
-                'Label' => 'Height',
-                'Locale' => 'en_US',
-                'Unit' => 'Inches',
-              ),
-              'Length' =>
-              array (
-                'DisplayValue' => 1.34,
-                'Label' => 'Length',
-                'Locale' => 'en_US',
-                'Unit' => 'Inches',
-              ),
-              'Weight' =>
-              array (
-                'DisplayValue' => 0.19,
-                'Label' => 'Weight',
-                'Locale' => 'en_US',
-                'Unit' => 'Pounds',
-              ),
-              'Width' =>
-              array (
-                'DisplayValue' => 2.8,
-                'Label' => 'Width',
-                'Locale' => 'en_US',
-                'Unit' => 'Inches',
-              ),
-            ),
-            'ReleaseDate' =>
-            array (
-              'DisplayValue' => '2019-05-22T01:00:01Z',
-              'Label' => 'ReleaseDate',
-              'Locale' => 'en_US',
-            ),
-          ),
-          'Title' =>
-          array (
-            'DisplayValue' => 'Blink XT2 Outdoor/Indoor Smart Security Camera with cloud storage included, 2-way audio, 2-year battery life – 1 camera kit',
-            'Label' => 'Title',
+            'Label' => 'UPC',
             'Locale' => 'en_US',
           ),
-        );
+        ),
+        'Features' =>
+        array (
+          'DisplayValues' =>
+          array (
+            0 => 'Ideal family recreational canoe with comfortable seating for three',
+            1 => 'Storage compartment and cooler under center seat',
+            2 => 'Bow and stern tie-down eyelets and built-in transport handles',
+            3 => 'Drink holders molded into every seat',
+            4 => 'Includes limited two-year manufacturer\'s warranty',
+          ),
+          'Label' => 'Features',
+          'Locale' => 'en_US',
+        ),
+        'ManufactureInfo' =>
+        array (
+          'ItemPartNumber' =>
+          array (
+            'DisplayValue' => '51120',
+            'Label' => 'PartNumber',
+            'Locale' => 'en_US',
+          ),
+          'Model' =>
+          array (
+            'DisplayValue' => '51120',
+            'Label' => 'Model',
+            'Locale' => 'en_US',
+          ),
+        ),
+        'ProductInfo' =>
+        array (
+          'Color' =>
+          array (
+            'DisplayValue' => 'Green',
+            'Label' => 'Color',
+            'Locale' => 'en_US',
+          ),
+          'IsAdultProduct' =>
+          array (
+            'DisplayValue' => false,
+            'Label' => 'IsAdultProduct',
+            'Locale' => 'en_US',
+          ),
+          'ItemDimensions' =>
+          array (
+            'Height' =>
+            array (
+              'DisplayValue' => 18.6,
+              'Label' => 'Height',
+              'Locale' => 'en_US',
+              'Unit' => 'Inches',
+            ),
+            'Length' =>
+            array (
+              'DisplayValue' => 187.5,
+              'Label' => 'Length',
+              'Locale' => 'en_US',
+              'Unit' => 'Inches',
+            ),
+            'Weight' =>
+            array (
+              'DisplayValue' => 95,
+              'Label' => 'Weight',
+              'Locale' => 'en_US',
+              'Unit' => 'Pounds',
+            ),
+            'Width' =>
+            array (
+              'DisplayValue' => 42,
+              'Label' => 'Width',
+              'Locale' => 'en_US',
+              'Unit' => 'Inches',
+            ),
+          ),
+          'Size' =>
+          array (
+            'DisplayValue' => '15.6\'',
+            'Label' => 'Size',
+            'Locale' => 'en_US',
+          ),
+          'UnitCount' =>
+          array (
+            'DisplayValue' => 1,
+            'Label' => 'NumberOfItems',
+            'Locale' => 'en_US',
+          ),
+        ),
+        'Title' =>
+        array (
+          'DisplayValue' => 'SUNDOLPHIN Sun Dolphin Mackinaw Canoe (Green, 15.6-Feet)',
+          'Label' => 'Title',
+          'Locale' => 'en_US',
+        ),
+      );
     }
 }

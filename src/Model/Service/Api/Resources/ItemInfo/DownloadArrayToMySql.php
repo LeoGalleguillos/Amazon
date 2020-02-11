@@ -50,6 +50,7 @@ class DownloadArrayToMySql
                         strtotime($itemInfoArray['ProductInfo']['ReleaseDate']['DisplayValue'])
                       )
                     : null,
+                'size' => $itemInfoArray['ProductInfo']['Size']['DisplayValue'] ?? null,
             ],
             ['product_id' => $productId]
         );
