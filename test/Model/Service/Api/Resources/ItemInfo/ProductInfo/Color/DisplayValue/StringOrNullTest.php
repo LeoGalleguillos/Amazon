@@ -14,14 +14,14 @@ class StringOrNullTest extends TestCase
 
     public function testGetStringOrNull()
     {
-        $productInfoArray = array();
+        $itemInfoArray = array();
 
         $this->assertSame(
             null,
-            $this->stringOrNullService->getStringOrNull($productInfoArray)
+            $this->stringOrNullService->getStringOrNull($itemInfoArray)
         );
 
-        $productInfoArray = array(
+        $itemInfoArray = array(
           'ProductInfo' =>
           array (
             'ReleaseDate' =>
@@ -35,10 +35,10 @@ class StringOrNullTest extends TestCase
 
         $this->assertSame(
             null,
-            $this->stringOrNullService->getStringOrNull($productInfoArray)
+            $this->stringOrNullService->getStringOrNull($itemInfoArray)
         );
 
-        $productInfoArray = array(
+        $itemInfoArray = array(
           'ProductInfo' =>
           array (
             'Color' =>
@@ -58,11 +58,11 @@ class StringOrNullTest extends TestCase
 
         $this->assertSame(
             'RED',
-            $this->stringOrNullService->getStringOrNull($productInfoArray)
+            $this->stringOrNullService->getStringOrNull($itemInfoArray)
         );
 
         $stringOfLength255 = '2EwmDVfFrfcXmWpLNaFdkwWDYaTdBA6cDff1Xs1VYfNKuQ6Xb5QYqKNjdmIO8XeF9b0jwwnGqf37NRU5pksLXM1GKtBCrKtni6cEuJdvxrgFQhupO8rj0aXaKu5Ia5ssjf3M512mM9cJoUYj8RZwF8Us0HN8QGNs301kOWYlWzp5Ljd64721v8HLjvXkjrrZBrLzA4zJxSX2SU4yVVMRZcbRNthtnlqAi2SuS2azcr4anj6TqHKlFWpHN21BPGm';
-        $productInfoArray = array(
+        $itemInfoArray = array(
           'ProductInfo' =>
           array (
             'Color' =>
@@ -76,11 +76,11 @@ class StringOrNullTest extends TestCase
 
         $this->assertSame(
             $stringOfLength255,
-            $this->stringOrNullService->getStringOrNull($productInfoArray)
+            $this->stringOrNullService->getStringOrNull($itemInfoArray)
         );
 
         $stringOfLength256 = 'opwEIXmCnpPwatj7yNmYV3AvlJiX9mdOrCzz9Fp67mDVYjiyKHgp0u2xADRsCGLO5my0a3WTskDIlmkiiQZquf5TU40qQBnl7dWkFxpE2yQUIcooCjq6MeSzn65JAI72ZZ9MGbLeI1HEHn9IoRVkMkSfjTo9F7vBpmkLmrqWSJ9ueWL5zuIRZDK5WanNqavzXwpS2wM6vx8Zhuu2FqJRPLE24mgkHRbdy8JTxqMrsYDvjQkeKSYja9rXPJEDUO7v';
-        $productInfoArray = array(
+        $itemInfoArray = array(
           'ProductInfo' =>
           array (
             'Color' =>
@@ -94,7 +94,7 @@ class StringOrNullTest extends TestCase
 
         $this->assertSame(
             null,
-            $this->stringOrNullService->getStringOrNull($productInfoArray)
+            $this->stringOrNullService->getStringOrNull($itemInfoArray)
         );
     }
 }
