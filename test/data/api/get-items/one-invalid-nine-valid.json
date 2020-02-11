@@ -1,0 +1,2260 @@
+{
+ "Errors": [
+  {
+   "__type": "com.amazon.paapi5#ErrorData",
+   "Code": "InvalidParameterValue",
+   "Message": "The ItemId B002GO5WG0 provided in the request is invalid."
+  }
+ ],
+ "ItemsResult": {
+  "Items": [
+   {
+    "ASIN": "B002GO05ZI",
+    "BrowseNodeInfo": {
+     "BrowseNodes": [
+      {
+       "Ancestor": {
+        "Ancestor": {
+         "Ancestor": {
+          "Ancestor": {
+           "ContextFreeName": "Sports & Outdoors",
+           "DisplayName": "Sports & Outdoors",
+           "Id": "3375251"
+          },
+          "ContextFreeName": "Sports & Outdoors",
+          "DisplayName": "Categories",
+          "Id": "3375301"
+         },
+         "ContextFreeName": "Sports & Fitness",
+         "DisplayName": "Sports & Fitness",
+         "Id": "10971181011"
+        },
+        "ContextFreeName": "Hunting & Fishing",
+        "DisplayName": "Hunting & Fishing",
+        "Id": "706813011"
+       },
+       "ContextFreeName": "Hunting Equipment",
+       "DisplayName": "Hunting",
+       "Id": "3412851",
+       "IsRoot": false,
+       "SalesRank": 53516
+      },
+      {
+       "Ancestor": {
+        "Ancestor": {
+         "Ancestor": {
+          "Ancestor": {
+           "Ancestor": {
+            "ContextFreeName": "Sports & Outdoors",
+            "DisplayName": "Sports & Outdoors",
+            "Id": "3375251"
+           },
+           "ContextFreeName": "Sports & Outdoors",
+           "DisplayName": "Categories",
+           "Id": "3375301"
+          },
+          "ContextFreeName": "Sports & Fitness",
+          "DisplayName": "Sports & Fitness",
+          "Id": "10971181011"
+         },
+         "ContextFreeName": "Airsoft & Paintball Equipment",
+         "DisplayName": "Airsoft & Paintball",
+         "Id": "706815011"
+        },
+        "ContextFreeName": "Airsoft Equipment",
+        "DisplayName": "Airsoft",
+        "Id": "3395111"
+       },
+       "ContextFreeName": "Airsoft Targets",
+       "DisplayName": "Targets",
+       "Id": "3395301",
+       "IsRoot": false,
+       "SalesRank": 122
+      },
+      {
+       "Ancestor": {
+        "ContextFreeName": "Sports & Outdoors",
+        "DisplayName": "Sports & Outdoors",
+        "Id": "3375251"
+       },
+       "ContextFreeName": "Sports & Fitness Features",
+       "DisplayName": "Sports & Fitness Features",
+       "Id": "11130423011",
+       "IsRoot": false
+      }
+     ],
+     "WebsiteSalesRank": {
+      "ContextFreeName": "Sports & Outdoors",
+      "DisplayName": "Sports & Outdoors",
+      "SalesRank": 309228
+     }
+    },
+    "DetailPageURL": "https://www.amazon.com/dp/B002GO05ZI?tag=testing-12345-20&linkCode=ogi&th=1&psc=1",
+    "Images": {
+     "Primary": {
+      "Large": {
+       "Height": 500,
+       "URL": "https://m.media-amazon.com/images/I/51ZAfdZT++L.jpg",
+       "Width": 500
+      },
+      "Medium": {
+       "Height": 160,
+       "URL": "https://m.media-amazon.com/images/I/51ZAfdZT++L._SL160_.jpg",
+       "Width": 160
+      },
+      "Small": {
+       "Height": 75,
+       "URL": "https://m.media-amazon.com/images/I/51ZAfdZT++L._SL75_.jpg",
+       "Width": 75
+      }
+     },
+     "Variants": [
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/51jk8AANDaL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/51jk8AANDaL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/51jk8AANDaL._SL75_.jpg",
+        "Width": 75
+       }
+      }
+     ]
+    },
+    "ItemInfo": {
+     "ByLineInfo": {
+      "Brand": {
+       "DisplayValue": "UTG",
+       "Label": "Brand",
+       "Locale": "en_US"
+      },
+      "Manufacturer": {
+       "DisplayValue": "UTG",
+       "Label": "Manufacturer",
+       "Locale": "en_US"
+      }
+     },
+     "Classifications": {
+      "Binding": {
+       "DisplayValue": "Sports",
+       "Label": "Binding",
+       "Locale": "en_US"
+      },
+      "ProductGroup": {
+       "DisplayValue": "Sports",
+       "Label": "ProductGroup",
+       "Locale": "en_US"
+      }
+     },
+     "ExternalIds": {
+      "EANs": {
+       "DisplayValues": [
+        "4715643000497"
+       ],
+       "Label": "EAN",
+       "Locale": "en_US"
+      }
+     },
+     "Features": {
+      "DisplayValues": [
+       "AIRSOFT ACCESSORIES"
+      ],
+      "Label": "Features",
+      "Locale": "en_US"
+     },
+     "ManufactureInfo": {
+      "ItemPartNumber": {
+       "DisplayValue": "SOFT-T38",
+       "Label": "PartNumber",
+       "Locale": "en_US"
+      },
+      "Model": {
+       "DisplayValue": "SOFT-T38",
+       "Label": "Model",
+       "Locale": "en_US"
+      }
+     },
+     "ProductInfo": {
+      "Color": {
+       "DisplayValue": "Black",
+       "Label": "Color",
+       "Locale": "en_US"
+      },
+      "ItemDimensions": {
+       "Height": {
+        "DisplayValue": 2.36,
+        "Label": "Height",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Length": {
+        "DisplayValue": 15.75,
+        "Label": "Length",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Weight": {
+        "DisplayValue": 1.95,
+        "Label": "Weight",
+        "Locale": "en_US",
+        "Unit": "Pounds"
+       },
+       "Width": {
+        "DisplayValue": 8.98,
+        "Label": "Width",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       }
+      },
+      "ReleaseDate": {
+       "DisplayValue": "2009-10-22T00:00:01Z",
+       "Label": "ReleaseDate",
+       "Locale": "en_US"
+      }
+     },
+     "Title": {
+      "DisplayValue": "UTG Sport AccuShot Competition Auto-Reset Target",
+      "Label": "Title",
+      "Locale": "en_US"
+     }
+    },
+    "Offers": {
+     "Listings": [
+      {
+       "Availability": {
+        "Message": "In Stock.",
+        "MinOrderQuantity": 1,
+        "Type": "Now"
+       },
+       "Condition": {
+        "SubCondition": {
+         "Value": "New"
+        },
+        "Value": "New"
+       },
+       "DeliveryInfo": {
+        "IsAmazonFulfilled": false,
+        "IsFreeShippingEligible": false,
+        "IsPrimeEligible": false
+       },
+       "Id": "LuJNS530qh9LjkPRSvH48OMbjGo3ajNNqD7MuyQiJCewkyQyUJssWlnA%2FwFCqEZNMFZFhvjPpEwMfg%2FsIF4lTyx%2FlbGRPr4dptpNS%2F%2FK5OoRAGNEs2T%2FWggQb%2FAJq8b4zTEgdzzfrTeiWEQHz%2FejiVcyQiac%2F4Rd",
+       "IsBuyBoxWinner": true,
+       "MerchantInfo": {
+        "DefaultShippingCountry": "US",
+        "Id": "A3VW7SN5AUIBC8",
+        "Name": "Pyramyd Air"
+       },
+       "Price": {
+        "Amount": 14.95,
+        "Currency": "USD",
+        "DisplayAmount": "$14.95",
+        "Savings": {
+         "Amount": 5,
+         "Currency": "USD",
+         "DisplayAmount": "$5.00 (25%)",
+         "Percentage": 25
+        }
+       },
+       "ProgramEligibility": {
+        "IsPrimeExclusive": false,
+        "IsPrimePantry": false
+       },
+       "SavingBasis": {
+        "Amount": 19.95,
+        "Currency": "USD",
+        "DisplayAmount": "$19.95"
+       },
+       "ViolatesMAP": false
+      }
+     ],
+     "Summaries": [
+      {
+       "Condition": {
+        "Value": "New"
+       },
+       "HighestPrice": {
+        "Amount": 14.95,
+        "Currency": "USD",
+        "DisplayAmount": "$14.95"
+       },
+       "LowestPrice": {
+        "Amount": 14.95,
+        "Currency": "USD",
+        "DisplayAmount": "$14.95"
+       },
+       "OfferCount": 1
+      }
+     ]
+    }
+   },
+   {
+    "ASIN": "B002GO062A",
+    "BrowseNodeInfo": {
+     "BrowseNodes": [
+      {
+       "Ancestor": {
+        "Ancestor": {
+         "Ancestor": {
+          "Ancestor": {
+           "ContextFreeName": "Sports & Outdoors",
+           "DisplayName": "Sports & Outdoors",
+           "Id": "3375251"
+          },
+          "ContextFreeName": "Sports & Outdoors",
+          "DisplayName": "Categories",
+          "Id": "3375301"
+         },
+         "ContextFreeName": "Sports & Fitness",
+         "DisplayName": "Sports & Fitness",
+         "Id": "10971181011"
+        },
+        "ContextFreeName": "Hunting & Fishing",
+        "DisplayName": "Hunting & Fishing",
+        "Id": "706813011"
+       },
+       "ContextFreeName": "Hunting Equipment",
+       "DisplayName": "Hunting",
+       "Id": "3412851",
+       "IsRoot": false,
+       "SalesRank": 51796
+      },
+      {
+       "Ancestor": {
+        "Ancestor": {
+         "Ancestor": {
+          "Ancestor": {
+           "Ancestor": {
+            "ContextFreeName": "Sports & Outdoors",
+            "DisplayName": "Sports & Outdoors",
+            "Id": "3375251"
+           },
+           "ContextFreeName": "Sports & Outdoors",
+           "DisplayName": "Categories",
+           "Id": "3375301"
+          },
+          "ContextFreeName": "Sports & Fitness",
+          "DisplayName": "Sports & Fitness",
+          "Id": "10971181011"
+         },
+         "ContextFreeName": "Airsoft & Paintball Equipment",
+         "DisplayName": "Airsoft & Paintball",
+         "Id": "706815011"
+        },
+        "ContextFreeName": "Airsoft Equipment",
+        "DisplayName": "Airsoft",
+        "Id": "3395111"
+       },
+       "ContextFreeName": "Airsoft Tools",
+       "DisplayName": "Tools",
+       "Id": "3395311",
+       "IsRoot": false,
+       "SalesRank": 143
+      },
+      {
+       "Ancestor": {
+        "ContextFreeName": "Sports & Outdoors",
+        "DisplayName": "Sports & Outdoors",
+        "Id": "3375251"
+       },
+       "ContextFreeName": "Sports & Fitness Features",
+       "DisplayName": "Sports & Fitness Features",
+       "Id": "11130423011",
+       "IsRoot": false
+      }
+     ],
+     "WebsiteSalesRank": {
+      "ContextFreeName": "Sports & Outdoors",
+      "DisplayName": "Sports & Outdoors",
+      "SalesRank": 298055
+     }
+    },
+    "DetailPageURL": "https://www.amazon.com/dp/B002GO062A?tag=testing-12345-20&linkCode=ogi&th=1&psc=1",
+    "Images": {
+     "Primary": {
+      "Large": {
+       "Height": 500,
+       "URL": "https://m.media-amazon.com/images/I/41x0wW6rj-L.jpg",
+       "Width": 279
+      },
+      "Medium": {
+       "Height": 160,
+       "URL": "https://m.media-amazon.com/images/I/41x0wW6rj-L._SL160_.jpg",
+       "Width": 89
+      },
+      "Small": {
+       "Height": 75,
+       "URL": "https://m.media-amazon.com/images/I/41x0wW6rj-L._SL75_.jpg",
+       "Width": 42
+      }
+     }
+    },
+    "ItemInfo": {
+     "ByLineInfo": {
+      "Brand": {
+       "DisplayValue": "UTG",
+       "Label": "Brand",
+       "Locale": "en_US"
+      },
+      "Manufacturer": {
+       "DisplayValue": "LEABG",
+       "Label": "Manufacturer",
+       "Locale": "en_US"
+      }
+     },
+     "Classifications": {
+      "Binding": {
+       "DisplayValue": "Sports",
+       "Label": "Binding",
+       "Locale": "en_US"
+      },
+      "ProductGroup": {
+       "DisplayValue": "Sports",
+       "Label": "ProductGroup",
+       "Locale": "en_US"
+      }
+     },
+     "ExternalIds": {
+      "EANs": {
+       "DisplayValues": [
+        "4712274525252"
+       ],
+       "Label": "EAN",
+       "Locale": "en_US"
+      }
+     },
+     "Features": {
+      "DisplayValues": [
+       "AIRSOFT ACCESSORIES"
+      ],
+      "Label": "Features",
+      "Locale": "en_US"
+     },
+     "ManufactureInfo": {
+      "ItemPartNumber": {
+       "DisplayValue": "SOFT-UTG50S",
+       "Label": "PartNumber",
+       "Locale": "en_US"
+      },
+      "Model": {
+       "DisplayValue": "SOFT-UTG50S",
+       "Label": "Model",
+       "Locale": "en_US"
+      }
+     },
+     "ProductInfo": {
+      "Color": {
+       "DisplayValue": "Black",
+       "Label": "Color",
+       "Locale": "en_US"
+      },
+      "ItemDimensions": {
+       "Height": {
+        "DisplayValue": 1.26,
+        "Label": "Height",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Length": {
+        "DisplayValue": 4.72,
+        "Label": "Length",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Weight": {
+        "DisplayValue": 0.23,
+        "Label": "Weight",
+        "Locale": "en_US",
+        "Unit": "Pounds"
+       },
+       "Width": {
+        "DisplayValue": 1.26,
+        "Label": "Width",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       }
+      },
+      "ReleaseDate": {
+       "DisplayValue": "2009-10-22T00:00:01Z",
+       "Label": "ReleaseDate",
+       "Locale": "en_US"
+      }
+     },
+     "Title": {
+      "DisplayValue": "UTG Airsoft Cleaning Silicone Spray, 50ml",
+      "Label": "Title",
+      "Locale": "en_US"
+     }
+    },
+    "Offers": {
+     "Listings": [
+      {
+       "Availability": {
+        "Message": "In Stock.",
+        "MinOrderQuantity": 1,
+        "Type": "Now"
+       },
+       "Condition": {
+        "SubCondition": {
+         "Value": "New"
+        },
+        "Value": "New"
+       },
+       "DeliveryInfo": {
+        "IsAmazonFulfilled": false,
+        "IsFreeShippingEligible": false,
+        "IsPrimeEligible": false
+       },
+       "Id": "LuJNS530qh9LjkPRSvH48PMc2TVgu8jMfXBp0LxGZB55ceEHRNqiRg0e2LVS8ytEDbJudit6fmjFSR0GuMRGbWmJpmf62pPE6wdrGB3Jw9MvBzFN63kPZR4L94h0qaVv6VOg9paKhZwfe1I3xfH3j2uTGT7xPGeh",
+       "IsBuyBoxWinner": true,
+       "MerchantInfo": {
+        "DefaultShippingCountry": "US",
+        "Id": "A3MOEA5B1IA06N",
+        "Name": "Paintball Discounters"
+       },
+       "Price": {
+        "Amount": 5.99,
+        "Currency": "USD",
+        "DisplayAmount": "$5.99"
+       },
+       "ProgramEligibility": {
+        "IsPrimeExclusive": false,
+        "IsPrimePantry": false
+       },
+       "ViolatesMAP": false
+      }
+     ],
+     "Summaries": [
+      {
+       "Condition": {
+        "Value": "New"
+       },
+       "HighestPrice": {
+        "Amount": 5.99,
+        "Currency": "USD",
+        "DisplayAmount": "$5.99"
+       },
+       "LowestPrice": {
+        "Amount": 5.99,
+        "Currency": "USD",
+        "DisplayAmount": "$5.99"
+       },
+       "OfferCount": 1
+      }
+     ]
+    }
+   },
+   {
+    "ASIN": "B002GO0KNA",
+    "BrowseNodeInfo": {
+     "BrowseNodes": [
+      {
+       "Ancestor": {
+        "Ancestor": {
+         "Ancestor": {
+          "Ancestor": {
+           "Ancestor": {
+            "ContextFreeName": "Sports & Outdoors",
+            "DisplayName": "Sports & Outdoors",
+            "Id": "3375251"
+           },
+           "ContextFreeName": "Sports & Outdoors",
+           "DisplayName": "Categories",
+           "Id": "3375301"
+          },
+          "ContextFreeName": "Outdoor Recreation",
+          "DisplayName": "Outdoor Recreation",
+          "Id": "706814011"
+         },
+         "ContextFreeName": "Water Sports",
+         "DisplayName": "Water Sports",
+         "Id": "11051399011"
+        },
+        "ContextFreeName": "Canoeing Equipment",
+        "DisplayName": "Canoeing",
+        "Id": "2345540011"
+       },
+       "ContextFreeName": "Canoes",
+       "DisplayName": "Canoes",
+       "Id": "3413971",
+       "IsRoot": false,
+       "SalesRank": 9
+      }
+     ],
+     "WebsiteSalesRank": {
+      "ContextFreeName": "Sports & Outdoors",
+      "DisplayName": "Sports & Outdoors",
+      "SalesRank": 447214
+     }
+    },
+    "DetailPageURL": "https://www.amazon.com/dp/B002GO0KNA?tag=testing-12345-20&linkCode=ogi&th=1&psc=1",
+    "Images": {
+     "Primary": {
+      "Large": {
+       "Height": 377,
+       "URL": "https://m.media-amazon.com/images/I/315iybTCWnL.jpg",
+       "Width": 500
+      },
+      "Medium": {
+       "Height": 121,
+       "URL": "https://m.media-amazon.com/images/I/315iybTCWnL._SL160_.jpg",
+       "Width": 160
+      },
+      "Small": {
+       "Height": 57,
+       "URL": "https://m.media-amazon.com/images/I/315iybTCWnL._SL75_.jpg",
+       "Width": 75
+      }
+     },
+     "Variants": [
+      {
+       "Large": {
+        "Height": 364,
+        "URL": "https://m.media-amazon.com/images/I/31-IP4qvweL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 116,
+        "URL": "https://m.media-amazon.com/images/I/31-IP4qvweL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 55,
+        "URL": "https://m.media-amazon.com/images/I/31-IP4qvweL._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 362,
+        "URL": "https://m.media-amazon.com/images/I/31tcIkytcLL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 116,
+        "URL": "https://m.media-amazon.com/images/I/31tcIkytcLL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 54,
+        "URL": "https://m.media-amazon.com/images/I/31tcIkytcLL._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 333,
+        "URL": "https://m.media-amazon.com/images/I/41WTMEGseOL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 107,
+        "URL": "https://m.media-amazon.com/images/I/41WTMEGseOL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 50,
+        "URL": "https://m.media-amazon.com/images/I/41WTMEGseOL._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 333,
+        "URL": "https://m.media-amazon.com/images/I/41O-CucY7kL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 107,
+        "URL": "https://m.media-amazon.com/images/I/41O-CucY7kL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 50,
+        "URL": "https://m.media-amazon.com/images/I/41O-CucY7kL._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 333,
+        "URL": "https://m.media-amazon.com/images/I/417Hb14acTL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 107,
+        "URL": "https://m.media-amazon.com/images/I/417Hb14acTL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 50,
+        "URL": "https://m.media-amazon.com/images/I/417Hb14acTL._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 402,
+        "URL": "https://m.media-amazon.com/images/I/61Ggljl0X9L.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 129,
+        "URL": "https://m.media-amazon.com/images/I/61Ggljl0X9L._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 60,
+        "URL": "https://m.media-amazon.com/images/I/61Ggljl0X9L._SL75_.jpg",
+        "Width": 75
+       }
+      }
+     ]
+    },
+    "ItemInfo": {
+     "ByLineInfo": {
+      "Brand": {
+       "DisplayValue": "SUNDOLPHIN",
+       "Label": "Brand",
+       "Locale": "en_US"
+      },
+      "Manufacturer": {
+       "DisplayValue": "KL Industries",
+       "Label": "Manufacturer",
+       "Locale": "en_US"
+      }
+     },
+     "Classifications": {
+      "Binding": {
+       "DisplayValue": "Sports",
+       "Label": "Binding",
+       "Locale": "en_US"
+      },
+      "ProductGroup": {
+       "DisplayValue": "Outdoors",
+       "Label": "ProductGroup",
+       "Locale": "en_US"
+      }
+     },
+     "ExternalIds": {
+      "EANs": {
+       "DisplayValues": [
+        "0019862511203"
+       ],
+       "Label": "EAN",
+       "Locale": "en_US"
+      },
+      "UPCs": {
+       "DisplayValues": [
+        "019862511203"
+       ],
+       "Label": "UPC",
+       "Locale": "en_US"
+      }
+     },
+     "Features": {
+      "DisplayValues": [
+       "Ideal family recreational canoe with comfortable seating for three",
+       "Storage compartment and cooler under center seat",
+       "Bow and stern tie-down eyelets and built-in transport handles",
+       "Drink holders molded into every seat",
+       "Includes limited two-year manufacturer's warranty"
+      ],
+      "Label": "Features",
+      "Locale": "en_US"
+     },
+     "ManufactureInfo": {
+      "ItemPartNumber": {
+       "DisplayValue": "51120",
+       "Label": "PartNumber",
+       "Locale": "en_US"
+      },
+      "Model": {
+       "DisplayValue": "51120",
+       "Label": "Model",
+       "Locale": "en_US"
+      }
+     },
+     "ProductInfo": {
+      "Color": {
+       "DisplayValue": "Green",
+       "Label": "Color",
+       "Locale": "en_US"
+      },
+      "IsAdultProduct": {
+       "DisplayValue": false,
+       "Label": "IsAdultProduct",
+       "Locale": "en_US"
+      },
+      "ItemDimensions": {
+       "Height": {
+        "DisplayValue": 18.6,
+        "Label": "Height",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Length": {
+        "DisplayValue": 187.5,
+        "Label": "Length",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Weight": {
+        "DisplayValue": 95,
+        "Label": "Weight",
+        "Locale": "en_US",
+        "Unit": "Pounds"
+       },
+       "Width": {
+        "DisplayValue": 42,
+        "Label": "Width",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       }
+      },
+      "Size": {
+       "DisplayValue": "15.6'",
+       "Label": "Size",
+       "Locale": "en_US"
+      },
+      "UnitCount": {
+       "DisplayValue": 1,
+       "Label": "NumberOfItems",
+       "Locale": "en_US"
+      }
+     },
+     "Title": {
+      "DisplayValue": "SUNDOLPHIN Sun Dolphin Mackinaw Canoe (Green, 15.6-Feet)",
+      "Label": "Title",
+      "Locale": "en_US"
+     }
+    },
+    "ParentASIN": "B079LKQ2CY"
+   },
+   {
+    "ASIN": "B002GO1PEI",
+    "BrowseNodeInfo": {
+     "BrowseNodes": [
+      {
+       "Ancestor": {
+        "Ancestor": {
+         "Ancestor": {
+          "ContextFreeName": "Tools & Home Improvement",
+          "DisplayName": "Tools & Home Improvement",
+          "Id": "228013"
+         },
+         "ContextFreeName": "Home Improvement",
+         "DisplayName": "Categories",
+         "Id": "468240"
+        },
+        "ContextFreeName": "Light Bulbs",
+        "DisplayName": "Light Bulbs",
+        "Id": "322525011"
+       },
+       "ContextFreeName": "Incandescent Bulbs",
+       "DisplayName": "Incandescent Bulbs",
+       "Id": "328865011",
+       "IsRoot": false,
+       "SalesRank": 4554
+      }
+     ],
+     "WebsiteSalesRank": {
+      "ContextFreeName": "Tools & Home Improvement",
+      "DisplayName": "Tools & Home Improvement",
+      "SalesRank": 626055
+     }
+    },
+    "DetailPageURL": "https://www.amazon.com/dp/B002GO1PEI?tag=testing-12345-20&linkCode=ogi&th=1&psc=1",
+    "Images": {
+     "Primary": {
+      "Large": {
+       "Height": 500,
+       "URL": "https://m.media-amazon.com/images/I/31hTz-qpOtL.jpg",
+       "Width": 163
+      },
+      "Medium": {
+       "Height": 160,
+       "URL": "https://m.media-amazon.com/images/I/31hTz-qpOtL._SL160_.jpg",
+       "Width": 52
+      },
+      "Small": {
+       "Height": 75,
+       "URL": "https://m.media-amazon.com/images/I/31hTz-qpOtL._SL75_.jpg",
+       "Width": 24
+      }
+     }
+    },
+    "ItemInfo": {
+     "ByLineInfo": {
+      "Brand": {
+       "DisplayValue": "Satco",
+       "Label": "Brand",
+       "Locale": "en_US"
+      },
+      "Manufacturer": {
+       "DisplayValue": "Nuvo Lighting",
+       "Label": "Manufacturer",
+       "Locale": "en_US"
+      }
+     },
+     "Classifications": {
+      "Binding": {
+       "DisplayValue": "Tools & Home Improvement",
+       "Label": "Binding",
+       "Locale": "en_US"
+      },
+      "ProductGroup": {
+       "DisplayValue": "Home Improvement",
+       "Label": "ProductGroup",
+       "Locale": "en_US"
+      }
+     },
+     "ExternalIds": {
+      "EANs": {
+       "DisplayValues": [
+        "0045923037832"
+       ],
+       "Label": "EAN",
+       "Locale": "en_US"
+      },
+      "UPCs": {
+       "DisplayValues": [
+        "045923037832"
+       ],
+       "Label": "UPC",
+       "Locale": "en_US"
+      }
+     },
+     "Features": {
+      "DisplayValues": [
+       "1500 average rated hours",
+       "2-pack clear bulbs",
+       "40-watt candelabra base"
+      ],
+      "Label": "Features",
+      "Locale": "en_US"
+     },
+     "ManufactureInfo": {
+      "ItemPartNumber": {
+       "DisplayValue": "S3783",
+       "Label": "PartNumber",
+       "Locale": "en_US"
+      },
+      "Model": {
+       "DisplayValue": "S3783",
+       "Label": "Model",
+       "Locale": "en_US"
+      },
+      "Warranty": {
+       "DisplayValue": "Avg.  Rated hour limited.",
+       "Label": "Warranty",
+       "Locale": "en_US"
+      }
+     },
+     "ProductInfo": {
+      "Color": {
+       "DisplayValue": "Clear",
+       "Label": "Color",
+       "Locale": "en_US"
+      },
+      "ItemDimensions": {
+       "Height": {
+        "DisplayValue": 1.38,
+        "Label": "Height",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Length": {
+        "DisplayValue": 4.25,
+        "Label": "Length",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Weight": {
+        "DisplayValue": 1,
+        "Label": "Weight",
+        "Locale": "en_US",
+        "Unit": "Pounds"
+       },
+       "Width": {
+        "DisplayValue": 7.01,
+        "Label": "Width",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       }
+      },
+      "Size": {
+       "DisplayValue": "Pack of 1",
+       "Label": "Size",
+       "Locale": "en_US"
+      },
+      "UnitCount": {
+       "DisplayValue": 1,
+       "Label": "NumberOfItems",
+       "Locale": "en_US"
+      }
+     },
+     "Title": {
+      "DisplayValue": "Satco Products S3783 120-Volt 40B9.5 Candelabra Base Clear Light Bulb",
+      "Label": "Title",
+      "Locale": "en_US"
+     }
+    },
+    "Offers": {
+     "Listings": [
+      {
+       "Availability": {
+        "Message": "In Stock.",
+        "MinOrderQuantity": 1,
+        "Type": "Now"
+       },
+       "Condition": {
+        "SubCondition": {
+         "Value": "New"
+        },
+        "Value": "New"
+       },
+       "DeliveryInfo": {
+        "IsAmazonFulfilled": true,
+        "IsFreeShippingEligible": true,
+        "IsPrimeEligible": true
+       },
+       "Id": "LuJNS530qh9LjkPRSvH48EiDaEDtYRltyfDmchFB8drkzpts7T7Zs1h2CRX5yETJfF3e9hXmMhUgdsN03deQSrQDA9BK8wn%2FlLXFGpHngKNYw9mA8vZ1WA%3D%3D",
+       "IsBuyBoxWinner": true,
+       "MerchantInfo": {
+        "Id": "ATVPDKIKX0DER",
+        "Name": "Amazon.com"
+       },
+       "Price": {
+        "Amount": 6.25,
+        "Currency": "USD",
+        "DisplayAmount": "$6.25 ($0.39 / oz)",
+        "PricePerUnit": 0.39
+       },
+       "ProgramEligibility": {
+        "IsPrimeExclusive": false,
+        "IsPrimePantry": false
+       },
+       "ViolatesMAP": false
+      }
+     ],
+     "Summaries": [
+      {
+       "Condition": {
+        "Value": "New"
+       },
+       "HighestPrice": {
+        "Amount": 12.49,
+        "Currency": "USD",
+        "DisplayAmount": "$12.49 ($0.78 / oz)",
+        "PricePerUnit": 0.78
+       },
+       "LowestPrice": {
+        "Amount": 1.69,
+        "Currency": "USD",
+        "DisplayAmount": "$1.69 ($0.11 / oz)",
+        "PricePerUnit": 0.11
+       },
+       "OfferCount": 9
+      }
+     ]
+    }
+   },
+   {
+    "ASIN": "B002GO25VU",
+    "BrowseNodeInfo": {
+     "BrowseNodes": [
+      {
+       "Ancestor": {
+        "Ancestor": {
+         "ContextFreeName": "Cell Phones & Accessories",
+         "DisplayName": "Cell Phones & Accessories",
+         "Id": "2335752011"
+        },
+        "ContextFreeName": "Cell Phones & Accessories",
+        "DisplayName": "Categories",
+        "Id": "2335753011"
+       },
+       "ContextFreeName": "Cell Phone Accessories",
+       "DisplayName": "Accessories",
+       "Id": "2407755011",
+       "IsRoot": false,
+       "SalesRank": 51398
+      }
+     ]
+    },
+    "DetailPageURL": "https://www.amazon.com/dp/B002GO25VU?tag=testing-12345-20&linkCode=ogi&th=1&psc=1",
+    "Images": {
+     "Primary": {
+      "Large": {
+       "Height": 500,
+       "URL": "https://m.media-amazon.com/images/I/41xqoxoNPLL.jpg",
+       "Width": 500
+      },
+      "Medium": {
+       "Height": 160,
+       "URL": "https://m.media-amazon.com/images/I/41xqoxoNPLL._SL160_.jpg",
+       "Width": 160
+      },
+      "Small": {
+       "Height": 75,
+       "URL": "https://m.media-amazon.com/images/I/41xqoxoNPLL._SL75_.jpg",
+       "Width": 75
+      }
+     }
+    },
+    "ItemInfo": {
+     "ByLineInfo": {
+      "Brand": {
+       "DisplayValue": "Plantronics",
+       "Label": "Brand",
+       "Locale": "en_US"
+      },
+      "Manufacturer": {
+       "DisplayValue": "Plantronics",
+       "Label": "Manufacturer",
+       "Locale": "en_US"
+      }
+     },
+     "Classifications": {
+      "Binding": {
+       "DisplayValue": "Electronics",
+       "Label": "Binding",
+       "Locale": "en_US"
+      },
+      "ProductGroup": {
+       "DisplayValue": "Electronics",
+       "Label": "ProductGroup",
+       "Locale": "en_US"
+      }
+     },
+     "ContentInfo": {
+      "Languages": {
+       "DisplayValues": [
+        {
+         "DisplayValue": "English",
+         "Type": "Translation"
+        },
+        {
+         "DisplayValue": "English",
+         "Type": "Original Language"
+        },
+        {
+         "DisplayValue": "English",
+         "Type": "Unknown"
+        }
+       ],
+       "Label": "Language",
+       "Locale": "en_US"
+      }
+     },
+     "ExternalIds": {
+      "EANs": {
+       "DisplayValues": [
+        "3609740155567",
+        "0647684811968",
+        "5033588037965",
+        "5033588030737"
+       ],
+       "Label": "EAN",
+       "Locale": "en_US"
+      },
+      "UPCs": {
+       "DisplayValues": [
+        "647684811968"
+       ],
+       "Label": "UPC",
+       "Locale": "en_US"
+      }
+     },
+     "Features": {
+      "DisplayValues": [
+       "Connects headset to devices with a 3.5mm headset jack",
+       "Four conductors",
+       "Right angle plug"
+      ],
+      "Label": "Features",
+      "Locale": "en_US"
+     },
+     "ManufactureInfo": {
+      "Model": {
+       "DisplayValue": "38541-02",
+       "Label": "Model",
+       "Locale": "en_US"
+      },
+      "Warranty": {
+       "DisplayValue": "NA",
+       "Label": "Warranty",
+       "Locale": "en_US"
+      }
+     },
+     "ProductInfo": {
+      "ItemDimensions": {
+       "Height": {
+        "DisplayValue": 0.02,
+        "Label": "Height",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Length": {
+        "DisplayValue": 4,
+        "Label": "Length",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Weight": {
+        "DisplayValue": 0.02,
+        "Label": "Weight",
+        "Locale": "en_US",
+        "Unit": "Pounds"
+       },
+       "Width": {
+        "DisplayValue": 3.75,
+        "Label": "Width",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       }
+      },
+      "ReleaseDate": {
+       "DisplayValue": "2019-09-24T00:00:01Z",
+       "Label": "ReleaseDate",
+       "Locale": "en_US"
+      },
+      "Size": {
+       "DisplayValue": "3.5mm",
+       "Label": "Size",
+       "Locale": "en_US"
+      },
+      "UnitCount": {
+       "DisplayValue": 1,
+       "Label": "NumberOfItems",
+       "Locale": "en_US"
+      }
+     },
+     "Title": {
+      "DisplayValue": "Plantronics 38541-02 Headset Cable",
+      "Label": "Title",
+      "Locale": "en_US"
+     }
+    },
+    "Offers": {
+     "Listings": [
+      {
+       "Availability": {
+        "Message": "In Stock.",
+        "MinOrderQuantity": 1,
+        "Type": "Now"
+       },
+       "Condition": {
+        "SubCondition": {
+         "Value": "New"
+        },
+        "Value": "New"
+       },
+       "DeliveryInfo": {
+        "IsAmazonFulfilled": false,
+        "IsFreeShippingEligible": false,
+        "IsPrimeEligible": false
+       },
+       "Id": "LuJNS530qh9LjkPRSvH48PmHu%2FqfzC0zBcluzPR9Tj758%2FK69oh2n1xfLXD9u7YO6jnt%2FL6os0z4i8mT4UWHVQpfVhej%2BZKQztUJdcU3HFIZK9VAYKVpJz7dbVxx42UqdKu6d2e2mgRcT1u5vn1H3HcTakiqmW2D",
+       "IsBuyBoxWinner": true,
+       "MerchantInfo": {
+        "DefaultShippingCountry": "US",
+        "Id": "ASF0S1GFIHF5V",
+        "Name": "Technology Galaxy"
+       },
+       "Price": {
+        "Amount": 16.2,
+        "Currency": "USD",
+        "DisplayAmount": "$16.20",
+        "Savings": {
+         "Amount": 3.75,
+         "Currency": "USD",
+         "DisplayAmount": "$3.75 (19%)",
+         "Percentage": 19
+        }
+       },
+       "ProgramEligibility": {
+        "IsPrimeExclusive": false,
+        "IsPrimePantry": false
+       },
+       "SavingBasis": {
+        "Amount": 19.95,
+        "Currency": "USD",
+        "DisplayAmount": "$19.95"
+       },
+       "ViolatesMAP": false
+      }
+     ],
+     "Summaries": [
+      {
+       "Condition": {
+        "Value": "New"
+       },
+       "HighestPrice": {
+        "Amount": 32.95,
+        "Currency": "USD",
+        "DisplayAmount": "$32.95"
+       },
+       "LowestPrice": {
+        "Amount": 16.2,
+        "Currency": "USD",
+        "DisplayAmount": "$16.20"
+       },
+       "OfferCount": 23
+      }
+     ]
+    }
+   },
+   {
+    "ASIN": "B002GO3MH6",
+    "BrowseNodeInfo": {
+     "BrowseNodes": [
+      {
+       "Ancestor": {
+        "ContextFreeName": "Toys & Games",
+        "DisplayName": "Toys & Games",
+        "Id": "165793011"
+       },
+       "ContextFreeName": "Toys & Games",
+       "DisplayName": "Categories",
+       "Id": "165795011",
+       "IsRoot": false
+      }
+     ],
+     "WebsiteSalesRank": {
+      "ContextFreeName": "Toys & Games",
+      "DisplayName": "Toys & Games",
+      "SalesRank": 1007982
+     }
+    },
+    "DetailPageURL": "https://www.amazon.com/dp/B002GO3MH6?tag=testing-12345-20&linkCode=ogi&th=1&psc=1",
+    "Images": {
+     "Primary": {
+      "Large": {
+       "Height": 375,
+       "URL": "https://m.media-amazon.com/images/I/51iwWsAodlL.jpg",
+       "Width": 500
+      },
+      "Medium": {
+       "Height": 120,
+       "URL": "https://m.media-amazon.com/images/I/51iwWsAodlL._SL160_.jpg",
+       "Width": 160
+      },
+      "Small": {
+       "Height": 56,
+       "URL": "https://m.media-amazon.com/images/I/51iwWsAodlL._SL75_.jpg",
+       "Width": 75
+      }
+     },
+     "Variants": [
+      {
+       "Large": {
+        "Height": 442,
+        "URL": "https://m.media-amazon.com/images/I/51VsarMMn-L.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 141,
+        "URL": "https://m.media-amazon.com/images/I/51VsarMMn-L._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 66,
+        "URL": "https://m.media-amazon.com/images/I/51VsarMMn-L._SL75_.jpg",
+        "Width": 75
+       }
+      }
+     ]
+    },
+    "ItemInfo": {
+     "ByLineInfo": {
+      "Brand": {
+       "DisplayValue": "G. I. Joe",
+       "Label": "Brand",
+       "Locale": "en_US"
+      },
+      "Manufacturer": {
+       "DisplayValue": "Hasbro",
+       "Label": "Manufacturer",
+       "Locale": "en_US"
+      }
+     },
+     "Classifications": {
+      "Binding": {
+       "DisplayValue": "Toy",
+       "Label": "Binding",
+       "Locale": "en_US"
+      },
+      "ProductGroup": {
+       "DisplayValue": "Toy",
+       "Label": "ProductGroup",
+       "Locale": "en_US"
+      }
+     },
+     "ExternalIds": {
+      "EANs": {
+       "DisplayValues": [
+        "0653569406655"
+       ],
+       "Label": "EAN",
+       "Locale": "en_US"
+      },
+      "UPCs": {
+       "DisplayValues": [
+        "653569406655"
+       ],
+       "Label": "UPC",
+       "Locale": "en_US"
+      }
+     },
+     "Features": {
+      "DisplayValues": [
+       "GI Joe Figure - General Clayton \"Hawk\" Abernathy",
+       "Release Date: July 2009",
+       "For ages: 4 and up",
+       "Manufacturer: Hasbro",
+       "Series: G.I. JOE: Rise of Cobra Movie"
+      ],
+      "Label": "Features",
+      "Locale": "en_US"
+     },
+     "ManufactureInfo": {
+      "ItemPartNumber": {
+       "DisplayValue": "40665",
+       "Label": "PartNumber",
+       "Locale": "en_US"
+      },
+      "Model": {
+       "DisplayValue": "653569406655",
+       "Label": "Model",
+       "Locale": "en_US"
+      }
+     },
+     "ProductInfo": {
+      "IsAdultProduct": {
+       "DisplayValue": false,
+       "Label": "IsAdultProduct",
+       "Locale": "en_US"
+      },
+      "ItemDimensions": {
+       "Height": {
+        "DisplayValue": 1,
+        "Label": "Height",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Length": {
+        "DisplayValue": 8.2,
+        "Label": "Length",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Weight": {
+        "DisplayValue": 0.15,
+        "Label": "Weight",
+        "Locale": "en_US",
+        "Unit": "Pounds"
+       },
+       "Width": {
+        "DisplayValue": 5.2,
+        "Label": "Width",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       }
+      }
+     },
+     "Title": {
+      "DisplayValue": "G.I. Joe The Rise of Cobra 3 3/4\" Action Figure General Clayton \"Hawk\" Abernathy (Attack on the G.I. Pit)",
+      "Label": "Title",
+      "Locale": "en_US"
+     }
+    },
+    "Offers": {
+     "Listings": [
+      {
+       "Availability": {
+        "Message": "In Stock.",
+        "MinOrderQuantity": 1,
+        "Type": "Now"
+       },
+       "Condition": {
+        "SubCondition": {
+         "Value": "New"
+        },
+        "Value": "New"
+       },
+       "DeliveryInfo": {
+        "IsAmazonFulfilled": false,
+        "IsFreeShippingEligible": false,
+        "IsPrimeEligible": false
+       },
+       "Id": "LuJNS530qh9LjkPRSvH48LDyqCTZzHbGmR%2Ft4lwQLcrtC%2BJPHqcKgWUhKVtBc2ip5%2Fb4jbZo6MbuGYymnCyfdg%2FIU%2Bl5Y3EQGU%2BKUxzxtsV4GEyKoO2fGtqKdxiW%2FgpruArIrQddwPbT636ittolVDJkiA12Wd7t",
+       "IsBuyBoxWinner": true,
+       "MerchantInfo": {
+        "DefaultShippingCountry": "US",
+        "Id": "A24VMYRTI72ZO8",
+        "Name": "TheToyVault"
+       },
+       "Price": {
+        "Amount": 28.4,
+        "Currency": "USD",
+        "DisplayAmount": "$28.40"
+       },
+       "ProgramEligibility": {
+        "IsPrimeExclusive": false,
+        "IsPrimePantry": false
+       },
+       "ViolatesMAP": false
+      }
+     ],
+     "Summaries": [
+      {
+       "Condition": {
+        "Value": "New"
+       },
+       "HighestPrice": {
+        "Amount": 37.98,
+        "Currency": "USD",
+        "DisplayAmount": "$37.98"
+       },
+       "LowestPrice": {
+        "Amount": 28.4,
+        "Currency": "USD",
+        "DisplayAmount": "$28.40"
+       },
+       "OfferCount": 11
+      },
+      {
+       "Condition": {
+        "Value": "Collectible"
+       },
+       "HighestPrice": {
+        "Amount": 79.99,
+        "Currency": "USD",
+        "DisplayAmount": "$79.99"
+       },
+       "LowestPrice": {
+        "Amount": 25.97,
+        "Currency": "USD",
+        "DisplayAmount": "$25.97"
+       },
+       "OfferCount": 3
+      }
+     ]
+    }
+   },
+   {
+    "ASIN": "B002GO41T4",
+    "BrowseNodeInfo": {
+     "BrowseNodes": [
+      {
+       "Ancestor": {
+        "Ancestor": {
+         "Ancestor": {
+          "Ancestor": {
+           "ContextFreeName": "Electronics",
+           "DisplayName": "Electronics",
+           "Id": "172282"
+          },
+          "ContextFreeName": "Electronics",
+          "DisplayName": "Categories",
+          "Id": "493964"
+         },
+         "ContextFreeName": "Computers & Accessories",
+         "DisplayName": "Computers & Accessories",
+         "Id": "541966"
+        },
+        "ContextFreeName": "Data Storage",
+        "DisplayName": "Data Storage",
+        "Id": "1292110011"
+       },
+       "ContextFreeName": "Internal Hard Drives",
+       "DisplayName": "Internal Hard Drives",
+       "Id": "1254762011",
+       "IsRoot": false,
+       "SalesRank": 1975
+      }
+     ]
+    },
+    "DetailPageURL": "https://www.amazon.com/dp/B002GO41T4?tag=testing-12345-20&linkCode=ogi&th=1&psc=1",
+    "Images": {
+     "Primary": {
+      "Large": {
+       "Height": 500,
+       "URL": "https://m.media-amazon.com/images/I/41k6K+d2AqL.jpg",
+       "Width": 361
+      },
+      "Medium": {
+       "Height": 160,
+       "URL": "https://m.media-amazon.com/images/I/41k6K+d2AqL._SL160_.jpg",
+       "Width": 116
+      },
+      "Small": {
+       "Height": 75,
+       "URL": "https://m.media-amazon.com/images/I/41k6K+d2AqL._SL75_.jpg",
+       "Width": 54
+      }
+     },
+     "Variants": [
+      {
+       "Large": {
+        "Height": 386,
+        "URL": "https://m.media-amazon.com/images/I/41QrQyL+iZL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 124,
+        "URL": "https://m.media-amazon.com/images/I/41QrQyL+iZL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 58,
+        "URL": "https://m.media-amazon.com/images/I/41QrQyL+iZL._SL75_.jpg",
+        "Width": 75
+       }
+      }
+     ]
+    },
+    "ItemInfo": {
+     "ByLineInfo": {
+      "Brand": {
+       "DisplayValue": "Seagate",
+       "Label": "Brand",
+       "Locale": "en_US"
+      },
+      "Manufacturer": {
+       "DisplayValue": "SEAGATE",
+       "Label": "Manufacturer",
+       "Locale": "en_US"
+      }
+     },
+     "Classifications": {
+      "Binding": {
+       "DisplayValue": "Personal Computers",
+       "Label": "Binding",
+       "Locale": "en_US"
+      },
+      "ProductGroup": {
+       "DisplayValue": "Personal Computer",
+       "Label": "ProductGroup",
+       "Locale": "en_US"
+      }
+     },
+     "ExternalIds": {
+      "EANs": {
+       "DisplayValues": [
+        "4053162720503",
+        "5052178309787",
+        "0763649021859",
+        "0102646155721",
+        "5051964099659",
+        "0102646194676",
+        "0102646276990",
+        "0715663213796",
+        "5704327763154"
+       ],
+       "Label": "EAN",
+       "Locale": "en_US"
+      },
+      "UPCs": {
+       "DisplayValues": [
+        "102646194676",
+        "102646276990",
+        "102646155721",
+        "715663213796",
+        "763649021859"
+       ],
+       "Label": "UPC",
+       "Locale": "en_US"
+      }
+     },
+     "Features": {
+      "DisplayValues": [
+       "Seagate PowerTrim technology dynamically reduces power.",
+       "75% power savings over comparable 3.5-inch, 300-GB drives",
+       "70% smaller size over 3.5-inch drives reduces overall system cooling costs.",
+       "40% reduction in $/IOPS over comparable 3.5-inch drives",
+       "60% improvement in system-level performance over 3.5-inch, 15K drives",
+       "Third-generation 2.5-inch, 10K-RPM enterprise drive with proven reliability",
+       "Supports 6-Gb/s transfer rates and SAS 2.0 feature set",
+       "Delivers on Seagate Unified Storage architecture strategy to converge best-of-breed technologies (Serial Attached SCSI, small form factor) to enable powerful, yet simple external storage and internal server storage solutions that strengthen business effic"
+      ],
+      "Label": "Features",
+      "Locale": "en_US"
+     },
+     "ManufactureInfo": {
+      "ItemPartNumber": {
+       "DisplayValue": "ST9300603SS",
+       "Label": "PartNumber",
+       "Locale": "en_US"
+      },
+      "Model": {
+       "DisplayValue": "ST9300603SS",
+       "Label": "Model",
+       "Locale": "en_US"
+      }
+     },
+     "ProductInfo": {
+      "IsAdultProduct": {
+       "DisplayValue": false,
+       "Label": "IsAdultProduct",
+       "Locale": "en_US"
+      },
+      "ItemDimensions": {
+       "Height": {
+        "DisplayValue": 0.583,
+        "Label": "Height",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Length": {
+        "DisplayValue": 3.957,
+        "Label": "Length",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Weight": {
+        "DisplayValue": 0.5,
+        "Label": "Weight",
+        "Locale": "en_US",
+        "Unit": "Pounds"
+       },
+       "Width": {
+        "DisplayValue": 2.76,
+        "Label": "Width",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       }
+      },
+      "Size": {
+       "DisplayValue": "300 GB",
+       "Label": "Size",
+       "Locale": "en_US"
+      },
+      "UnitCount": {
+       "DisplayValue": 1,
+       "Label": "NumberOfItems",
+       "Locale": "en_US"
+      }
+     },
+     "Title": {
+      "DisplayValue": "Seagate Savvio 10K.3 300 GB 10000RPM 6-Gb/S SAS 16MB Cache 2.5-Inch Internal Hard Drive - Bare Drive ST9300603SS",
+      "Label": "Title",
+      "Locale": "en_US"
+     }
+    },
+    "Offers": {
+     "Listings": [
+      {
+       "Availability": {
+        "Message": "In Stock.",
+        "MinOrderQuantity": 1,
+        "Type": "Now"
+       },
+       "Condition": {
+        "SubCondition": {
+         "Value": "New"
+        },
+        "Value": "New"
+       },
+       "DeliveryInfo": {
+        "IsAmazonFulfilled": false,
+        "IsFreeShippingEligible": false,
+        "IsPrimeEligible": true
+       },
+       "Id": "LuJNS530qh9LjkPRSvH48OmHEQSthzJU5XnHgND6fohFtvBqOOBiqOmnem2THjBMBOdVL6dOKMna7DYYC%2Fn8hJCGwlgjJNmJg0PnNV8uxm7TjmgtJDBMt7Bz9mgGU9xHE6ajh797CGWJiXmdYE7umedOPGmV9g8t",
+       "IsBuyBoxWinner": true,
+       "MerchantInfo": {
+        "DefaultShippingCountry": "US",
+        "Id": "A1H0V3G3VHF5P7",
+        "Name": "IB TechPro"
+       },
+       "Price": {
+        "Amount": 30,
+        "Currency": "USD",
+        "DisplayAmount": "$30.00"
+       },
+       "ProgramEligibility": {
+        "IsPrimeExclusive": false,
+        "IsPrimePantry": false
+       },
+       "ViolatesMAP": false
+      }
+     ],
+     "Summaries": [
+      {
+       "Condition": {
+        "Value": "New"
+       },
+       "HighestPrice": {
+        "Amount": 155.99,
+        "Currency": "USD",
+        "DisplayAmount": "$155.99"
+       },
+       "LowestPrice": {
+        "Amount": 29.9,
+        "Currency": "USD",
+        "DisplayAmount": "$29.90"
+       },
+       "OfferCount": 13
+      },
+      {
+       "Condition": {
+        "Value": "Used"
+       },
+       "HighestPrice": {
+        "Amount": 48.49,
+        "Currency": "USD",
+        "DisplayAmount": "$48.49"
+       },
+       "LowestPrice": {
+        "Amount": 9.95,
+        "Currency": "USD",
+        "DisplayAmount": "$9.95"
+       },
+       "OfferCount": 4
+      }
+     ]
+    }
+   },
+   {
+    "ASIN": "B002GO5AW6",
+    "BrowseNodeInfo": {
+     "BrowseNodes": [
+      {
+       "Ancestor": {
+        "Ancestor": {
+         "ContextFreeName": "Home & Kitchen",
+         "DisplayName": "Home & Kitchen",
+         "Id": "1055398"
+        },
+        "ContextFreeName": "Home & Kitchen",
+        "DisplayName": "Categories",
+        "Id": "1063498"
+       },
+       "ContextFreeName": "Kitchen & Dining",
+       "DisplayName": "Kitchen & Dining",
+       "Id": "284507",
+       "IsRoot": false,
+       "SalesRank": 584072
+      }
+     ]
+    },
+    "DetailPageURL": "https://www.amazon.com/dp/B002GO5AW6?tag=testing-12345-20&linkCode=ogi&th=1&psc=1",
+    "Images": {
+     "Primary": {
+      "Large": {
+       "Height": 500,
+       "URL": "https://m.media-amazon.com/images/I/31OLl3IlMCL.jpg",
+       "Width": 500
+      },
+      "Medium": {
+       "Height": 160,
+       "URL": "https://m.media-amazon.com/images/I/31OLl3IlMCL._SL160_.jpg",
+       "Width": 160
+      },
+      "Small": {
+       "Height": 75,
+       "URL": "https://m.media-amazon.com/images/I/31OLl3IlMCL._SL75_.jpg",
+       "Width": 75
+      }
+     }
+    },
+    "ItemInfo": {
+     "ByLineInfo": {
+      "Brand": {
+       "DisplayValue": "BARCONIC",
+       "Label": "Brand",
+       "Locale": "en_US"
+      }
+     },
+     "Classifications": {
+      "ProductGroup": {
+       "DisplayValue": "Kitchen",
+       "Label": "ProductGroup",
+       "Locale": "en_US"
+      }
+     },
+     "Features": {
+      "DisplayValues": [
+       "Speed Opener",
+       "7 Inches Long",
+       "1.5 inches width"
+      ],
+      "Label": "Features",
+      "Locale": "en_US"
+     },
+     "ManufactureInfo": {
+      "ItemPartNumber": {
+       "DisplayValue": "1",
+       "Label": "PartNumber",
+       "Locale": "en_US"
+      },
+      "Model": {
+       "DisplayValue": "COMINHKPR13586",
+       "Label": "Model",
+       "Locale": "en_US"
+      }
+     },
+     "ProductInfo": {
+      "Color": {
+       "DisplayValue": "Purple",
+       "Label": "Color",
+       "Locale": "en_US"
+      }
+     },
+     "Title": {
+      "DisplayValue": "Candy Purple Speed Opener",
+      "Label": "Title",
+      "Locale": "en_US"
+     }
+    },
+    "Offers": {
+     "Listings": [
+      {
+       "Availability": {
+        "Message": "In Stock.",
+        "MinOrderQuantity": 1,
+        "Type": "Now"
+       },
+       "Condition": {
+        "SubCondition": {
+         "Value": "New"
+        },
+        "Value": "New"
+       },
+       "DeliveryInfo": {
+        "IsAmazonFulfilled": false,
+        "IsFreeShippingEligible": false,
+        "IsPrimeEligible": false
+       },
+       "Id": "LuJNS530qh9LjkPRSvH48OkbnoTCHhOL8rhi0BevSEWZwLC0K0yLnR341shcpWslcwVFS9PqhbzI0bvVV8w7o6DHG%2BuxpbT2884Cer%2BEzMs7govU%2BIFalR1e9erHoNrYBRt7hSRrM5vp9GVfg9nWkV0BK3BbhCjT",
+       "IsBuyBoxWinner": true,
+       "MerchantInfo": {
+        "DefaultShippingCountry": "US",
+        "Id": "A2ISFHIPDOALQE",
+        "Name": "BarProducts"
+       },
+       "Price": {
+        "Amount": 7,
+        "Currency": "USD",
+        "DisplayAmount": "$7.00"
+       },
+       "ProgramEligibility": {
+        "IsPrimeExclusive": false,
+        "IsPrimePantry": false
+       },
+       "ViolatesMAP": false
+      }
+     ],
+     "Summaries": [
+      {
+       "Condition": {
+        "Value": "New"
+       },
+       "HighestPrice": {
+        "Amount": 7,
+        "Currency": "USD",
+        "DisplayAmount": "$7.00"
+       },
+       "LowestPrice": {
+        "Amount": 7,
+        "Currency": "USD",
+        "DisplayAmount": "$7.00"
+       },
+       "OfferCount": 1
+      }
+     ]
+    }
+   },
+   {
+    "ASIN": "B002GO5N78",
+    "BrowseNodeInfo": {
+     "BrowseNodes": [
+      {
+       "Ancestor": {
+        "Ancestor": {
+         "Ancestor": {
+          "ContextFreeName": "Sports & Outdoors",
+          "DisplayName": "Sports & Outdoors",
+          "Id": "3375251"
+         },
+         "ContextFreeName": "Sports & Outdoors",
+         "DisplayName": "Categories",
+         "Id": "3375301"
+        },
+        "ContextFreeName": "Sports & Fitness",
+        "DisplayName": "Sports & Fitness",
+        "Id": "10971181011"
+       },
+       "ContextFreeName": "Exercise & Fitness Equipment",
+       "DisplayName": "Exercise & Fitness",
+       "Id": "3407731",
+       "IsRoot": false,
+       "SalesRank": 38407
+      }
+     ],
+     "WebsiteSalesRank": {
+      "ContextFreeName": "Sports & Outdoors",
+      "DisplayName": "Sports & Outdoors",
+      "SalesRank": 188406
+     }
+    },
+    "DetailPageURL": "https://www.amazon.com/dp/B002GO5N78?tag=testing-12345-20&linkCode=ogi&th=1&psc=1",
+    "Images": {
+     "Primary": {
+      "Large": {
+       "Height": 344,
+       "URL": "https://m.media-amazon.com/images/I/413r+NnLoLL.jpg",
+       "Width": 500
+      },
+      "Medium": {
+       "Height": 110,
+       "URL": "https://m.media-amazon.com/images/I/413r+NnLoLL._SL160_.jpg",
+       "Width": 160
+      },
+      "Small": {
+       "Height": 52,
+       "URL": "https://m.media-amazon.com/images/I/413r+NnLoLL._SL75_.jpg",
+       "Width": 75
+      }
+     },
+     "Variants": [
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/41lGoUvxnnL.jpg",
+        "Width": 333
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/41lGoUvxnnL._SL160_.jpg",
+        "Width": 107
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/41lGoUvxnnL._SL75_.jpg",
+        "Width": 50
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/41XZLVCm6lL.jpg",
+        "Width": 491
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/41XZLVCm6lL._SL160_.jpg",
+        "Width": 157
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/41XZLVCm6lL._SL75_.jpg",
+        "Width": 74
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/41wqSO6UD6L.jpg",
+        "Width": 406
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/41wqSO6UD6L._SL160_.jpg",
+        "Width": 130
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/41wqSO6UD6L._SL75_.jpg",
+        "Width": 61
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/41WMsqcFpUL.jpg",
+        "Width": 388
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/41WMsqcFpUL._SL160_.jpg",
+        "Width": 124
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/41WMsqcFpUL._SL75_.jpg",
+        "Width": 58
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/41p9qAHupUL.jpg",
+        "Width": 404
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/41p9qAHupUL._SL160_.jpg",
+        "Width": 129
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/41p9qAHupUL._SL75_.jpg",
+        "Width": 61
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/41-mwFDezAL.jpg",
+        "Width": 393
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/41-mwFDezAL._SL160_.jpg",
+        "Width": 126
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/41-mwFDezAL._SL75_.jpg",
+        "Width": 59
+       }
+      }
+     ]
+    },
+    "ItemInfo": {
+     "ByLineInfo": {
+      "Brand": {
+       "DisplayValue": "AB Circle",
+       "Label": "Brand",
+       "Locale": "en_US"
+      },
+      "Manufacturer": {
+       "DisplayValue": "Ab Circle",
+       "Label": "Manufacturer",
+       "Locale": "en_US"
+      }
+     },
+     "Classifications": {
+      "Binding": {
+       "DisplayValue": "Sports",
+       "Label": "Binding",
+       "Locale": "en_US"
+      },
+      "ProductGroup": {
+       "DisplayValue": "Sports",
+       "Label": "ProductGroup",
+       "Locale": "en_US"
+      }
+     },
+     "ExternalIds": {
+      "EANs": {
+       "DisplayValues": [
+        "0731084403066",
+        "0731084398669",
+        "0810835004018",
+        "0851486002008"
+       ],
+       "Label": "EAN",
+       "Locale": "en_US"
+      },
+      "UPCs": {
+       "DisplayValues": [
+        "731084403066",
+        "851486002008",
+        "731084398669",
+        "810835004018"
+       ],
+       "Label": "UPC",
+       "Locale": "en_US"
+      }
+     },
+     "Features": {
+      "DisplayValues": [
+       "Friction-free track lets you pivot your body to work ab muscles",
+       "Challenges your upper, middle, and lower ABS and oblique's",
+       "Three resistance levels; folds up for easy storage under a bed",
+       "Includes 3-minute express workout DVD and nutritional guide"
+      ],
+      "Label": "Features",
+      "Locale": "en_US"
+     },
+     "ManufactureInfo": {
+      "ItemPartNumber": {
+       "DisplayValue": "AB-CIRCLE-PRO",
+       "Label": "PartNumber",
+       "Locale": "en_US"
+      },
+      "Model": {
+       "DisplayValue": "24689-Z",
+       "Label": "Model",
+       "Locale": "en_US"
+      }
+     },
+     "ProductInfo": {
+      "Color": {
+       "DisplayValue": "muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle stimulator muscle sti",
+       "Label": "Color",
+       "Locale": "en_US"
+      },
+      "IsAdultProduct": {
+       "DisplayValue": false,
+       "Label": "IsAdultProduct",
+       "Locale": "en_US"
+      },
+      "ItemDimensions": {
+       "Height": {
+        "DisplayValue": 26.5,
+        "Label": "Height",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Length": {
+        "DisplayValue": 28.25,
+        "Label": "Length",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Weight": {
+        "DisplayValue": 30.86471668,
+        "Label": "Weight",
+        "Locale": "en_US",
+        "Unit": "Pounds"
+       },
+       "Width": {
+        "DisplayValue": 8,
+        "Label": "Width",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       }
+      },
+      "ReleaseDate": {
+       "DisplayValue": "2009-08-18T00:00:01-00:00",
+       "Label": "ReleaseDate",
+       "Locale": "en_US"
+      },
+      "Size": {
+       "DisplayValue": "Newer V2.0",
+       "Label": "Size",
+       "Locale": "en_US"
+      }
+     },
+     "Title": {
+      "DisplayValue": "Ab Circle Pro Abs And Core Home Exercise Fitness Machine + DVD PRO",
+      "Label": "Title",
+      "Locale": "en_US"
+     }
+    }
+   }
+  ]
+ }
+}
