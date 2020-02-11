@@ -120,6 +120,11 @@ class Product
     /**
      * @var string
      */
+    protected $size;
+
+    /**
+     * @var string
+     */
     protected $title;
 
     /**
@@ -240,6 +245,11 @@ class Product
     public function getReleased(): DateTime
     {
         return $this->released;
+    }
+
+    public function getSize(): string
+    {
+        return $this->size;
     }
 
     public function getTitle() : string
@@ -386,6 +396,12 @@ class Product
     public function setReleased(DateTime $released): self
     {
         $this->released = $released;
+        return $this;
+    }
+
+    public function setSize(string $size): self
+    {
+        $this->size = $size;
         return $this;
     }
 
