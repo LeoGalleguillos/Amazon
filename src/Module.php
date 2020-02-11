@@ -219,6 +219,9 @@ class Module
                         $sm->get(AmazonTableGateway\Product::class)
                     );
                 },
+                AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull::class => function ($sm) {
+                    return new AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull();
+                },
                 AmazonService\Api\SimilarProducts\Xml::class => function ($sm) {
                     $config = $sm->get('Config');
                     return new AmazonService\Api\SimilarProducts\Xml(
