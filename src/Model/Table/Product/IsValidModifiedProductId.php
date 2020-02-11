@@ -17,7 +17,7 @@ class IsValidModifiedProductId
         $this->adapter = $adapter;
     }
 
-    public function selectAsinWhereIsValidIsNullOrIsValidIs1(
+    public function selectAsinWhereIsValidIsNullOrIsValidIs1LimitRowCount(
         int $limitRowCount
     ): Generator {
         $sql = '

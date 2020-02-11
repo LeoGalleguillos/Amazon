@@ -24,10 +24,10 @@ class IsValidModifiedProductIdTest extends TableTestCase
         $this->dropAndCreateTable('product');
     }
 
-    public function testSelectAsinWhereIsValidIsNullOrIsValidIs1()
+    public function testselectAsinWhereIsValidIsNullOrIsValidIs1LimitRowCount()
     {
         $generator = $this->isValidModifiedProductIdTable
-            ->selectAsinWhereIsValidIsNullOrIsValidIs1(0);
+            ->selectAsinWhereIsValidIsNullOrIsValidIs1LimitRowCount(0);
         $this->assertEmpty(
             iterator_to_array($generator)
         );
@@ -42,7 +42,7 @@ class IsValidModifiedProductIdTest extends TableTestCase
         );
 
         $generator = $this->isValidModifiedProductIdTable
-            ->selectAsinWhereIsValidIsNullOrIsValidIs1(1);
+            ->selectAsinWhereIsValidIsNullOrIsValidIs1LimitRowCount(1);
         $this->assertCount(
             1,
             iterator_to_array($generator)
@@ -66,7 +66,7 @@ class IsValidModifiedProductIdTest extends TableTestCase
         );
 
         $generator = $this->isValidModifiedProductIdTable
-            ->selectAsinWhereIsValidIsNullOrIsValidIs1(2);
+            ->selectAsinWhereIsValidIsNullOrIsValidIs1LimitRowCount(2);
         $array = iterator_to_array($generator);
         $this->assertCount(
             2,
@@ -80,7 +80,7 @@ class IsValidModifiedProductIdTest extends TableTestCase
         $this->asinTable->updateSetModifiedToUtcTimestampWhereAsin('ASIN001');
 
         $generator = $this->isValidModifiedProductIdTable
-            ->selectAsinWhereIsValidIsNullOrIsValidIs1(3);
+            ->selectAsinWhereIsValidIsNullOrIsValidIs1LimitRowCount(3);
         $array = iterator_to_array($generator);
         $this->assertCount(
             3,
@@ -94,7 +94,7 @@ class IsValidModifiedProductIdTest extends TableTestCase
         $this->asinTable->updateSetIsValidWhereAsin(0, 'ASIN001');
 
         $generator = $this->isValidModifiedProductIdTable
-            ->selectAsinWhereIsValidIsNullOrIsValidIs1(3);
+            ->selectAsinWhereIsValidIsNullOrIsValidIs1LimitRowCount(3);
         $array = iterator_to_array($generator);
         $this->assertCount(
             2,
