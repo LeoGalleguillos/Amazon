@@ -9,16 +9,23 @@ class DownloadArrayToMySqlTest extends TestCase
 {
     protected function setUp()
     {
+        $this->stringOrNullServiceMock = $this->createMock(
+            AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull::class
+        );
         $this->productTableGatewayMock = $this->createMock(
             AmazonTableGateway\Product::class
         );
         $this->downloadArrayToMySqlService = new AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql(
+            $this->stringOrNullServiceMock,
             $this->productTableGatewayMock
         );
     }
 
     public function testDownloadArrayToMySql()
     {
+        $this->stringOrNullServiceMock
+            ->method('getStringOrNull')
+            ->willReturn('RED');
         $this->productTableGatewayMock
             ->expects($this->exactly(1))
             ->method('update')
@@ -26,7 +33,7 @@ class DownloadArrayToMySqlTest extends TestCase
                 // Use identicalTo to ensure 0 xor null
                 $this->identicalTo(
                     [
-                        'color'            => 'BLACK',
+                        'color'            => 'RED',
                         'is_adult_product' => 0,
                         'height_value'     => 2.8,
                         'height_units'     => 'Inches',

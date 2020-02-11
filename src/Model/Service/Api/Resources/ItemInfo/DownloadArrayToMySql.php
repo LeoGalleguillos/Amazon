@@ -7,8 +7,10 @@ use LeoGalleguillos\Amazon\Model\TableGateway as AmazonTableGateway;
 class DownloadArrayToMySql
 {
     public function __construct(
+        AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull $stringOrNullService,
         AmazonTableGateway\Product $productTableGateway
     ) {
+        $this->stringOrNullService = $stringOrNullService;
         $this->productTableGateway = $productTableGateway;
     }
 
@@ -18,7 +20,7 @@ class DownloadArrayToMySql
     ) {
         $affectedRows = $this->productTableGateway->update(
             [
-                'color' => $itemInfoArray['ProductInfo']['Color']['DisplayValue'] ?? null,
+                'color' => $this->stringOrNullService->getStringOrNull($itemInfoArray),
                 'is_adult_product' => isset($itemInfoArray['ProductInfo']['IsAdultProduct']['DisplayValue'])
                     ? ((int) $itemInfoArray['ProductInfo']['IsAdultProduct']['DisplayValue'])
                     : null,

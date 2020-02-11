@@ -216,6 +216,7 @@ class Module
                 },
                 AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql::class => function ($sm) {
                     return new AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql(
+                        $sm->get(AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull::class),
                         $sm->get(AmazonTableGateway\Product::class)
                     );
                 },
