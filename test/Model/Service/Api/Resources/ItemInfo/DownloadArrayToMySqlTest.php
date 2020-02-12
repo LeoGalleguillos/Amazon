@@ -9,21 +9,25 @@ class DownloadArrayToMySqlTest extends TestCase
 {
     protected function setUp()
     {
-        $this->stringOrNullServiceMock = $this->createMock(
+        $this->colorStringOrNullServiceMock = $this->createMock(
             AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull::class
+        );
+        $this->sizeStringOrNullServiceMock = $this->createMock(
+            AmazonService\Api\Resources\ItemInfo\ProductInfo\Size\DisplayValue\StringOrNull::class
         );
         $this->productTableGatewayMock = $this->createMock(
             AmazonTableGateway\Product::class
         );
         $this->downloadArrayToMySqlService = new AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql(
-            $this->stringOrNullServiceMock,
+            $this->colorStringOrNullServiceMock,
+            $this->sizeStringOrNullServiceMock,
             $this->productTableGatewayMock
         );
     }
 
     public function testDownloadArrayToMySql()
     {
-        $this->stringOrNullServiceMock
+        $this->colorStringOrNullServiceMock
             ->method('getStringOrNull')
             ->willReturn('RED');
         $this->productTableGatewayMock
