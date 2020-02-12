@@ -16,7 +16,7 @@ CREATE TABLE `product` (
   `width_value` float(16,2) DEFAULT NULL,
   `width_units` varchar(16) DEFAULT NULL,
   `released` datetime DEFAULT NULL,
-  `size` varchar(16) DEFAULT NULL,
+  `size` varchar(128) DEFAULT NULL,
   `unit_count` int(10) DEFAULT NULL,
   `list_price` float(16,2) DEFAULT NULL,
   `created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
