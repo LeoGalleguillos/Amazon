@@ -115,6 +115,12 @@ class Product
             );
         }
 
+        if (isset($productArray['unit_count'])) {
+            $productEntity->setUnitCount(
+                $productArray['unit_count']
+            );
+        }
+
         if (isset($productArray['video_generated'])) {
             $productEntity->setVideoGenerated(
                 new DateTime($productArray['video_generated'])

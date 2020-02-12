@@ -56,6 +56,7 @@ class ProductTest extends TestCase
             'width_value'      => '10.0',
             'released'         => '2020-02-08 12:12:45',
             'size'             => 'Medium',
+            'unit_count'       => 7,
         ];
         $productEntity = (new AmazonEntity\Product())
             ->setAsin('ASIN')
@@ -70,6 +71,7 @@ class ProductTest extends TestCase
             ->setReleased(new DateTime('2020-02-08 12:12:45'))
             ->setSize('Medium')
             ->setTitle('Title')
+            ->setUnitCount(7)
             ->setWeightUnits('LBS')
             ->setWeightValue('1000')
             ->setWidthUnits('feet')
