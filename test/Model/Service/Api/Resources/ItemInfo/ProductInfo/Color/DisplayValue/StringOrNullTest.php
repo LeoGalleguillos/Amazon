@@ -2,7 +2,6 @@
 namespace LeoGalleguillos\AmazonTest\Model\Service\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue;
 
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
-use LeoGalleguillos\Amazon\Model\TableGateway as AmazonTableGateway;
 use PHPUnit\Framework\TestCase;
 
 class StringOrNullTest extends TestCase
