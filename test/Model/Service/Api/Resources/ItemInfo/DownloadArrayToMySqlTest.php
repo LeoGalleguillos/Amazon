@@ -30,6 +30,9 @@ class DownloadArrayToMySqlTest extends TestCase
         $this->colorStringOrNullServiceMock
             ->method('getStringOrNull')
             ->willReturn('RED');
+        $this->sizeStringOrNullServiceMock
+            ->method('getStringOrNull')
+            ->willReturn(null);
         $this->productTableGatewayMock
             ->expects($this->exactly(1))
             ->method('update')
@@ -48,7 +51,7 @@ class DownloadArrayToMySqlTest extends TestCase
                         'width_value'      => 42.0,
                         'width_units'      => 'Inches',
                         'released'         => null,
-                        'size'             => '15.6\'',
+                        'size'             => null,
                     ],
                     ['product_id' => 12345]
                 )

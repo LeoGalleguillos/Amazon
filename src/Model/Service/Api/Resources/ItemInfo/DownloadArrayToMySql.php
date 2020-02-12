@@ -8,11 +8,11 @@ class DownloadArrayToMySql
 {
     public function __construct(
         AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull $colorStringOrNullService,
-        AmazonService\Api\Resources\ItemInfo\ProductInfo\Size\DisplayValue\StringOrNull $sizeSringOrNullService,
+        AmazonService\Api\Resources\ItemInfo\ProductInfo\Size\DisplayValue\StringOrNull $sizeStringOrNullService,
         AmazonTableGateway\Product $productTableGateway
     ) {
         $this->colorStringOrNullService = $colorStringOrNullService;
-        $this->sizeSringOrNullService   = $sizeSringOrNullService;
+        $this->sizeStringOrNullService  = $sizeStringOrNullService;
         $this->productTableGateway      = $productTableGateway;
     }
 
@@ -52,7 +52,7 @@ class DownloadArrayToMySql
                         strtotime($itemInfoArray['ProductInfo']['ReleaseDate']['DisplayValue'])
                       )
                     : null,
-                'size' => $itemInfoArray['ProductInfo']['Size']['DisplayValue'] ?? null,
+                'size' => $this->sizeStringOrNullService->getStringOrNull($itemInfoArray),
             ],
             ['product_id' => $productId]
         );
