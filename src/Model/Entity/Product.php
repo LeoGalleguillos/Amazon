@@ -287,7 +287,7 @@ class Product
         return $this->widthValue;
     }
 
-    public function setAsin(string $asin): AmazonEntity\Product
+    public function setAsin(string $asin): self
     {
         $this->asin = $asin;
         return $this;
@@ -295,19 +295,19 @@ class Product
 
     public function setBindingEntity(
         AmazonEntity\Binding $bindingEntity
-    ): AmazonEntity\Product {
+    ): self {
         $this->bindingEntity = $bindingEntity;
         return $this;
     }
 
     public function setBrandEntity(
         AmazonEntity\Brand $brandEntity
-    ): AmazonEntity\Product {
+    ): self {
         $this->brandEntity = $brandEntity;
         return $this;
     }
 
-    public function setBrowseNodes(array $browseNodes): AmazonEntity\Product
+    public function setBrowseNodes(array $browseNodes): self
     {
         $this->browseNodes = $browseNodes;
         return $this;
@@ -319,7 +319,7 @@ class Product
         return $this;
     }
 
-    public function setFeatures(array $features): AmazonEntity\Product
+    public function setFeatures(array $features): self
     {
         $this->features = $features;
         return $this;
@@ -337,14 +337,15 @@ class Product
         return $this;
     }
 
-    public function setHiResImages(array $hiResImages): AmazonEntity\Product
+    public function setHiResImages(array $hiResImages): self
     {
         $this->hiResImages = $hiResImages;
         return $this;
     }
 
-    public function setHiResImagesRetrieved(DateTime $hiResImagesRetrieved): AmazonEntity\Product
-    {
+    public function setHiResImagesRetrieved(
+        DateTime $hiResImagesRetrieved
+    ): self {
         $this->hiResImagesRetrieved = $hiResImagesRetrieved;
         return $this;
     }
@@ -367,7 +368,7 @@ class Product
         return $this;
     }
 
-    public function setListPrice(float $listPrice): AmazonEntity\Product
+    public function setListPrice(float $listPrice): self
     {
         $this->listPrice = $listPrice;
         return $this;
@@ -375,12 +376,12 @@ class Product
 
     public function setPrimaryImage(
         ImageEntity\Image $primaryImage
-    ): AmazonEntity\Product {
+    ): self {
         $this->primaryImage = $primaryImage;
         return $this;
     }
 
-    public function setProductId(int $productId): AmazonEntity\Product
+    public function setProductId(int $productId): self
     {
         $this->productId = $productId;
         return $this;
@@ -388,7 +389,7 @@ class Product
 
     public function setProductGroup(
         AmazonEntity\ProductGroup $productGroup
-    ): AmazonEntity\Product {
+    ): self {
         $this->productGroup = $productGroup;
         return $this;
     }
@@ -405,19 +406,19 @@ class Product
         return $this;
     }
 
-    public function setTitle(string $title): AmazonEntity\Product
+    public function setTitle(string $title): self
     {
         $this->title = $title;
         return $this;
     }
 
-    public function setVariantImages(array $variantImages): AmazonEntity\Product
+    public function setVariantImages(array $variantImages): self
     {
         $this->variantImages = $variantImages;
         return $this;
     }
 
-    public function setVideoGenerated(DateTime $videoGenerated): AmazonEntity\Product
+    public function setVideoGenerated(DateTime $videoGenerated): self
     {
         $this->videoGenerated = $videoGenerated;
         return $this;
