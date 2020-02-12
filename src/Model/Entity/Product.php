@@ -162,12 +162,12 @@ class Product
         return $this->asin;
     }
 
-    public function getBindingEntity() : AmazonEntity\Binding
+    public function getBindingEntity(): AmazonEntity\Binding
     {
         return $this->bindingEntity;
     }
 
-    public function getBrandEntity() : AmazonEntity\Brand
+    public function getBrandEntity(): AmazonEntity\Brand
     {
         return $this->brandEntity;
     }
@@ -182,7 +182,7 @@ class Product
         return $this->color;
     }
 
-    public function getFeatures() : array
+    public function getFeatures(): array
     {
         return $this->features;
     }
@@ -252,7 +252,7 @@ class Product
         return $this->size;
     }
 
-    public function getTitle() : string
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -295,14 +295,14 @@ class Product
 
     public function setBindingEntity(
         AmazonEntity\Binding $bindingEntity
-    ) : AmazonEntity\Product {
+    ): AmazonEntity\Product {
         $this->bindingEntity = $bindingEntity;
         return $this;
     }
 
     public function setBrandEntity(
         AmazonEntity\Brand $brandEntity
-    ) : AmazonEntity\Product {
+    ): AmazonEntity\Product {
         $this->brandEntity = $brandEntity;
         return $this;
     }
@@ -319,7 +319,7 @@ class Product
         return $this;
     }
 
-    public function setFeatures(array $features) : AmazonEntity\Product
+    public function setFeatures(array $features): AmazonEntity\Product
     {
         $this->features = $features;
         return $this;
@@ -405,7 +405,7 @@ class Product
         return $this;
     }
 
-    public function setTitle(string $title) : AmazonEntity\Product
+    public function setTitle(string $title): AmazonEntity\Product
     {
         $this->title = $title;
         return $this;
