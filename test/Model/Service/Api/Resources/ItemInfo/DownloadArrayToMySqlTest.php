@@ -52,6 +52,7 @@ class DownloadArrayToMySqlTest extends TestCase
                         'width_units'      => 'Inches',
                         'released'         => null,
                         'size'             => null,
+                        'unit_count'       => 1,
                     ],
                     ['product_id' => 12345]
                 )

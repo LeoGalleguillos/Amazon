@@ -53,6 +53,7 @@ class DownloadArrayToMySql
                       )
                     : null,
                 'size' => $this->sizeStringOrNullService->getStringOrNull($itemInfoArray),
+                'unit_count' => $itemInfoArray['ProductInfo']['UnitCount']['DisplayValue'] ?? null,
             ],
             ['product_id' => $productId]
         );
