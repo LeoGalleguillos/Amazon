@@ -128,6 +128,11 @@ class Product
     protected $title;
 
     /**
+     * @var int
+     */
+    public $unitCount;
+
+    /**
      * @var ImageEntity\Image[]
      */
     public $variantImages;
@@ -255,6 +260,11 @@ class Product
     public function getTitle(): string
     {
         return $this->title;
+    }
+
+    public function getUnitCount(): int
+    {
+        return $this->unitCount;
     }
 
     public function getVariantImages(): array
@@ -409,6 +419,12 @@ class Product
     public function setTitle(string $title): self
     {
         $this->title = $title;
+        return $this;
+    }
+
+    public function setUnitCount(int $unitCount): self
+    {
+        $this->unitCount = $unitCount;
         return $this;
     }
 

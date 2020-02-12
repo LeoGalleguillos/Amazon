@@ -123,6 +123,16 @@ class ProductTest extends TestCase
             $this->productEntity->getSize()
         );
 
+        $unitCount = 7;
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setUnitCount($unitCount)
+        );
+        $this->assertSame(
+            $unitCount,
+            $this->productEntity->getUnitCount()
+        );
+
         $weightUnits = 'Pounds';
         $this->assertSame(
             $this->productEntity,
