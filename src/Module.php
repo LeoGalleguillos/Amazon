@@ -223,6 +223,9 @@ class Module
                 AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull::class => function ($sm) {
                     return new AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull();
                 },
+                AmazonService\Api\Resources\ItemInfo\ProductInfo\Size\DisplayValue\StringOrNull::class => function ($sm) {
+                    return new AmazonService\Api\Resources\ItemInfo\ProductInfo\Size\DisplayValue\StringOrNull();
+                },
                 AmazonService\Api\SimilarProducts\Xml::class => function ($sm) {
                     $config = $sm->get('Config');
                     return new AmazonService\Api\SimilarProducts\Xml(
