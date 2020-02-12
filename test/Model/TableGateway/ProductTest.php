@@ -20,17 +20,19 @@ class ProductTest extends TableTestCase
     {
         $affectedRows = $this->productTableGateway->update(
             [
-                'color'            => 'BLACK',
+                'color'            => 'RED',
                 'is_adult_product' => 0,
-                'height_value'     => 2.8,
+                'height_value'     => 18.6,
                 'height_units'     => 'Inches',
-                'length_value'     => 1.34,
+                'length_value'     => 187.5,
                 'length_units'     => 'Inches',
-                'weight_value'     => 0.19,
+                'weight_value'     => 95.0,
                 'weight_units'     => 'Pounds',
-                'width_value'      => 2.8,
+                'width_value'      => 42.0,
                 'width_units'      => 'Inches',
-                'released'         => '2019-05-22 01:00:01',
+                'released'         => null,
+                'size'             => null,
+                'unit_count'       => 1,
             ],
             ['product_id' => 12345]
         );
