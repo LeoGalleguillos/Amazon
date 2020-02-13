@@ -9,6 +9,10 @@ class ProductGroupTest extends TableTestCase
 {
     protected function setUp()
     {
+        $this->SetForeignKeyChecks(0);
+        $this->dropAndCreateTables(['product', 'product_video']);
+        $this->SetForeignKeyChecks(1);
+
         $this->productTable = new AmazonTable\Product(
             $this->createMock(MemcachedService\Memcached::class),
             $this->getAdapter()
@@ -20,12 +24,6 @@ class ProductGroupTest extends TableTestCase
             $this->getAdapter(),
             $this->productVideoTable
         );
-
-        $this->dropTable('product');
-        $this->createTable('product');
-
-        $this->dropTable('product_video');
-        $this->createTable('product_video');
     }
 
     public function testSelectWhereProductGroup()

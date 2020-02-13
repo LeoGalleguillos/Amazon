@@ -8,7 +8,9 @@ class ProductTest extends TableTestCase
 {
     protected function setUp()
     {
+        $this->setForeignKeyChecks(0);
         $this->dropAndCreateTable('product');
+        $this->setForeignKeyChecks(1);
 
         $this->productTableGateway = new AmazonTableGateway\Product(
             'product',

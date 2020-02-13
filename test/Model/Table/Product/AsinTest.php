@@ -10,6 +10,10 @@ class AsinTest extends TableTestCase
 {
     protected function setUp()
     {
+        $this->setForeignKeyChecks(0);
+        $this->dropAndCreateTable('product');
+        $this->setForeignKeyChecks(1);
+
         $this->productTable = new AmazonTable\Product(
             $this->createMock(MemcachedService\Memcached::class),
             $this->getAdapter()
@@ -18,9 +22,6 @@ class AsinTest extends TableTestCase
             $this->getAdapter(),
             $this->productTable
         );
-
-        $this->dropTable('product');
-        $this->createTable('product');
     }
 
     public function testSelectProductIdWhereAsin()

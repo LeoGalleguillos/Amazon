@@ -9,6 +9,10 @@ class IsValidModifiedProductIdTest extends TableTestCase
 {
     protected function setUp()
     {
+        $this->setForeignKeyChecks(0);
+        $this->dropAndCreateTable('product');
+        $this->setForeignKeyChecks(1);
+
         $this->productTable = new AmazonTable\Product(
             $this->createMock(MemcachedService\Memcached::class),
             $this->getAdapter()
@@ -20,8 +24,6 @@ class IsValidModifiedProductIdTest extends TableTestCase
         $this->isValidModifiedProductIdTable = new AmazonTable\Product\IsValidModifiedProductId(
             $this->getAdapter()
         );
-
-        $this->dropAndCreateTable('product');
     }
 
     public function testSelectAsinWhereIsValidIsNullLimitRowCount()
