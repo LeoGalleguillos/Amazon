@@ -1413,16 +1413,16 @@
         },
         {
             "name": "leo-galleguillos/string",
-            "version": "v1.0.10",
+            "version": "v1.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/String.git",
-                "reference": "13bbc50ef59d78ce67cf68aa600c8257c693a7cf"
+                "reference": "740cefb82906b818a48c184c2917f8c9821c96d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/String/zipball/13bbc50ef59d78ce67cf68aa600c8257c693a7cf",
-                "reference": "13bbc50ef59d78ce67cf68aa600c8257c693a7cf",
+                "url": "https://api.github.com/repos/LeoGalleguillos/String/zipball/740cefb82906b818a48c184c2917f8c9821c96d3",
+                "reference": "740cefb82906b818a48c184c2917f8c9821c96d3",
                 "shasum": ""
             },
             "require": {
@@ -1439,20 +1439,20 @@
             "license": [
                 "MIT"
             ],
-            "time": "2020-02-11T23:18:21+00:00"
+            "time": "2020-02-13T05:25:32+00:00"
         },
         {
             "name": "leo-galleguillos/test",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/Test.git",
-                "reference": "5a4de38046256a49794f0182054017442c252d39"
+                "reference": "a18e27a94b3c572720205f5c7705b1d12ab80d2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/Test/zipball/5a4de38046256a49794f0182054017442c252d39",
-                "reference": "5a4de38046256a49794f0182054017442c252d39",
+                "url": "https://api.github.com/repos/LeoGalleguillos/Test/zipball/a18e27a94b3c572720205f5c7705b1d12ab80d2d",
+                "reference": "a18e27a94b3c572720205f5c7705b1d12ab80d2d",
                 "shasum": ""
             },
             "require": {
@@ -1470,7 +1470,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2020-02-07T06:51:28+00:00"
+            "time": "2020-02-13T07:17:34+00:00"
         },
         {
             "name": "leo-galleguillos/video",
@@ -2962,16 +2962,16 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.13.1",
+            "version": "v1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "f8f0b461be3385e56d6de3dbb5a0df24c0c275e3"
+                "reference": "fbdeaec0df06cf3d51c93de80c7eb76e271f5a38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/f8f0b461be3385e56d6de3dbb5a0df24c0c275e3",
-                "reference": "f8f0b461be3385e56d6de3dbb5a0df24c0c275e3",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/fbdeaec0df06cf3d51c93de80c7eb76e271f5a38",
+                "reference": "fbdeaec0df06cf3d51c93de80c7eb76e271f5a38",
                 "shasum": ""
             },
             "require": {
@@ -2983,7 +2983,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.13-dev"
+                    "dev-master": "1.14-dev"
                 }
             },
             "autoload": {
@@ -3016,7 +3016,7 @@
                 "polyfill",
                 "portable"
             ],
-            "time": "2019-11-27T13:56:44+00:00"
+            "time": "2020-01-13T11:15:53+00:00"
         },
         {
             "name": "theseer/tokenizer",
