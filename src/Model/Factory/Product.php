@@ -63,6 +63,12 @@ class Product
             );
         }
 
+        $productFeatureArrays = $this->productFeatureTable->selectWhereAsin($productArray['asin']);
+        foreach ($productFeatureArrays as $array) {
+            $productEntity->features[] = $array['feature'];
+        }
+
+
         if (isset($productArray['height_units'])) {
             $productEntity->setHeightUnits(
                 $productArray['height_units']
@@ -153,12 +159,7 @@ class Product
             );
         }
 
-        $productFeatureArrays = $this->productFeatureTable->selectWhereAsin($productArray['asin']);
-        foreach ($productFeatureArrays as $array) {
-            $productEntity->features[] = $array['feature'];
-        }
-
-        $productImageArrays   = $this->productImageTable->selectWhereAsin($productArray['asin']);
+        $productImageArrays = $this->productImageTable->selectWhereAsin($productArray['asin']);
         foreach ($productImageArrays as $array) {
             $array['url'] = str_replace('http://ecx.', 'https://images-na.ssl-', $array['url']);
             if ($array['category'] == 'primary') {
