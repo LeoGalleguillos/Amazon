@@ -158,9 +158,9 @@ class Product
 
     public function buildFromAsin(string $asin): AmazonEntity\Product
     {
-        $productArray            = $this->asinTable->selectWhereAsin($asin);
-        $productFeatureArrays    = $this->productFeatureTable->selectWhereAsin($asin);
-        $productImageArrays      = $this->productImageTable->selectWhereAsin($asin);
+        $productArray         = $this->asinTable->selectWhereAsin($asin);
+        $productFeatureArrays = $this->productFeatureTable->selectWhereAsin($productArray['asin']);
+        $productImageArrays   = $this->productImageTable->selectWhereAsin($productArray['asin']);
 
         return $this->buildFromArraysAndGenerators(
             $productArray,
@@ -171,9 +171,9 @@ class Product
 
     public function buildFromProductId(int $productId): AmazonEntity\Product
     {
-        $productArray            = $this->productTable->selectWhereProductId($productId);
-        $productFeatureArrays    = $this->productFeatureTable->selectWhereAsin($productArray['asin']);
-        $productImageArrays      = $this->productImageTable->selectWhereAsin($productArray['asin']);
+        $productArray         = $this->productTable->selectWhereProductId($productId);
+        $productFeatureArrays = $this->productFeatureTable->selectWhereAsin($productArray['asin']);
+        $productImageArrays   = $this->productImageTable->selectWhereAsin($productArray['asin']);
 
         return $this->buildFromArraysAndGenerators(
             $productArray,
