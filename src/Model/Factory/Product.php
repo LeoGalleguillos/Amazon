@@ -189,14 +189,6 @@ class Product
     ): AmazonEntity\Product {
         $productEntity = $this->buildFromArray($productArray);
 
-        if (isset($productArray['product_group'])) {
-            $productEntity->setProductGroup(
-                $this->productGroupFactory->buildFromName(
-                    $productArray['product_group']
-                )
-            );
-        }
-
         foreach ($productFeatureArrays as $array) {
             $productEntity->features[] = $array['feature'];
         }
