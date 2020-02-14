@@ -23,7 +23,7 @@ class DownloadArrayToMySql
         array $itemInfoArray,
         int $productId
     ) {
-        $affectedRows = $this->productTableGateway->update(
+        $this->productTableGateway->update(
             [
                 'color' => $this->colorStringOrNullService->getStringOrNull($itemInfoArray),
                 'is_adult_product' => isset($itemInfoArray['ProductInfo']['IsAdultProduct']['DisplayValue'])
