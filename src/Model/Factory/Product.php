@@ -154,6 +154,36 @@ class Product
         return $productEntity;
     }
 
+    public function buildFromAsin(string $asin): AmazonEntity\Product
+    {
+        $productArray            = $this->asinTable->selectWhereAsin($asin);
+        $productFeatureArrays    = $this->productFeatureTable->selectWhereAsin($asin);
+        $productHiResImageArrays = $this->productHiResImageTable->selectWhereProductId($productArray['product_id']);
+        $productImageArrays      = $this->productImageTable->selectWhereAsin($asin);
+
+        return $this->buildFromArraysAndGenerators(
+            $productArray,
+            $productFeatureArrays,
+            $productHiResImageArrays,
+            $productImageArrays
+        );
+    }
+
+    public function buildFromProductId(int $productId)
+    {
+        $productArray            = $this->productTable->selectWhereProductId($productId);
+        $productFeatureArrays    = $this->productFeatureTable->selectWhereAsin($productArray['asin']);
+        $productHiResImageArrays = $this->productHiResImageTable->selectWhereProductId($productId);
+        $productImageArrays      = $this->productImageTable->selectWhereAsin($productArray['asin']);
+
+        return $this->buildFromArraysAndGenerators(
+            $productArray,
+            $productFeatureArrays,
+            $productHiResImageArrays,
+            $productImageArrays
+        );
+    }
+
     protected function buildFromArraysAndGenerators(
         array $productArray,
         Generator $productFeatureArrays,
@@ -192,35 +222,5 @@ class Product
         }
 
         return $productEntity;
-    }
-
-    public function buildFromAsin(string $asin): AmazonEntity\Product
-    {
-        $productArray            = $this->asinTable->selectWhereAsin($asin);
-        $productFeatureArrays    = $this->productFeatureTable->selectWhereAsin($asin);
-        $productHiResImageArrays = $this->productHiResImageTable->selectWhereProductId($productArray['product_id']);
-        $productImageArrays      = $this->productImageTable->selectWhereAsin($asin);
-
-        return $this->buildFromArraysAndGenerators(
-            $productArray,
-            $productFeatureArrays,
-            $productHiResImageArrays,
-            $productImageArrays
-        );
-    }
-
-    public function buildFromProductId(int $productId)
-    {
-        $productArray            = $this->productTable->selectWhereProductId($productId);
-        $productFeatureArrays    = $this->productFeatureTable->selectWhereAsin($productArray['asin']);
-        $productHiResImageArrays = $this->productHiResImageTable->selectWhereProductId($productId);
-        $productImageArrays      = $this->productImageTable->selectWhereAsin($productArray['asin']);
-
-        return $this->buildFromArraysAndGenerators(
-            $productArray,
-            $productFeatureArrays,
-            $productHiResImageArrays,
-            $productImageArrays
-        );
     }
 }
