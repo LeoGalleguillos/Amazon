@@ -33,7 +33,7 @@ class Product
 
     public function buildFromArray(
         array $productArray
-    ) {
+    ): AmazonEntity\Product {
         $productEntity = (new AmazonEntity\Product())
             ->setAsin($productArray['asin'])
             ->setProductId($productArray['product_id'])
@@ -169,7 +169,7 @@ class Product
         );
     }
 
-    public function buildFromProductId(int $productId)
+    public function buildFromProductId(int $productId): AmazonEntity\Product
     {
         $productArray            = $this->productTable->selectWhereProductId($productId);
         $productFeatureArrays    = $this->productFeatureTable->selectWhereAsin($productArray['asin']);
@@ -186,7 +186,7 @@ class Product
         array $productArray,
         Generator $productFeatureArrays,
         Generator $productImageArrays
-    ) {
+    ): AmazonEntity\Product {
         $productEntity = $this->buildFromArray($productArray);
 
         if (isset($productArray['product_group'])) {
