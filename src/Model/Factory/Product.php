@@ -19,18 +19,16 @@ class Product
         AmazonTable\Product $productTable,
         AmazonTable\Product\Asin $asinTable,
         AmazonTable\ProductFeature $productFeatureTable,
-        AmazonTable\ProductImage $productImageTable,
-        AmazonTable\ProductHiResImage $productHiResImageTable
+        AmazonTable\ProductImage $productImageTable
     ) {
-        $this->bindingFactory         = $bindingFactory;
-        $this->brandFactory           = $brandFactory;
-        $this->productGroupFactory    = $productGroupFactory;
-        $this->imageFactory           = $imageFactory;
-        $this->productTable           = $productTable;
-        $this->asinTable              = $asinTable;
-        $this->productFeatureTable    = $productFeatureTable;
-        $this->productImageTable      = $productImageTable;
-        $this->productHiResImageTable = $productHiResImageTable;
+        $this->bindingFactory      = $bindingFactory;
+        $this->brandFactory        = $brandFactory;
+        $this->productGroupFactory = $productGroupFactory;
+        $this->imageFactory        = $imageFactory;
+        $this->productTable        = $productTable;
+        $this->asinTable           = $asinTable;
+        $this->productFeatureTable = $productFeatureTable;
+        $this->productImageTable   = $productImageTable;
     }
 
     public function buildFromArray(
@@ -38,9 +36,7 @@ class Product
     ) {
         $productEntity = (new AmazonEntity\Product())
             ->setAsin($productArray['asin'])
-            ->setListPrice($productArray['list_price'])
             ->setProductId($productArray['product_id'])
-            ->setTitle($productArray['title'])
             ;
 
         if (isset($productArray['product_group'])) {
@@ -91,9 +87,9 @@ class Product
             );
         }
 
-        if (isset($productArray['hi_res_images_retrieved'])) {
-            $productEntity->setHiResImagesRetrieved(
-                new DateTime($productArray['hi_res_images_retrieved'])
+        if (isset($productArray['list_price'])) {
+            $productEntity->setListPrice(
+                (float) $productArray['list_price']
             );
         }
 
@@ -112,6 +108,12 @@ class Product
         if (isset($productArray['size'])) {
             $productEntity->setSize(
                 $productArray['size']
+            );
+        }
+
+        if (isset($productArray['title'])) {
+            $productEntity->setTitle(
+                $productArray['title']
             );
         }
 
@@ -158,13 +160,11 @@ class Product
     {
         $productArray            = $this->asinTable->selectWhereAsin($asin);
         $productFeatureArrays    = $this->productFeatureTable->selectWhereAsin($asin);
-        $productHiResImageArrays = $this->productHiResImageTable->selectWhereProductId($productArray['product_id']);
         $productImageArrays      = $this->productImageTable->selectWhereAsin($asin);
 
         return $this->buildFromArraysAndGenerators(
             $productArray,
             $productFeatureArrays,
-            $productHiResImageArrays,
             $productImageArrays
         );
     }
@@ -173,13 +173,11 @@ class Product
     {
         $productArray            = $this->productTable->selectWhereProductId($productId);
         $productFeatureArrays    = $this->productFeatureTable->selectWhereAsin($productArray['asin']);
-        $productHiResImageArrays = $this->productHiResImageTable->selectWhereProductId($productId);
         $productImageArrays      = $this->productImageTable->selectWhereAsin($productArray['asin']);
 
         return $this->buildFromArraysAndGenerators(
             $productArray,
             $productFeatureArrays,
-            $productHiResImageArrays,
             $productImageArrays
         );
     }
@@ -187,25 +185,20 @@ class Product
     protected function buildFromArraysAndGenerators(
         array $productArray,
         Generator $productFeatureArrays,
-        Generator $productHiResImageArrays,
         Generator $productImageArrays
     ) {
         $productEntity = $this->buildFromArray($productArray);
 
-        $productEntity->setProductGroup(
-            $this->productGroupFactory->buildFromName(
-                $productArray['product_group']
-            )
-        );
+        if (isset($productArray['product_group'])) {
+            $productEntity->setProductGroup(
+                $this->productGroupFactory->buildFromName(
+                    $productArray['product_group']
+                )
+            );
+        }
 
         foreach ($productFeatureArrays as $array) {
             $productEntity->features[] = $array['feature'];
-        }
-
-        foreach ($productHiResImageArrays as $productHiResImageArray) {
-            $imageEntity = new ImageEntity\Image();
-            $imageEntity->setUrl($productHiResImageArray['url']);
-            $hiResImages[] = $imageEntity;
         }
 
         foreach ($productImageArrays as $array) {

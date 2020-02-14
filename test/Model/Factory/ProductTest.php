@@ -2,6 +2,7 @@
 namespace LeoGalleguillos\AmazonTest\Model\Factory;
 
 use DateTime;
+use Generator;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
@@ -82,5 +83,78 @@ class ProductTest extends TestCase
             $productEntity,
             $this->productFactory->buildFromArray($array)
         );
+    }
+
+    public function testBuildFromAsin()
+    {
+        $this->asinTableMock
+            ->method('selectWhereAsin')
+            ->willReturn([
+                'product_id' => 12345,
+                'asin'       => 'ASIN12345',
+            ]);
+
+        $this->productFeatureTableMock
+            ->method('selectWhereAsin')
+            ->willReturn(
+                $this->yieldProductFeatureArrays()
+            );
+
+        $this->productImageTableMock
+            ->method('selectWhereAsin')
+            ->willReturn(
+                $this->yieldProductImageArrays()
+            );
+
+        $productEntity = (new AmazonEntity\Product())
+            ->setAsin('ASIN12345')
+            ->setFeatures([
+                'This is the first feature.',
+                'This is the second feature.',
+            ])
+            ->setProductId('12345')
+            ->setVariantImages([
+                null,
+                null
+            ]);
+            ;
+
+        $this->assertEquals(
+            $productEntity,
+            $this->productFactory->buildFromAsin('ASIN12345')
+        );
+    }
+
+    protected function yieldProductFeatureArrays(): Generator
+    {
+        yield [
+            'product_id' => 1,
+            'asin'       => 'ASIN12345',
+            'feature'    => 'This is the first feature.',
+        ];
+
+        yield [
+            'product_id' => 1,
+            'asin'       => 'ASIN12345',
+            'feature'    => 'This is the second feature.',
+        ];
+    }
+
+    protected function yieldProductImageArrays(): Generator
+    {
+        yield [
+            'url'      => 'https://www.example.com/images/product/asin12345/1.jpg',
+            'category' => 'primary',
+        ];
+
+        yield [
+            'url'      => 'https://www.example.com/images/product/asin12345/2.jpg',
+            'category' => 'variant',
+        ];
+
+        yield [
+            'url'      => 'https://www.example.com/images/product/asin12345/3.jpg',
+            'category' => 'variant',
+        ];
     }
 }
