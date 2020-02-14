@@ -14,6 +14,10 @@ class Product
      */
     protected $adapter;
 
+    /**
+     * @todo Injections should be in alphabetical order.
+     *       Therefore adapter should be listed first in constructor.
+     */
     public function __construct(
         MemcachedService\Memcached $memcached,
         Adapter $adapter
