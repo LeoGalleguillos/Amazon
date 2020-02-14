@@ -125,6 +125,46 @@ class ProductTest extends TestCase
         );
     }
 
+    public function testBuildFromProductId()
+    {
+        $this->productTableMock
+            ->method('selectWhereProductId')
+            ->willReturn([
+                'product_id' => 12345,
+                'asin'       => 'ASIN12345',
+            ]);
+
+        $this->productFeatureTableMock
+            ->method('selectWhereAsin')
+            ->willReturn(
+                $this->yieldProductFeatureArrays()
+            );
+
+        $this->productImageTableMock
+            ->method('selectWhereAsin')
+            ->willReturn(
+                $this->yieldProductImageArrays()
+            );
+
+        $productEntity = (new AmazonEntity\Product())
+            ->setAsin('ASIN12345')
+            ->setFeatures([
+                'This is the first feature.',
+                'This is the second feature.',
+            ])
+            ->setProductId('12345')
+            ->setVariantImages([
+                null,
+                null
+            ]);
+            ;
+
+        $this->assertEquals(
+            $productEntity,
+            $this->productFactory->buildFromProductId(12345)
+        );
+    }
+
     protected function yieldProductFeatureArrays(): Generator
     {
         yield [
