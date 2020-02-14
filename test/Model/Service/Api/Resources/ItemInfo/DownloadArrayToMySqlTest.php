@@ -2,6 +2,7 @@
 namespace LeoGalleguillos\AmazonTest\Model\Service\Api\Resources\ItemInfo;
 
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
+use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Amazon\Model\TableGateway as AmazonTableGateway;
 use PHPUnit\Framework\TestCase;
 
@@ -15,12 +16,16 @@ class DownloadArrayToMySqlTest extends TestCase
         $this->sizeStringOrNullServiceMock = $this->createMock(
             AmazonService\Api\Resources\ItemInfo\ProductInfo\Size\DisplayValue\StringOrNull::class
         );
+        $this->productEanTableMock = $this->createMock(
+            AmazonTable\ProductEan::class
+        );
         $this->productTableGatewayMock = $this->createMock(
             AmazonTableGateway\Product::class
         );
         $this->downloadArrayToMySqlService = new AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql(
             $this->colorStringOrNullServiceMock,
             $this->sizeStringOrNullServiceMock,
+            $this->productEanTableMock,
             $this->productTableGatewayMock
         );
     }

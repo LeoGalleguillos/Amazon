@@ -218,6 +218,7 @@ class Module
                     return new AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql(
                         $sm->get(AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull::class),
                         $sm->get(AmazonService\Api\Resources\ItemInfo\ProductInfo\Size\DisplayValue\StringOrNull::class),
+                        $sm->get(AmazonTable\ProductEan::class),
                         $sm->get(AmazonTableGateway\Product::class)
                     );
                 },

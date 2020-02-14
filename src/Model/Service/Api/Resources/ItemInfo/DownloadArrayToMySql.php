@@ -2,6 +2,7 @@
 namespace LeoGalleguillos\Amazon\Model\Service\Api\Resources\ItemInfo;
 
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
+use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Amazon\Model\TableGateway as AmazonTableGateway;
 
 class DownloadArrayToMySql
@@ -9,10 +10,12 @@ class DownloadArrayToMySql
     public function __construct(
         AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull $colorStringOrNullService,
         AmazonService\Api\Resources\ItemInfo\ProductInfo\Size\DisplayValue\StringOrNull $sizeStringOrNullService,
+        AmazonTable\ProductEan $productEanTable,
         AmazonTableGateway\Product $productTableGateway
     ) {
         $this->colorStringOrNullService = $colorStringOrNullService;
         $this->sizeStringOrNullService  = $sizeStringOrNullService;
+        $this->productEanTable          = $productEanTable;
         $this->productTableGateway      = $productTableGateway;
     }
 
