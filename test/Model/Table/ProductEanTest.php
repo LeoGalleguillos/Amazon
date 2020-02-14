@@ -22,6 +22,14 @@ class ProductEanTest extends TableTestCase
         );
     }
 
+    public function testGetSelect()
+    {
+        $this->assertInternalType(
+            'string',
+            $this->productEanTable->getSelect()
+        );
+    }
+
     public function testInsertIgnore()
     {
         $result = $this->productEanTable->insertIgnore(1, '1234567890123');

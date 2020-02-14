@@ -17,6 +17,14 @@ class ProductEan
         $this->adapter = $adapter;
     }
 
+    public function getSelect(): string
+    {
+        return '
+            SELECT `product_ean`.`product_id`
+                 , `product_ean`.`ean`
+        ';
+    }
+
     public function insertIgnore(
         int $productId,
         string $ean
