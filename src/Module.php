@@ -592,6 +592,12 @@ class Module
                         $sm->get('amazon')
                     );
                 },
+                AmazonTable\ProductEan\ProductId::class => function ($sm) {
+                    return new AmazonTable\ProductEan\ProductId(
+                        $sm->get('amazon'),
+                        $sm->get(AmazonTable\ProductEan::class)
+                    );
+                },
                 AmazonTable\ProductFeature::class => function ($sm) {
                     return new AmazonTable\ProductFeature(
                         $sm->get('amazon')
