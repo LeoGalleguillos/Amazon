@@ -82,6 +82,5 @@ class ProductTest extends TestCase
             $productEntity,
             $this->productFactory->buildFromArray($array)
         );
-
     }
 }
