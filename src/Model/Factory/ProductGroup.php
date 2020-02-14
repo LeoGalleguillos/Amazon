@@ -59,15 +59,9 @@ class ProductGroup
         }
     }
 
-    /**
-     * Build from product group ID.
-     *
-     * @param int $productGroupId
-     * @return AmazonEntity\ProductGroup
-     */
     public function buildFromProductGroupId(
         int $productGroupId
-    ) : AmazonEntity\ProductGroup {
+    ): AmazonEntity\ProductGroup {
         $arrayObject = $this->productGroupTable->selectWhereProductGroupId(
             $productGroupId
         );
