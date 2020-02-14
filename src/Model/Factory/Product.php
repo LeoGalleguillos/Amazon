@@ -153,46 +153,12 @@ class Product
             );
         }
 
-        return $productEntity;
-    }
-
-    public function buildFromAsin(string $asin): AmazonEntity\Product
-    {
-        $productArray         = $this->asinTable->selectWhereAsin($asin);
         $productFeatureArrays = $this->productFeatureTable->selectWhereAsin($productArray['asin']);
-        $productImageArrays   = $this->productImageTable->selectWhereAsin($productArray['asin']);
-
-        return $this->buildFromArraysAndGenerators(
-            $productArray,
-            $productFeatureArrays,
-            $productImageArrays
-        );
-    }
-
-    public function buildFromProductId(int $productId): AmazonEntity\Product
-    {
-        $productArray         = $this->productTable->selectWhereProductId($productId);
-        $productFeatureArrays = $this->productFeatureTable->selectWhereAsin($productArray['asin']);
-        $productImageArrays   = $this->productImageTable->selectWhereAsin($productArray['asin']);
-
-        return $this->buildFromArraysAndGenerators(
-            $productArray,
-            $productFeatureArrays,
-            $productImageArrays
-        );
-    }
-
-    protected function buildFromArraysAndGenerators(
-        array $productArray,
-        Generator $productFeatureArrays,
-        Generator $productImageArrays
-    ): AmazonEntity\Product {
-        $productEntity = $this->buildFromArray($productArray);
-
         foreach ($productFeatureArrays as $array) {
             $productEntity->features[] = $array['feature'];
         }
 
+        $productImageArrays   = $this->productImageTable->selectWhereAsin($productArray['asin']);
         foreach ($productImageArrays as $array) {
             $array['url'] = str_replace('http://ecx.', 'https://images-na.ssl-', $array['url']);
             if ($array['category'] == 'primary') {
@@ -207,5 +173,19 @@ class Product
         }
 
         return $productEntity;
+    }
+
+    public function buildFromAsin(string $asin): AmazonEntity\Product
+    {
+        return $this->buildFromArray(
+            $this->asinTable->selectWhereAsin($asin)
+        );
+    }
+
+    public function buildFromProductId(int $productId): AmazonEntity\Product
+    {
+        return $this->buildFromArray(
+            $this->productTable->selectWhereProductId($productId)
+        );
     }
 }

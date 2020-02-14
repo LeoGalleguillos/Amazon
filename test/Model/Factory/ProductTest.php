@@ -40,6 +40,18 @@ class ProductTest extends TestCase
 
     public function testBuildFromArray()
     {
+        $this->productFeatureTableMock
+            ->method('selectWhereAsin')
+            ->willReturn(
+                $this->yieldProductFeatureArrays()
+            );
+
+        $this->productImageTableMock
+            ->method('selectWhereAsin')
+            ->willReturn(
+                $this->yieldProductImageArrays()
+            );
+
         $array = [
             'product_id'       => '12345',
             'asin'             => 'ASIN',
@@ -62,6 +74,10 @@ class ProductTest extends TestCase
         $productEntity = (new AmazonEntity\Product())
             ->setAsin('ASIN')
             ->setColor('Red')
+            ->setFeatures([
+                'This is the first feature.',
+                'This is the second feature.',
+            ])
             ->setIsAdultProduct(false)
             ->setHeightUnits('inches')
             ->setHeightValue('1.0')
@@ -73,6 +89,10 @@ class ProductTest extends TestCase
             ->setSize('Medium')
             ->setTitle('Title')
             ->setUnitCount(7)
+            ->setVariantImages([
+                null,
+                null
+            ])
             ->setWeightUnits('LBS')
             ->setWeightValue('1000')
             ->setWidthUnits('feet')
