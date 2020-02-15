@@ -43,6 +43,11 @@ class Product
     protected $color;
 
     /**
+     * @var array
+     */
+    protected $eans;
+
+    /**
      * @var array Array of editorial reviews.
      */
     public $editorialReviews = [];
@@ -187,6 +192,11 @@ class Product
         return $this->color;
     }
 
+    public function getEans(): array
+    {
+        return $this->eans;
+    }
+
     public function getFeatures(): array
     {
         return $this->features;
@@ -326,6 +336,12 @@ class Product
     public function setColor(string $color): self
     {
         $this->color = $color;
+        return $this;
+    }
+
+    public function setEans(array $eans): self
+    {
+        $this->eans = $eans;
         return $this;
     }
 
