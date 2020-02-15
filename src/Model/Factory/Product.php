@@ -68,7 +68,6 @@ class Product
             $productEntity->features[] = $array['feature'];
         }
 
-
         if (isset($productArray['height_units'])) {
             $productEntity->setHeightUnits(
                 $productArray['height_units']
