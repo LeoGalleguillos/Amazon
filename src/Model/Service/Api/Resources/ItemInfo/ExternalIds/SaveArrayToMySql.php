@@ -15,6 +15,11 @@ class SaveArrayToMySql
         array $externalIdsArray,
         int $productId
     ) {
-
+        if (isset($externalIdsArray['EANs'])) {
+            $this->saveEansArrayToMySqlService->saveArrayToMySql(
+                $externalIdsArray['EANs'],
+                $productId
+            );
+        }
     }
 }
