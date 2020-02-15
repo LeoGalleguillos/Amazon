@@ -7,15 +7,15 @@ use LeoGalleguillos\Amazon\Model\TableGateway as AmazonTableGateway;
 class DownloadArrayToMySql
 {
     public function __construct(
-        AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql $saveExternalIdsArrayToMySql,
+        AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql $saveExternalIdsArrayToMySqlService,
         AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull $colorStringOrNullService,
         AmazonService\Api\Resources\ItemInfo\ProductInfo\Size\DisplayValue\StringOrNull $sizeStringOrNullService,
         AmazonTableGateway\Product $productTableGateway
     ) {
-        $this->saveExternalIdsArrayToMySql = $saveExternalIdsArrayToMySql;
-        $this->colorStringOrNullService    = $colorStringOrNullService;
-        $this->sizeStringOrNullService     = $sizeStringOrNullService;
-        $this->productTableGateway         = $productTableGateway;
+        $this->saveExternalIdsArrayToMySqlService = $saveExternalIdsArrayToMySqlService;
+        $this->colorStringOrNullService           = $colorStringOrNullService;
+        $this->sizeStringOrNullService            = $sizeStringOrNullService;
+        $this->productTableGateway                = $productTableGateway;
     }
 
     public function downloadArrayToMySql(
@@ -59,5 +59,12 @@ class DownloadArrayToMySql
             ],
             ['product_id' => $productId]
         );
+
+        if (isset($itemInfoArray['ExternalIds'])) {
+            $this->saveExternalIdsArrayToMySqlService->saveArrayToMySql(
+                $itemInfoArray['ExternalIds'],
+                $productId
+            );
+        }
     }
 }

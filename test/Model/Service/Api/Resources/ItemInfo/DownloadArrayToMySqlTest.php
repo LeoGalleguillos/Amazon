@@ -37,6 +37,7 @@ class DownloadArrayToMySqlTest extends TestCase
         $this->sizeStringOrNullServiceMock
             ->method('getStringOrNull')
             ->willReturn(null);
+
         $this->productTableGatewayMock
             ->expects($this->exactly(1))
             ->method('update')
@@ -61,6 +62,15 @@ class DownloadArrayToMySqlTest extends TestCase
                     ['product_id' => 12345]
                 )
             );
+        $this->saveExternalIdsArrayToMySqlMock
+            ->expects($this->exactly(1))
+            ->method('saveArrayToMySql')
+            ->with(
+                $this->identicalTo(
+                    $this->getArray()['ExternalIds']
+                )
+            );
+
         $this->downloadArrayToMySqlService->downloadArrayToMySql(
             $this->getArray(),
             12345
@@ -106,7 +116,10 @@ class DownloadArrayToMySqlTest extends TestCase
           array (
             'DisplayValues' =>
             array (
-              0 => '0019862511203',
+              0 => '3609740155567',
+              1 => '0647684811968',
+              2 => '5033588037965',
+              3 => '5033588030737',
             ),
             'Label' => 'EAN',
             'Locale' => 'en_US',
