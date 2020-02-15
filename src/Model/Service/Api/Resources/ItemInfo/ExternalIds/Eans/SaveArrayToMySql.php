@@ -15,6 +15,15 @@ class SaveArrayToMySql
         array $eansArray,
         int $productId
     ) {
+        if (empty($eansArray['DisplayValues'])) {
+            return;
+        }
 
+        foreach ($eansArray['DisplayValues'] as $ean) {
+            $this->productEanTable->insertIgnore(
+                $productId,
+                $ean
+            );
+        }
     }
 }
