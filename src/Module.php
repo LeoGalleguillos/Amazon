@@ -214,8 +214,19 @@ class Module
                         $sm->get(AmazonTable\BrowseNodeHierarchy::class)
                     );
                 },
+                AmazonService\Api\Resources\ItemInfo\ExternalIds\Eans\SaveArrayToMySql::class => function ($sm) {
+                    return new AmazonService\Api\Resources\ItemInfo\ExternalIds\Eans\SaveArrayToMySql(
+                        $sm->get(AmazonTable\ProductEan::class)
+                    );
+                },
+                AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql::class => function ($sm) {
+                    return new AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql(
+                        $sm->get(AmazonService\Api\Resources\ItemInfo\ExternalIds\Eans\SaveArrayToMySql::class)
+                    );
+                },
                 AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql::class => function ($sm) {
                     return new AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql(
+                        $sm->get(AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql::class),
                         $sm->get(AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull::class),
                         $sm->get(AmazonService\Api\Resources\ItemInfo\ProductInfo\Size\DisplayValue\StringOrNull::class),
                         $sm->get(AmazonTableGateway\Product::class)
