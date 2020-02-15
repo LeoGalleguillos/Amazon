@@ -13,14 +13,6 @@ class ProductTest extends TestCase
         $this->productEntity = new AmazonEntity\Product();
     }
 
-    public function testInitialize()
-    {
-        $this->assertInstanceOf(
-            AmazonEntity\Product::class,
-            $this->productEntity
-        );
-    }
-
     public function testGettersAndSetters()
     {
         $asin = 'ASIN';
