@@ -8,6 +8,7 @@ use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Image\Model\Factory as ImageFactory;
 use PHPUnit\Framework\TestCase;
+use Laminas\Db\Adapter\Driver\Pdo\Result;
 
 class ProductTest extends TestCase
 {
@@ -21,8 +22,8 @@ class ProductTest extends TestCase
         $this->asinTableMock = $this->createMock(
             AmazonTable\Product\Asin::class
         );
-        $this->productEanTableMock = $this->createMock(
-            AmazonTable\ProductEan::class
+        $this->productEanProductIdTableMock = $this->createMock(
+            AmazonTable\ProductEan\ProductId::class
         );
         $this->productFeatureTableMock = $this->createMock(AmazonTable\ProductFeature::class);
         $this->productImageTableMock = $this->createMock(AmazonTable\ProductImage::class);
@@ -35,7 +36,7 @@ class ProductTest extends TestCase
             $this->imageFactoryMock,
             $this->productTableMock,
             $this->asinTableMock,
-            $this->productEanTableMock,
+            $this->productEanProductIdTableMock,
             $this->productFeatureTableMock,
             $this->productImageTableMock,
             $this->productHiResImageTableMock
@@ -44,6 +45,11 @@ class ProductTest extends TestCase
 
     public function testBuildFromArray()
     {
+        $this->productEanProductIdTableMock
+            ->method('selectWhereProductId')
+            ->willReturn(
+                new Result()
+            );
         $this->productFeatureTableMock
             ->method('selectWhereAsin')
             ->willReturn(

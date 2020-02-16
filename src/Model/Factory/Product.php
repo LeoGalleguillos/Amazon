@@ -18,19 +18,19 @@ class Product
         ImageFactory\Image $imageFactory,
         AmazonTable\Product $productTable,
         AmazonTable\Product\Asin $asinTable,
-        AmazonTable\ProductEan $productEanTable,
+        AmazonTable\ProductEan\ProductId $productEanProductIdTable,
         AmazonTable\ProductFeature $productFeatureTable,
         AmazonTable\ProductImage $productImageTable
     ) {
-        $this->bindingFactory      = $bindingFactory;
-        $this->brandFactory        = $brandFactory;
-        $this->productGroupFactory = $productGroupFactory;
-        $this->imageFactory        = $imageFactory;
-        $this->productTable        = $productTable;
-        $this->asinTable           = $asinTable;
-        $this->productEanTable     = $productEanTable;
-        $this->productFeatureTable = $productFeatureTable;
-        $this->productImageTable   = $productImageTable;
+        $this->bindingFactory           = $bindingFactory;
+        $this->brandFactory             = $brandFactory;
+        $this->productGroupFactory      = $productGroupFactory;
+        $this->imageFactory             = $imageFactory;
+        $this->productTable             = $productTable;
+        $this->asinTable                = $asinTable;
+        $this->productEanProductIdTable = $productEanProductIdTable;
+        $this->productFeatureTable      = $productFeatureTable;
+        $this->productImageTable        = $productImageTable;
     }
 
     public function buildFromArray(
@@ -64,6 +64,10 @@ class Product
                 $productArray['color']
             );
         }
+
+        $result = $this->productEanProductIdTable->selectWhereProductId(
+            $productArray['product_id']
+        );
 
         $productFeatureArrays = $this->productFeatureTable->selectWhereAsin($productArray['asin']);
         foreach ($productFeatureArrays as $array) {
