@@ -18,6 +18,7 @@ class Product
         ImageFactory\Image $imageFactory,
         AmazonTable\Product $productTable,
         AmazonTable\Product\Asin $asinTable,
+        AmazonTable\ProductEan $productEanTable,
         AmazonTable\ProductFeature $productFeatureTable,
         AmazonTable\ProductImage $productImageTable
     ) {
@@ -27,6 +28,7 @@ class Product
         $this->imageFactory        = $imageFactory;
         $this->productTable        = $productTable;
         $this->asinTable           = $asinTable;
+        $this->productEanTable     = $productEanTable;
         $this->productFeatureTable = $productFeatureTable;
         $this->productImageTable   = $productImageTable;
     }
