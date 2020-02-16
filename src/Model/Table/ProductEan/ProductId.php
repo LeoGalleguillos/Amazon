@@ -1,9 +1,9 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table\ProductEan;
 
+use Laminas\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Driver\Pdo\Result;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
-use Zend\Db\Adapter\Adapter;
-use Zend\Db\Adapter\Driver\Pdo\Result;
 
 class ProductId
 {
