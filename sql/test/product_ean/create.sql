@@ -1,6 +1,6 @@
 CREATE TABLE `product_ean` (
   `product_id` int(10) unsigned NOT NULL,
-  `ean` varchar(13) NOT NULL,
+  `ean` char(13) NOT NULL,
   PRIMARY KEY (`product_id`, `ean`),
   CONSTRAINT `product_id` FOREIGN KEY `product_id` (`product_id`)
     REFERENCES `product` (`product_id`)
