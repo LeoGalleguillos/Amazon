@@ -41,14 +41,36 @@ class ProductTest extends TestCase
             $this->productImageTableMock,
             $this->productHiResImageTableMock
         );
+
+        $this->resultMock = $this->createMock(
+            Result::class
+        );
     }
 
     public function testBuildFromArray()
     {
+        $this->resultMock
+            ->method('valid')
+            ->will(
+                $this->onConsecutiveCalls(
+                    true,
+                    true,
+                    true
+                )
+            );
+        $this->resultMock
+            ->method('current')
+            ->will(
+                $this->onConsecutiveCalls(
+                    ['product_id' => '12345', 'ean' => '1234567890123'],
+                    ['product_id' => '12345', 'ean' => '1234567890124'],
+                    ['product_id' => '12345', 'ean' => '1234567890125']
+                )
+            );
         $this->productEanProductIdTableMock
             ->method('selectWhereProductId')
             ->willReturn(
-                new Result()
+                $this->resultMock
             );
         $this->productFeatureTableMock
             ->method('selectWhereAsin')
@@ -81,9 +103,15 @@ class ProductTest extends TestCase
             'size'             => 'Medium',
             'unit_count'       => 7,
         ];
+
         $productEntity = (new AmazonEntity\Product())
             ->setAsin('ASIN')
             ->setColor('Red')
+            ->setEans([
+                '1234567890123',
+                '1234567890124',
+                '1234567890125',
+            ])
             ->setFeatures([
                 'This is the first feature.',
                 'This is the second feature.',

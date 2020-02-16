@@ -68,6 +68,13 @@ class Product
         $result = $this->productEanProductIdTable->selectWhereProductId(
             $productArray['product_id']
         );
+        $eans = [];
+        foreach ($result as $array) {
+            $eans[] = $array['ean'];
+        }
+        if (!empty($eans)) {
+            $productEntity->setEans($eans);
+        }
 
         $productFeatureArrays = $this->productFeatureTable->selectWhereAsin($productArray['asin']);
         foreach ($productFeatureArrays as $array) {
