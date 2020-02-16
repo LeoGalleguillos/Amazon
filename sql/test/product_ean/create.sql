@@ -2,7 +2,7 @@ CREATE TABLE `product_ean` (
   `product_id` int(10) unsigned NOT NULL,
   `ean` char(13) NOT NULL,
   PRIMARY KEY (`product_id`, `ean`),
-  CONSTRAINT `product_id` FOREIGN KEY `product_id` (`product_id`)
+  CONSTRAINT `product_product_ean` FOREIGN KEY `product_id` (`product_id`)
     REFERENCES `product` (`product_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE
