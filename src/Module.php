@@ -220,6 +220,11 @@ class Module
                         $sm->get(AmazonTable\ProductEan::class)
                     );
                 },
+                AmazonService\Api\Resources\ItemInfo\ExternalIds\Upcs\SaveArrayToMySql::class => function ($sm) {
+                    return new AmazonService\Api\Resources\ItemInfo\ExternalIds\Upcs\SaveArrayToMySql(
+                        $sm->get(AmazonTable\ProductUpc::class)
+                    );
+                },
                 AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql::class => function ($sm) {
                     return new AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql(
                         $sm->get(AmazonService\Api\Resources\ItemInfo\ExternalIds\Eans\SaveArrayToMySql::class)
@@ -660,6 +665,17 @@ class Module
                 AmazonTable\Product\SimilarRetrievedCreated::class => function ($sm) {
                     return new AmazonTable\Product\SimilarRetrievedCreated(
                         $sm->get('amazon')
+                    );
+                },
+                AmazonTable\ProductUpc::class => function ($sm) {
+                    return new AmazonTable\ProductUpc(
+                        $sm->get('amazon')
+                    );
+                },
+                AmazonTable\ProductUpc\ProductId::class => function ($sm) {
+                    return new AmazonTable\ProductUpc\ProductId(
+                        $sm->get('amazon'),
+                        $sm->get(AmazonTable\ProductUpc::class)
                     );
                 },
                 AmazonTable\Product\VideoGenerated::class => function ($sm) {
