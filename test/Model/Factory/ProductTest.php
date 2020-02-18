@@ -27,7 +27,9 @@ class ProductTest extends TestCase
         );
         $this->productFeatureTableMock = $this->createMock(AmazonTable\ProductFeature::class);
         $this->productImageTableMock = $this->createMock(AmazonTable\ProductImage::class);
-        $this->productHiResImageTableMock = $this->createMock(AmazonTable\ProductHiResImage::class);
+        $this->productUpcProductIdTableMock = $this->createMock(
+            AmazonTable\ProductUpc\ProductId::class
+        );
 
         $this->productFactory = new AmazonFactory\Product(
             $this->bindingFactoryMock,
@@ -39,17 +41,20 @@ class ProductTest extends TestCase
             $this->productEanProductIdTableMock,
             $this->productFeatureTableMock,
             $this->productImageTableMock,
-            $this->productHiResImageTableMock
+            $this->productUpcProductIdTableMock
         );
 
-        $this->resultMock = $this->createMock(
+        $this->productEanResultMock = $this->createMock(
+            Result::class
+        );
+        $this->productUpcResultMock = $this->createMock(
             Result::class
         );
     }
 
     public function testBuildFromArray()
     {
-        $this->resultMock
+        $this->productEanResultMock
             ->method('valid')
             ->will(
                 $this->onConsecutiveCalls(
@@ -58,7 +63,7 @@ class ProductTest extends TestCase
                     true
                 )
             );
-        $this->resultMock
+        $this->productEanResultMock
             ->method('current')
             ->will(
                 $this->onConsecutiveCalls(
@@ -70,7 +75,7 @@ class ProductTest extends TestCase
         $this->productEanProductIdTableMock
             ->method('selectWhereProductId')
             ->willReturn(
-                $this->resultMock
+                $this->productEanResultMock
             );
         $this->productFeatureTableMock
             ->method('selectWhereAsin')
@@ -82,6 +87,27 @@ class ProductTest extends TestCase
             ->method('selectWhereAsin')
             ->willReturn(
                 $this->yieldProductImageArrays()
+            );
+        $this->productUpcResultMock
+            ->method('valid')
+            ->will(
+                $this->onConsecutiveCalls(
+                    true,
+                    true
+                )
+            );
+        $this->productUpcResultMock
+            ->method('current')
+            ->will(
+                $this->onConsecutiveCalls(
+                    ['product_id' => '12345', 'upc' => '123456789012'],
+                    ['product_id' => '12345', 'upc' => '123456789013']
+                )
+            );
+        $this->productUpcProductIdTableMock
+            ->method('selectWhereProductId')
+            ->willReturn(
+                $this->productUpcResultMock
             );
 
         $array = [
@@ -127,6 +153,10 @@ class ProductTest extends TestCase
             ->setSize('Medium')
             ->setTitle('Title')
             ->setUnitCount(7)
+            ->setUpcs([
+                '123456789012',
+                '123456789013',
+            ])
             ->setVariantImages([
                 null,
                 null

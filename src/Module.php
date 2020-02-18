@@ -115,7 +115,7 @@ class Module
                         $sm->get(AmazonTable\ProductEan\ProductId::class),
                         $sm->get(AmazonTable\ProductFeature::class),
                         $sm->get(AmazonTable\ProductImage::class),
-                        $sm->get(AmazonTable\ProductHiResImage::class)
+                        $sm->get(AmazonTable\ProductUpc\ProductId::class)
                     );
                 },
                 AmazonFactory\Product\EditorialReview::class => function ($sm) {

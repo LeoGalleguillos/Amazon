@@ -20,7 +20,8 @@ class Product
         AmazonTable\Product\Asin $asinTable,
         AmazonTable\ProductEan\ProductId $productEanProductIdTable,
         AmazonTable\ProductFeature $productFeatureTable,
-        AmazonTable\ProductImage $productImageTable
+        AmazonTable\ProductImage $productImageTable,
+        AmazonTable\ProductUpc\ProductId $productUpcProductIdTable
     ) {
         $this->bindingFactory           = $bindingFactory;
         $this->brandFactory             = $brandFactory;
@@ -31,6 +32,7 @@ class Product
         $this->productEanProductIdTable = $productEanProductIdTable;
         $this->productFeatureTable      = $productFeatureTable;
         $this->productImageTable        = $productImageTable;
+        $this->productUpcProductIdTable = $productUpcProductIdTable;
     }
 
     public function buildFromArray(
@@ -139,6 +141,17 @@ class Product
             $productEntity->setUnitCount(
                 $productArray['unit_count']
             );
+        }
+
+        $result = $this->productUpcProductIdTable->selectWhereProductId(
+            $productArray['product_id']
+        );
+        $upcs = [];
+        foreach ($result as $array) {
+            $upcs[] = $array['upc'];
+        }
+        if (!empty($upcs)) {
+            $productEntity->setUpcs($upcs);
         }
 
         if (isset($productArray['video_generated'])) {
