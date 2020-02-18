@@ -55,21 +55,30 @@ class ProductTest extends TestCase
     public function testBuildFromArray()
     {
         $this->productEanResultMock
-            ->method('valid')
-            ->will(
-                $this->onConsecutiveCalls(
-                    true,
-                    true,
-                    true
-                )
-            );
-        $this->productEanResultMock
             ->method('current')
             ->will(
                 $this->onConsecutiveCalls(
                     ['product_id' => '12345', 'ean' => '1234567890123'],
                     ['product_id' => '12345', 'ean' => '1234567890124'],
                     ['product_id' => '12345', 'ean' => '1234567890125']
+                )
+            );
+        $this->productEanResultMock
+            ->method('key')
+            ->will(
+                $this->onConsecutiveCalls(
+                    0,
+                    1,
+                    2
+                )
+            );
+        $this->productEanResultMock
+            ->method('valid')
+            ->will(
+                $this->onConsecutiveCalls(
+                    true,
+                    true,
+                    true
                 )
             );
         $this->productEanProductIdTableMock
@@ -89,19 +98,27 @@ class ProductTest extends TestCase
                 $this->yieldProductImageArrays()
             );
         $this->productUpcResultMock
-            ->method('valid')
-            ->will(
-                $this->onConsecutiveCalls(
-                    true,
-                    true
-                )
-            );
-        $this->productUpcResultMock
             ->method('current')
             ->will(
                 $this->onConsecutiveCalls(
                     ['product_id' => '12345', 'upc' => '123456789012'],
                     ['product_id' => '12345', 'upc' => '123456789013']
+                )
+            );
+        $this->productUpcResultMock
+            ->method('key')
+            ->will(
+                $this->onConsecutiveCalls(
+                    0,
+                    1
+                )
+            );
+        $this->productUpcResultMock
+            ->method('valid')
+            ->will(
+                $this->onConsecutiveCalls(
+                    true,
+                    true
                 )
             );
         $this->productUpcProductIdTableMock

@@ -70,10 +70,7 @@ class Product
         $result = $this->productEanProductIdTable->selectWhereProductId(
             $productArray['product_id']
         );
-        $eans = [];
-        foreach ($result as $array) {
-            $eans[] = $array['ean'];
-        }
+        $eans = array_column(iterator_to_array($result), 'ean');
         if (!empty($eans)) {
             $productEntity->setEans($eans);
         }
@@ -146,10 +143,7 @@ class Product
         $result = $this->productUpcProductIdTable->selectWhereProductId(
             $productArray['product_id']
         );
-        $upcs = [];
-        foreach ($result as $array) {
-            $upcs[] = $array['upc'];
-        }
+        $upcs = array_column(iterator_to_array($result), 'upc');
         if (!empty($upcs)) {
             $productEntity->setUpcs($upcs);
         }
