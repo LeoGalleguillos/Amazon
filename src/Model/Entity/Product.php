@@ -138,6 +138,11 @@ class Product
     public $unitCount;
 
     /**
+     * @var array
+     */
+    protected $upcs;
+
+    /**
      * @var ImageEntity\Image[]
      */
     public $variantImages;
@@ -275,6 +280,11 @@ class Product
     public function getUnitCount(): int
     {
         return $this->unitCount;
+    }
+
+    public function getUpcs(): array
+    {
+        return $this->upcs;
     }
 
     public function getVariantImages(): array
@@ -441,6 +451,12 @@ class Product
     public function setUnitCount(int $unitCount): self
     {
         $this->unitCount = $unitCount;
+        return $this;
+    }
+
+    public function setUpcs(array $upcs): self
+    {
+        $this->upcs = $upcs;
         return $this;
     }
 

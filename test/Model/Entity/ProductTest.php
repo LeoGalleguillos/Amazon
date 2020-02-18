@@ -139,6 +139,19 @@ class ProductTest extends TestCase
             $this->productEntity->getUnitCount()
         );
 
+        $upcs = [
+            '123456789012',
+            '923456789013',
+        ];
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setUpcs($upcs)
+        );
+        $this->assertSame(
+            $upcs,
+            $this->productEntity->getUpcs()
+        );
+
         $weightUnits = 'Pounds';
         $this->assertSame(
             $this->productEntity,
