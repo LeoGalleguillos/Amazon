@@ -220,6 +220,11 @@ class Module
                         $sm->get(AmazonTable\ProductEan::class)
                     );
                 },
+                AmazonService\Api\Resources\ItemInfo\ExternalIds\Isbns\SaveArrayToMySql::class => function ($sm) {
+                    return new AmazonService\Api\Resources\ItemInfo\ExternalIds\Isbns\SaveArrayToMySql(
+                        $sm->get(AmazonTable\ProductIsbn::class)
+                    );
+                },
                 AmazonService\Api\Resources\ItemInfo\ExternalIds\Upcs\SaveArrayToMySql::class => function ($sm) {
                     return new AmazonService\Api\Resources\ItemInfo\ExternalIds\Upcs\SaveArrayToMySql(
                         $sm->get(AmazonTable\ProductUpc::class)
@@ -619,6 +624,17 @@ class Module
                 AmazonTable\ProductFeature::class => function ($sm) {
                     return new AmazonTable\ProductFeature(
                         $sm->get('amazon')
+                    );
+                },
+                AmazonTable\ProductIsbn::class => function ($sm) {
+                    return new AmazonTable\ProductIsbn(
+                        $sm->get('amazon')
+                    );
+                },
+                AmazonTable\ProductIsbn\ProductId::class => function ($sm) {
+                    return new AmazonTable\ProductIsbn\ProductId(
+                        $sm->get('amazon'),
+                        $sm->get(AmazonTable\ProductIsbn::class)
                     );
                 },
                 AmazonTable\Product\HiResImagesRetrieved::class => function ($sm) {
