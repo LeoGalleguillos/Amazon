@@ -7,10 +7,12 @@ class SaveArrayToMySql
 {
     public function __construct(
         AmazonService\Api\Resources\ItemInfo\ExternalIds\Eans\SaveArrayToMySql $saveEansArrayToMySqlService,
+        AmazonService\Api\Resources\ItemInfo\ExternalIds\Isbns\SaveArrayToMySql $saveIsbnsArrayToMySqlService,
         AmazonService\Api\Resources\ItemInfo\ExternalIds\Upcs\SaveArrayToMySql $saveUpcsArrayToMySqlService
     ) {
-        $this->saveEansArrayToMySqlService = $saveEansArrayToMySqlService;
-        $this->saveUpcsArrayToMySqlService = $saveUpcsArrayToMySqlService;
+        $this->saveEansArrayToMySqlService  = $saveEansArrayToMySqlService;
+        $this->saveIsbnsArrayToMySqlService = $saveIsbnsArrayToMySqlService;
+        $this->saveUpcsArrayToMySqlService  = $saveUpcsArrayToMySqlService;
     }
 
     public function saveArrayToMySql(
@@ -20,6 +22,13 @@ class SaveArrayToMySql
         if (isset($externalIdsArray['EANs'])) {
             $this->saveEansArrayToMySqlService->saveArrayToMySql(
                 $externalIdsArray['EANs'],
+                $productId
+            );
+        }
+
+        if (isset($externalIdsArray['ISBNs'])) {
+            $this->saveIsbnsArrayToMySqlService->saveArrayToMySql(
+                $externalIdsArray['ISBNs'],
                 $productId
             );
         }

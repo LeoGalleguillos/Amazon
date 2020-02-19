@@ -233,6 +233,7 @@ class Module
                 AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql::class => function ($sm) {
                     return new AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql(
                         $sm->get(AmazonService\Api\Resources\ItemInfo\ExternalIds\Eans\SaveArrayToMySql::class),
+                        $sm->get(AmazonService\Api\Resources\ItemInfo\ExternalIds\Isbns\SaveArrayToMySql::class),
                         $sm->get(AmazonService\Api\Resources\ItemInfo\ExternalIds\Upcs\SaveArrayToMySql::class)
                     );
                 },

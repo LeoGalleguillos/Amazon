@@ -11,11 +11,15 @@ class SaveArrayToMySqlTest extends TestCase
         $this->saveEansArrayToMySqlServiceMock = $this->createMock(
             AmazonService\Api\Resources\ItemInfo\ExternalIds\Eans\SaveArrayToMySql::class
         );
+        $this->saveIsbnsArrayToMySqlServiceMock = $this->createMock(
+            AmazonService\Api\Resources\ItemInfo\ExternalIds\Isbns\SaveArrayToMySql::class
+        );
         $this->saveUpcsArrayToMySqlServiceMock = $this->createMock(
             AmazonService\Api\Resources\ItemInfo\ExternalIds\Upcs\SaveArrayToMySql::class
         );
         $this->saveExternalIdsArrayService = new AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql(
             $this->saveEansArrayToMySqlServiceMock,
+            $this->saveIsbnsArrayToMySqlServiceMock,
             $this->saveUpcsArrayToMySqlServiceMock
         );
     }
@@ -25,6 +29,10 @@ class SaveArrayToMySqlTest extends TestCase
         $productId = rand(1, 1000000);
 
         $this->saveEansArrayToMySqlServiceMock
+            ->expects($this->exactly(0))
+            ->method('saveArrayToMySql')
+            ;
+        $this->saveIsbnsArrayToMySqlServiceMock
             ->expects($this->exactly(0))
             ->method('saveArrayToMySql')
             ;
@@ -48,6 +56,10 @@ class SaveArrayToMySqlTest extends TestCase
                 $this->getExternalIdsArrayWithEans()['EANs'],
                 12345
             );
+        $this->saveIsbnsArrayToMySqlServiceMock
+            ->expects($this->exactly(0))
+            ->method('saveArrayToMySql')
+            ;
         $this->saveUpcsArrayToMySqlServiceMock
             ->expects($this->exactly(0))
             ->method('saveArrayToMySql')
@@ -59,21 +71,28 @@ class SaveArrayToMySqlTest extends TestCase
         );
     }
 
-    public function testSaveArrayToMySqlWithUpcs()
+    public function testSaveArrayToMySqlWithIsbnsAndUpcs()
     {
         $this->saveEansArrayToMySqlServiceMock
             ->expects($this->exactly(0))
             ->method('saveArrayToMySql');
+        $this->saveIsbnsArrayToMySqlServiceMock
+            ->expects($this->exactly(1))
+            ->method('saveArrayToMySql')
+            ->with(
+                $this->getExternalIdsArrayWithIsbnsAndUpcs()['ISBNs'],
+                12345
+            );
         $this->saveUpcsArrayToMySqlServiceMock
             ->expects($this->exactly(1))
             ->method('saveArrayToMySql')
             ->with(
-                $this->getExternalIdsArrayWithUpcs()['UPCs'],
+                $this->getExternalIdsArrayWithIsbnsAndUpcs()['UPCs'],
                 12345
             );
 
         $this->saveExternalIdsArrayService->saveArrayToMySql(
-            $this->getExternalIdsArrayWithUpcs(),
+            $this->getExternalIdsArrayWithIsbnsAndUpcs(),
             12345
         );
     }
@@ -89,6 +108,9 @@ class SaveArrayToMySqlTest extends TestCase
                 $this->getExternalIdsArrayWithEansAndUpcs()['EANs'],
                 $productId
             );
+        $this->saveIsbnsArrayToMySqlServiceMock
+            ->expects($this->exactly(0))
+            ->method('saveArrayToMySql');
         $this->saveUpcsArrayToMySqlServiceMock
             ->expects($this->exactly(1))
             ->method('saveArrayToMySql')
@@ -156,10 +178,20 @@ class SaveArrayToMySqlTest extends TestCase
       );
     }
 
-    protected function getExternalIdsArrayWithUpcs(): array
+    protected function getExternalIdsArrayWithIsbnsAndUpcs(): array
     {
       return
         array (
+          'ISBNs' =>
+          array (
+            'DisplayValues' =>
+            array (
+              0 => '0060935464',
+              1 => '0037485960',
+            ),
+            'Label' => 'UPC',
+            'Locale' => 'en_US',
+          ),
           'UPCs' =>
           array (
             'DisplayValues' =>
