@@ -27,6 +27,9 @@ class ProductTest extends TestCase
         );
         $this->productFeatureTableMock = $this->createMock(AmazonTable\ProductFeature::class);
         $this->productImageTableMock = $this->createMock(AmazonTable\ProductImage::class);
+        $this->productIsbnProductIdTableMock = $this->createMock(
+            AmazonTable\ProductIsbn\ProductId::class
+        );
         $this->productUpcProductIdTableMock = $this->createMock(
             AmazonTable\ProductUpc\ProductId::class
         );
@@ -41,6 +44,7 @@ class ProductTest extends TestCase
             $this->productEanProductIdTableMock,
             $this->productFeatureTableMock,
             $this->productImageTableMock,
+            $this->productIsbnProductIdTableMock,
             $this->productUpcProductIdTableMock
         );
 

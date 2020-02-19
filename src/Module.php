@@ -115,6 +115,7 @@ class Module
                         $sm->get(AmazonTable\ProductEan\ProductId::class),
                         $sm->get(AmazonTable\ProductFeature::class),
                         $sm->get(AmazonTable\ProductImage::class),
+                        $sm->get(AmazonTable\ProductIsbn\ProductId::class),
                         $sm->get(AmazonTable\ProductUpc\ProductId::class)
                     );
                 },

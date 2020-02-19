@@ -21,18 +21,20 @@ class Product
         AmazonTable\ProductEan\ProductId $productEanProductIdTable,
         AmazonTable\ProductFeature $productFeatureTable,
         AmazonTable\ProductImage $productImageTable,
+        AmazonTable\ProductIsbn\ProductId $productIsbnProductIdTable,
         AmazonTable\ProductUpc\ProductId $productUpcProductIdTable
     ) {
-        $this->bindingFactory           = $bindingFactory;
-        $this->brandFactory             = $brandFactory;
-        $this->productGroupFactory      = $productGroupFactory;
-        $this->imageFactory             = $imageFactory;
-        $this->productTable             = $productTable;
-        $this->asinTable                = $asinTable;
-        $this->productEanProductIdTable = $productEanProductIdTable;
-        $this->productFeatureTable      = $productFeatureTable;
-        $this->productImageTable        = $productImageTable;
-        $this->productUpcProductIdTable = $productUpcProductIdTable;
+        $this->bindingFactory            = $bindingFactory;
+        $this->brandFactory              = $brandFactory;
+        $this->productGroupFactory       = $productGroupFactory;
+        $this->imageFactory              = $imageFactory;
+        $this->productTable              = $productTable;
+        $this->asinTable                 = $asinTable;
+        $this->productEanProductIdTable  = $productEanProductIdTable;
+        $this->productFeatureTable       = $productFeatureTable;
+        $this->productImageTable         = $productImageTable;
+        $this->productIsbnProductIdTable = $productIsbnProductIdTable;
+        $this->productUpcProductIdTable  = $productUpcProductIdTable;
     }
 
     public function buildFromArray(
