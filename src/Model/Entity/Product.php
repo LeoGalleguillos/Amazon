@@ -83,6 +83,11 @@ class Product
     protected $isAdultProduct;
 
     /**
+     * @var array
+     */
+    protected $isbns;
+
+    /**
      * @var string
      */
     protected $lengthUnits;
@@ -230,6 +235,11 @@ class Product
     public function getIsAdultProduct(): bool
     {
         return $this->isAdultProduct;
+    }
+
+    public function getIsbns(): array
+    {
+        return $this->isbns;
     }
 
     public function getLengthUnits(): string
@@ -389,6 +399,12 @@ class Product
     public function setIsAdultProduct(bool $isAdultProduct): self
     {
         $this->isAdultProduct = $isAdultProduct;
+        return $this;
+    }
+
+    public function setIsbns(array $isbns): self
+    {
+        $this->isbns = $isbns;
         return $this;
     }
 

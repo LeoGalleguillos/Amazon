@@ -35,18 +35,18 @@ class ProductTest extends TestCase
             $this->productEntity->getColor()
         );
 
-        $eans = [
-            '1234567890123',
-            '2234567890123',
-            '3234567890123',
+        $isbns = [
+            '1234567890',
+            '2234567890',
+            '3234567890',
         ];
         $this->assertSame(
             $this->productEntity,
-            $this->productEntity->setEans($eans)
+            $this->productEntity->setIsbns($isbns)
         );
         $this->assertSame(
-            $eans,
-            $this->productEntity->getEans()
+            $isbns,
+            $this->productEntity->getIsbns()
         );
 
         $heightUnits = 'Centimeters';
