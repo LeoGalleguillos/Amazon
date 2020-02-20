@@ -1413,16 +1413,16 @@
         },
         {
             "name": "leo-galleguillos/string",
-            "version": "v1.0.11",
+            "version": "v1.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/String.git",
-                "reference": "740cefb82906b818a48c184c2917f8c9821c96d3"
+                "reference": "5a50b9aeefbcd65d2f26fac33070da391ffe5e63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/String/zipball/740cefb82906b818a48c184c2917f8c9821c96d3",
-                "reference": "740cefb82906b818a48c184c2917f8c9821c96d3",
+                "url": "https://api.github.com/repos/LeoGalleguillos/String/zipball/5a50b9aeefbcd65d2f26fac33070da391ffe5e63",
+                "reference": "5a50b9aeefbcd65d2f26fac33070da391ffe5e63",
                 "shasum": ""
             },
             "require": {
@@ -1439,7 +1439,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2020-02-13T05:25:32+00:00"
+            "time": "2020-02-18T10:42:32+00:00"
         },
         {
             "name": "leo-galleguillos/test",
@@ -3060,16 +3060,16 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozart/assert.git",
-                "reference": "573381c0a64f155a0d9a23f4b0c797194805b925"
+                "reference": "aed98a490f9a8f78468232db345ab9cf606cf598"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/573381c0a64f155a0d9a23f4b0c797194805b925",
-                "reference": "573381c0a64f155a0d9a23f4b0c797194805b925",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/aed98a490f9a8f78468232db345ab9cf606cf598",
+                "reference": "aed98a490f9a8f78468232db345ab9cf606cf598",
                 "shasum": ""
             },
             "require": {
@@ -3104,7 +3104,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2019-11-24T13:36:37+00:00"
+            "time": "2020-02-14T12:15:55+00:00"
         }
     ],
     "packages-dev": [],
