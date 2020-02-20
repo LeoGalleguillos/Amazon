@@ -12,7 +12,7 @@ CREATE TABLE `product` (
   `length_value` float(16,2) unsigned DEFAULT NULL,
   `length_units` varchar(16) DEFAULT NULL,
   `weight_value` float(16,2) unsigned DEFAULT NULL,
-  `weight_units` varchar(16) DEFAULT NULL,
+  `weight_units` varchar(31) DEFAULT NULL,
   `width_value` float(16,2) unsigned DEFAULT NULL,
   `width_units` varchar(16) DEFAULT NULL,
   `released` datetime DEFAULT NULL,
