@@ -51,6 +51,9 @@ class ProductTest extends TestCase
         $this->productEanResultMock = $this->createMock(
             Result::class
         );
+        $this->productIsbnResultMock = $this->createMock(
+            Result::class
+        );
         $this->productUpcResultMock = $this->createMock(
             Result::class
         );
@@ -75,7 +78,13 @@ class ProductTest extends TestCase
             ->willReturn(
                 $this->yieldProductImageArrays()
             );
-        $this->initializeproductUpcResultMock();
+        $this->initializeProductIsbnResultMock();
+        $this->productIsbnProductIdTableMock
+            ->method('selectWhereProductId')
+            ->willReturn(
+                $this->productIsbnResultMock
+            );
+        $this->initializeProductUpcResultMock();
         $this->productUpcProductIdTableMock
             ->method('selectWhereProductId')
             ->willReturn(
@@ -115,6 +124,9 @@ class ProductTest extends TestCase
                 'This is the second feature.',
             ])
             ->setIsAdultProduct(false)
+            ->setIsbns([
+                '1234567890',
+            ])
             ->setHeightUnits('inches')
             ->setHeightValue('1.0')
             ->setLengthUnits('cm')
@@ -256,7 +268,32 @@ class ProductTest extends TestCase
             );
     }
 
-    protected function initializeproductUpcResultMock()
+    protected function initializeProductIsbnResultMock()
+    {
+        $this->productIsbnResultMock
+            ->method('current')
+            ->will(
+                $this->onConsecutiveCalls(
+                    ['product_id' => '12345', 'isbn' => '1234567890']
+                )
+            );
+        $this->productIsbnResultMock
+            ->method('key')
+            ->will(
+                $this->onConsecutiveCalls(
+                    0
+                )
+            );
+        $this->productIsbnResultMock
+            ->method('valid')
+            ->will(
+                $this->onConsecutiveCalls(
+                    true
+                )
+            );
+    }
+
+    protected function initializeProductUpcResultMock()
     {
         $this->productUpcResultMock
             ->method('current')

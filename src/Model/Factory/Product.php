@@ -94,6 +94,14 @@ class Product
             );
         }
 
+        $result = $this->productIsbnProductIdTable->selectWhereProductId(
+            $productArray['product_id']
+        );
+        $isbns = array_column(iterator_to_array($result), 'isbn');
+        if (!empty($isbns)) {
+            $productEntity->setIsbns($isbns);
+        }
+
         if (isset($productArray['length_units'])) {
             $productEntity->setLengthUnits(
                 $productArray['length_units']
