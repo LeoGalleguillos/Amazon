@@ -102,6 +102,8 @@ class ProductTest extends TestCase
             'height_value'     => '1.0',
             'length_units'     => 'cm',
             'length_value'     => '3.14159',
+            'model'            => 'the model',
+            'part_number'      => 'the part #',
             'weight_units'     => 'LBS',
             'weight_value'     => '1000',
             'width_units'      => 'feet',
@@ -109,6 +111,7 @@ class ProductTest extends TestCase
             'released'         => '2020-02-08 12:12:45',
             'size'             => 'Medium',
             'unit_count'       => 7,
+            'warranty'         => 'The warranty for the product',
         ];
 
         $productEntity = (new AmazonEntity\Product())
@@ -133,6 +136,8 @@ class ProductTest extends TestCase
             ->setLengthValue('3.14159')
             ->setProductId('12345')
             ->setListPrice('1.23')
+            ->setModel('the model')
+            ->setPartNumber('the part #')
             ->setReleased(new DateTime('2020-02-08 12:12:45'))
             ->setSize('Medium')
             ->setTitle('Title')
@@ -145,6 +150,7 @@ class ProductTest extends TestCase
                 null,
                 null
             ])
+            ->setWarranty('The warranty for the product')
             ->setWeightUnits('LBS')
             ->setWeightValue('1000')
             ->setWidthUnits('feet')
