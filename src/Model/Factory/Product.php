@@ -94,6 +94,18 @@ class Product
             );
         }
 
+        if (isset($productArray['model'])) {
+            $productEntity->setModel(
+                $productArray['model']
+            );
+        }
+
+        if (isset($productArray['part_number'])) {
+            $productEntity->setPartNumber(
+                $productArray['part_number']
+            );
+        }
+
         $result = $this->productIsbnProductIdTable->selectWhereProductId(
             $productArray['product_id']
         );
@@ -161,6 +173,12 @@ class Product
         if (isset($productArray['video_generated'])) {
             $productEntity->setVideoGenerated(
                 new DateTime($productArray['video_generated'])
+            );
+        }
+
+        if (isset($productArray['warranty'])) {
+            $productEntity->setWarranty(
+                $productArray['warranty']
             );
         }
 
