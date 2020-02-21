@@ -109,6 +109,26 @@ class ProductTest extends TestCase
             $this->productEntity->getLengthValue()
         );
 
+        $model = 'Model';
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setModel($model)
+        );
+        $this->assertSame(
+            $model,
+            $this->productEntity->getModel()
+        );
+
+        $partNumber = 'Part Number';
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setPartNumber($partNumber)
+        );
+        $this->assertSame(
+            $partNumber,
+            $this->productEntity->getPartNumber()
+        );
+
         $released = new DateTime('1983-10-22 19:45:01');
         $this->assertSame(
             $this->productEntity,
@@ -150,6 +170,16 @@ class ProductTest extends TestCase
         $this->assertSame(
             $upcs,
             $this->productEntity->getUpcs()
+        );
+
+        $warranty = 'This is the warranty.';
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setWarranty($warranty)
+        );
+        $this->assertSame(
+            $warranty,
+            $this->productEntity->getWarranty()
         );
 
         $weightUnits = 'Pounds';

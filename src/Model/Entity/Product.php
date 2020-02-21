@@ -103,6 +103,16 @@ class Product
     public $listPrice;
 
     /**
+     * @var string
+     */
+    protected $model;
+
+    /**
+     * @var string
+     */
+    protected $partNumber;
+
+    /**
      * @var AmazonEntity\ProductGroup
      */
     public $productGroup;
@@ -156,6 +166,11 @@ class Product
      * var DateTime
      */
     protected $videoGenerated;
+
+    /**
+     * @var string
+     */
+    protected $warranty;
 
     /**
      * @var string
@@ -257,6 +272,16 @@ class Product
         return $this->listPrice;
     }
 
+    public function getModel(): string
+    {
+        return $this->model;
+    }
+
+    public function getPartNumber(): string
+    {
+        return $this->partNumber;
+    }
+
     public function getProductGroup(): AmazonEntity\ProductGroup
     {
         return $this->productGroup;
@@ -305,6 +330,11 @@ class Product
     public function getVideoGenerated(): DateTime
     {
         return $this->videoGenerated;
+    }
+
+    public function getWarranty(): string
+    {
+        return $this->warranty;
     }
 
     public function getWeightUnits(): string
@@ -426,6 +456,18 @@ class Product
         return $this;
     }
 
+    public function setModel(string $model): self
+    {
+        $this->model = $model;
+        return $this;
+    }
+
+    public function setPartNumber(string $partNumber): self
+    {
+        $this->partNumber = $partNumber;
+        return $this;
+    }
+
     public function setPrimaryImage(
         ImageEntity\Image $primaryImage
     ): self {
@@ -497,6 +539,12 @@ class Product
     public function setWeightValue(float $weightValue): self
     {
         $this->weightValue = $weightValue;
+        return $this;
+    }
+
+    public function setWarranty(string $warranty): self
+    {
+        $this->warranty = $warranty;
         return $this;
     }
 
