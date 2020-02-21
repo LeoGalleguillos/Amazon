@@ -61,6 +61,9 @@ class Product
                  , `product`.`product_group`
                  , `product`.`binding`
                  , `product`.`brand`
+                 , `product`.`part_number`
+                 , `product`.`model`
+                 , `product`.`warranty`
                  , `product`.`color`
                  , `product`.`is_adult_product`
                  , `product`.`height_value`
