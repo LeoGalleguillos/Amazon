@@ -246,6 +246,9 @@ class Module
                         $sm->get(AmazonTableGateway\Product::class)
                     );
                 },
+                AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set::class => function ($sm) {
+                    return new AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set();
+                },
                 AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull::class => function ($sm) {
                     return new AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull();
                 },
