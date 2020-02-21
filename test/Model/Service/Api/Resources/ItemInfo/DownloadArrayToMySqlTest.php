@@ -35,6 +35,13 @@ class DownloadArrayToMySqlTest extends TestCase
 
     public function testDownloadArrayToMySql()
     {
+        $this->manufactureInfoSetServiceMock
+            ->method('getSet')
+            ->willReturn([
+                'part_number' => '51120',
+                'model'       => 'ABCDEFG',
+                'warranty'    => '1 year with full refund or replacement',
+            ]);
         $this->colorStringOrNullServiceMock
             ->method('getStringOrNull')
             ->willReturn('RED');
@@ -62,6 +69,11 @@ class DownloadArrayToMySqlTest extends TestCase
                         'released'         => null,
                         'size'             => null,
                         'unit_count'       => 1,
+
+                        // Manufacture Info
+                        'part_number'      => '51120',
+                        'model'            => 'ABCDEFG',
+                        'warranty'         => '1 year with full refund or replacement',
                     ],
                     ['product_id' => 12345]
                 )
