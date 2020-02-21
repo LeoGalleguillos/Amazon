@@ -6,7 +6,10 @@ class Set
     public function getSet(
         array $manufactureInfoArray
     ): array {
-        $set = [];
-        return $set;
+        return [
+            'part_number' => $manufactureInfoArray['ItemPartNumber']['DisplayValue'] ?? null,
+            'model'       => $manufactureInfoArray['Model']['DisplayValue'] ?? null,
+            'warranty'    => $manufactureInfoArray['Warranty']['DisplayValue'] ?? null,
+        ];
     }
 }
