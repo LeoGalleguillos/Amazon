@@ -12,6 +12,9 @@ class DownloadArrayToMySqlTest extends TestCase
         $this->saveExternalIdsArrayToMySqlMock = $this->createMock(
             AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql::class
         );
+        $this->manufactureInfoSetServiceMock = $this->createMock(
+            AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set::class
+        );
         $this->colorStringOrNullServiceMock = $this->createMock(
             AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull::class
         );
@@ -23,6 +26,7 @@ class DownloadArrayToMySqlTest extends TestCase
         );
         $this->downloadArrayToMySqlService = new AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql(
             $this->saveExternalIdsArrayToMySqlMock,
+            $this->manufactureInfoSetServiceMock,
             $this->colorStringOrNullServiceMock,
             $this->sizeStringOrNullServiceMock,
             $this->productTableGatewayMock

@@ -8,11 +8,13 @@ class DownloadArrayToMySql
 {
     public function __construct(
         AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql $saveExternalIdsArrayToMySqlService,
+        AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set $manufactureInfoSetService,
         AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull $colorStringOrNullService,
         AmazonService\Api\Resources\ItemInfo\ProductInfo\Size\DisplayValue\StringOrNull $sizeStringOrNullService,
         AmazonTableGateway\Product $productTableGateway
     ) {
         $this->saveExternalIdsArrayToMySqlService = $saveExternalIdsArrayToMySqlService;
+        $this->manufactureInfoSetService          = $manufactureInfoSetService;
         $this->colorStringOrNullService           = $colorStringOrNullService;
         $this->sizeStringOrNullService            = $sizeStringOrNullService;
         $this->productTableGateway                = $productTableGateway;
