@@ -6,7 +6,7 @@ CREATE TABLE `product` (
   `binding` varchar(255) DEFAULT NULL,
   `brand` varchar(255) DEFAULT NULL,
   `part_number` varchar(63) DEFAULT NULL,
-  `model` varchar(31) DEFAULT NULL,
+  `model` varchar(63) DEFAULT NULL,
   `warranty` varchar(511) DEFAULT NULL,
   `color` varchar(255) DEFAULT NULL,
   `is_adult_product` tinyint(1) unsigned DEFAULT NULL,
