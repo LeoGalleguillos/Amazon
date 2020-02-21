@@ -5,7 +5,7 @@ CREATE TABLE `product` (
   `product_group` varchar(255) NOT NULL,
   `binding` varchar(255) DEFAULT NULL,
   `brand` varchar(255) DEFAULT NULL,
-  `part_number` varchar(31) DEFAULT NULL,
+  `part_number` varchar(63) DEFAULT NULL,
   `model` varchar(31) DEFAULT NULL,
   `warranty` varchar(511) DEFAULT NULL,
   `color` varchar(255) DEFAULT NULL,
