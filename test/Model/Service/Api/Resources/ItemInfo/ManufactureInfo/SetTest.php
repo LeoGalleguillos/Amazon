@@ -8,11 +8,21 @@ class SetTest extends TestCase
 {
     protected function setUp()
     {
-        $this->setService = new AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set();
+        $this->warrantyStringOrNullServiceMock = $this->createMock(
+            AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Warranty\DisplayValue\StringOrNull::class
+        );
+        $this->setService = new AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set(
+            $this->warrantyStringOrNullServiceMock
+        );
     }
 
     public function testGetSet()
     {
+        $this->warrantyStringOrNullServiceMock
+            ->method('getStringOrNull')
+            ->will(
+                $this->returnValue('1 year with full refund or replacement')
+            );
         $this->assertSame(
             [
                 'part_number' => '51120',

@@ -248,7 +248,12 @@ class Module
                     );
                 },
                 AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set::class => function ($sm) {
-                    return new AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set();
+                    return new AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set(
+                        $sm->get(AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Warranty\DisplayValue\StringOrNull::class)
+                    );
+                },
+                AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Warranty\DisplayValue\StringOrNull::class => function ($sm) {
+                    return new AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Warranty\DisplayValue\StringOrNull();
                 },
                 AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull::class => function ($sm) {
                     return new AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull();
