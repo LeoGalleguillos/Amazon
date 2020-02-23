@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "be00cb9687cc73160fd5687ab7bae840",
+    "content-hash": "900d1a29e96be7a9cd8d9438c1e56b10",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -1350,6 +1350,37 @@
             "time": "2020-01-07T22:58:31+00:00"
         },
         {
+            "name": "leo-galleguillos/array-module",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LeoGalleguillos/ArrayModule.git",
+                "reference": "c5faa4a9ae598fbfeb6de575085737ae16b1e19a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LeoGalleguillos/ArrayModule/zipball/c5faa4a9ae598fbfeb6de575085737ae16b1e19a",
+                "reference": "c5faa4a9ae598fbfeb6de575085737ae16b1e19a",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-test": "^3.1",
+                "leo-galleguillos/test": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LeoGalleguillos\\ArrayModule\\": "src/",
+                    "LeoGalleguillos\\ArrayModuleTest\\": "test/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2020-02-23T16:34:15+00:00"
+        },
+        {
             "name": "leo-galleguillos/image",
             "version": "v1.0.0",
             "source": {
@@ -1413,16 +1444,16 @@
         },
         {
             "name": "leo-galleguillos/string",
-            "version": "v1.0.13",
+            "version": "v1.0.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/String.git",
-                "reference": "5a50b9aeefbcd65d2f26fac33070da391ffe5e63"
+                "reference": "f8fd48c547f1688540482d38d5cf6f84ed923162"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/String/zipball/5a50b9aeefbcd65d2f26fac33070da391ffe5e63",
-                "reference": "5a50b9aeefbcd65d2f26fac33070da391ffe5e63",
+                "url": "https://api.github.com/repos/LeoGalleguillos/String/zipball/f8fd48c547f1688540482d38d5cf6f84ed923162",
+                "reference": "f8fd48c547f1688540482d38d5cf6f84ed923162",
                 "shasum": ""
             },
             "require": {
@@ -1439,7 +1470,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2020-02-18T10:42:32+00:00"
+            "time": "2020-02-22T04:35:38+00:00"
         },
         {
             "name": "leo-galleguillos/test",

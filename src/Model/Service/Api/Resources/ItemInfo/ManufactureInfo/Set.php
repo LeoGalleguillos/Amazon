@@ -1,14 +1,14 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Service\Api\Resources\ItemInfo\ManufactureInfo;
 
-use LeoGalleguillos\Amazon\Model\Service as AmazonService;
+use LeoGalleguillos\ArrayModule\Service as ArrayModuleService;
 
 class Set
 {
     public function __construct(
-        AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Warranty\DisplayValue\StringOrNull $warrantyStringOrNullService
+        ArrayModuleService\Path\StringOrNull $stringOrNullService
     ) {
-        $this->warrantyStringOrNullService = $warrantyStringOrNullService;
+        $this->stringOrNullService = $stringOrNullService;
     }
 
     public function getSet(
@@ -17,7 +17,19 @@ class Set
         return [
             'part_number' => $manufactureInfoArray['ItemPartNumber']['DisplayValue'] ?? null,
             'model'       => $manufactureInfoArray['Model']['DisplayValue'] ?? null,
-            'warranty'    => $this->warrantyStringOrNullService->getStringOrNull($manufactureInfoArray),
+            'warranty'    => $this->getWarranty($manufactureInfoArray),
         ];
+    }
+
+    /**
+     * @return string|null
+     */
+    protected function getWarranty(array $manufactureInfoArray)
+    {
+        return $this->stringOrNullService->getStringOrNull(
+            ['Warranty', 'DisplayValue'],
+            $manufactureInfoArray,
+            1023
+        );
     }
 }

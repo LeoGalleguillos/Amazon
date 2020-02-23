@@ -2,27 +2,24 @@
 namespace LeoGalleguillos\AmazonTest\Model\Service\Api\Resources\ItemInfo\ManufactureInfo;
 
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
+use LeoGalleguillos\ArrayModule\Service as ArrayModuleService;
 use PHPUnit\Framework\TestCase;
 
 class SetTest extends TestCase
 {
     protected function setUp()
     {
-        $this->warrantyStringOrNullServiceMock = $this->createMock(
-            AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Warranty\DisplayValue\StringOrNull::class
+        $this->stringOrNullService = new ArrayModuleService\Path\StringOrNull(
+            new ArrayModuleService\Path\Exist(),
+            new ArrayModuleService\Path\Value()
         );
         $this->setService = new AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set(
-            $this->warrantyStringOrNullServiceMock
+            $this->stringOrNullService
         );
     }
 
     public function testGetSet()
     {
-        $this->warrantyStringOrNullServiceMock
-            ->method('getStringOrNull')
-            ->will(
-                $this->returnValue('1 year with full refund or replacement')
-            );
         $this->assertSame(
             [
                 'part_number' => '51120',

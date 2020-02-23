@@ -6,6 +6,7 @@ use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Amazon\Model\TableGateway as AmazonTableGateway;
 use LeoGalleguillos\Amazon\View\Helper as AmazonHelper;
+use LeoGalleguillos\ArrayModule\Service as ArrayModuleService;
 use LeoGalleguillos\Image\Model\Factory as ImageFactory;
 use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
 use LeoGalleguillos\String\Model\Service as StringService;
@@ -249,11 +250,8 @@ class Module
                 },
                 AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set::class => function ($sm) {
                     return new AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set(
-                        $sm->get(AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Warranty\DisplayValue\StringOrNull::class)
+                        $sm->get(ArrayModuleService\Path\StringOrNull::class)
                     );
-                },
-                AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Warranty\DisplayValue\StringOrNull::class => function ($sm) {
-                    return new AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Warranty\DisplayValue\StringOrNull();
                 },
                 AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull::class => function ($sm) {
                     return new AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull();

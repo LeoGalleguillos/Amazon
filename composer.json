@@ -10,6 +10,7 @@
     "require": {
         "laminas/laminas-db": "^2.9",
         "laminas/laminas-test": "^3.1",
+        "leo-galleguillos/array-module": "^1.0",
         "leo-galleguillos/image": "^1.0",
         "leo-galleguillos/memcached": "^1.0",
         "leo-galleguillos/string": "^1.0",

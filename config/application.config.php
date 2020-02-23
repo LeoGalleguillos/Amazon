@@ -5,6 +5,7 @@ return [
         'Laminas\Db',
         'Laminas\Router',
         'LeoGalleguillos\Amazon',
+        'LeoGalleguillos\ArrayModule',
         'LeoGalleguillos\Image',
         'LeoGalleguillos\Memcached',
         'LeoGalleguillos\String',
