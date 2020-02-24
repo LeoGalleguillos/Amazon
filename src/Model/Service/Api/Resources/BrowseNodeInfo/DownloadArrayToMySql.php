@@ -29,6 +29,7 @@ class DownloadArrayToMySql
                 $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
                     $browseNodeId,
                     $productId,
+                    $salesRank,
                     $order
                 );
                 $order++;
