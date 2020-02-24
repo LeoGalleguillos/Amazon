@@ -79,6 +79,16 @@ class ProductTest extends TestCase
             $this->productEntity->getIsAdultProduct()
         );
 
+        $isValid = true;
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setIsValid($isValid)
+        );
+        $this->assertSame(
+            $isValid,
+            $this->productEntity->getIsValid()
+        );
+
         $imageEntity = new ImageEntity\Image();
         $this->assertSame(
             $this->productEntity,

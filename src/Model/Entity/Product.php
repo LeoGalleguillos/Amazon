@@ -88,6 +88,11 @@ class Product
     protected $isbns;
 
     /**
+     * @var bool
+     */
+    protected $isValid;
+
+    /**
      * @var string
      */
     protected $lengthUnits;
@@ -250,6 +255,11 @@ class Product
     public function getIsAdultProduct(): bool
     {
         return $this->isAdultProduct;
+    }
+
+    public function getIsValid(): bool
+    {
+        return $this->isValid;
     }
 
     public function getIsbns(): array
@@ -435,6 +445,12 @@ class Product
     public function setIsbns(array $isbns): self
     {
         $this->isbns = $isbns;
+        return $this;
+    }
+
+    public function setIsValid(bool $isValid): self
+    {
+        $this->isValid = $isValid;
         return $this;
     }
 
