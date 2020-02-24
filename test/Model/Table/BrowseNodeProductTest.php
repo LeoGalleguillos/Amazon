@@ -12,27 +12,30 @@ class BrowseNodeProductTest extends TableTestCase
             $this->getAdapter()
         );
 
-        $this->dropTable('browse_node_product');
-        $this->createTable('browse_node_product');
+        $this->dropAndCreateTable('browse_node_product');
     }
 
     public function testInsertIgnore()
     {
         $this->assertSame(
             1,
-            $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(1, 1, 1)
+            $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(1, 1, 1, 1)
         );
         $this->assertSame(
             2,
-            $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(1, 1, 2)
+            $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(1, 1, 2, 2)
         );
         $this->assertSame(
             1,
-            $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(2, 1, 1)
+            $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(2, 1, 123, 1)
         );
         $this->assertSame(
             0,
-            $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(2, 1, 1)
+            $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(2, 1, 123, 1)
+        );
+        $this->assertSame(
+            2,
+            $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(2, 1, null, 10)
         );
     }
 
@@ -87,9 +90,9 @@ class BrowseNodeProductTest extends TableTestCase
             iterator_to_array($this->browseNodeProductTable->selectWhereProductId(12345))
         );
 
-        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(948, 12345, 2);
-        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(12345, 38576, 1);
-        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(11, 12345, 1);
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(948, 12345, null, 2);
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(12345, 38576, 123, 1);
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(11, 12345, 123, 1);
 
         $this->assertSame(
             [

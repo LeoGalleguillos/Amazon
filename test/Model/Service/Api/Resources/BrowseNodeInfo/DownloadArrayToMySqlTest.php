@@ -37,8 +37,8 @@ class DownloadArrayToMySqlTest extends TestCase
             ->expects($this->exactly(2))
             ->method('insertOnDuplicateKeyUpdate')
             ->withConsecutive(
-                [493964, 12345, 1],
-                [17386948011, 12345, 2]
+                [493964, 12345, null, 1],
+                [17386948011, 12345, 7, 2]
             );
 
         $this->downloadArrayToMySqlService->downloadArrayToMySql(

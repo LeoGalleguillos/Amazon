@@ -27,14 +27,6 @@ class DownloadToMySqlTest extends TestCase
         );
     }
 
-    public function testInitialize()
-    {
-        $this->assertInstanceOf(
-            AmazonService\Api\Product\Xml\DownloadToMySql::class,
-            $this->downloadToMySqlService
-        );
-    }
-
     public function testDownloadToMySql()
     {
         $this->productTableMock->method('insert')->willReturn(12345);
@@ -47,8 +39,8 @@ class DownloadToMySqlTest extends TestCase
             ->expects($this->exactly(2))
             ->method('insertOnDuplicateKeyUpdate')
             ->withConsecutive(
-                [14333511, 12345, 1],
-                [7581668011, 12345, 2]
+                [14333511, 12345, null, 1],
+                [7581668011, 12345, null, 2]
             );
 
         $this->downloadToMySqlService->downloadToMySql(

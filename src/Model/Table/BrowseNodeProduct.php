@@ -21,6 +21,7 @@ class BrowseNodeProduct
     public function insertOnDuplicateKeyUpdate(
         int $browseNodeId,
         int $productId,
+        int $salesRank = null,
         int $order
     ): int {
         $sql = '
@@ -28,23 +29,27 @@ class BrowseNodeProduct
               INTO `browse_node_product` (
                        `browse_node_id`
                      , `product_id`
+                     , `sales_rank`
                      , `order`
                    )
-            VALUES (?, ?, ?)
+            VALUES (?, ?, ?, ?)
                 ON DUPLICATE KEY
-            UPDATE `order` = ?
+            UPDATE `sales_rank` = ?
+                 , `order` = ?
                  ;
         ';
         $parameters = [
             $browseNodeId,
             $productId,
+            $salesRank,
             $order,
+            $salesRank,
             $order,
         ];
         return (int) $this->adapter
-                          ->query($sql)
-                          ->execute($parameters)
-                          ->getAffectedRows();
+            ->query($sql)
+            ->execute($parameters)
+            ->getAffectedRows();
     }
 
     public function selectProductIdWhereSimilarRetrievedIsNullAndBrowseNodeIdLimit1(

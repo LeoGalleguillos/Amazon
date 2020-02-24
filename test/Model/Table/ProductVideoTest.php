@@ -56,6 +56,7 @@ class ProductVideoTest extends TableTestCase
         $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
             12345,
             1,
+            null,
             1
         );
 

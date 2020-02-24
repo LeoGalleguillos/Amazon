@@ -51,6 +51,7 @@ class DownloadToMySql
             $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
                 $browseNodeId,
                 $productId,
+                null,
                 $order
             );
 
