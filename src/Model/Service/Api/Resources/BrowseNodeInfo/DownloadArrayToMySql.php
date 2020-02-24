@@ -24,6 +24,8 @@ class DownloadArrayToMySql
                 $this->downloadBrowseNodeArrayToMySqlService->downloadArrayToMySql($browseNodeArray);
 
                 $browseNodeId = $browseNodeArray['Id'];
+                $salesRank    = $browseNodeArray['SalesRank'] ?? null;
+
                 $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
                     $browseNodeId,
                     $productId,
