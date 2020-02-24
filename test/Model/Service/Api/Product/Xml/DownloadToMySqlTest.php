@@ -27,14 +27,6 @@ class DownloadToMySqlTest extends TestCase
         );
     }
 
-    public function testInitialize()
-    {
-        $this->assertInstanceOf(
-            AmazonService\Api\Product\Xml\DownloadToMySql::class,
-            $this->downloadToMySqlService
-        );
-    }
-
     public function testDownloadToMySql()
     {
         $this->productTableMock->method('insert')->willReturn(12345);
