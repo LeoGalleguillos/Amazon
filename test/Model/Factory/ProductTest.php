@@ -9,6 +9,7 @@ use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Image\Model\Factory as ImageFactory;
 use PHPUnit\Framework\TestCase;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
+use TypeError;
 
 class ProductTest extends TestCase
 {
@@ -72,7 +73,6 @@ class ProductTest extends TestCase
             ->willReturn(
                 $this->yieldProductFeatureArrays()
             );
-
         $this->productImageTableMock
             ->method('selectWhereAsin')
             ->willReturn(
@@ -97,7 +97,7 @@ class ProductTest extends TestCase
             'title'            => 'Title',
             'list_price'       => '1.23',
             'color'            => 'Red',
-            'is_adult_product' => '0',
+            'is_adult_product' => 1,
             'height_units'     => 'inches',
             'height_value'     => '1.0',
             'length_units'     => 'cm',
@@ -112,6 +112,7 @@ class ProductTest extends TestCase
             'size'             => 'Medium',
             'unit_count'       => 7,
             'warranty'         => 'The warranty for the product',
+            'is_valid'         => '1',
         ];
 
         $productEntity = (new AmazonEntity\Product())
@@ -126,10 +127,11 @@ class ProductTest extends TestCase
                 'This is the first feature.',
                 'This is the second feature.',
             ])
-            ->setIsAdultProduct(false)
+            ->setIsAdultProduct(true)
             ->setIsbns([
                 '1234567890',
             ])
+            ->setIsValid(true)
             ->setHeightUnits('inches')
             ->setHeightValue('1.0')
             ->setLengthUnits('cm')
@@ -161,6 +163,46 @@ class ProductTest extends TestCase
             $productEntity,
             $this->productFactory->buildFromArray($array)
         );
+    }
+
+    public function testBuildFromArrayIsAdultProductIsNull()
+    {
+        $this->productImageTableMock
+            ->method('selectWhereAsin')
+            ->willReturn(
+                $this->yieldProductImageArrays()
+            );
+
+        $array = [
+            'asin'             => 'ASIN001',
+            'product_id'       => 1,
+            'is_adult_product' => null,
+        ];
+
+        $productEntity = $this->productFactory->buildFromArray($array);
+
+        $this->expectException(TypeError::class);
+        $productEntity->getIsAdultProduct();
+    }
+
+    public function testBuildFromArrayIsValidIsNull()
+    {
+        $this->productImageTableMock
+            ->method('selectWhereAsin')
+            ->willReturn(
+                $this->yieldProductImageArrays()
+            );
+
+        $array = [
+            'asin'       => 'ASIN001',
+            'product_id' => 1,
+            'is_valid'   => null,
+        ];
+
+        $productEntity = $this->productFactory->buildFromArray($array);
+
+        $this->expectException(TypeError::class);
+        $productEntity->getIsAdultProduct();
     }
 
     public function testBuildFromAsin()

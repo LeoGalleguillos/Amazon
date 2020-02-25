@@ -134,7 +134,13 @@ class Product
 
         if (isset($productArray['is_adult_product'])) {
             $productEntity->setIsAdultProduct(
-                $productArray['is_adult_product']
+                (bool) $productArray['is_adult_product']
+            );
+        }
+
+        if (isset($productArray['is_valid'])) {
+            $productEntity->setIsValid(
+                (bool) $productArray['is_valid']
             );
         }
 
