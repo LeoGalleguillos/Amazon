@@ -18,6 +18,16 @@ class BrowseNodeProduct
         $this->adapter   = $adapter;
     }
 
+    public function getSelect(): string
+    {
+        return '
+            SELECT `browse_node_id`
+                 , `product_id`
+                 , `sales_rank`
+                 , `order`
+        ';
+    }
+
     public function insertOnDuplicateKeyUpdate(
         int $browseNodeId,
         int $productId,
@@ -160,9 +170,8 @@ class BrowseNodeProduct
 
     public function selectWhereProductId(int $productId): Generator
     {
-        $sql = '
-            SELECT `browse_node_id`
-                 , `product_id`
+        $sql = $this->getSelect()
+             . '
               FROM `browse_node_product`
              WHERE `product_id` = ?
              ORDER
@@ -191,14 +200,5 @@ class BrowseNodeProduct
         ';
         $array = $this->adapter->query($sql)->execute()->current();
         return (int) $array['product_id'];
-    }
-
-    protected function getSelect(): string
-    {
-        return '
-            SELECT `browse_node_id`
-                 , `product_id`
-                 , `order`
-        ';
     }
 }

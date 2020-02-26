@@ -98,11 +98,15 @@ class BrowseNodeProductTest extends TableTestCase
             [
                 0 => [
                     'browse_node_id' => '11',
-                    'product_id' => '12345',
+                    'product_id'     => '12345',
+                    'sales_rank'     => '123',
+                    'order'          => '1',
                 ],
                 1 => [
                     'browse_node_id' => '948',
-                    'product_id' => '12345',
+                    'product_id'     => '12345',
+                    'sales_rank'     => null,
+                    'order'          => '2',
                 ],
             ],
             iterator_to_array($this->browseNodeProductTable->selectWhereProductId(12345))
