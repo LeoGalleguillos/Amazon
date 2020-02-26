@@ -25,6 +25,29 @@ class ProductTest extends TestCase
             $this->productEntity->getAsin()
         );
 
+        $browseNodeEntity1 = new AmazonEntity\BrowseNode();
+        $browseNodeEntity1->setBrowseNodeId(1);
+        $browseNodeEntity2 = new AmazonEntity\BrowseNode();
+        $browseNodeEntity1->setBrowseNodeId(2);
+        $browseNodesAndSalesRanks = [
+            [
+                'browseNode' => $browseNodeEntity1,
+                'sales_rank' => 123,
+            ],
+            [
+                'browseNode' => $browseNodeEntity2,
+                'sales_rank' => 456,
+            ],
+        ];
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setBrowseNodesAndSalesRanks($browseNodesAndSalesRanks)
+        );
+        $this->assertSame(
+            $browseNodesAndSalesRanks,
+            $this->productEntity->getBrowseNodesAndSalesRankgs()
+        );
+
         $color = 'red, white, & blue';
         $this->assertSame(
             $this->productEntity,

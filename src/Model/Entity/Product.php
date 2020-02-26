@@ -38,6 +38,11 @@ class Product
     protected $browseNodes;
 
     /**
+     * @var array
+     */
+    protected $browseNodesAndSalesRanks;
+
+    /**
      * @var string
      */
     protected $color;
@@ -217,6 +222,11 @@ class Product
         return $this->browseNodes;
     }
 
+    public function getBrowseNodesAndSalesRankgs(): array
+    {
+        return $this->browseNodesAndSalesRanks;
+    }
+
     public function getColor(): string
     {
         return $this->color;
@@ -387,9 +397,9 @@ class Product
         return $this;
     }
 
-    public function setBrowseNodes(array $browseNodes): self
+    public function setBrowseNodesAndSalesRanks(array $browseNodesAndSalesRanks): self
     {
-        $this->browseNodes = $browseNodes;
+        $this->browseNodesAndSalesRanks = $browseNodesAndSalesRanks;
         return $this;
     }
 
