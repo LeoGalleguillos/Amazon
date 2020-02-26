@@ -1,5 +1,5 @@
 <?php
-namespace LeoGalleguillos\AmazonTest\Model\Service\BrowseNode;
+namespace LeoGalleguillos\AmazonTest\Model\Service\BrowseNode\BrowseNodes;
 
 use Generator;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
@@ -57,11 +57,15 @@ class ProductTest extends TestCase
     {
         yield [
             'browse_node_id' => '54321',
-            'product_id' => '12345',
+            'product_id'     => '12345',
+            'sales_rank'     => '222',
+            'order'          => '1',
         ];
         yield [
             'browse_node_id' => '314159',
-            'product_id' => '12345',
+            'product_id'     => '12345',
+            'sales_rank'     => '111',
+            'order'          => '2',
         ];
     }
 }
