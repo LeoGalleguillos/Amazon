@@ -397,6 +397,12 @@ class Product
         return $this;
     }
 
+    public function setBrowseNodes(array $browseNodes): self
+    {
+        $this->browseNodes = $browseNodes;
+        return $this;
+    }
+
     public function setBrowseNodesAndSalesRanks(array $browseNodesAndSalesRanks): self
     {
         $this->browseNodesAndSalesRanks = $browseNodesAndSalesRanks;
