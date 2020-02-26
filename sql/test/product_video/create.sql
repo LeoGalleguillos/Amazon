@@ -10,6 +10,7 @@ CREATE TABLE `product_video` (
   `modified` datetime default null,
   PRIMARY KEY (`product_video_id`),
   UNIQUE (`product_id`),
+  INDEX `product_id_created` (`product_id`, `created`),
   UNIQUE (`asin`),
   FULLTEXT `title` (`title`),
   FULLTEXT `description` (`description`),

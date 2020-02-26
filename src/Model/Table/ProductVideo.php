@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table;
 
+use Laminas\Db\Adapter\Driver\Pdo\Result;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use Generator;
 use TypeError;
@@ -296,14 +297,17 @@ class ProductVideo
         return $this->adapter->query($sql)->execute($parameters)->current();
     }
 
-    public function selectWhereBrowseNodeId(
+    public function selectProductVideoIdWhereBrowseNodeId(
         int $browseNodeId,
         int $limitOffset,
         int $limitRowCount
-    ): Generator {
-        $sql = $this->getSelect()
-             . '
+    ): Result {
+        $sql = '
+            SELECT `product_video`.`product_video_id`
+
               FROM `product_video`
+               USE
+             INDEX (`product_id_created`)
 
               JOIN `browse_node_product`
              USING (`product_id`)
@@ -321,9 +325,7 @@ class ProductVideo
             $limitOffset,
             $limitRowCount,
         ];
-        foreach ($this->adapter->query($sql)->execute($parameters) as $array) {
-            yield $array;
-        }
+        return $this->adapter->query($sql)->execute($parameters);
     }
 
     public function selectWhereBrowseNodeName(

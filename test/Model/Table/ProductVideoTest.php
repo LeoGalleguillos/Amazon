@@ -132,16 +132,59 @@ class ProductVideoTest extends TableTestCase
         );
     }
 
-    public function testSelectWhereBrowseNodeId()
+    public function testSelectProductVideoIdWhereBrowseNodeId()
     {
-        $generator = $this->productVideoTable->selectWhereBrowseNodeId(
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
+            123,
+            11111,
+            null,
+            1
+        );
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
+            321,
+            22222,
+            null,
+            1
+        );
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
+            123,
+            33333,
+            null,
+            1
+        );
+        $this->productVideoTable->insertOnDuplicateKeyUpdate(
+            11111,
+            'ASIN001',
+            'Title',
+            'Description',
+            1000
+        );
+        $this->productVideoTable->insertOnDuplicateKeyUpdate(
+            22222,
+            'ASIN002',
+            'Title',
+            'Description',
+            1000
+        );
+        $this->productVideoTable->insertOnDuplicateKeyUpdate(
+            33333,
+            'ASIN003',
+            'Title',
+            'Description',
+            1000
+        );
+
+        $result = $this->productVideoTable->selectProductVideoIdWhereBrowseNodeId(
             123,
             0,
             100
         );
         $this->assertSame(
-            iterator_to_array($generator),
-            []
+            iterator_to_array($result),
+            [
+                ['product_video_id' => '1'],
+                ['product_video_id' => '3'],
+            ]
         );
     }
 
