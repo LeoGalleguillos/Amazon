@@ -34,6 +34,7 @@ class Product
 
     /**
      * @var array
+     * @deprecated Use $this->browseNodesAndSalesRanks property instead
      */
     protected $browseNodes;
 
@@ -217,6 +218,9 @@ class Product
         return $this->brandEntity;
     }
 
+    /**
+     * @deprecated Use ::getBrowseNodesAndSalesRanks() instead
+     */
     public function getBrowseNodes(): array
     {
         return $this->browseNodes;
@@ -397,6 +401,9 @@ class Product
         return $this;
     }
 
+    /**
+     * @deprecated Use ::setBrowseNodesAndSalesRanks() instead
+     */
     public function setBrowseNodes(array $browseNodes): self
     {
         $this->browseNodes = $browseNodes;
