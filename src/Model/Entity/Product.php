@@ -34,14 +34,14 @@ class Product
 
     /**
      * @var array
-     * @deprecated Use $this->browseNodesAndSalesRanks property instead
      */
-    protected $browseNodes;
+    protected $browseNodeProducts;
 
     /**
      * @var array
+     * @deprecated Use $this->browseNodeProducts property instead
      */
-    protected $browseNodesAndSalesRanks;
+    protected $browseNodes;
 
     /**
      * @var string
@@ -218,17 +218,17 @@ class Product
         return $this->brandEntity;
     }
 
+    public function getBrowseNodeProducts(): array
+    {
+        return $this->browseNodeProducts;
+    }
+
     /**
-     * @deprecated Use ::getBrowseNodesAndSalesRanks() instead
+     * @deprecated Use ::getBrowseNodeProducts() instead
      */
     public function getBrowseNodes(): array
     {
         return $this->browseNodes;
-    }
-
-    public function getBrowseNodesAndSalesRanks(): array
-    {
-        return $this->browseNodesAndSalesRanks;
     }
 
     public function getColor(): string
@@ -401,18 +401,18 @@ class Product
         return $this;
     }
 
+    public function setBrowseNodeProducts(array $browseNodeProducts): self
+    {
+        $this->browseNodeProducts = $browseNodeProducts;
+        return $this;
+    }
+
     /**
-     * @deprecated Use ::setBrowseNodesAndSalesRanks() instead
+     * @deprecated Use ::setBrowseNodeProducts() instead
      */
     public function setBrowseNodes(array $browseNodes): self
     {
         $this->browseNodes = $browseNodes;
-        return $this;
-    }
-
-    public function setBrowseNodesAndSalesRanks(array $browseNodesAndSalesRanks): self
-    {
-        $this->browseNodesAndSalesRanks = $browseNodesAndSalesRanks;
         return $this;
     }
 
