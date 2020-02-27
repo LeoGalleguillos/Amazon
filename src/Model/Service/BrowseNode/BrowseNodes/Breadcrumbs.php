@@ -8,6 +8,9 @@ use TypeError;
 
 class Breadcrumbs
 {
+    /**
+     * @return AmazonEntity\BrowseNode[]
+     */
     public function getBrowseNodes(AmazonEntity\BrowseNode $browseNodeEntity): array
     {
         $browseNodes = [];
