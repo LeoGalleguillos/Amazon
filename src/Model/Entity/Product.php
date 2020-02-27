@@ -226,7 +226,7 @@ class Product
         return $this->browseNodes;
     }
 
-    public function getBrowseNodesAndSalesRankgs(): array
+    public function getBrowseNodesAndSalesRanks(): array
     {
         return $this->browseNodesAndSalesRanks;
     }

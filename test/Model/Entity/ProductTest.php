@@ -45,7 +45,7 @@ class ProductTest extends TestCase
         );
         $this->assertSame(
             $browseNodesAndSalesRanks,
-            $this->productEntity->getBrowseNodesAndSalesRankgs()
+            $this->productEntity->getBrowseNodesAndSalesRanks()
         );
 
         $color = 'red, white, & blue';
