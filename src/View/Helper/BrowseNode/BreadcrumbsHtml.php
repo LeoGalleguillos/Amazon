@@ -20,7 +20,7 @@ class BreadcrumbsHtml extends AbstractHelper
     }
 
     /**
-     * @throws Excecption
+     * @throws Exception
      */
     public function __invoke(AmazonEntity\BrowseNode $browseNodeEntity): string
     {
