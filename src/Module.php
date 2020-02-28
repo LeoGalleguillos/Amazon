@@ -22,6 +22,7 @@ class Module
                     'productAffiliateUrl'           => AmazonHelper\Product\AffiliateUrl::class,
                     'productModifiedFeature'        => AmazonHelper\Product\ModifiedFeature::class,
                     'getBreadcrumbsHtml'            => AmazonHelper\Product\BreadcrumbsHtml::class,
+                    'getBrowseNodeProductsHtml'     => AmazonHelper\Product\BrowseNodeProductsHtml::class,
                     'getBrowseNodeBreadcrumbsHtml'  => AmazonHelper\BrowseNode\BreadcrumbsHtml::class,
                     'getBrowseNodeRootRelativeUrl'  => AmazonHelper\BrowseNode\RootRelativeUrl::class,
                     'getModifiedTitle'              => AmazonHelper\Product\ModifiedTitle::class,
@@ -44,8 +45,23 @@ class Module
                             $sm->get(AmazonService\BrowseNode\RootRelativeUrl::class)
                         );
                     },
+                    AmazonHelper\BrowseNodeProduct\BreadcrumbsHtml::class => function ($sm) {
+                        return new AmazonHelper\BrowseNodeProduct\BreadcrumbsHtml(
+                            $sm->get(AmazonService\BrowseNode\BrowseNodes\Breadcrumbs::class),
+                            $sm->get('Config')['amazon']['browse-node-name-domain'],
+                            $sm->get(StringService\Escape::class),
+                            $sm->get(StringService\UrlFriendly::class)
+                        );
+                    },
                     AmazonHelper\Product\AffiliateUrl::class => function ($sm) {
                         return new AmazonHelper\Product\AffiliateUrl();
+                    },
+                    AmazonHelper\Product\BrowseNodeProductsHtml::class => function ($sm) {
+                        $vhm = $sm->get('ViewHelperManager');
+                        return new AmazonHelper\Product\BrowseNodeProductsHtml(
+                            $vhm->get(AmazonHelper\BrowseNodeProduct\BreadcrumbsHtml::class),
+                            $sm->get(AmazonService\Product\BrowseNodeProducts::class)
+                        );
                     },
                     AmazonHelper\Product\BreadcrumbsHtml::class => function ($sm) {
                         return new AmazonHelper\Product\BreadcrumbsHtml(
