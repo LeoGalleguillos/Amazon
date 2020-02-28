@@ -6,7 +6,7 @@ use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use TypeError;
 
-class BrowseNodesAndSalesRanks
+class BrowseNodeProducts
 {
     public function __construct(
         AmazonFactory\BrowseNode $browseNodeFactory,
@@ -16,35 +16,42 @@ class BrowseNodesAndSalesRanks
         $this->browseNodeProductTable = $browseNodeProductTable;
     }
 
-    public function getBrowseNodesAndSalesRanks(
+    public function getBrowseNodeProducts(
         AmazonEntity\Product $productEntity
     ): array {
         try {
-            return $productEntity->getBrowseNodesAndSalesRanks();
+            return $productEntity->getBrowseNodeProducts();
         } catch (TypeError $typeError) {
             // Do nothing.
         }
 
-        $browseNodesAndSalesRanks = [];
+        $browseNodeProducts = [];
         $generator = $this->browseNodeProductTable->selectWhereProductId(
             $productEntity->getProductId()
         );
         foreach ($generator as $array) {
+            // @todo Move all this stuff to a BrowseNodeProduct factory.
             $browseNodeEntity = $this->browseNodeFactory->buildFromBrowseNodeId(
                 $array['browse_node_id']
             );
-            $browseNodeAndSalesRank = [
-                'browse_node' => $browseNodeEntity
-            ];
 
+            $browseNodeProductEntity = new AmazonEntity\BrowseNodeProduct();
+            $browseNodeProductEntity->setBrowseNode(
+                $browseNodeEntity
+            );
+            $browseNodeProductEntity->setOrder(
+                (int) $array['order']
+            );
             if (isset($array['sales_rank'])) {
-                $browseNodeAndSalesRank['sales_rank'] = (int) $array['sales_rank'];
+                $browseNodeProductEntity->setSalesRank(
+                    (int) $array['sales_rank']
+                );
             }
 
-            $browseNodesAndSalesRanks[] = $browseNodeAndSalesRank;
+            $browseNodeProducts[] = $browseNodeProductEntity;
         }
-        $productEntity->setBrowseNodesAndSalesRanks($browseNodesAndSalesRanks);
+        $productEntity->setBrowseNodeProducts($browseNodeProducts);
 
-        return $browseNodesAndSalesRanks;
+        return $browseNodeProducts;
     }
 }

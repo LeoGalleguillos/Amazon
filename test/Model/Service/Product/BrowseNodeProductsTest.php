@@ -1,15 +1,14 @@
 <?php
 namespace LeoGalleguillos\AmazonTest\Model\Service\Product;
 
-use Generator;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use PHPUnit\Framework\TestCase;
-use SimpleXMLElement;
+use TypeError;
 
-class BrowseNodesAndSalesRanksTest extends TestCase
+class BrowseNodeProductsTest extends TestCase
 {
     protected function setUp()
     {
@@ -20,13 +19,13 @@ class BrowseNodesAndSalesRanksTest extends TestCase
             AmazonTable\BrowseNodeProduct::class
         );
 
-        $this->browseNodesAndSalesRanksService = new AmazonService\Product\BrowseNodesAndSalesRanks(
+        $this->browseNodeProductsService = new AmazonService\Product\BrowseNodeProducts(
             $this->browseNodeFactoryMock,
             $this->browseNodeProductTableMock
         );
     }
 
-    public function testGetBrowseNodesAndSalesRanks()
+    public function testGetBrowseNodeProducts()
     {
         $productEntity = new AmazonEntity\Product();
         $productEntity->setProductId(12345);
@@ -35,29 +34,44 @@ class BrowseNodesAndSalesRanksTest extends TestCase
             $this->yieldArrays()
         );
 
-        $browseNodesAndSalesRanks = $this->browseNodesAndSalesRanksService->getBrowseNodesAndSalesRanks(
+        $browseNodeProducts = $this->browseNodeProductsService->getBrowseNodeProducts(
             $productEntity
         );
 
         $this->assertSame(
             2,
-            count($browseNodesAndSalesRanks)
+            count($browseNodeProducts)
         );
         $this->assertInstanceOf(
             AmazonEntity\BrowseNode::class,
-            $browseNodesAndSalesRanks[0]['browse_node']
+            $browseNodeProducts[0]->getBrowseNode()
         );
         $this->assertSame(
             222,
-            $browseNodesAndSalesRanks[0]['sales_rank']
+            $browseNodeProducts[0]->getSalesRank()
         );
         $this->assertInstanceOf(
             AmazonEntity\BrowseNode::class,
-            $browseNodesAndSalesRanks[1]['browse_node']
+            $browseNodeProducts[1]->getBrowseNode()
         );
+
+        $this->expectException(TypeError::class);
+        $browseNodeProducts[1]->getSalesRank();
+    }
+
+    public function testGetBrowseNodeProducts_BrowseNodeProductsArrayIsAlreadySet()
+    {
+        $this->browseNodeProductTableMock->method('selectWhereProductId')->willReturn(
+            $this->yieldArrays()
+        );
+
+        $productEntity = new AmazonEntity\Product();
+        $browseNodeProducts = [];
+        $productEntity->setBrowseNodeProducts($browseNodeProducts);
+
         $this->assertSame(
-            111,
-            $browseNodesAndSalesRanks[1]['sales_rank']
+            $browseNodeProducts,
+            $this->browseNodeProductsService->getBrowseNodeProducts($productEntity)
         );
     }
 
@@ -72,7 +86,6 @@ class BrowseNodesAndSalesRanksTest extends TestCase
         yield [
             'browse_node_id' => '314159',
             'product_id'     => '12345',
-            'sales_rank'     => '111',
             'order'          => '2',
         ];
     }
