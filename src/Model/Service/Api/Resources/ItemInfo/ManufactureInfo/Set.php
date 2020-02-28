@@ -24,6 +24,18 @@ class Set
     /**
      * @return string|null
      */
+    protected function getPartNumber(array $manufactureInfoArray)
+    {
+        return $this->stringOrNullService->getStringOrNull(
+            ['ItemPartNumber', 'DisplayValue'],
+            $manufactureInfoArray,
+            127
+        );
+    }
+
+    /**
+     * @return string|null
+     */
     protected function getWarranty(array $manufactureInfoArray)
     {
         return $this->stringOrNullService->getStringOrNull(
