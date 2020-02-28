@@ -8,10 +8,10 @@ class Breadcrumbs
 {
     public function __construct(
         AmazonService\BrowseNode\BrowseNodes\Breadcrumbs $breadcrumbsService,
-        AmazonService\BrowseNode\BrowseNodes\Product $productService
+        AmazonService\Product\BrowseNodeProducts $browseNodeProductsService
     ) {
-        $this->breadcrumbsService = $breadcrumbsService;
-        $this->productService     = $productService;
+        $this->breadcrumbsService        = $breadcrumbsService;
+        $this->browseNodeProductsService = $browseNodeProductsService;
     }
 
     /**
@@ -19,16 +19,17 @@ class Breadcrumbs
      */
     public function getBreadcrumbs(AmazonEntity\Product $productEntity): array
     {
-        $browseNodeEntities = $this->productService->getBrowseNodes(
+        /* @var array $browseNodeProducts */
+        $browseNodeProducts = $this->browseNodeProductsService->getBrowseNodeProducts(
             $productEntity
         );
 
-        if (empty($browseNodeEntities)) {
+        if (empty($browseNodeProducts)) {
             return [];
         }
 
         return $this->breadcrumbsService->getBrowseNodes(
-            $browseNodeEntities[0]
+            $browseNodeProducts[0]->getBrowseNode()
         );
     }
 }

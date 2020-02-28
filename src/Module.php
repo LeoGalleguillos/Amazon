@@ -333,7 +333,13 @@ class Module
                 AmazonService\Product\Breadcrumbs::class => function ($sm) {
                     return new AmazonService\Product\Breadcrumbs(
                         $sm->get(AmazonService\BrowseNode\BrowseNodes\Breadcrumbs::class),
-                        $sm->get(AmazonService\BrowseNode\BrowseNodes\Product::class)
+                        $sm->get(AmazonService\Product\BrowseNodeProducts::class)
+                    );
+                },
+                AmazonService\Product\BrowseNodeProducts::class => function ($sm) {
+                    return new AmazonService\Product\BrowseNodeProducts(
+                        $sm->get(AmazonFactory\BrowseNode::class),
+                        $sm->get(AmazonTable\BrowseNodeProduct::class)
                     );
                 },
                 AmazonService\Product\FirstImageEntity::class => function ($sm) {
