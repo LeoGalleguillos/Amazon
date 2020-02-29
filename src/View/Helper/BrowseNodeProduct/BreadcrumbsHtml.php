@@ -42,8 +42,8 @@ class BreadcrumbsHtml extends AbstractHelper
                 $browseNodeEntity->getName()
             );
 
-            if (isset($this->browseNodeNameDomains[$browseNodeName])) {
-                $domain = $this->browseNodeNameDomains[$browseNodeName];
+            if (isset($this->browseNodeNameDomains[$browseNodeEntity->getName()])) {
+                $domain = $this->browseNodeNameDomains[$browseNodeEntity->getName()];
                 $html .= "<li><a href=\"https://$domain\">$nameEscaped</a></li>\n";
             } else {
                 $html .= "<li><a href=\"$href\">$nameEscaped</a></li>\n";

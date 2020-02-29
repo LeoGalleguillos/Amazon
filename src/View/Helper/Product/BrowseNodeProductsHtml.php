@@ -5,6 +5,7 @@ use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\View\Helper as AmazonHelper;
 use LeoGalleguillos\String\Model\Service as StringService;
+use TypeError;
 use Zend\View\Helper\AbstractHelper;
 
 class BrowseNodeProductsHtml extends AbstractHelper
@@ -33,12 +34,12 @@ class BrowseNodeProductsHtml extends AbstractHelper
             $liHtml = '<li>';
 
             try {
-                $liHtml = '#' . number_format($browseNodeProduct->getSalesRank()) . ' in ';
+                $liHtml = '#' . number_format($browseNodeProductEntity->getSalesRank()) . ' in ';
             } catch (TypeError $typeError) {
                 $liHtml = '';
             }
 
-            $liHtml .= $this->breadcrumbsHtmlHelper($browseNodeProductEntity);
+            $liHtml .= $this->breadcrumbsHtmlHelper->__invoke($browseNodeProductEntity);
 
             $liHtml .= '</li>';
 
