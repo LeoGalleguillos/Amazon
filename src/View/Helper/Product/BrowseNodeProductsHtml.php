@@ -34,9 +34,9 @@ class BrowseNodeProductsHtml extends AbstractHelper
             $liHtml = '<li>';
 
             try {
-                $liHtml = '#' . number_format($browseNodeProductEntity->getSalesRank()) . ' in ';
+                $liHtml .= '<b>Rank #' . number_format($browseNodeProductEntity->getSalesRank()) . '</b> in ';
             } catch (TypeError $typeError) {
-                $liHtml = '';
+                $liHtml .= '';
             }
 
             $liHtml .= $this->breadcrumbsHtmlHelper->__invoke($browseNodeProductEntity);
