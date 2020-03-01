@@ -39,7 +39,7 @@ class Product
 
     /**
      * @var array
-     * @deprecated Use $this->browseNodeProducts property instead
+     * @deprecated Use ::browseNodeProducts instead
      */
     protected $browseNodes;
 
