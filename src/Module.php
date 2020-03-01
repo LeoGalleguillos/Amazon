@@ -358,6 +358,12 @@ class Module
                         $sm->get(AmazonTable\BrowseNodeProduct::class)
                     );
                 },
+                AmazonService\Product\Domain::class => function ($sm) {
+                    return new AmazonService\Product\Domain(
+                        $sm->get(AmazonService\Product\BrowseNodeProducts::class),
+                        $sm->get('Config')['amazon']['browse-node-name-domain']
+                    );
+                },
                 AmazonService\Product\FirstImageEntity::class => function ($sm) {
                     return new AmazonService\Product\FirstImageEntity();
                 },
