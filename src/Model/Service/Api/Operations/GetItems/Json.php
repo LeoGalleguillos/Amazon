@@ -56,28 +56,21 @@ class Json
         $awsv4->addHeader ('host', $host);
         $awsv4->addHeader ('x-amz-target', 'com.amazon.paapi5.v1.ProductAdvertisingAPIv1.GetItems');
         $headers = $awsv4->getHeaders ();
-        $headerString = "";
-        foreach ( $headers as $key => $value ) {
-            $headerString .= $key . ': ' . $value . "\r\n";
+        $headersArray = [];
+        foreach ($headers as $key => $value ) {
+            $headersArray[] = $key . ': ' . $value;
         }
-        $params = array (
-            'http' => array (
-                'header' => $headerString,
-                'method' => 'POST',
-                'content' => $payloadString
-            )
-        );
-        $stream = stream_context_create ( $params );
 
-        $fp = fopen ( 'https://'.$host.$uriPath, 'rb', false, $stream );
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,'https://'.$host.$uriPath);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS,$payloadString);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headersArray);
+        $jsonString = curl_exec($ch);
+        curl_close($ch);
 
-        if (! $fp) {
-            throw new Exception ( "Exception Occured" );
-        }
-        $response = @stream_get_contents ( $fp );
-        if ($response === false) {
-            throw new Exception ( "Exception Occured" );
-        }
-        return $response;
+        return $jsonString;
+
     }
 }
