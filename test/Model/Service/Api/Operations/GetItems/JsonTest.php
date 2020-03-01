@@ -24,15 +24,13 @@ class JsonTest extends TestCase
 
         $jsonString = $this->jsonService->getJson(
             [
-                'B009UOMNE8',
-                'B07MMZ2LTB',
+                'B01M7NSDOF',
+                'B072LVZ5FX',
                 'B07D5J6Z2C'
             ],
             [
-                'BrowseNodeInfo.BrowseNodes',
-                'BrowseNodeInfo.BrowseNodes.Ancestor',
-                'BrowseNodeInfo.BrowseNodes.SalesRank',
-                'BrowseNodeInfo.WebsiteSalesRank',
+                'ItemInfo.ManufactureInfo',
+                'ItemInfo.ProductInfo',
             ]
         );
 
