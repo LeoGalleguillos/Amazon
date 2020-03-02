@@ -399,6 +399,11 @@ class Module
                         $sm->get(StringService\UrlFriendly::class)
                     );
                 },
+                AmazonService\Product\RootRelativeUrl\Asin::class => function ($sm) {
+                    return new AmazonService\Product\RootRelativeUrl\Asin(
+                        $sm->get(StringService\UrlFriendly::class)
+                    );
+                },
                 AmazonService\Product\Slug::class => function ($sm) {
                     return new AmazonService\Product\Slug(
                         $sm->get(AmazonService\Product\ModifiedTitle::class),
