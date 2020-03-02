@@ -416,6 +416,7 @@ class Module
                 },
                 AmazonService\Product\Url::class => function ($sm) {
                     return new AmazonService\Product\Url(
+                        $sm->get(AmazonService\Product\Domain::class),
                         $sm->get(AmazonService\Product\RootRelativeUrl::class)
                     );
                 },

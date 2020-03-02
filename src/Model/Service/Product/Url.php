@@ -7,21 +7,17 @@ use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 class Url
 {
     public function __construct(
+        AmazonService\Product\Domain $domainService,
         AmazonService\Product\RootRelativeUrl $rootRelativeUrlService
     ) {
+        $this->domainService          = $domainService;
         $this->rootRelativeUrlService = $rootRelativeUrlService;
     }
 
-    /**
-     * Get URL.
-     *
-     * @param AmazonEntity\Product $productEntity
-     * @return string
-     */
     public function getUrl(AmazonEntity\Product $productEntity) : string
     {
         return 'https://'
-             . $_SERVER['HTTP_HOST']
+             . $this->domainService->getDomain($productEntity)
              . $this->rootRelativeUrlService->getRootRelativeUrl($productEntity);
     }
 }
