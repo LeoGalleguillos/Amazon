@@ -15,14 +15,9 @@ class RootRelativeUrl
         $this->urlFriendlyService   = $urlFriendlyService;
     }
 
-    /**
-     * Get root-relative URL.
-     *
-     * @param AmazonEntity\Product $productEntity
-     * @return string
-     */
-    public function getRootRelativeUrl($productEntity) : string
-    {
+    public function getRootRelativeUrl(
+        AmazonEntity\Product $productEntity
+    ): string {
         $modifiedTitle = $this->modifiedTitleService->getModifiedTitle($productEntity);
 
         return '/products/'
