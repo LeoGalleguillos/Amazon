@@ -91,7 +91,8 @@ class Product
         string $productGroup,
         string $binding = null,
         string $brand = null,
-        float $listPrice
+        float $listPrice,
+        int $isValid = 1
     ): int {
         $sql = '
             INSERT
@@ -102,8 +103,9 @@ class Product
                      , `binding`
                      , `brand`
                      , `list_price`
+                     , `is_valid`
                    )
-            VALUES (?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
                  ;
         ';
 
@@ -114,11 +116,12 @@ class Product
             $binding,
             $brand,
             $listPrice,
+            $isValid,
         ];
         return (int) $this->adapter
-                          ->query($sql)
-                          ->execute($parameters)
-                          ->getGeneratedValue();
+            ->query($sql)
+            ->execute($parameters)
+            ->getGeneratedValue();
     }
 
     public function isProductInTable($asin)

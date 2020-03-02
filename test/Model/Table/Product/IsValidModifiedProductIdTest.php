@@ -28,12 +28,6 @@ class IsValidModifiedProductIdTest extends TableTestCase
 
     public function testSelectAsinWhereIsValidIsNullLimitRowCount()
     {
-        $generator = $this->isValidModifiedProductIdTable
-            ->selectAsinWhereIsValidIsNullLimitRowCount(0);
-        $this->assertEmpty(
-            iterator_to_array($generator)
-        );
-
         $this->productTable->insert(
             'ASIN001',
             'Title',
@@ -44,7 +38,7 @@ class IsValidModifiedProductIdTest extends TableTestCase
         );
 
         $generator = $this->isValidModifiedProductIdTable
-            ->selectAsinWhereIsValidIsNullLimitRowCount(1);
+            ->selectAsinWhereIsValidEquals1LimitRowCount(1);
         $this->assertCount(
             1,
             iterator_to_array($generator)
@@ -68,7 +62,7 @@ class IsValidModifiedProductIdTest extends TableTestCase
         );
 
         $generator = $this->isValidModifiedProductIdTable
-            ->selectAsinWhereIsValidIsNullLimitRowCount(2);
+            ->selectAsinWhereIsValidEquals1LimitRowCount(2);
         $array = iterator_to_array($generator);
         $this->assertCount(
             2,
@@ -82,7 +76,7 @@ class IsValidModifiedProductIdTest extends TableTestCase
         $this->asinTable->updateSetModifiedToUtcTimestampWhereAsin('ASIN001');
 
         $generator = $this->isValidModifiedProductIdTable
-            ->selectAsinWhereIsValidIsNullLimitRowCount(3);
+            ->selectAsinWhereIsValidEquals1LimitRowCount(3);
         $array = iterator_to_array($generator);
         $this->assertCount(
             3,
@@ -96,7 +90,7 @@ class IsValidModifiedProductIdTest extends TableTestCase
         $this->asinTable->updateSetIsValidWhereAsin(0, 'ASIN001');
 
         $generator = $this->isValidModifiedProductIdTable
-            ->selectAsinWhereIsValidIsNullLimitRowCount(3);
+            ->selectAsinWhereIsValidEquals1LimitRowCount(3);
         $array = iterator_to_array($generator);
         $this->assertCount(
             2,

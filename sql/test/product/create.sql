@@ -27,7 +27,7 @@ CREATE TABLE `product` (
   `hi_res_images_retrieved` datetime DEFAULT NULL,
   `similar_retrieved` datetime DEFAULT NULL,
   `video_generated` datetime DEFAULT NULL,
-  `is_valid` tinyint(1) unsigned DEFAULT NULL,
+  `is_valid` tinyint(1) unsigned NOT NULL,
   PRIMARY KEY (`product_id`),
   UNIQUE KEY `asin` (`asin`),
   KEY `product_group_modified` (`product_group`,`modified`),

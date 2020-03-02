@@ -51,6 +51,7 @@ class ProductTest extends TableTestCase
                 'product_group' => 'Product Group',
                 'color'         => 'BLACK',
                 'released'      => '2019-05-22 01:00:01',
+                'is_valid'      => '1',
             ]
         );
         $this->assertSame(1, $affectedRows);
