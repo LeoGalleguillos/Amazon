@@ -425,6 +425,12 @@ class Module
                         $sm->get(AmazonService\Product\RootRelativeUrl::class)
                     );
                 },
+                AmazonService\Product\Url\Asin::class => function ($sm) {
+                    return new AmazonService\Product\Url\Asin(
+                        $sm->get(AmazonService\Product\Domain::class),
+                        $sm->get(AmazonService\Product\RootRelativeUrl\Asin::class)
+                    );
+                },
                 AmazonService\ProductGroup::class => function ($sm) {
                     return new AmazonService\ProductGroup(
                         $sm->get(AmazonFactory\Product::class),
