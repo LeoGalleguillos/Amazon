@@ -23,11 +23,12 @@ class DownloadArrayToMySqlTest extends TestCase
     public function testDownloadJsonToMySql()
     {
         $this->asinTableMock
-            ->expects($this->exactly(2))
+            ->expects($this->exactly(3))
             ->method('updateSetIsValidWhereAsin')
             ->withConsecutive(
                 [0, 'B00388Q3WU'],
-                [0, 'B071K8P186']
+                [0, 'B071K8P186'],
+                [0, 'B072QTHMC7']
             );
 
         $this->downloadArrayToMySqlService->downloadArrayToMySql(
@@ -49,6 +50,12 @@ class DownloadArrayToMySqlTest extends TestCase
             '__type' => 'com.amazon.paapi5#ErrorData',
             'Code' => 'InvalidParameterValue',
             'Message' => 'The ItemId B071K8P186 provided in the request is invalid.',
+          ),
+          2 =>
+          array (
+            '__type' => 'com.amazon.paapi5#ErrorData',
+            'Code' => 'ItemNotAccessible',
+            'Message' => 'The ItemId B072QTHMC7 is not accessible through the Product Advertising API.',
           ),
         );
     }

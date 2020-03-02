@@ -14,16 +14,19 @@ class DownloadArrayToMySql
     public function downloadArrayToMySql(
         array $errorsArray
     ) {
+        $patterns = [
+            '/The ItemId (\w+) provided in the request is invalid./',
+            '/The ItemId (\w+) is not accessible through the Product Advertising API./',
+        ];
+
         foreach ($errorsArray as $errorArray) {
-            $pattern = '/The ItemId (\w+) provided in the request is invalid./';
-            if (($errorArray['Code'] == 'InvalidParameterValue')
-                && (preg_match($pattern, $errorArray['Message'], $matches))
-            ) {
-                $asin = $matches[1];
-                $this->asinTable->updateSetIsValidWhereAsin(
-                    0,
-                    $asin
-                );
+            foreach ($patterns as $pattern) {
+                if (preg_match($pattern, $errorArray['Message'], $matches)) {
+                    $asin = $matches[1];
+                    $this->asinTable->updateSetIsValidWhereAsin(0, $asin);
+
+                    continue;
+                }
             }
         }
     }
