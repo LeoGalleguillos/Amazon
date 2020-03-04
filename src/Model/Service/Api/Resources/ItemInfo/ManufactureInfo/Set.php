@@ -15,7 +15,7 @@ class Set
         array $manufactureInfoArray
     ): array {
         return [
-            'part_number' => $manufactureInfoArray['ItemPartNumber']['DisplayValue'] ?? null,
+            'part_number' => $this->getPartNumber($manufactureInfoArray),
             'model'       => $manufactureInfoArray['Model']['DisplayValue'] ?? null,
             'warranty'    => $this->getWarranty($manufactureInfoArray),
         ];
