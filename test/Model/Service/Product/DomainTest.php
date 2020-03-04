@@ -25,12 +25,8 @@ class DomainTest extends TestCase
         );
     }
 
-    public function testGetUrl_BrowseNodeProductsServiceMockThrowsTypeError_ReturnDefaultDomain()
+    public function testGetUrl_BrowseNodeProductsIsEmpty_ReturnDefaultDomain()
     {
-        $this->browseNodeProductsServiceMock
-            ->method('getBrowseNodeProducts')
-            ->will($this->throwException(new TypeError('Invalid type.')));
-
         $productEntity = new AmazonEntity\Product();
 
         $this->assertSame(

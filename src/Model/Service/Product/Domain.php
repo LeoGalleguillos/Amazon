@@ -18,14 +18,15 @@ class Domain
     public function getDomain(
         AmazonEntity\Product $productEntity
     ): string {
-        try {
-            $browseNodeProducts = $this->browseNodeProductsService->getBrowseNodeProducts(
-                $productEntity
-            );
-            $browseNodeName = $browseNodeProducts[0]->getBrowseNode()->getName();
-        } catch (TypeError $typeError) {
+        $browseNodeProducts = $this->browseNodeProductsService->getBrowseNodeProducts(
+            $productEntity
+        );
+
+        if (empty($browseNodeProducts)) {
             return $this->browseNodeNameDomain['default'];
         }
+
+        $browseNodeName = $browseNodeProducts[0]->getBrowseNode()->getName();
 
         return $this->browseNodeNameDomain[$browseNodeName]
             ?? $this->browseNodeNameDomain['default'];
