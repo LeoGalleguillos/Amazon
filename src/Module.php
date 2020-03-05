@@ -136,9 +136,6 @@ class Module
                         $sm->get(AmazonTable\ProductUpc\ProductId::class)
                     );
                 },
-                AmazonFactory\Product\EditorialReview::class => function ($sm) {
-                    return new AmazonFactory\Product\EditorialReview();
-                },
                 AmazonFactory\ProductGroup::class => function ($sm) {
                     return new AmazonFactory\ProductGroup(
                         $sm->get(AmazonTable\ProductGroup::class),
@@ -642,11 +639,6 @@ class Module
                     return new AmazonTable\Product\Asin(
                         $sm->get('amazon'),
                         $sm->get(AmazonTable\Product::class)
-                    );
-                },
-                AmazonTable\Product\EditorialReview::class => function ($sm) {
-                    return new AmazonTable\Product\EditorialReview(
-                        $sm->get('amazon')
                     );
                 },
                 AmazonTable\Product\IsValidModifiedProductId::class => function ($sm) {
