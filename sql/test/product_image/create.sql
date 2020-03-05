@@ -1,4 +1,10 @@
 CREATE TABLE `product_image` (
+  /*
+   * @todo Once all product_id values are inserted,
+   * product_id can no longer be null
+   */
+  `product_id` int(10) DEFAULT NULL,
+
   `asin` varchar(10) NOT NULL,
   `category` varchar(255) NOT NULL,
   `url` varchar(128) NOT NULL,
