@@ -2,7 +2,6 @@
 namespace LeoGalleguillos\Amazon\Model\Table;
 
 use Generator;
-use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\Adapter\Exception\InvalidQueryException;
 
@@ -11,7 +10,7 @@ class ProductImage
     /**
      * @var Adapter
      */
-    private $adapter;
+    protected $adapter;
 
     public function __construct(
         Adapter $adapter
@@ -68,17 +67,10 @@ class ProductImage
         return $this->adapter->query($sql)->execute($parameters)->getAffectedRows();
     }
 
-    /**
-     * Select width and height where ASIN and URL.
-     *
-     * @param string $asin
-     * @param string $url
-     * @return array
-     */
     public function selectWidthAndHeightWhereAsinAndUrl(
         string $asin,
         string $url
-    ) : array {
+    ): array {
         $sql = '
             SELECT `product_image`.`width`
                  , `product_image`.`height`
