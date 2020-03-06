@@ -3,12 +3,17 @@ namespace LeoGalleguillos\AmazonTest\Model\Table\ProductVideo;
 
 use Exception;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
+use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
 use LeoGalleguillos\Test\TableTestCase;
 
 class ProductVideoIdTest extends TableTestCase
 {
     protected function setUp()
     {
+        $this->productTable = new AmazonTable\Product(
+            $this->createMock(MemcachedService\Memcached::class),
+            $this->getAdapter()
+        );
         $this->productVideoTable = new AmazonTable\ProductVideo(
             $this->getAdapter()
         );
@@ -17,8 +22,10 @@ class ProductVideoIdTest extends TableTestCase
             $this->productVideoTable
         );
 
-        $this->dropTable('product_video');
-        $this->createTable('product_video');
+
+        $this->setForeignKeyChecks0();
+        $this->dropAndCreateTables(['product', 'product_video']);
+        $this->setForeignKeyChecks1();
     }
 
     public function testSelectProductVideoIdLimitOffsetLimit1()
@@ -33,15 +40,31 @@ class ProductVideoIdTest extends TableTestCase
             );
         }
 
+        $this->productTable->insert(
+            'asin1',
+            'product title',
+            'product group',
+            null,
+            null,
+            0
+        );
+        $this->productTable->insert(
+            'asin2',
+            'product title',
+            'product group',
+            null,
+            null,
+            0
+        );
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
-            123,
+            1,
             'ASIN123',
             'Title 123',
             'Description 123',
             9999
         );
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
-            456,
+            2,
             'ASIN456',
             'Title 456',
             'Description 456',
@@ -79,15 +102,31 @@ class ProductVideoIdTest extends TableTestCase
             iterator_to_array($generator)
         );
 
+        $this->productTable->insert(
+            'asin1',
+            'product title',
+            'product group',
+            null,
+            null,
+            0
+        );
+        $this->productTable->insert(
+            'asin2',
+            'product title',
+            'product group',
+            null,
+            null,
+            0
+        );
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
-            123,
+            1,
             'ASIN123',
             'Title 123',
             'Description 123',
             9999
         );
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
-            456,
+            2,
             'ASIN456',
             'Title 456',
             'Description 456',
@@ -138,15 +177,23 @@ class ProductVideoIdTest extends TableTestCase
             iterator_to_array($generator)
         );
 
+        $this->productTable->insert(
+            'asin3',
+            'product title',
+            'product group',
+            null,
+            null,
+            0
+        );
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
-            789,
+            3,
             'ASIN789',
             'Title 789',
             'Description 789',
             9999
         );
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
-            789,
+            3,
             'ASIN789',
             'Title 789',
             'Description 789',
@@ -195,8 +242,16 @@ class ProductVideoIdTest extends TableTestCase
             $affectedRows
         );
 
+        $this->productTable->insert(
+            'asin',
+            'product title',
+            'product group',
+            null,
+            null,
+            0
+        );
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
-            123,
+            1,
             'ASIN',
             'Title',
             'Description',
@@ -222,8 +277,16 @@ class ProductVideoIdTest extends TableTestCase
             $affectedRows
         );
 
+        $this->productTable->insert(
+            'asin',
+            'product title',
+            'product group',
+            null,
+            null,
+            0
+        );
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
-            123,
+            1,
             'ASIN',
             'Title',
             'Description',

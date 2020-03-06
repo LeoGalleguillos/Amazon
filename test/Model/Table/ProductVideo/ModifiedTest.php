@@ -2,23 +2,28 @@
 namespace LeoGalleguillos\AmazonTest\Model\Table\ProductVideo;
 
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
+use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
 use LeoGalleguillos\Test\TableTestCase;
 
 class ModifiedTest extends TableTestCase
 {
     protected function setUp()
     {
+        $this->productTable = new AmazonTable\Product(
+            $this->createMock(MemcachedService\Memcached::class),
+            $this->getAdapter()
+        );
         $this->productVideoTable = new AmazonTable\ProductVideo(
             $this->getAdapter()
         );
-
         $this->modifiedTable = new AmazonTable\ProductVideo\Modified(
             $this->getAdapter(),
             $this->productVideoTable
         );
 
-        $this->dropTable('product_video');
-        $this->createTable('product_video');
+        $this->setForeignKeyChecks0();
+        $this->dropAndCreateTables(['product', 'product_video']);
+        $this->setForeignKeyChecks1();
     }
 
     public function testSelectWhereModifiedIsNullAndBrowseNodeIdIsNullLimit()
@@ -29,6 +34,30 @@ class ModifiedTest extends TableTestCase
         $array = iterator_to_array($generator);
         $this->assertEmpty($array);
 
+        $this->productTable->insert(
+            'asin1',
+            'product title',
+            'product group',
+            null,
+            null,
+            0
+        );
+        $this->productTable->insert(
+            'asin2',
+            'product title',
+            'product group',
+            null,
+            null,
+            0
+        );
+        $this->productTable->insert(
+            'asin3',
+            'product title',
+            'product group',
+            null,
+            null,
+            0
+        );
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
             1,
             'ASIN1',

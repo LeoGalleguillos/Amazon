@@ -15,5 +15,9 @@ CREATE TABLE `product_video` (
   FULLTEXT `title` (`title`),
   FULLTEXT `description` (`description`),
   INDEX (`created`),
-  INDEX (`modified`)
+  INDEX (`modified`),
+  CONSTRAINT `product_product_video` FOREIGN KEY (`product_id`)
+    REFERENCES `product` (`product_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 ) ENGINE=InnoDB CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

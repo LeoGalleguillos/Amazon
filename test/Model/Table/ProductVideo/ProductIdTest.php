@@ -2,12 +2,17 @@
 namespace LeoGalleguillos\AmazonTest\Model\Table\ProductVideo;
 
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
+use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
 use LeoGalleguillos\Test\TableTestCase;
 
 class ProductIdTest extends TableTestCase
 {
     protected function setUp()
     {
+        $this->productTable = new AmazonTable\Product(
+            $this->createMock(MemcachedService\Memcached::class),
+            $this->getAdapter()
+        );
         $this->productIdTable = new AmazonTable\ProductVideo\ProductId(
             $this->getAdapter()
         );
@@ -15,8 +20,9 @@ class ProductIdTest extends TableTestCase
             $this->getAdapter()
         );
 
-        $this->dropTable('product_video');
-        $this->createTable('product_video');
+        $this->setForeignKeyChecks0();
+        $this->dropAndCreateTables(['product', 'product_video']);
+        $this->setForeignKeyChecks1();
     }
 
     public function testDeleteWhereProductId()
@@ -27,9 +33,17 @@ class ProductIdTest extends TableTestCase
             $affectedRows
         );
 
+        $this->productTable->insert(
+            'asin1',
+            'product title',
+            'product group',
+            null,
+            null,
+            0
+        );
         $productVideoId = $this->productVideoTable->insertOnDuplicateKeyUpdate(
-            54321,
-            'ASIN',
+            1,
+            'asin1',
             'video title',
             'video description',
             1000
@@ -41,7 +55,7 @@ class ProductIdTest extends TableTestCase
             $affectedRows
         );
 
-        $affectedRows = $this->productIdTable->deleteWhereProductId(54321);
+        $affectedRows = $this->productIdTable->deleteWhereProductId(1);
         $this->assertSame(
             1,
             $affectedRows
@@ -59,8 +73,16 @@ class ProductIdTest extends TableTestCase
             $affectedRows
         );
 
+        $this->productTable->insert(
+            'asin1',
+            'product title',
+            'product group',
+            null,
+            null,
+            0
+        );
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
-            123,
+            1,
             'ASIN',
             'Title',
             'Description',
@@ -68,7 +90,7 @@ class ProductIdTest extends TableTestCase
         );
         $affectedRows = $this->productIdTable
             ->updateSetModifiedToUtcTimestampWhereProductId(
-                123
+                1
             );
         $this->assertSame(
             1,

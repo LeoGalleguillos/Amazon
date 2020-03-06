@@ -109,8 +109,16 @@ class ProductVideoTest extends TableTestCase
             $array['modified']
         );
 
+        $this->productTable->insert(
+            'asin2',
+            'product title',
+            'product group',
+            null,
+            null,
+            0
+        );
         $productVideoId = $this->productVideoTable->insertOnDuplicateKeyUpdate(
-            67890,
+            2,
             'ASIN2',
             'title 2',
             'description 2',
@@ -136,38 +144,62 @@ class ProductVideoTest extends TableTestCase
     {
         $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
             123,
-            11111,
+            1,
             null,
             1
         );
         $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
             321,
-            22222,
+            2,
             null,
             1
         );
         $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
             123,
-            33333,
+            3,
             null,
             1
         );
+        $this->productTable->insert(
+            'asin1',
+            'product title',
+            'product group',
+            null,
+            null,
+            0
+        );
+        $this->productTable->insert(
+            'asin2',
+            'product title',
+            'product group',
+            null,
+            null,
+            0
+        );
+        $this->productTable->insert(
+            'asin3',
+            'product title',
+            'product group',
+            null,
+            null,
+            0
+        );
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
-            11111,
+            1,
             'ASIN001',
             'Title',
             'Description',
             1000
         );
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
-            22222,
+            2,
             'ASIN002',
             'Title',
             'Description',
             1000
         );
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
-            33333,
+            3,
             'ASIN003',
             'Title',
             'Description',
@@ -200,8 +232,16 @@ class ProductVideoTest extends TableTestCase
             );
         }
 
+        $this->productTable->insert(
+            'asin',
+            'product title',
+            'product group',
+            null,
+            null,
+            0
+        );
         $productVideoId = $this->productVideoTable->insertOnDuplicateKeyUpdate(
-            12345,
+            1,
             'ASIN',
             'title',
             'description',
@@ -214,7 +254,7 @@ class ProductVideoTest extends TableTestCase
             $array['product_video_id']
         );
         $this->assertSame(
-            '12345',
+            '1',
             $array['product_id']
         );
     }
@@ -231,21 +271,29 @@ class ProductVideoTest extends TableTestCase
             );
         }
 
+        $this->productTable->insert(
+            'asin',
+            'product title',
+            'product group',
+            null,
+            null,
+            0
+        );
         $productVideoId = $this->productVideoTable->insertOnDuplicateKeyUpdate(
-            12345,
+            1,
             'ASIN',
             'title',
             'description',
             3000
         );
-        $array = $this->productVideoTable->selectWhereProductId(12345);
+        $array = $this->productVideoTable->selectWhereProductId(1);
 
         $this->assertSame(
             '1',
             $array['product_video_id']
         );
         $this->assertSame(
-            '12345',
+            '1',
             $array['product_id']
         );
     }
