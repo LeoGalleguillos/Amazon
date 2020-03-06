@@ -3,7 +3,6 @@ namespace LeoGalleguillos\Amazon\Model\Table;
 
 use Generator;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
-use LeoGalleguillos\Memcached\Model\Service\Memcached as MemcachedService;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\Adapter\Exception\InvalidQueryException;
 
@@ -15,11 +14,9 @@ class ProductImage
     private $adapter;
 
     public function __construct(
-        MemcachedService $memcached,
         Adapter $adapter
     ) {
-        $this->memcached = $memcached;
-        $this->adapter   = $adapter;
+        $this->adapter = $adapter;
     }
 
     public function selectWhereAsin($asin): Generator

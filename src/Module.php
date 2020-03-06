@@ -754,7 +754,6 @@ class Module
                 },
                 AmazonTable\ProductImage::class => function ($sm) {
                     return new AmazonTable\ProductImage(
-                        $sm->get(MemcachedService\Memcached::class),
                         $sm->get('amazon')
                     );
                 },
