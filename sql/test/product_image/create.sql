@@ -5,6 +5,7 @@ CREATE TABLE `product_image` (
   `url` varchar(128) NOT NULL,
   `width` int(11) DEFAULT NULL,
   `height` int(11) DEFAULT NULL,
+  KEY `product_id` (`product_id`),
   UNIQUE KEY `asin_category_url` (`asin`,`category`,`url`),
   KEY `url` (`url`),
   CONSTRAINT `product_product_image` FOREIGN KEY `product_id` (`product_id`)
