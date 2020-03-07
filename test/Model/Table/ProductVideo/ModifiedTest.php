@@ -22,7 +22,7 @@ class ModifiedTest extends TableTestCase
         );
 
         $this->setForeignKeyChecks0();
-        $this->dropAndCreateTables(['product', 'product_video']);
+        $this->dropAndCreateTables(['browse_node_product', 'product', 'product_video']);
         $this->setForeignKeyChecks1();
     }
 

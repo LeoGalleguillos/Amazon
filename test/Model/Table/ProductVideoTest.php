@@ -142,24 +142,6 @@ class ProductVideoTest extends TableTestCase
 
     public function testSelectProductVideoIdWhereBrowseNodeId()
     {
-        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
-            123,
-            1,
-            null,
-            1
-        );
-        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
-            321,
-            2,
-            null,
-            1
-        );
-        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
-            123,
-            3,
-            null,
-            1
-        );
         $this->productTable->insert(
             'asin1',
             'product title',
@@ -183,6 +165,24 @@ class ProductVideoTest extends TableTestCase
             null,
             null,
             0
+        );
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
+            123,
+            1,
+            null,
+            1
+        );
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
+            321,
+            2,
+            null,
+            1
+        );
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
+            123,
+            3,
+            null,
+            1
         );
         $this->productVideoTable->insertOnDuplicateKeyUpdate(
             1,
