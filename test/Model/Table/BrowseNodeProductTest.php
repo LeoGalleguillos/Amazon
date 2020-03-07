@@ -10,6 +10,9 @@ class BrowseNodeProductTest extends TableTestCase
     protected function setUp()
     {
         $this->memcachedService = $this->createMock(MemcachedService\Memcached::class);
+        $this->browseNodeTable = new AmazonTable\BrowseNode(
+            $this->getAdapter()
+        );
         $this->productTable = new AmazonTable\Product(
             $this->memcachedService,
             $this->getAdapter()
@@ -19,12 +22,20 @@ class BrowseNodeProductTest extends TableTestCase
         );
 
         $this->setForeignKeyChecks0();
-        $this->dropAndCreateTables(['browse_node_product', 'product']);
+        $this->dropAndCreateTables(['browse_node', 'browse_node_product', 'product']);
         $this->setForeignKeyChecks1();
     }
 
     public function testInsertIgnore()
     {
+        $this->browseNodeTable->insertIgnore(
+            1,
+            'Browse Node Name 1'
+        );
+        $this->browseNodeTable->insertIgnore(
+            2,
+            'Browse Node Name 2'
+        );
         $this->productTable->insert(
             'ASIN',
             'Title',
@@ -107,6 +118,18 @@ class BrowseNodeProductTest extends TableTestCase
             iterator_to_array($this->browseNodeProductTable->selectWhereProductId(12345))
         );
 
+        $this->browseNodeTable->insertIgnore(
+            948,
+            'awesome'
+        );
+        $this->browseNodeTable->insertIgnore(
+            12345,
+            'super'
+        );
+        $this->browseNodeTable->insertIgnore(
+            11,
+            'cool'
+        );
         $this->productTable->insert(
             'ASIN',
             'Title',

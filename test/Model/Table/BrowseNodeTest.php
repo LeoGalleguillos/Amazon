@@ -13,8 +13,9 @@ class BrowseNodeTest extends TableTestCase
             $this->getAdapter()
         );
 
-        $this->dropTable('browse_node');
-        $this->createTable('browse_node');
+        $this->setForeignKeyChecks0();
+        $this->dropAndCreateTable('browse_node');
+        $this->setForeignKeyChecks1();
     }
 
     public function testInsertIgnore()

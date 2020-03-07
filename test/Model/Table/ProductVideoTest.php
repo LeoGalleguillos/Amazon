@@ -26,16 +26,12 @@ class ProductVideoTest extends TableTestCase
         );
 
         $this->setForeignKeyChecks0();
-
-        $this->dropTable('browse_node_product');
-        $this->createTable('browse_node_product');
-
-        $this->dropTable('product');
-        $this->createTable('product');
-
-        $this->dropTable('product_video');
-        $this->createTable('product_video');
-
+        $this->dropAndCreateTables([
+            'browse_node',
+            'browse_node_product',
+            'product',
+            'product_video',
+        ]);
         $this->setForeignKeyChecks1();
     }
 
@@ -142,6 +138,14 @@ class ProductVideoTest extends TableTestCase
 
     public function testSelectProductVideoIdWhereBrowseNodeId()
     {
+        $this->browseNodeTable->insertIgnore(
+            123,
+            'category 123'
+        );
+        $this->browseNodeTable->insertIgnore(
+            321,
+            'category 321'
+        );
         $this->productTable->insert(
             'asin1',
             'product title',

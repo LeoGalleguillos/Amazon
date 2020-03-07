@@ -5,7 +5,11 @@ CREATE TABLE `browse_node_product` (
   `order` TINYINT(2) unsigned NOT NULL,
   PRIMARY KEY (`browse_node_id`, `product_id`),
   UNIQUE `product_id_order` (`product_id`, `order`),
-  CONSTRAINT `product_browse_node_product` FOREIGN KEY `product_id` (`product_id`)
+  CONSTRAINT `browse_node_browse_node_product` FOREIGN KEY (`browse_node_id`)
+    REFERENCES `browse_node` (`browse_node_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `product_browse_node_product` FOREIGN KEY (`product_id`)
     REFERENCES `product` (`product_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE
