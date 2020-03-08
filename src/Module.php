@@ -646,6 +646,11 @@ class Module
                         $sm->get('amazon')
                     );
                 },
+                AmazonTable\ProductBanned::class => function ($sm) {
+                    return new AmazonTable\ProductBanned(
+                        $sm->get('amazon')
+                    );
+                },
                 AmazonTable\ProductBrowseNodeProductBrowseNode::class => function ($sm) {
                     return new AmazonTable\ProductBrowseNodeProductBrowseNode(
                         $sm->get('amazon')
