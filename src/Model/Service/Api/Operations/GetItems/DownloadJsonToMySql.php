@@ -11,11 +11,13 @@ class DownloadJsonToMySql
     public function __construct(
         AmazonTable\Product\Asin $asinTable,
         AmazonService\Api\Errors\DownloadArrayToMySql $downloadErrorsArrayToMySqlService,
-        AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray $itemArrayService
+        AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray $itemArrayService,
+        AmazonService\Product\Banned $bannedService
     ) {
         $this->asinTable                         = $asinTable;
         $this->downloadErrorsArrayToMySqlService = $downloadErrorsArrayToMySqlService;
         $this->itemArrayService                  = $itemArrayService;
+        $this->bannedService                     = $bannedService;
     }
 
     public function downloadJsonToMySql(
@@ -33,6 +35,10 @@ class DownloadJsonToMySql
             $itemsArray = $jsonArray['ItemsResult']['Items'];
             foreach ($itemsArray as $itemArray) {
                 $asin = $itemArray['ASIN'];
+
+                if ($this->bannedService->isBanned($asin)) {
+                    continue;
+                }
 
                 $this->asinTable->updateSetIsValidWhereAsin(1, $asin);
 

@@ -20,11 +20,15 @@ class DownloadJsonToMySqlTest extends TestCase
         $this->itemArrayServiceMock = $this->createMock(
             AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray::class
         );
+        $this->bannedServiceMock = $this->createMock(
+            AmazonService\Product\Banned::class
+        );
 
         $this->downloadJsonToMySqlService = new AmazonService\Api\Operations\GetItems\DownloadJsonToMySql(
             $this->asinTableMock,
             $this->downloadErrorsArrayToMySqlServiceMock,
-            $this->itemArrayServiceMock
+            $this->itemArrayServiceMock,
+            $this->bannedServiceMock
         );
     }
 
@@ -79,17 +83,25 @@ class DownloadJsonToMySqlTest extends TestCase
             ->expects($this->exactly(1))
             ->method('downloadArrayToMySql');
 
+        // The first ASIN in the json file, 'B07JPLF1GD', is marked as banned.
+        $this->bannedServiceMock
+            ->method('isBanned')
+            ->willReturnOnConsecutiveCalls(
+                true,
+                false,
+                false
+            );
+
         $this->asinTableMock
-            ->expects($this->exactly(3))
+            ->expects($this->exactly(2))
             ->method('updateSetIsValidWhereAsin')
             ->withConsecutive(
-                [1, 'B07MMZ2LTB'],
                 [1, 'B00B0PIXIK'],
                 [1, 'B002LVAC5Y']
             );
 
         $this->itemArrayServiceMock
-            ->expects($this->exactly(3))
+            ->expects($this->exactly(2))
             ->method('downloadToMySql');
 
         $jsonString = file_get_contents(

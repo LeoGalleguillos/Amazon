@@ -184,7 +184,8 @@ class Module
                     return new AmazonService\Api\Operations\GetItems\DownloadJsonToMySql(
                         $sm->get(AmazonTable\Product\Asin::class),
                         $sm->get(AmazonService\Api\Errors\DownloadArrayToMySql::class),
-                        $sm->get(AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray::class)
+                        $sm->get(AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray::class),
+                        $sm->get(AmazonService\Product\Banned::class)
                     );
                 },
                 AmazonService\Api\Operations\GetItems\GetJsonAndDownloadJsonToMySql::class => function ($sm) {
