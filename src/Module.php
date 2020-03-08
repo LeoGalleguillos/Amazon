@@ -343,6 +343,11 @@ class Module
                         $sm->get(AmazonTable\Product::class)
                     );
                 },
+                AmazonService\Product\Banned::class => function ($sm) {
+                    return new AmazonService\Product\Banned(
+                        $sm->get(AmazonTable\ProductBanned::class)
+                    );
+                },
                 AmazonService\Product\Breadcrumbs::class => function ($sm) {
                     return new AmazonService\Product\Breadcrumbs(
                         $sm->get(AmazonService\BrowseNode\BrowseNodes\Breadcrumbs::class),
