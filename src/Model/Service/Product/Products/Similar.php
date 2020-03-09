@@ -36,6 +36,10 @@ class Similar
             $productIds[] = $array['product_id'];
         }
 
+        if (empty($productIds)) {
+            return;
+        }
+
         $result = $this->productIdTable->selectWhereProductIdIn($productIds);
         foreach ($result as $array) {
             if ($array['product_id'] == $productEntity->getProductId()) {
