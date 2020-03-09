@@ -2,18 +2,20 @@
 namespace LeoGalleguillos\AmazonTest\Model\Table\Product;
 
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
+use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
 use LeoGalleguillos\Test\TableTestCase as TableTestCase;
 
 class ProductIdTest extends TableTestCase
 {
     protected function setUp()
     {
-        $this->productTableMock = $this->createMock(
-            AmazonTable\Product::class
+        $this->productTable = new AmazonTable\Product(
+            $this->createMock(MemcachedService\Memcached::class),
+            $this->getAdapter()
         );
         $this->productIdTable = new AmazonTable\Product\ProductId(
             $this->getAdapter(),
-            $this->productTableMock
+            $this->productTable
         );
 
         $this->setForeignKeyChecks0();
@@ -22,11 +24,10 @@ class ProductIdTest extends TableTestCase
         $this->setForeignKeyChecks1();
     }
 
-    public function testSelectAsinWhereProductIdIn()
+    public function test_selectWhereProductIdIn()
     {
-        $generator = $this->productIdTable->selectAsinWhereProductIdIn([1, 2, 3]);
-        $this->assertSame(
-            [],
+        $generator = $this->productIdTable->selectWhereProductIdIn([1, 2, 3]);
+        $this->assertEmpty(
             iterator_to_array($generator)
         );
 

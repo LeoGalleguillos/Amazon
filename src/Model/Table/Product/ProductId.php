@@ -1,7 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table\Product;
 
-use Generator;
+use Laminas\Db\Adapter\Driver\Pdo\Result;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use Zend\Db\Adapter\Adapter;
 
@@ -20,21 +20,19 @@ class ProductId
         $this->productTable = $productTable;
     }
 
-    public function selectAsinWhereProductIdIn(array $productIds): Generator
+    public function selectWhereProductIdIn(array $productIds): Result
     {
         $questionMarks = array_fill(0, count($productIds), '?');
         $questionMarks = implode(', ', $questionMarks);
 
-        $sql = "
-            SELECT `asin`
+        $sql = $this->productTable->getSelect()
+            . "
               FROM `product`
              WHERE `product_id` IN ($questionMarks)
         ";
         $parameters = $productIds;
 
-        foreach ($this->adapter->query($sql)->execute($parameters) as $array) {
-            yield $array['asin'];
-        }
+        return $this->adapter->query($sql)->execute($parameters);
     }
 
     public function selectMaxWhereProductGroup(string $productGroup) : int
