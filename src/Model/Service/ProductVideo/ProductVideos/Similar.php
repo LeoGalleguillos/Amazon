@@ -25,6 +25,8 @@ class Similar
             $productVideo->getTitle(),
             5
         );
+        $query = str_replace('"', '', $query);
+
         $asins = $this->productVideoTable->selectAsinWhereMatchAgainst($query);
         foreach ($asins as $asin) {
             if ($asin == $productVideo->getAsin()) {

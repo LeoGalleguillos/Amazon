@@ -18,13 +18,10 @@ class SimilarTest extends TestCase
         $this->productVideoTableMock = $this->createMock(
             AmazonTable\ProductVideo::class
         );
-        $this->keepFirstWordsMock = $this->createMock(
-            StringService\KeepFirstWords::class
-        );
         $this->similarService = new AmazonService\ProductVideo\ProductVideos\Similar(
             $this->productVideoFactoryMock,
             $this->productVideoTableMock,
-            $this->keepFirstWordsMock
+            new StringService\KeepFirstWords()
         );
     }
 
@@ -33,11 +30,15 @@ class SimilarTest extends TestCase
         $productVideoEntity = new AmazonEntity\ProductVideo();
         $productVideoEntity
             ->setAsin('ASIN')
-            ->setTitle('Title of the Product Video');
+            ->setTitle('Title of the "Product Video"');
 
-        $this->productVideoTableMock->method('selectAsinWhereMatchAgainst')->willReturn(
-            $this->yieldAsins()
-        );
+        $this->productVideoTableMock
+            ->expects($this->once())
+            ->method('selectAsinWhereMatchAgainst')
+            ->with('Title of the Product Video')
+            ->willReturn(
+                $this->yieldAsins()
+            );
 
         $generator = $this->similarService->getSimilar(
             $productVideoEntity
