@@ -384,6 +384,14 @@ class Module
                 AmazonService\Product\ModifiedTitle::class => function ($sm) {
                     return new AmazonService\Product\ModifiedTitle();
                 },
+                AmazonService\Product\Products\Similar::class => function ($sm) {
+                    return new AmazonService\Product\Products\Similar(
+                        $sm->get(AmazonFactory\Product::class),
+                        $sm->get(AmazonTable\Product\ProductId::class),
+                        $sm->get(AmazonTable\Product\Title::class),
+                        $sm->get(StringService\KeepFirstWords::class)
+                    );
+                },
                 AmazonService\Product\SimilarProducts::class => function ($sm) {
                     return new AmazonService\Product\SimilarProducts(
                         $sm->get(AmazonFactory\Product::class),
