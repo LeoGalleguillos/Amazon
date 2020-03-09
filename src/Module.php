@@ -27,6 +27,7 @@ class Module
                     'getBrowseNodeRootRelativeUrl'  => AmazonHelper\BrowseNode\RootRelativeUrl::class,
                     'getModifiedTitle'              => AmazonHelper\Product\ModifiedTitle::class,
                     'getProductAffiliateUrl'        => AmazonHelper\Product\AffiliateUrl::class,
+                    'getProductAsinUrl'             => AmazonHelper\Product\Url\Asin::class,
                     'getProductFirstImageEntity'    => AmazonHelper\Product\FirstImageEntity::class,
                     'getProductImages'              => AmazonHelper\ProductImage\ProductImages::class,
                     'getProductModifiedFeatures'    => AmazonHelper\Product\ModifiedFeatures::class,
@@ -93,6 +94,11 @@ class Module
                     AmazonHelper\Product\RootRelativeUrl::class => function ($sm) {
                         return new AmazonHelper\Product\RootRelativeUrl(
                             $sm->get(AmazonService\Product\RootRelativeUrl::class)
+                        );
+                    },
+                    AmazonHelper\Product\Url\Asin::class => function ($sm) {
+                        return new AmazonHelper\Product\Url\Asin(
+                            $sm->get(AmazonService\Product\Url\Asin::class)
                         );
                     },
                     AmazonHelper\ProductImage\ProductImages::class => function ($sm) {
