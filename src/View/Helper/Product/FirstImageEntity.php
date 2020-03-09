@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\View\Helper\Product;
 
+use Exception;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Image\Model\Entity as ImageEntity;
@@ -19,7 +20,7 @@ class FirstImageEntity extends AbstractHelper
      */
     public function __invoke(
         AmazonEntity\Product $productEntity
-    ) : ImageEntity\Image {
+    ): ImageEntity\Image {
         try {
             return $this->firstImageEntityService->getFirstImageEntity(
                 $productEntity
