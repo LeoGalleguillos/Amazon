@@ -26,32 +26,6 @@ class Product
         $this->adapter   = $adapter;
     }
 
-    public function getNewestAsins()
-    {
-        $cacheKey = md5(__METHOD__);
-        if (false != ($newestAsins = $this->memcached->get($cacheKey))) {
-            return $newestAsins;
-        }
-
-        $sql = '
-            SELECT `product`.`asin`
-              FROM `product`
-             ORDER
-                BY `product`.`modified` DESC
-             LIMIT 30
-                 ;
-        ';
-        $results = $this->adapter->query($sql)->execute();
-
-        $newestAsins = [];
-        foreach ($results as $row) {
-            $newestAsins[] = $row['asin'];
-        }
-
-        $this->memcached->setForDays($cacheKey, $newestAsins, 1);
-        return $newestAsins;
-    }
-
     public function getSelect(): string
     {
         return '
