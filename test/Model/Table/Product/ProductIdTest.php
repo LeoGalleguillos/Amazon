@@ -2,7 +2,6 @@
 namespace LeoGalleguillos\AmazonTest\Model\Table\Product;
 
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
-use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
 use LeoGalleguillos\Test\TableTestCase as TableTestCase;
 
 class ProductIdTest extends TableTestCase
@@ -10,7 +9,6 @@ class ProductIdTest extends TableTestCase
     protected function setUp()
     {
         $this->productTable = new AmazonTable\Product(
-            $this->createMock(MemcachedService\Memcached::class),
             $this->getAdapter()
         );
         $this->productIdTable = new AmazonTable\Product\ProductId(

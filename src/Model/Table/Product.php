@@ -3,7 +3,6 @@ namespace LeoGalleguillos\Amazon\Model\Table;
 
 use Generator;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
-use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
 use TypeError;
 use Zend\Db\Adapter\Adapter;
 
@@ -14,15 +13,9 @@ class Product
      */
     protected $adapter;
 
-    /**
-     * @todo Injections should be in alphabetical order.
-     *       Therefore adapter should be listed first in constructor.
-     */
     public function __construct(
-        MemcachedService\Memcached $memcached,
         Adapter $adapter
     ) {
-        $this->memcached = $memcached;
         $this->adapter   = $adapter;
     }
 

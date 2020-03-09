@@ -2,7 +2,6 @@
 namespace LeoGalleguillos\AmazonTest\Model\Table;
 
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
-use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
 use LeoGalleguillos\Test\TableTestCase;
 
 class ProductIsbnTest extends TableTestCase
@@ -14,7 +13,6 @@ class ProductIsbnTest extends TableTestCase
         $this->setForeignKeyChecks(1);
 
         $this->productTable = new AmazonTable\Product(
-            $this->createMock(MemcachedService\Memcached::class),
             $this->getAdapter()
         );
         $this->productIsbnTable = new AmazonTable\ProductIsbn(

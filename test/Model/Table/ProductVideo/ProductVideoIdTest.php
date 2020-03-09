@@ -3,7 +3,6 @@ namespace LeoGalleguillos\AmazonTest\Model\Table\ProductVideo;
 
 use Exception;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
-use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
 use LeoGalleguillos\Test\TableTestCase;
 
 class ProductVideoIdTest extends TableTestCase
@@ -11,7 +10,6 @@ class ProductVideoIdTest extends TableTestCase
     protected function setUp()
     {
         $this->productTable = new AmazonTable\Product(
-            $this->createMock(MemcachedService\Memcached::class),
             $this->getAdapter()
         );
         $this->productVideoTable = new AmazonTable\ProductVideo(
@@ -21,7 +19,6 @@ class ProductVideoIdTest extends TableTestCase
             $this->getAdapter(),
             $this->productVideoTable
         );
-
 
         $this->setForeignKeyChecks0();
         $this->dropAndCreateTables(['product', 'product_video']);
