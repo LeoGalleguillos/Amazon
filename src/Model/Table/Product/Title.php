@@ -3,6 +3,7 @@ namespace LeoGalleguillos\Amazon\Model\Table\Product;
 
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use Zend\Db\Adapter\Adapter;
+use Zend\Db\Adapter\Exception\InvalidQueryException;
 
 class Title
 {
@@ -17,6 +18,9 @@ class Title
         $this->adapter = $adapter;
     }
 
+    /**
+     * @throws InvalidQueryException Fulltext search can exceed max execution time.
+     */
     public function selectProductIdWhereMatchAgainst(string $query): Result
     {
         $sql = '

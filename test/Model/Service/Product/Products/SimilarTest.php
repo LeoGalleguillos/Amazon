@@ -7,6 +7,7 @@ use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\String\Model\Service as StringService;
 use PHPUnit\Framework\TestCase;
+use Zend\Db\Adapter\Exception\InvalidQueryException;
 
 class SimilarTest extends TestCase
 {
@@ -35,6 +36,24 @@ class SimilarTest extends TestCase
     {
         $productEntity = new AmazonEntity\Product();
         $productEntity->setTitle('Amazon Title "With Quotes"');
+
+        $productEntities = $this->similarService->getSimilarProducts(
+            $productEntity
+        );
+
+        $this->assertEmpty(
+            iterator_to_array($productEntities)
+        );
+    }
+
+    public function test_getSimilarProducts_titleTableThrowsInvalidQueryException_emptyGenerator()
+    {
+        $this->titleTableMock
+            ->method('selectProductIdWhereMatchAgainst')
+            ->will($this->throwException(new InvalidQueryException()));
+
+        $productEntity = new AmazonEntity\Product();
+        $productEntity->setTitle('Product Title');
 
         $productEntities = $this->similarService->getSimilarProducts(
             $productEntity
