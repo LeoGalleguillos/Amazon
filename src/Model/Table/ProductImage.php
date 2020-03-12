@@ -22,7 +22,6 @@ class ProductImage
     {
         $sql = '
             SELECT `product_image`.`product_id`
-                 , `product_image`.`asin`
                  , `product_image`.`category`
                  , `product_image`.`url`
                  , `product_image`.`width`
