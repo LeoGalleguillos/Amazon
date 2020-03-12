@@ -237,6 +237,10 @@ class Module
                         $sm->get(AmazonTable\BrowseNodeHierarchy::class)
                     );
                 },
+                AmazonService\Api\Resources\Images\SaveArrayToMySql::class => function ($sm) {
+                    return new AmazonService\Api\Resources\Images\SaveArrayToMySql(
+                    );
+                },
                 AmazonService\Api\Resources\ItemInfo\ExternalIds\Eans\SaveArrayToMySql::class => function ($sm) {
                     return new AmazonService\Api\Resources\ItemInfo\ExternalIds\Eans\SaveArrayToMySql(
                         $sm->get(AmazonTable\ProductEan::class)
