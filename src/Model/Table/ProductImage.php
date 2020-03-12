@@ -70,46 +70,4 @@ class ProductImage
         ];
         return $this->adapter->query($sql)->execute($parameters)->getAffectedRows();
     }
-
-    public function selectWidthAndHeightWhereAsinAndUrl(
-        string $asin,
-        string $url
-    ): array {
-        $sql = '
-            SELECT `product_image`.`width`
-                 , `product_image`.`height`
-              FROM `product_image`
-             WHERE `asin` = ?
-               AND `url` = ?
-                 ;
-        ';
-        $row = $this->adapter->query($sql, [$asin, $url])->current();
-        return [
-            'width' => (int) $row['width'],
-            'height' => (int) $row['height'],
-        ];
-    }
-
-    public function updateSetWidthAndHeightWhereAsinAndUrl(
-        $width,
-        $height,
-        $asin,
-        $url
-    ) {
-        $sql = '
-            UPDATE `product_image`
-               SET `product_image`.`width` = ?
-                 , `product_image`.`height` = ?
-             WHERE `product_image`.`asin` = ?
-               AND `product_image`.`url` = ?
-                 ;
-        ';
-        $parameters = [
-            $width,
-            $height,
-            $asin,
-            $url
-        ];
-        $result = $this->adapter->query($sql, $parameters);
-    }
 }
