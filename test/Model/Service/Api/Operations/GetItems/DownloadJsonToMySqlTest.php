@@ -111,4 +111,34 @@ class DownloadJsonToMySqlTest extends TestCase
             $jsonString
         );
     }
+
+    public function test_downloadJsonToMySql_images()
+    {
+        $jsonString = file_get_contents(
+            $_SERVER['PWD'] . '/test/data/api/get-items/images.json'
+        );
+        $jsonArray = json_decode($jsonString, true);
+
+        $this->downloadErrorsArrayToMySqlServiceMock
+            ->expects($this->exactly(0))
+            ->method('downloadArrayToMySql');
+        $this->asinTableMock
+            ->expects($this->exactly(2))
+            ->method('updateSetIsValidWhereAsin')
+            ->withConsecutive(
+                [1, 'B07RF1XD36'],
+                [1, 'B00YLVDJKW']
+            );
+        $this->itemArrayServiceMock
+            ->expects($this->exactly(2))
+            ->method('downloadToMySql')
+            ->withConsecutive(
+                [$jsonArray['ItemsResult']['Items'][0]],
+                [$jsonArray['ItemsResult']['Items'][1]]
+            );
+
+        $this->downloadJsonToMySqlService->downloadJsonToMySql(
+            $jsonString
+        );
+    }
 }

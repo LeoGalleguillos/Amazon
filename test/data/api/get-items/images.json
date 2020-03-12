@@ -1,0 +1,169 @@
+{
+ "ItemsResult": {
+  "Items": [
+   {
+    "ASIN": "B07RF1XD36",
+    "DetailPageURL": "https://www.amazon.com/dp/B07RF1XD36?tag=partner-tag-20&linkCode=ogi&th=1&psc=1",
+    "Images": {
+     "Primary": {
+      "Large": {
+       "Height": 324,
+       "URL": "https://m.media-amazon.com/images/I/41vMYgD92xL.jpg",
+       "Width": 500
+      }
+     },
+     "Variants": [
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/51gXsXwdbcL.jpg",
+        "Width": 500
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/51FFQpin2JL.jpg",
+        "Width": 500
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/41iOxQN6I9L.jpg",
+        "Width": 500
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/51PKoqY7C-L.jpg",
+        "Width": 500
+       }
+      },
+      {
+       "Large": {
+        "Height": 362,
+        "URL": "https://m.media-amazon.com/images/I/51CVXs285AL.jpg",
+        "Width": 500
+       }
+      },
+      {
+       "Large": {
+        "Height": 324,
+        "URL": "https://m.media-amazon.com/images/I/41lO9jk4+yL.jpg",
+        "Width": 500
+       }
+      },
+      {
+       "Large": {
+        "Height": 337,
+        "URL": "https://m.media-amazon.com/images/I/417XsD1JhuL.jpg",
+        "Width": 500
+       }
+      },
+      {
+       "Large": {
+        "Height": 497,
+        "URL": "https://m.media-amazon.com/images/I/31TYjFoBLSL.jpg",
+        "Width": 500
+       }
+      },
+      {
+       "Large": {
+        "Height": 497,
+        "URL": "https://m.media-amazon.com/images/I/21Vl8wxTI+L.jpg",
+        "Width": 500
+       }
+      },
+      {
+       "Large": {
+        "Height": 301,
+        "URL": "https://m.media-amazon.com/images/I/31U2cB8AvvL.jpg",
+        "Width": 500
+       }
+      },
+      {
+       "Large": {
+        "Height": 348,
+        "URL": "https://m.media-amazon.com/images/I/31tsD1UWlSL.jpg",
+        "Width": 500
+       }
+      }
+     ]
+    }
+   },
+   {
+    "ASIN": "B00YLVDJKW",
+    "DetailPageURL": "https://www.amazon.com/dp/B00YLVDJKW?tag=partner-tag-20&linkCode=ogi&th=1&psc=1",
+    "Images": {
+     "Primary": {
+      "Large": {
+       "Height": 500,
+       "URL": "https://m.media-amazon.com/images/I/61EbiBdh5uL.jpg",
+       "Width": 500
+      }
+     },
+     "Variants": [
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/61ZM5wMdAoL.jpg",
+        "Width": 500
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/519BAmKRvwL.jpg",
+        "Width": 500
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/5110c1UAcRL.jpg",
+        "Width": 500
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/51EPUm0lCML.jpg",
+        "Width": 500
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/6108iOs5PrL.jpg",
+        "Width": 500
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/61Zsus9Cd+L.jpg",
+        "Width": 500
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/61MemAi6JXL.jpg",
+        "Width": 500
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/5111L5YgMgL.jpg",
+        "Width": 500
+       }
+      }
+     ]
+    }
+   }
+  ]
+ }
+}
