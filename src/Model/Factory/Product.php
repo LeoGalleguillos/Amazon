@@ -212,7 +212,9 @@ class Product
             );
         }
 
-        $productImageArrays = $this->productImageTable->selectWhereAsin($productArray['asin']);
+        $productImageArrays = $this->productImageTable->selectWhereProductId(
+            $productArray['product_id']
+        );
         foreach ($productImageArrays as $array) {
             $array['url'] = str_replace('http://ecx.', 'https://images-na.ssl-', $array['url']);
             if ($array['category'] == 'primary') {

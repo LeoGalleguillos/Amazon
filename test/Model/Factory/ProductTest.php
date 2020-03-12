@@ -74,7 +74,7 @@ class ProductTest extends TestCase
                 $this->yieldProductFeatureArrays()
             );
         $this->productImageTableMock
-            ->method('selectWhereAsin')
+            ->method('selectWhereProductId')
             ->willReturn(
                 $this->yieldProductImageArrays()
             );
@@ -168,7 +168,7 @@ class ProductTest extends TestCase
     public function testBuildFromArrayIsAdultProductIsNull()
     {
         $this->productImageTableMock
-            ->method('selectWhereAsin')
+            ->method('selectWhereProductId')
             ->willReturn(
                 $this->yieldProductImageArrays()
             );
@@ -188,7 +188,7 @@ class ProductTest extends TestCase
     public function testBuildFromArrayIsValidIsNull()
     {
         $this->productImageTableMock
-            ->method('selectWhereAsin')
+            ->method('selectWhereProductId')
             ->willReturn(
                 $this->yieldProductImageArrays()
             );
@@ -221,7 +221,7 @@ class ProductTest extends TestCase
             );
 
         $this->productImageTableMock
-            ->method('selectWhereAsin')
+            ->method('selectWhereProductId')
             ->willReturn(
                 $this->yieldProductImageArrays()
             );
@@ -261,7 +261,7 @@ class ProductTest extends TestCase
             );
 
         $this->productImageTableMock
-            ->method('selectWhereAsin')
+            ->method('selectWhereProductId')
             ->willReturn(
                 $this->yieldProductImageArrays()
             );

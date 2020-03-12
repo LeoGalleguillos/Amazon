@@ -18,7 +18,7 @@ class ProductImage
         $this->adapter = $adapter;
     }
 
-    public function selectWhereAsin($asin): Generator
+    public function selectWhereProductId(int $productId): Generator
     {
         $sql = '
             SELECT `product_image`.`asin`
@@ -27,10 +27,13 @@ class ProductImage
                  , `product_image`.`width`
                  , `product_image`.`height`
               FROM `product_image`
-             WHERE `asin` = ?
+             WHERE `product_id` = ?
                  ;
         ';
-        foreach ($this->adapter->query($sql)->execute([$asin]) as $array) {
+        $parameters = [
+            $productId,
+        ];
+        foreach ($this->adapter->query($sql)->execute($parameters) as $array) {
             yield $array;
         }
     }

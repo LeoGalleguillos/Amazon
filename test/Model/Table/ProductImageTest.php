@@ -20,9 +20,9 @@ class ProductImageTest extends TableTestCase
         );
     }
 
-    public function testSelectWhereAsin()
+    public function test_selectWhereProductId()
     {
-        $generator = $this->productImageTable->selectWhereAsin('ASIN009');
+        $generator = $this->productImageTable->selectWhereProductId(12345);
         $this->assertEmpty(
             iterator_to_array($generator)
         );
