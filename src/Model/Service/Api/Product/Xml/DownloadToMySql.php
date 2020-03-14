@@ -79,7 +79,7 @@ class DownloadToMySql
 
                 try {
                     $this->productImageTable->insert(
-                        $asin,
+                        $productId,
                         $category,
                         $url,
                         $width,

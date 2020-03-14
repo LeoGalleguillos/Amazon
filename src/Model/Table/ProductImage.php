@@ -42,7 +42,7 @@ class ProductImage
      * @throws InvalidQueryException
      */
     public function insert(
-        string $asin,
+        int $productId,
         string $category,
         string $url,
         int $width,
@@ -51,7 +51,7 @@ class ProductImage
         $sql = '
             INSERT
               INTO `product_image` (
-                         `asin`
+                         `product_id`
                        , `category`
                        , `url`
                        , `width`
@@ -61,7 +61,7 @@ class ProductImage
                  ;
         ';
         $parameters = [
-            $asin,
+            $productId,
             $category,
             $url,
             $width,
