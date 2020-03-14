@@ -240,7 +240,8 @@ class Module
                 },
                 AmazonService\Api\Resources\Images\SaveArrayToMySql::class => function ($sm) {
                     return new AmazonService\Api\Resources\Images\SaveArrayToMySql(
-                        $sm->get(AmazonTable\ProductImage::class)
+                        $sm->get(AmazonTable\ProductImage::class),
+                        $sm->get('amazon')->getDriver()->getConnection()
                     );
                 },
                 AmazonService\Api\Resources\ItemInfo\ExternalIds\Eans\SaveArrayToMySql::class => function ($sm) {

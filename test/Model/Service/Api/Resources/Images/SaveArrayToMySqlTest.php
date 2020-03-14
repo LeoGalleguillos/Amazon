@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\AmazonTest\Model\Service\Api\Resources\Images;
 
+use Laminas\Db\Adapter\Driver\Pdo\Connection;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use PHPUnit\Framework\TestCase;
@@ -12,18 +13,24 @@ class SaveArrayToMySqlTest extends TestCase
         $this->productImageTableMock = $this->createMock(
             AmazonTable\ProductImage::class
         );
+        $this->connectionMock = $this->createMock(
+            Connection::class
+        );
         $this->saveArrayToMySqlService = new AmazonService\Api\Resources\Images\SaveArrayToMySql(
-            $this->productImageTableMock
+            $this->productImageTableMock,
+            $this->connectionMock
         );
     }
 
     public function test_saveArrayToMySql()
     {
+        $this->connectionMock
+            ->expects($this->exactly(1))
+            ->method('beginTransaction');
         $this->productImageTableMock
             ->expects($this->exactly(1))
             ->method('deletewhereProductId')
             ->with(12345);
-
         $this->productImageTableMock
             ->expects($this->exactly(3))
             ->method('insertIgnore')
@@ -50,6 +57,9 @@ class SaveArrayToMySqlTest extends TestCase
                     500,
                 ]
             );
+        $this->connectionMock
+            ->expects($this->exactly(1))
+            ->method('commit');
 
         $this->saveArrayToMySqlService->saveArrayToMySql(
             $this->getArray(),

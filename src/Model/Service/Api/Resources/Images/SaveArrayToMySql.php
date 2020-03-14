@@ -1,21 +1,26 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Service\Api\Resources\Images;
 
+use Laminas\Db\Adapter\Driver\Pdo\Connection;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 
 class SaveArrayToMySql
 {
     public function __construct(
-        AmazonTable\ProductImage $productImageTable
+        AmazonTable\ProductImage $productImageTable,
+        Connection $connection
     ) {
         $this->productImageTable = $productImageTable;
+        $this->connection        = $connection;
     }
 
     public function saveArrayToMySql(
         array $imagesArray,
         int $productId
     ) {
+        $this->connection->beginTransaction();
+
         $this->productImageTable->deleteWhereProductId($productId);
 
         if (isset($imagesArray['Primary'])) {
@@ -39,5 +44,7 @@ class SaveArrayToMySql
                 );
             }
         }
+
+        $this->connection->commit();
     }
 }
