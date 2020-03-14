@@ -3,7 +3,7 @@ namespace LeoGalleguillos\Amazon\Model\Table;
 
 use Generator;
 use Zend\Db\Adapter\Adapter;
-use Zend\Db\Adapter\Exception\InvalidQueryException;
+use Zend\Db\Adapter\Driver\Pdo\Result;
 
 class ProductImage
 {
@@ -16,6 +16,20 @@ class ProductImage
         Adapter $adapter
     ) {
         $this->adapter = $adapter;
+    }
+
+    public function deleteWhereProductId(int $productId): Result
+    {
+        $sql = '
+            DELETE
+              FROM `product_image`
+             WHERE `product_id` = ?
+                 ;
+        ';
+        $parameters = [
+            $productId,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
     }
 
     public function selectWhereProductId(int $productId): Generator

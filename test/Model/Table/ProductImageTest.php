@@ -20,6 +20,52 @@ class ProductImageTest extends TableTestCase
         );
     }
 
+    public function test_deleteWhereProductId_emptyTable_0affectedRows()
+    {
+        $result = $this->productImageTable->deleteWhereProductId(54321);
+        $this->assertSame(
+            0,
+            $result->getAffectedRows()
+        );
+    }
+
+    public function test_deleteWhereProductId_nonEmptyTable_2affectedRows()
+    {
+        $this->setForeignKeyChecks(0);
+
+        $this->productImageTable->insertIgnore(
+            444,
+            'primary',
+            'https://www.example.com/photo1.jpg',
+            100,
+            200
+        );
+        $this->productImageTable->insertIgnore(
+            444,
+            'variant',
+            'https://www.example.com/photo2.jpg',
+            100,
+            200
+        );
+        $this->productImageTable->insertIgnore(
+            2,
+            'primary',
+            'https://www.example.com/photo2-1.jpg',
+            100,
+            200
+        );
+        $result = $this->productImageTable->deleteWhereProductId(444);
+        $this->assertSame(
+            2,
+            $result->getAffectedRows()
+        );
+        $result = $this->productImageTable->deleteWhereProductId(2);
+        $this->assertSame(
+            1,
+            $result->getAffectedRows()
+        );
+    }
+
     public function test_selectWhereProductId()
     {
         $generator = $this->productImageTable->selectWhereProductId(12345);
