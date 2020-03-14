@@ -20,6 +20,11 @@ class SaveArrayToMySqlTest extends TestCase
     public function test_saveArrayToMySql()
     {
         $this->productImageTableMock
+            ->expects($this->exactly(1))
+            ->method('deletewhereProductId')
+            ->with(12345);
+
+        $this->productImageTableMock
             ->expects($this->exactly(3))
             ->method('insertIgnore')
             ->withConsecutive(

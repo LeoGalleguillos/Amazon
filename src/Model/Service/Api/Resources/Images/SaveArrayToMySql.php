@@ -16,6 +16,8 @@ class SaveArrayToMySql
         array $imagesArray,
         int $productId
     ) {
+        $this->productImageTable->deleteWhereProductId($productId);
+
         if (isset($imagesArray['Primary'])) {
             $this->productImageTable->insertIgnore(
                 $productId,
