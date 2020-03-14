@@ -7,6 +7,7 @@ CREATE TABLE `product_image` (
   `height` int(11) DEFAULT NULL,
   KEY `product_id` (`product_id`),
   UNIQUE KEY `asin_category_url` (`asin`,`category`,`url`),
+  UNIQUE KEY `product_id_category_url` (`product_id`,`category`,`url`),
   KEY `url` (`url`),
   CONSTRAINT `product_product_image` FOREIGN KEY `product_id` (`product_id`)
     REFERENCES `product` (`product_id`)
