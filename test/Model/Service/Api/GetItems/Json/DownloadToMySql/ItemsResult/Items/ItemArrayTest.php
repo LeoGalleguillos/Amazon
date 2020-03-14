@@ -14,6 +14,9 @@ class ItemArrayTest extends TestCase
         $this->downloadBrowseNodeInfoArrayToMySqlServiceMock = $this->createMock(
             AmazonService\Api\Resources\BrowseNodeInfo\DownloadArrayToMySql::class
         );
+        $this->saveImagesArrayToMySqlServiceMock = $this->createMock(
+            AmazonService\Api\Resources\Images\SaveArrayToMySql::class
+        );
         $this->downloadItemInfoArrayToMySqlServiceMock = $this->createMock(
             AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql::class
         );
@@ -23,8 +26,39 @@ class ItemArrayTest extends TestCase
 
         $this->itemArrayService = new AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray(
             $this->downloadBrowseNodeInfoArrayToMySqlServiceMock,
+            $this->saveImagesArrayToMySqlServiceMock,
             $this->downloadItemInfoArrayToMySqlServiceMock,
             $this->asinTableMock
+        );
+    }
+
+    public function test_downloadToMySql_withImagesInfo()
+    {
+        $this->asinTableMock
+            ->expects($this->exactly(1))
+            ->method('selectProductIdWhereAsin')
+            ->with('B07RF1XD36')
+            ->will(
+                $this->returnValue(
+                    ['product_id' => 12345]
+                )
+            );
+        $this->downloadBrowseNodeInfoArrayToMySqlServiceMock
+            ->expects($this->exactly(0))
+            ->method('downloadArrayToMySql');
+        $this->saveImagesArrayToMySqlServiceMock
+            ->expects($this->exactly(1))
+            ->method('saveArrayToMySql')
+            ->with(
+                $this->getArrayWithImages()['Images'],
+                12345
+            );
+        $this->downloadItemInfoArrayToMySqlServiceMock
+            ->expects($this->exactly(0))
+            ->method('downloadArrayToMySql');
+
+        $this->itemArrayService->downloadToMySql(
+            $this->getArrayWithImages()
         );
     }
 
@@ -66,6 +100,128 @@ class ItemArrayTest extends TestCase
 
         $this->itemArrayService->downloadToMySql(
             $this->getArrayWhereItemDoesNotHaveBrowseNodeInfo()
+        );
+    }
+
+    protected function getArrayWithImages(): array
+    {
+        return array (
+            'ASIN' => 'B07RF1XD36',
+            'DetailPageURL' => 'https://www.amazon.com/dp/B07RF1XD36?tag=partner-tag-20&linkCode=ogi&th=1&psc=1',
+            'Images' =>
+            array (
+              'Primary' =>
+              array (
+                'Large' =>
+                array (
+                  'Height' => 324,
+                  'URL' => 'https://m.media-amazon.com/images/I/41vMYgD92xL.jpg',
+                  'Width' => 500,
+                ),
+              ),
+              'Variants' =>
+              array (
+                0 =>
+                array (
+                  'Large' =>
+                  array (
+                    'Height' => 500,
+                    'URL' => 'https://m.media-amazon.com/images/I/51gXsXwdbcL.jpg',
+                    'Width' => 500,
+                  ),
+                ),
+                1 =>
+                array (
+                  'Large' =>
+                  array (
+                    'Height' => 500,
+                    'URL' => 'https://m.media-amazon.com/images/I/51FFQpin2JL.jpg',
+                    'Width' => 500,
+                  ),
+                ),
+                2 =>
+                array (
+                  'Large' =>
+                  array (
+                    'Height' => 500,
+                    'URL' => 'https://m.media-amazon.com/images/I/41iOxQN6I9L.jpg',
+                    'Width' => 500,
+                  ),
+                ),
+                3 =>
+                array (
+                  'Large' =>
+                  array (
+                    'Height' => 500,
+                    'URL' => 'https://m.media-amazon.com/images/I/51PKoqY7C-L.jpg',
+                    'Width' => 500,
+                  ),
+                ),
+                4 =>
+                array (
+                  'Large' =>
+                  array (
+                    'Height' => 362,
+                    'URL' => 'https://m.media-amazon.com/images/I/51CVXs285AL.jpg',
+                    'Width' => 500,
+                  ),
+                ),
+                5 =>
+                array (
+                  'Large' =>
+                  array (
+                    'Height' => 324,
+                    'URL' => 'https://m.media-amazon.com/images/I/41lO9jk4+yL.jpg',
+                    'Width' => 500,
+                  ),
+                ),
+                6 =>
+                array (
+                  'Large' =>
+                  array (
+                    'Height' => 337,
+                    'URL' => 'https://m.media-amazon.com/images/I/417XsD1JhuL.jpg',
+                    'Width' => 500,
+                  ),
+                ),
+                7 =>
+                array (
+                  'Large' =>
+                  array (
+                    'Height' => 497,
+                    'URL' => 'https://m.media-amazon.com/images/I/31TYjFoBLSL.jpg',
+                    'Width' => 500,
+                  ),
+                ),
+                8 =>
+                array (
+                  'Large' =>
+                  array (
+                    'Height' => 497,
+                    'URL' => 'https://m.media-amazon.com/images/I/21Vl8wxTI+L.jpg',
+                    'Width' => 500,
+                  ),
+                ),
+                9 =>
+                array (
+                  'Large' =>
+                  array (
+                    'Height' => 301,
+                    'URL' => 'https://m.media-amazon.com/images/I/31U2cB8AvvL.jpg',
+                    'Width' => 500,
+                  ),
+                ),
+                10 =>
+                array (
+                  'Large' =>
+                  array (
+                    'Height' => 348,
+                    'URL' => 'https://m.media-amazon.com/images/I/31tsD1UWlSL.jpg',
+                    'Width' => 500,
+                  ),
+                ),
+              ),
+            ),
         );
     }
 
