@@ -27,6 +27,15 @@ class SaveArrayToMySql
         }
 
         if (isset($imagesArray['Variants'])) {
+            foreach ($imagesArray['Variants'] as $imageArray) {
+                $this->productImageTable->insertIgnore(
+                    $productId,
+                    'variant',
+                    $imageArray['Large']['URL'],
+                    $imageArray['Large']['Width'],
+                    $imageArray['Large']['Height']
+                );
+            }
         }
     }
 }
