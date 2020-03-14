@@ -27,4 +27,28 @@ class ProductImageTest extends TableTestCase
             iterator_to_array($generator)
         );
     }
+
+    public function test_insertIgnore()
+    {
+        $this->productTable->insert(
+            'ASIN001',
+            'Title',
+            'Product Group 01',
+            null,
+            null,
+            0.00,
+            1
+        );
+        $affectedRows = $this->productImageTable->insertIgnore(
+            1,
+            'primary',
+            'https://www.example.com/photo.jpg',
+            100,
+            200
+        );
+        $this->assertSame(
+            1,
+            $affectedRows
+        );
+    }
 }

@@ -38,10 +38,7 @@ class ProductImage
         }
     }
 
-    /**
-     * @throws InvalidQueryException
-     */
-    public function insert(
+    public function insertIgnore(
         int $productId,
         string $category,
         string $url,
@@ -49,7 +46,7 @@ class ProductImage
         int $height
     ): int {
         $sql = '
-            INSERT
+            INSERT IGNORE
               INTO `product_image` (
                          `product_id`
                        , `category`

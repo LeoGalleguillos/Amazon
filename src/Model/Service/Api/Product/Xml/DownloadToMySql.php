@@ -81,7 +81,7 @@ class DownloadToMySql
                 $url = str_replace('http://ecx.', 'https://images-na.ssl-', $url);
 
                 try {
-                    $this->productImageTable->insert(
+                    $this->productImageTable->insertIgnore(
                         $productId,
                         $category,
                         $url,
