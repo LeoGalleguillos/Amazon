@@ -6,6 +6,9 @@ use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use SimpleXMLElement;
 use Zend\Db\Adapter\Exception\InvalidQueryException;
 
+/**
+ * @deprecated This service parses XML which was returned by PA API v4.0, and PA API v4.0 is no longer active
+ */
 class DownloadToMySql
 {
     public function __construct(
