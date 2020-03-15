@@ -1,10 +1,8 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Service\Api\Operations\GetItems;
 
-use LeoGalleguillos\Amazon\{
-    Model\Service as AmazonService,
-    Model\Table as AmazonTable
-};
+use LeoGalleguillos\Amazon\Model\Service as AmazonService;
+use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 
 class SaveJsonToMySql
 {
