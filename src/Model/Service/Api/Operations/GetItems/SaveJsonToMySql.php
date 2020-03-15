@@ -8,14 +8,14 @@ class SaveJsonToMySql
 {
     public function __construct(
         AmazonTable\Product\Asin $asinTable,
-        AmazonService\Api\Errors\DownloadArrayToMySql $downloadErrorsArrayToMySqlService,
+        AmazonService\Api\Errors\SaveArrayToMySql $saveErrorsArrayToMySqlService,
         AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray $itemArrayService,
         AmazonService\Product\Banned $bannedService
     ) {
-        $this->asinTable                         = $asinTable;
-        $this->downloadErrorsArrayToMySqlService = $downloadErrorsArrayToMySqlService;
-        $this->itemArrayService                  = $itemArrayService;
-        $this->bannedService                     = $bannedService;
+        $this->asinTable                     = $asinTable;
+        $this->saveErrorsArrayToMySqlService = $saveErrorsArrayToMySqlService;
+        $this->itemArrayService              = $itemArrayService;
+        $this->bannedService                 = $bannedService;
     }
 
     public function saveJsonToMySql(
@@ -24,7 +24,7 @@ class SaveJsonToMySql
         $jsonArray = json_decode($json, true);
 
         if (isset($jsonArray['Errors'])) {
-            $this->downloadErrorsArrayToMySqlService->downloadArrayToMySql(
+            $this->saveErrorsArrayToMySqlService->saveArrayToMySql(
                 $jsonArray['Errors']
             );
         }

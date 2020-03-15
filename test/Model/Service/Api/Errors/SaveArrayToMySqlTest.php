@@ -1,13 +1,11 @@
 <?php
 namespace LeoGalleguillos\AmazonTest\Model\Service\Api\Errors;
 
-use LeoGalleguillos\Amazon\{
-    Model\Service as AmazonService,
-    Model\Table as AmazonTable
-};
+use LeoGalleguillos\Amazon\Model\Service as AmazonService;
+use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use PHPUnit\Framework\TestCase;
 
-class DownloadArrayToMySqlTest extends TestCase
+class SaveArrayToMySqlTest extends TestCase
 {
     protected function setUp()
     {
@@ -15,12 +13,12 @@ class DownloadArrayToMySqlTest extends TestCase
             AmazonTable\Product\Asin::class
         );
 
-        $this->downloadArrayToMySqlService = new AmazonService\Api\Errors\DownloadArrayToMySql(
+        $this->saveArrayToMySqlService = new AmazonService\Api\Errors\SaveArrayToMySql(
             $this->asinTableMock
         );
     }
 
-    public function testDownloadJsonToMySql()
+    public function test_saveArrayToMySql()
     {
         $this->asinTableMock
             ->expects($this->exactly(3))
@@ -31,7 +29,7 @@ class DownloadArrayToMySqlTest extends TestCase
                 [0, 'B072QTHMC7']
             );
 
-        $this->downloadArrayToMySqlService->downloadArrayToMySql(
+        $this->saveArrayToMySqlService->saveArrayToMySql(
             $this->getErrorsArray()
         );
     }

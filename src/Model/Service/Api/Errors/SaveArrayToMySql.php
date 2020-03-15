@@ -3,7 +3,7 @@ namespace LeoGalleguillos\Amazon\Model\Service\Api\Errors;
 
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 
-class DownloadArrayToMySql
+class SaveArrayToMySql
 {
     public function __construct(
         AmazonTable\Product\Asin $asinTable
@@ -11,7 +11,7 @@ class DownloadArrayToMySql
         $this->asinTable = $asinTable;
     }
 
-    public function downloadArrayToMySql(
+    public function saveArrayToMySql(
         array $errorsArray
     ) {
         $patterns = [

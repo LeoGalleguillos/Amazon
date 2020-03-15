@@ -12,8 +12,8 @@ class SaveJsonToMySqlTest extends TestCase
         $this->asinTableMock = $this->createMock(
             AmazonTable\Product\Asin::class
         );
-        $this->downloadErrorsArrayToMySqlServiceMock = $this->createMock(
-            AmazonService\Api\Errors\DownloadArrayToMySql::class
+        $this->saveErrorsArrayToMySqlServiceMock = $this->createMock(
+            AmazonService\Api\Errors\SaveArrayToMySql::class
         );
         $this->itemArrayServiceMock = $this->createMock(
             AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray::class
@@ -24,7 +24,7 @@ class SaveJsonToMySqlTest extends TestCase
 
         $this->saveJsonToMySqlService = new AmazonService\Api\Operations\GetItems\SaveJsonToMySql(
             $this->asinTableMock,
-            $this->downloadErrorsArrayToMySqlServiceMock,
+            $this->saveErrorsArrayToMySqlServiceMock,
             $this->itemArrayServiceMock,
             $this->bannedServiceMock
         );
@@ -32,9 +32,9 @@ class SaveJsonToMySqlTest extends TestCase
 
     public function test_saveJsonToMySql_oneInvalidItem()
     {
-        $this->downloadErrorsArrayToMySqlServiceMock
+        $this->saveErrorsArrayToMySqlServiceMock
             ->expects($this->exactly(1))
-            ->method('downloadArrayToMySql');
+            ->method('saveArrayToMySql');
 
         $this->asinTableMock
             ->expects($this->exactly(0))
@@ -52,9 +52,9 @@ class SaveJsonToMySqlTest extends TestCase
 
     public function test_saveJsonToMySql_threeValidItems()
     {
-        $this->downloadErrorsArrayToMySqlServiceMock
+        $this->saveErrorsArrayToMySqlServiceMock
             ->expects($this->exactly(0))
-            ->method('downloadArrayToMySql');
+            ->method('saveArrayToMySql');
 
         $this->asinTableMock
             ->expects($this->exactly(3))
@@ -77,9 +77,9 @@ class SaveJsonToMySqlTest extends TestCase
 
     public function test_saveJsonToMySql_twoInvalidAndThreeValidItems()
     {
-        $this->downloadErrorsArrayToMySqlServiceMock
+        $this->saveErrorsArrayToMySqlServiceMock
             ->expects($this->exactly(1))
-            ->method('downloadArrayToMySql');
+            ->method('saveArrayToMySql');
 
         // The first ASIN in the json file, 'B07JPLF1GD', is marked as banned.
         $this->bannedServiceMock
@@ -117,9 +117,9 @@ class SaveJsonToMySqlTest extends TestCase
         );
         $jsonArray = json_decode($jsonString, true);
 
-        $this->downloadErrorsArrayToMySqlServiceMock
+        $this->saveErrorsArrayToMySqlServiceMock
             ->expects($this->exactly(0))
-            ->method('downloadArrayToMySql');
+            ->method('saveArrayToMySql');
         $this->asinTableMock
             ->expects($this->exactly(2))
             ->method('updateSetIsValidWhereAsin')
