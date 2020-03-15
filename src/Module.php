@@ -19,11 +19,9 @@ class Module
         return [
             'view_helpers' => [
                 'aliases' => [
-                    'productAffiliateUrl'           => AmazonHelper\Product\AffiliateUrl::class,
-                    'productModifiedFeature'        => AmazonHelper\Product\ModifiedFeature::class,
                     'getBreadcrumbsHtml'            => AmazonHelper\Product\BreadcrumbsHtml::class,
-                    'getBrowseNodeProductsHtml'     => AmazonHelper\Product\BrowseNodeProductsHtml::class,
                     'getBrowseNodeBreadcrumbsHtml'  => AmazonHelper\BrowseNode\BreadcrumbsHtml::class,
+                    'getBrowseNodeProductsHtml'     => AmazonHelper\Product\BrowseNodeProductsHtml::class,
                     'getBrowseNodeRootRelativeUrl'  => AmazonHelper\BrowseNode\RootRelativeUrl::class,
                     'getModifiedTitle'              => AmazonHelper\Product\ModifiedTitle::class,
                     'getProductAffiliateUrl'        => AmazonHelper\Product\AffiliateUrl::class,
@@ -32,6 +30,8 @@ class Module
                     'getProductImages'              => AmazonHelper\ProductImage\ProductImages::class,
                     'getProductModifiedFeatures'    => AmazonHelper\Product\ModifiedFeatures::class,
                     'getProductRootRelativeUrl'     => AmazonHelper\Product\RootRelativeUrl::class,
+                    'productAffiliateUrl'           => AmazonHelper\Product\AffiliateUrl::class,
+                    'productModifiedFeature'        => AmazonHelper\Product\ModifiedFeature::class,
                 ],
                 'factories' => [
                     AmazonHelper\BrowseNode\BreadcrumbsHtml::class => function ($sm) {
@@ -57,19 +57,19 @@ class Module
                     AmazonHelper\Product\AffiliateUrl::class => function ($sm) {
                         return new AmazonHelper\Product\AffiliateUrl();
                     },
-                    AmazonHelper\Product\BrowseNodeProductsHtml::class => function ($sm) {
-                        $vhm = $sm->get('ViewHelperManager');
-                        return new AmazonHelper\Product\BrowseNodeProductsHtml(
-                            $vhm->get(AmazonHelper\BrowseNodeProduct\BreadcrumbsHtml::class),
-                            $sm->get(AmazonService\Product\BrowseNodeProducts::class)
-                        );
-                    },
                     AmazonHelper\Product\BreadcrumbsHtml::class => function ($sm) {
                         return new AmazonHelper\Product\BreadcrumbsHtml(
                             $sm->get('Config')['amazon']['browse-node-name-domain'],
                             $sm->get(AmazonService\Product\Breadcrumbs::class),
                             $sm->get(StringService\Escape::class),
                             $sm->get(StringService\UrlFriendly::class)
+                        );
+                    },
+                    AmazonHelper\Product\BrowseNodeProductsHtml::class => function ($sm) {
+                        $vhm = $sm->get('ViewHelperManager');
+                        return new AmazonHelper\Product\BrowseNodeProductsHtml(
+                            $vhm->get(AmazonHelper\BrowseNodeProduct\BreadcrumbsHtml::class),
+                            $sm->get(AmazonService\Product\BrowseNodeProducts::class)
                         );
                     },
                     AmazonHelper\Product\FirstImageEntity::class => function ($sm) {
@@ -254,16 +254,16 @@ class Module
                         $sm->get(AmazonTable\ProductIsbn::class)
                     );
                 },
-                AmazonService\Api\Resources\ItemInfo\ExternalIds\Upcs\SaveArrayToMySql::class => function ($sm) {
-                    return new AmazonService\Api\Resources\ItemInfo\ExternalIds\Upcs\SaveArrayToMySql(
-                        $sm->get(AmazonTable\ProductUpc::class)
-                    );
-                },
                 AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql::class => function ($sm) {
                     return new AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql(
                         $sm->get(AmazonService\Api\Resources\ItemInfo\ExternalIds\Eans\SaveArrayToMySql::class),
                         $sm->get(AmazonService\Api\Resources\ItemInfo\ExternalIds\Isbns\SaveArrayToMySql::class),
                         $sm->get(AmazonService\Api\Resources\ItemInfo\ExternalIds\Upcs\SaveArrayToMySql::class)
+                    );
+                },
+                AmazonService\Api\Resources\ItemInfo\ExternalIds\Upcs\SaveArrayToMySql::class => function ($sm) {
+                    return new AmazonService\Api\Resources\ItemInfo\ExternalIds\Upcs\SaveArrayToMySql(
+                        $sm->get(AmazonTable\ProductUpc::class)
                     );
                 },
                 AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql::class => function ($sm) {
@@ -312,11 +312,6 @@ class Module
                         $sm->get(AmazonTable\Brand::class)
                     );
                 },
-                AmazonService\BrowseNode\Name\NumberOfVideosNotGenerated::class => function ($sm) {
-                    return new AmazonService\BrowseNode\Name\NumberOfVideosNotGenerated(
-                        $sm->get(AmazonTable\ProductBrowseNodeProductBrowseNode::class)
-                    );
-                },
                 AmazonService\BrowseNode\BrowseNodes::class => function ($sm) {
                     return new AmazonService\BrowseNode\BrowseNodes(
                         $sm->get(AmazonFactory\BrowseNode::class),
@@ -335,6 +330,11 @@ class Module
                     return new AmazonService\BrowseNode\BrowseNodes\Product(
                         $sm->get(AmazonFactory\BrowseNode::class),
                         $sm->get(AmazonTable\BrowseNodeProduct::class)
+                    );
+                },
+                AmazonService\BrowseNode\Name\NumberOfVideosNotGenerated::class => function ($sm) {
+                    return new AmazonService\BrowseNode\Name\NumberOfVideosNotGenerated(
+                        $sm->get(AmazonTable\ProductBrowseNodeProductBrowseNode::class)
                     );
                 },
                 AmazonService\BrowseNode\RootRelativeUrl::class => function ($sm) {
@@ -405,6 +405,17 @@ class Module
                         $sm->get(StringService\KeepFirstWords::class)
                     );
                 },
+                AmazonService\Product\RootRelativeUrl::class => function ($sm) {
+                    return new AmazonService\Product\RootRelativeUrl(
+                        $sm->get(AmazonService\Product\ModifiedTitle::class),
+                        $sm->get(StringService\UrlFriendly::class)
+                    );
+                },
+                AmazonService\Product\RootRelativeUrl\Asin::class => function ($sm) {
+                    return new AmazonService\Product\RootRelativeUrl\Asin(
+                        $sm->get(StringService\UrlFriendly::class)
+                    );
+                },
                 AmazonService\Product\SimilarProducts::class => function ($sm) {
                     return new AmazonService\Product\SimilarProducts(
                         $sm->get(AmazonFactory\Product::class),
@@ -415,17 +426,6 @@ class Module
                         $sm->get(AmazonTable\Product::class),
                         $sm->get(AmazonTable\Product\Similar::class),
                         $sm->get(AmazonTable\Product\SimilarRetrieved::class)
-                    );
-                },
-                AmazonService\Product\RootRelativeUrl::class => function ($sm) {
-                    return new AmazonService\Product\RootRelativeUrl(
-                        $sm->get(AmazonService\Product\ModifiedTitle::class),
-                        $sm->get(StringService\UrlFriendly::class)
-                    );
-                },
-                AmazonService\Product\RootRelativeUrl\Asin::class => function ($sm) {
-                    return new AmazonService\Product\RootRelativeUrl\Asin(
-                        $sm->get(StringService\UrlFriendly::class)
                     );
                 },
                 AmazonService\Product\Slug::class => function ($sm) {
@@ -461,6 +461,12 @@ class Module
                         $sm->get(AmazonTable\ProductGroup::class)
                     );
                 },
+                AmazonService\ProductGroup\RandomProductEntity::class => function ($sm) {
+                    return new AmazonService\ProductGroup\RandomProductEntity(
+                        $sm->get(AmazonFactory\Product::class),
+                        $sm->get(AmazonTable\Product\ProductId::class)
+                    );
+                },
                 AmazonService\ProductGroup\RelatedProductEntities::class => function ($sm) {
                     return new AmazonService\ProductGroup\RelatedProductEntities(
                         $sm->get(AmazonFactory\Product::class),
@@ -472,12 +478,6 @@ class Module
                     return new AmazonService\ProductGroup\RelatedProductEntities\NumberOfPages(
                         $sm->get(AmazonService\Product\ModifiedTitle::class),
                         $sm->get(AmazonTable\Search\ProductGroup::class)
-                    );
-                },
-                AmazonService\ProductGroup\RandomProductEntity::class => function ($sm) {
-                    return new AmazonService\ProductGroup\RandomProductEntity(
-                        $sm->get(AmazonFactory\Product::class),
-                        $sm->get(AmazonTable\Product\ProductId::class)
                     );
                 },
                 AmazonService\ProductImage\DownloadFile::class => function ($sm) {
