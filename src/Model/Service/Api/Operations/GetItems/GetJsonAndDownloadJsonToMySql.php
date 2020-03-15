@@ -6,11 +6,11 @@ use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 class GetJsonAndDownloadJsonToMySql
 {
     public function __construct(
-        AmazonService\Api\Operations\GetItems\DownloadJsonToMySql $downloadJsonToMySqlService,
-        AmazonService\Api\Operations\GetItems\Json $jsonService
+        AmazonService\Api\Operations\GetItems\Json $jsonService,
+        AmazonService\Api\Operations\GetItems\SaveJsonToMySql $saveJsonToMySqlService
     ) {
-        $this->downloadJsonToMySqlService = $downloadJsonToMySqlService;
-        $this->jsonService                = $jsonService;
+        $this->jsonService            = $jsonService;
+        $this->saveJsonToMySqlService = $saveJsonToMySqlService;
     }
 
     public function getJsonAndDownloadJsonToMySql(
@@ -21,7 +21,7 @@ class GetJsonAndDownloadJsonToMySql
             $itemIds,
             $resources
         );
-        $this->downloadJsonToMySqlService->downloadJsonToMySql(
+        $this->saveJsonToMySqlService->saveJsonToMySql(
             $json
         );
     }

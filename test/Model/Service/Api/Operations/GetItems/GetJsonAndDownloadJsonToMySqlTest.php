@@ -8,16 +8,16 @@ class GetJsonAndDownloadJsonToMySqlTest extends TestCase
 {
     protected function setUp()
     {
-        $this->downloadJsonToMySqlServiceMock = $this->createMock(
-            AmazonService\Api\Operations\GetItems\DownloadJsonToMySql::class
-        );
         $this->jsonServiceMock = $this->createMock(
             AmazonService\Api\Operations\GetItems\Json::class
         );
+        $this->saveJsonToMySqlServiceMock = $this->createMock(
+            AmazonService\Api\Operations\GetItems\SaveJsonToMySql::class
+        );
 
         $this->getJsonAndDownloadJsonToMySqlService = new AmazonService\Api\Operations\GetItems\GetJsonAndDownloadJsonToMySql(
-            $this->downloadJsonToMySqlServiceMock,
-            $this->jsonServiceMock
+            $this->jsonServiceMock,
+            $this->saveJsonToMySqlServiceMock
         );
     }
 
@@ -34,9 +34,9 @@ class GetJsonAndDownloadJsonToMySqlTest extends TestCase
             ->will(
                 $this->returnValue($jsonString)
             );
-        $this->downloadJsonToMySqlServiceMock
+        $this->saveJsonToMySqlServiceMock
             ->expects($this->exactly(1))
-            ->method('downloadJsonToMySql')
+            ->method('saveJsonToMySql')
             ->with($jsonString);
 
         $this->getJsonAndDownloadJsonToMySqlService->getJsonAndDownloadJsonToMySql(

@@ -7,7 +7,7 @@ use LeoGalleguillos\Amazon\{
 };
 use PHPUnit\Framework\TestCase;
 
-class DownloadJsonToMySqlTest extends TestCase
+class SaveJsonToMySqlTest extends TestCase
 {
     protected function setUp()
     {
@@ -24,7 +24,7 @@ class DownloadJsonToMySqlTest extends TestCase
             AmazonService\Product\Banned::class
         );
 
-        $this->downloadJsonToMySqlService = new AmazonService\Api\Operations\GetItems\DownloadJsonToMySql(
+        $this->saveJsonToMySqlService = new AmazonService\Api\Operations\GetItems\SaveJsonToMySql(
             $this->asinTableMock,
             $this->downloadErrorsArrayToMySqlServiceMock,
             $this->itemArrayServiceMock,
@@ -32,7 +32,7 @@ class DownloadJsonToMySqlTest extends TestCase
         );
     }
 
-    public function testDownloadToMySqlOneInvalidItem()
+    public function test_saveJsonToMySql_oneInvalidItem()
     {
         $this->downloadErrorsArrayToMySqlServiceMock
             ->expects($this->exactly(1))
@@ -49,10 +49,10 @@ class DownloadJsonToMySqlTest extends TestCase
         $jsonString = file_get_contents(
             $_SERVER['PWD'] . '/test/data/api/get-items/one-invalid-item.json'
         );
-        $this->downloadJsonToMySqlService->downloadJsonToMySql($jsonString);
+        $this->saveJsonToMySqlService->saveJsonToMySql($jsonString);
     }
 
-    public function testDownloadToMySqlThreeValidItems()
+    public function test_saveJsonToMySql_threeValidItems()
     {
         $this->downloadErrorsArrayToMySqlServiceMock
             ->expects($this->exactly(0))
@@ -74,10 +74,10 @@ class DownloadJsonToMySqlTest extends TestCase
         $jsonString = file_get_contents(
             $_SERVER['PWD'] . '/test/data/api/get-items/three-valid-items.json'
         );
-        $this->downloadJsonToMySqlService->downloadJsonToMySql($jsonString);
+        $this->saveJsonToMySqlService->saveJsonToMySql($jsonString);
     }
 
-    public function testDownloadToMySqlTwoInvalidAndThreeValidItems()
+    public function test_saveJsonToMySql_twoInvalidAndThreeValidItems()
     {
         $this->downloadErrorsArrayToMySqlServiceMock
             ->expects($this->exactly(1))
@@ -107,12 +107,12 @@ class DownloadJsonToMySqlTest extends TestCase
         $jsonString = file_get_contents(
             $_SERVER['PWD'] . '/test/data/api/get-items/two-invalid-and-three-valid-items.json'
         );
-        $this->downloadJsonToMySqlService->downloadJsonToMySql(
+        $this->saveJsonToMySqlService->saveJsonToMySql(
             $jsonString
         );
     }
 
-    public function test_downloadJsonToMySql_images()
+    public function test_saveJsonToMySql_images()
     {
         $jsonString = file_get_contents(
             $_SERVER['PWD'] . '/test/data/api/get-items/images.json'
@@ -137,7 +137,7 @@ class DownloadJsonToMySqlTest extends TestCase
                 [$jsonArray['ItemsResult']['Items'][1]]
             );
 
-        $this->downloadJsonToMySqlService->downloadJsonToMySql(
+        $this->saveJsonToMySqlService->saveJsonToMySql(
             $jsonString
         );
     }

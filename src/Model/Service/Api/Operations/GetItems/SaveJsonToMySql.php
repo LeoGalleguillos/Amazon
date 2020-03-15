@@ -6,7 +6,7 @@ use LeoGalleguillos\Amazon\{
     Model\Table as AmazonTable
 };
 
-class DownloadJsonToMySql
+class SaveJsonToMySql
 {
     public function __construct(
         AmazonTable\Product\Asin $asinTable,
@@ -20,7 +20,7 @@ class DownloadJsonToMySql
         $this->bannedService                     = $bannedService;
     }
 
-    public function downloadJsonToMySql(
+    public function saveJsonToMySql(
         string $json
     ) {
         $jsonArray = json_decode($json, true);

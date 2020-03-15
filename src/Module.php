@@ -187,8 +187,8 @@ class Module
                         $sm->get(AmazonTable\Product\Asin::class)
                     );
                 },
-                AmazonService\Api\Operations\GetItems\DownloadJsonToMySql::class => function ($sm) {
-                    return new AmazonService\Api\Operations\GetItems\DownloadJsonToMySql(
+                AmazonService\Api\Operations\GetItems\SaveJsonToMySql::class => function ($sm) {
+                    return new AmazonService\Api\Operations\GetItems\SaveJsonToMySql(
                         $sm->get(AmazonTable\Product\Asin::class),
                         $sm->get(AmazonService\Api\Errors\DownloadArrayToMySql::class),
                         $sm->get(AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray::class),
@@ -197,8 +197,8 @@ class Module
                 },
                 AmazonService\Api\Operations\GetItems\GetJsonAndDownloadJsonToMySql::class => function ($sm) {
                     return new AmazonService\Api\Operations\GetItems\GetJsonAndDownloadJsonToMySql(
-                        $sm->get(AmazonService\Api\Operations\GetItems\DownloadJsonToMySql::class),
-                        $sm->get(AmazonService\Api\Operations\GetItems\Json::class)
+                        $sm->get(AmazonService\Api\Operations\GetItems\Json::class),
+                        $sm->get(AmazonService\Api\Operations\GetItems\SaveJsonToMySql::class)
                     );
                 },
                 AmazonService\Api\Operations\GetItems\Json::class => function ($sm) {
