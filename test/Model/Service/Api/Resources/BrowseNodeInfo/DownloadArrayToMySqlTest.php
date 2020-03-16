@@ -11,23 +11,23 @@ class DownloadArrayToMySqlTest extends TestCase
 {
     protected function setUp()
     {
-        $this->downloadBrowseNodeArrayToMySqlServiceMock = $this->createMock(
-            AmazonService\Api\Resources\BrowseNodes\BrowseNode\DownloadArrayToMySql::class
+        $this->saveBrowseNodeArrayToMySqlServiceMock = $this->createMock(
+            AmazonService\Api\Resources\BrowseNodes\BrowseNode\SaveArrayToMySql::class
         );
         $this->browseNodeProductTableMock = $this->createMock(
             AmazonTable\BrowseNodeProduct::class
         );
         $this->downloadArrayToMySqlService = new AmazonService\Api\Resources\BrowseNodeInfo\DownloadArrayToMySql(
-            $this->downloadBrowseNodeArrayToMySqlServiceMock,
+            $this->saveBrowseNodeArrayToMySqlServiceMock,
             $this->browseNodeProductTableMock
         );
     }
 
     public function testDownloadArrayToMySql()
     {
-        $this->downloadBrowseNodeArrayToMySqlServiceMock
+        $this->saveBrowseNodeArrayToMySqlServiceMock
             ->expects($this->exactly(2))
-            ->method('downloadArrayToMySql')
+            ->method('saveArrayToMySql')
             ->withConsecutive(
                 [$this->getArray()['BrowseNodes'][0]],
                 [$this->getArray()['BrowseNodes'][1]]

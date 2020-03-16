@@ -228,12 +228,12 @@ class Module
                 },
                 AmazonService\Api\Resources\BrowseNodeInfo\DownloadArrayToMySql::class => function ($sm) {
                     return new AmazonService\Api\Resources\BrowseNodeInfo\DownloadArrayToMySql(
-                        $sm->get(AmazonService\Api\Resources\BrowseNodes\BrowseNode\DownloadArrayToMySql::class),
+                        $sm->get(AmazonService\Api\Resources\BrowseNodes\BrowseNode\SaveArrayToMySql::class),
                         $sm->get(AmazonTable\BrowseNodeProduct::class)
                     );
                 },
-                AmazonService\Api\Resources\BrowseNodes\BrowseNode\DownloadArrayToMySql::class => function ($sm) {
-                    return new AmazonService\Api\Resources\BrowseNodes\BrowseNode\DownloadArrayToMySql(
+                AmazonService\Api\Resources\BrowseNodes\BrowseNode\SaveArrayToMySql::class => function ($sm) {
+                    return new AmazonService\Api\Resources\BrowseNodes\BrowseNode\SaveArrayToMySql(
                         $sm->get(AmazonTable\BrowseNode::class),
                         $sm->get(AmazonTable\BrowseNodeHierarchy::class)
                     );

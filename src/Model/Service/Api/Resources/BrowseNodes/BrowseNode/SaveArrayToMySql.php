@@ -3,7 +3,7 @@ namespace LeoGalleguillos\Amazon\Model\Service\Api\Resources\BrowseNodes\BrowseN
 
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 
-class DownloadArrayToMySql
+class SaveArrayToMySql
 {
     public function __construct(
         AmazonTable\BrowseNode $browseNodeTable,
@@ -13,7 +13,7 @@ class DownloadArrayToMySql
         $this->browseNodeHierarchyTable = $browseNodeHierarchyTable;
     }
 
-    public function downloadArrayToMySql(
+    public function saveArrayToMySql(
         array $browseNodeArray
     ) {
         $browseNodeId = (int) $browseNodeArray['Id'];
@@ -30,7 +30,7 @@ class DownloadArrayToMySql
                 $parentBrowseNodeId,
                 $browseNodeId
             );
-            $this->downloadArrayToMySql(
+            $this->saveArrayToMySql(
                 $parentArray
             );
         }
