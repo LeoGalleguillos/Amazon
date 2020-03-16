@@ -5,7 +5,7 @@ use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\TableGateway as AmazonTableGateway;
 use LeoGalleguillos\ArrayModule\Service as ArrayModuleService;
 
-class DownloadArrayToMySql
+class SaveArrayToMySql
 {
     public function __construct(
         AmazonService\Api\Resources\ItemInfo\ByLineInfo\Set $byLineInfoSetService,
@@ -21,7 +21,7 @@ class DownloadArrayToMySql
         $this->stringOrNullService                = $stringOrNullService;
     }
 
-    public function downloadArrayToMySql(
+    public function saveArrayToMySql(
         array $itemInfoArray,
         int $productId
     ) {

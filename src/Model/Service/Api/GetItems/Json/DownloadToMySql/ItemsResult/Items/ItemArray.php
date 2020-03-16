@@ -9,12 +9,12 @@ class ItemArray
     public function __construct(
         AmazonService\Api\Resources\BrowseNodeInfo\SaveArrayToMySql $saveBrowseNodeInfoArrayToMySqlService,
         AmazonService\Api\Resources\Images\SaveArrayToMySql $saveImagesArrayToMySqlService,
-        AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql $downloadItemInfoArrayToMySqlService,
+        AmazonService\Api\Resources\ItemInfo\SaveArrayToMySql $saveItemInfoArrayToMySqlService,
         AmazonTable\Product\Asin $asinTable
     ) {
         $this->saveBrowseNodeInfoArrayToMySqlService = $saveBrowseNodeInfoArrayToMySqlService;
         $this->saveImagesArrayToMySqlService         = $saveImagesArrayToMySqlService;
-        $this->downloadItemInfoArrayToMySqlService   = $downloadItemInfoArrayToMySqlService;
+        $this->saveItemInfoArrayToMySqlService       = $saveItemInfoArrayToMySqlService;
         $this->asinTable                             = $asinTable;
     }
 
@@ -39,7 +39,7 @@ class ItemArray
         }
 
         if (isset($itemArray['ItemInfo'])) {
-            $this->downloadItemInfoArrayToMySqlService->downloadArrayToMySql(
+            $this->saveItemInfoArrayToMySqlService->saveArrayToMySql(
                 $itemArray['ItemInfo'],
                 $productId
             );

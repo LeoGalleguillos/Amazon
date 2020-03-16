@@ -6,7 +6,7 @@ use LeoGalleguillos\Amazon\Model\TableGateway as AmazonTableGateway;
 use LeoGalleguillos\ArrayModule\Service as ArrayModuleService;
 use PHPUnit\Framework\TestCase;
 
-class DownloadArrayToMySqlTest extends TestCase
+class SaveArrayToMySqlTest extends TestCase
 {
     protected function setUp()
     {
@@ -25,7 +25,7 @@ class DownloadArrayToMySqlTest extends TestCase
         $this->stringOrNullServiceMock = $this->createMock(
             ArrayModuleService\Path\StringOrNull::class
         );
-        $this->downloadArrayToMySqlService = new AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql(
+        $this->saveArrayToMySqlService = new AmazonService\Api\Resources\ItemInfo\SaveArrayToMySql(
             $this->byLineInfoSetServiceMock,
             $this->saveExternalIdsArrayToMySqlMock,
             $this->manufactureInfoSetServiceMock,
@@ -34,7 +34,7 @@ class DownloadArrayToMySqlTest extends TestCase
         );
     }
 
-    public function testDownloadArrayToMySql()
+    public function test_saveArrayToMySql()
     {
         $this->byLineInfoSetServiceMock
             ->expects($this->exactly(1))
@@ -112,7 +112,7 @@ class DownloadArrayToMySqlTest extends TestCase
                 )
             );
 
-        $this->downloadArrayToMySqlService->downloadArrayToMySql(
+        $this->saveArrayToMySqlService->saveArrayToMySql(
             $this->getArray(),
             12345
         );

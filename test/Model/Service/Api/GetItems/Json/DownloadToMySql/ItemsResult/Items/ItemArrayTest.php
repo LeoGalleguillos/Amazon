@@ -15,8 +15,8 @@ class ItemArrayTest extends TestCase
         $this->saveImagesArrayToMySqlServiceMock = $this->createMock(
             AmazonService\Api\Resources\Images\SaveArrayToMySql::class
         );
-        $this->downloadItemInfoArrayToMySqlServiceMock = $this->createMock(
-            AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql::class
+        $this->saveItemInfoArrayToMySqlServiceMock = $this->createMock(
+            AmazonService\Api\Resources\ItemInfo\SaveArrayToMySql::class
         );
         $this->asinTableMock = $this->createMock(
             AmazonTable\Product\Asin::class
@@ -25,7 +25,7 @@ class ItemArrayTest extends TestCase
         $this->itemArrayService = new AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray(
             $this->saveBrowseNodeInfoArrayToMySqlServiceMock,
             $this->saveImagesArrayToMySqlServiceMock,
-            $this->downloadItemInfoArrayToMySqlServiceMock,
+            $this->saveItemInfoArrayToMySqlServiceMock,
             $this->asinTableMock
         );
     }
@@ -51,9 +51,9 @@ class ItemArrayTest extends TestCase
                 $this->getArrayWithImages()['Images'],
                 12345
             );
-        $this->downloadItemInfoArrayToMySqlServiceMock
+        $this->saveItemInfoArrayToMySqlServiceMock
             ->expects($this->exactly(0))
-            ->method('downloadArrayToMySql');
+            ->method('saveArrayToMySql');
 
         $this->itemArrayService->downloadToMySql(
             $this->getArrayWithImages()
