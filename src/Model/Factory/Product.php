@@ -100,6 +100,12 @@ class Product
             );
         }
 
+        if (isset($productArray['manufacturer'])) {
+            $productEntity->setManufacturer(
+                $productArray['manufacturer']
+            );
+        }
+
         if (isset($productArray['part_number'])) {
             $productEntity->setPartNumber(
                 $productArray['part_number']

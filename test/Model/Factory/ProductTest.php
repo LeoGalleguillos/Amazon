@@ -60,7 +60,7 @@ class ProductTest extends TestCase
         );
     }
 
-    public function testBuildFromArray()
+    public function test_buildFromArray()
     {
         $this->initializeProductEanResultMock();
         $this->productEanProductIdTableMock
@@ -103,6 +103,7 @@ class ProductTest extends TestCase
             'length_units'     => 'cm',
             'length_value'     => '3.14159',
             'model'            => 'the model',
+            'manufacturer'     => 'the manufacturer',
             'part_number'      => 'the part #',
             'weight_units'     => 'LBS',
             'weight_value'     => '1000',
@@ -138,6 +139,7 @@ class ProductTest extends TestCase
             ->setLengthValue('3.14159')
             ->setProductId('12345')
             ->setListPrice('1.23')
+            ->setManufacturer('the manufacturer')
             ->setModel('the model')
             ->setPartNumber('the part #')
             ->setReleased(new DateTime('2020-02-08 12:12:45'))
