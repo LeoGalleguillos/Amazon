@@ -28,6 +28,7 @@ class Product
                  , `product`.`product_group`
                  , `product`.`binding`
                  , `product`.`brand`
+                 , `product`.`manufacturer`
                  , `product`.`part_number`
                  , `product`.`model`
                  , `product`.`warranty`
