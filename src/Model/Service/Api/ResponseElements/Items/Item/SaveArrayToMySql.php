@@ -1,10 +1,10 @@
 <?php
-namespace LeoGalleguillos\Amazon\Model\Service\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items;
+namespace LeoGalleguillos\Amazon\Model\Service\Api\ResponseElements\Items\Item;
 
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 
-class ItemArray
+class SaveArrayToMySql
 {
     public function __construct(
         AmazonService\Api\Resources\BrowseNodeInfo\SaveArrayToMySql $saveBrowseNodeInfoArrayToMySqlService,
@@ -18,7 +18,7 @@ class ItemArray
         $this->asinTable                             = $asinTable;
     }
 
-    public function downloadToMySql(
+    public function saveArrayToMySql(
         array $itemArray
     ) {
         $asin      = $itemArray['ASIN'];

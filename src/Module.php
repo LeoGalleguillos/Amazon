@@ -164,8 +164,8 @@ class Module
                         $sm->get(AmazonTable\Product\Asin::class)
                     );
                 },
-                AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray::class => function ($sm) {
-                    return new AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray(
+                AmazonService\Api\ResponseElements\Items\Item\SaveArrayToMySql::class => function ($sm) {
+                    return new AmazonService\Api\ResponseElements\Items\Item\SaveArrayToMySql(
                         $sm->get(AmazonService\Api\Resources\BrowseNodeInfo\SaveArrayToMySql::class),
                         $sm->get(AmazonService\Api\Resources\Images\SaveArrayToMySql::class),
                         $sm->get(AmazonService\Api\Resources\ItemInfo\SaveArrayToMySql::class),
@@ -191,7 +191,7 @@ class Module
                     return new AmazonService\Api\Operations\GetItems\SaveJsonToMySql(
                         $sm->get(AmazonTable\Product\Asin::class),
                         $sm->get(AmazonService\Api\Errors\SaveArrayToMySql::class),
-                        $sm->get(AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray::class),
+                        $sm->get(AmazonService\Api\ResponseElements\Items\Item\SaveArrayToMySql::class),
                         $sm->get(AmazonService\Product\Banned::class)
                     );
                 },

@@ -15,8 +15,8 @@ class SaveJsonToMySqlTest extends TestCase
         $this->saveErrorsArrayToMySqlServiceMock = $this->createMock(
             AmazonService\Api\Errors\SaveArrayToMySql::class
         );
-        $this->itemArrayServiceMock = $this->createMock(
-            AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray::class
+        $this->saveItemArrayToMySqlServiceMock = $this->createMock(
+            AmazonService\Api\ResponseElements\Items\Item\SaveArrayToMySql::class
         );
         $this->bannedServiceMock = $this->createMock(
             AmazonService\Product\Banned::class
@@ -25,7 +25,7 @@ class SaveJsonToMySqlTest extends TestCase
         $this->saveJsonToMySqlService = new AmazonService\Api\Operations\GetItems\SaveJsonToMySql(
             $this->asinTableMock,
             $this->saveErrorsArrayToMySqlServiceMock,
-            $this->itemArrayServiceMock,
+            $this->saveItemArrayToMySqlServiceMock,
             $this->bannedServiceMock
         );
     }
@@ -40,9 +40,9 @@ class SaveJsonToMySqlTest extends TestCase
             ->expects($this->exactly(0))
             ->method('updateSetIsValidWhereAsin');
 
-        $this->itemArrayServiceMock
+        $this->saveItemArrayToMySqlServiceMock
             ->expects($this->exactly(0))
-            ->method('downloadToMySql');
+            ->method('saveArrayToMySql');
 
         $jsonString = file_get_contents(
             $_SERVER['PWD'] . '/test/data/api/get-items/one-invalid-item.json'
@@ -65,9 +65,9 @@ class SaveJsonToMySqlTest extends TestCase
                 [1, 'B07D5J6Z2C']
             );
 
-        $this->itemArrayServiceMock
+        $this->saveItemArrayToMySqlServiceMock
             ->expects($this->exactly(3))
-            ->method('downloadToMySql');
+            ->method('saveArrayToMySql');
 
         $jsonString = file_get_contents(
             $_SERVER['PWD'] . '/test/data/api/get-items/three-valid-items.json'
@@ -98,9 +98,9 @@ class SaveJsonToMySqlTest extends TestCase
                 [1, 'B002LVAC5Y']
             );
 
-        $this->itemArrayServiceMock
+        $this->saveItemArrayToMySqlServiceMock
             ->expects($this->exactly(2))
-            ->method('downloadToMySql');
+            ->method('saveArrayToMySql');
 
         $jsonString = file_get_contents(
             $_SERVER['PWD'] . '/test/data/api/get-items/two-invalid-and-three-valid-items.json'
@@ -127,9 +127,9 @@ class SaveJsonToMySqlTest extends TestCase
                 [1, 'B07RF1XD36'],
                 [1, 'B00YLVDJKW']
             );
-        $this->itemArrayServiceMock
+        $this->saveItemArrayToMySqlServiceMock
             ->expects($this->exactly(2))
-            ->method('downloadToMySql')
+            ->method('saveArrayToMySql')
             ->withConsecutive(
                 [$jsonArray['ItemsResult']['Items'][0]],
                 [$jsonArray['ItemsResult']['Items'][1]]

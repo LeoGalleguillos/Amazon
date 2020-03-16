@@ -1,11 +1,11 @@
 <?php
-namespace LeoGalleguillos\AmazonTest\Model\Service\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items;
+namespace LeoGalleguillos\AmazonTest\Model\Service\Api\ResponseElements\Items\Item;
 
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use PHPUnit\Framework\TestCase;
 
-class ItemArrayTest extends TestCase
+class SaveArrayToMySqlTest extends TestCase
 {
     protected function setUp()
     {
@@ -22,7 +22,7 @@ class ItemArrayTest extends TestCase
             AmazonTable\Product\Asin::class
         );
 
-        $this->itemArrayService = new AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray(
+        $this->saveArrayToMySqlService = new AmazonService\Api\ResponseElements\Items\Item\SaveArrayToMySql(
             $this->saveBrowseNodeInfoArrayToMySqlServiceMock,
             $this->saveImagesArrayToMySqlServiceMock,
             $this->saveItemInfoArrayToMySqlServiceMock,
@@ -30,7 +30,7 @@ class ItemArrayTest extends TestCase
         );
     }
 
-    public function test_downloadToMySql_withImagesInfo()
+    public function test_saveArrayToMySql_withImagesInfo()
     {
         $this->asinTableMock
             ->expects($this->exactly(1))
@@ -55,12 +55,12 @@ class ItemArrayTest extends TestCase
             ->expects($this->exactly(0))
             ->method('saveArrayToMySql');
 
-        $this->itemArrayService->downloadToMySql(
+        $this->saveArrayToMySqlService->saveArrayToMySql(
             $this->getArrayWithImages()
         );
     }
 
-    public function testDownloadToMySqlWhereItemHasBrowseNodeInfo()
+    public function test_saveArrayToMySql_withBrowseNodeInfo()
     {
         $this->asinTableMock
             ->expects($this->exactly(1))
@@ -76,12 +76,12 @@ class ItemArrayTest extends TestCase
             ->method('saveArrayToMySql')
             ->with($this->getArrayWhereItemHasBrowseNodeInfo()['BrowseNodeInfo']);
 
-        $this->itemArrayService->downloadToMySql(
+        $this->saveArrayToMySqlService->saveArrayToMySql(
             $this->getArrayWhereItemHasBrowseNodeInfo()
         );
     }
 
-    public function testDownloadToMySqlWhereItemDoesNotHaveBrowseNodeInfo()
+    public function test_saveArrayToMySql_withoutBrowseNodeInfo()
     {
         $this->asinTableMock
             ->expects($this->exactly(1))
@@ -96,7 +96,7 @@ class ItemArrayTest extends TestCase
             ->expects($this->exactly(0))
             ->method('saveArrayToMySql');
 
-        $this->itemArrayService->downloadToMySql(
+        $this->saveArrayToMySqlService->saveArrayToMySql(
             $this->getArrayWhereItemDoesNotHaveBrowseNodeInfo()
         );
     }

@@ -9,12 +9,12 @@ class SaveJsonToMySql
     public function __construct(
         AmazonTable\Product\Asin $asinTable,
         AmazonService\Api\Errors\SaveArrayToMySql $saveErrorsArrayToMySqlService,
-        AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray $itemArrayService,
+        AmazonService\Api\ResponseElements\Items\Item\SaveArrayToMySql $saveItemArrayToMySqlService,
         AmazonService\Product\Banned $bannedService
     ) {
         $this->asinTable                     = $asinTable;
         $this->saveErrorsArrayToMySqlService = $saveErrorsArrayToMySqlService;
-        $this->itemArrayService              = $itemArrayService;
+        $this->saveItemArrayToMySqlService   = $saveItemArrayToMySqlService;
         $this->bannedService                 = $bannedService;
     }
 
@@ -40,7 +40,7 @@ class SaveJsonToMySql
 
                 $this->asinTable->updateSetIsValidWhereAsin(1, $asin);
 
-                $this->itemArrayService->downloadToMySql(
+                $this->saveItemArrayToMySqlService->saveArrayToMySql(
                     $itemArray
                 );
             }
