@@ -7,15 +7,15 @@ use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 class ItemArray
 {
     public function __construct(
-        AmazonService\Api\Resources\BrowseNodeInfo\DownloadArrayToMySql $downloadBrowseNodeInfoArrayToMySqlService,
+        AmazonService\Api\Resources\BrowseNodeInfo\SaveArrayToMySql $saveBrowseNodeInfoArrayToMySqlService,
         AmazonService\Api\Resources\Images\SaveArrayToMySql $saveImagesArrayToMySqlService,
         AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql $downloadItemInfoArrayToMySqlService,
         AmazonTable\Product\Asin $asinTable
     ) {
-        $this->downloadBrowseNodeInfoArrayToMySqlService = $downloadBrowseNodeInfoArrayToMySqlService;
-        $this->saveImagesArrayToMySqlService             = $saveImagesArrayToMySqlService;
-        $this->downloadItemInfoArrayToMySqlService       = $downloadItemInfoArrayToMySqlService;
-        $this->asinTable                                 = $asinTable;
+        $this->saveBrowseNodeInfoArrayToMySqlService = $saveBrowseNodeInfoArrayToMySqlService;
+        $this->saveImagesArrayToMySqlService         = $saveImagesArrayToMySqlService;
+        $this->downloadItemInfoArrayToMySqlService   = $downloadItemInfoArrayToMySqlService;
+        $this->asinTable                             = $asinTable;
     }
 
     public function downloadToMySql(
@@ -25,7 +25,7 @@ class ItemArray
         $productId = $this->asinTable->selectProductIdWhereAsin($asin)['product_id'];
 
         if (isset($itemArray['BrowseNodeInfo'])) {
-            $this->downloadBrowseNodeInfoArrayToMySqlService->downloadArrayToMySql(
+            $this->saveBrowseNodeInfoArrayToMySqlService->saveArrayToMySql(
                 $itemArray['BrowseNodeInfo'],
                 $productId
             );

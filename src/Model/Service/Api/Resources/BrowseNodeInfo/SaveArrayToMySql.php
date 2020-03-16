@@ -4,7 +4,7 @@ namespace LeoGalleguillos\Amazon\Model\Service\Api\Resources\BrowseNodeInfo;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 
-class DownloadArrayToMySql
+class SaveArrayToMySql
 {
     public function __construct(
         AmazonService\Api\Resources\BrowseNodes\BrowseNode\SaveArrayToMySql $saveBrowseNodeArrayToMySqlService,
@@ -14,7 +14,7 @@ class DownloadArrayToMySql
         $this->browseNodeProductTable            = $browseNodeProductTable;
     }
 
-    public function downloadArrayToMySql(
+    public function saveArrayToMySql(
         array $browseNodeInfoArray,
         int $productId
     ) {

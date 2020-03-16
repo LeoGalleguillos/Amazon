@@ -1,18 +1,16 @@
 <?php
 namespace LeoGalleguillos\AmazonTest\Model\Service\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items;
 
-use LeoGalleguillos\Amazon\{
-    Model\Service as AmazonService,
-    Model\Table as AmazonTable
-};
+use LeoGalleguillos\Amazon\Model\Service as AmazonService;
+use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use PHPUnit\Framework\TestCase;
 
 class ItemArrayTest extends TestCase
 {
     protected function setUp()
     {
-        $this->downloadBrowseNodeInfoArrayToMySqlServiceMock = $this->createMock(
-            AmazonService\Api\Resources\BrowseNodeInfo\DownloadArrayToMySql::class
+        $this->saveBrowseNodeInfoArrayToMySqlServiceMock = $this->createMock(
+            AmazonService\Api\Resources\BrowseNodeInfo\SaveArrayToMySql::class
         );
         $this->saveImagesArrayToMySqlServiceMock = $this->createMock(
             AmazonService\Api\Resources\Images\SaveArrayToMySql::class
@@ -25,7 +23,7 @@ class ItemArrayTest extends TestCase
         );
 
         $this->itemArrayService = new AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray(
-            $this->downloadBrowseNodeInfoArrayToMySqlServiceMock,
+            $this->saveBrowseNodeInfoArrayToMySqlServiceMock,
             $this->saveImagesArrayToMySqlServiceMock,
             $this->downloadItemInfoArrayToMySqlServiceMock,
             $this->asinTableMock
@@ -43,9 +41,9 @@ class ItemArrayTest extends TestCase
                     ['product_id' => 12345]
                 )
             );
-        $this->downloadBrowseNodeInfoArrayToMySqlServiceMock
+        $this->saveBrowseNodeInfoArrayToMySqlServiceMock
             ->expects($this->exactly(0))
-            ->method('downloadArrayToMySql');
+            ->method('saveArrayToMySql');
         $this->saveImagesArrayToMySqlServiceMock
             ->expects($this->exactly(1))
             ->method('saveArrayToMySql')
@@ -73,9 +71,9 @@ class ItemArrayTest extends TestCase
                     ['product_id' => 12345]
                 )
             );
-        $this->downloadBrowseNodeInfoArrayToMySqlServiceMock
+        $this->saveBrowseNodeInfoArrayToMySqlServiceMock
             ->expects($this->exactly(1))
-            ->method('downloadArrayToMySql')
+            ->method('saveArrayToMySql')
             ->with($this->getArrayWhereItemHasBrowseNodeInfo()['BrowseNodeInfo']);
 
         $this->itemArrayService->downloadToMySql(
@@ -94,9 +92,9 @@ class ItemArrayTest extends TestCase
                     ['product_id' => 67890]
                 )
             );
-        $this->downloadBrowseNodeInfoArrayToMySqlServiceMock
+        $this->saveBrowseNodeInfoArrayToMySqlServiceMock
             ->expects($this->exactly(0))
-            ->method('downloadArrayToMySql');
+            ->method('saveArrayToMySql');
 
         $this->itemArrayService->downloadToMySql(
             $this->getArrayWhereItemDoesNotHaveBrowseNodeInfo()

@@ -7,7 +7,7 @@ use LeoGalleguillos\Amazon\{
 };
 use PHPUnit\Framework\TestCase;
 
-class DownloadArrayToMySqlTest extends TestCase
+class SaveArrayToMySqlTest extends TestCase
 {
     protected function setUp()
     {
@@ -17,13 +17,13 @@ class DownloadArrayToMySqlTest extends TestCase
         $this->browseNodeProductTableMock = $this->createMock(
             AmazonTable\BrowseNodeProduct::class
         );
-        $this->downloadArrayToMySqlService = new AmazonService\Api\Resources\BrowseNodeInfo\DownloadArrayToMySql(
+        $this->saveArrayToMySqlService = new AmazonService\Api\Resources\BrowseNodeInfo\SaveArrayToMySql(
             $this->saveBrowseNodeArrayToMySqlServiceMock,
             $this->browseNodeProductTableMock
         );
     }
 
-    public function testDownloadArrayToMySql()
+    public function testSaveArrayToMySql()
     {
         $this->saveBrowseNodeArrayToMySqlServiceMock
             ->expects($this->exactly(2))
@@ -41,7 +41,7 @@ class DownloadArrayToMySqlTest extends TestCase
                 [17386948011, 12345, 7, 2]
             );
 
-        $this->downloadArrayToMySqlService->downloadArrayToMySql(
+        $this->saveArrayToMySqlService->saveArrayToMySql(
             $this->getArray(),
             12345
         );

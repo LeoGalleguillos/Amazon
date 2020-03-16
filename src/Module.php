@@ -166,7 +166,7 @@ class Module
                 },
                 AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray::class => function ($sm) {
                     return new AmazonService\Api\GetItems\Json\DownloadToMySql\ItemsResult\Items\ItemArray(
-                        $sm->get(AmazonService\Api\Resources\BrowseNodeInfo\DownloadArrayToMySql::class),
+                        $sm->get(AmazonService\Api\Resources\BrowseNodeInfo\SaveArrayToMySql::class),
                         $sm->get(AmazonService\Api\Resources\Images\SaveArrayToMySql::class),
                         $sm->get(AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql::class),
                         $sm->get(AmazonTable\Product\Asin::class)
@@ -226,8 +226,8 @@ class Module
                         $sm->get(AmazonTable\ProductImage::class)
                     );
                 },
-                AmazonService\Api\Resources\BrowseNodeInfo\DownloadArrayToMySql::class => function ($sm) {
-                    return new AmazonService\Api\Resources\BrowseNodeInfo\DownloadArrayToMySql(
+                AmazonService\Api\Resources\BrowseNodeInfo\SaveArrayToMySql::class => function ($sm) {
+                    return new AmazonService\Api\Resources\BrowseNodeInfo\SaveArrayToMySql(
                         $sm->get(AmazonService\Api\Resources\BrowseNodes\BrowseNode\SaveArrayToMySql::class),
                         $sm->get(AmazonTable\BrowseNodeProduct::class)
                     );
