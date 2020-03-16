@@ -3,7 +3,7 @@ namespace LeoGalleguillos\Amazon\Model\Service\Api\Operations\GetItems;
 
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 
-class GetJsonAndDownloadJsonToMySql
+class GetJsonAndSaveJsonToMySql
 {
     public function __construct(
         AmazonService\Api\Operations\GetItems\Json $jsonService,
@@ -13,7 +13,7 @@ class GetJsonAndDownloadJsonToMySql
         $this->saveJsonToMySqlService = $saveJsonToMySqlService;
     }
 
-    public function getJsonAndDownloadJsonToMySql(
+    public function getJsonAndSaveJsonToMySql(
         array $itemIds,
         array $resources
     ) {

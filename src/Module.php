@@ -195,8 +195,8 @@ class Module
                         $sm->get(AmazonService\Product\Banned::class)
                     );
                 },
-                AmazonService\Api\Operations\GetItems\GetJsonAndDownloadJsonToMySql::class => function ($sm) {
-                    return new AmazonService\Api\Operations\GetItems\GetJsonAndDownloadJsonToMySql(
+                AmazonService\Api\Operations\GetItems\GetJsonAndSaveJsonToMySql::class => function ($sm) {
+                    return new AmazonService\Api\Operations\GetItems\GetJsonAndSaveJsonToMySql(
                         $sm->get(AmazonService\Api\Operations\GetItems\Json::class),
                         $sm->get(AmazonService\Api\Operations\GetItems\SaveJsonToMySql::class)
                     );

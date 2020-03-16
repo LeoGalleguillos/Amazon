@@ -4,7 +4,7 @@ namespace LeoGalleguillos\AmazonTest\Model\Service\Api\Operations\GetItems;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use PHPUnit\Framework\TestCase;
 
-class GetJsonAndDownloadJsonToMySqlTest extends TestCase
+class GetJsonAndSaveJsonToMySqlTest extends TestCase
 {
     protected function setUp()
     {
@@ -15,13 +15,13 @@ class GetJsonAndDownloadJsonToMySqlTest extends TestCase
             AmazonService\Api\Operations\GetItems\SaveJsonToMySql::class
         );
 
-        $this->getJsonAndDownloadJsonToMySqlService = new AmazonService\Api\Operations\GetItems\GetJsonAndDownloadJsonToMySql(
+        $this->getJsonAndSaveJsonToMySqlService = new AmazonService\Api\Operations\GetItems\GetJsonAndSaveJsonToMySql(
             $this->jsonServiceMock,
             $this->saveJsonToMySqlServiceMock
         );
     }
 
-    public function testGetJsonAndDownloadJsonToMySql()
+    public function testGetJsonAndSaveJsonToMySql()
     {
         $itemIds    = [];
         $resources  = [];
@@ -39,7 +39,7 @@ class GetJsonAndDownloadJsonToMySqlTest extends TestCase
             ->method('saveJsonToMySql')
             ->with($jsonString);
 
-        $this->getJsonAndDownloadJsonToMySqlService->getJsonAndDownloadJsonToMySql(
+        $this->getJsonAndSaveJsonToMySqlService->getJsonAndSaveJsonToMySql(
             $itemIds,
             $resources
         );
