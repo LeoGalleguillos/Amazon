@@ -3,21 +3,20 @@ namespace LeoGalleguillos\Amazon\Model\Service\Api\Resources\ItemInfo;
 
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\TableGateway as AmazonTableGateway;
+use LeoGalleguillos\ArrayModule\Service as ArrayModuleService;
 
 class DownloadArrayToMySql
 {
     public function __construct(
         AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql $saveExternalIdsArrayToMySqlService,
         AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set $manufactureInfoSetService,
-        AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull $colorStringOrNullService,
-        AmazonService\Api\Resources\ItemInfo\ProductInfo\Size\DisplayValue\StringOrNull $sizeStringOrNullService,
-        AmazonTableGateway\Product $productTableGateway
+        AmazonTableGateway\Product $productTableGateway,
+        ArrayModuleService\Path\StringOrNull $stringOrNullService
     ) {
         $this->saveExternalIdsArrayToMySqlService = $saveExternalIdsArrayToMySqlService;
         $this->manufactureInfoSetService          = $manufactureInfoSetService;
-        $this->colorStringOrNullService           = $colorStringOrNullService;
-        $this->sizeStringOrNullService            = $sizeStringOrNullService;
         $this->productTableGateway                = $productTableGateway;
+        $this->stringOrNullService                = $stringOrNullService;
     }
 
     public function downloadArrayToMySql(
@@ -25,7 +24,7 @@ class DownloadArrayToMySql
         int $productId
     ) {
         $set = [
-            'color' => $this->colorStringOrNullService->getStringOrNull($itemInfoArray),
+            'color' => $this->getColor($itemInfoArray),
             'is_adult_product' => isset($itemInfoArray['ProductInfo']['IsAdultProduct']['DisplayValue'])
                 ? ((int) $itemInfoArray['ProductInfo']['IsAdultProduct']['DisplayValue'])
                 : null,
@@ -55,7 +54,7 @@ class DownloadArrayToMySql
                     strtotime($itemInfoArray['ProductInfo']['ReleaseDate']['DisplayValue'])
                   )
                 : null,
-            'size' => $this->sizeStringOrNullService->getStringOrNull($itemInfoArray),
+            'size' => $this->getSize($itemInfoArray),
             'unit_count' => $itemInfoArray['ProductInfo']['UnitCount']['DisplayValue'] ?? null,
         ];
 
@@ -76,5 +75,29 @@ class DownloadArrayToMySql
                 $productId
             );
         }
+    }
+
+    /**
+     * @return string|null
+     */
+    protected function getColor(array $itemInfoArray)
+    {
+        return $this->stringOrNullService->getStringOrNull(
+            ['ProductInfo', 'Color', 'DisplayValue'],
+            $itemInfoArray,
+            255
+        );
+    }
+
+    /**
+     * @return string|null
+     */
+    protected function getSize(array $itemInfoArray)
+    {
+        return $this->stringOrNullService->getStringOrNull(
+            ['ProductInfo', 'Size', 'DisplayValue'],
+            $itemInfoArray,
+            127
+        );
     }
 }

@@ -3,6 +3,7 @@ namespace LeoGalleguillos\AmazonTest\Model\Service\Api\Resources\ItemInfo;
 
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\TableGateway as AmazonTableGateway;
+use LeoGalleguillos\ArrayModule\Service as ArrayModuleService;
 use PHPUnit\Framework\TestCase;
 
 class DownloadArrayToMySqlTest extends TestCase
@@ -15,21 +16,17 @@ class DownloadArrayToMySqlTest extends TestCase
         $this->manufactureInfoSetServiceMock = $this->createMock(
             AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set::class
         );
-        $this->colorStringOrNullServiceMock = $this->createMock(
-            AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull::class
-        );
-        $this->sizeStringOrNullServiceMock = $this->createMock(
-            AmazonService\Api\Resources\ItemInfo\ProductInfo\Size\DisplayValue\StringOrNull::class
-        );
         $this->productTableGatewayMock = $this->createMock(
             AmazonTableGateway\Product::class
+        );
+        $this->stringOrNullServiceMock = $this->createMock(
+            ArrayModuleService\Path\StringOrNull::class
         );
         $this->downloadArrayToMySqlService = new AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql(
             $this->saveExternalIdsArrayToMySqlMock,
             $this->manufactureInfoSetServiceMock,
-            $this->colorStringOrNullServiceMock,
-            $this->sizeStringOrNullServiceMock,
-            $this->productTableGatewayMock
+            $this->productTableGatewayMock,
+            $this->stringOrNullServiceMock
         );
     }
 
@@ -42,12 +39,14 @@ class DownloadArrayToMySqlTest extends TestCase
                 'model'       => 'ABCDEFG',
                 'warranty'    => '1 year with full refund or replacement',
             ]);
-        $this->colorStringOrNullServiceMock
+        $this->stringOrNullServiceMock
             ->method('getStringOrNull')
-            ->willReturn('RED');
-        $this->sizeStringOrNullServiceMock
-            ->method('getStringOrNull')
-            ->willReturn(null);
+            ->will(
+                $this->onConsecutiveCalls(
+                    'RED',
+                    null
+                )
+            );
 
         $this->productTableGatewayMock
             ->expects($this->exactly(1))

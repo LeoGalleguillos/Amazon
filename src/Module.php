@@ -270,21 +270,14 @@ class Module
                     return new AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql(
                         $sm->get(AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql::class),
                         $sm->get(AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set::class),
-                        $sm->get(AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull::class),
-                        $sm->get(AmazonService\Api\Resources\ItemInfo\ProductInfo\Size\DisplayValue\StringOrNull::class),
-                        $sm->get(AmazonTableGateway\Product::class)
+                        $sm->get(AmazonTableGateway\Product::class),
+                        $sm->get(ArrayModuleService\Path\StringOrNull::class)
                     );
                 },
                 AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set::class => function ($sm) {
                     return new AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set(
                         $sm->get(ArrayModuleService\Path\StringOrNull::class)
                     );
-                },
-                AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull::class => function ($sm) {
-                    return new AmazonService\Api\Resources\ItemInfo\ProductInfo\Color\DisplayValue\StringOrNull();
-                },
-                AmazonService\Api\Resources\ItemInfo\ProductInfo\Size\DisplayValue\StringOrNull::class => function ($sm) {
-                    return new AmazonService\Api\Resources\ItemInfo\ProductInfo\Size\DisplayValue\StringOrNull();
                 },
                 AmazonService\Api\SimilarProducts\Xml::class => function ($sm) {
                     $config = $sm->get('Config');
