@@ -49,7 +49,13 @@ class DownloadArrayToMySqlTest extends TestCase
                 'manufacturer' => 'KL Industries',
             ]);
         $this->manufactureInfoSetServiceMock
+            ->expects($this->exactly(1))
             ->method('getSet')
+            ->with(
+                $this->identicalTo(
+                    $this->getArray()['ManufactureInfo']
+                )
+            )
             ->willReturn([
                 'part_number' => '51120',
                 'model'       => 'ABCDEFG',
@@ -89,7 +95,7 @@ class DownloadArrayToMySqlTest extends TestCase
                         'brand'            => 'SUNDOLPHIN',
                         'manufacturer'     => 'KL Industries',
 
-                        // Manufacture Info
+                        // ManufactureInfo
                         'part_number'      => '51120',
                         'model'            => 'ABCDEFG',
                         'warranty'         => '1 year with full refund or replacement',
