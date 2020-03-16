@@ -13,6 +13,9 @@ class SaveArrayToMySqlTest extends TestCase
         $this->byLineInfoSetServiceMock = $this->createMock(
             AmazonService\Api\Resources\ItemInfo\ByLineInfo\Set::class
         );
+        $this->classificationsSetServiceMock = $this->createMock(
+            AmazonService\Api\Resources\ItemInfo\Classifications\Set::class
+        );
         $this->saveExternalIdsArrayToMySqlMock = $this->createMock(
             AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql::class
         );
@@ -27,6 +30,7 @@ class SaveArrayToMySqlTest extends TestCase
         );
         $this->saveArrayToMySqlService = new AmazonService\Api\Resources\ItemInfo\SaveArrayToMySql(
             $this->byLineInfoSetServiceMock,
+            $this->classificationsSetServiceMock,
             $this->saveExternalIdsArrayToMySqlMock,
             $this->manufactureInfoSetServiceMock,
             $this->productTableGatewayMock,
@@ -47,6 +51,18 @@ class SaveArrayToMySqlTest extends TestCase
             ->willReturn([
                 'brand'        => 'SUNDOLPHIN',
                 'manufacturer' => 'KL Industries',
+            ]);
+        $this->classificationsSetServiceMock
+            ->expects($this->exactly(1))
+            ->method('getSet')
+            ->with(
+                $this->identicalTo(
+                    $this->getArray()['Classifications']
+                )
+            )
+            ->willReturn([
+                'binding'       => 'Sports',
+                'product_group' => 'Outdoors',
             ]);
         $this->manufactureInfoSetServiceMock
             ->expects($this->exactly(1))
@@ -94,6 +110,10 @@ class SaveArrayToMySqlTest extends TestCase
                         // ByLineInfo
                         'brand'            => 'SUNDOLPHIN',
                         'manufacturer'     => 'KL Industries',
+
+                        // Classifications
+                        'binding'          => 'Sports',
+                        'product_group'    => 'Outdoors',
 
                         // ManufactureInfo
                         'part_number'      => '51120',

@@ -9,12 +9,14 @@ class SaveArrayToMySql
 {
     public function __construct(
         AmazonService\Api\Resources\ItemInfo\ByLineInfo\Set $byLineInfoSetService,
+        AmazonService\Api\Resources\ItemInfo\Classifications\Set $classificationsSetService,
         AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql $saveExternalIdsArrayToMySqlService,
         AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set $manufactureInfoSetService,
         AmazonTableGateway\Product $productTableGateway,
         ArrayModuleService\Path\StringOrNull $stringOrNullService
     ) {
         $this->byLineInfoSetService               = $byLineInfoSetService;
+        $this->classificationsSetService          = $classificationsSetService;
         $this->saveExternalIdsArrayToMySqlService = $saveExternalIdsArrayToMySqlService;
         $this->manufactureInfoSetService          = $manufactureInfoSetService;
         $this->productTableGateway                = $productTableGateway;
@@ -63,6 +65,12 @@ class SaveArrayToMySql
         if (isset($itemInfoArray['ByLineInfo'])) {
             $set += $this->byLineInfoSetService->getSet(
                 $itemInfoArray['ByLineInfo']
+            );
+        }
+
+        if (isset($itemInfoArray['Classifications'])) {
+            $set += $this->classificationsSetService->getSet(
+                $itemInfoArray['Classifications']
             );
         }
 

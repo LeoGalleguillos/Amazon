@@ -279,6 +279,7 @@ class Module
                 AmazonService\Api\Resources\ItemInfo\SaveArrayToMySql::class => function ($sm) {
                     return new AmazonService\Api\Resources\ItemInfo\SaveArrayToMySql(
                         $sm->get(AmazonService\Api\Resources\ItemInfo\ByLineInfo\Set::class),
+                        $sm->get(AmazonService\Api\Resources\ItemInfo\Classifications\Set::class),
                         $sm->get(AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql::class),
                         $sm->get(AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set::class),
                         $sm->get(AmazonTableGateway\Product::class),
