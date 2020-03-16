@@ -10,6 +10,9 @@ class DownloadArrayToMySqlTest extends TestCase
 {
     protected function setUp()
     {
+        $this->byLineInfoSetServiceMock = $this->createMock(
+            AmazonService\Api\Resources\ItemInfo\ByLineInfo\Set::class
+        );
         $this->saveExternalIdsArrayToMySqlMock = $this->createMock(
             AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql::class
         );
@@ -23,6 +26,7 @@ class DownloadArrayToMySqlTest extends TestCase
             ArrayModuleService\Path\StringOrNull::class
         );
         $this->downloadArrayToMySqlService = new AmazonService\Api\Resources\ItemInfo\DownloadArrayToMySql(
+            $this->byLineInfoSetServiceMock,
             $this->saveExternalIdsArrayToMySqlMock,
             $this->manufactureInfoSetServiceMock,
             $this->productTableGatewayMock,
@@ -32,6 +36,18 @@ class DownloadArrayToMySqlTest extends TestCase
 
     public function testDownloadArrayToMySql()
     {
+        $this->byLineInfoSetServiceMock
+            ->expects($this->exactly(1))
+            ->method('getSet')
+            ->with(
+                $this->identicalTo(
+                    $this->getArray()['ByLineInfo']
+                )
+            )
+            ->willReturn([
+                'brand'        => 'SUNDOLPHIN',
+                'manufacturer' => 'KL Industries',
+            ]);
         $this->manufactureInfoSetServiceMock
             ->method('getSet')
             ->willReturn([
@@ -68,6 +84,10 @@ class DownloadArrayToMySqlTest extends TestCase
                         'released'         => null,
                         'size'             => null,
                         'unit_count'       => 1,
+
+                        // ByLineInfo
+                        'brand'            => 'SUNDOLPHIN',
+                        'manufacturer'     => 'KL Industries',
 
                         // Manufacture Info
                         'part_number'      => '51120',
