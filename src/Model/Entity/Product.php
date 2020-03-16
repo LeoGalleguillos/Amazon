@@ -116,6 +116,11 @@ class Product
     /**
      * @var string
      */
+    protected $manufacturer;
+
+    /**
+     * @var string
+     */
     protected $model;
 
     /**
@@ -294,6 +299,11 @@ class Product
     public function getListPrice(): float
     {
         return $this->listPrice;
+    }
+
+    public function getManufacturer(): string
+    {
+        return $this->manufacturer;
     }
 
     public function getModel(): string
@@ -492,6 +502,12 @@ class Product
     public function setListPrice(float $listPrice): self
     {
         $this->listPrice = $listPrice;
+        return $this;
+    }
+
+    public function setManufacturer(string $manufacturer): self
+    {
+        $this->manufacturer = $manufacturer;
         return $this;
     }
 

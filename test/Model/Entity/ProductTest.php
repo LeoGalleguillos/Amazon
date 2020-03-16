@@ -133,6 +133,16 @@ class ProductTest extends TestCase
             $this->productEntity->getLengthValue()
         );
 
+        $manufacturer = 'Jiskha LLC';
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setManufacturer($manufacturer)
+        );
+        $this->assertSame(
+            $manufacturer,
+            $this->productEntity->getManufacturer()
+        );
+
         $model = 'Model';
         $this->assertSame(
             $this->productEntity,
