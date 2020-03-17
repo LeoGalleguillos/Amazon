@@ -740,8 +740,8 @@ class Module
                         $sm->get('amazon')
                     );
                 },
-                AmazonTable\Product\Search::class => function ($sm) {
-                    return new AmazonTable\Product\Search(
+                AmazonTable\ProductSearch::class => function ($sm) {
+                    return new AmazonTable\ProductSearch(
                         $sm->get(MemcachedService\Memcached::class),
                         $sm->get('amazon')
                     );

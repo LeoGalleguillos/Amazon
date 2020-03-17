@@ -1,10 +1,10 @@
 <?php
-namespace LeoGalleguillos\Amazon\Model\Table\Product;
+namespace LeoGalleguillos\Amazon\Model\Table;
 
 use LeoGalleguillos\Memcached\Model\Service\Memcached as MemcachedService;
 use Zend\Db\Adapter\Adapter;
 
-class Search
+class ProductSearch
 {
     const MAX_WORDS = 5;
 
