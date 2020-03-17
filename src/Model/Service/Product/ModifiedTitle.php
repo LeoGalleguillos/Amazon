@@ -10,17 +10,6 @@ class ModifiedTitle
     {
         $title = $product->getTitle();
 
-        // Remove brand.
-        try {
-            $brandRegularExpression = preg_quote(
-                $product->getBrandEntity()->getName(),
-                '/'
-            );
-            $title = preg_replace("/^$brandRegularExpression/i", '', $title);
-        } catch (TypeError $typeError) {
-            // Do nothing.
-        }
-
         // Remove (...) and [...]
         $title = preg_replace('/\(.*\)?/', '', $title);
         $title = preg_replace('/\[.*\]?/', '', $title);

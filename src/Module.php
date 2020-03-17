@@ -118,9 +118,6 @@ class Module
                 AmazonFactory\Binding::class => function ($sm) {
                     return new AmazonFactory\Binding();
                 },
-                AmazonFactory\Brand::class => function ($sm) {
-                    return new AmazonFactory\Brand();
-                },
                 AmazonFactory\BrowseNode::class => function ($sm) {
                     return new AmazonFactory\BrowseNode(
                         $sm->get(AmazonTable\BrowseNode::class),
@@ -130,7 +127,6 @@ class Module
                 AmazonFactory\Product::class => function ($sm) {
                     return new AmazonFactory\Product(
                         $sm->get(AmazonFactory\Binding::class),
-                        $sm->get(AmazonFactory\Brand::class),
                         $sm->get(AmazonFactory\ProductGroup::class),
                         $sm->get(ImageFactory\Image::class),
                         $sm->get(AmazonTable\Product::class),
@@ -309,12 +305,6 @@ class Module
                     return new AmazonService\Binding(
                         $sm->get(AmazonFactory\Product::class),
                         $sm->get(AmazonTable\Binding::class)
-                    );
-                },
-                AmazonService\Brand::class => function ($sm) {
-                    return new AmazonService\Brand(
-                        $sm->get(AmazonFactory\Product::class),
-                        $sm->get(AmazonTable\Brand::class)
                     );
                 },
                 AmazonService\BrowseNode\BrowseNodes::class => function ($sm) {
@@ -631,12 +621,6 @@ class Module
                 },
                 AmazonTable\Binding::class => function ($sm) {
                     return new AmazonTable\Binding(
-                        $sm->get(MemcachedService\Memcached::class),
-                        $sm->get('amazon')
-                    );
-                },
-                AmazonTable\Brand::class => function ($sm) {
-                    return new AmazonTable\Brand(
                         $sm->get(MemcachedService\Memcached::class),
                         $sm->get('amazon')
                     );

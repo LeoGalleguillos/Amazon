@@ -16,7 +16,6 @@ class ProductTest extends TestCase
     protected function setUp()
     {
         $this->bindingFactoryMock = $this->createMock(AmazonFactory\Binding::class);
-        $this->brandFactoryMock = $this->createMock(AmazonFactory\Brand::class);
         $this->productGroupFactoryMock = $this->createMock(AmazonFactory\ProductGroup::class);
         $this->imageFactoryMock = $this->createMock(ImageFactory\Image::class);
         $this->productTableMock = $this->createMock(AmazonTable\Product::class);
@@ -37,7 +36,6 @@ class ProductTest extends TestCase
 
         $this->productFactory = new AmazonFactory\Product(
             $this->bindingFactoryMock,
-            $this->brandFactoryMock,
             $this->productGroupFactoryMock,
             $this->imageFactoryMock,
             $this->productTableMock,

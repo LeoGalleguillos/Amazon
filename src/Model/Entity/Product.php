@@ -23,14 +23,9 @@ class Product
     public $bindingEntity;
 
     /**
-     * @var AmazonEntity\Brand
+     * @var string
      */
-    public $brand;
-
-    /**
-     * @var AmazonEntity\Brand
-     */
-    public $brandEntity;
+    protected $brand;
 
     /**
      * @var array
@@ -218,9 +213,9 @@ class Product
         return $this->bindingEntity;
     }
 
-    public function getBrandEntity(): AmazonEntity\Brand
+    public function getBrand(): string
     {
-        return $this->brandEntity;
+        return $this->brand;
     }
 
     public function getBrowseNodeProducts(): array
@@ -404,10 +399,10 @@ class Product
         return $this;
     }
 
-    public function setBrandEntity(
-        AmazonEntity\Brand $brandEntity
+    public function setBrand(
+        string $brand
     ): self {
-        $this->brandEntity = $brandEntity;
+        $this->brand = $brand;
         return $this;
     }
 

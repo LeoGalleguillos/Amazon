@@ -25,7 +25,7 @@ class ProductEntity
             // Do nothing.
         }
         try {
-            $words .= ' ' . $productEntity->getBrandEntity();
+            $words .= ' ' . $productEntity->getBrand();
         } catch (Error $error) {
             // Do nothing.
         }

@@ -13,7 +13,6 @@ class Product
 {
     public function __construct(
         AmazonFactory\Binding $bindingFactory,
-        AmazonFactory\Brand $brandFactory,
         AmazonFactory\ProductGroup $productGroupFactory,
         ImageFactory\Image $imageFactory,
         AmazonTable\Product $productTable,
@@ -25,7 +24,6 @@ class Product
         AmazonTable\ProductUpc\ProductId $productUpcProductIdTable
     ) {
         $this->bindingFactory            = $bindingFactory;
-        $this->brandFactory              = $brandFactory;
         $this->productGroupFactory       = $productGroupFactory;
         $this->imageFactory              = $imageFactory;
         $this->productTable              = $productTable;
@@ -58,9 +56,7 @@ class Product
         }
 
         if (!empty($productArray['brand'])) {
-            $productEntity->setBrandEntity(
-                $this->brandFactory->buildFromName($productArray['brand'])
-            );
+            $productEntity->setBrand($productArray['brand']);
         }
 
         if (isset($productArray['color'])) {
