@@ -13,12 +13,12 @@ class Similar
     public function __construct(
         AmazonFactory\Product $productFactory,
         AmazonTable\Product\ProductId $productIdTable,
-        AmazonTable\Product\Title $titleTable,
+        AmazonTable\ProductSearch $productSearchTable,
         StringService\KeepFirstWords $keepFirstWordsService
     ) {
         $this->productFactory        = $productFactory;
         $this->productIdTable        = $productIdTable;
-        $this->titleTable            = $titleTable;
+        $this->productSearchTable    = $productSearchTable;
         $this->keepFirstWordsService = $keepFirstWordsService;
     }
 
@@ -31,8 +31,9 @@ class Similar
         $query = str_replace('"', '', $query);
 
         try {
-            $result = $this->titleTable->selectProductIdWhereMatchAgainst($query);
+            $result = $this->productSearchTable->selectProductIdWhereMatchAgainst($query);
         } catch (InvalidQueryException $invalidQueryException) {
+            // Return empty Generator
             return;
         }
 
@@ -42,6 +43,7 @@ class Similar
         }
 
         if (empty($productIds)) {
+            // Return empty Generator
             return;
         }
 

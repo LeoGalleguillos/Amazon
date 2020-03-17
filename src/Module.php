@@ -406,7 +406,7 @@ class Module
                     return new AmazonService\Product\Products\Similar(
                         $sm->get(AmazonFactory\Product::class),
                         $sm->get(AmazonTable\Product\ProductId::class),
-                        $sm->get(AmazonTable\Product\Title::class),
+                        $sm->get(AmazonTable\ProductSearch::class),
                         $sm->get(StringService\KeepFirstWords::class)
                     );
                 },

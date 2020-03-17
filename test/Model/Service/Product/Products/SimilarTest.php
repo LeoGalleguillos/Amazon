@@ -19,15 +19,15 @@ class SimilarTest extends TestCase
         $this->productIdTableMock = $this->createMock(
             AmazonTable\Product\ProductId::class
         );
-        $this->titleTableMock = $this->createMock(
-            AmazonTable\Product\Title::class
+        $this->productSearchTableMock = $this->createMock(
+            AmazonTable\ProductSearch::class
         );
         $this->keepFirstWordsService = new StringService\KeepFirstWords();
 
         $this->similarService = new AmazonService\Product\Products\Similar(
             $this->productFactoryMock,
             $this->productIdTableMock,
-            $this->titleTableMock,
+            $this->productSearchTableMock,
             $this->keepFirstWordsService
         );
     }
@@ -46,9 +46,9 @@ class SimilarTest extends TestCase
         );
     }
 
-    public function test_getSimilarProducts_titleTableThrowsInvalidQueryException_emptyGenerator()
+    public function test_getSimilarProducts_productSearchTableThrowsInvalidQueryException_emptyGenerator()
     {
-        $this->titleTableMock
+        $this->productSearchTableMock
             ->method('selectProductIdWhereMatchAgainst')
             ->will($this->throwException(new InvalidQueryException()));
 
