@@ -90,32 +90,34 @@ class ProductTest extends TestCase
             );
 
         $array = [
-            'product_id'       => '12345',
             'asin'             => 'ASIN',
-            'title'            => 'Title',
-            'list_price'       => '1.23',
+            'brand'            => 'the brand',
             'color'            => 'Red',
-            'is_adult_product' => 1,
             'height_units'     => 'inches',
             'height_value'     => '1.0',
+            'is_adult_product' => 1,
+            'is_valid'         => '1',
             'length_units'     => 'cm',
             'length_value'     => '3.14159',
+            'list_price'       => '1.23',
             'model'            => 'the model',
             'manufacturer'     => 'the manufacturer',
             'part_number'      => 'the part #',
+            'product_id'       => '12345',
+            'released'         => '2020-02-08 12:12:45',
+            'size'             => 'Medium',
+            'title'            => 'Title',
+            'unit_count'       => 7,
+            'warranty'         => 'The warranty for the product',
             'weight_units'     => 'LBS',
             'weight_value'     => '1000',
             'width_units'      => 'feet',
             'width_value'      => '10.0',
-            'released'         => '2020-02-08 12:12:45',
-            'size'             => 'Medium',
-            'unit_count'       => 7,
-            'warranty'         => 'The warranty for the product',
-            'is_valid'         => '1',
         ];
 
         $productEntity = (new AmazonEntity\Product())
             ->setAsin('ASIN')
+            ->setBrand('the brand')
             ->setColor('Red')
             ->setEans([
                 '1234567890123',
