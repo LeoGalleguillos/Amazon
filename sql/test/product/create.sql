@@ -1,7 +1,7 @@
 CREATE TABLE `product` (
   `product_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `asin` varchar(10) NOT NULL,
-  `title` TEXT NOT NULL,
+  `title` varchar(511) DEFAULT NULL,
   `product_group` varchar(255) DEFAULT NULL,
   `binding` varchar(255) DEFAULT NULL,
   `brand` varchar(255) DEFAULT NULL,
