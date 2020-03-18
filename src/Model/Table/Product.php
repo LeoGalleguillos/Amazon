@@ -45,6 +45,8 @@ class Product
                  , `product`.`released`
                  , `product`.`size`
                  , `product`.`unit_count`
+                 , `product`.`is_eligible_for_trade_in`
+                 , `product`.`trade_in_price`
                  , `product`.`list_price`
                  , `product`.`modified`
                  , `product`.`hi_res_images_retrieved`
