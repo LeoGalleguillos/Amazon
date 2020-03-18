@@ -22,6 +22,8 @@ CREATE TABLE `product` (
   `released` datetime DEFAULT NULL,
   `size` varchar(127) DEFAULT NULL,
   `unit_count` int(10) unsigned DEFAULT NULL,
+  `is_eligible_for_trade_in` tinyint(1) DEFAULT NULL,
+  `trade_in_price` float(16, 2) unsigned DEFAULT NULL,
   `list_price` float(16,2) unsigned DEFAULT NULL,
   `created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified` DATETIME DEFAULT NULL,
