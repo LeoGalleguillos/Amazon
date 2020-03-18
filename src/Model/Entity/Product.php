@@ -164,6 +164,11 @@ class Product
     protected $title;
 
     /**
+     * @var float
+     */
+    protected $tradeInPrice;
+
+    /**
      * @var int
      */
     public $unitCount;
@@ -349,6 +354,11 @@ class Product
     public function getTitle(): string
     {
         return $this->title;
+    }
+
+    public function getTradeInPrice(): float
+    {
+        return $this->tradeInPrice;
     }
 
     public function getUnitCount(): int
@@ -569,6 +579,12 @@ class Product
     public function setTitle(string $title): self
     {
         $this->title = $title;
+        return $this;
+    }
+
+    public function setTradeInPrice(float $tradeInPrice): self
+    {
+        $this->tradeInPrice = $tradeInPrice;
         return $this;
     }
 

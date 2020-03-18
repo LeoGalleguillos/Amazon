@@ -193,6 +193,16 @@ class ProductTest extends TestCase
             $this->productEntity->getSize()
         );
 
+        $tradeInPrice = 19.95;
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setTradeInPrice($tradeInPrice)
+        );
+        $this->assertSame(
+            $tradeInPrice,
+            $this->productEntity->getTradeInPrice()
+        );
+
         $unitCount = 7;
         $this->assertSame(
             $this->productEntity,
