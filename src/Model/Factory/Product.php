@@ -140,6 +140,12 @@ class Product
             );
         }
 
+        if (isset($productArray['is_eligible_for_trade_in'])) {
+            $productEntity->setIsEligibleForTradeIn(
+                (bool) $productArray['is_eligible_for_trade_in']
+            );
+        }
+
         if (isset($productArray['is_valid'])) {
             $productEntity->setIsValid(
                 (bool) $productArray['is_valid']
@@ -162,6 +168,10 @@ class Product
             $productEntity->setTitle(
                 $productArray['title']
             );
+        }
+
+        if (isset($productArray['trade_in_price'])) {
+            $productEntity->setTradeInPrice($productArray['trade_in_price']);
         }
 
         if (isset($productArray['unit_count'])) {

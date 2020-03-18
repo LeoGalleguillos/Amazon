@@ -90,29 +90,31 @@ class ProductTest extends TestCase
             );
 
         $array = [
-            'asin'             => 'ASIN',
-            'brand'            => 'the brand',
-            'color'            => 'Red',
-            'height_units'     => 'inches',
-            'height_value'     => '1.0',
-            'is_adult_product' => 1,
-            'is_valid'         => '1',
-            'length_units'     => 'cm',
-            'length_value'     => '3.14159',
-            'list_price'       => '1.23',
-            'model'            => 'the model',
-            'manufacturer'     => 'the manufacturer',
-            'part_number'      => 'the part #',
-            'product_id'       => '12345',
-            'released'         => '2020-02-08 12:12:45',
-            'size'             => 'Medium',
-            'title'            => 'Title',
-            'unit_count'       => 7,
-            'warranty'         => 'The warranty for the product',
-            'weight_units'     => 'LBS',
-            'weight_value'     => '1000',
-            'width_units'      => 'feet',
-            'width_value'      => '10.0',
+            'asin'                     => 'ASIN',
+            'brand'                    => 'the brand',
+            'color'                    => 'Red',
+            'height_units'             => 'inches',
+            'height_value'             => '1.0',
+            'is_adult_product'         => 1,
+            'is_eligible_for_trade_in' => 1,
+            'is_valid'                 => '1',
+            'length_units'             => 'cm',
+            'length_value'             => '3.14159',
+            'list_price'               => '1.23',
+            'model'                    => 'the model',
+            'manufacturer'             => 'the manufacturer',
+            'part_number'              => 'the part #',
+            'product_id'               => '12345',
+            'released'                 => '2020-02-08 12:12:45',
+            'size'                     => 'Medium',
+            'title'                    => 'Title',
+            'trade_in_price'           => 19.95,
+            'unit_count'               => 7,
+            'warranty'                 => 'The warranty for the product',
+            'weight_units'             => 'LBS',
+            'weight_value'             => '1000',
+            'width_units'              => 'feet',
+            'width_value'              => '10.0',
         ];
 
         $productEntity = (new AmazonEntity\Product())
@@ -132,6 +134,7 @@ class ProductTest extends TestCase
             ->setIsbns([
                 '1234567890',
             ])
+            ->setIsEligibleForTradeIn(true)
             ->setIsValid(true)
             ->setHeightUnits('inches')
             ->setHeightValue('1.0')
@@ -145,6 +148,7 @@ class ProductTest extends TestCase
             ->setReleased(new DateTime('2020-02-08 12:12:45'))
             ->setSize('Medium')
             ->setTitle('Title')
+            ->setTradeInPrice(19.95)
             ->setUnitCount(7)
             ->setUpcs([
                 '123456789012',
