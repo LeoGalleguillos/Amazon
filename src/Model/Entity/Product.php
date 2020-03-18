@@ -91,6 +91,11 @@ class Product
     /**
      * @var bool
      */
+    protected $isEligibleForTradeIn;
+
+    /**
+     * @var bool
+     */
     protected $isValid;
 
     /**
@@ -269,6 +274,11 @@ class Product
     public function getIsAdultProduct(): bool
     {
         return $this->isAdultProduct;
+    }
+
+    public function getIsEligibleForTradeIn(): bool
+    {
+        return $this->isEligibleForTradeIn;
     }
 
     public function getIsValid(): bool
@@ -467,6 +477,12 @@ class Product
     public function setIsAdultProduct(bool $isAdultProduct): self
     {
         $this->isAdultProduct = $isAdultProduct;
+        return $this;
+    }
+
+    public function setIsEligibleForTradeIn(bool $isEligibleForTradeIn): self
+    {
+        $this->isEligibleForTradeIn = $isEligibleForTradeIn;
         return $this;
     }
 

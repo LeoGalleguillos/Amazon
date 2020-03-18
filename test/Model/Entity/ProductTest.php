@@ -93,6 +93,16 @@ class ProductTest extends TestCase
             $this->productEntity->getIsAdultProduct()
         );
 
+        $isEligibleForTradeIn = true;
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setIsEligibleForTradeIn($isEligibleForTradeIn)
+        );
+        $this->assertSame(
+            $isEligibleForTradeIn,
+            $this->productEntity->getIsEligibleForTradeIn()
+        );
+
         $isValid = true;
         $this->assertSame(
             $this->productEntity,
