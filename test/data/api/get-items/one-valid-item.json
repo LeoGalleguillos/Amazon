@@ -1,0 +1,383 @@
+{
+ "ItemsResult": {
+  "Items": [
+   {
+    "ASIN": "B01BFIB1SA",
+    "BrowseNodeInfo": {
+     "BrowseNodes": [
+      {
+       "Ancestor": {
+        "Ancestor": {
+         "Ancestor": {
+          "ContextFreeName": "Electronics",
+          "DisplayName": "Electronics",
+          "Id": "172282"
+         },
+         "ContextFreeName": "Electronics",
+         "DisplayName": "Categories",
+         "Id": "493964"
+        },
+        "ContextFreeName": "eBook Readers & Accessories",
+        "DisplayName": "eBook Readers & Accessories",
+        "Id": "2642125011"
+       },
+       "ContextFreeName": "eBook Readers",
+       "DisplayName": "eBook Readers",
+       "Id": "2642129011",
+       "IsRoot": false,
+       "SalesRank": 85
+      },
+      {
+       "Ancestor": {
+        "ContextFreeName": "Electronics",
+        "DisplayName": "Electronics",
+        "Id": "172282"
+       },
+       "ContextFreeName": "Electronics Features",
+       "DisplayName": "Electronics Features",
+       "Id": "13900851",
+       "IsRoot": false
+      },
+      {
+       "Ancestor": {
+        "Ancestor": {
+         "ContextFreeName": "Amazon Devices & Accessories",
+         "DisplayName": "Amazon Devices & Accessories",
+         "Id": "16333372011"
+        },
+        "ContextFreeName": "Amazon Devices & Accessories",
+        "DisplayName": "Categories",
+        "Id": "16333373011"
+       },
+       "ContextFreeName": "Amazon Devices",
+       "DisplayName": "Amazon Devices",
+       "Id": "2102313011",
+       "IsRoot": false,
+       "SalesRank": 638
+      }
+     ]
+    },
+    "DetailPageURL": "https://www.amazon.com/dp/B01BFIB1SA?tag=associate-tag-20&linkCode=ogi&th=1&psc=1",
+    "Images": {
+     "Primary": {
+      "Large": {
+       "Height": 500,
+       "URL": "https://m.media-amazon.com/images/I/51aoGc0ViML.jpg",
+       "Width": 500
+      },
+      "Medium": {
+       "Height": 160,
+       "URL": "https://m.media-amazon.com/images/I/51aoGc0ViML._SL160_.jpg",
+       "Width": 160
+      },
+      "Small": {
+       "Height": 75,
+       "URL": "https://m.media-amazon.com/images/I/51aoGc0ViML._SL75_.jpg",
+       "Width": 75
+      }
+     },
+     "Variants": [
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/61XUOSd5q4L.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/61XUOSd5q4L._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/61XUOSd5q4L._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/51CqmIBxwbL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/51CqmIBxwbL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/51CqmIBxwbL._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/51uspf6Ri3L.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/51uspf6Ri3L._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/51uspf6Ri3L._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/511tPT1g0wL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/511tPT1g0wL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/511tPT1g0wL._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/51kIvG4qHqL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/51kIvG4qHqL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/51kIvG4qHqL._SL75_.jpg",
+        "Width": 75
+       }
+      },
+      {
+       "Large": {
+        "Height": 500,
+        "URL": "https://m.media-amazon.com/images/I/41rBlKjjptL.jpg",
+        "Width": 500
+       },
+       "Medium": {
+        "Height": 160,
+        "URL": "https://m.media-amazon.com/images/I/41rBlKjjptL._SL160_.jpg",
+        "Width": 160
+       },
+       "Small": {
+        "Height": 75,
+        "URL": "https://m.media-amazon.com/images/I/41rBlKjjptL._SL75_.jpg",
+        "Width": 75
+       }
+      }
+     ]
+    },
+    "ItemInfo": {
+     "ByLineInfo": {
+      "Brand": {
+       "DisplayValue": "Amazon",
+       "Label": "Brand",
+       "Locale": "en_US"
+      },
+      "Manufacturer": {
+       "DisplayValue": "Amazon",
+       "Label": "Manufacturer",
+       "Locale": "en_US"
+      }
+     },
+     "Classifications": {
+      "Binding": {
+       "DisplayValue": "Electronics",
+       "Label": "Binding",
+       "Locale": "en_US"
+      },
+      "ProductGroup": {
+       "DisplayValue": "Digital Text",
+       "Label": "ProductGroup",
+       "Locale": "en_US"
+      }
+     },
+     "ExternalIds": {
+      "EANs": {
+       "DisplayValues": [
+        "0841667107721"
+       ],
+       "Label": "EAN",
+       "Locale": "en_US"
+      },
+      "UPCs": {
+       "DisplayValues": [
+        "841667107721"
+       ],
+       "Label": "UPC",
+       "Locale": "en_US"
+      }
+     },
+     "Features": {
+      "DisplayValues": [
+       "Now available in black or white",
+       "Higher resolution display (300 ppi) - with twice as many pixels",
+       "Built-in adjustable light - read day and night",
+       "No screen glare, even in bright sunlight, unlike tablets",
+       "A single battery charge lasts weeks, not hours",
+       "Massive selection, low prices - over a million titles $2.99 or less",
+       "Prime members read free with unlimited access to over a thousand titles"
+      ],
+      "Label": "Features",
+      "Locale": "en_US"
+     },
+     "ManufactureInfo": {
+      "ItemPartNumber": {
+       "DisplayValue": "53-004918",
+       "Label": "PartNumber",
+       "Locale": "en_US"
+      },
+      "Model": {
+       "DisplayValue": "DP75SDI",
+       "Label": "Model",
+       "Locale": "en_US"
+      }
+     },
+     "ProductInfo": {
+      "Color": {
+       "DisplayValue": "White",
+       "Label": "Color",
+       "Locale": "en_US"
+      },
+      "IsAdultProduct": {
+       "DisplayValue": false,
+       "Label": "IsAdultProduct",
+       "Locale": "en_US"
+      },
+      "ItemDimensions": {
+       "Height": {
+        "DisplayValue": 0.36,
+        "Label": "Height",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Length": {
+        "DisplayValue": 6.7,
+        "Label": "Length",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       },
+       "Weight": {
+        "DisplayValue": 0.45,
+        "Label": "Weight",
+        "Locale": "en_US",
+        "Unit": "Pounds"
+       },
+       "Width": {
+        "DisplayValue": 4.6,
+        "Label": "Width",
+        "Locale": "en_US",
+        "Unit": "Inches"
+       }
+      },
+      "ReleaseDate": {
+       "DisplayValue": "2016-06-29T00:00:01Z",
+       "Label": "ReleaseDate",
+       "Locale": "en_US"
+      },
+      "Size": {
+       "DisplayValue": "4 GB",
+       "Label": "Size",
+       "Locale": "en_US"
+      }
+     },
+     "Title": {
+      "DisplayValue": "Kindle Paperwhite E-reader (Previous Generation - 7th) - White, 6\" High-Resolution Display (300 ppi) with Built-in Light, Wi-Fi + Free Cellular Connectivity - Includes Special Offers",
+      "Label": "Title",
+      "Locale": "en_US"
+     },
+     "TradeInInfo": {
+      "IsEligibleForTradeIn": true,
+      "Price": {
+       "Amount": 25,
+       "Currency": "USD",
+       "DisplayAmount": "$25.00"
+      }
+     }
+    },
+    "Offers": {
+     "Listings": [
+      {
+       "Availability": {
+        "MaxOrderQuantity": 3,
+        "Message": "In Stock.",
+        "MinOrderQuantity": 1,
+        "Type": "Now"
+       },
+       "Condition": {
+        "SubCondition": {
+         "Value": "Good"
+        },
+        "Value": "Used"
+       },
+       "DeliveryInfo": {
+        "IsAmazonFulfilled": true,
+        "IsFreeShippingEligible": true,
+        "IsPrimeEligible": true
+       },
+       "Id": "8GQCHQV4sEAb6wRgPAlyrRgi7GcACgN6OVXQddhwEGJ6rXBxVIyIF%2BjVuYoS1J0vhzNWZ4yNa1M%2Bi%2FjFfxTUXARO0eEBddK%2FM3%2B2s1VmElEevwMdW3Xw0QDgpauNzx5qNiaRjKurtDG6Gmy%2F%2FqhNje1OqqY37oz6",
+       "IsBuyBoxWinner": false,
+       "MerchantInfo": {
+        "Id": "A2L77EE7U53NWQ",
+        "Name": "Amazon Warehouse"
+       },
+       "Price": {
+        "Amount": 66.99,
+        "Currency": "USD",
+        "DisplayAmount": "$66.99",
+        "Savings": {
+         "Amount": 123,
+         "Currency": "USD",
+         "DisplayAmount": "$123.00 (65%)",
+         "Percentage": 65
+        }
+       },
+       "ProgramEligibility": {
+        "IsPrimeExclusive": false,
+        "IsPrimePantry": false
+       },
+       "SavingBasis": {
+        "Amount": 189.99,
+        "Currency": "USD",
+        "DisplayAmount": "$189.99"
+       },
+       "ViolatesMAP": false
+      }
+     ],
+     "Summaries": [
+      {
+       "Condition": {
+        "Value": "Used"
+       },
+       "HighestPrice": {
+        "Amount": 70.04,
+        "Currency": "USD",
+        "DisplayAmount": "$70.04"
+       },
+       "LowestPrice": {
+        "Amount": 66.99,
+        "Currency": "USD",
+        "DisplayAmount": "$66.99"
+       },
+       "OfferCount": 2
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

@@ -272,6 +272,14 @@ class Module
                         $sm->get(AmazonTable\ProductUpc::class)
                     );
                 },
+                AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set::class => function ($sm) {
+                    return new AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set(
+                        $sm->get(ArrayModuleService\Path\StringOrNull::class)
+                    );
+                },
+                AmazonService\Api\Resources\ItemInfo\TradeInInfo\Set::class => function ($sm) {
+                    return new AmazonService\Api\Resources\ItemInfo\TradeInInfo\Set();
+                },
                 AmazonService\Api\Resources\ItemInfo\SaveArrayToMySql::class => function ($sm) {
                     return new AmazonService\Api\Resources\ItemInfo\SaveArrayToMySql(
                         $sm->get(AmazonService\Api\Resources\ItemInfo\ByLineInfo\Set::class),
@@ -279,11 +287,6 @@ class Module
                         $sm->get(AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql::class),
                         $sm->get(AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set::class),
                         $sm->get(AmazonTableGateway\Product::class),
-                        $sm->get(ArrayModuleService\Path\StringOrNull::class)
-                    );
-                },
-                AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set::class => function ($sm) {
-                    return new AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set(
                         $sm->get(ArrayModuleService\Path\StringOrNull::class)
                     );
                 },

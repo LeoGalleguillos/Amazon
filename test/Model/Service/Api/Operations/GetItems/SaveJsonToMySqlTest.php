@@ -50,6 +50,28 @@ class SaveJsonToMySqlTest extends TestCase
         $this->saveJsonToMySqlService->saveJsonToMySql($jsonString);
     }
 
+    public function test_saveJsonToMySql_oneValidItem()
+    {
+        $jsonString = file_get_contents(
+            $_SERVER['PWD'] . '/test/data/api/get-items/one-valid-item.json'
+        );
+        $jsonArray = json_decode($jsonString, true);
+
+        $this->saveErrorsArrayToMySqlServiceMock
+            ->expects($this->exactly(0))
+            ->method('saveArrayToMySql');
+        $this->asinTableMock
+            ->expects($this->exactly(1))
+            ->method('updateSetIsValidWhereAsin')
+            ->with(1, 'B01BFIB1SA');
+        $this->saveItemArrayToMySqlServiceMock
+            ->expects($this->exactly(1))
+            ->method('saveArrayToMySql')
+            ->with($jsonArray['ItemsResult']['Items'][0]);
+
+        $this->saveJsonToMySqlService->saveJsonToMySql($jsonString);
+    }
+
     public function test_saveJsonToMySql_threeValidItems()
     {
         $this->saveErrorsArrayToMySqlServiceMock
