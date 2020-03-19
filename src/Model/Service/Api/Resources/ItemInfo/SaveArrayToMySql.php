@@ -12,6 +12,7 @@ class SaveArrayToMySql
         AmazonService\Api\Resources\ItemInfo\Classifications\Set $classificationsSetService,
         AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql $saveExternalIdsArrayToMySqlService,
         AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set $manufactureInfoSetService,
+        AmazonService\Api\Resources\ItemInfo\TradeInInfo\Set $tradeInInfoSetService,
         AmazonTableGateway\Product $productTableGateway,
         ArrayModuleService\Path\StringOrNull $stringOrNullService
     ) {
@@ -19,6 +20,7 @@ class SaveArrayToMySql
         $this->classificationsSetService          = $classificationsSetService;
         $this->saveExternalIdsArrayToMySqlService = $saveExternalIdsArrayToMySqlService;
         $this->manufactureInfoSetService          = $manufactureInfoSetService;
+        $this->tradeInInfoSetService              = $tradeInInfoSetService;
         $this->productTableGateway                = $productTableGateway;
         $this->stringOrNullService                = $stringOrNullService;
     }
@@ -77,6 +79,12 @@ class SaveArrayToMySql
         if (isset($itemInfoArray['ManufactureInfo'])) {
             $set += $this->manufactureInfoSetService->getSet(
                 $itemInfoArray['ManufactureInfo']
+            );
+        }
+
+        if (isset($itemInfoArray['TradeInInfo'])) {
+            $set += $this->tradeInInfoSetService->getSet(
+                $itemInfoArray['TradeInInfo']
             );
         }
 

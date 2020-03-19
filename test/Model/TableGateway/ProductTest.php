@@ -40,10 +40,14 @@ class ProductTest extends TableTestCase
                 'brand'            => 'SUNDOLPHIN',
                 'manufacturer'     => 'KL Industries',
 
-                // Manufacture Info
+                // ManufactureInfo
                 'part_number'      => '51120',
                 'model'            => 'ABCDEFG',
                 'warranty'         => '1 year with full refund or replacement',
+
+                // TradeInInfo
+                'is_eligible_for_trade_in' => 1,
+                'trade_in_price'           => 25.0,
             ],
             ['product_id' => 12345]
         );

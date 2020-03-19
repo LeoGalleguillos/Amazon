@@ -22,6 +22,9 @@ class SaveArrayToMySqlTest extends TestCase
         $this->manufactureInfoSetServiceMock = $this->createMock(
             AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set::class
         );
+        $this->tradeInInfoSetServiceMock = $this->createMock(
+            AmazonService\Api\Resources\ItemInfo\TradeInInfo\Set::class
+        );
         $this->productTableGatewayMock = $this->createMock(
             AmazonTableGateway\Product::class
         );
@@ -33,6 +36,7 @@ class SaveArrayToMySqlTest extends TestCase
             $this->classificationsSetServiceMock,
             $this->saveExternalIdsArrayToMySqlMock,
             $this->manufactureInfoSetServiceMock,
+            $this->tradeInInfoSetServiceMock,
             $this->productTableGatewayMock,
             $this->stringOrNullServiceMock
         );
@@ -77,6 +81,18 @@ class SaveArrayToMySqlTest extends TestCase
                 'model'       => 'ABCDEFG',
                 'warranty'    => '1 year with full refund or replacement',
             ]);
+        $this->tradeInInfoSetServiceMock
+            ->expects($this->exactly(1))
+            ->method('getSet')
+            ->with(
+                $this->identicalTo(
+                    $this->getArray()['TradeInInfo']
+                )
+            )
+            ->willReturn([
+                'is_eligible_for_trade_in' => 1,
+                'trade_in_price'           => 25.0,
+            ]);
         $this->stringOrNullServiceMock
             ->method('getStringOrNull')
             ->will(
@@ -119,6 +135,10 @@ class SaveArrayToMySqlTest extends TestCase
                         'part_number'      => '51120',
                         'model'            => 'ABCDEFG',
                         'warranty'         => '1 year with full refund or replacement',
+
+                        // TradeInInfo
+                        'is_eligible_for_trade_in' => 1,
+                        'trade_in_price'           => 25.0,
                     ],
                     ['product_id' => 12345]
                 )
@@ -286,6 +306,16 @@ class SaveArrayToMySqlTest extends TestCase
           'DisplayValue' => 'SUNDOLPHIN Sun Dolphin Mackinaw Canoe (Green, 15.6-Feet)',
           'Label' => 'Title',
           'Locale' => 'en_US',
+        ),
+        'TradeInInfo' =>
+        array (
+          'IsEligibleForTradeIn' => true,
+          'Price' =>
+          array (
+            'Amount' => 25,
+            'Currency' => 'USD',
+            'DisplayAmount' => '$25.00',
+          ),
         ),
       );
     }

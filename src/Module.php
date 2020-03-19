@@ -286,6 +286,7 @@ class Module
                         $sm->get(AmazonService\Api\Resources\ItemInfo\Classifications\Set::class),
                         $sm->get(AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql::class),
                         $sm->get(AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set::class),
+                        $sm->get(AmazonService\Api\Resources\ItemInfo\TradeInInfo\Set::class),
                         $sm->get(AmazonTableGateway\Product::class),
                         $sm->get(ArrayModuleService\Path\StringOrNull::class)
                     );
