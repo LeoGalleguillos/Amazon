@@ -30,6 +30,7 @@ class SaveArrayToMySql
         int $productId
     ) {
         $set = [
+            'title' => $itemInfoArray['Title']['DisplayValue'],
             'color' => $this->getColor($itemInfoArray),
             'is_adult_product' => isset($itemInfoArray['ProductInfo']['IsAdultProduct']['DisplayValue'])
                 ? ((int) $itemInfoArray['ProductInfo']['IsAdultProduct']['DisplayValue'])

@@ -22,6 +22,7 @@ class ProductTest extends TableTestCase
     {
         $affectedRows = $this->productTableGateway->update(
             [
+                'title'            => 'the title',
                 'color'            => 'RED',
                 'is_adult_product' => 0,
                 'height_value'     => 18.6,

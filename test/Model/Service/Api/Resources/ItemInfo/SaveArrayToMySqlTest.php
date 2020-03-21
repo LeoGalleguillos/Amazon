@@ -109,6 +109,7 @@ class SaveArrayToMySqlTest extends TestCase
                 // Use identicalTo to ensure 0 xor null
                 $this->identicalTo(
                     [
+                        'title'            => 'SUNDOLPHIN Sun Dolphin Mackinaw Canoe (Green, 15.6-Feet)',
                         'color'            => 'RED',
                         'is_adult_product' => 0,
                         'height_value'     => 18.6,
