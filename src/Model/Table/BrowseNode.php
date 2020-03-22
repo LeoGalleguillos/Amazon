@@ -2,8 +2,8 @@
 namespace LeoGalleguillos\Amazon\Model\Table;
 
 use Generator;
-use TypeError;
-use Zend\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Driver\Pdo\Result;
 
 class BrowseNode
 {
@@ -41,6 +41,32 @@ class BrowseNode
                           ->execute($parameters)
                           ->getAffectedRows();
     }
+
+    public function selectNameWhereProductIdLimit1(
+        int $productId
+    ): Result {
+        $sql = '
+            SELECT `browse_node`.`name`
+
+              FROM `browse_node`
+
+              JOIN `browse_node_product`
+             USING (`browse_node_id`)
+
+             WHERE `browse_node_product`.`product_id` = ?
+
+             ORDER
+                BY `browse_node_product`.`order` ASC
+
+             LIMIT 1
+                 ;
+        ';
+        $parameters = [
+            $productId,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
+    }
+
 
     public function selectWhereBrowseNodeId(int $browseNodeId): array
     {

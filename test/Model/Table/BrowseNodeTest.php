@@ -12,10 +12,13 @@ class BrowseNodeTest extends TableTestCase
         $this->browseNodeTable = new AmazonTable\BrowseNode(
             $this->getAdapter()
         );
+        $this->browseNodeProductTable = new AmazonTable\BrowseNodeProduct(
+            $this->getAdapter()
+        );
 
-        $this->setForeignKeyChecks0();
-        $this->dropAndCreateTable('browse_node');
-        $this->setForeignKeyChecks1();
+        $this->setForeignKeyChecks(0);
+        $this->dropAndCreateTables(['browse_node', 'browse_node_product']);
+        $this->setForeignKeyChecks(1);
     }
 
     public function testInsertIgnore()
@@ -31,6 +34,74 @@ class BrowseNodeTest extends TableTestCase
         $this->assertSame(
             1,
             $this->browseNodeTable->insertIgnore(5, 'name')
+        );
+    }
+
+    public function test_selectNameWhereProductIdLimit1_emptyTables()
+    {
+        $result = $this->browseNodeTable->selectNameWhereProductIdLimit1(12345);
+        $this->assertEmpty($result);
+    }
+
+    public function test_selectNameWhereProductIdLimit1_oneRow()
+    {
+        $this->setForeignKeyChecks(0);
+        $this->browseNodeTable->insertIgnore(
+            314159,
+            'Browse Node #314159'
+        );
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
+            314159,
+            12345,
+            null,
+            1
+        );
+
+        $result = $this->browseNodeTable->selectNameWhereProductIdLimit1(12345);
+        $this->assertSame(
+            'Browse Node #314159',
+            $result->current()['name']
+        );
+    }
+
+    public function test_selectNameWhereProductIdLimit1_multipleRows()
+    {
+        $this->setForeignKeyChecks(0);
+        $this->browseNodeTable->insertIgnore(
+            1618,
+            'Browse Node #1618'
+        );
+        $this->browseNodeTable->insertIgnore(
+            271828,
+            'Browse Node #271828'
+        );
+        $this->browseNodeTable->insertIgnore(
+            314159,
+            'Browse Node #314159'
+        );
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
+            271828,
+            12345,
+            null,
+            1
+        );
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
+            1618,
+            12345,
+            null,
+            1
+        );
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
+            31419,
+            12345,
+            null,
+            1
+        );
+
+        $result = $this->browseNodeTable->selectNameWhereProductIdLimit1(12345);
+        $this->assertSame(
+            'Browse Node #271828',
+            $result->current()['name']
         );
     }
 
