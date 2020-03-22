@@ -9,7 +9,7 @@ use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use TypeError;
 
 /**
- * @deprecated Use AmazonService\Product\BrowseNodesAndSalesRanks::getBrowseNodesAndSalesRanks() instead
+ * @deprecated Use AmazonService\Product\BrowseNodeProducts::getBrowseNodeProducts() instead
  */
 class Product
 {
