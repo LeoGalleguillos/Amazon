@@ -1444,16 +1444,16 @@
         },
         {
             "name": "leo-galleguillos/string",
-            "version": "v1.0.17",
+            "version": "v1.0.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/String.git",
-                "reference": "13ca7ed216f7a3d12bed30810c211f0ccc56c579"
+                "reference": "f4d136f2fcb0cf15a9491d27631344544db96031"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/String/zipball/13ca7ed216f7a3d12bed30810c211f0ccc56c579",
-                "reference": "13ca7ed216f7a3d12bed30810c211f0ccc56c579",
+                "url": "https://api.github.com/repos/LeoGalleguillos/String/zipball/f4d136f2fcb0cf15a9491d27631344544db96031",
+                "reference": "f4d136f2fcb0cf15a9491d27631344544db96031",
                 "shasum": ""
             },
             "require": {
@@ -1470,20 +1470,20 @@
             "license": [
                 "MIT"
             ],
-            "time": "2020-02-28T05:34:06+00:00"
+            "time": "2020-03-21T01:58:05+00:00"
         },
         {
             "name": "leo-galleguillos/test",
-            "version": "v1.0.3",
+            "version": "v1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/Test.git",
-                "reference": "bba52a6b0be73071cd7ffeeb688771a63b703162"
+                "reference": "b36cab3fbe4daa44e8ce55f6c8a27f3d7c1587ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/Test/zipball/bba52a6b0be73071cd7ffeeb688771a63b703162",
-                "reference": "bba52a6b0be73071cd7ffeeb688771a63b703162",
+                "url": "https://api.github.com/repos/LeoGalleguillos/Test/zipball/b36cab3fbe4daa44e8ce55f6c8a27f3d7c1587ff",
+                "reference": "b36cab3fbe4daa44e8ce55f6c8a27f3d7c1587ff",
                 "shasum": ""
             },
             "require": {
@@ -1501,7 +1501,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2020-02-13T09:51:50+00:00"
+            "time": "2020-03-22T23:19:02+00:00"
         },
         {
             "name": "leo-galleguillos/video",
@@ -1835,16 +1835,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "v1.10.2",
+            "version": "v1.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "b4400efc9d206e83138e2bb97ed7f5b14b831cd9"
+                "reference": "451c3cd1418cf640de218914901e51b064abb093"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/b4400efc9d206e83138e2bb97ed7f5b14b831cd9",
-                "reference": "b4400efc9d206e83138e2bb97ed7f5b14b831cd9",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/451c3cd1418cf640de218914901e51b064abb093",
+                "reference": "451c3cd1418cf640de218914901e51b064abb093",
                 "shasum": ""
             },
             "require": {
@@ -1894,7 +1894,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2020-01-20T15:57:02+00:00"
+            "time": "2020-03-05T15:02:03+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -3145,5 +3145,6 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
