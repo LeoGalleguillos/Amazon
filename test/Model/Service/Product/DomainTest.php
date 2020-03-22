@@ -25,7 +25,7 @@ class DomainTest extends TestCase
         );
     }
 
-    public function testGetUrl_BrowseNodeProductsIsEmpty_ReturnDefaultDomain()
+    public function test_getDomain_BrowseNodeProductsIsEmpty_ReturnDefaultDomain()
     {
         $productEntity = new AmazonEntity\Product();
 
@@ -35,7 +35,7 @@ class DomainTest extends TestCase
         );
     }
 
-    public function testGetUrl_BrowseNodeNameExistsInArray_ReturnNonDefaultDomain()
+    public function test_getDomain_BrowseNodeNameExistsInArray_ReturnNonDefaultDomain()
     {
         $browseNodeProducts = [
             $this->getBrowseNodeProductWithBrowseNodeName('Wealth'),
@@ -53,7 +53,7 @@ class DomainTest extends TestCase
         );
     }
 
-    public function testGetUrl_BrowseNodeNameDoesNotExistInArray_ReturnDefaultDomain()
+    public function test_getDomain_BrowseNodeNameDoesNotExistInArray_ReturnDefaultDomain()
     {
         $browseNodeProducts = [
             $this->getBrowseNodeProductWithBrowseNodeName('Foo'),
