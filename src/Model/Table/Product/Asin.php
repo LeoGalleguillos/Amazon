@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table\Product;
 
+use Laminas\Db\Adapter\Driver\Pdo\Result;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use TypeError;
 use Zend\Db\Adapter\Adapter;
@@ -38,10 +39,7 @@ class Asin
         return $this->adapter->query($sql)->execute($parameters)->current();
     }
 
-    /**
-     * @throws TypeError
-     */
-    public function selectWhereAsin(string $asin): array
+    public function selectWhereAsin(string $asin): Result
     {
         $sql = $this->productTable->getSelect()
              . '
@@ -52,7 +50,7 @@ class Asin
         $parameters = [
             $asin,
         ];
-        return $this->adapter->query($sql)->execute($parameters)->current();
+        return $this->adapter->query($sql)->execute($parameters);
     }
 
 

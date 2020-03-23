@@ -50,17 +50,10 @@ class AsinTest extends TableTestCase
         );
     }
 
-    public function testSelectWhereAsin()
+    public function test_selectWhereAsin()
     {
-        try {
-            $array = $this->asinTable->selectWhereAsin('ASIN001');
-            $this->fail();
-        } catch (TypeError $typeError) {
-            $this->assertSame(
-                'Return value of',
-                substr($typeError->getMessage(), 0, 15)
-            );
-        }
+        $result = $this->asinTable->selectWhereAsin('ASIN001');
+        $this->assertEmpty($result);
 
         $this->productTable->insert(
             'ASIN001',
@@ -71,7 +64,7 @@ class AsinTest extends TableTestCase
             4.99
         );
 
-        $array = $this->asinTable->selectWhereAsin('ASIN001');
+        $array = $this->asinTable->selectWhereAsin('ASIN001')->current();
         $this->assertSame(
             '1',
             $array['product_id']

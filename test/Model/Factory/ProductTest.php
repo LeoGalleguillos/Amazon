@@ -7,6 +7,7 @@ use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Image\Model\Factory as ImageFactory;
+use LeoGalleguillos\Test\Hydrator as TestHydrator;
 use PHPUnit\Framework\TestCase;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use TypeError;
@@ -213,12 +214,23 @@ class ProductTest extends TestCase
 
     public function testBuildFromAsin()
     {
+        $resultHydrator = new TestHydrator\Result();
+
+        $resultMock = $this->createMock(
+            Result::class
+        );
+        $resultHydrator->hydrate(
+            $resultMock,
+            [
+                [
+                    'product_id' => 12345,
+                    'asin'       => 'ASIN12345',
+                ]
+            ]
+        );
         $this->asinTableMock
             ->method('selectWhereAsin')
-            ->willReturn([
-                'product_id' => 12345,
-                'asin'       => 'ASIN12345',
-            ]);
+            ->willReturn($resultMock);
 
         $this->productFeatureTableMock
             ->method('selectWhereAsin')

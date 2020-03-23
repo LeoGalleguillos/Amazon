@@ -246,7 +246,7 @@ class Product
     public function buildFromAsin(string $asin): AmazonEntity\Product
     {
         return $this->buildFromArray(
-            $this->asinTable->selectWhereAsin($asin)
+            $this->asinTable->selectWhereAsin($asin)->current()
         );
     }
 
