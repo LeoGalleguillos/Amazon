@@ -12,6 +12,7 @@ class SaveArrayToMySql
         AmazonService\Api\Resources\ItemInfo\Classifications\Set $classificationsSetService,
         AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql $saveExternalIdsArrayToMySqlService,
         AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set $manufactureInfoSetService,
+        AmazonService\Api\Resources\ItemInfo\Title\Set $titleSetService,
         AmazonService\Api\Resources\ItemInfo\TradeInInfo\Set $tradeInInfoSetService,
         AmazonTableGateway\Product $productTableGateway,
         ArrayModuleService\Path\StringOrNull $stringOrNullService
@@ -20,6 +21,7 @@ class SaveArrayToMySql
         $this->classificationsSetService          = $classificationsSetService;
         $this->saveExternalIdsArrayToMySqlService = $saveExternalIdsArrayToMySqlService;
         $this->manufactureInfoSetService          = $manufactureInfoSetService;
+        $this->titleSetService                    = $titleSetService;
         $this->tradeInInfoSetService              = $tradeInInfoSetService;
         $this->productTableGateway                = $productTableGateway;
         $this->stringOrNullService                = $stringOrNullService;
@@ -30,14 +32,6 @@ class SaveArrayToMySql
         int $productId
     ) {
         $set = [
-            /**
-             * @todo 'title' should only be added to set if 'Title' is set.
-             *       This is because an API call may not include Title
-             *       information, and we don't want to update the Title to
-             *       null in this case.
-             */
-            'title' => $itemInfoArray['Title']['DisplayValue'],
-
             'color' => $this->getColor($itemInfoArray),
             'is_adult_product' => isset($itemInfoArray['ProductInfo']['IsAdultProduct']['DisplayValue'])
                 ? ((int) $itemInfoArray['ProductInfo']['IsAdultProduct']['DisplayValue'])
@@ -87,6 +81,12 @@ class SaveArrayToMySql
         if (isset($itemInfoArray['ManufactureInfo'])) {
             $set += $this->manufactureInfoSetService->getSet(
                 $itemInfoArray['ManufactureInfo']
+            );
+        }
+
+        if (isset($itemInfoArray['Title'])) {
+            $set += $this->titleSetService->getSet(
+                $itemInfoArray['Title']
             );
         }
 
