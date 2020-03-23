@@ -277,6 +277,11 @@ class Module
                         $sm->get(ArrayModuleService\Path\StringOrNull::class)
                     );
                 },
+                AmazonService\Api\Resources\ItemInfo\Title\Set::class => function ($sm) {
+                    return new AmazonService\Api\Resources\ItemInfo\Title\Set(
+                        $sm->get(ArrayModuleService\Path\StringOrNull::class)
+                    );
+                },
                 AmazonService\Api\Resources\ItemInfo\TradeInInfo\Set::class => function ($sm) {
                     return new AmazonService\Api\Resources\ItemInfo\TradeInInfo\Set();
                 },
