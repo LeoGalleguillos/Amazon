@@ -1,17 +1,17 @@
 <?php
 namespace LeoGalleguillos\AmazonTest\Model\Service\Product;
 
+use Exception;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use PHPUnit\Framework\TestCase;
-use TypeError;
 
 class DomainTest extends TestCase
 {
     protected function setUp()
     {
-        $this->browseNodeProductsServiceMock = $this->createMock(
-            AmazonService\Product\BrowseNodeProducts::class
+        $this->nameServiceMock = $this->createMock(
+            AmazonService\Product\BrowseNode\First\Name::class
         );
         $this->browseNodeNameDomainArray = [
             'default' => 'www.example.com',
@@ -20,13 +20,17 @@ class DomainTest extends TestCase
         ];
 
         $this->domainService = new AmazonService\Product\Domain(
-            $this->browseNodeProductsServiceMock,
+            $this->nameServiceMock,
             $this->browseNodeNameDomainArray
         );
     }
 
-    public function test_getDomain_BrowseNodeProductsIsEmpty_ReturnDefaultDomain()
+    public function test_getDomain_nameServiceThrowsException_defaultDomain()
     {
+        $this->nameServiceMock
+            ->method('getFirstBrowseNodeName')
+            ->willThrowException(new Exception());
+
         $productEntity = new AmazonEntity\Product();
 
         $this->assertSame(
@@ -35,15 +39,11 @@ class DomainTest extends TestCase
         );
     }
 
-    public function test_getDomain_BrowseNodeNameExistsInArray_ReturnNonDefaultDomain()
+    public function test_getDomain_nameExistsInArray_returnNonDefaultDomain()
     {
-        $browseNodeProducts = [
-            $this->getBrowseNodeProductWithBrowseNodeName('Wealth'),
-            $this->getBrowseNodeProductWithBrowseNodeName('Rich'),
-        ];
-        $this->browseNodeProductsServiceMock
-            ->method('getBrowseNodeProducts')
-            ->willReturn($browseNodeProducts);
+        $this->nameServiceMock
+            ->method('getFirstBrowseNodeName')
+            ->willReturn('Wealth');
 
         $productEntity = new AmazonEntity\Product();
 
@@ -53,15 +53,11 @@ class DomainTest extends TestCase
         );
     }
 
-    public function test_getDomain_BrowseNodeNameDoesNotExistInArray_ReturnDefaultDomain()
+    public function test_getDomain_nameDoesNotExistInArray_returnDefaultDomain()
     {
-        $browseNodeProducts = [
-            $this->getBrowseNodeProductWithBrowseNodeName('Foo'),
-            $this->getBrowseNodeProductWithBrowseNodeName('Bar'),
-        ];
-        $this->browseNodeProductsServiceMock
-            ->method('getBrowseNodeProducts')
-            ->willReturn($browseNodeProducts);
+        $this->nameServiceMock
+            ->method('getFirstBrowseNodeName')
+            ->willReturn('Innovation');
 
         $productEntity = new AmazonEntity\Product();
 
@@ -69,15 +65,5 @@ class DomainTest extends TestCase
             $this->browseNodeNameDomainArray['default'],
             $this->domainService->getDomain($productEntity)
         );
-    }
-
-    protected function getBrowseNodeProductWithBrowseNodeName(
-        string $browseNodeName
-    ): AmazonEntity\BrowseNodeProduct {
-        $browseNodeProduct = new AmazonEntity\BrowseNodeProduct();
-        $browseNodeProduct->setBrowseNode(
-            (new AmazonEntity\BrowseNode())->setName($browseNodeName)
-        );
-        return $browseNodeProduct;
     }
 }

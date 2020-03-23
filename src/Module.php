@@ -380,7 +380,7 @@ class Module
                 },
                 AmazonService\Product\Domain::class => function ($sm) {
                     return new AmazonService\Product\Domain(
-                        $sm->get(AmazonService\Product\BrowseNodeProducts::class),
+                        $sm->get(AmazonService\Product\BrowseNode\First\Name::class),
                         $sm->get('Config')['amazon']['browse-node-name-domain']
                     );
                 },

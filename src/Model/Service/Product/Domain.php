@@ -1,32 +1,30 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Service\Product;
 
+use Exception;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
-use TypeError;
 
 class Domain
 {
     public function __construct(
-        AmazonService\Product\BrowseNodeProducts $browseNodeProductsService,
+        AmazonService\Product\BrowseNode\First\Name $nameService,
         array $browseNodeNameDomain
     ) {
-        $this->browseNodeProductsService = $browseNodeProductsService;
-        $this->browseNodeNameDomain      = $browseNodeNameDomain;
+        $this->nameService          = $nameService;
+        $this->browseNodeNameDomain = $browseNodeNameDomain;
     }
 
     public function getDomain(
         AmazonEntity\Product $productEntity
     ): string {
-        $browseNodeProducts = $this->browseNodeProductsService->getBrowseNodeProducts(
-            $productEntity
-        );
-
-        if (empty($browseNodeProducts)) {
+        try {
+            $browseNodeName = $this->nameService->getFirstBrowseNodeName(
+                $productEntity
+            );
+        } catch (Exception $exception) {
             return $this->browseNodeNameDomain['default'];
         }
-
-        $browseNodeName = $browseNodeProducts[0]->getBrowseNode()->getName();
 
         return $this->browseNodeNameDomain[$browseNodeName]
             ?? $this->browseNodeNameDomain['default'];
