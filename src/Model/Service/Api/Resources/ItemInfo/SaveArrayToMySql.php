@@ -30,7 +30,14 @@ class SaveArrayToMySql
         int $productId
     ) {
         $set = [
+            /**
+             * @todo 'title' should only be added to set if 'Title' is set.
+             *       This is because an API call may not include Title
+             *       information, and we don't want to update the Title to
+             *       null in this case.
+             */
             'title' => $itemInfoArray['Title']['DisplayValue'],
+
             'color' => $this->getColor($itemInfoArray),
             'is_adult_product' => isset($itemInfoArray['ProductInfo']['IsAdultProduct']['DisplayValue'])
                 ? ((int) $itemInfoArray['ProductInfo']['IsAdultProduct']['DisplayValue'])
