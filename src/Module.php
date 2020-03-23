@@ -367,6 +367,11 @@ class Module
                         $sm->get(AmazonService\Product\BrowseNodeProducts::class)
                     );
                 },
+                AmazonService\Product\BrowseNode\First\Name::class => function ($sm) {
+                    return new AmazonService\Product\BrowseNode\First\Name(
+                        $sm->get(AmazonTable\BrowseNode::class)
+                    );
+                },
                 AmazonService\Product\BrowseNodeProducts::class => function ($sm) {
                     return new AmazonService\Product\BrowseNodeProducts(
                         $sm->get(AmazonFactory\BrowseNode::class),
