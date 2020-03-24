@@ -211,6 +211,14 @@ class Module
                         $amazonConfig['secret_access_key']
                     );
                 },
+                AmazonService\Api\Operations\SearchItems\Json::class => function ($sm) {
+                    $amazonConfig = $sm->get('Config')['amazon'];
+                    return new AmazonService\Api\Operations\SearchItems\Json(
+                        $amazonConfig['associate_tag'],
+                        $amazonConfig['access_key_id'],
+                        $amazonConfig['secret_access_key']
+                    );
+                },
                 AmazonService\Api\Product\Xml::class => function ($sm) {
                     $config = $sm->get('Config');
                     return new AmazonService\Api\Product\Xml(
