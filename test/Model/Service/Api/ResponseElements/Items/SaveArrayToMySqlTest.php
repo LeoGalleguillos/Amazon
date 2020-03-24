@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\AmazonTest\Model\Service\Api\ResponseElements\Items;
 
+use Laminas\Db\Adapter\Driver\Pdo\Result;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use PHPUnit\Framework\TestCase;
@@ -9,20 +10,24 @@ class SaveArrayToMySqlTest extends TestCase
 {
     protected function setUp()
     {
-        $this->asinTableMock = $this->createMock(
-            AmazonTable\Product\Asin::class
-        );
         $this->saveItemArrayToMySqlServiceMock = $this->createMock(
             AmazonService\Api\ResponseElements\Items\Item\SaveArrayToMySql::class
         );
         $this->bannedServiceMock = $this->createMock(
             AmazonService\Product\Banned::class
         );
+        $this->productTableMock = $this->createMock(
+            AmazonTable\Product::class
+        );
+        $this->asinTableMock = $this->createMock(
+            AmazonTable\Product\Asin::class
+        );
 
         $this->saveArrayToMySqlService = new AmazonService\Api\ResponseElements\Items\SaveArrayToMySql(
-            $this->asinTableMock,
             $this->saveItemArrayToMySqlServiceMock,
-            $this->bannedServiceMock
+            $this->bannedServiceMock,
+            $this->productTableMock,
+            $this->asinTableMock
         );
     }
 
@@ -43,13 +48,27 @@ class SaveArrayToMySqlTest extends TestCase
                     false
                 )
             );
+        $resultMock1 = $this->createMock(Result::class);
+        $resultMock1->method('getAffectedRows')->willReturn(1);
+        $resultMock2 = $this->createMock(Result::class);
+        $resultMock2->method('getAffectedRows')->willReturn(0);
         $this->asinTableMock
             ->expects($this->exactly(2))
             ->method('updateSetIsValidWhereAsin')
             ->withConsecutive(
                 [1, 'B009UOMNE8'],
                 [1, 'B07D5J6Z2C']
+            )
+            ->will(
+                $this->onConsecutiveCalls(
+                    $resultMock1,
+                    $resultMock2
+                )
             );
+        $this->productTableMock
+            ->expects($this->exactly(1))
+            ->method('insertAsin')
+            ->with('B07D5J6Z2C');
         $this->saveItemArrayToMySqlServiceMock
             ->expects($this->exactly(2))
             ->method('saveArrayToMySql')

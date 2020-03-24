@@ -7,13 +7,15 @@ use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 class SaveArrayToMySql
 {
     public function __construct(
-        AmazonTable\Product\Asin $asinTable,
         AmazonService\Api\ResponseElements\Items\Item\SaveArrayToMySql $saveItemArrayToMySqlService,
-        AmazonService\Product\Banned $bannedService
+        AmazonService\Product\Banned $bannedService,
+        AmazonTable\Product $productTable,
+        AmazonTable\Product\Asin $asinTable
     ) {
-        $this->asinTable                   = $asinTable;
         $this->saveItemArrayToMySqlService = $saveItemArrayToMySqlService;
         $this->bannedService               = $bannedService;
+        $this->productTable                = $productTable;
+        $this->asinTable                   = $asinTable;
     }
 
     public function saveArrayToMySql(
@@ -26,7 +28,10 @@ class SaveArrayToMySql
                 continue;
             }
 
-            $this->asinTable->updateSetIsValidWhereAsin(1, $asin);
+            $result = $this->asinTable->updateSetIsValidWhereAsin(1, $asin);
+            if ($result->getAffectedRows() == 0) {
+                $this->productTable->insertAsin($asin);
+            }
 
             $this->saveItemArrayToMySqlService->saveArrayToMySql(
                 $itemArray
