@@ -160,6 +160,13 @@ class Module
                         $sm->get(AmazonTable\Product\Asin::class)
                     );
                 },
+                AmazonService\Api\ResponseElements\Items\SaveArrayToMySql::class => function ($sm) {
+                    return new AmazonService\Api\ResponseElements\Items\SaveArrayToMySql(
+                        $sm->get(AmazonTable\Product\Asin::class),
+                        $sm->get(AmazonService\Api\ResponseElements\Items\Item\SaveArrayToMySql::class),
+                        $sm->get(AmazonService\Product\Banned::class)
+                    );
+                },
                 AmazonService\Api\ResponseElements\Items\Item\SaveArrayToMySql::class => function ($sm) {
                     return new AmazonService\Api\ResponseElements\Items\Item\SaveArrayToMySql(
                         $sm->get(AmazonService\Api\Resources\BrowseNodeInfo\SaveArrayToMySql::class),
