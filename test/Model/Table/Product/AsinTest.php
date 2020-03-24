@@ -103,7 +103,7 @@ class AsinTest extends TableTestCase
         );
     }
 
-    public function testUpdateSetIsValidWhereAsin()
+    public function test_updateSetIsValidWhereAsin()
     {
         $affectedRows = $this->asinTable
             ->updateSetIsValidWhereAsin(0, 'ASIN001')
