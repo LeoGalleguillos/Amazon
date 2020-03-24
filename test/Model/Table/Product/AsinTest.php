@@ -54,6 +54,10 @@ class AsinTest extends TableTestCase
     {
         $result = $this->asinTable->selectWhereAsin('ASIN001');
         $this->assertEmpty($result);
+        $this->assertSame(
+            0,
+            count($result)
+        );
 
         $this->productTable->insert(
             'ASIN001',
@@ -64,7 +68,12 @@ class AsinTest extends TableTestCase
             4.99
         );
 
-        $array = $this->asinTable->selectWhereAsin('ASIN001')->current();
+        $result = $this->asinTable->selectWhereAsin('ASIN001');
+        $this->assertSame(
+            1,
+            count($result)
+        );
+        $array = $result->current();
         $this->assertSame(
             '1',
             $array['product_id']
