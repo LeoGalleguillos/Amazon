@@ -192,10 +192,8 @@ class Module
                 },
                 AmazonService\Api\Operations\GetItems\SaveJsonToMySql::class => function ($sm) {
                     return new AmazonService\Api\Operations\GetItems\SaveJsonToMySql(
-                        $sm->get(AmazonTable\Product\Asin::class),
                         $sm->get(AmazonService\Api\Errors\SaveArrayToMySql::class),
-                        $sm->get(AmazonService\Api\ResponseElements\Items\Item\SaveArrayToMySql::class),
-                        $sm->get(AmazonService\Product\Banned::class)
+                        $sm->get(AmazonService\Api\ResponseElements\Items\SaveArrayToMySql::class)
                     );
                 },
                 AmazonService\Api\Operations\GetItems\GetJsonAndSaveJsonToMySql::class => function ($sm) {

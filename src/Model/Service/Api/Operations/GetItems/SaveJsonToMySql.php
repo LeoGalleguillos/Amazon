@@ -7,15 +7,11 @@ use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 class SaveJsonToMySql
 {
     public function __construct(
-        AmazonTable\Product\Asin $asinTable,
         AmazonService\Api\Errors\SaveArrayToMySql $saveErrorsArrayToMySqlService,
-        AmazonService\Api\ResponseElements\Items\Item\SaveArrayToMySql $saveItemArrayToMySqlService,
-        AmazonService\Product\Banned $bannedService
+        AmazonService\Api\ResponseElements\Items\SaveArrayToMySql $saveItemsArrayToMySqlService
     ) {
-        $this->asinTable                     = $asinTable;
         $this->saveErrorsArrayToMySqlService = $saveErrorsArrayToMySqlService;
-        $this->saveItemArrayToMySqlService   = $saveItemArrayToMySqlService;
-        $this->bannedService                 = $bannedService;
+        $this->saveItemsArrayToMySqlService  = $saveItemsArrayToMySqlService;
     }
 
     public function saveJsonToMySql(
@@ -30,20 +26,9 @@ class SaveJsonToMySql
         }
 
         if (isset($jsonArray['ItemsResult']['Items'])) {
-            $itemsArray = $jsonArray['ItemsResult']['Items'];
-            foreach ($itemsArray as $itemArray) {
-                $asin = $itemArray['ASIN'];
-
-                if ($this->bannedService->isBanned($asin)) {
-                    continue;
-                }
-
-                $this->asinTable->updateSetIsValidWhereAsin(1, $asin);
-
-                $this->saveItemArrayToMySqlService->saveArrayToMySql(
-                    $itemArray
-                );
-            }
+            $this->saveItemsArrayToMySqlService->saveArrayToMySql(
+                $jsonArray['ItemsResult']['Items']
+            );
         }
     }
 }
