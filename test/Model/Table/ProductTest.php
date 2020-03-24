@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\AmazonTest\Model\Table;
 
+use Laminas\Db\Adapter\Exception\InvalidQueryException;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Test\TableTestCase;
 
@@ -18,11 +19,23 @@ class ProductTest extends TableTestCase
         $this->setForeignKeyChecks1();
     }
 
-    public function testInitialize()
+    public function test_insertAsin_uniqueAsin_success()
     {
-        $this->assertInstanceOf(
-            AmazonTable\Product::class,
-            $this->productTable
+        $result = $this->productTable->insertAsin('ASIN001');
+        $this->assertSame(
+            1,
+            $result->getAffectedRows()
         );
+        $this->assertSame(
+            '1',
+            $result->getGeneratedValue()
+        );
+    }
+
+    public function test_insertAsin_duplicateAsin_invalidQueryException()
+    {
+        $this->expectException(InvalidQueryException::class);
+        $this->productTable->insertAsin('ASIN002');
+        $this->productTable->insertAsin('ASIN002');
     }
 }

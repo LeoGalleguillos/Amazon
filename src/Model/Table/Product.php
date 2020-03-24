@@ -2,6 +2,7 @@
 namespace LeoGalleguillos\Amazon\Model\Table;
 
 use Generator;
+use Laminas\Db\Adapter\Driver\Pdo\Result;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use TypeError;
 use Zend\Db\Adapter\Adapter;
@@ -92,6 +93,20 @@ class Product
             ->query($sql)
             ->execute($parameters)
             ->getGeneratedValue();
+    }
+
+    public function insertAsin(string $asin): Result
+    {
+        $sql = '
+            INSERT
+              INTO `product` (`asin` , `is_valid`)
+            VALUES (?, 1)
+                 ;
+        ';
+        $parameters = [
+            $asin,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
     }
 
     public function isProductInTable($asin)
