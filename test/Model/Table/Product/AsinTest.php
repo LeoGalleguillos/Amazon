@@ -105,7 +105,9 @@ class AsinTest extends TableTestCase
 
     public function testUpdateSetIsValidWhereAsin()
     {
-        $affectedRows = $this->asinTable->updateSetIsValidWhereAsin(0, 'ASIN001');
+        $affectedRows = $this->asinTable
+            ->updateSetIsValidWhereAsin(0, 'ASIN001')
+            ->getAffectedRows();
         $this->assertSame(
             0,
             $affectedRows
@@ -120,17 +122,23 @@ class AsinTest extends TableTestCase
             4.99
         );
 
-        $affectedRows = $this->asinTable->updateSetIsValidWhereAsin(0, 'ASIN001');
+        $affectedRows = $this->asinTable
+            ->updateSetIsValidWhereAsin(0, 'ASIN001')
+            ->getAffectedRows();
         $this->assertSame(
             1,
             $affectedRows
         );
-        $affectedRows = $this->asinTable->updateSetIsValidWhereAsin(1, 'ASIN001');
+        $affectedRows = $this->asinTable
+            ->updateSetIsValidWhereAsin(1, 'ASIN001')
+            ->getAffectedRows();
         $this->assertSame(
             1,
             $affectedRows
         );
-        $affectedRows = $this->asinTable->updateSetIsValidWhereAsin(1, 'ASIN001');
+        $affectedRows = $this->asinTable
+            ->updateSetIsValidWhereAsin(1, 'ASIN001')
+            ->getAffectedRows();
         $this->assertSame(
             0,
             $affectedRows

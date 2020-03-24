@@ -71,7 +71,7 @@ class Asin
             ->getAffectedRows();
     }
 
-    public function updateSetIsValidWhereAsin(int $isValid, string $asin): int
+    public function updateSetIsValidWhereAsin(int $isValid, string $asin): Result
     {
         $sql = '
             UPDATE `product`
@@ -83,9 +83,6 @@ class Asin
             $isValid,
             $asin,
         ];
-        return (int) $this->adapter
-            ->query($sql)
-            ->execute($parameters)
-            ->getAffectedRows();
+        return $this->adapter->query($sql)->execute($parameters);
     }
 }
