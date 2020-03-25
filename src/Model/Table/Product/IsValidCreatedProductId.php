@@ -21,21 +21,6 @@ class IsValidCreatedProductId
         $this->productTable = $productTable;
     }
 
-    public function selectWhereIsValidEquals1OrderByCreatedDescLimit100(): Result
-    {
-        $sql = $this->productTable->getSelect()
-             . '
-              FROM `product`
-             WHERE `is_valid` = 1
-             ORDER
-                BY `created` DESC
-                 , `product_id` DESC
-             LIMIT 100
-                 ;
-        ';
-        return $this->adapter->query($sql)->execute();
-    }
-
     public function selectProductIdWhereBrowseNodeName(string $browseNodeName): Result
     {
         $sql = '
@@ -51,7 +36,8 @@ class IsValidCreatedProductId
              WHERE `browse_node`.`name` = ?
                AND `product`.`is_valid` = 1
 
-             GROUP BY `product_id`
+             GROUP
+                BY `product_id`
 
              ORDER
                 BY `product`.`created` DESC
@@ -63,5 +49,20 @@ class IsValidCreatedProductId
             $browseNodeName,
         ];
         return $this->adapter->query($sql)->execute($parameters);
+    }
+
+    public function selectWhereIsValidEquals1OrderByCreatedDescLimit100(): Result
+    {
+        $sql = $this->productTable->getSelect()
+             . '
+              FROM `product`
+             WHERE `is_valid` = 1
+             ORDER
+                BY `created` DESC
+                 , `product_id` DESC
+             LIMIT 100
+                 ;
+        ';
+        return $this->adapter->query($sql)->execute();
     }
 }

@@ -15,7 +15,7 @@ class BrowseNode
     public function __construct(
         Adapter $adapter
     ) {
-        $this->adapter   = $adapter;
+        $this->adapter = $adapter;
     }
 
     public function insertIgnore(

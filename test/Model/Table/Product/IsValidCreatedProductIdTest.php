@@ -9,9 +9,15 @@ class IsValidCreatedProductIdTest extends TableTestCase
     protected function setUp()
     {
         $this->setForeignKeyChecks(0);
-        $this->dropAndCreateTable('product');
+        $this->dropAndCreateTables(['browse_node', 'browse_node_product', 'product']);
         $this->setForeignKeyChecks(1);
 
+        $this->browseNodeTable = new AmazonTable\BrowseNode(
+            $this->getAdapter()
+        );
+        $this->browseNodeProductTable = new AmazonTable\BrowseNodeProduct(
+            $this->getAdapter()
+        );
         $this->productTable = new AmazonTable\Product(
             $this->getAdapter()
         );
@@ -22,6 +28,57 @@ class IsValidCreatedProductIdTest extends TableTestCase
         $this->isValidCreatedProductIdTable = new AmazonTable\Product\IsValidCreatedProductId(
             $this->getAdapter(),
             $this->productTable
+        );
+    }
+
+    public function test_selectProductIdWhereBrowseNodeName_nonEmptyTable_multipleResults()
+    {
+        $this->productTable->insertAsin('ASIN001');
+        $this->productTable->insertAsin('ASIN002');
+        $this->productTable->insertAsin('ASIN003');
+
+        $this->browseNodeTable->insertIgnore(12345, 'Hair Extensions');
+        $this->browseNodeTable->insertIgnore(54321, 'Apparel');
+
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
+            12345,
+            1,
+            null,
+            1
+        );
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
+            12345,
+            3,
+            null,
+            1
+        );
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
+            54321,
+            2,
+            null,
+            1
+        );
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
+            54321,
+            3,
+            null,
+            1
+        );
+
+        $result = $this->isValidCreatedProductIdTable
+            ->selectProductIdWhereBrowseNodeName('Hair Extensions');
+        $this->assertSame(
+            2,
+            count($result)
+        );
+        $array = iterator_to_array($result);
+        $this->assertSame(
+            '3',
+            $array[0]['product_id']
+        );
+        $this->assertSame(
+            '1',
+            $array[1]['product_id']
         );
     }
 
