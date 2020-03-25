@@ -687,7 +687,8 @@ class Module
                 },
                 AmazonTable\Product\IsValidModifiedProductId::class => function ($sm) {
                     return new AmazonTable\Product\IsValidModifiedProductId(
-                        $sm->get('amazon')
+                        $sm->get('amazon'),
+                        $sm->get(AmazonTable\Product::class)
                     );
                 },
                 AmazonTable\ProductBanned::class => function ($sm) {

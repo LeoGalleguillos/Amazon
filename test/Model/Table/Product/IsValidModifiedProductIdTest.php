@@ -20,7 +20,8 @@ class IsValidModifiedProductIdTest extends TableTestCase
             $this->productTable
         );
         $this->isValidModifiedProductIdTable = new AmazonTable\Product\IsValidModifiedProductId(
-            $this->getAdapter()
+            $this->getAdapter(),
+            $this->productTable
         );
     }
 
@@ -97,6 +98,43 @@ class IsValidModifiedProductIdTest extends TableTestCase
         $this->assertSame(
             'ASIN003',
             $array[1]['asin']
+        );
+    }
+
+    public function test_selectWhereIsValidEquals1OrderByModifiedDescLimit100_emptyTable_emptyResult()
+    {
+        $result = $this->isValidModifiedProductIdTable
+            ->selectWhereIsValidEquals1OrderByModifiedDescLimit100();
+        $this->assertSame(
+            0,
+            count($result)
+        );
+    }
+
+    public function test_selectWhereIsValidEquals1OrderByModifiedDescLimit100_nonEmptyTable_multipleResults()
+    {
+        $this->productTable->insertAsin('ASIN001');
+        $this->productTable->insertAsin('ASIN002');
+        $this->productTable->insertAsin('ASIN003');
+
+        $result = $this->isValidModifiedProductIdTable
+            ->selectWhereIsValidEquals1OrderByModifiedDescLimit100();
+        $this->assertSame(
+            3,
+            count($result)
+        );
+        $array = iterator_to_array($result);
+        $this->assertSame(
+            'ASIN003',
+            $array[0]['asin']
+        );
+        $this->assertSame(
+            'ASIN002',
+            $array[1]['asin']
+        );
+        $this->assertSame(
+            'ASIN001',
+            $array[2]['asin']
         );
     }
 }
