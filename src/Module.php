@@ -425,7 +425,7 @@ class Module
                 AmazonService\Product\Products\Newest::class => function ($sm) {
                     return new AmazonService\Product\Products\Newest(
                         $sm->get(AmazonFactory\Product::class),
-                        $sm->get(AmazonTable\Product\IsValidModifiedProductId::class)
+                        $sm->get(AmazonTable\Product\IsValidCreatedProductId::class)
                     );
                 },
                 AmazonService\Product\Products\Similar::class => function ($sm) {
@@ -692,10 +692,15 @@ class Module
                         $sm->get(AmazonTable\Product::class)
                     );
                 },
-                AmazonTable\Product\IsValidModifiedProductId::class => function ($sm) {
-                    return new AmazonTable\Product\IsValidModifiedProductId(
+                AmazonTable\Product\IsValidCreatedProductId::class => function ($sm) {
+                    return new AmazonTable\Product\IsValidCreatedProductId(
                         $sm->get('amazon'),
                         $sm->get(AmazonTable\Product::class)
+                    );
+                },
+                AmazonTable\Product\IsValidModifiedProductId::class => function ($sm) {
+                    return new AmazonTable\Product\IsValidModifiedProductId(
+                        $sm->get('amazon')
                     );
                 },
                 AmazonTable\ProductBanned::class => function ($sm) {

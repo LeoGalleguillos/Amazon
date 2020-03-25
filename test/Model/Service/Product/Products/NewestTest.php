@@ -16,13 +16,13 @@ class NewestTest extends TestCase
         $this->productFactoryMock = $this->createMock(
             AmazonFactory\Product::class
         );
-        $this->isValidModifiedProductIdTableMock = $this->createMock(
-            AmazonTable\Product\IsValidModifiedProductId::class
+        $this->isValidCreatedProductIdTableMock = $this->createMock(
+            AmazonTable\Product\IsValidCreatedProductId::class
         );
 
         $this->newestService = new AmazonService\Product\Products\Newest(
             $this->productFactoryMock,
-            $this->isValidModifiedProductIdTableMock
+            $this->isValidCreatedProductIdTableMock
         );
     }
 
@@ -51,8 +51,8 @@ class NewestTest extends TestCase
             ]
         );
 
-        $this->isValidModifiedProductIdTableMock
-            ->method('selectWhereIsValidEquals1OrderByModifiedDescLimit100')
+        $this->isValidCreatedProductIdTableMock
+            ->method('selectWhereIsValidEquals1OrderByCreatedDescLimit100')
             ->willReturn($resultMock);
 
         $productEntity1 = new AmazonEntity\Product();

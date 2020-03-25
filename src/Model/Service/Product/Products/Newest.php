@@ -9,16 +9,16 @@ class Newest
 {
     public function __construct(
         AmazonFactory\Product $productFactory,
-        AmazonTable\Product\IsValidModifiedProductId $isValidModifiedProductIdTable
+        AmazonTable\Product\IsValidCreatedProductId $isValidCreatedProductIdTable
     ) {
-        $this->productFactory                = $productFactory;
-        $this->isValidModifiedProductIdTable = $isValidModifiedProductIdTable;
+        $this->productFactory               = $productFactory;
+        $this->isValidCreatedProductIdTable = $isValidCreatedProductIdTable;
     }
 
     public function getNewestProducts(): Generator
     {
-        $result = $this->isValidModifiedProductIdTable
-            ->selectWhereIsValidEquals1OrderByModifiedDescLimit100();
+        $result = $this->isValidCreatedProductIdTable
+            ->selectWhereIsValidEquals1OrderByCreatedDescLimit100();
 
         foreach ($result as $array) {
             yield $this->productFactory->buildFromArray($array);
