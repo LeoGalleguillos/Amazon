@@ -68,7 +68,7 @@ class ProductTest extends TestCase
                 $this->productEanResultMock
             );
         $this->productFeatureTableMock
-            ->method('selectWhereAsin')
+            ->method('selectWhereProductId')
             ->willReturn(
                 $this->yieldProductFeatureArrays()
             );
@@ -233,7 +233,7 @@ class ProductTest extends TestCase
             ->willReturn($resultMock);
 
         $this->productFeatureTableMock
-            ->method('selectWhereAsin')
+            ->method('selectWhereProductId')
             ->willReturn(
                 $this->yieldProductFeatureArrays()
             );
@@ -273,7 +273,7 @@ class ProductTest extends TestCase
             ]);
 
         $this->productFeatureTableMock
-            ->method('selectWhereAsin')
+            ->method('selectWhereProductId')
             ->willReturn(
                 $this->yieldProductFeatureArrays()
             );

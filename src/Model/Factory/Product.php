@@ -73,7 +73,9 @@ class Product
             $productEntity->setEans($eans);
         }
 
-        $productFeatureArrays = $this->productFeatureTable->selectWhereAsin($productArray['asin']);
+        $productFeatureArrays = $this->productFeatureTable->selectWhereProductId(
+            $productArray['product_id']
+        );
         foreach ($productFeatureArrays as $array) {
             $productEntity->features[] = $array['feature'];
         }
