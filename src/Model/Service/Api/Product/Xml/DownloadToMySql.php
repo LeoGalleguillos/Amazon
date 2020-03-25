@@ -65,7 +65,6 @@ class DownloadToMySql
             foreach ($xml->{'ItemAttributes'}->{'Feature'} as $feature) {
                 $this->productFeatureTable->insert(
                     $productId,
-                    $asin,
                     (string) $feature
                 );
             }

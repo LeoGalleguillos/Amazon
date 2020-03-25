@@ -37,18 +37,16 @@ class ProductFeature
 
     public function insert(
         int $productId,
-        string $asin,
         string $feature
     ): int {
         $sql = '
             INSERT
-              INTO `product_feature` (`product_id`, `asin`, `feature`)
-            VALUES (?, ?, ?)
+              INTO `product_feature` (`product_id`, `feature`)
+            VALUES (?, ?)
            ;
         ';
         $parameters = [
             $productId,
-            $asin,
             $feature,
         ];
         return (int) $this->adapter
