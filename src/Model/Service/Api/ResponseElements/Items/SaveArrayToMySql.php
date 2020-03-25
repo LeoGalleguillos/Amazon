@@ -28,8 +28,9 @@ class SaveArrayToMySql
                 continue;
             }
 
-            $result = $this->asinTable->updateSetIsValidWhereAsin(1, $asin);
-            if ($result->getAffectedRows() == 0) {
+            if (count($this->asinTable->selectWhereAsin($asin))) {
+                $this->asinTable->updateSetIsValidWhereAsin(1, $asin);
+            } else {
                 $this->productTable->insertAsin($asin);
             }
 
