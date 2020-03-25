@@ -26,6 +26,7 @@ class Module
                     'getModifiedTitle'              => AmazonHelper\Product\ModifiedTitle::class,
                     'getProductAffiliateUrl'        => AmazonHelper\Product\AffiliateUrl::class,
                     'getProductAsinUrl'             => AmazonHelper\Product\Url\Asin::class,
+                    'getProductFirstImage'          => AmazonHelper\Product\FirstImageEntity::class,
                     'getProductFirstImageEntity'    => AmazonHelper\Product\FirstImageEntity::class,
                     'getProductImages'              => AmazonHelper\ProductImage\ProductImages::class,
                     'getProductModifiedFeatures'    => AmazonHelper\Product\ModifiedFeatures::class,
