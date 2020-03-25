@@ -421,6 +421,12 @@ class Module
                 AmazonService\Product\ModifiedTitle::class => function ($sm) {
                     return new AmazonService\Product\ModifiedTitle();
                 },
+                AmazonService\Product\Products\Newest::class => function ($sm) {
+                    return new AmazonService\Product\Products\Newest(
+                        $sm->get(AmazonFactory\Product::class),
+                        $sm->get(AmazonTable\Product\IsValidModifiedProductId::class)
+                    );
+                },
                 AmazonService\Product\Products\Similar::class => function ($sm) {
                     return new AmazonService\Product\Products\Similar(
                         $sm->get(AmazonFactory\Product::class),
