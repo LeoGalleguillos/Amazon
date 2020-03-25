@@ -15,10 +15,16 @@ class Name
         $this->isValidCreatedProductIdTable = $isValidCreatedProductIdTable;
     }
 
-    public function getNewestProducts($browseNodeName): Generator
-    {
+    public function getNewestProducts(
+        string $browseNodeName,
+        int $page
+    ): Generator {
         $result = $this->isValidCreatedProductIdTable
-            ->selectProductIdWhereBrowseNodeName($browseNodeName);
+            ->selectProductIdWhereBrowseNodeNameLimit(
+                $browseNodeName,
+                ($page - 1) * 100,
+                100
+            );
 
         foreach ($result as $array) {
             yield $this->productFactory->buildFromProductId(

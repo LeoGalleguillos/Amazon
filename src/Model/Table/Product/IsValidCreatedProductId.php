@@ -21,8 +21,11 @@ class IsValidCreatedProductId
         $this->productTable = $productTable;
     }
 
-    public function selectProductIdWhereBrowseNodeName(string $browseNodeName): Result
-    {
+    public function selectProductIdWhereBrowseNodeNameLimit(
+        string $browseNodeName,
+        int $limitOffset,
+        int $limitRowCount
+    ): Result {
         $sql = '
             SELECT `product_id`
               FROM `product`
@@ -42,11 +45,14 @@ class IsValidCreatedProductId
              ORDER
                 BY `product`.`created` DESC
                  , `product`.`product_id` DESC
-             LIMIT 100
+
+             LIMIT ?, ?
                  ;
         ';
         $parameters = [
             $browseNodeName,
+            $limitOffset,
+            $limitRowCount,
         ];
         return $this->adapter->query($sql)->execute($parameters);
     }

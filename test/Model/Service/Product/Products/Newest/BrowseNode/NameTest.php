@@ -29,7 +29,7 @@ class NameTest extends TestCase
     public function test_getNewestProducts_emptyResult_zeroProducts()
     {
         $this->assertEmpty(
-            iterator_to_array($this->nameService->getNewestProducts('Hair Extensions'))
+            iterator_to_array($this->nameService->getNewestProducts('Hair Extensions', 1))
         );
     }
 
@@ -53,7 +53,8 @@ class NameTest extends TestCase
 
         $this->isValidCreatedProductIdTableMock
             ->expects($this->exactly(1))
-            ->method('selectProductIdWhereBrowseNodeName')
+            ->method('selectProductIdWhereBrowseNodeNameLimit')
+            ->with('Hair Extensions', 0, 100)
             ->willReturn($resultMock);
 
         $productEntity1 = new AmazonEntity\Product();
@@ -78,7 +79,12 @@ class NameTest extends TestCase
                 $productEntity1,
                 $productEntity2
             ],
-            iterator_to_array($this->nameService->getNewestProducts('Hair Extensions'))
+            iterator_to_array(
+                $this->nameService->getNewestProducts(
+                    'Hair Extensions',
+                    1
+                )
+            )
         );
     }
 }

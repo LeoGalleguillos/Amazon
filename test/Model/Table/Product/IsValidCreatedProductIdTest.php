@@ -66,7 +66,11 @@ class IsValidCreatedProductIdTest extends TableTestCase
         );
 
         $result = $this->isValidCreatedProductIdTable
-            ->selectProductIdWhereBrowseNodeName('Hair Extensions');
+            ->selectProductIdWhereBrowseNodeNameLimit(
+                'Hair Extensions',
+                0,
+                100
+            );
         $this->assertSame(
             2,
             count($result)
