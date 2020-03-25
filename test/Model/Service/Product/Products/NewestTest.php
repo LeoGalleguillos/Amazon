@@ -52,6 +52,7 @@ class NewestTest extends TestCase
         );
 
         $this->isValidCreatedProductIdTableMock
+            ->expects($this->exactly(1))
             ->method('selectWhereIsValidEquals1OrderByCreatedDescLimit100')
             ->willReturn($resultMock);
 
