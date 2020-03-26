@@ -71,7 +71,6 @@ class IsValidCreatedProductIdTest extends TableTestCase
                 'Apparel'
             );
         $array = $result->current();
-        var_dump($array);
         $this->assertSame(
             '2',
             $array['COUNT(DISTINCT `product`.`product_id`)']
