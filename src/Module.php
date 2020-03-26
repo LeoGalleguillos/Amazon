@@ -434,6 +434,11 @@ class Module
                         $sm->get(AmazonTable\Product\IsValidCreatedProductId::class)
                     );
                 },
+                AmazonService\Product\Products\Newest\BrowseNode\Name\NumberOfPages::class => function ($sm) {
+                    return new AmazonService\Product\Products\Newest\BrowseNode\Name\NumberOfPages(
+                        $sm->get(AmazonTable\Product\IsValidCreatedProductId::class)
+                    );
+                },
                 AmazonService\Product\Products\Similar::class => function ($sm) {
                     return new AmazonService\Product\Products\Similar(
                         $sm->get(AmazonFactory\Product::class),
