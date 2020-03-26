@@ -1,6 +1,6 @@
 CREATE TABLE `product_image` (
   `product_id` int(10) unsigned NOT NULL,
-  `category` varchar(255) NOT NULL,
+  `category` varchar(7) NOT NULL,
   `url` varchar(128) NOT NULL,
   `width` int(11) DEFAULT NULL,
   `height` int(11) DEFAULT NULL,
