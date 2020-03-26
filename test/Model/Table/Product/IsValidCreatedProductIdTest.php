@@ -31,6 +31,53 @@ class IsValidCreatedProductIdTest extends TableTestCase
         );
     }
 
+    public function test_selectCountWhereBrowseNodeNameLimit_browseNodesWithSameName_oneResult()
+    {
+        $this->productTable->insertAsin('ASIN001');
+        $this->productTable->insertAsin('ASIN002');
+        $this->productTable->insertAsin('ASIN003');
+
+        $this->browseNodeTable->insertIgnore(12345, 'Apparel');
+        $this->browseNodeTable->insertIgnore(54321, 'Apparel');
+        $this->browseNodeTable->insertIgnore(11111, 'Books');
+
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
+            12345,
+            1,
+            null,
+            1
+        );
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
+            54321,
+            1,
+            null,
+            2
+        );
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
+            11111,
+            2,
+            null,
+            1
+        );
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(
+            54321,
+            3,
+            null,
+            1
+        );
+
+        $result = $this->isValidCreatedProductIdTable
+            ->selectCountWhereBrowseNodeNameLimit(
+                'Apparel'
+            );
+        $array = $result->current();
+        var_dump($array);
+        $this->assertSame(
+            '2',
+            $array['COUNT(DISTINCT `product`.`product_id`)']
+        );
+    }
+
     public function test_selectProductIdWhereBrowseNodeName_nonEmptyTable_multipleResults()
     {
         $this->productTable->insertAsin('ASIN001');

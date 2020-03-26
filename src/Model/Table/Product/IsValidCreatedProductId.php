@@ -21,6 +21,29 @@ class IsValidCreatedProductId
         $this->productTable = $productTable;
     }
 
+    public function selectCountWhereBrowseNodeNameLimit(
+        string $browseNodeName
+    ): Result {
+        $sql = '
+            SELECT COUNT(DISTINCT `product`.`product_id`)
+              FROM `product`
+
+              JOIN `browse_node_product`
+             USING (`product_id`)
+
+              JOIN `browse_node`
+             USING (`browse_node_id`)
+
+             WHERE `browse_node`.`name` = ?
+               AND `product`.`is_valid` = 1
+                 ;
+        ';
+        $parameters = [
+            $browseNodeName,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
+    }
+
     public function selectProductIdWhereBrowseNodeNameLimit(
         string $browseNodeName,
         int $limitOffset,
