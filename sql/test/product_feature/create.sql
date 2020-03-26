@@ -1,6 +1,6 @@
 CREATE TABLE `product_feature` (
   `product_id` int(10) unsigned NOT NULL,
-  `feature` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `feature` varchar(255) NOT NULL,
   KEY `product_id` (`product_id`),
   CONSTRAINT `product_product_feature` FOREIGN KEY `product_id` (`product_id`)
     REFERENCES `product` (`product_id`)
