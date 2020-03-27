@@ -43,7 +43,7 @@ CREATE TABLE `product` (
   KEY `created` (`created`),
   KEY `modified_product_id` (`modified`, `product_id`),
   KEY `hi_res_images_retrieved_video_generated_created` (`hi_res_images_retrieved`,`video_generated`, `created`),
-  KEY `similar_retrieved_created` (`similar_retrieved`, `created`),
+  KEY `similar_retrieved_modified_product_id` (`similar_retrieved`, `modified`, `product_id`),
   KEY `video_generated_created` (`video_generated`, `created`),
   KEY `is_valid_modified_product_id` (`is_valid`, `modified`, `product_id`),
   KEY `is_adult_product` (`is_adult_product`),
