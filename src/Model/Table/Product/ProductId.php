@@ -1,9 +1,9 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table\Product;
 
+use Laminas\Db\Adapter\Adapter;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
-use Zend\Db\Adapter\Adapter;
 
 class ProductId
 {
@@ -79,5 +79,19 @@ class ProductId
                  ;
         ';
         return $this->adapter->query($sql)->execute([$productId])->current();
+    }
+
+    public function updateSetModifiedToUtcTimestampWhereProductId(int $productId): Result
+    {
+        $sql = '
+            UPDATE `product`
+               SET `modified` = UTC_TIMESTAMP()
+             WHERE `product_id` = ?
+                 ;
+        ';
+        $parameters = [
+            $productId,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
     }
 }

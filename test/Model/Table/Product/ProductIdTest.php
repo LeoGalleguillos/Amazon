@@ -8,6 +8,11 @@ class ProductIdTest extends TableTestCase
 {
     protected function setUp()
     {
+        $this->setForeignKeyChecks(0);
+        $this->dropTable('product');
+        $this->createTable('product');
+        $this->setForeignKeyChecks(1);
+
         $this->productTable = new AmazonTable\Product(
             $this->getAdapter()
         );
@@ -15,11 +20,6 @@ class ProductIdTest extends TableTestCase
             $this->getAdapter(),
             $this->productTable
         );
-
-        $this->setForeignKeyChecks0();
-        $this->dropTable('product');
-        $this->createTable('product');
-        $this->setForeignKeyChecks1();
     }
 
     public function test_selectWhereProductIdIn()
@@ -28,6 +28,32 @@ class ProductIdTest extends TableTestCase
         $this->assertEmpty(
             iterator_to_array($generator)
         );
+    }
 
+    public function test_updateSetModifiedToUtcTimestampWhereProductId()
+    {
+        $result = $this->productIdTable->updateSetModifiedToUtcTimestampWhereProductId(
+            1
+        );
+        $this->assertSame(
+            0,
+            $result->getAffectedRows()
+        );
+
+        $this->productTable->insert(
+            'ASIN001',
+            'Title',
+            'Product Group',
+            null,
+            null,
+            4.99
+        );
+        $result = $this->productIdTable->updateSetModifiedToUtcTimestampWhereProductId(
+            1
+        );
+        $this->assertSame(
+            1,
+            $result->getAffectedRows()
+        );
     }
 }
