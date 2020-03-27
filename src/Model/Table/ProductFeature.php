@@ -2,8 +2,8 @@
 namespace LeoGalleguillos\Amazon\Model\Table;
 
 use Generator;
-use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
-use Zend\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Driver\Pdo\Result;
 
 class ProductFeature
 {
@@ -16,6 +16,20 @@ class ProductFeature
         Adapter $adapter
     ) {
         $this->adapter = $adapter;
+    }
+
+    public function deleteWhereProductId(int $productId): Result
+    {
+        $sql = '
+            DELETE
+              FROM `product_feature`
+             WHERE `product_id` = ?
+                 ;
+        ';
+        $parameters = [
+            $productId,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
     }
 
     public function selectWhereProductId(int $productId): Generator
