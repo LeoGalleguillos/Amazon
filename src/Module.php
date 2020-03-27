@@ -804,11 +804,6 @@ class Module
                         $sm->get('amazon')
                     );
                 },
-                AmazonTable\Product\SimilarRetrievedCreated::class => function ($sm) {
-                    return new AmazonTable\Product\SimilarRetrievedCreated(
-                        $sm->get('amazon')
-                    );
-                },
                 AmazonTable\Product\Title::class => function ($sm) {
                     return new AmazonTable\Product\Title(
                         $sm->get('amazon')
