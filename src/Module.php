@@ -726,6 +726,12 @@ class Module
                         $sm->get('amazon')
                     );
                 },
+                AmazonTable\Product\SimilarRetrievedModifiedProductId::class => function ($sm) {
+                    return new AmazonTable\Product\SimilarRetrievedModifiedProductId(
+                        $sm->get('amazon'),
+                        $sm->get(AmazonTable\Product::class)
+                    );
+                },
                 AmazonTable\ProductBanned::class => function ($sm) {
                     return new AmazonTable\ProductBanned(
                         $sm->get('amazon')
