@@ -287,6 +287,12 @@ class Module
                         $sm->get(AmazonTable\ProductUpc::class)
                     );
                 },
+                AmazonService\Api\Resources\ItemInfo\Features\SaveArrayToMySql::class => function ($sm) {
+                    return new AmazonService\Api\Resources\ItemInfo\Features\SaveArrayToMySql(
+                        $sm->get(AmazonTable\ProductFeature::class),
+                        $sm->get('amazon')->getDriver()->getConnection()
+                    );
+                },
                 AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set::class => function ($sm) {
                     return new AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set(
                         $sm->get(ArrayModuleService\Path\StringOrNull::class)
