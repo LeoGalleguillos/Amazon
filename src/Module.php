@@ -163,8 +163,8 @@ class Module
                 },
                 AmazonService\Api\ResponseElements\Items\SaveArrayToMySql::class => function ($sm) {
                     return new AmazonService\Api\ResponseElements\Items\SaveArrayToMySql(
+                        $sm->get(AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray::class),
                         $sm->get(AmazonService\Api\ResponseElements\Items\Item\SaveArrayToMySql::class),
-                        $sm->get(AmazonService\Product\Banned::class),
                         $sm->get(AmazonTable\Product::class),
                         $sm->get(AmazonTable\Product\Asin::class)
                     );

@@ -10,11 +10,11 @@ class SaveArrayToMySqlTest extends TestCase
 {
     protected function setUp()
     {
+        $this->conditionallySkipItemArrayServiceMock = $this->createMock(
+            AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray::class
+        );
         $this->saveItemArrayToMySqlServiceMock = $this->createMock(
             AmazonService\Api\ResponseElements\Items\Item\SaveArrayToMySql::class
-        );
-        $this->bannedServiceMock = $this->createMock(
-            AmazonService\Product\Banned::class
         );
         $this->productTableMock = $this->createMock(
             AmazonTable\Product::class
@@ -24,8 +24,8 @@ class SaveArrayToMySqlTest extends TestCase
         );
 
         $this->saveArrayToMySqlService = new AmazonService\Api\ResponseElements\Items\SaveArrayToMySql(
+            $this->conditionallySkipItemArrayServiceMock,
             $this->saveItemArrayToMySqlServiceMock,
-            $this->bannedServiceMock,
             $this->productTableMock,
             $this->asinTableMock
         );
@@ -33,13 +33,13 @@ class SaveArrayToMySqlTest extends TestCase
 
     public function test_saveArrayToMySql_getItemsResult()
     {
-        $this->bannedServiceMock
+        $this->conditionallySkipItemArrayServiceMock
             ->expects($this->exactly(3))
-            ->method('isBanned')
+            ->method('shouldArrayBeSkipped')
             ->withConsecutive(
-                ['B009UOMNE8'],
-                ['B07MMZ2LTB'],
-                ['B07D5J6Z2C']
+                [$this->getGetItemsArray()[0]],
+                [$this->getGetItemsArray()[1]],
+                [$this->getGetItemsArray()[2]]
             )
             ->will(
                 $this->onConsecutiveCalls(
@@ -90,20 +90,20 @@ class SaveArrayToMySqlTest extends TestCase
 
     public function test_saveArrayToMySql_searchItemsResult()
     {
-        $this->bannedServiceMock
+        $this->conditionallySkipItemArrayServiceMock
             ->expects($this->exactly(10))
-            ->method('isBanned')
+            ->method('shouldArrayBeSkipped')
             ->withConsecutive(
-                ['B07XQXZXJC'],
-                ['B074JF7M9X'],
-                ['B07VMMNDCJ'],
-                ['B07YD67145'],
-                ['B07YD5ZBTW'],
-                ['B07P19XP84'],
-                ['B07VFY91HM'],
-                ['B07VLH5JR7'],
-                ['B073858Q9X'],
-                ['B07GB1D7PF']
+                [$this->getSearchItemsArray()[0]],
+                [$this->getSearchItemsArray()[1]],
+                [$this->getSearchItemsArray()[2]],
+                [$this->getSearchItemsArray()[3]],
+                [$this->getSearchItemsArray()[4]],
+                [$this->getSearchItemsArray()[5]],
+                [$this->getSearchItemsArray()[6]],
+                [$this->getSearchItemsArray()[7]],
+                [$this->getSearchItemsArray()[8]],
+                [$this->getSearchItemsArray()[9]]
             )
             ->will(
                 $this->onConsecutiveCalls(
