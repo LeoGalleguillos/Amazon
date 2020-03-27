@@ -11,6 +11,7 @@ class SaveArrayToMySql
         AmazonService\Api\Resources\ItemInfo\ByLineInfo\Set $byLineInfoSetService,
         AmazonService\Api\Resources\ItemInfo\Classifications\Set $classificationsSetService,
         AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql $saveExternalIdsArrayToMySqlService,
+        AmazonService\Api\Resources\ItemInfo\Features\SaveArrayToMySql $saveFeaturesArrayToMySqlService,
         AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set $manufactureInfoSetService,
         AmazonService\Api\Resources\ItemInfo\Title\Set $titleSetService,
         AmazonService\Api\Resources\ItemInfo\TradeInInfo\Set $tradeInInfoSetService,
@@ -20,6 +21,7 @@ class SaveArrayToMySql
         $this->byLineInfoSetService               = $byLineInfoSetService;
         $this->classificationsSetService          = $classificationsSetService;
         $this->saveExternalIdsArrayToMySqlService = $saveExternalIdsArrayToMySqlService;
+        $this->saveFeaturesArrayToMySqlService    = $saveFeaturesArrayToMySqlService;
         $this->manufactureInfoSetService          = $manufactureInfoSetService;
         $this->titleSetService                    = $titleSetService;
         $this->tradeInInfoSetService              = $tradeInInfoSetService;
@@ -104,6 +106,13 @@ class SaveArrayToMySql
         if (isset($itemInfoArray['ExternalIds'])) {
             $this->saveExternalIdsArrayToMySqlService->saveArrayToMySql(
                 $itemInfoArray['ExternalIds'],
+                $productId
+            );
+        }
+
+        if (isset($itemInfoArray['Features'])) {
+            $this->saveFeaturesArrayToMySqlService->saveArrayToMySql(
+                $itemInfoArray['Features'],
                 $productId
             );
         }

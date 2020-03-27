@@ -19,6 +19,9 @@ class SaveArrayToMySqlTest extends TestCase
         $this->saveExternalIdsArrayToMySqlMock = $this->createMock(
             AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql::class
         );
+        $this->saveFeaturesArrayToMySqlMock = $this->createMock(
+            AmazonService\Api\Resources\ItemInfo\Features\SaveArrayToMySql::class
+        );
         $this->manufactureInfoSetServiceMock = $this->createMock(
             AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set::class
         );
@@ -38,6 +41,7 @@ class SaveArrayToMySqlTest extends TestCase
             $this->byLineInfoSetServiceMock,
             $this->classificationsSetServiceMock,
             $this->saveExternalIdsArrayToMySqlMock,
+            $this->saveFeaturesArrayToMySqlMock,
             $this->manufactureInfoSetServiceMock,
             $this->titleSetServiceMock,
             $this->tradeInInfoSetServiceMock,
@@ -168,6 +172,14 @@ class SaveArrayToMySqlTest extends TestCase
             ->with(
                 $this->identicalTo(
                     $this->getArray()['ExternalIds']
+                )
+            );
+        $this->saveFeaturesArrayToMySqlMock
+            ->expects($this->exactly(1))
+            ->method('saveArrayToMySql')
+            ->with(
+                $this->identicalTo(
+                    $this->getArray()['Features']
                 )
             );
 
