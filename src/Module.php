@@ -169,6 +169,11 @@ class Module
                         $sm->get(AmazonTable\Product\Asin::class)
                     );
                 },
+                AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray::class => function ($sm) {
+                    return new AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray(
+                        $sm->get(AmazonService\Product\Banned::class)
+                    );
+                },
                 AmazonService\Api\ResponseElements\Items\Item\SaveArrayToMySql::class => function ($sm) {
                     return new AmazonService\Api\ResponseElements\Items\Item\SaveArrayToMySql(
                         $sm->get(AmazonService\Api\Resources\BrowseNodeInfo\SaveArrayToMySql::class),
