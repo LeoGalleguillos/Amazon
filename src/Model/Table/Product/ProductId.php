@@ -94,4 +94,18 @@ class ProductId
         ];
         return $this->adapter->query($sql)->execute($parameters);
     }
+
+    public function updateSetSimilarRetrievedToUtcTimestampWhereProductId(int $productId): Result
+    {
+        $sql = '
+            UPDATE `product`
+               SET `similar_retrieved` = UTC_TIMESTAMP()
+             WHERE `product_id` = ?
+                 ;
+        ';
+        $parameters = [
+            $productId,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
+    }
 }

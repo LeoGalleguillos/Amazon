@@ -56,4 +56,31 @@ class ProductIdTest extends TableTestCase
             $result->getAffectedRows()
         );
     }
+
+    public function test_updateSetSimilarRetrievedToUtcTimestampWhereProductId()
+    {
+        $result = $this->productIdTable->updateSetSimilarRetrievedToUtcTimestampWhereProductId(
+            1
+        );
+        $this->assertSame(
+            0,
+            $result->getAffectedRows()
+        );
+
+        $this->productTable->insert(
+            'ASIN001',
+            'Title',
+            'Product Group',
+            null,
+            null,
+            4.99
+        );
+        $result = $this->productIdTable->updateSetSimilarRetrievedToUtcTimestampWhereProductId(
+            1
+        );
+        $this->assertSame(
+            1,
+            $result->getAffectedRows()
+        );
+    }
 }
