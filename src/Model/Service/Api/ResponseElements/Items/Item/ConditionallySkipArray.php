@@ -63,6 +63,7 @@ class ConditionallySkipArray
             'TV Series Season Video on Demand',
             'TV Series Video on Demand',
             'Video',
+            'Video On Demand',
         ];
         if (in_array($productGroup, $productGroupsToSkip)) {
             return true;
