@@ -51,6 +51,7 @@ class ConditionallySkipArray
             'Book',
             'Classical',
             'Courseware',
+            'Digital Ebook Purchas',
             'Digital Music Album',
             'Digital Music Purchase',
             'Digital Music Track',
