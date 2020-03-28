@@ -10,23 +10,22 @@ class BrowseNode
 {
     public function __construct(
         AmazonFactory\Product $productFactory,
-        AmazonTable\Product\CreatedProductId $createdProductIdTable
+        AmazonTable\Product\BrowseNodeId $browseNodeIdTable
     ) {
-        $this->productFactory        = $productFactory;
-        $this->productIdCreatedTable = $productIdCreatedTable;
+        $this->productFactory    = $productFactory;
+        $this->browseNodeIdTable = $browseNodeIdTable;
     }
 
     public function getNewestProducts(
         AmazonEntity\BrowseNode $browseNodeEntity
     ): Generator {
-        $result = $this->productIdCreatedTable
+        $result = $this->browseNodeIdTable
             ->selectProductIdWhereBrowseNodeId(
                 $browseNodeEntity->getBrowseNodeId()
             );
-
         foreach ($result as $array) {
             yield $this->productFactory->buildFromProductId(
-                $array['product_id']
+                (int) $array['product_id']
             );
         }
     }

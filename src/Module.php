@@ -445,6 +445,12 @@ class Module
                         $sm->get(AmazonTable\Product\IsValidCreatedProductId::class)
                     );
                 },
+                AmazonService\Product\Products\Newest\BrowseNode::class => function ($sm) {
+                    return new AmazonService\Product\Products\Newest\BrowseNode(
+                        $sm->get(AmazonFactory\Product::class),
+                        $sm->get(AmazonTable\Product\BrowseNodeId::class)
+                    );
+                },
                 AmazonService\Product\Products\Newest\BrowseNode\Name::class => function ($sm) {
                     return new AmazonService\Product\Products\Newest\BrowseNode\Name(
                         $sm->get(AmazonFactory\Product::class),
