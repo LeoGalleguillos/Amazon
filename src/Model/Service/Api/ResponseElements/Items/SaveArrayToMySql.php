@@ -22,16 +22,19 @@ class SaveArrayToMySql
         array $itemsArray
     ) {
         foreach ($itemsArray as $itemArray) {
+            $asin         = $itemArray['ASIN'];
+            $productArray = $this->asinTable->selectWhereAsin($asin)->current();
+
+            if ($productArray) {
+                $this->asinTable->updateSetIsValidWhereAsin(1, $asin);
+                $this->asinTable->updateSetModifiedToUtcTimestampWhereAsin($asin);
+            }
+
             if ($this->conditionallySkipItemArrayService->shouldArrayBeSkipped($itemArray)) {
                 continue;
             }
 
-            $asin = $itemArray['ASIN'];
-
-            if (count($this->asinTable->selectWhereAsin($asin))) {
-                $this->asinTable->updateSetIsValidWhereAsin(1, $asin);
-                $this->asinTable->updateSetModifiedToUtcTimestampWhereAsin($asin);
-            } else {
+            if (!$productArray) {
                 $this->productTable->insertAsin($asin);
             }
 

@@ -4,6 +4,7 @@ namespace LeoGalleguillos\AmazonTest\Model\Service\Api\ResponseElements\Items;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
+use LeoGalleguillos\Test\Hydrator as TestHydrator;
 use PHPUnit\Framework\TestCase;
 
 class SaveArrayToMySqlTest extends TestCase
@@ -33,6 +34,67 @@ class SaveArrayToMySqlTest extends TestCase
 
     public function test_saveArrayToMySql_getItemsResult()
     {
+        $resultHydrator = new TestHydrator\Result();
+
+        $resultMock1 = $this->createMock(Result::class);
+        $resultMock2 = $this->createMock(Result::class);
+        $resultMock3 = $this->createMock(Result::class);
+
+        $resultHydrator->hydrate(
+            $resultMock1,
+            [
+                [
+                    'product_id' => '12345',
+                    'asin' => 'B009UOMNE8',
+                    'title' => 'Product title',
+                ],
+            ]
+        );
+        $resultHydrator->hydrate(
+            $resultMock2,
+            [
+                [
+                    'product_id' => '111',
+                    'asin' => 'B07MMZ2LTB',
+                    'title' => 'Another roduct title',
+                ],
+            ]
+        );
+        $resultHydrator->hydrate(
+            $resultMock3,
+            [
+            ]
+        );
+
+        $this->asinTableMock
+            ->expects($this->exactly(3))
+            ->method('selectWhereAsin')
+            ->withConsecutive(
+                ['B009UOMNE8'],
+                ['B07MMZ2LTB'],
+                ['B07D5J6Z2C']
+            )
+            ->will(
+                $this->onConsecutiveCalls(
+                    $resultMock1,
+                    $resultMock2,
+                    $resultMock3  // empty result
+                )
+            );
+        $this->asinTableMock
+            ->expects($this->exactly(2))
+            ->method('updateSetIsValidWhereAsin')
+            ->withConsecutive(
+                [1, 'B009UOMNE8'],
+                [1, 'B07MMZ2LTB']
+            );
+        $this->asinTableMock
+            ->expects($this->exactly(2))
+            ->method('updateSetModifiedToUtcTimestampWhereAsin')
+            ->withConsecutive(
+                ['B009UOMNE8'],
+                ['B07MMZ2LTB']
+            );
         $this->conditionallySkipItemArrayServiceMock
             ->expects($this->exactly(3))
             ->method('shouldArrayBeSkipped')
@@ -48,33 +110,6 @@ class SaveArrayToMySqlTest extends TestCase
                     false
                 )
             );
-        $resultMock1 = $this->createMock(Result::class);
-        $resultMock1->method('count')->willReturn(1);
-        $resultMock2 = $this->createMock(Result::class);
-        $resultMock2->method('count')->willReturn(0);
-        $this->asinTableMock
-            ->expects($this->exactly(2))
-            ->method('selectWhereAsin')
-            ->withConsecutive(
-                ['B009UOMNE8'],
-                ['B07D5J6Z2C']
-            )
-            ->will(
-                $this->onConsecutiveCalls(
-                    $resultMock1,
-                    $resultMock2
-                )
-            );
-        $this->asinTableMock
-            ->expects($this->exactly(1))
-            ->method('updateSetIsValidWhereAsin')
-            ->withConsecutive(
-                [1, 'B009UOMNE8']
-            );
-        $this->asinTableMock
-            ->expects($this->exactly(1))
-            ->method('updateSetModifiedToUtcTimestampWhereAsin')
-            ->with('B009UOMNE8');
         $this->productTableMock
             ->expects($this->exactly(1))
             ->method('insertAsin')
@@ -94,6 +129,83 @@ class SaveArrayToMySqlTest extends TestCase
 
     public function test_saveArrayToMySql_searchItemsResult()
     {
+        $resultMockArray = [
+            'product_id' => '12345',
+            'asin' => 'B000000000',
+            'title' => 'Does not really matter what goes here',
+        ];
+        $resultHydrator = new TestHydrator\Result();
+        $resultMocks = [];
+        for ($x = 0; $x <= 9; $x++) {
+            $resultMocks[$x] = $this->createMock(Result::class);
+            $resultHydrator->hydrate(
+                $resultMocks[$x],
+                [
+                    $resultMockArray
+                ]
+            );
+        }
+
+        $this->asinTableMock
+            ->expects($this->exactly(10))
+            ->method('selectWhereAsin')
+            ->withConsecutive(
+                [$this->getSearchItemsArray()[0]['ASIN']],
+                [$this->getSearchItemsArray()[1]['ASIN']],
+                [$this->getSearchItemsArray()[2]['ASIN']],
+                [$this->getSearchItemsArray()[3]['ASIN']],
+                [$this->getSearchItemsArray()[4]['ASIN']],
+                [$this->getSearchItemsArray()[5]['ASIN']],
+                [$this->getSearchItemsArray()[6]['ASIN']],
+                [$this->getSearchItemsArray()[7]['ASIN']],
+                [$this->getSearchItemsArray()[8]['ASIN']],
+                [$this->getSearchItemsArray()[9]['ASIN']]
+            )
+            ->will(
+                $this->onConsecutiveCalls(
+                    $resultMocks[0],
+                    $resultMocks[1],
+                    $resultMocks[2],
+                    $resultMocks[3],
+                    $resultMocks[4],
+                    $resultMocks[5],
+                    $resultMocks[6],
+                    $resultMocks[7],
+                    $resultMocks[8],
+                    $resultMocks[9]
+                )
+            );
+        $this->asinTableMock
+            ->expects($this->exactly(10))
+            ->method('updateSetIsValidWhereAsin')
+            ->withConsecutive(
+                [1, $this->getSearchItemsArray()[0]['ASIN']],
+                [1, $this->getSearchItemsArray()[1]['ASIN']],
+                [1, $this->getSearchItemsArray()[2]['ASIN']],
+                [1, $this->getSearchItemsArray()[3]['ASIN']],
+                [1, $this->getSearchItemsArray()[4]['ASIN']],
+                [1, $this->getSearchItemsArray()[5]['ASIN']],
+                [1, $this->getSearchItemsArray()[6]['ASIN']],
+                [1, $this->getSearchItemsArray()[7]['ASIN']],
+                [1, $this->getSearchItemsArray()[8]['ASIN']],
+                [1, $this->getSearchItemsArray()[9]['ASIN']]
+            );
+        $this->asinTableMock
+            ->expects($this->exactly(10))
+            ->method('updateSetModifiedToUtcTimestampWhereAsin')
+            ->withConsecutive(
+                [$this->getSearchItemsArray()[0]['ASIN']],
+                [$this->getSearchItemsArray()[1]['ASIN']],
+                [$this->getSearchItemsArray()[2]['ASIN']],
+                [$this->getSearchItemsArray()[3]['ASIN']],
+                [$this->getSearchItemsArray()[4]['ASIN']],
+                [$this->getSearchItemsArray()[5]['ASIN']],
+                [$this->getSearchItemsArray()[6]['ASIN']],
+                [$this->getSearchItemsArray()[7]['ASIN']],
+                [$this->getSearchItemsArray()[8]['ASIN']],
+                [$this->getSearchItemsArray()[9]['ASIN']]
+            );
+
         $this->conditionallySkipItemArrayServiceMock
             ->expects($this->exactly(10))
             ->method('shouldArrayBeSkipped')
@@ -122,48 +234,6 @@ class SaveArrayToMySqlTest extends TestCase
                     false,
                     true
                 )
-            );
-        $resultMock1 = $this->createMock(Result::class);
-        $resultMock1->method('count')->willReturn(1);
-        $this->asinTableMock
-            ->expects($this->exactly(8))
-            ->method('selectWhereAsin')
-            ->withConsecutive(
-                ['B07XQXZXJC'],
-                ['B07VMMNDCJ'],
-                ['B07YD67145'],
-                ['B07YD5ZBTW'],
-                ['B07P19XP84'],
-                ['B07VFY91HM'],
-                ['B07VLH5JR7'],
-                ['B073858Q9X']
-            )
-            ->willReturn($resultMock1);
-        $this->asinTableMock
-            ->expects($this->exactly(8))
-            ->method('updateSetIsValidWhereAsin')
-            ->withConsecutive(
-                [1, 'B07XQXZXJC'],
-                [1, 'B07VMMNDCJ'],
-                [1, 'B07YD67145'],
-                [1, 'B07YD5ZBTW'],
-                [1, 'B07P19XP84'],
-                [1, 'B07VFY91HM'],
-                [1, 'B07VLH5JR7'],
-                [1, 'B073858Q9X']
-            );
-        $this->asinTableMock
-            ->expects($this->exactly(8))
-            ->method('updateSetModifiedToUtcTimestampWhereAsin')
-            ->withConsecutive(
-                ['B07XQXZXJC'],
-                ['B07VMMNDCJ'],
-                ['B07YD67145'],
-                ['B07YD5ZBTW'],
-                ['B07P19XP84'],
-                ['B07VFY91HM'],
-                ['B07VLH5JR7'],
-                ['B073858Q9X']
             );
         $this->productTableMock
             ->expects($this->exactly(0))
