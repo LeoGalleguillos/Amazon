@@ -197,12 +197,6 @@ class Module
                         $sm->get(AmazonTable\Product\Asin::class)
                     );
                 },
-                AmazonService\Api\Operations\GetItems\SaveJsonToMySql::class => function ($sm) {
-                    return new AmazonService\Api\Operations\GetItems\SaveJsonToMySql(
-                        $sm->get(AmazonService\Api\Errors\SaveArrayToMySql::class),
-                        $sm->get(AmazonService\Api\ResponseElements\Items\SaveArrayToMySql::class)
-                    );
-                },
                 AmazonService\Api\Operations\GetItems\GetJsonAndSaveJsonToMySql::class => function ($sm) {
                     return new AmazonService\Api\Operations\GetItems\GetJsonAndSaveJsonToMySql(
                         $sm->get(AmazonService\Api\Operations\GetItems\Json::class),
@@ -217,12 +211,23 @@ class Module
                         $amazonConfig['secret_access_key']
                     );
                 },
+                AmazonService\Api\Operations\GetItems\SaveJsonToMySql::class => function ($sm) {
+                    return new AmazonService\Api\Operations\GetItems\SaveJsonToMySql(
+                        $sm->get(AmazonService\Api\Errors\SaveArrayToMySql::class),
+                        $sm->get(AmazonService\Api\ResponseElements\Items\SaveArrayToMySql::class)
+                    );
+                },
                 AmazonService\Api\Operations\SearchItems\Json::class => function ($sm) {
                     $amazonConfig = $sm->get('Config')['amazon'];
                     return new AmazonService\Api\Operations\SearchItems\Json(
                         $amazonConfig['associate_tag'],
                         $amazonConfig['access_key_id'],
                         $amazonConfig['secret_access_key']
+                    );
+                },
+                AmazonService\Api\Operations\SearchItems\SaveJsonToMySql::class => function ($sm) {
+                    return new AmazonService\Api\Operations\SearchItems\SaveJsonToMySql(
+                        $sm->get(AmazonService\Api\ResponseElements\Items\SaveArrayToMySql::class)
                     );
                 },
                 AmazonService\Api\Product\Xml::class => function ($sm) {
