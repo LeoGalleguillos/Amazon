@@ -18,9 +18,9 @@ class BrowseNodeProductTest extends TableTestCase
             $this->getAdapter()
         );
 
-        $this->setForeignKeyChecks0();
+        $this->setForeignKeyChecks(0);
         $this->dropAndCreateTables(['browse_node', 'browse_node_product', 'product']);
-        $this->setForeignKeyChecks1();
+        $this->setForeignKeyChecks(1);
     }
 
     public function testInsertIgnore()
@@ -155,6 +155,26 @@ class BrowseNodeProductTest extends TableTestCase
                 ],
             ],
             iterator_to_array($this->browseNodeProductTable->selectWhereProductId(1))
+        );
+    }
+
+    public function test_selectProductIdWhereBrowseNodeId_multipleRows_multipleResults()
+    {
+        $this->setForeignKeyChecks(0);
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(1, 10, null, 1);
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(3, 10, null, 2);
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(1, 20, null, 1);
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(3, 30, null, 1);
+        $result = $this->browseNodeProductTable
+            ->selectProductIdWhereBrowseNodeId(
+                1
+            );
+        $this->assertSame(
+            [
+                ['product_id' => '20'],
+                ['product_id' => '10'],
+            ],
+            iterator_to_array($result)
         );
     }
 }

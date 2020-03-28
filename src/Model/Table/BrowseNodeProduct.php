@@ -3,7 +3,8 @@ namespace LeoGalleguillos\Amazon\Model\Table;
 
 use Exception;
 use Generator;
-use Zend\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Driver\Pdo\Result;
 
 class BrowseNodeProduct
 {
@@ -200,5 +201,21 @@ class BrowseNodeProduct
         ';
         $array = $this->adapter->query($sql)->execute()->current();
         return (int) $array['product_id'];
+    }
+
+    public function selectProductIdWhereBrowseNodeId(int $browseNodeId): Result
+    {
+        $sql = '
+            SELECT `product_id`
+              FROM `browse_node_product`
+             WHERE `browse_node_id` = ?
+             ORDER
+                BY `product_id` DESC
+                 ;
+        ';
+        $parameters = [
+            $browseNodeId,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
     }
 }
