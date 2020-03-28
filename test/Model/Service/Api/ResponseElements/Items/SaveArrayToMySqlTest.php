@@ -71,6 +71,10 @@ class SaveArrayToMySqlTest extends TestCase
             ->withConsecutive(
                 [1, 'B009UOMNE8']
             );
+        $this->asinTableMock
+            ->expects($this->exactly(1))
+            ->method('updateSetModifiedToUtcTimestampWhereAsin')
+            ->with('B009UOMNE8');
         $this->productTableMock
             ->expects($this->exactly(1))
             ->method('insertAsin')
@@ -147,6 +151,19 @@ class SaveArrayToMySqlTest extends TestCase
                 [1, 'B07VFY91HM'],
                 [1, 'B07VLH5JR7'],
                 [1, 'B073858Q9X']
+            );
+        $this->asinTableMock
+            ->expects($this->exactly(8))
+            ->method('updateSetModifiedToUtcTimestampWhereAsin')
+            ->withConsecutive(
+                ['B07XQXZXJC'],
+                ['B07VMMNDCJ'],
+                ['B07YD67145'],
+                ['B07YD5ZBTW'],
+                ['B07P19XP84'],
+                ['B07VFY91HM'],
+                ['B07VLH5JR7'],
+                ['B073858Q9X']
             );
         $this->productTableMock
             ->expects($this->exactly(0))

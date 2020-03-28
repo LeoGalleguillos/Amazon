@@ -30,6 +30,7 @@ class SaveArrayToMySql
 
             if (count($this->asinTable->selectWhereAsin($asin))) {
                 $this->asinTable->updateSetIsValidWhereAsin(1, $asin);
+                $this->asinTable->updateSetModifiedToUtcTimestampWhereAsin($asin);
             } else {
                 $this->productTable->insertAsin($asin);
             }
