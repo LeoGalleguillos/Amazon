@@ -451,6 +451,11 @@ class Module
                         $sm->get(AmazonTable\BrowseNodeProduct::class)
                     );
                 },
+                AmazonService\Product\Products\Newest\BrowseNode\NumberOfPages::class => function ($sm) {
+                    return new AmazonService\Product\Products\Newest\BrowseNode\NumberOfPages(
+                        $sm->get(AmazonTable\BrowseNodeProduct::class)
+                    );
+                },
                 AmazonService\Product\Products\Newest\BrowseNode\Name::class => function ($sm) {
                     return new AmazonService\Product\Products\Newest\BrowseNode\Name(
                         $sm->get(AmazonFactory\Product::class),
