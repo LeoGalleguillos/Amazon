@@ -203,18 +203,24 @@ class BrowseNodeProduct
         return (int) $array['product_id'];
     }
 
-    public function selectProductIdWhereBrowseNodeId(int $browseNodeId): Result
-    {
+    public function selectProductIdWhereBrowseNodeIdLimit(
+        int $browseNodeId,
+        int $limitOffset,
+        int $limitRowCount
+    ): Result {
         $sql = '
             SELECT `product_id`
               FROM `browse_node_product`
              WHERE `browse_node_id` = ?
              ORDER
                 BY `product_id` DESC
+             LIMIT ?, ?
                  ;
         ';
         $parameters = [
             $browseNodeId,
+            $limitOffset,
+            $limitRowCount
         ];
         return $this->adapter->query($sql)->execute($parameters);
     }

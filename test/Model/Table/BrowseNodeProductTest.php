@@ -158,7 +158,7 @@ class BrowseNodeProductTest extends TableTestCase
         );
     }
 
-    public function test_selectProductIdWhereBrowseNodeId_multipleRows_multipleResults()
+    public function test_selectProductIdWhereBrowseNodeIdLimit_multipleRows_multipleResults()
     {
         $this->setForeignKeyChecks(0);
         $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(1, 10, null, 1);
@@ -166,8 +166,10 @@ class BrowseNodeProductTest extends TableTestCase
         $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(1, 20, null, 1);
         $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(3, 30, null, 1);
         $result = $this->browseNodeProductTable
-            ->selectProductIdWhereBrowseNodeId(
-                1
+            ->selectProductIdWhereBrowseNodeIdLimit(
+                1,
+                0,
+                100
             );
         $this->assertSame(
             [

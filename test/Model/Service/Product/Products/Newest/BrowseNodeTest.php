@@ -63,7 +63,7 @@ class BrowseNodeTest extends TestCase
 
         $this->browseNodeProductTableMock
             ->expects($this->exactly(1))
-            ->method('selectProductIdWhereBrowseNodeId')
+            ->method('selectProductIdWhereBrowseNodeIdLimit')
             ->with(111)
             ->willReturn($resultMock);
 

@@ -20,8 +20,10 @@ class BrowseNode
         AmazonEntity\BrowseNode $browseNodeEntity
     ): Generator {
         $result = $this->browseNodeProductTable
-            ->selectProductIdWhereBrowseNodeId(
-                $browseNodeEntity->getBrowseNodeId()
+            ->selectProductIdWhereBrowseNodeIdLimit(
+                $browseNodeEntity->getBrowseNodeId(),
+                0,
+                100
             );
         foreach ($result as $array) {
             yield $this->productFactory->buildFromProductId(
