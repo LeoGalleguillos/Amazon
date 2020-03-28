@@ -63,6 +63,21 @@ class BrowseNodeProduct
             ->getAffectedRows();
     }
 
+    public function selectCountWhereBrowseNodeId(
+        int $browseNodeId
+    ): Result {
+        $sql = '
+            SELECT COUNT(*)
+              FROM `browse_node_product`
+             WHERE `browse_node_id` = ?
+                 ;
+        ';
+        $parameters = [
+            $browseNodeId,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
+    }
+
     public function selectProductIdWhereSimilarRetrievedIsNullAndBrowseNodeIdLimit1(
         int $browseNodeId
     ): int {

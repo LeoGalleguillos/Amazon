@@ -8,6 +8,10 @@ class BrowseNodeProductTest extends TableTestCase
 {
     protected function setUp()
     {
+        $this->setForeignKeyChecks(0);
+        $this->dropAndCreateTables(['browse_node', 'browse_node_product', 'product']);
+        $this->setForeignKeyChecks(1);
+
         $this->browseNodeTable = new AmazonTable\BrowseNode(
             $this->getAdapter()
         );
@@ -17,10 +21,6 @@ class BrowseNodeProductTest extends TableTestCase
         $this->browseNodeProductTable = new AmazonTable\BrowseNodeProduct(
             $this->getAdapter()
         );
-
-        $this->setForeignKeyChecks(0);
-        $this->dropAndCreateTables(['browse_node', 'browse_node_product', 'product']);
-        $this->setForeignKeyChecks(1);
     }
 
     public function testInsertIgnore()
@@ -61,6 +61,33 @@ class BrowseNodeProductTest extends TableTestCase
         $this->assertSame(
             2,
             $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(2, 1, null, 10)
+        );
+    }
+
+    public function test_selectCountWhereBrowseNodeId_variousRows_expectedCount()
+    {
+        $this->setForeignKeyChecks(0);
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(1, 10, null, 1);
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(1, 20, null, 1);
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(3, 10, null, 2);
+        $this->browseNodeProductTable->insertOnDuplicateKeyUpdate(1, 10, null, 1);
+
+        $result = $this->browseNodeProductTable->selectCountWhereBrowseNodeId(1);
+        $this->assertSame(
+            '2',
+            $result->current()['COUNT(*)']
+        );
+
+        $result = $this->browseNodeProductTable->selectCountWhereBrowseNodeId(2);
+        $this->assertSame(
+            '0',
+            $result->current()['COUNT(*)']
+        );
+
+        $result = $this->browseNodeProductTable->selectCountWhereBrowseNodeId(3);
+        $this->assertSame(
+            '1',
+            $result->current()['COUNT(*)']
         );
     }
 
