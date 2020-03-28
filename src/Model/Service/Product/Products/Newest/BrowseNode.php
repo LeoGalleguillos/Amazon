@@ -17,12 +17,13 @@ class BrowseNode
     }
 
     public function getNewestProducts(
-        AmazonEntity\BrowseNode $browseNodeEntity
+        AmazonEntity\BrowseNode $browseNodeEntity,
+        int $page
     ): Generator {
         $result = $this->browseNodeProductTable
             ->selectProductIdWhereBrowseNodeIdLimit(
                 $browseNodeEntity->getBrowseNodeId(),
-                0,
+                ($page - 1) * 100,
                 100
             );
         foreach ($result as $array) {

@@ -34,7 +34,8 @@ class BrowseNodeTest extends TestCase
         $this->assertEmpty(
             iterator_to_array(
                 $this->browseNodeService->getNewestProducts(
-                    $browseNodeEntity
+                    $browseNodeEntity,
+                    1
                 )
             )
         );
@@ -64,7 +65,7 @@ class BrowseNodeTest extends TestCase
         $this->browseNodeProductTableMock
             ->expects($this->exactly(1))
             ->method('selectProductIdWhereBrowseNodeIdLimit')
-            ->with(111)
+            ->with(111, 0, 100)
             ->willReturn($resultMock);
 
         $productEntity1 = new AmazonEntity\Product();
@@ -89,7 +90,7 @@ class BrowseNodeTest extends TestCase
                 $productEntity1,
                 $productEntity2
             ],
-            iterator_to_array($this->browseNodeService->getNewestProducts($browseNodeEntity))
+            iterator_to_array($this->browseNodeService->getNewestProducts($browseNodeEntity, 1))
         );
     }
 }
