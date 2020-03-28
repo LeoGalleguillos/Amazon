@@ -448,7 +448,7 @@ class Module
                 AmazonService\Product\Products\Newest\BrowseNode::class => function ($sm) {
                     return new AmazonService\Product\Products\Newest\BrowseNode(
                         $sm->get(AmazonFactory\Product::class),
-                        $sm->get(AmazonTable\Product\BrowseNodeId::class)
+                        $sm->get(AmazonTable\BrowseNodeProduct::class)
                     );
                 },
                 AmazonService\Product\Products\Newest\BrowseNode\Name::class => function ($sm) {

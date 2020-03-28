@@ -10,16 +10,16 @@ class BrowseNode
 {
     public function __construct(
         AmazonFactory\Product $productFactory,
-        AmazonTable\Product\BrowseNodeId $browseNodeIdTable
+        AmazonTable\BrowseNodeProduct $browseNodeProductTable
     ) {
-        $this->productFactory    = $productFactory;
-        $this->browseNodeIdTable = $browseNodeIdTable;
+        $this->productFactory         = $productFactory;
+        $this->browseNodeProductTable = $browseNodeProductTable;
     }
 
     public function getNewestProducts(
         AmazonEntity\BrowseNode $browseNodeEntity
     ): Generator {
-        $result = $this->browseNodeIdTable
+        $result = $this->browseNodeProductTable
             ->selectProductIdWhereBrowseNodeId(
                 $browseNodeEntity->getBrowseNodeId()
             );

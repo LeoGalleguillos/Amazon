@@ -16,13 +16,13 @@ class BrowseNodeTest extends TestCase
         $this->productFactoryMock = $this->createMock(
             AmazonFactory\Product::class
         );
-        $this->browseNodeIdTableMock = $this->createMock(
-            AmazonTable\Product\BrowseNodeId::class
+        $this->browseNodeProductTableMock = $this->createMock(
+            AmazonTable\BrowseNodeProduct::class
         );
 
         $this->browseNodeService = new AmazonService\Product\Products\Newest\BrowseNode(
             $this->productFactoryMock,
-            $this->browseNodeIdTableMock
+            $this->browseNodeProductTableMock
         );
     }
 
@@ -61,7 +61,7 @@ class BrowseNodeTest extends TestCase
             ]
         );
 
-        $this->browseNodeIdTableMock
+        $this->browseNodeProductTableMock
             ->expects($this->exactly(1))
             ->method('selectProductIdWhereBrowseNodeId')
             ->with(111)
