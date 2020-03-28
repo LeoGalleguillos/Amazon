@@ -720,6 +720,11 @@ class Module
                         $sm->get(AmazonTable\Product::class)
                     );
                 },
+                AmazonTable\Product\BrowseNodeId::class => function ($sm) {
+                    return new AmazonTable\Product\BrowseNodeId(
+                        $sm->get('amazon')
+                    );
+                },
                 AmazonTable\Product\IsValidCreatedProductId::class => function ($sm) {
                     return new AmazonTable\Product\IsValidCreatedProductId(
                         $sm->get('amazon'),
