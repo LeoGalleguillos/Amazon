@@ -174,6 +174,9 @@ class Module
                         $sm->get(AmazonService\Product\Banned::class)
                     );
                 },
+                AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray\Title::class => function ($sm) {
+                    return new AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray\Title();
+                },
                 AmazonService\Api\ResponseElements\Items\Item\SaveArrayToMySql::class => function ($sm) {
                     return new AmazonService\Api\ResponseElements\Items\Item\SaveArrayToMySql(
                         $sm->get(AmazonService\Api\Resources\BrowseNodeInfo\SaveArrayToMySql::class),
