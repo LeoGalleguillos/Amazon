@@ -88,13 +88,6 @@ class SaveArrayToMySqlTest extends TestCase
                 [1, 'B009UOMNE8'],
                 [1, 'B07MMZ2LTB']
             );
-        $this->asinTableMock
-            ->expects($this->exactly(2))
-            ->method('updateSetModifiedToUtcTimestampWhereAsin')
-            ->withConsecutive(
-                ['B009UOMNE8'],
-                ['B07MMZ2LTB']
-            );
         $this->conditionallySkipItemArrayServiceMock
             ->expects($this->exactly(3))
             ->method('shouldArrayBeSkipped')
@@ -114,6 +107,14 @@ class SaveArrayToMySqlTest extends TestCase
             ->expects($this->exactly(1))
             ->method('insertAsin')
             ->with('B07D5J6Z2C');
+        $this->asinTableMock
+            ->expects($this->exactly(3))
+            ->method('updateSetModifiedToUtcTimestampWhereAsin')
+            ->withConsecutive(
+                ['B009UOMNE8'],
+                ['B07MMZ2LTB'],
+                ['B07D5J6Z2C']
+            );
         $this->saveItemArrayToMySqlServiceMock
             ->expects($this->exactly(2))
             ->method('saveArrayToMySql')
