@@ -81,28 +81,11 @@ class SaveArrayToMySqlTest extends TestCase
                     $resultMock3  // empty result
                 )
             );
-        $this->asinTableMock
-            ->expects($this->exactly(2))
-            ->method('updateSetIsValidWhereAsin')
-            ->withConsecutive(
-                [1, 'B009UOMNE8'],
-                [1, 'B07MMZ2LTB']
-            );
         $this->conditionallySkipItemArrayServiceMock
-            ->expects($this->exactly(3))
+            ->expects($this->exactly(1))
             ->method('shouldArrayBeSkipped')
-            ->withConsecutive(
-                [$this->getGetItemsArray()[0]],
-                [$this->getGetItemsArray()[1]],
-                [$this->getGetItemsArray()[2]]
-            )
-            ->will(
-                $this->onConsecutiveCalls(
-                    false,
-                    true,
-                    false
-                )
-            );
+            ->with($this->getGetItemsArray()[2])
+            ->willReturn(false);
         $this->productTableMock
             ->expects($this->exactly(1))
             ->method('insertAsin')
@@ -116,10 +99,11 @@ class SaveArrayToMySqlTest extends TestCase
                 ['B07D5J6Z2C']
             );
         $this->saveItemArrayToMySqlServiceMock
-            ->expects($this->exactly(2))
+            ->expects($this->exactly(3))
             ->method('saveArrayToMySql')
             ->withConsecutive(
                 [$this->getGetItemsArray()[0]],
+                [$this->getGetItemsArray()[1]],
                 [$this->getGetItemsArray()[2]]
             );
 
@@ -178,21 +162,6 @@ class SaveArrayToMySqlTest extends TestCase
             );
         $this->asinTableMock
             ->expects($this->exactly(10))
-            ->method('updateSetIsValidWhereAsin')
-            ->withConsecutive(
-                [1, $this->getSearchItemsArray()[0]['ASIN']],
-                [1, $this->getSearchItemsArray()[1]['ASIN']],
-                [1, $this->getSearchItemsArray()[2]['ASIN']],
-                [1, $this->getSearchItemsArray()[3]['ASIN']],
-                [1, $this->getSearchItemsArray()[4]['ASIN']],
-                [1, $this->getSearchItemsArray()[5]['ASIN']],
-                [1, $this->getSearchItemsArray()[6]['ASIN']],
-                [1, $this->getSearchItemsArray()[7]['ASIN']],
-                [1, $this->getSearchItemsArray()[8]['ASIN']],
-                [1, $this->getSearchItemsArray()[9]['ASIN']]
-            );
-        $this->asinTableMock
-            ->expects($this->exactly(10))
             ->method('updateSetModifiedToUtcTimestampWhereAsin')
             ->withConsecutive(
                 [$this->getSearchItemsArray()[0]['ASIN']],
@@ -208,8 +177,14 @@ class SaveArrayToMySqlTest extends TestCase
             );
 
         $this->conditionallySkipItemArrayServiceMock
+            ->expects($this->exactly(0))
+            ->method('shouldArrayBeSkipped');
+        $this->productTableMock
+            ->expects($this->exactly(0))
+            ->method('insertAsin');
+        $this->saveItemArrayToMySqlServiceMock
             ->expects($this->exactly(10))
-            ->method('shouldArrayBeSkipped')
+            ->method('saveArrayToMySql')
             ->withConsecutive(
                 [$this->getSearchItemsArray()[0]],
                 [$this->getSearchItemsArray()[1]],
@@ -221,36 +196,6 @@ class SaveArrayToMySqlTest extends TestCase
                 [$this->getSearchItemsArray()[7]],
                 [$this->getSearchItemsArray()[8]],
                 [$this->getSearchItemsArray()[9]]
-            )
-            ->will(
-                $this->onConsecutiveCalls(
-                    false,
-                    true,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    true
-                )
-            );
-        $this->productTableMock
-            ->expects($this->exactly(0))
-            ->method('insertAsin');
-        $this->saveItemArrayToMySqlServiceMock
-            ->expects($this->exactly(8))
-            ->method('saveArrayToMySql')
-            ->withConsecutive(
-                [$this->getSearchItemsArray()[0]],
-                [$this->getSearchItemsArray()[2]],
-                [$this->getSearchItemsArray()[3]],
-                [$this->getSearchItemsArray()[4]],
-                [$this->getSearchItemsArray()[5]],
-                [$this->getSearchItemsArray()[6]],
-                [$this->getSearchItemsArray()[7]],
-                [$this->getSearchItemsArray()[8]]
             );
 
         $this->saveArrayToMySqlService->saveArrayToMySql(

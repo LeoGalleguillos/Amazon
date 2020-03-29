@@ -18,17 +18,6 @@ class SaveArrayToMySql
         $this->asinTable                         = $asinTable;
     }
 
-    /**
-     * Think carefully before moving around this logic.
-     *
-     * For example, it's tempting to always update `modified`. However,
-     * we cannot do this for new products until after the `asin` is inserted.
-     * And, we do not want to insert the new `asin` for all arrays.
-     *
-     * Also, we still want to update `is_valid` and `modified` for arrays
-     * that we are skipping because we don't want to parse those first in
-     * any external loops that order by `modified` ASC.
-     */
     public function saveArrayToMySql(
         array $itemsArray
     ) {
@@ -36,24 +25,16 @@ class SaveArrayToMySql
             $asin         = $itemArray['ASIN'];
             $productArray = $this->asinTable->selectWhereAsin($asin)->current();
 
-            // If product exists, then update `is_valid` and `modified`.
-            if ($productArray) {
-                $this->asinTable->updateSetIsValidWhereAsin(1, $asin);
-                $this->asinTable->updateSetModifiedToUtcTimestampWhereAsin($asin);
-            }
-
-            // Conditionally skip array.
-            if ($this->conditionallySkipItemArrayService->shouldArrayBeSkipped($itemArray)) {
-                continue;
-            }
-
-            // If product does not exist, then insert `asin` and update `modified`.
             if (!$productArray) {
-                $this->productTable->insertAsin($asin);
-                $this->asinTable->updateSetModifiedToUtcTimestampWhereAsin($asin);
+                if ($this->conditionallySkipItemArrayService->shouldArrayBeSkipped($itemArray)) {
+                    continue;
+                } else {
+                    $this->productTable->insertAsin($asin);
+                }
             }
 
-            // Save array.
+            $this->asinTable->updateSetModifiedToUtcTimestampWhereAsin($asin);
+
             $this->saveItemArrayToMySqlService->saveArrayToMySql(
                 $itemArray
             );
