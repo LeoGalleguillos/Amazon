@@ -11,8 +11,10 @@ use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 class ConditionallySkipArray
 {
     public function __construct(
+        AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray\Title $titleService,
         AmazonService\Product\Banned $bannedService
     ) {
+        $this->titleService  = $titleService;
         $this->bannedService = $bannedService;
     }
 
@@ -28,6 +30,11 @@ class ConditionallySkipArray
         // ASIN must be a B followed by nine alphanumeric characters.
         $pattern = '/^B\w{9}$/';
         if (!preg_match($pattern, $asin)) {
+            return true;
+        }
+
+        // Return true if title should be skipped.
+        if ($this->titleService->shouldArrayBeSkipped($itemArray)) {
             return true;
         }
 

@@ -8,11 +8,15 @@ class ConditionallySkipArrayTest extends TestCase
 {
     protected function setUp()
     {
+        $this->titleServiceMock = $this->createMock(
+            AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray\Title::class
+        );
         $this->bannedServiceMock = $this->createMock(
             AmazonService\Product\Banned::class
         );
 
         $this->conditionallySkipArrayService = new AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray(
+            $this->titleServiceMock,
             $this->bannedServiceMock
         );
     }
@@ -45,6 +49,20 @@ class ConditionallySkipArrayTest extends TestCase
         $this->assertTrue(
             $this->conditionallySkipArrayService->shouldArrayBeSkipped(
                 $this->getArrayWithAsinThatStartsWithB()
+            )
+        );
+    }
+
+    public function test_shouldArrayBeSkipped_titleShouldBeSkipped_true()
+    {
+        $this->titleServiceMock
+            ->expects($this->exactly(1))
+            ->method('shouldArrayBeSkipped')
+            ->with($this->getMinimalArray())
+            ->willReturn(true);
+        $this->assertTrue(
+            $this->conditionallySkipArrayService->shouldArrayBeSkipped(
+                $this->getMinimalArray()
             )
         );
     }

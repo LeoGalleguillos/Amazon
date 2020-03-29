@@ -171,6 +171,7 @@ class Module
                 },
                 AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray::class => function ($sm) {
                     return new AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray(
+                        $sm->get(AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray\Title::class),
                         $sm->get(AmazonService\Product\Banned::class)
                     );
                 },
