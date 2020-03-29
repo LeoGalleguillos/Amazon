@@ -5,7 +5,7 @@ use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 
 /**
  * @todo Move each block of logic to individual service.
- * @todo Skip products where title is longer than 511 characters
+ * @todo Skip products where title is longer than 255 characters
  * @todo Consider conditionally skipping item arrays which have no images
  */
 class ConditionallySkipArray

@@ -18,7 +18,7 @@ class Set
             'title' => $this->stringOrNullService->getStringOrNull(
                 ['DisplayValue'],
                 $titleArray,
-                511
+                255
             ),
         ];
     }
