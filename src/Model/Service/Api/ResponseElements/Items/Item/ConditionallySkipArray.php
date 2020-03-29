@@ -4,9 +4,13 @@ namespace LeoGalleguillos\Amazon\Model\Service\Api\ResponseElements\Items\Item;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 
 /**
+ * This service should be called for potential new products only.
+ * Presumably, we always want to update existing products regardless of the
+ * pursuant conditions.
+ *
  * @todo Move each block of logic to individual service.
- * @todo Skip products where title is longer than 255 characters
- * @todo Consider conditionally skipping item arrays which have no images
+ * @todo Consider conditionally skipping arrays which have no images
+ *       or perhaps arrays which don't have both a primary and variant(s).
  */
 class ConditionallySkipArray
 {
@@ -79,6 +83,5 @@ class ConditionallySkipArray
         }
 
         return false;
-
     }
 }
