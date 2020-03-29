@@ -830,11 +830,6 @@ class Module
                         $sm->get('amazon')
                     );
                 },
-                AmazonTable\Product\Title::class => function ($sm) {
-                    return new AmazonTable\Product\Title(
-                        $sm->get('amazon')
-                    );
-                },
                 AmazonTable\ProductUpc::class => function ($sm) {
                     return new AmazonTable\ProductUpc(
                         $sm->get('amazon')

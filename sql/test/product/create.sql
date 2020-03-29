@@ -47,5 +47,5 @@ CREATE TABLE `product` (
   KEY `video_generated_created` (`video_generated`, `created`),
   KEY `is_valid_modified_product_id` (`is_valid`, `modified`, `product_id`),
   KEY `is_adult_product` (`is_adult_product`),
-  FULLTEXT KEY `title` (`title`)
+  KEY `title` (`title`)
 ) ENGINE=InnoDB CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
