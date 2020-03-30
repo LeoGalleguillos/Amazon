@@ -98,6 +98,13 @@ class SaveArrayToMySqlTest extends TestCase
                 ['B07MMZ2LTB'],
                 ['B07D5J6Z2C']
             );
+        $this->asinTableMock
+            ->expects($this->exactly(2))
+            ->method('updateSetParentAsinWhereAsin')
+            ->withConsecutive(
+                ['B07PWHYYMD', 'B009UOMNE8'],
+                ['B07N86MCD2', 'B07MMZ2LTB']
+            );
         $this->saveItemArrayToMySqlServiceMock
             ->expects($this->exactly(3))
             ->method('saveArrayToMySql')
@@ -196,6 +203,18 @@ class SaveArrayToMySqlTest extends TestCase
                 [$this->getSearchItemsArray()[7]],
                 [$this->getSearchItemsArray()[8]],
                 [$this->getSearchItemsArray()[9]]
+            );
+        $this->asinTableMock
+            ->expects($this->exactly(7))
+            ->method('updateSetParentAsinWhereAsin')
+            ->withConsecutive(
+                ['B01GY35T4S', 'B07XQXZXJC'],
+                ['B01GY35T4S', 'B07VMMNDCJ'],
+                ['B01GY35T4S', 'B07YD67145'],
+                ['B01GY35T4S', 'B07YD5ZBTW'],
+                ['B01GY35T4S', 'B07VFY91HM'],
+                ['B01GY35T4S', 'B07VLH5JR7'],
+                ['B07WS71MLV', 'B073858Q9X']
             );
 
         $this->saveArrayToMySqlService->saveArrayToMySql(
@@ -1789,7 +1808,6 @@ class SaveArrayToMySqlTest extends TestCase
                 ),
               ),
             ),
-            'ParentASIN' => 'B076XHFDGZ',
           ),
         );
     }

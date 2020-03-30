@@ -35,6 +35,14 @@ class SaveArrayToMySql
 
             $this->asinTable->updateSetModifiedToUtcTimestampWhereAsin($asin);
 
+            $parentAsin = $itemArray['ParentASIN'] ?? null;
+            if (isset($parentAsin)) {
+                $this->asinTable->updateSetParentAsinWhereAsin(
+                    $parentAsin,
+                    $asin
+                );
+            }
+
             $this->saveItemArrayToMySqlService->saveArrayToMySql(
                 $itemArray
             );
