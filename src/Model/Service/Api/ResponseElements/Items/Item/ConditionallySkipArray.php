@@ -15,11 +15,13 @@ use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 class ConditionallySkipArray
 {
     public function __construct(
+        AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray\ParentAsin $parentAsinService,
         AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray\Title $titleService,
         AmazonService\Product\Banned $bannedService
     ) {
-        $this->titleService  = $titleService;
-        $this->bannedService = $bannedService;
+        $this->parentAsinService = $parentAsinService;
+        $this->titleService      = $titleService;
+        $this->bannedService     = $bannedService;
     }
 
     public function shouldArrayBeSkipped(
@@ -34,6 +36,11 @@ class ConditionallySkipArray
         // ASIN must be a B followed by nine alphanumeric characters.
         $pattern = '/^B\w{9}$/';
         if (!preg_match($pattern, $asin)) {
+            return true;
+        }
+
+        // Return true if parent ASIN should be skipped.
+        if ($this->parentAsinService->shouldArrayBeSkipped($itemArray)) {
             return true;
         }
 
