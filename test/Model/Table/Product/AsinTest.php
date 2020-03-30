@@ -153,4 +153,47 @@ class AsinTest extends TableTestCase
             $affectedRows
         );
     }
+
+    public function test_updateSetParentAsinWhereAsin()
+    {
+        $affectedRows = $this->asinTable
+            ->updateSetParentAsinWhereAsin(0, 'ASIN001')
+            ->getAffectedRows();
+        $this->assertSame(
+            0,
+            $affectedRows
+        );
+
+        $this->productTable->insert(
+            'ASIN001',
+            'Title',
+            'Product Group',
+            null,
+            null,
+            4.99
+        );
+
+        $affectedRows = $this->asinTable
+            ->updateSetParentAsinWhereAsin('PARENTASIN', 'ASIN001')
+            ->getAffectedRows();
+
+        $this->assertSame(
+            1,
+            $affectedRows
+        );
+        $affectedRows = $this->asinTable
+            ->updateSetParentAsinWhereAsin('PARENTASI2', 'ASIN001')
+            ->getAffectedRows();
+        $this->assertSame(
+            1,
+            $affectedRows
+        );
+        $affectedRows = $this->asinTable
+            ->updateSetParentAsinWhereAsin('PARENTASI2', 'ASIN001')
+            ->getAffectedRows();
+        $this->assertSame(
+            0,
+            $affectedRows
+        );
+    }
 }

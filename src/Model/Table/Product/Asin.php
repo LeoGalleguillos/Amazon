@@ -85,4 +85,21 @@ class Asin
         ];
         return $this->adapter->query($sql)->execute($parameters);
     }
+
+    public function updateSetParentAsinWhereAsin(
+        string $parentAsin,
+        string $asin
+    ): Result {
+        $sql = '
+            UPDATE `product`
+               SET `parent_asin` = ?
+             WHERE `asin` = ?
+                 ;
+        ';
+        $parameters = [
+            $parentAsin,
+            $asin,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
+    }
 }
