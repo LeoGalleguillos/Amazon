@@ -25,6 +25,7 @@ CREATE TABLE `product` (
   `is_eligible_for_trade_in` tinyint(1) DEFAULT NULL,
   `trade_in_price` float(16, 2) unsigned DEFAULT NULL,
   `list_price` float(16,2) unsigned DEFAULT NULL,
+  `parent_asin` varchar(10) DEFAULT NULL,
   `created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified` DATETIME DEFAULT NULL,
   `hi_res_images_retrieved` datetime DEFAULT NULL,
