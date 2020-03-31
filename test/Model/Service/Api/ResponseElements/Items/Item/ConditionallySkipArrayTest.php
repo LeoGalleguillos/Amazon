@@ -8,6 +8,9 @@ class ConditionallySkipArrayTest extends TestCase
 {
     protected function setUp()
     {
+        $this->imagesServiceMock = $this->createMock(
+            AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray\Images::class
+        );
         $this->parentAsinServiceMock = $this->createMock(
             AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray\ParentAsin::class
         );
@@ -19,6 +22,7 @@ class ConditionallySkipArrayTest extends TestCase
         );
 
         $this->conditionallySkipArrayService = new AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray(
+            $this->imagesServiceMock,
             $this->parentAsinServiceMock,
             $this->titleServiceMock,
             $this->bannedServiceMock
@@ -53,6 +57,20 @@ class ConditionallySkipArrayTest extends TestCase
         $this->assertTrue(
             $this->conditionallySkipArrayService->shouldArrayBeSkipped(
                 $this->getArrayWithAsinThatStartsWithB()
+            )
+        );
+    }
+
+    public function test_shouldArrayBeSkipped_imagesShouldBeSkipped_true()
+    {
+        $this->imagesServiceMock
+            ->expects($this->exactly(1))
+            ->method('shouldArrayBeSkipped')
+            ->with($this->getMinimalArray())
+            ->willReturn(true);
+        $this->assertTrue(
+            $this->conditionallySkipArrayService->shouldArrayBeSkipped(
+                $this->getMinimalArray()
             )
         );
     }

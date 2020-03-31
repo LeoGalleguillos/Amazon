@@ -9,16 +9,16 @@ use LeoGalleguillos\Amazon\Model\Service as AmazonService;
  * pursuant conditions.
  *
  * @todo Move each block of logic to individual service.
- * @todo Consider conditionally skipping arrays which have no images
- *       or perhaps arrays which don't have both a primary and variant(s).
  */
 class ConditionallySkipArray
 {
     public function __construct(
+        AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray\Images $imagesService,
         AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray\ParentAsin $parentAsinService,
         AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray\Title $titleService,
         AmazonService\Product\Banned $bannedService
     ) {
+        $this->imagesService     = $imagesService;
         $this->parentAsinService = $parentAsinService;
         $this->titleService      = $titleService;
         $this->bannedService     = $bannedService;
@@ -36,6 +36,11 @@ class ConditionallySkipArray
         // ASIN must be a B followed by nine alphanumeric characters.
         $pattern = '/^B\w{9}$/';
         if (!preg_match($pattern, $asin)) {
+            return true;
+        }
+
+        // Return true if images should be skipped.
+        if ($this->imagesService->shouldArrayBeSkipped($itemArray)) {
             return true;
         }
 
