@@ -179,6 +179,9 @@ class Module
                 AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray\ParentAsin::class => function ($sm) {
                     return new AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray\ParentAsin();
                 },
+                AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray\Images::class => function ($sm) {
+                    return new AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray\Images();
+                },
                 AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray\Title::class => function ($sm) {
                     return new AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray\Title();
                 },
