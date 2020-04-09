@@ -75,6 +75,7 @@ class ConditionallySkipArrayTest extends TestCase
         );
     }
 
+    /*
     public function test_shouldArrayBeSkipped_parentAsinShouldBeSkipped_true()
     {
         $this->parentAsinServiceMock
@@ -88,6 +89,7 @@ class ConditionallySkipArrayTest extends TestCase
             )
         );
     }
+     */
 
     public function test_shouldArrayBeSkipped_titleShouldBeSkipped_true()
     {

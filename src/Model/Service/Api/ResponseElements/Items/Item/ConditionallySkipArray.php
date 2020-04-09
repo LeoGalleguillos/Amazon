@@ -45,9 +45,11 @@ class ConditionallySkipArray
         }
 
         // Return true if parent ASIN should be skipped.
+        /*
         if ($this->parentAsinService->shouldArrayBeSkipped($itemArray)) {
             return true;
         }
+         */
 
         // Return true if title should be skipped.
         if ($this->titleService->shouldArrayBeSkipped($itemArray)) {
