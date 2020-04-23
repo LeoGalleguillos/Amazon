@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon;
 
+use Laminas\Db\TableGateway\TableGateway;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
@@ -339,6 +340,11 @@ class Module
                         $sm->get(AmazonService\Api\Resources\ItemInfo\TradeInInfo\Set::class),
                         $sm->get(AmazonTableGateway\Product::class),
                         $sm->get(ArrayModuleService\Path\StringOrNull::class)
+                    );
+                },
+                AmazonService\Api\Resources\Offers\Summaries\SaveArrayToMySql::class => function ($sm) {
+                    return new AmazonService\Api\Resources\Offers\Summaries\SaveArrayToMySql(
+                        new TableGateway('resources_offers_summaries', $sm->get('amazon'))
                     );
                 },
                 AmazonService\Api\SimilarProducts\Xml::class => function ($sm) {
