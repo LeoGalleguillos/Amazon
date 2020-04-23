@@ -64,7 +64,7 @@ class SaveArrayToMySqlTest extends TestCase
         );
     }
 
-    public function test_saveArrayToMySql_withBrowseNodeInfo()
+    public function test_saveArrayToMySql_withEverything()
     {
         $this->asinTableMock
             ->expects($this->exactly(1))
@@ -79,6 +79,14 @@ class SaveArrayToMySqlTest extends TestCase
             ->expects($this->exactly(1))
             ->method('saveArrayToMySql')
             ->with($this->getArrayWithEverything()['BrowseNodeInfo']);
+        $this->saveImagesArrayToMySqlServiceMock
+            ->expects($this->exactly(1))
+            ->method('saveArrayToMySql')
+            ->with($this->getArrayWithEverything()['Images']);
+        $this->saveItemInfoArrayToMySqlServiceMock
+            ->expects($this->exactly(1))
+            ->method('saveArrayToMySql')
+            ->with($this->getArrayWithEverything()['ItemInfo']);
         $this->saveOffersArrayToMySqlServiceMock
             ->expects($this->exactly(1))
             ->method('saveArrayToMySql')
