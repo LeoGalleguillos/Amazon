@@ -342,6 +342,11 @@ class Module
                         $sm->get(ArrayModuleService\Path\StringOrNull::class)
                     );
                 },
+                AmazonService\Api\Resources\Offers\SaveArrayToMySql::class => function ($sm) {
+                    return new AmazonService\Api\Resources\Offers\SaveArrayToMySql(
+                        $sm->get(AmazonService\Api\Resources\Offers\Summaries\SaveArrayToMySql::class)
+                    );
+                },
                 AmazonService\Api\Resources\Offers\Summaries\SaveArrayToMySql::class => function ($sm) {
                     return new AmazonService\Api\Resources\Offers\Summaries\SaveArrayToMySql(
                         new TableGateway('resources_offers_summaries', $sm->get('amazon'))
