@@ -192,6 +192,7 @@ class Module
                         $sm->get(AmazonService\Api\Resources\BrowseNodeInfo\SaveArrayToMySql::class),
                         $sm->get(AmazonService\Api\Resources\Images\SaveArrayToMySql::class),
                         $sm->get(AmazonService\Api\Resources\ItemInfo\SaveArrayToMySql::class),
+                        $sm->get(AmazonService\Api\Resources\Offers\SaveArrayToMySql::class),
                         $sm->get(AmazonTable\Product\Asin::class)
                     );
                 },

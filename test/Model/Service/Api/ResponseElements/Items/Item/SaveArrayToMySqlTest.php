@@ -18,6 +18,9 @@ class SaveArrayToMySqlTest extends TestCase
         $this->saveItemInfoArrayToMySqlServiceMock = $this->createMock(
             AmazonService\Api\Resources\ItemInfo\SaveArrayToMySql::class
         );
+        $this->saveOffersArrayToMySqlServiceMock = $this->createMock(
+            AmazonService\Api\Resources\Offers\SaveArrayToMySql::class
+        );
         $this->asinTableMock = $this->createMock(
             AmazonTable\Product\Asin::class
         );
@@ -26,6 +29,7 @@ class SaveArrayToMySqlTest extends TestCase
             $this->saveBrowseNodeInfoArrayToMySqlServiceMock,
             $this->saveImagesArrayToMySqlServiceMock,
             $this->saveItemInfoArrayToMySqlServiceMock,
+            $this->saveOffersArrayToMySqlServiceMock,
             $this->asinTableMock
         );
     }
@@ -74,10 +78,14 @@ class SaveArrayToMySqlTest extends TestCase
         $this->saveBrowseNodeInfoArrayToMySqlServiceMock
             ->expects($this->exactly(1))
             ->method('saveArrayToMySql')
-            ->with($this->getArrayWhereItemHasBrowseNodeInfo()['BrowseNodeInfo']);
+            ->with($this->getArrayWithEverything()['BrowseNodeInfo']);
+        $this->saveOffersArrayToMySqlServiceMock
+            ->expects($this->exactly(1))
+            ->method('saveArrayToMySql')
+            ->with($this->getArrayWithEverything()['Offers']);
 
         $this->saveArrayToMySqlService->saveArrayToMySql(
-            $this->getArrayWhereItemHasBrowseNodeInfo()
+            $this->getArrayWithEverything()
         );
     }
 
@@ -223,7 +231,7 @@ class SaveArrayToMySqlTest extends TestCase
         );
     }
 
-    protected function getArrayWhereItemHasBrowseNodeInfo(): array
+    protected function getArrayWithEverything(): array
     {
         return array (
           'ASIN' => 'B07MMZ2LTB',

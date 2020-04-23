@@ -10,11 +10,13 @@ class SaveArrayToMySql
         AmazonService\Api\Resources\BrowseNodeInfo\SaveArrayToMySql $saveBrowseNodeInfoArrayToMySqlService,
         AmazonService\Api\Resources\Images\SaveArrayToMySql $saveImagesArrayToMySqlService,
         AmazonService\Api\Resources\ItemInfo\SaveArrayToMySql $saveItemInfoArrayToMySqlService,
+        AmazonService\Api\Resources\Offers\SaveArrayToMySql $saveOffersArrayToMySqlService,
         AmazonTable\Product\Asin $asinTable
     ) {
         $this->saveBrowseNodeInfoArrayToMySqlService = $saveBrowseNodeInfoArrayToMySqlService;
         $this->saveImagesArrayToMySqlService         = $saveImagesArrayToMySqlService;
         $this->saveItemInfoArrayToMySqlService       = $saveItemInfoArrayToMySqlService;
+        $this->saveOffersArrayToMySqlService         = $saveOffersArrayToMySqlService;
         $this->asinTable                             = $asinTable;
     }
 
@@ -41,6 +43,13 @@ class SaveArrayToMySql
         if (isset($itemArray['ItemInfo'])) {
             $this->saveItemInfoArrayToMySqlService->saveArrayToMySql(
                 $itemArray['ItemInfo'],
+                $productId
+            );
+        }
+
+        if (isset($itemArray['Offers'])) {
+            $this->saveOffersArrayToMySqlService->saveArrayToMySql(
+                $itemArray['Offers'],
                 $productId
             );
         }
