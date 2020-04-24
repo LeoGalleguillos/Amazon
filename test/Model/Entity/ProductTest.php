@@ -49,6 +49,16 @@ class ProductTest extends TestCase
             $this->productEntity->getColor()
         );
 
+        $created = new DateTime();
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setCreated($created)
+        );
+        $this->assertSame(
+            $created,
+            $this->productEntity->getCreated()
+        );
+
         $isbns = [
             '1234567890',
             '2234567890',
@@ -161,6 +171,16 @@ class ProductTest extends TestCase
         $this->assertSame(
             $model,
             $this->productEntity->getModel()
+        );
+
+        $modified = new DateTime();
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setModified($modified)
+        );
+        $this->assertSame(
+            $modified,
+            $this->productEntity->getModified()
         );
 
         $partNumber = 'Part Number';

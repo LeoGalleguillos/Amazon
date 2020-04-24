@@ -44,6 +44,11 @@ class Product
     protected $color;
 
     /**
+     * @var DateTime
+     */
+    protected $created;
+
+    /**
      * @var array
      */
     protected $eans;
@@ -122,6 +127,11 @@ class Product
      * @var string
      */
     protected $model;
+
+    /**
+     * @var DateTime
+     */
+    protected $modified;
 
     /**
      * @var string
@@ -246,6 +256,11 @@ class Product
         return $this->color;
     }
 
+    public function getCreated(): DateTime
+    {
+        return $this->created;
+    }
+
     public function getEans(): array
     {
         return $this->eans;
@@ -319,6 +334,11 @@ class Product
     public function getModel(): string
     {
         return $this->model;
+    }
+
+    public function getModified(): DateTime
+    {
+        return $this->modified;
     }
 
     public function getPartNumber(): string
@@ -447,6 +467,12 @@ class Product
         return $this;
     }
 
+    public function setCreated(DateTime $created): self
+    {
+        $this->created = $created;
+        return $this;
+    }
+
     public function setEans(array $eans): self
     {
         $this->eans = $eans;
@@ -535,6 +561,12 @@ class Product
     public function setModel(string $model): self
     {
         $this->model = $model;
+        return $this;
+    }
+
+    public function setModified(DateTime $modified): self
+    {
+        $this->modified = $modified;
         return $this;
     }
 
