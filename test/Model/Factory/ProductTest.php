@@ -90,7 +90,8 @@ class ProductTest extends TestCase
                 $this->productUpcResultMock
             );
 
-        $created = new DateTime();
+        $created  = '2020-04-23 12:34:56';
+        $modified = '2020-05-23 12:34:56';
         $array = [
             'asin'                     => 'ASIN',
             'brand'                    => 'the brand',
@@ -104,8 +105,9 @@ class ProductTest extends TestCase
             'length_units'             => 'cm',
             'length_value'             => '3.14159',
             'list_price'               => '1.23',
-            'model'                    => 'the model',
             'manufacturer'             => 'the manufacturer',
+            'model'                    => 'the model',
+            'modified'                 => $modified,
             'part_number'              => 'the part #',
             'product_id'               => '12345',
             'released'                 => '2020-02-08 12:12:45',
@@ -123,7 +125,7 @@ class ProductTest extends TestCase
         $productEntity = (new AmazonEntity\Product())
             ->setAsin('ASIN')
             ->setBrand('the brand')
-            ->setCreated($created)
+            ->setCreated(new DateTime($created))
             ->setColor('Red')
             ->setEans([
                 '1234567890123',
@@ -148,6 +150,7 @@ class ProductTest extends TestCase
             ->setListPrice('1.23')
             ->setManufacturer('the manufacturer')
             ->setModel('the model')
+            ->setModified(new DateTime($modified))
             ->setPartNumber('the part #')
             ->setReleased(new DateTime('2020-02-08 12:12:45'))
             ->setSize('Medium')
@@ -175,53 +178,9 @@ class ProductTest extends TestCase
         );
     }
 
-    public function testBuildFromArrayIsAdultProductIsNull()
-    {
-        $this->productImageTableMock
-            ->method('selectWhereProductId')
-            ->willReturn(
-                $this->yieldProductImageArrays()
-            );
-
-        $created = new DateTime();
-        $array = [
-            'asin'             => 'ASIN001',
-            'created'          => $created,
-            'is_adult_product' => null,
-            'product_id'       => 1,
-        ];
-
-        $productEntity = $this->productFactory->buildFromArray($array);
-
-        $this->expectException(TypeError::class);
-        $productEntity->getIsAdultProduct();
-    }
-
-    public function testBuildFromArrayIsValidIsNull()
-    {
-        $this->productImageTableMock
-            ->method('selectWhereProductId')
-            ->willReturn(
-                $this->yieldProductImageArrays()
-            );
-
-        $created = new DateTime();
-        $array = [
-            'asin'       => 'ASIN001',
-            'created'    => $created,
-            'is_valid'   => null,
-            'product_id' => 1,
-        ];
-
-        $productEntity = $this->productFactory->buildFromArray($array);
-
-        $this->expectException(TypeError::class);
-        $productEntity->getIsAdultProduct();
-    }
-
     public function testBuildFromAsin()
     {
-        $created        = new DateTime();
+        $created        = '2020-04-23 12:34:56';
         $resultHydrator = new TestHydrator\Result();
 
         $resultMock = $this->createMock(
@@ -255,7 +214,7 @@ class ProductTest extends TestCase
 
         $productEntity = (new AmazonEntity\Product())
             ->setAsin('ASIN12345')
-            ->setCreated($created)
+            ->setCreated(new DateTime($created))
             ->setFeatures([
                 'This is the first feature.',
                 'This is the second feature.',
@@ -275,7 +234,7 @@ class ProductTest extends TestCase
 
     public function testBuildFromProductId()
     {
-        $created = new DateTime();
+        $created = '2020-04-23 12:34:56';
         $this->productTableMock
             ->method('selectWhereProductId')
             ->willReturn([
@@ -298,7 +257,7 @@ class ProductTest extends TestCase
 
         $productEntity = (new AmazonEntity\Product())
             ->setAsin('ASIN12345')
-            ->setCreated($created)
+            ->setCreated(new DateTime($created))
             ->setFeatures([
                 'This is the first feature.',
                 'This is the second feature.',

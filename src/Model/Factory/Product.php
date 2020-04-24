@@ -40,7 +40,7 @@ class Product
     ): AmazonEntity\Product {
         $productEntity = (new AmazonEntity\Product())
             ->setAsin($productArray['asin'])
-            ->setCreated($productArray['created'])
+            ->setCreated(new DateTime($productArray['created']))
             ->setProductId($productArray['product_id'])
             ;
 
@@ -102,6 +102,12 @@ class Product
         if (isset($productArray['manufacturer'])) {
             $productEntity->setManufacturer(
                 $productArray['manufacturer']
+            );
+        }
+
+        if (isset($productArray['modified'])) {
+            $productEntity->setModified(
+                new DateTime($productArray['modified'])
             );
         }
 
