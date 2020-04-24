@@ -28,8 +28,8 @@ class SaveArrayToMySql
             $this->resourcesOffersSummariesTableGateway->insert([
                 'product_id' => $productId,
                 'condition' => $summaryArray['Condition']['Value'],
-                'highest_price' => $summaryArray['HighestPrice']['Amount'],
-                'lowest_price' => $summaryArray['LowestPrice']['Amount'],
+                'highest_price' => $summaryArray['HighestPrice']['Amount'] ?? null,
+                'lowest_price' => $summaryArray['LowestPrice']['Amount'] ?? null,
                 'offer_count' => $summaryArray['OfferCount'],
             ]);
         }

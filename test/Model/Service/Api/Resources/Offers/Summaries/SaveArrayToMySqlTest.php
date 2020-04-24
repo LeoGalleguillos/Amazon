@@ -49,8 +49,8 @@ class SaveArrayToMySqlTest extends TableTestCase
                 'resources_offers_summaries_id' => '2',
                 'product_id' => '12345',
                 'condition' => 'Used',
-                'highest_price' => '75.55',
-                'lowest_price' => '69.99',
+                'highest_price' => null,
+                'lowest_price' => null,
                 'offer_count' => '3',
             ]),
             $result->current()
@@ -112,18 +112,6 @@ class SaveArrayToMySqlTest extends TableTestCase
             'Condition' =>
             array (
               'Value' => 'Used',
-            ),
-            'HighestPrice' =>
-            array (
-              'Amount' => 75.549999999999997,
-              'Currency' => 'USD',
-              'DisplayAmount' => '$75.55',
-            ),
-            'LowestPrice' =>
-            array (
-              'Amount' => 69.989999999999995,
-              'Currency' => 'USD',
-              'DisplayAmount' => '$69.99',
             ),
             'OfferCount' => 3,
           ),
