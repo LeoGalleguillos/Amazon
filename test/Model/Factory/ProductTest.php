@@ -90,10 +90,12 @@ class ProductTest extends TestCase
                 $this->productUpcResultMock
             );
 
+        $created = new DateTime();
         $array = [
             'asin'                     => 'ASIN',
             'brand'                    => 'the brand',
             'color'                    => 'Red',
+            'created'                  => $created,
             'height_units'             => 'inches',
             'height_value'             => '1.0',
             'is_adult_product'         => 1,
@@ -121,6 +123,7 @@ class ProductTest extends TestCase
         $productEntity = (new AmazonEntity\Product())
             ->setAsin('ASIN')
             ->setBrand('the brand')
+            ->setCreated($created)
             ->setColor('Red')
             ->setEans([
                 '1234567890123',
@@ -180,10 +183,12 @@ class ProductTest extends TestCase
                 $this->yieldProductImageArrays()
             );
 
+        $created = new DateTime();
         $array = [
             'asin'             => 'ASIN001',
-            'product_id'       => 1,
+            'created'          => $created,
             'is_adult_product' => null,
+            'product_id'       => 1,
         ];
 
         $productEntity = $this->productFactory->buildFromArray($array);
@@ -200,10 +205,12 @@ class ProductTest extends TestCase
                 $this->yieldProductImageArrays()
             );
 
+        $created = new DateTime();
         $array = [
             'asin'       => 'ASIN001',
-            'product_id' => 1,
+            'created'    => $created,
             'is_valid'   => null,
+            'product_id' => 1,
         ];
 
         $productEntity = $this->productFactory->buildFromArray($array);
@@ -214,6 +221,7 @@ class ProductTest extends TestCase
 
     public function testBuildFromAsin()
     {
+        $created        = new DateTime();
         $resultHydrator = new TestHydrator\Result();
 
         $resultMock = $this->createMock(
@@ -223,8 +231,9 @@ class ProductTest extends TestCase
             $resultMock,
             [
                 [
-                    'product_id' => 12345,
                     'asin'       => 'ASIN12345',
+                    'created'    => $created,
+                    'product_id' => 12345,
                 ]
             ]
         );
@@ -246,6 +255,7 @@ class ProductTest extends TestCase
 
         $productEntity = (new AmazonEntity\Product())
             ->setAsin('ASIN12345')
+            ->setCreated($created)
             ->setFeatures([
                 'This is the first feature.',
                 'This is the second feature.',
@@ -265,11 +275,13 @@ class ProductTest extends TestCase
 
     public function testBuildFromProductId()
     {
+        $created = new DateTime();
         $this->productTableMock
             ->method('selectWhereProductId')
             ->willReturn([
-                'product_id' => 12345,
                 'asin'       => 'ASIN12345',
+                'created'    => $created,
+                'product_id' => 12345,
             ]);
 
         $this->productFeatureTableMock
@@ -286,6 +298,7 @@ class ProductTest extends TestCase
 
         $productEntity = (new AmazonEntity\Product())
             ->setAsin('ASIN12345')
+            ->setCreated($created)
             ->setFeatures([
                 'This is the first feature.',
                 'This is the second feature.',

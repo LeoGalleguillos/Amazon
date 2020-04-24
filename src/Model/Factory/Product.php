@@ -40,6 +40,7 @@ class Product
     ): AmazonEntity\Product {
         $productEntity = (new AmazonEntity\Product())
             ->setAsin($productArray['asin'])
+            ->setCreated($productArray['created'])
             ->setProductId($productArray['product_id'])
             ;
 
