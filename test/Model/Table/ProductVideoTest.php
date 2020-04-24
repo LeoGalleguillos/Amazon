@@ -216,8 +216,8 @@ class ProductVideoTest extends TableTestCase
         $this->assertSame(
             iterator_to_array($result),
             [
-                ['product_video_id' => '1'],
                 ['product_video_id' => '3'],
+                ['product_video_id' => '1'],
             ]
         );
     }

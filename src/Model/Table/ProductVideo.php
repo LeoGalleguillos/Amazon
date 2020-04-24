@@ -316,7 +316,7 @@ class ProductVideo
 
              ORDER
                 BY `product_video`.`created` DESC
-                 , `product_video`.`product_video_id` ASC
+                 , `product_video`.`product_video_id` DESC
 
              LIMIT ?, ?
                  ;
