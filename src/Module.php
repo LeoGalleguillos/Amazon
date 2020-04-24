@@ -31,6 +31,7 @@ class Module
                     'getProductFirstImageEntity'    => AmazonHelper\Product\FirstImageEntity::class,
                     'getProductImages'              => AmazonHelper\ProductImage\ProductImages::class,
                     'getProductModifiedFeatures'    => AmazonHelper\Product\ModifiedFeatures::class,
+                    'getProductModifiedOrCreated'   => AmazonHelper\Product\ModifiedOrCreated::class,
                     'getProductRootRelativeUrl'     => AmazonHelper\Product\RootRelativeUrl::class,
                     'productAffiliateUrl'           => AmazonHelper\Product\AffiliateUrl::class,
                     'productModifiedFeature'        => AmazonHelper\Product\ModifiedFeature::class,
@@ -87,6 +88,9 @@ class Module
                         return new AmazonHelper\Product\ModifiedFeatures(
                             $viewHelperManager->get(AmazonHelper\Product\ModifiedFeature::class)
                         );
+                    },
+                    AmazonHelper\Product\ModifiedOrCreated::class => function ($sm) {
+                        return new AmazonHelper\Product\ModifiedOrCreated();
                     },
                     AmazonHelper\Product\ModifiedTitle::class => function ($sm) {
                         return new AmazonHelper\Product\ModifiedTitle(
