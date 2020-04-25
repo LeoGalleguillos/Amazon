@@ -183,6 +183,18 @@ class ProductTest extends TestCase
             $this->productEntity->getModified()
         );
 
+        $offers = [
+            'summaries' => [],
+        ];
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setOffers($offers)
+        );
+        $this->assertSame(
+            $offers,
+            $this->productEntity->getOffers()
+        );
+
         $partNumber = 'Part Number';
         $this->assertSame(
             $this->productEntity,

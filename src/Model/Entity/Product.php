@@ -134,6 +134,11 @@ class Product
     protected $modified;
 
     /**
+     * @var array
+     */
+    protected $offers;
+
+    /**
      * @var string
      */
     protected $partNumber;
@@ -339,6 +344,11 @@ class Product
     public function getModified(): DateTime
     {
         return $this->modified;
+    }
+
+    public function getOffers(): array
+    {
+        return $this->offers;
     }
 
     public function getPartNumber(): string
@@ -567,6 +577,12 @@ class Product
     public function setModified(DateTime $modified): self
     {
         $this->modified = $modified;
+        return $this;
+    }
+
+    public function setOffers(array $offers): self
+    {
+        $this->offers = $offers;
         return $this;
     }
 
