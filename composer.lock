@@ -1444,16 +1444,16 @@
         },
         {
             "name": "leo-galleguillos/string",
-            "version": "v1.0.32",
+            "version": "v1.0.33",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/String.git",
-                "reference": "aedd248856475d783e7fe00e1a950183ba106b3f"
+                "reference": "25d01e5a105b0394cad40df91fd8c9674f91e813"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/String/zipball/aedd248856475d783e7fe00e1a950183ba106b3f",
-                "reference": "aedd248856475d783e7fe00e1a950183ba106b3f",
+                "url": "https://api.github.com/repos/LeoGalleguillos/String/zipball/25d01e5a105b0394cad40df91fd8c9674f91e813",
+                "reference": "25d01e5a105b0394cad40df91fd8c9674f91e813",
                 "shasum": ""
             },
             "require": {
@@ -1470,20 +1470,20 @@
             "license": [
                 "MIT"
             ],
-            "time": "2020-04-21T00:00:25+00:00"
+            "time": "2020-04-25T09:06:37+00:00"
         },
         {
             "name": "leo-galleguillos/test",
-            "version": "v1.0.6",
+            "version": "v1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/Test.git",
-                "reference": "bcd546da840f6fd2af1b7029217c67f393d614db"
+                "reference": "65b7832ba53792ce3f6f3c2698b3fa96f8213c61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/Test/zipball/bcd546da840f6fd2af1b7029217c67f393d614db",
-                "reference": "bcd546da840f6fd2af1b7029217c67f393d614db",
+                "url": "https://api.github.com/repos/LeoGalleguillos/Test/zipball/65b7832ba53792ce3f6f3c2698b3fa96f8213c61",
+                "reference": "65b7832ba53792ce3f6f3c2698b3fa96f8213c61",
                 "shasum": ""
             },
             "require": {
@@ -1501,7 +1501,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2020-03-23T05:18:38+00:00"
+            "time": "2020-04-25T04:49:35+00:00"
         },
         {
             "name": "leo-galleguillos/video",
