@@ -156,6 +156,9 @@ class Module
                         $sm->get(AmazonTable\ProductVideo::class)
                     );
                 },
+                AmazonFactory\Resources\Offers\Summary::class => function ($sm) {
+                    return new AmazonFactory\Resources\Offers\Summary();
+                },
                 AmazonService\Api::class => function ($sm) {
                     return new AmazonService\Api(
                         $sm->get(AmazonTable\Api::class)
