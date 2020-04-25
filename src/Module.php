@@ -354,7 +354,7 @@ class Module
                 },
                 AmazonService\Api\Resources\Offers\Summaries\SaveArrayToMySql::class => function ($sm) {
                     return new AmazonService\Api\Resources\Offers\Summaries\SaveArrayToMySql(
-                        new TableGateway('resources_offers_summaries', $sm->get('amazon'))
+                        $sm->get('table-gateway-resources_offers_summaries')
                     );
                 },
                 AmazonService\Api\SimilarProducts\Xml::class => function ($sm) {
@@ -935,7 +935,13 @@ class Module
                         'product',
                         $sm->get('amazon')
                     );
-                }
+                },
+                'table-gateway-resources_offers_summaries' => function ($sm) {
+                    return new TableGateway(
+                        'resources_offers_summaries',
+                        $sm->get('amazon')
+                    );
+                },
             ],
         ];
     }
