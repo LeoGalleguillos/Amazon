@@ -38,7 +38,7 @@ class NewestTest extends TestCase
         $resultMock = $this->createMock(
             Result::class
         );
-        $resultHydrator = new TestHydrator\Result();
+        $resultHydrator = new TestHydrator\CountableIterator();
         $resultHydrator->hydrate(
             $resultMock,
             [

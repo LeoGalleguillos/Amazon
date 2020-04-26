@@ -181,7 +181,7 @@ class ProductTest extends TestCase
     public function testBuildFromAsin()
     {
         $created        = '2020-04-23 12:34:56';
-        $resultHydrator = new TestHydrator\Result();
+        $resultHydrator = new TestHydrator\CountableIterator();
 
         $resultMock = $this->createMock(
             Result::class

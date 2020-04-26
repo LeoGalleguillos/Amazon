@@ -26,7 +26,7 @@ class NumberOfPagesTest extends TestCase
         $browseNodeEntity = new AmazonEntity\BrowseNode();
         $browseNodeEntity->setBrowseNodeId(27182);
 
-        $resultHydrator = new TestHydrator\Result();
+        $resultHydrator = new TestHydrator\CountableIterator();
         $resultMock = $this->createMock(
             Result::class
         );
@@ -54,7 +54,7 @@ class NumberOfPagesTest extends TestCase
         $browseNodeEntity = new AmazonEntity\BrowseNode();
         $browseNodeEntity->setBrowseNodeId(27182);
 
-        $resultHydrator = new TestHydrator\Result();
+        $resultHydrator = new TestHydrator\CountableIterator();
         $resultMock = $this->createMock(
             Result::class
         );
@@ -82,7 +82,7 @@ class NumberOfPagesTest extends TestCase
         $browseNodeEntity = new AmazonEntity\BrowseNode();
         $browseNodeEntity->setBrowseNodeId(27182);
 
-        $resultHydrator = new TestHydrator\Result();
+        $resultHydrator = new TestHydrator\CountableIterator();
         $resultMock = $this->createMock(
             Result::class
         );
@@ -110,7 +110,7 @@ class NumberOfPagesTest extends TestCase
         $browseNodeEntity = new AmazonEntity\BrowseNode();
         $browseNodeEntity->setBrowseNodeId(27182);
 
-        $resultHydrator = new TestHydrator\Result();
+        $resultHydrator = new TestHydrator\CountableIterator();
         $resultMock = $this->createMock(
             Result::class
         );

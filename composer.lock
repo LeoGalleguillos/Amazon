@@ -1474,16 +1474,16 @@
         },
         {
             "name": "leo-galleguillos/test",
-            "version": "v1.0.7",
+            "version": "v1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/Test.git",
-                "reference": "65b7832ba53792ce3f6f3c2698b3fa96f8213c61"
+                "reference": "c6ccc7b5818aa9ce94b6a26dddba39eb75f25566"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/Test/zipball/65b7832ba53792ce3f6f3c2698b3fa96f8213c61",
-                "reference": "65b7832ba53792ce3f6f3c2698b3fa96f8213c61",
+                "url": "https://api.github.com/repos/LeoGalleguillos/Test/zipball/c6ccc7b5818aa9ce94b6a26dddba39eb75f25566",
+                "reference": "c6ccc7b5818aa9ce94b6a26dddba39eb75f25566",
                 "shasum": ""
             },
             "require": {
@@ -1501,7 +1501,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2020-04-25T04:49:35+00:00"
+            "time": "2020-04-25T21:06:27+00:00"
         },
         {
             "name": "leo-galleguillos/video",

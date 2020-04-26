@@ -34,7 +34,7 @@ class SaveArrayToMySqlTest extends TestCase
 
     public function test_saveArrayToMySql_getItemsResult()
     {
-        $resultHydrator = new TestHydrator\Result();
+        $resultHydrator = new TestHydrator\CountableIterator();
 
         $resultMock1 = $this->createMock(Result::class);
         $resultMock2 = $this->createMock(Result::class);
@@ -126,7 +126,7 @@ class SaveArrayToMySqlTest extends TestCase
             'asin' => 'B000000000',
             'title' => 'Does not really matter what goes here',
         ];
-        $resultHydrator = new TestHydrator\Result();
+        $resultHydrator = new TestHydrator\CountableIterator();
         $resultMocks = [];
         for ($x = 0; $x <= 9; $x++) {
             $resultMocks[$x] = $this->createMock(Result::class);

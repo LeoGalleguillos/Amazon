@@ -22,7 +22,7 @@ class NumberOfPagesTest extends TestCase
 
     public function test_getNumberOfPages_0Results_0Pages()
     {
-        $resultHydrator = new TestHydrator\Result();
+        $resultHydrator = new TestHydrator\CountableIterator();
 
         $resultMock = $this->createMock(
             Result::class
@@ -48,7 +48,7 @@ class NumberOfPagesTest extends TestCase
 
     public function test_getNumberOfPages_123Results_2Pages()
     {
-        $resultHydrator = new TestHydrator\Result();
+        $resultHydrator = new TestHydrator\CountableIterator();
 
         $resultMock = $this->createMock(
             Result::class
@@ -74,7 +74,7 @@ class NumberOfPagesTest extends TestCase
 
     public function test_getNumberOfPages_500Results_5Pages()
     {
-        $resultHydrator = new TestHydrator\Result();
+        $resultHydrator = new TestHydrator\CountableIterator();
 
         $resultMock = $this->createMock(
             Result::class

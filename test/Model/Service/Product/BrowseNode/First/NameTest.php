@@ -13,7 +13,7 @@ class NameTest extends TestCase
 {
     protected function setUp()
     {
-        $this->resultHydrator = new TestHydrator\Result();
+        $this->resultHydrator = new TestHydrator\CountableIterator();
 
         $this->browseNodeTableMock = $this->createMock(
             AmazonTable\BrowseNode::class
