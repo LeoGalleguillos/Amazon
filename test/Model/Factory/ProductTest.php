@@ -1,9 +1,11 @@
 <?php
 namespace LeoGalleguillos\AmazonTest\Model\Factory;
 
+use ArrayObject;
 use DateTime;
 use Generator;
 use Laminas\Db\TableGateway\TableGateway;
+use Laminas\Db\ResultSet\ResultSet;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
@@ -17,8 +19,13 @@ class ProductTest extends TestCase
 {
     protected function setUp()
     {
+        $this->resultHydrator = new TestHydrator\CountableIterator();
+
         $this->bindingFactoryMock = $this->createMock(AmazonFactory\Binding::class);
         $this->productGroupFactoryMock = $this->createMock(AmazonFactory\ProductGroup::class);
+        $this->summaryFactoryMock = $this->createMock(
+            AmazonFactory\Resources\Offers\Summary::class
+        );
         $this->productTableMock = $this->createMock(AmazonTable\Product::class);
         $this->asinTableMock = $this->createMock(
             AmazonTable\Product\Asin::class
@@ -42,6 +49,7 @@ class ProductTest extends TestCase
         $this->productFactory = new AmazonFactory\Product(
             $this->bindingFactoryMock,
             $this->productGroupFactoryMock,
+            $this->summaryFactoryMock,
             $this->productTableMock,
             $this->asinTableMock,
             $this->productEanProductIdTableMock,
@@ -61,6 +69,9 @@ class ProductTest extends TestCase
         );
         $this->productUpcResultMock = $this->createMock(
             Result::class
+        );
+        $this->resourcesOffersSummariesTableResultSetMock = $this->createMock(
+            ResultSet::class
         );
     }
 
@@ -93,6 +104,35 @@ class ProductTest extends TestCase
             ->method('selectWhereProductId')
             ->willReturn(
                 $this->productUpcResultMock
+            );
+        $this->resultHydrator->hydrate(
+            $this->resourcesOffersSummariesTableResultSetMock,
+            [
+                new ArrayObject([
+                    'condition'   => 'New',
+                    'offer_count' => '3',
+                ]),
+                new ArrayObject([
+                    'condition'   => 'Used',
+                    'offer_count' => '10',
+                ]),
+            ]
+        );
+        $this->resourcesOffersSummariesTableGatewayMock
+            ->method('select')
+            ->willReturn(
+                $this->resourcesOffersSummariesTableResultSetMock
+            );
+        $summaryEntity1 = new AmazonEntity\Resources\Offers\Summary();
+        $summaryEntity2 = new AmazonEntity\Resources\Offers\Summary();
+        $this->summaryFactoryMock
+            ->expects($this->exactly(2))
+            ->method('buildFromArray')
+            ->will(
+                $this->onConsecutiveCalls(
+                    $summaryEntity1,
+                    $summaryEntity2
+                )
             );
 
         $created  = '2020-04-23 12:34:56';
@@ -153,6 +193,12 @@ class ProductTest extends TestCase
             ->setLengthValue('3.14159')
             ->setProductId('12345')
             ->setListPrice('1.23')
+            ->setOffers([
+                'summaries' => [
+                    $summaryEntity1,
+                    $summaryEntity2,
+                ],
+            ])
             ->setManufacturer('the manufacturer')
             ->setModel('the model')
             ->setModified(new DateTime($modified))
@@ -186,12 +232,11 @@ class ProductTest extends TestCase
     public function testBuildFromAsin()
     {
         $created        = '2020-04-23 12:34:56';
-        $resultHydrator = new TestHydrator\CountableIterator();
 
         $resultMock = $this->createMock(
             Result::class
         );
-        $resultHydrator->hydrate(
+        $this->resultHydrator->hydrate(
             $resultMock,
             [
                 [

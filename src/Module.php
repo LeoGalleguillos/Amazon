@@ -134,6 +134,7 @@ class Module
                     return new AmazonFactory\Product(
                         $sm->get(AmazonFactory\Binding::class),
                         $sm->get(AmazonFactory\ProductGroup::class),
+                        $sm->get(AmazonFactory\Resources\Offers\Summary::class),
                         $sm->get(AmazonTable\Product::class),
                         $sm->get(AmazonTable\Product\Asin::class),
                         $sm->get(AmazonTable\ProductEan\ProductId::class),

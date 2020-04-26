@@ -15,6 +15,7 @@ class Product
     public function __construct(
         AmazonFactory\Binding $bindingFactory,
         AmazonFactory\ProductGroup $productGroupFactory,
+        AmazonFactory\Resources\Offers\Summary $summaryFactory,
         AmazonTable\Product $productTable,
         AmazonTable\Product\Asin $asinTable,
         AmazonTable\ProductEan\ProductId $productEanProductIdTable,
@@ -27,6 +28,7 @@ class Product
     ) {
         $this->bindingFactory            = $bindingFactory;
         $this->productGroupFactory       = $productGroupFactory;
+        $this->summaryFactory            = $summaryFactory;
         $this->productTable              = $productTable;
         $this->asinTable                 = $asinTable;
         $this->productEanProductIdTable  = $productEanProductIdTable;
@@ -250,6 +252,22 @@ class Product
                     $array
                 );
             }
+        }
+
+        $resultSet = $this->resourcesOffersSummariesTableGateway->select(
+            ['product_id' => $productArray['product_id']]
+        );
+        if (count($resultSet)) {
+            $offers = [
+                'summaries' => [
+                ],
+            ];
+            foreach ($resultSet as $arrayObject) {
+                $offers['summaries'][] = $this->summaryFactory->buildFromArray(
+                    (array) $arrayObject
+                );
+            }
+            $productEntity->setOffers($offers);
         }
 
         return $productEntity;
