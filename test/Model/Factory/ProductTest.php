@@ -3,6 +3,7 @@ namespace LeoGalleguillos\AmazonTest\Model\Factory;
 
 use DateTime;
 use Generator;
+use Laminas\Db\TableGateway\TableGateway;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
@@ -34,6 +35,9 @@ class ProductTest extends TestCase
             AmazonTable\ProductUpc\ProductId::class
         );
         $this->imageFactoryMock = $this->createMock(ImageFactory\Image::class);
+        $this->resourcesOffersSummariesTableGatewayMock = $this->createMock(
+            TableGateway::class
+        );
 
         $this->productFactory = new AmazonFactory\Product(
             $this->bindingFactoryMock,
@@ -45,7 +49,8 @@ class ProductTest extends TestCase
             $this->productImageTableMock,
             $this->productIsbnProductIdTableMock,
             $this->productUpcProductIdTableMock,
-            $this->imageFactoryMock
+            $this->imageFactoryMock,
+            $this->resourcesOffersSummariesTableGatewayMock
         );
 
         $this->productEanResultMock = $this->createMock(

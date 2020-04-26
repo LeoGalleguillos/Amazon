@@ -141,7 +141,8 @@ class Module
                         $sm->get(AmazonTable\ProductImage::class),
                         $sm->get(AmazonTable\ProductIsbn\ProductId::class),
                         $sm->get(AmazonTable\ProductUpc\ProductId::class),
-                        $sm->get(ImageFactory\Image::class)
+                        $sm->get(ImageFactory\Image::class),
+                        $sm->get('table-gateway-resources_offers_summaries')
                     );
                 },
                 AmazonFactory\ProductGroup::class => function ($sm) {

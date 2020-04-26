@@ -3,6 +3,7 @@ namespace LeoGalleguillos\Amazon\Model\Factory;
 
 use DateTime;
 use Generator;
+use Laminas\Db\TableGateway\TableGateway;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
@@ -21,7 +22,8 @@ class Product
         AmazonTable\ProductImage $productImageTable,
         AmazonTable\ProductIsbn\ProductId $productIsbnProductIdTable,
         AmazonTable\ProductUpc\ProductId $productUpcProductIdTable,
-        ImageFactory\Image $imageFactory
+        ImageFactory\Image $imageFactory,
+        TableGateway $resourcesOffersSummariesTableGateway
     ) {
         $this->bindingFactory            = $bindingFactory;
         $this->productGroupFactory       = $productGroupFactory;
@@ -33,6 +35,7 @@ class Product
         $this->productIsbnProductIdTable = $productIsbnProductIdTable;
         $this->productUpcProductIdTable  = $productUpcProductIdTable;
         $this->imageFactory              = $imageFactory;
+        $this->resourcesOffersSummariesTableGateway = $resourcesOffersSummariesTableGateway;
     }
 
     public function buildFromArray(
