@@ -14,18 +14,17 @@ class Product
     public function __construct(
         AmazonFactory\Binding $bindingFactory,
         AmazonFactory\ProductGroup $productGroupFactory,
-        ImageFactory\Image $imageFactory,
         AmazonTable\Product $productTable,
         AmazonTable\Product\Asin $asinTable,
         AmazonTable\ProductEan\ProductId $productEanProductIdTable,
         AmazonTable\ProductFeature $productFeatureTable,
         AmazonTable\ProductImage $productImageTable,
         AmazonTable\ProductIsbn\ProductId $productIsbnProductIdTable,
-        AmazonTable\ProductUpc\ProductId $productUpcProductIdTable
+        AmazonTable\ProductUpc\ProductId $productUpcProductIdTable,
+        ImageFactory\Image $imageFactory
     ) {
         $this->bindingFactory            = $bindingFactory;
         $this->productGroupFactory       = $productGroupFactory;
-        $this->imageFactory              = $imageFactory;
         $this->productTable              = $productTable;
         $this->asinTable                 = $asinTable;
         $this->productEanProductIdTable  = $productEanProductIdTable;
@@ -33,6 +32,7 @@ class Product
         $this->productImageTable         = $productImageTable;
         $this->productIsbnProductIdTable = $productIsbnProductIdTable;
         $this->productUpcProductIdTable  = $productUpcProductIdTable;
+        $this->imageFactory              = $imageFactory;
     }
 
     public function buildFromArray(

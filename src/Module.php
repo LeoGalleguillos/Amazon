@@ -134,14 +134,14 @@ class Module
                     return new AmazonFactory\Product(
                         $sm->get(AmazonFactory\Binding::class),
                         $sm->get(AmazonFactory\ProductGroup::class),
-                        $sm->get(ImageFactory\Image::class),
                         $sm->get(AmazonTable\Product::class),
                         $sm->get(AmazonTable\Product\Asin::class),
                         $sm->get(AmazonTable\ProductEan\ProductId::class),
                         $sm->get(AmazonTable\ProductFeature::class),
                         $sm->get(AmazonTable\ProductImage::class),
                         $sm->get(AmazonTable\ProductIsbn\ProductId::class),
-                        $sm->get(AmazonTable\ProductUpc\ProductId::class)
+                        $sm->get(AmazonTable\ProductUpc\ProductId::class),
+                        $sm->get(ImageFactory\Image::class)
                     );
                 },
                 AmazonFactory\ProductGroup::class => function ($sm) {

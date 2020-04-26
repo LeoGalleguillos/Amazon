@@ -18,7 +18,6 @@ class ProductTest extends TestCase
     {
         $this->bindingFactoryMock = $this->createMock(AmazonFactory\Binding::class);
         $this->productGroupFactoryMock = $this->createMock(AmazonFactory\ProductGroup::class);
-        $this->imageFactoryMock = $this->createMock(ImageFactory\Image::class);
         $this->productTableMock = $this->createMock(AmazonTable\Product::class);
         $this->asinTableMock = $this->createMock(
             AmazonTable\Product\Asin::class
@@ -34,18 +33,19 @@ class ProductTest extends TestCase
         $this->productUpcProductIdTableMock = $this->createMock(
             AmazonTable\ProductUpc\ProductId::class
         );
+        $this->imageFactoryMock = $this->createMock(ImageFactory\Image::class);
 
         $this->productFactory = new AmazonFactory\Product(
             $this->bindingFactoryMock,
             $this->productGroupFactoryMock,
-            $this->imageFactoryMock,
             $this->productTableMock,
             $this->asinTableMock,
             $this->productEanProductIdTableMock,
             $this->productFeatureTableMock,
             $this->productImageTableMock,
             $this->productIsbnProductIdTableMock,
-            $this->productUpcProductIdTableMock
+            $this->productUpcProductIdTableMock,
+            $this->imageFactoryMock
         );
 
         $this->productEanResultMock = $this->createMock(
