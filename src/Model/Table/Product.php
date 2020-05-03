@@ -30,6 +30,7 @@ class Product
                  , `product`.`binding`
                  , `product`.`brand`
                  , `product`.`manufacturer`
+                 , `product`.`edition`
                  , `product`.`part_number`
                  , `product`.`model`
                  , `product`.`warranty`
