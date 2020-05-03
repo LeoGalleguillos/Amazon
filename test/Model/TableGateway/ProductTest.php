@@ -41,6 +41,13 @@ class ProductTest extends TableTestCase
                 'brand'            => 'SUNDOLPHIN',
                 'manufacturer'     => 'KL Industries',
 
+                // Classifications
+                'binding'          => 'Sports',
+                'product_group'    => 'Outdoors',
+
+                // ContentInfo
+                'edition'          => 'S 1TB All-Digital Edition -(Disc-free Gaming)',
+
                 // ManufactureInfo
                 'part_number'      => '51120',
                 'model'            => 'ABCDEFG',
