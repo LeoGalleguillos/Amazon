@@ -79,6 +79,12 @@ class Product
             $productEntity->setEans($eans);
         }
 
+        if (isset($productArray['edition'])) {
+            $productEntity->setEdition(
+                $productArray['edition']
+            );
+        }
+
         $productFeatureArrays = $this->productFeatureTable->selectWhereProductId(
             $productArray['product_id']
         );

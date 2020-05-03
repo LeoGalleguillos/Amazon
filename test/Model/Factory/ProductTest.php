@@ -142,6 +142,7 @@ class ProductTest extends TestCase
             'brand'                    => 'the brand',
             'color'                    => 'Red',
             'created'                  => $created,
+            'edition'                  => 'Edition',
             'height_units'             => 'inches',
             'height_value'             => '1.0',
             'is_adult_product'         => 1,
@@ -177,6 +178,7 @@ class ProductTest extends TestCase
                 '1234567890124',
                 '1234567890125',
             ])
+            ->setEdition('Edition')
             ->setFeatures([
                 'This is the first feature.',
                 'This is the second feature.',
