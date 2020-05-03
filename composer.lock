@@ -1444,16 +1444,16 @@
         },
         {
             "name": "leo-galleguillos/string",
-            "version": "v1.0.33",
+            "version": "v1.0.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/String.git",
-                "reference": "25d01e5a105b0394cad40df91fd8c9674f91e813"
+                "reference": "205b9d77947fee9bda4fa0d8f02301b7e0ddb44f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/String/zipball/25d01e5a105b0394cad40df91fd8c9674f91e813",
-                "reference": "25d01e5a105b0394cad40df91fd8c9674f91e813",
+                "url": "https://api.github.com/repos/LeoGalleguillos/String/zipball/205b9d77947fee9bda4fa0d8f02301b7e0ddb44f",
+                "reference": "205b9d77947fee9bda4fa0d8f02301b7e0ddb44f",
                 "shasum": ""
             },
             "require": {
@@ -1470,7 +1470,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2020-04-25T09:06:37+00:00"
+            "time": "2020-04-29T22:06:20+00:00"
         },
         {
             "name": "leo-galleguillos/test",
