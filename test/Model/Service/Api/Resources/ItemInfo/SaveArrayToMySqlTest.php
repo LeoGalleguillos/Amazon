@@ -16,6 +16,9 @@ class SaveArrayToMySqlTest extends TestCase
         $this->classificationsSetServiceMock = $this->createMock(
             AmazonService\Api\Resources\ItemInfo\Classifications\Set::class
         );
+        $this->contentInfoSetServiceMock = $this->createMock(
+            AmazonService\Api\Resources\ItemInfo\ContentInfo\Set::class
+        );
         $this->saveExternalIdsArrayToMySqlMock = $this->createMock(
             AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql::class
         );
@@ -40,6 +43,7 @@ class SaveArrayToMySqlTest extends TestCase
         $this->saveArrayToMySqlService = new AmazonService\Api\Resources\ItemInfo\SaveArrayToMySql(
             $this->byLineInfoSetServiceMock,
             $this->classificationsSetServiceMock,
+            $this->contentInfoSetServiceMock,
             $this->saveExternalIdsArrayToMySqlMock,
             $this->saveFeaturesArrayToMySqlMock,
             $this->manufactureInfoSetServiceMock,
@@ -75,6 +79,17 @@ class SaveArrayToMySqlTest extends TestCase
             ->willReturn([
                 'binding'       => 'Sports',
                 'product_group' => 'Outdoors',
+            ]);
+        $this->contentInfoSetServiceMock
+            ->expects($this->exactly(1))
+            ->method('getSet')
+            ->with(
+                $this->identicalTo(
+                    $this->getArray()['ContentInfo']
+                )
+            )
+            ->willReturn([
+                'edition' => 'S 1TB All-Digital Edition -(Disc-free Gaming)',
             ]);
         $this->manufactureInfoSetServiceMock
             ->expects($this->exactly(1))
@@ -150,6 +165,9 @@ class SaveArrayToMySqlTest extends TestCase
                         'binding'          => 'Sports',
                         'product_group'    => 'Outdoors',
 
+                        // ContentInfo
+                        'edition' => 'S 1TB All-Digital Edition -(Disc-free Gaming)',
+
                         // ManufactureInfo
                         'part_number'      => '51120',
                         'model'            => 'ABCDEFG',
@@ -219,6 +237,28 @@ class SaveArrayToMySqlTest extends TestCase
           array (
             'DisplayValue' => 'Outdoors',
             'Label' => 'ProductGroup',
+            'Locale' => 'en_US',
+          ),
+        ),
+        'ContentInfo' =>
+        array (
+          'Edition' =>
+          array (
+            'DisplayValue' => 'S 1TB All-Digital Edition -(Disc-free Gaming)',
+            'Label' => 'Edition',
+            'Locale' => 'en_US',
+          ),
+          'Languages' =>
+          array (
+            'DisplayValues' =>
+            array (
+              0 =>
+              array (
+                'DisplayValue' => 'English',
+                'Type' => 'Unknown',
+              ),
+            ),
+            'Label' => 'Language',
             'Locale' => 'en_US',
           ),
         ),

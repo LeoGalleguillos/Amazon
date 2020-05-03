@@ -10,6 +10,7 @@ class SaveArrayToMySql
     public function __construct(
         AmazonService\Api\Resources\ItemInfo\ByLineInfo\Set $byLineInfoSetService,
         AmazonService\Api\Resources\ItemInfo\Classifications\Set $classificationsSetService,
+        AmazonService\Api\Resources\ItemInfo\ContentInfo\Set $contentInfoSetService,
         AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql $saveExternalIdsArrayToMySqlService,
         AmazonService\Api\Resources\ItemInfo\Features\SaveArrayToMySql $saveFeaturesArrayToMySqlService,
         AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set $manufactureInfoSetService,
@@ -20,6 +21,7 @@ class SaveArrayToMySql
     ) {
         $this->byLineInfoSetService               = $byLineInfoSetService;
         $this->classificationsSetService          = $classificationsSetService;
+        $this->contentInfoSetService              = $contentInfoSetService;
         $this->saveExternalIdsArrayToMySqlService = $saveExternalIdsArrayToMySqlService;
         $this->saveFeaturesArrayToMySqlService    = $saveFeaturesArrayToMySqlService;
         $this->manufactureInfoSetService          = $manufactureInfoSetService;
@@ -77,6 +79,12 @@ class SaveArrayToMySql
         if (isset($itemInfoArray['Classifications'])) {
             $set += $this->classificationsSetService->getSet(
                 $itemInfoArray['Classifications']
+            );
+        }
+
+        if (isset($itemInfoArray['ContentInfo'])) {
+            $set += $this->contentInfoSetService->getSet(
+                $itemInfoArray['ContentInfo']
             );
         }
 

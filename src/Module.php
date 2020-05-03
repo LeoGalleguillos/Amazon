@@ -348,6 +348,7 @@ class Module
                     return new AmazonService\Api\Resources\ItemInfo\SaveArrayToMySql(
                         $sm->get(AmazonService\Api\Resources\ItemInfo\ByLineInfo\Set::class),
                         $sm->get(AmazonService\Api\Resources\ItemInfo\Classifications\Set::class),
+                        $sm->get(AmazonService\Api\Resources\ItemInfo\ContentInfo\Set::class),
                         $sm->get(AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql::class),
                         $sm->get(AmazonService\Api\Resources\ItemInfo\Features\SaveArrayToMySql::class),
                         $sm->get(AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set::class),
