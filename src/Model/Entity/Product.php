@@ -59,6 +59,11 @@ class Product
     public $editorialReviews = [];
 
     /**
+     * @var string
+     */
+    protected $edition;
+
+    /**
      * @var array Array of product features.
      */
     public $features = [];
@@ -269,6 +274,11 @@ class Product
     public function getEans(): array
     {
         return $this->eans;
+    }
+
+    public function getEdition(): string
+    {
+        return $this->edition;
     }
 
     public function getFeatures(): array
@@ -541,6 +551,12 @@ class Product
     public function setIsValid(bool $isValid): self
     {
         $this->isValid = $isValid;
+        return $this;
+    }
+
+    public function setEdition(string $edition): AmazonEntity\Product
+    {
+        $this->edition = $edition;
         return $this;
     }
 

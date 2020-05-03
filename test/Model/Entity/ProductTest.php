@@ -59,6 +59,16 @@ class ProductTest extends TestCase
             $this->productEntity->getCreated()
         );
 
+        $edition = 'Edition';
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setEdition($edition)
+        );
+        $this->assertSame(
+            $edition,
+            $this->productEntity->getEdition()
+        );
+
         $isbns = [
             '1234567890',
             '2234567890',
