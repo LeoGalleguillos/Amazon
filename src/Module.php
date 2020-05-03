@@ -298,6 +298,11 @@ class Module
                         $sm->get(ArrayModuleService\Path\StringOrNull::class)
                     );
                 },
+                AmazonService\Api\Resources\ItemInfo\ContentInfo\Set::class => function ($sm) {
+                    return new AmazonService\Api\Resources\ItemInfo\ContentInfo\Set(
+                        $sm->get(ArrayModuleService\Path\StringOrNull::class)
+                    );
+                },
                 AmazonService\Api\Resources\ItemInfo\ExternalIds\Eans\SaveArrayToMySql::class => function ($sm) {
                     return new AmazonService\Api\Resources\ItemInfo\ExternalIds\Eans\SaveArrayToMySql(
                         $sm->get(AmazonTable\ProductEan::class)
