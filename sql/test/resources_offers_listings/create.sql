@@ -9,6 +9,8 @@ CREATE TABLE `resources_offers_listings` (
   `is_fulfilled_by_amazon` tinyint(1) unsigned NOT NULL,
   `is_eligible_for_free_shipping` tinyint(1) unsigned NOT NULL,
   `is_eligible_for_prime` tinyint(1) unsigned NOT NULL,
+  `merchant_id` varchar(16) NOT NULL,
+  `merchant_name` varchar(32) NOT NULL,
   `price` float(16,2) unsigned NOT NULL,
   `savings` float(16,2) unsigned DEFAULT NULL,
   `is_prime_exclusive` tinyint(1) unsigned NOT NULL,
