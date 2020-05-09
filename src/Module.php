@@ -358,6 +358,11 @@ class Module
                         $sm->get(ArrayModuleService\Path\StringOrNull::class)
                     );
                 },
+                AmazonService\Api\Resources\Offers\Listings\SaveArrayToMySql::class => function ($sm) {
+                    return new AmazonService\Api\Resources\Offers\Listings\SaveArrayToMySql(
+                        $sm->get('table-gateway-resources_offers_listings')
+                    );
+                },
                 AmazonService\Api\Resources\Offers\SaveArrayToMySql::class => function ($sm) {
                     return new AmazonService\Api\Resources\Offers\SaveArrayToMySql(
                         $sm->get(AmazonService\Api\Resources\Offers\Summaries\SaveArrayToMySql::class)
@@ -944,6 +949,12 @@ class Module
                 AmazonTableGateway\Product::class => function($sm) {
                     return new AmazonTableGateway\Product(
                         'product',
+                        $sm->get('amazon')
+                    );
+                },
+                'table-gateway-resources_offers_listings' => function ($sm) {
+                    return new TableGateway(
+                        'resources_offers_listings',
                         $sm->get('amazon')
                     );
                 },
