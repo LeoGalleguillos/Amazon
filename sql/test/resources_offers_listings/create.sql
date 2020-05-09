@@ -1,7 +1,7 @@
 CREATE TABLE `resources_offers_listings` (
   `resources_offers_listings_id` int(10) NOT NULL AUTO_INCREMENT,
   `product_id` int(10) unsigned NOT NULL,
-  `availability` varchar(32) NOT NULL,
+  `availability` varchar(64) NOT NULL,
   `minimum_order_quantity` int(10) unsigned NOT NULL,
   `maximum_order_quantity` int(10) unsigned DEFAULT NULL,
   `condition` varchar(32) NOT NULL,
