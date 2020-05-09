@@ -365,6 +365,7 @@ class Module
                 },
                 AmazonService\Api\Resources\Offers\SaveArrayToMySql::class => function ($sm) {
                     return new AmazonService\Api\Resources\Offers\SaveArrayToMySql(
+                        $sm->get(AmazonService\Api\Resources\Offers\Listings\SaveArrayToMySql::class),
                         $sm->get(AmazonService\Api\Resources\Offers\Summaries\SaveArrayToMySql::class)
                     );
                 },

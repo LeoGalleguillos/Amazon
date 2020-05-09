@@ -8,16 +8,23 @@ class SaveArrayToMySqlTest extends TestCase
 {
     protected function setUp()
     {
+        $this->saveListingsArrayToMySqlServiceMock = $this->createMock(
+            AmazonService\Api\Resources\Offers\Listings\SaveArrayToMySql::class
+        );
         $this->saveSummariesArrayToMySqlServiceMock = $this->createMock(
             AmazonService\Api\Resources\Offers\Summaries\SaveArrayToMySql::class
         );
         $this->saveArrayToMySqlService = new AmazonService\Api\Resources\Offers\SaveArrayToMySql(
+            $this->saveListingsArrayToMySqlServiceMock,
             $this->saveSummariesArrayToMySqlServiceMock
         );
     }
 
     public function test_saveArrayToMySql_emptyArray_doNothing()
     {
+        $this->saveListingsArrayToMySqlServiceMock
+            ->expects($this->never())
+            ->method('saveArrayToMySql');
         $this->saveSummariesArrayToMySqlServiceMock
             ->expects($this->never())
             ->method('saveArrayToMySql');
@@ -29,6 +36,12 @@ class SaveArrayToMySqlTest extends TestCase
 
     public function test_saveArrayToMySql_nonEmptyArray_doStuff()
     {
+        $this->saveListingsArrayToMySqlServiceMock
+            ->expects($this->once())
+            ->method('saveArrayToMySql')
+            ->with(
+                $this->getOffersArray()['Listings']
+            );
         $this->saveSummariesArrayToMySqlServiceMock
             ->expects($this->once())
             ->method('saveArrayToMySql')
