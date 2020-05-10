@@ -45,6 +45,9 @@ class ProductTest extends TestCase
         $this->resourcesOffersSummariesTableGatewayMock = $this->createMock(
             TableGateway::class
         );
+        $this->resourcesOffersListingsTableGatewayMock = $this->createMock(
+            TableGateway::class
+        );
 
         $this->productFactory = new AmazonFactory\Product(
             $this->bindingFactoryMock,
@@ -58,6 +61,7 @@ class ProductTest extends TestCase
             $this->productIsbnProductIdTableMock,
             $this->productUpcProductIdTableMock,
             $this->imageFactoryMock,
+            $this->resourcesOffersListingsTableGatewayMock,
             $this->resourcesOffersSummariesTableGatewayMock
         );
 

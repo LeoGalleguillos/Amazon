@@ -24,6 +24,7 @@ class Product
         AmazonTable\ProductIsbn\ProductId $productIsbnProductIdTable,
         AmazonTable\ProductUpc\ProductId $productUpcProductIdTable,
         ImageFactory\Image $imageFactory,
+        TableGateway $resourcesOffersListingsTableGateway,
         TableGateway $resourcesOffersSummariesTableGateway
     ) {
         $this->bindingFactory            = $bindingFactory;
@@ -37,6 +38,7 @@ class Product
         $this->productIsbnProductIdTable = $productIsbnProductIdTable;
         $this->productUpcProductIdTable  = $productUpcProductIdTable;
         $this->imageFactory              = $imageFactory;
+        $this->resourcesOffersListingsTableGateway = $resourcesOffersListingsTableGateway;
         $this->resourcesOffersSummariesTableGateway = $resourcesOffersSummariesTableGateway;
     }
 
