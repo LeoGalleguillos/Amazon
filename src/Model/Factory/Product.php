@@ -266,15 +266,16 @@ class Product
             ['product_id' => $productArray['product_id']]
         );
         if (count($resultSet)) {
-            $offers = [
-                'summaries' => [
-                ],
-            ];
+            $offers = [];
+            $offers['summaries'] = [];
             foreach ($resultSet as $arrayObject) {
                 $offers['summaries'][] = $this->summaryFactory->buildFromArray(
                     (array) $arrayObject
                 );
             }
+        }
+
+        if (isset($offers)) {
             $productEntity->setOffers($offers);
         }
 
