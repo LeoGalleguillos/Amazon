@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bcd1f8afcee8b7135c96b09a2bef034a",
+    "content-hash": "5708a73c32a3504930c86d7048a68f43",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -517,6 +517,75 @@
                 "laminas"
             ],
             "time": "2019-12-31T16:44:52+00:00"
+        },
+        {
+            "name": "laminas/laminas-filter",
+            "version": "2.9.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laminas/laminas-filter.git",
+                "reference": "3c4476e772a062cef7531c6793377ae585d89c82"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laminas/laminas-filter/zipball/3c4476e772a062cef7531c6793377ae585d89c82",
+                "reference": "3c4476e772a062cef7531c6793377ae585d89c82",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-stdlib": "^2.7.7 || ^3.1",
+                "laminas/laminas-zendframework-bridge": "^1.0",
+                "php": "^5.6 || ^7.0"
+            },
+            "conflict": {
+                "laminas/laminas-validator": "<2.10.1"
+            },
+            "replace": {
+                "zendframework/zend-filter": "^2.9.2"
+            },
+            "require-dev": {
+                "laminas/laminas-coding-standard": "~1.0.0",
+                "laminas/laminas-crypt": "^3.2.1",
+                "laminas/laminas-servicemanager": "^2.7.8 || ^3.3",
+                "laminas/laminas-uri": "^2.6",
+                "pear/archive_tar": "^1.4.3",
+                "phpunit/phpunit": "^5.7.23 || ^6.4.3",
+                "psr/http-factory": "^1.0"
+            },
+            "suggest": {
+                "laminas/laminas-crypt": "Laminas\\Crypt component, for encryption filters",
+                "laminas/laminas-i18n": "Laminas\\I18n component for filters depending on i18n functionality",
+                "laminas/laminas-servicemanager": "Laminas\\ServiceManager component, for using the filter chain functionality",
+                "laminas/laminas-uri": "Laminas\\Uri component, for the UriNormalize filter",
+                "psr/http-factory-implementation": "psr/http-factory-implementation, for creating file upload instances when consuming PSR-7 in file upload filters"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.9.x-dev",
+                    "dev-develop": "2.10.x-dev"
+                },
+                "laminas": {
+                    "component": "Laminas\\Filter",
+                    "config-provider": "Laminas\\Filter\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laminas\\Filter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Programmatically filter and normalize data and files",
+            "homepage": "https://laminas.dev",
+            "keywords": [
+                "filter",
+                "laminas"
+            ],
+            "time": "2020-03-29T12:41:29+00:00"
         },
         {
             "name": "laminas/laminas-http",
