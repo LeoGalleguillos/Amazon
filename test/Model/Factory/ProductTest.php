@@ -141,18 +141,22 @@ class ProductTest extends TestCase
             ]
         );
         $this->resourcesOffersListingsTableGatewayMock
+            ->expects($this->once())
             ->method('select')
+            ->with(['product_id' => '12345'])
             ->willReturn(
                 $this->resourcesOffersListingsTableResultSetMock
             );
         $this->resourcesOffersSummariesTableGatewayMock
+            ->expects($this->once())
             ->method('select')
+            ->with(['product_id' => '12345'])
             ->willReturn(
                 $this->resourcesOffersSummariesTableResultSetMock
             );
         $listingEntity1 = new AmazonEntity\Resources\Offers\Listing();
         $this->objectPropertyHydratorMock
-            ->expects($this->exactly(1))
+            ->expects($this->once())
             ->method('hydrate')
             ->with(
                 (array) (new ArrayObject([
