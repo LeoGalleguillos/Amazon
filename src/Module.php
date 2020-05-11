@@ -2,6 +2,7 @@
 namespace LeoGalleguillos\Amazon;
 
 use Laminas\Db\TableGateway\TableGateway;
+use Laminas\Hydrator as LaminasHydrator;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
@@ -131,6 +132,11 @@ class Module
                     );
                 },
                 AmazonFactory\Product::class => function ($sm) {
+                    $objectPropertyHydrator = new \Laminas\Hydrator\ObjectProperty();
+                    $objectPropertyHydrator->setNamingStrategy(
+                        new \Laminas\Hydrator\NamingStrategy\UnderscoreNamingStrategy()
+                    );
+
                     return new AmazonFactory\Product(
                         $sm->get(AmazonFactory\Binding::class),
                         $sm->get(AmazonFactory\ProductGroup::class),
@@ -143,6 +149,7 @@ class Module
                         $sm->get(AmazonTable\ProductIsbn\ProductId::class),
                         $sm->get(AmazonTable\ProductUpc\ProductId::class),
                         $sm->get(ImageFactory\Image::class),
+                        $objectPropertyHydrator,
                         $sm->get('table-gateway-resources_offers_listings'),
                         $sm->get('table-gateway-resources_offers_summaries')
                     );

@@ -4,6 +4,7 @@ namespace LeoGalleguillos\Amazon\Model\Factory;
 use DateTime;
 use Generator;
 use Laminas\Db\TableGateway\TableGateway;
+use Laminas\Hydrator as LaminasHydrator;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
@@ -24,6 +25,7 @@ class Product
         AmazonTable\ProductIsbn\ProductId $productIsbnProductIdTable,
         AmazonTable\ProductUpc\ProductId $productUpcProductIdTable,
         ImageFactory\Image $imageFactory,
+        LaminasHydrator\ObjectProperty $objectPropertyHydrator,
         TableGateway $resourcesOffersListingsTableGateway,
         TableGateway $resourcesOffersSummariesTableGateway
     ) {
@@ -38,6 +40,7 @@ class Product
         $this->productIsbnProductIdTable = $productIsbnProductIdTable;
         $this->productUpcProductIdTable  = $productUpcProductIdTable;
         $this->imageFactory              = $imageFactory;
+        $this->objectPropertyHydrator    = $objectPropertyHydrator;
         $this->resourcesOffersListingsTableGateway = $resourcesOffersListingsTableGateway;
         $this->resourcesOffersSummariesTableGateway = $resourcesOffersSummariesTableGateway;
     }
@@ -262,11 +265,29 @@ class Product
             }
         }
 
+        $resultSet = $this->resourcesOffersListingsTableGateway->select(
+            ['product_id' => $productArray['product_id']]
+        );
+        if (count($resultSet)) {
+            if (!isset($offers)) {
+                $offers = [];
+            }
+            $offers['listings'] = [];
+            foreach ($resultSet as $arrayObject) {
+                $offers['listings'][] = $this->objectPropertyHydrator->hydrate(
+                    (array) $arrayObject,
+                    new AmazonEntity\Resources\Offers\Listing()
+                );
+            }
+        }
+
         $resultSet = $this->resourcesOffersSummariesTableGateway->select(
             ['product_id' => $productArray['product_id']]
         );
         if (count($resultSet)) {
-            $offers = [];
+            if (!isset($offers)) {
+                $offers = [];
+            }
             $offers['summaries'] = [];
             foreach ($resultSet as $arrayObject) {
                 $offers['summaries'][] = $this->summaryFactory->buildFromArray(

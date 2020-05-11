@@ -6,6 +6,7 @@ use DateTime;
 use Generator;
 use Laminas\Db\TableGateway\TableGateway;
 use Laminas\Db\ResultSet\ResultSet;
+use Laminas\Hydrator as LaminasHydrator;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
@@ -42,6 +43,9 @@ class ProductTest extends TestCase
             AmazonTable\ProductUpc\ProductId::class
         );
         $this->imageFactoryMock = $this->createMock(ImageFactory\Image::class);
+        $this->objectPropertyHydratorMock = $this->createMock(
+            LaminasHydrator\ObjectProperty::class
+        );
         $this->resourcesOffersSummariesTableGatewayMock = $this->createMock(
             TableGateway::class
         );
@@ -61,6 +65,7 @@ class ProductTest extends TestCase
             $this->productIsbnProductIdTableMock,
             $this->productUpcProductIdTableMock,
             $this->imageFactoryMock,
+            $this->objectPropertyHydratorMock,
             $this->resourcesOffersListingsTableGatewayMock,
             $this->resourcesOffersSummariesTableGatewayMock
         );
@@ -73,6 +78,9 @@ class ProductTest extends TestCase
         );
         $this->productUpcResultMock = $this->createMock(
             Result::class
+        );
+        $this->resourcesOffersListingsTableResultSetMock = $this->createMock(
+            ResultSet::class
         );
         $this->resourcesOffersSummariesTableResultSetMock = $this->createMock(
             ResultSet::class
@@ -110,6 +118,16 @@ class ProductTest extends TestCase
                 $this->productUpcResultMock
             );
         $this->resultHydrator->hydrate(
+            $this->resourcesOffersListingsTableResultSetMock,
+            [
+                new ArrayObject([
+                    'condition'   => 'New',
+                    'sub_condition' => 'New',
+                    'minimum_order_quantity' => 3,
+                ]),
+            ]
+        );
+        $this->resultHydrator->hydrate(
             $this->resourcesOffersSummariesTableResultSetMock,
             [
                 new ArrayObject([
@@ -122,11 +140,30 @@ class ProductTest extends TestCase
                 ]),
             ]
         );
+        $this->resourcesOffersListingsTableGatewayMock
+            ->method('select')
+            ->willReturn(
+                $this->resourcesOffersListingsTableResultSetMock
+            );
         $this->resourcesOffersSummariesTableGatewayMock
             ->method('select')
             ->willReturn(
                 $this->resourcesOffersSummariesTableResultSetMock
             );
+        $listingEntity1 = new AmazonEntity\Resources\Offers\Listing();
+        $this->objectPropertyHydratorMock
+            ->expects($this->exactly(1))
+            ->method('hydrate')
+            ->with(
+                (array) (new ArrayObject([
+                    'condition'   => 'New',
+                    'sub_condition' => 'New',
+                    'minimum_order_quantity' => 3,
+                ])),
+                new AmazonEntity\Resources\Offers\Listing()
+            )
+            ->willReturn($listingEntity1)
+            ;
         $summaryEntity1 = new AmazonEntity\Resources\Offers\Summary();
         $summaryEntity2 = new AmazonEntity\Resources\Offers\Summary();
         $this->summaryFactoryMock
@@ -200,6 +237,9 @@ class ProductTest extends TestCase
             ->setProductId('12345')
             ->setListPrice('1.23')
             ->setOffers([
+                'listings' => [
+                    $listingEntity1,
+                ],
                 'summaries' => [
                     $summaryEntity1,
                     $summaryEntity2,
