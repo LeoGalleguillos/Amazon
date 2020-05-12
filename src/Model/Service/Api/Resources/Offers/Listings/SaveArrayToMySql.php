@@ -35,7 +35,7 @@ class SaveArrayToMySql
                 'is_eligible_for_free_shipping' => $listingArray['DeliveryInfo']['IsFreeShippingEligible'],
                 'is_eligible_for_prime' => $listingArray['DeliveryInfo']['IsPrimeEligible'],
                 'merchant_id' => $listingArray['MerchantInfo']['Id'],
-                'merchant_name' => $listingArray['MerchantInfo']['Name'],
+                'merchant_name' => $listingArray['MerchantInfo']['Name'] ?? null,
                 'price' => $listingArray['Price']['Amount'] ?? null,
                 'savings' => $listingArray['Price']['Savings']['Amount'] ?? null,
                 'is_prime_exclusive' => $listingArray['ProgramEligibility']['IsPrimeExclusive'],

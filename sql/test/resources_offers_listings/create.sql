@@ -10,7 +10,7 @@ CREATE TABLE `resources_offers_listings` (
   `is_eligible_for_free_shipping` tinyint(1) unsigned NOT NULL,
   `is_eligible_for_prime` tinyint(1) unsigned NOT NULL,
   `merchant_id` varchar(32) NOT NULL,
-  `merchant_name` varchar(255) NOT NULL,
+  `merchant_name` varchar(255) DEFAULT NULL,
   `price` float(16,2) unsigned DEFAULT NULL,
   `savings` float(16,2) unsigned DEFAULT NULL,
   `is_prime_exclusive` tinyint(1) unsigned NOT NULL,
