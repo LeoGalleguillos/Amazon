@@ -28,9 +28,6 @@ class SaveArrayToMySqlTest extends TestCase
         $this->manufactureInfoSetServiceMock = $this->createMock(
             AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set::class
         );
-        $this->titleSetServiceMock = $this->createMock(
-            AmazonService\Api\Resources\ItemInfo\Title\Set::class
-        );
         $this->tradeInInfoSetServiceMock = $this->createMock(
             AmazonService\Api\Resources\ItemInfo\TradeInInfo\Set::class
         );
@@ -47,7 +44,6 @@ class SaveArrayToMySqlTest extends TestCase
             $this->saveExternalIdsArrayToMySqlMock,
             $this->saveFeaturesArrayToMySqlMock,
             $this->manufactureInfoSetServiceMock,
-            $this->titleSetServiceMock,
             $this->tradeInInfoSetServiceMock,
             $this->productTableGatewayMock,
             $this->stringOrNullServiceMock
@@ -104,17 +100,6 @@ class SaveArrayToMySqlTest extends TestCase
                 'model'       => 'ABCDEFG',
                 'warranty'    => '1 year with full refund or replacement',
             ]);
-        $this->titleSetServiceMock
-            ->expects($this->exactly(1))
-            ->method('getSet')
-            ->with(
-                $this->identicalTo(
-                    $this->getArray()['Title']
-                )
-            )
-            ->willReturn([
-                'title' => 'SUNDOLPHIN Sun Dolphin Mackinaw Canoe (Green, 15.6-Feet)',
-            ]);
         $this->tradeInInfoSetServiceMock
             ->expects($this->exactly(1))
             ->method('getSet')
@@ -149,6 +134,7 @@ class SaveArrayToMySqlTest extends TestCase
                         'height_units'     => 'Inches',
                         'length_value'     => 187.5,
                         'length_units'     => 'Inches',
+                        'title'            => 'SUNDOLPHIN Sun Dolphin Mackinaw Canoe (Green, 15.6-Feet)',
                         'weight_value'     => 95.0,
                         'weight_units'     => 'Pounds',
                         'width_value'      => 42.0,
@@ -174,8 +160,6 @@ class SaveArrayToMySqlTest extends TestCase
                         'warranty'         => '1 year with full refund or replacement',
 
 
-                        // Title
-                        'title'            => 'SUNDOLPHIN Sun Dolphin Mackinaw Canoe (Green, 15.6-Feet)',
 
                         // TradeInInfo
                         'is_eligible_for_trade_in' => 1,

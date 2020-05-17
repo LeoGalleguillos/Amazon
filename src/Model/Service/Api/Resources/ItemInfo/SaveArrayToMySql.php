@@ -14,7 +14,6 @@ class SaveArrayToMySql
         AmazonService\Api\Resources\ItemInfo\ExternalIds\SaveArrayToMySql $saveExternalIdsArrayToMySqlService,
         AmazonService\Api\Resources\ItemInfo\Features\SaveArrayToMySql $saveFeaturesArrayToMySqlService,
         AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set $manufactureInfoSetService,
-        AmazonService\Api\Resources\ItemInfo\Title\Set $titleSetService,
         AmazonService\Api\Resources\ItemInfo\TradeInInfo\Set $tradeInInfoSetService,
         AmazonTableGateway\Product $productTableGateway,
         ArrayModuleService\Path\StringOrNull $stringOrNullService
@@ -25,7 +24,6 @@ class SaveArrayToMySql
         $this->saveExternalIdsArrayToMySqlService = $saveExternalIdsArrayToMySqlService;
         $this->saveFeaturesArrayToMySqlService    = $saveFeaturesArrayToMySqlService;
         $this->manufactureInfoSetService          = $manufactureInfoSetService;
-        $this->titleSetService                    = $titleSetService;
         $this->tradeInInfoSetService              = $tradeInInfoSetService;
         $this->productTableGateway                = $productTableGateway;
         $this->stringOrNullService                = $stringOrNullService;
@@ -50,6 +48,7 @@ class SaveArrayToMySql
                 : null,
             'length_units' => $itemInfoArray['ProductInfo']['ItemDimensions']['Length']['Unit']
                 ?? null,
+            'title' => $itemInfoArray['Title']['DisplayValue'],
             'weight_value' => isset($itemInfoArray['ProductInfo']['ItemDimensions']['Weight']['DisplayValue'])
                 ? ((float) $itemInfoArray['ProductInfo']['ItemDimensions']['Weight']['DisplayValue'])
                 : null,
@@ -91,12 +90,6 @@ class SaveArrayToMySql
         if (isset($itemInfoArray['ManufactureInfo'])) {
             $set += $this->manufactureInfoSetService->getSet(
                 $itemInfoArray['ManufactureInfo']
-            );
-        }
-
-        if (isset($itemInfoArray['Title'])) {
-            $set += $this->titleSetService->getSet(
-                $itemInfoArray['Title']
             );
         }
 
