@@ -46,10 +46,10 @@ class ProductTest extends TestCase
         $this->objectPropertyHydratorMock = $this->createMock(
             LaminasHydrator\ObjectProperty::class
         );
-        $this->resourcesOffersSummariesTableGatewayMock = $this->createMock(
+        $this->resourcesOffersListingsTableGatewayMock = $this->createMock(
             TableGateway::class
         );
-        $this->resourcesOffersListingsTableGatewayMock = $this->createMock(
+        $this->resourcesOffersSummariesTableGatewayMock = $this->createMock(
             TableGateway::class
         );
 
@@ -283,11 +283,11 @@ class ProductTest extends TestCase
     {
         $created        = '2020-04-23 12:34:56';
 
-        $resultMock = $this->createMock(
+        $asinResultMock = $this->createMock(
             Result::class
         );
         $this->resultHydrator->hydrate(
-            $resultMock,
+            $asinResultMock,
             [
                 [
                     'asin'       => 'ASIN12345',
@@ -298,7 +298,7 @@ class ProductTest extends TestCase
         );
         $this->asinTableMock
             ->method('selectWhereAsin')
-            ->willReturn($resultMock);
+            ->willReturn($asinResultMock);
 
         $this->productFeatureTableMock
             ->method('selectWhereProductId')
@@ -311,6 +311,30 @@ class ProductTest extends TestCase
             ->willReturn(
                 $this->yieldProductImageArrays()
             );
+
+        $resourcesOffersListingsResultMock = $this->createMock(
+            Result::class
+        );
+        $this->resultHydrator->hydrate(
+            $resourcesOffersListingsResultMock,
+            [
+            ]
+        );
+        $this->resourcesOffersListingsTableGatewayMock
+            ->method('select')
+            ->willReturn($resourcesOffersListingsResultMock);
+
+        $resourcesOffersSummariessResultMock = $this->createMock(
+            Result::class
+        );
+        $this->resultHydrator->hydrate(
+            $resourcesOffersSummariessResultMock,
+            [
+            ]
+        );
+        $this->resourcesOffersSummariesTableGatewayMock
+            ->method('select')
+            ->willReturn($resourcesOffersSummariessResultMock);
 
         $productEntity = (new AmazonEntity\Product())
             ->setAsin('ASIN12345')
