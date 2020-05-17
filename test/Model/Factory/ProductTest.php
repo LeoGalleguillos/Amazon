@@ -393,6 +393,30 @@ class ProductTest extends TestCase
             ]);
             ;
 
+        $resourcesOffersListingsResultMock = $this->createMock(
+            Result::class
+        );
+        $this->resultHydrator->hydrate(
+            $resourcesOffersListingsResultMock,
+            [
+            ]
+        );
+        $this->resourcesOffersListingsTableGatewayMock
+            ->method('select')
+            ->willReturn($resourcesOffersListingsResultMock);
+
+        $resourcesOffersSummariessResultMock = $this->createMock(
+            Result::class
+        );
+        $this->resultHydrator->hydrate(
+            $resourcesOffersSummariessResultMock,
+            [
+            ]
+        );
+        $this->resourcesOffersSummariesTableGatewayMock
+            ->method('select')
+            ->willReturn($resourcesOffersSummariessResultMock);
+
         $this->assertEquals(
             $productEntity,
             $this->productFactory->buildFromProductId(12345)
