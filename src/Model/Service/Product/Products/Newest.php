@@ -17,6 +17,10 @@ class Newest
 
     public function getNewestProducts(): Generator
     {
+        /*
+         * @TODO Use table gateway and make sure result set excludes products
+         * with null title.
+         */
         $result = $this->isValidCreatedProductIdTable
             ->selectWhereIsValidEquals1OrderByCreatedDescLimit100();
 
