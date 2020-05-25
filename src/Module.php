@@ -517,6 +517,11 @@ class Module
                 AmazonService\Product\Products\Search\NumberOfPages::class => function ($sm) {
                     return new AmazonService\Product\Products\Search\NumberOfPages();
                 },
+                AmazonService\Product\Products\Search\Results::class => function ($sm) {
+                    return new AmazonService\Product\Products\Search\Results(
+                        $sm->get(AmazonTable\ProductSearch::class)
+                    );
+                },
                 AmazonService\Product\Products\Similar::class => function ($sm) {
                     return new AmazonService\Product\Products\Similar(
                         $sm->get(AmazonFactory\Product::class),
