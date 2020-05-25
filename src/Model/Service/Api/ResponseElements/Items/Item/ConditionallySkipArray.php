@@ -69,7 +69,12 @@ class ConditionallySkipArray
             return true;
         }
 
-        // Item must not belong to the following list of product groups.
+        /*
+         * Item must not belong to the following list of product groups.
+         *
+         * @TODO Use this as default array, but make array configurable in
+         * global config as well.
+         */
         $productGroup
             = $itemArray['ItemInfo']['Classifications']['ProductGroup']['DisplayValue']
             ?? null;
@@ -83,6 +88,8 @@ class ConditionallySkipArray
             'Digital Music Track',
             'DVD',
             'eBooks',
+            'Mobile Application',
+            'Mobile Applications',
             'Movie',
             'Music',
             'Single Detail Page Misc',
