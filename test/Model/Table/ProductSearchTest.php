@@ -29,7 +29,7 @@ class ProductSearchTest extends TableTestCase
         );
     }
 
-    public function test_selectProductIdWhereMatchAgainst_emptyTable_emptyResult()
+    public function test_selectProductIdWhereMatchAgainstLimit_emptyTable_emptyResult()
     {
         $result = $this->productSearchTable->selectProductIdWhereMatchAgainstLimit(
             'the search query',
