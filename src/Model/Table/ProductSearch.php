@@ -20,8 +20,11 @@ class ProductSearch
     /**
      * @throws InvalidQueryException Fulltext search can exceed max execution time.
      */
-    public function selectProductIdWhereMatchAgainst(string $query): Result
-    {
+    public function selectProductIdWhereMatchAgainstLimit(
+        string $query,
+        int $limitOffset,
+        int $limitRowCount
+    ): Result {
         $sql = '
             SELECT `product_search`.`product_id`
                  , MATCH(`product_search`.`title_first_3_words`) AGAINST (?) AS `score`
@@ -29,12 +32,14 @@ class ProductSearch
              WHERE MATCH(`product_search`.`title_first_3_words`) AGAINST (?)
              ORDER
                 BY `score` DESC
-             LIMIT 11
+             LIMIT ?, ?
                  ;
         ';
         $parameters = [
             $query,
             $query,
+            $limitOffset,
+            $limitRowCount,
         ];
         return $this->adapter->query($sql)->execute($parameters);
     }

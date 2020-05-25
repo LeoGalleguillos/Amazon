@@ -20,8 +20,10 @@ class ProductSearchTest extends TableTestCase
 
     public function test_selectProductIdWhereMatchAgainst_emptyTable_emptyResult()
     {
-        $result = $this->productSearchTable->selectProductIdWhereMatchAgainst(
-            'the search query'
+        $result = $this->productSearchTable->selectProductIdWhereMatchAgainstLimit(
+            'the search query',
+            0,
+            100
         );
         $this->assertEmpty(
             iterator_to_array($result)

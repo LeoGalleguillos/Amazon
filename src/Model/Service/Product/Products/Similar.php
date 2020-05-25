@@ -31,7 +31,11 @@ class Similar
         $query = str_replace('"', '', $query);
 
         try {
-            $result = $this->productSearchTable->selectProductIdWhereMatchAgainst($query);
+            $result = $this->productSearchTable->selectProductIdWhereMatchAgainstLimit(
+                $query,
+                0,
+                11
+            );
         } catch (InvalidQueryException $invalidQueryException) {
             // Return empty Generator
             return;

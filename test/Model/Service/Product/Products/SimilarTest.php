@@ -49,7 +49,7 @@ class SimilarTest extends TestCase
     public function test_getSimilarProducts_productSearchTableThrowsInvalidQueryException_emptyGenerator()
     {
         $this->productSearchTableMock
-            ->method('selectProductIdWhereMatchAgainst')
+            ->method('selectProductIdWhereMatchAgainstLimit')
             ->will($this->throwException(new InvalidQueryException()));
 
         $productEntity = new AmazonEntity\Product();
