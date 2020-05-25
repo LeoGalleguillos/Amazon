@@ -18,6 +18,17 @@ class ProductSearchTest extends TableTestCase
         $this->setForeignKeyChecks(1);
     }
 
+    public function test_selectCountWhereMatchAgainst_emptyTable_0Results()
+    {
+        $result = $this->productSearchTable->selectCountWhereMatchAgainst(
+            'the search query'
+        );
+        $this->assertSame(
+            '0',
+            $result->current()['COUNT(*)']
+        );
+    }
+
     public function test_selectProductIdWhereMatchAgainst_emptyTable_emptyResult()
     {
         $result = $this->productSearchTable->selectProductIdWhereMatchAgainstLimit(
