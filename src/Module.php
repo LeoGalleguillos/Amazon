@@ -528,6 +528,11 @@ class Module
                         $sm->get(AmazonTable\ProductSearch::class)
                     );
                 },
+                AmazonService\Product\Products\Search\SanitizedQuery::class => function ($sm) {
+                    return new AmazonService\Product\Products\Search\SanitizedQuery(
+                        $sm->get(StringService\KeepFirstWords::class)
+                    );
+                },
                 AmazonService\Product\Products\Similar::class => function ($sm) {
                     return new AmazonService\Product\Products\Similar(
                         $sm->get(AmazonFactory\Product::class),
