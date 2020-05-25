@@ -4,6 +4,7 @@ namespace LeoGalleguillos\AmazonTest\Model\Service\Product\Products\Search;
 use Laminas\Db as LaminasDb;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
+use LeoGalleguillos\Test\Hydrator as TestHydrator;
 use PHPUnit\Framework\TestCase;
 
 class NumberOfResultsTest extends TestCase
@@ -23,12 +24,22 @@ class NumberOfResultsTest extends TestCase
         $result = $this->createMock(
             LaminasDb\Adapter\Driver\Pdo\Result::class
         );
+        $hydrator = new TestHydrator\CountableIterator();
+        $hydrator->hydrate(
+            $result,
+            [
+                ['COUNT(*)' => 123]
+            ]
+        );
         $this->productSearchTableMock
             ->expects($this->once())
             ->method('selectCountWhereMatchAgainst')
             ->with('the search query')
             ->willReturn($result);
 
-        $this->numberOfResultsService->getNumberOfResults('the search query');
+        $this->assertSame(
+            123,
+            $this->numberOfResultsService->getNumberOfResults('the search query')
+        );
     }
 }
