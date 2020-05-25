@@ -11,16 +11,27 @@ class NumberOfResultsTest extends TestCase
 {
     protected function setUp()
     {
+        $this->sanitizedQueryServiceMock = $this->createMock(
+            AmazonService\Product\Products\Search\SanitizedQuery::class
+        );
         $this->productSearchTableMock = $this->createMock(
             AmazonTable\ProductSearch::class
         );
         $this->numberOfResultsService = new AmazonService\Product\Products\Search\NumberOfResults(
+            $this->sanitizedQueryServiceMock,
             $this->productSearchTableMock
         );
     }
 
     public function test_getNumberOfResults()
     {
+        $query          = 'the search query';
+        $sanitizedQuery = 'the sanitized query';
+        $this->sanitizedQueryServiceMock
+            ->expects($this->once())
+            ->method('getSanitizedQuery')
+            ->with($query)
+            ->willReturn($sanitizedQuery);
         $result = $this->createMock(
             LaminasDb\Adapter\Driver\Pdo\Result::class
         );
@@ -34,12 +45,12 @@ class NumberOfResultsTest extends TestCase
         $this->productSearchTableMock
             ->expects($this->once())
             ->method('selectCountWhereMatchAgainst')
-            ->with('the search query')
+            ->with($sanitizedQuery)
             ->willReturn($result);
 
         $this->assertSame(
             123,
-            $this->numberOfResultsService->getNumberOfResults('the search query')
+            $this->numberOfResultsService->getNumberOfResults($query)
         );
     }
 }

@@ -519,6 +519,7 @@ class Module
                 },
                 AmazonService\Product\Products\Search\NumberOfResults::class => function ($sm) {
                     return new AmazonService\Product\Products\Search\NumberOfResults(
+                        $sm->get(AmazonService\Product\Products\Search\SanitizedQuery::class),
                         $sm->get(AmazonTable\ProductSearch::class)
                     );
                 },
