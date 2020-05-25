@@ -16,17 +16,28 @@ class ResultsTest extends TestCase
         $this->productFactoryMock = $this->createMock(
             AmazonFactory\Product::class
         );
+        $this->sanitizedQueryServiceMock = $this->createMock(
+            AmazonService\Product\Products\Search\SanitizedQuery::class
+        );
         $this->productSearchTableMock = $this->createMock(
             AmazonTable\ProductSearch::class
         );
         $this->resultsService = new AmazonService\Product\Products\Search\Results(
             $this->productFactoryMock,
+            $this->sanitizedQueryServiceMock,
             $this->productSearchTableMock
         );
     }
 
     public function test_getResults()
     {
+        $query          = 'the search query';
+        $sanitizedQuery = 'the sanitized query';
+        $this->sanitizedQueryServiceMock
+            ->expects($this->once())
+            ->method('getSanitizedQuery')
+            ->with($query)
+            ->willReturn($sanitizedQuery);
         $resultMock = $this->createMock(
             LaminasDb\Adapter\Driver\Pdo\Result::class
         );
@@ -43,7 +54,7 @@ class ResultsTest extends TestCase
         $this->productSearchTableMock
             ->expects($this->once())
             ->method('selectProductIdWhereMatchAgainstLimit')
-            ->with('the search query', 200, 100)
+            ->with($sanitizedQuery, 600, 100)
             ->willReturn($resultMock);
         $this->productFactoryMock
             ->expects($this->exactly(3))
@@ -60,8 +71,8 @@ class ResultsTest extends TestCase
             );
 
         $generator = $this->resultsService->getResults(
-            'the search query',
-            3
+            $query,
+            7
         );
         $results = iterator_to_array($generator);
         for ($iteration = 0; $iteration <= 2; $iteration++) {

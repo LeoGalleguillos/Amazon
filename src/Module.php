@@ -525,6 +525,7 @@ class Module
                 AmazonService\Product\Products\Search\Results::class => function ($sm) {
                     return new AmazonService\Product\Products\Search\Results(
                         $sm->get(AmazonFactory\Product::class),
+                        $sm->get(AmazonService\Product\Products\Search\SanitizedQuery::class),
                         $sm->get(AmazonTable\ProductSearch::class)
                     );
                 },
