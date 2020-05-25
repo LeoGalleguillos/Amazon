@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Service\Product\Products\Search;
 
+use Laminas\Db as LaminasDb;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 
 class NumberOfResults
@@ -13,8 +14,10 @@ class NumberOfResults
 
     public function getNumberOfResults(string $query): int
     {
-        return $this->searchTable->selectCountWhereMatchAgainst(
+        /* @var LaminasDb\Adapter\Driver\Pdo\Result */
+        $result = $this->productSearchTable->selectCountWhereMatchAgainst(
             $query
         );
+        return (int) $result->current()['COUNT(*)'];
     }
 }
