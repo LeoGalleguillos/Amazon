@@ -150,8 +150,8 @@ class Module
                         $sm->get(AmazonTable\ProductUpc\ProductId::class),
                         $sm->get(ImageFactory\Image::class),
                         $objectPropertyHydrator,
-                        $sm->get('table-gateway-resources_offers_listings'),
-                        $sm->get('table-gateway-resources_offers_summaries')
+                        $sm->get('laminas-db-table-gateway-table-gateway-resources_offers_listings'),
+                        $sm->get('laminas-db-table-gateway-table-gateway-resources_offers_summaries')
                     );
                 },
                 AmazonFactory\ProductGroup::class => function ($sm) {
@@ -362,7 +362,7 @@ class Module
                 },
                 AmazonService\Api\Resources\Offers\Listings\SaveArrayToMySql::class => function ($sm) {
                     return new AmazonService\Api\Resources\Offers\Listings\SaveArrayToMySql(
-                        $sm->get('table-gateway-resources_offers_listings')
+                        $sm->get('laminas-db-table-gateway-table-gateway-resources_offers_listings')
                     );
                 },
                 AmazonService\Api\Resources\Offers\SaveArrayToMySql::class => function ($sm) {
@@ -373,7 +373,7 @@ class Module
                 },
                 AmazonService\Api\Resources\Offers\Summaries\SaveArrayToMySql::class => function ($sm) {
                     return new AmazonService\Api\Resources\Offers\Summaries\SaveArrayToMySql(
-                        $sm->get('table-gateway-resources_offers_summaries')
+                        $sm->get('laminas-db-table-gateway-table-gateway-resources_offers_summaries')
                     );
                 },
                 AmazonService\Api\SimilarProducts\Xml::class => function ($sm) {
@@ -976,13 +976,13 @@ class Module
                         $sm->get('amazon')
                     );
                 },
-                'table-gateway-resources_offers_listings' => function ($sm) {
+                'laminas-db-table-gateway-table-gateway-resources_offers_listings' => function ($sm) {
                     return new TableGateway(
                         'resources_offers_listings',
                         $sm->get('amazon')
                     );
                 },
-                'table-gateway-resources_offers_summaries' => function ($sm) {
+                'laminas-db-table-gateway-table-gateway-resources_offers_summaries' => function ($sm) {
                     return new TableGateway(
                         'resources_offers_summaries',
                         $sm->get('amazon')
