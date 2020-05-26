@@ -7,7 +7,7 @@ use SimpleXMLElement;
 
 class XmlTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $configArray = require($_SERVER['PWD'] . '/config/autoload/local.php');
         $this->xmlService = new AmazonService\Api\Product\Xml(

@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class DomainTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->nameServiceMock = $this->createMock(
             AmazonService\Product\BrowseNode\First\Name::class

@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class ApiTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->apiTable = $this->createMock(AmazonTable\Api::class);
         $this->apiService = new AmazonService\Api(

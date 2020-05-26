@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class BannedTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->productBannedTableMock = $this->createMock(
             AmazonTable\ProductBanned::class

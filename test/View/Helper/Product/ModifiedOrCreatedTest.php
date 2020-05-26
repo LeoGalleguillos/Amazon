@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class ModifiedOrCreatedTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->modifiedOrCreatedHelper = new AmazonHelper\Product\ModifiedOrCreated();
     }

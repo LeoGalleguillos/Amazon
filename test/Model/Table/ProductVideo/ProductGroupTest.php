@@ -6,7 +6,7 @@ use LeoGalleguillos\Test\TableTestCase;
 
 class ProductGroupTest extends TableTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->SetForeignKeyChecks(0);
         $this->dropAndCreateTables(['product', 'product_video']);

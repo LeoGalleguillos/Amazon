@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class ArrayFromSourceCodeTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->arrayFromSourceCodeService = new AmazonService\ProductHiResImage\ArrayFromSourceCode();
     }

@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class AffiliateUrlTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->affiliateUrlHelper = new AmazonHelper\Product\AffiliateUrl();
     }

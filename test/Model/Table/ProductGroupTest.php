@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 class ProductGroupTest extends TableTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->memcachedService = $this->createMock(MemcachedService\Memcached::class);
         $this->productGroupTable     = new AmazonTable\ProductGroup(
@@ -80,7 +80,7 @@ class ProductGroupTest extends TableTestCase
         $this->productGroupTable->insertIgnore('name3', 'slug3', 'search_table_3');
 
         foreach ($this->productGroupTable->selectWhereSearchTableIsNotNull() as $array) {
-            $this->assertInternalType('array', $array);
+            $this->assertIsArray($array);
         }
     }
 }

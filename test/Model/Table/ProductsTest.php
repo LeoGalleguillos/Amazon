@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 class ProductsTest extends TableTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->productTable = new AmazonTable\Product(
             $this->getAdapter()

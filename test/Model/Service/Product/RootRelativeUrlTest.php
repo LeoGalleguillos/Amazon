@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class RootRelativeUrlTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->modifiedTitleServiceMock = $this->createMock(
             AmazonService\Product\ModifiedTitle::class

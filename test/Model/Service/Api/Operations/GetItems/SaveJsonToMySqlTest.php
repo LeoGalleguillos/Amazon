@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class SaveJsonToMySqlTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->saveErrorsArrayToMySqlServiceMock = $this->createMock(
             AmazonService\Api\Errors\SaveArrayToMySql::class

@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class SummaryTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->summaryEntity = new AmazonEntity\Resources\Offers\Summary();
     }

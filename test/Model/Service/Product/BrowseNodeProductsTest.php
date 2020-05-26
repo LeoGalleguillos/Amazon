@@ -10,7 +10,7 @@ use TypeError;
 
 class BrowseNodeProductsTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->browseNodeFactoryMock = $this->createMock(
             AmazonFactory\BrowseNode::class

@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class JsonTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $configArray = require($_SERVER['PWD'] . '/config/autoload/local.php');
         $this->jsonService = new AmazonService\Api\Operations\GetItems\Json(

@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class TitleTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->titleService = new AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray\Title();
     }

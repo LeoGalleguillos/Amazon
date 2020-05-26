@@ -7,7 +7,7 @@ use ReflectionClass;
 
 class AwsV4Test extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->awsV4Entity = new AmazonEntity\Api\AwsV4(
             'access key',

@@ -8,7 +8,7 @@ use SimpleXMLElement;
 
 class DownloadToMySqlTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->downloadToMySqlServiceMock = $this->createMock(
             AmazonService\Api\Xml\BrowseNode\DownloadToMySql::class

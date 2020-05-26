@@ -7,7 +7,7 @@ use TypeError;
 
 class BrowseNodeHierarchyTest extends TableTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->browseNodeHierarchyTable = new AmazonTable\BrowseNodeHierarchy(
             $this->getAdapter()

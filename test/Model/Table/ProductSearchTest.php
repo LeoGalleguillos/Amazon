@@ -6,7 +6,7 @@ use LeoGalleguillos\Test\TableTestCase;
 
 class ProductSearchTest extends TableTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->productSearchTable = new AmazonTable\ProductSearch(
             $this->getAdapter()

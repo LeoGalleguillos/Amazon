@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class SanitizedQueryTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->keepFirstWordsServiceMock = $this->createMock(
             StringService\KeepFirstWords::class

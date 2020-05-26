@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class ProductImagesTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->productImagesService = new AmazonService\ProductImage\ProductImages();
     }

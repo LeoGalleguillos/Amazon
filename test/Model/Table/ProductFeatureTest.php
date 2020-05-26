@@ -6,7 +6,7 @@ use LeoGalleguillos\Test\TableTestCase;
 
 class ProductFeatureTest extends TableTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->productFeatureTable = new AmazonTable\ProductFeature(
             $this->getAdapter()

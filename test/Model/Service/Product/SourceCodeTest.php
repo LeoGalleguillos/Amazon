@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class SourceCodeTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->sourceCodeService = new AmazonService\Product\SourceCode();
     }

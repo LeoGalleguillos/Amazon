@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class BrowseNodeProductsHtmlTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->breadcrumbsHtmlHelperMock = $this->createMock(
             AmazonHelper\BrowseNodeProduct\BreadcrumbsHtml::class

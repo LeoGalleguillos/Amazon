@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class ProductGroupExcludedTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->productGroupExcludedService = new AmazonService\ProductVideo\ProductGroupExcluded();
     }

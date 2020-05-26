@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class SummaryTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->summaryFactory = new AmazonFactory\Resources\Offers\Summary();
     }

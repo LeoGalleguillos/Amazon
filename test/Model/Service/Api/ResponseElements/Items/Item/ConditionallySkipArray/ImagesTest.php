@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class ImagesTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->imagesService = new AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray\Images();
     }

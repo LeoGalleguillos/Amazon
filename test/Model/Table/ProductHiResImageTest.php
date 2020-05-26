@@ -6,7 +6,7 @@ use LeoGalleguillos\Test\TableTestCase;
 
 class ProductHiResImageTest extends TableTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->productHiResImageTable = new AmazonTable\ProductHiResImage(
             $this->getAdapter()

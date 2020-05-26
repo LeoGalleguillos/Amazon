@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class CommandTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->randomMp3RruServiceMock = $this->createMock(
             AmazonService\ProductVideo\RandomMp3Rru::class
@@ -72,8 +72,7 @@ class CommandTest extends TestCase
 
         $command = $this->commandService->getCommand($productEntity);
 
-        $this->assertInternalType(
-            'string',
+        $this->assertIsString(
             $command
         );
 

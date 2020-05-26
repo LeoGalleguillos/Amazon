@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class BreadcrumbsHtmlTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->browseNodeNameDomains = [
             'default' => 'www.example.com',

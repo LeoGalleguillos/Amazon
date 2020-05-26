@@ -6,7 +6,7 @@ use LeoGalleguillos\Test\TableTestCase;
 
 class ProductTest extends TableTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->setForeignKeyChecks(0);
         $this->dropAndCreateTable('product');

@@ -11,7 +11,7 @@ use Zend\Db\Adapter\Exception\InvalidQueryException;
 
 class SimilarTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->productFactoryMock = $this->createMock(
             AmazonFactory\Product::class

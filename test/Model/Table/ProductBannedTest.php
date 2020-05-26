@@ -6,7 +6,7 @@ use LeoGalleguillos\Test\TableTestCase;
 
 class ProductBannedTest extends TableTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->productBannedTable = new AmazonTable\ProductBanned(
             $this->getAdapter()

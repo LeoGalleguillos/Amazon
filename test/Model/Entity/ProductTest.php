@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class ProductTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->productEntity = new AmazonEntity\Product();
     }

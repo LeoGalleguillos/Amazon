@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class NewestTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->productVideoFactoryMock = $this->createMock(
             AmazonFactory\ProductVideo::class

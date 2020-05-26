@@ -6,7 +6,7 @@ use LeoGalleguillos\Test\TableTestCase;
 
 class ProductImageTest extends TableTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->setForeignKeyChecks(0);
         $this->dropAndCreateTables(['product', 'product_image']);

@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class GenerateTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->generateService = new AmazonService\ProductVideo\Thumbnail\Generate();
     }
@@ -31,8 +31,7 @@ class GenerateTest extends TestCase
         $productVideoEntity = new AmazonEntity\ProductVideo();
         $productVideoEntity->setProduct($productEntity);
 
-        $this->assertInternalType(
-            'bool',
+        $this->assertIsBool(
             $this->generateService->generate($productVideoEntity)
         );
     }

@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class SaveArrayToMySqlTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->productIsbnTableMock = $this->createMock(
             AmazonTable\ProductIsbn::class

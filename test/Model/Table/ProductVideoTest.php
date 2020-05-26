@@ -8,7 +8,7 @@ use TypeError;
 
 class ProductVideoTest extends TableTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->browseNodeTable = new AmazonTable\BrowseNode(
             $this->getAdapter()

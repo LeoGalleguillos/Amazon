@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class IncrementTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->productVideoIdTableMock = $this->createMock(
             AmazonTable\ProductVideo\ProductVideoId::class

@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class AsinTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->urlFriendlyServiceMock = $this->createMock(
             StringService\UrlFriendly::class

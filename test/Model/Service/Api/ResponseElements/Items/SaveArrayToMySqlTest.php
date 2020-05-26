@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class SaveArrayToMySqlTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->conditionallySkipItemArrayServiceMock = $this->createMock(
             AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray::class

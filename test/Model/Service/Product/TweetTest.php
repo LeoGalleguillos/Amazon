@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class TweetTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->hashtagsServiceMock = $this->createMock(
             AmazonService\Product\Hashtags::class

@@ -6,7 +6,7 @@ use LeoGalleguillos\Test\TableTestCase;
 
 class ProductIsbnTest extends TableTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->setForeignKeyChecks(0);
         $this->dropAndCreateTables(['product', 'product_isbn']);
@@ -22,8 +22,7 @@ class ProductIsbnTest extends TableTestCase
 
     public function testGetSelect()
     {
-        $this->assertInternalType(
-            'string',
+        $this->assertIsString(
             $this->productIsbnTable->getSelect()
         );
     }

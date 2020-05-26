@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class HashtagsTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->productEntityHashtagsServiceMock = $this->createMock(
             AmazonService\Product\Hashtags\ProductEntity::class

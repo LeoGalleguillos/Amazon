@@ -10,7 +10,7 @@ use TypeError;
 
 class DownloadHiResImagesTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->downloadHiResImagesService = new AmazonService\ProductHiResImage\DownloadHiResImages();
     }

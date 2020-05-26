@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class ApiTest extends TableTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->apiTable = new ApiTable(
             $this->getAdapter()

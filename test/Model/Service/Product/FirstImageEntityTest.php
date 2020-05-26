@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class FirstImageEntityTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->firstImageEntityService = new AmazonService\Product\FirstImageEntity();
     }

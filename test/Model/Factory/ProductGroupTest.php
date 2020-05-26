@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 class ProductGroupTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->productGroupTableMock = $this->createMock(
             AmazonTable\ProductGroup::class

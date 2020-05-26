@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class BreadcrumbsHtmlTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->breadcrumbsServiceMock = $this->createMock(
             AmazonService\BrowseNode\BrowseNodes\Breadcrumbs::class
@@ -44,8 +44,7 @@ class BreadcrumbsHtmlTest extends TestCase
             $browseNodeProductEntity
         );
 
-        $this->assertInternalType(
-            'string',
+        $this->assertIsString(
             $breadcrumbsHtml
         );
     }

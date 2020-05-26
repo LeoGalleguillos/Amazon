@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class SaveArrayToMySqlTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->saveEansArrayToMySqlServiceMock = $this->createMock(
             AmazonService\Api\Resources\ItemInfo\ExternalIds\Eans\SaveArrayToMySql::class

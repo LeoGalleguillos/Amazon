@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class NumberOfPagesTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->browseNodeProductTableMock = $this->createMock(
             AmazonTable\BrowseNodeProduct::class

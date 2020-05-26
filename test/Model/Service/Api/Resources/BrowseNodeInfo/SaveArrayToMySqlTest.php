@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class SaveArrayToMySqlTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->saveBrowseNodeArrayToMySqlServiceMock = $this->createMock(
             AmazonService\Api\Resources\BrowseNodes\BrowseNode\SaveArrayToMySql::class

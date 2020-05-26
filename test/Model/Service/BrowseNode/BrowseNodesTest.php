@@ -11,7 +11,7 @@ use SimpleXMLElement;
 
 class BrowseNodesTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->browseNodeFactoryMock = $this->createMock(
             AmazonFactory\BrowseNode::class

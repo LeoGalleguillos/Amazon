@@ -6,7 +6,7 @@ use LeoGalleguillos\Test\TableTestCase as TableTestCase;
 
 class IsValidCreatedProductIdTest extends TableTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->setForeignKeyChecks(0);
         $this->dropAndCreateTables(['browse_node', 'browse_node_product', 'product']);

@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class SaveArrayToMySqlTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->byLineInfoSetServiceMock = $this->createMock(
             AmazonService\Api\Resources\ItemInfo\ByLineInfo\Set::class

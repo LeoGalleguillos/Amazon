@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class ModifiedTitleTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->productModifiedTitleService = new AmazonService\Product\ModifiedTitle();
     }

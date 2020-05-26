@@ -6,7 +6,7 @@ use LeoGalleguillos\Test\ModuleTestCase;
 
 class ModuleTest extends ModuleTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->module = new Module();
     }

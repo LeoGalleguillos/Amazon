@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class SaveArrayToMySqlTest extends TableTestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->setForeignKeyChecks(0);
         $this->dropAndCreateTable('resources_offers_summaries');

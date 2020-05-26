@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class SetTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->stringOrNullService = new ArrayModuleService\Path\StringOrNull(
             new ArrayModuleService\Path\Exist(),

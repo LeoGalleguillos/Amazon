@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class AsinTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->asinServiceMock = $this->createMock(
             AmazonService\Product\Url\Asin::class

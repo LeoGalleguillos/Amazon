@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class ModifiedFeaturesTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->productModifiedFeatureHelperMock = $this->createMock(
             AmazonHelper\Product\ModifiedFeature::class

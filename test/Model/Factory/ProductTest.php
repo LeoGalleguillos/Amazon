@@ -18,7 +18,7 @@ use TypeError;
 
 class ProductTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->resultHydrator = new TestHydrator\CountableIterator();
 

@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class ConditionallySkipArrayTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->imagesServiceMock = $this->createMock(
             AmazonService\Api\ResponseElements\Items\Item\ConditionallySkipArray\Images::class

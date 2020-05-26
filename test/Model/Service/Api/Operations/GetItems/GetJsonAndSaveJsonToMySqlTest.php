@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class GetJsonAndSaveJsonToMySqlTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->jsonServiceMock = $this->createMock(
             AmazonService\Api\Operations\GetItems\Json::class

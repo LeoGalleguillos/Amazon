@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class NumberOfResultsTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->sanitizedQueryServiceMock = $this->createMock(
             AmazonService\Product\Products\Search\SanitizedQuery::class

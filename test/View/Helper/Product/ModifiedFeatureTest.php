@@ -11,7 +11,7 @@ use ReflectionClass;
 
 class ModifiedFeatureTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->productModifiedFeatureHelper = new AmazonHelper\Product\ModifiedFeature();
     }

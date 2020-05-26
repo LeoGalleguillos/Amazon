@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class ListingTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->listingEntity = new AmazonEntity\Resources\Offers\Listing();
     }

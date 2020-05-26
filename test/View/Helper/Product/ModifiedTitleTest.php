@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class ModifiedTitleTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->productModifiedTitleService = $this->createMock(
             AmazonService\Product\ModifiedTitle::class
