@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon;
 
+use Laminas\Db as LaminasDb;
 use Laminas\Db\TableGateway\TableGateway;
 use Laminas\Hydrator as LaminasHydrator;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
@@ -973,6 +974,11 @@ class Module
                 AmazonTableGateway\Product::class => function($sm) {
                     return new AmazonTableGateway\Product(
                         'product',
+                        $sm->get('amazon')
+                    );
+                },
+                'laminas-db-sql-sql' => function ($sm) {
+                    return new LaminasDb\Sql\Sql(
                         $sm->get('amazon')
                     );
                 },
