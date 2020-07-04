@@ -209,6 +209,11 @@ class Product
     protected $videoGenerated;
 
     /**
+     * @var int
+     */
+    protected $views;
+
+    /**
      * @var string
      */
     protected $warranty;
@@ -414,6 +419,11 @@ class Product
     public function getVariantImages(): array
     {
         return $this->variantImages;
+    }
+
+    public function getViews(): int
+    {
+        return $this->views;
     }
 
     public function getVideoGenerated(): DateTime
@@ -673,6 +683,12 @@ class Product
     public function setVideoGenerated(DateTime $videoGenerated): self
     {
         $this->videoGenerated = $videoGenerated;
+        return $this;
+    }
+
+    public function setViews(int $views): self
+    {
+        $this->views = $views;
         return $this;
     }
 

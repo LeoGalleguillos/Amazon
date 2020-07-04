@@ -268,6 +268,16 @@ class ProductTest extends TestCase
             $this->productEntity->getUpcs()
         );
 
+        $views = 777;
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setViews($views)
+        );
+        $this->assertSame(
+            $views,
+            $this->productEntity->getViews()
+        );
+
         $warranty = 'This is the warranty.';
         $this->assertSame(
             $this->productEntity,
