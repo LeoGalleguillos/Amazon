@@ -27,6 +27,7 @@ CREATE TABLE `product` (
   `trade_in_price` float(16, 2) unsigned DEFAULT NULL,
   `list_price` float(16,2) unsigned DEFAULT NULL,
   `parent_asin` varchar(10) DEFAULT NULL,
+  `views` int(10) unsigned DEFAULT '0',
   `created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified` DATETIME DEFAULT NULL,
   `hi_res_images_retrieved` datetime DEFAULT NULL,
