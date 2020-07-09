@@ -50,6 +50,7 @@ class Product
                  , `product`.`is_eligible_for_trade_in`
                  , `product`.`trade_in_price`
                  , `product`.`list_price`
+                 , `product`.`views`
                  , `product`.`created`
                  , `product`.`modified`
                  , `product`.`hi_res_images_retrieved`
