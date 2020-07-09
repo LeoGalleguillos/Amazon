@@ -484,6 +484,11 @@ class Module
                 AmazonService\Product\HasImage::class => function ($sm) {
                     return new AmazonService\Product\HasImage();
                 },
+                AmazonService\Product\IncrementViews::class => function ($sm) {
+                    return new AmazonService\Product\IncrementViews(
+                        $sm->get('laminas-db-sql-sql')
+                    );
+                },
                 AmazonService\Product\ModifiedTitle::class => function ($sm) {
                     return new AmazonService\Product\ModifiedTitle();
                 },
