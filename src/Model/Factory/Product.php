@@ -219,6 +219,12 @@ class Product
             );
         }
 
+        if (isset($productArray['views'])) {
+            $productEntity->setViews(
+                (int) $productArray['views']
+            );
+        }
+
         if (isset($productArray['warranty'])) {
             $productEntity->setWarranty(
                 $productArray['warranty']

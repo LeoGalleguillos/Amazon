@@ -206,6 +206,7 @@ class ProductTest extends TestCase
             'title'                    => 'Title',
             'trade_in_price'           => 19.95,
             'unit_count'               => 7,
+            'views'                    => 1024,
             'warranty'                 => 'The warranty for the product',
             'weight_units'             => 'LBS',
             'weight_value'             => '1000',
@@ -266,6 +267,7 @@ class ProductTest extends TestCase
                 null,
                 null
             ])
+            ->setViews(1024)
             ->setWarranty('The warranty for the product')
             ->setWeightUnits('LBS')
             ->setWeightValue('1000')
