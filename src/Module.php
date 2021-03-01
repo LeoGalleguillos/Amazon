@@ -816,6 +816,12 @@ class Module
                         $sm->get('amazon')
                     );
                 },
+                AmazonTable\Product\ProductGroupBindingBrand::class => function ($sm) {
+                    return new AmazonTable\Product\ProductGroupBindingBrand(
+                        $sm->get('amazon'),
+                        $sm->get(AmazonTable\Product::class)
+                    );
+                },
                 AmazonTable\Product\SimilarRetrievedModifiedProductId::class => function ($sm) {
                     return new AmazonTable\Product\SimilarRetrievedModifiedProductId(
                         $sm->get('amazon'),
