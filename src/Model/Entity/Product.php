@@ -20,7 +20,7 @@ class Product
     /**
      * @var AmazonEntity\Binding
      */
-    public $bindingEntity;
+    protected $bindingEntity;
 
     /**
      * @var string

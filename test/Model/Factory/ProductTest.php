@@ -89,6 +89,11 @@ class ProductTest extends TestCase
 
     public function test_buildFromArray()
     {
+        $bindingEntity = new AmazonEntity\Binding('Binding', 'binding');
+        $this->bindingFactoryMock
+            ->method('buildFromName')
+            ->willReturn($bindingEntity);
+
         $this->initializeProductEanResultMock();
         $this->productEanProductIdTableMock
             ->method('selectWhereProductId')
@@ -184,6 +189,7 @@ class ProductTest extends TestCase
         $modified = '2020-05-23 12:34:56';
         $array = [
             'asin'                     => 'ASIN',
+            'binding'                  => 'Binding',
             'brand'                    => 'the brand',
             'color'                    => 'Red',
             'created'                  => $created,
@@ -216,6 +222,7 @@ class ProductTest extends TestCase
 
         $productEntity = (new AmazonEntity\Product())
             ->setAsin('ASIN')
+            ->setBindingEntity($bindingEntity)
             ->setBrand('the brand')
             ->setCreated(new DateTime($created))
             ->setColor('Red')

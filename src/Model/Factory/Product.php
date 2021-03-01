@@ -63,7 +63,9 @@ class Product
         }
 
         if (isset($productArray['binding'])) {
-            $productEntity->binding = $productArray['binding'];
+            $productEntity->setBindingEntity(
+                $this->bindingFactory->buildFromName($productArray['binding'])
+            );
         }
 
         if (!empty($productArray['brand'])) {
