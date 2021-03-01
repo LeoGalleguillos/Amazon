@@ -20,9 +20,8 @@ class ModifiedTitle
         // Remove any words that are two characters or less.
         $title = preg_replace('/\b\w{1,2}\b/', ' ', $title);
 
-        // Keep only first nine words.
+        // Convert to array of words.
         $words = preg_split('/\s+/', $title);
-        $words = array_slice($words, 0, 9);
 
         // Remove empty words.
         $words = array_filter($words);
@@ -32,8 +31,8 @@ class ModifiedTitle
             array_pop($words);
         }
 
-        // Implode.
-        $title = implode(' ', array_slice($words, 0, 9));
+        // Implode only first twenty words
+        $title = implode(' ', array_slice($words, 0, 20));
 
         return $title;
     }

@@ -36,9 +36,9 @@ class ModifiedTitleTest extends TestCase
             $this->productModifiedTitleService->getModifiedTitle($productEntity)
         );
 
-        $productEntity->setTitle('!This is a really long title! as it has more than nine words in it holy cow.');
+        $productEntity->setTitle('!This is a really long title! It has a lot of words in it but only the first pre-determined number of words should be stored in the title because otherwise there would be too many words in the title');
         $this->assertSame(
-            'This really long title has more than nine words',
+            'This really long title has lot words but only the first predetermined number words should stored the title because otherwise',
             $this->productModifiedTitleService->getModifiedTitle($productEntity)
         );
 
