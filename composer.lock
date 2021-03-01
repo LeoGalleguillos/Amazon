@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5708a73c32a3504930c86d7048a68f43",
+    "content-hash": "711408f9de8216dcab80178b87f8cb1f",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -2361,6 +2361,37 @@
                 "MIT"
             ],
             "time": "2020-01-27T06:10:11+00:00"
+        },
+        {
+            "name": "monthly-basis/laminas-test",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/monthly-basis/laminas-test.git",
+                "reference": "870e87fb7332d60c67a993abfd75652a295db4fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/monthly-basis/laminas-test/zipball/870e87fb7332d60c67a993abfd75652a295db4fa",
+                "reference": "870e87fb7332d60c67a993abfd75652a295db4fa",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-db": "^2.9",
+                "laminas/laminas-test": "^3.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MonthlyBasis\\LaminasTest\\": "src/",
+                    "MonthlyBasis\\LaminasTestTest\\": "test/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2020-07-03T01:24:44+00:00"
         },
         {
             "name": "myclabs/deep-copy",

@@ -17,6 +17,7 @@
         "leo-galleguillos/memcached": "^1.0",
         "leo-galleguillos/string": "^1.0",
         "leo-galleguillos/test": "^1.0",
-        "leo-galleguillos/video": "^1.0"
+        "leo-galleguillos/video": "^1.0",
+        "monthly-basis/laminas-test": "^2.0"
     }
 }
