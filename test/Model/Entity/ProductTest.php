@@ -13,7 +13,7 @@ class ProductTest extends TestCase
         $this->productEntity = new AmazonEntity\Product();
     }
 
-    public function testGettersAndSetters()
+    public function test_gettersAndSetters()
     {
         $asin = 'ASIN';
         $this->assertSame(
@@ -23,6 +23,16 @@ class ProductTest extends TestCase
         $this->assertSame(
             $asin,
             $this->productEntity->getAsin()
+        );
+
+        $brandEntity = new AmazonEntity\Brand();
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setBrandEntity($brandEntity)
+        );
+        $this->assertSame(
+            $brandEntity,
+            $this->productEntity->getBrandEntity()
         );
 
         $browseNodeProducts = [

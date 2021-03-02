@@ -28,6 +28,11 @@ class Product
     protected $brand;
 
     /**
+     * @var AmazonEntity\Brand
+     */
+    protected $brandEntity;
+
+    /**
      * @var array
      */
     protected $browseNodeProducts;
@@ -253,6 +258,11 @@ class Product
         return $this->brand;
     }
 
+    public function getBrandEntity(): AmazonEntity\Brand
+    {
+        return $this->brandEntity;
+    }
+
     public function getBrowseNodeProducts(): array
     {
         return $this->browseNodeProducts;
@@ -473,6 +483,13 @@ class Product
         string $brand
     ): self {
         $this->brand = $brand;
+        return $this;
+    }
+
+    public function setBrandEntity(
+        AmazonEntity\Brand $brandEntity
+    ): self {
+        $this->brandEntity = $brandEntity;
         return $this;
     }
 
