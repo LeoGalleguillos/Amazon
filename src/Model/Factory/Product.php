@@ -15,6 +15,7 @@ class Product
 {
     public function __construct(
         AmazonFactory\Binding $bindingFactory,
+        AmazonFactory\Brand $brandFactory,
         AmazonFactory\ProductGroup $productGroupFactory,
         AmazonFactory\Resources\Offers\Summary $summaryFactory,
         AmazonTable\Product $productTable,
@@ -30,6 +31,7 @@ class Product
         TableGateway $resourcesOffersSummariesTableGateway
     ) {
         $this->bindingFactory            = $bindingFactory;
+        $this->brandFactory              = $brandFactory;
         $this->productGroupFactory       = $productGroupFactory;
         $this->summaryFactory            = $summaryFactory;
         $this->productTable              = $productTable;
@@ -69,7 +71,9 @@ class Product
         }
 
         if (!empty($productArray['brand'])) {
-            $productEntity->setBrand($productArray['brand']);
+            $productEntity->setBrandEntity(
+                $this->brandFactory->buildFromName($productArray['brand'])
+            );
         }
 
         if (isset($productArray['color'])) {

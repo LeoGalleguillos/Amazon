@@ -23,6 +23,9 @@ class ProductTest extends TestCase
         $this->resultHydrator = new TestHydrator\CountableIterator();
 
         $this->bindingFactoryMock = $this->createMock(AmazonFactory\Binding::class);
+        $this->brandFactoryMock = $this->createMock(
+            AmazonFactory\Brand::class
+        );
         $this->productGroupFactoryMock = $this->createMock(AmazonFactory\ProductGroup::class);
         $this->summaryFactoryMock = $this->createMock(
             AmazonFactory\Resources\Offers\Summary::class
@@ -55,6 +58,7 @@ class ProductTest extends TestCase
 
         $this->productFactory = new AmazonFactory\Product(
             $this->bindingFactoryMock,
+            $this->brandFactoryMock,
             $this->productGroupFactoryMock,
             $this->summaryFactoryMock,
             $this->productTableMock,
@@ -93,6 +97,13 @@ class ProductTest extends TestCase
         $this->bindingFactoryMock
             ->method('buildFromName')
             ->willReturn($bindingEntity);
+
+        $brandEntity = (new AmazonEntity\Brand())
+            ->setName('Name')
+            ->setSlug('slug');
+        $this->brandFactoryMock
+            ->method('buildFromName')
+            ->willReturn($brandEntity);
 
         $this->initializeProductEanResultMock();
         $this->productEanProductIdTableMock
@@ -223,7 +234,7 @@ class ProductTest extends TestCase
         $productEntity = (new AmazonEntity\Product())
             ->setAsin('ASIN')
             ->setBindingEntity($bindingEntity)
-            ->setBrand('the brand')
+            ->setBrandEntity($brandEntity)
             ->setCreated(new DateTime($created))
             ->setColor('Red')
             ->setEans([

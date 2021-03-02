@@ -126,6 +126,9 @@ class Module
                 AmazonFactory\Binding::class => function ($sm) {
                     return new AmazonFactory\Binding();
                 },
+                AmazonFactory\Brand::class => function ($sm) {
+                    return new AmazonFactory\Brand();
+                },
                 AmazonFactory\BrowseNode::class => function ($sm) {
                     return new AmazonFactory\BrowseNode(
                         $sm->get(AmazonTable\BrowseNode::class),
@@ -140,6 +143,7 @@ class Module
 
                     return new AmazonFactory\Product(
                         $sm->get(AmazonFactory\Binding::class),
+                        $sm->get(AmazonFactory\Brand::class),
                         $sm->get(AmazonFactory\ProductGroup::class),
                         $sm->get(AmazonFactory\Resources\Offers\Summary::class),
                         $sm->get(AmazonTable\Product::class),
