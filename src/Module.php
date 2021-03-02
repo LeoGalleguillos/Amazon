@@ -524,6 +524,12 @@ class Module
                         $sm->get(AmazonTable\Product\IsValidCreatedProductId::class)
                     );
                 },
+                AmazonService\Product\Products\ProductGroup::class => function ($sm) {
+                    return new AmazonService\Product\Products\ProductGroup(
+                        $sm->get(AmazonFactory\Product::class),
+                        $sm->get(AmazonTable\Product\ProductGroup::class)
+                    );
+                },
                 AmazonService\Product\Products\Search\NumberOfPages::class => function ($sm) {
                     return new AmazonService\Product\Products\Search\NumberOfPages();
                 },
