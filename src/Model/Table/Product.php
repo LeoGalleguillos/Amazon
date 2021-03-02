@@ -5,7 +5,7 @@ use Generator;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use TypeError;
-use Zend\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Adapter;
 
 class Product
 {

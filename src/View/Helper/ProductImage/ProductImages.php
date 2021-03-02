@@ -3,7 +3,7 @@ namespace LeoGalleguillos\Amazon\View\Helper\ProductImage;
 
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
-use Zend\View\Helper\AbstractHelper;
+use Laminas\View\Helper\AbstractHelper;
 
 class ProductImages extends AbstractHelper
 {

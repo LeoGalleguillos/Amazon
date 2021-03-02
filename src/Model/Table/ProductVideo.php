@@ -5,7 +5,7 @@ use Laminas\Db\Adapter\Driver\Pdo\Result;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use Generator;
 use TypeError;
-use Zend\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Adapter;
 
 class ProductVideo
 {

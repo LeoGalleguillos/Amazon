@@ -2,7 +2,7 @@
 namespace LeoGalleguillos\Amazon\Model\Table;
 
 use Exception;
-use Zend\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Adapter;
 
 class ProductBrowseNodeProductBrowseNode
 {

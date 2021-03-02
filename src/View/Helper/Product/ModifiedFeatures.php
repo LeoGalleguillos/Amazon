@@ -3,7 +3,7 @@ namespace LeoGalleguillos\Amazon\View\Helper\Product;
 
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\View\Helper as AmazonHelper;
-use Zend\View\Helper\AbstractHelper;
+use Laminas\View\Helper\AbstractHelper;
 
 class ModifiedFeatures extends AbstractHelper
 {

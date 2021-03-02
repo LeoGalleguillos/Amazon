@@ -5,7 +5,7 @@ use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use TypeError;
-use Zend\Db\Adapter\Exception\InvalidQueryException;
+use Laminas\Db\Adapter\Exception\InvalidQueryException;
 
 class DownloadUrls
 {

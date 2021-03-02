@@ -7,7 +7,7 @@ use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
 use LeoGalleguillos\Test\TableTestCase;
-use Zend\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Adapter;
 use PHPUnit\Framework\TestCase;
 
 class ProductGroupTest extends TableTestCase

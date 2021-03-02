@@ -6,7 +6,7 @@ use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\View\Helper as AmazonHelper;
 use LeoGalleguillos\String\Model\Service as StringService;
 use TypeError;
-use Zend\View\Helper\AbstractHelper;
+use Laminas\View\Helper\AbstractHelper;
 
 class BrowseNodeProductsHtml extends AbstractHelper
 {

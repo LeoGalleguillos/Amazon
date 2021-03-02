@@ -2,7 +2,7 @@
 namespace LeoGalleguillos\Amazon\View\Helper\Product;
 
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
-use Zend\View\Helper\AbstractHelper;
+use Laminas\View\Helper\AbstractHelper;
 
 class AffiliateUrl extends AbstractHelper
 {

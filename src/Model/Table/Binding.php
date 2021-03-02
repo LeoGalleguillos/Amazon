@@ -3,7 +3,7 @@ namespace LeoGalleguillos\Amazon\Model\Table;
 
 use Exception;
 use LeoGalleguillos\Memcached\Model\Service\Memcached as MemcachedService;
-use Zend\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Adapter;
 
 class Binding
 {

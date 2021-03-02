@@ -5,7 +5,7 @@ use Exception;
 use Generator;
 use LeoGalleguillos\Memcached\Model\Service\Memcached as MemcachedService;
 use TypeError;
-use Zend\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Adapter;
 
 class ProductGroup
 {

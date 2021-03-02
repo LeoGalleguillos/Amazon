@@ -7,7 +7,7 @@ use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\String\Model\Service as StringService;
 use PHPUnit\Framework\TestCase;
-use Zend\Db\Adapter\Exception\InvalidQueryException;
+use Laminas\Db\Adapter\Exception\InvalidQueryException;
 
 class SimilarTest extends TestCase
 {

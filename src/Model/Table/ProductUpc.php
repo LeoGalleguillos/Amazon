@@ -1,8 +1,8 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table;
 
-use Zend\Db\Adapter\Adapter;
-use Zend\Db\Adapter\Driver\Pdo\Result;
+use Laminas\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Driver\Pdo\Result;
 
 class ProductUpc
 {

@@ -4,7 +4,7 @@ namespace LeoGalleguillos\Amazon\Model\Service\Api\Product\Xml;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use SimpleXMLElement;
-use Zend\Db\Adapter\Exception\InvalidQueryException;
+use Laminas\Db\Adapter\Exception\InvalidQueryException;
 
 /**
  * @deprecated This service parses XML which was returned by PA API v4.0, and PA API v4.0 is no longer active

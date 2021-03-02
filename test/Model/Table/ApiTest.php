@@ -3,7 +3,7 @@ namespace LeoGalleguillos\AmazonTest\Model\Table;
 
 use LeoGalleguillos\Amazon\Model\Table\Api as ApiTable;
 use LeoGalleguillos\Test\TableTestCase;
-use Zend\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Adapter;
 use PHPUnit\Framework\TestCase;
 
 class ApiTest extends TableTestCase

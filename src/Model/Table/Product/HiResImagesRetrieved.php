@@ -1,7 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Table\Product;
 
-use Zend\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Adapter;
 
 class HiResImagesRetrieved
 {

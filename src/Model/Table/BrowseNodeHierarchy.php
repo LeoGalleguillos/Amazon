@@ -2,7 +2,7 @@
 namespace LeoGalleguillos\Amazon\Model\Table;
 
 use Generator;
-use Zend\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Adapter;
 
 class BrowseNodeHierarchy
 {

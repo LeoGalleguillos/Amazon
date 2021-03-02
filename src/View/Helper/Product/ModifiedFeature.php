@@ -3,7 +3,7 @@ namespace LeoGalleguillos\Amazon\View\Helper\Product;
 
 use LeoGalleguillos\Sentence\Model\Service as SentenceService;
 use LeoGalleguillos\Word\Model\Service as WordService;
-use Zend\View\Helper\AbstractHelper;
+use Laminas\View\Helper\AbstractHelper;
 
 class ModifiedFeature extends AbstractHelper
 {

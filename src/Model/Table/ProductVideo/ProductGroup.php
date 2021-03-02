@@ -3,7 +3,7 @@ namespace LeoGalleguillos\Amazon\Model\Table\ProductVideo;
 
 use Generator;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
-use Zend\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Adapter;
 
 class ProductGroup
 {

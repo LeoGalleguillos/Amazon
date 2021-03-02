@@ -4,7 +4,7 @@ namespace LeoGalleguillos\Amazon\View\Helper\BrowseNodeProduct;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\String\Model\Service as StringService;
-use Zend\View\Helper\AbstractHelper;
+use Laminas\View\Helper\AbstractHelper;
 
 class BreadcrumbsHtml extends AbstractHelper
 {

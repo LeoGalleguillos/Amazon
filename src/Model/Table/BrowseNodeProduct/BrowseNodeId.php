@@ -2,7 +2,7 @@
 namespace LeoGalleguillos\Amazon\Model\Table\BrowseNodeProduct;
 
 use Generator;
-use Zend\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Adapter;
 
 class BrowseNodeId
 {

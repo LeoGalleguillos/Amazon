@@ -5,7 +5,7 @@ use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\View\Helper as AmazonHelper;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\String\Model\Service as StringService;
-use Zend\View\Helper\AbstractHelper;
+use Laminas\View\Helper\AbstractHelper;
 use PHPUnit\Framework\TestCase;
 
 class BreadcrumbsHtmlTest extends TestCase

@@ -4,7 +4,7 @@ namespace LeoGalleguillos\Amazon\Model\Table\Product;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use TypeError;
-use Zend\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\Adapter;
 
 class Asin
 {
