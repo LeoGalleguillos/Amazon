@@ -44,12 +44,12 @@ class Binding
     public function setName(string $name) : AmazonEntity\Binding
     {
         $this->name = $name;
-        return this;
+        return $this;
     }
 
     public function setSlug(string $slug) : AmazonEntity\Binding
     {
         $this->slug = $slug;
-        return this;
+        return $this;
     }
 }
