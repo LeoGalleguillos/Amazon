@@ -126,6 +126,11 @@ class Module
                 AmazonFactory\Binding::class => function ($sm) {
                     return new AmazonFactory\Binding();
                 },
+                AmazonFactory\Binding\Slug::class => function ($sm) {
+                    return new AmazonFactory\Binding\Slug(
+                        $sm->get(AmazonTable\Binding::class)
+                    );
+                },
                 AmazonFactory\Brand::class => function ($sm) {
                     return new AmazonFactory\Brand();
                 },
