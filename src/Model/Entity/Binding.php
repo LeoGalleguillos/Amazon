@@ -8,18 +8,12 @@ class Binding
     /**
      * @var string Name of binding.
      */
-    public $name;
+    protected $name;
 
     /**
      * @var string Slug of binding.
      */
-    public $slug;
-
-    public function __construct($name, $slug)
-    {
-        $this->name = $name;
-        $this->slug = $slug;
-    }
+    protected $slug;
 
     public function __toString()
     {

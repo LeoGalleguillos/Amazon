@@ -13,7 +13,10 @@ class Binding
         }
 
         $slug = preg_replace('/[^a-zA-Z0-9]/', '-', $name);
-        $amazonBindingEntity = new AmazonEntity\Binding($name, $slug);
-        return $amazonBindingEntity;
+
+        return (new AmazonEntity\Binding)
+            ->setName($name)
+            ->setSlug($slug)
+            ;
     }
 }
