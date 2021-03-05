@@ -540,6 +540,12 @@ class Module
                         $sm->get(AmazonTable\Product\ProductGroup::class)
                     );
                 },
+                AmazonService\Product\Products\ProductGroupBinding::class => function ($sm) {
+                    return new AmazonService\Product\Products\ProductGroupBinding(
+                        $sm->get(AmazonFactory\Product::class),
+                        $sm->get(AmazonTable\Product\ProductGroupBinding::class)
+                    );
+                },
                 AmazonService\Product\Products\ProductGroupBindingBrand::class => function ($sm) {
                     return new AmazonService\Product\Products\ProductGroupBindingBrand(
                         $sm->get(AmazonFactory\Product::class),
