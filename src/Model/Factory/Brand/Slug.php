@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Factory\Brand;
 
+use Exception;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 
@@ -14,11 +15,15 @@ class Slug
 
     public function buildFromSlug(string $slug): AmazonEntity\Brand
     {
-        $array = $this->brandTable->selectWhereSlug($slug)->current();
+        $arrayOrFalse = $this->brandTable->selectWhereSlug($slug)->current();
+
+        if (empty($arrayOrFalse)) {
+            throw new Exception('Unable to build Brand because slug is not found.');
+        }
 
         return (new AmazonEntity\Brand)
-            ->setName($array['name'])
-            ->setSlug($array['slug'])
+            ->setName($arrayOrFalse['name'])
+            ->setSlug($arrayOrFalse['slug'])
             ;
     }
 }

@@ -1,6 +1,7 @@
 <?php
 namespace LeoGalleguillos\AmazonTest\Model\Factory\Brand;
 
+use Exception;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
@@ -50,5 +51,34 @@ class SlugTest extends TestCase
             $brandEntity,
             $this->slugFactory->buildFromSlug('slug')
         );
+    }
+
+    public function test_buildFromSlug_throwException()
+    {
+        $resultMock = $this->createMock(
+            Result::class
+        );
+        $hydrator = new LaminasTestHydrator\CountableIterator();
+        $hydrator->hydrate(
+            $resultMock,
+            [
+            ]
+        );
+        $this->brandTableMock
+            ->expects($this->once())
+            ->method('selectWhereSlug')
+            ->with('slug')
+            ->willReturn($resultMock)
+            ;
+
+        try {
+            $this->slugFactory->buildFromSlug('slug');
+            $this->fail();
+        } catch (Exception $exception) {
+            $this->assertSame(
+                'Unable to build Brand because slug is not found.',
+                $exception->getMessage()
+            );
+        }
     }
 }
