@@ -9,7 +9,7 @@ use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Test\Hydrator as TestHydrator;
 use PHPUnit\Framework\TestCase;
 
-class BrandTest extends TestCase
+class ProductGroupBindingBrandTest extends TestCase
 {
     protected function setUp(): void
     {
@@ -20,7 +20,7 @@ class BrandTest extends TestCase
             AmazonTable\Product\ProductGroupBindingBrand::class
         );
 
-        $this->brandService = new AmazonService\Product\Products\Brand(
+        $this->productGroupBindingBrandService = new AmazonService\Product\Products\ProductGroupBindingBrand(
             $this->productFactoryMock,
             $this->productGroupBindingBrandTableMock
         );
@@ -41,7 +41,7 @@ class BrandTest extends TestCase
             ->setSlug('slug')
             ;
 
-        $result = $this->brandService->getProductEntities(
+        $result = $this->productGroupBindingBrandService->getProductEntities(
             $productGroupEntity,
             $bindingEntity,
             $brandEntity
@@ -111,7 +111,7 @@ class BrandTest extends TestCase
                 $productEntity2
             ],
             iterator_to_array(
-                $this->brandService->getProductEntities(
+                $this->productGroupBindingBrandService->getProductEntities(
                     $productGroupEntity,
                     $bindingEntity,
                     $brandEntity

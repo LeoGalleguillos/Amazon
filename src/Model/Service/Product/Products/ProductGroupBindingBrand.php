@@ -6,7 +6,7 @@ use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Factory as AmazonFactory;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 
-class Brand
+class ProductGroupBindingBrand
 {
     // const MAX_NUMBER_OF_PAGES = 100;
 
