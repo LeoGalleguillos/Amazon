@@ -134,6 +134,11 @@ class Module
                 AmazonFactory\Brand::class => function ($sm) {
                     return new AmazonFactory\Brand();
                 },
+                AmazonFactory\Brand\Slug::class => function ($sm) {
+                    return new AmazonFactory\Brand\Slug(
+                        $sm->get(AmazonTable\Brand::class)
+                    );
+                },
                 AmazonFactory\BrowseNode::class => function ($sm) {
                     return new AmazonFactory\BrowseNode(
                         $sm->get(AmazonTable\BrowseNode::class),
@@ -786,6 +791,11 @@ class Module
                 AmazonTable\Binding::class => function ($sm) {
                     return new AmazonTable\Binding(
                         $sm->get(MemcachedService\Memcached::class),
+                        $sm->get('amazon')
+                    );
+                },
+                AmazonTable\Brand::class => function ($sm) {
+                    return new AmazonTable\Brand(
                         $sm->get('amazon')
                     );
                 },
