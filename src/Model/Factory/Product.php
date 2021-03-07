@@ -64,7 +64,7 @@ class Product
             );
         }
 
-        if (isset($productArray['binding'])) {
+        if (!empty($productArray['binding'])) {
             $productEntity->setBindingEntity(
                 $this->bindingFactory->buildFromName($productArray['binding'])
             );
