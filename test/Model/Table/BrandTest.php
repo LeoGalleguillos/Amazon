@@ -43,6 +43,25 @@ class BrandTest extends TableTestCase
         }
     }
 
+    public function test_selectWhereName_result()
+    {
+        $result = $this->brandTable->selectWhereName('Name');
+        $this->assertEmpty($result);
+
+        $this->brandTable->insert('Name', 'slug');
+        $result = $this->brandTable->selectWhereName('Name');
+        $array = $result->current();
+
+        $this->assertSame(
+            [
+                'brand_id' => '1',
+                'name'     => 'Name',
+                'slug'     => 'slug',
+            ],
+            $array
+        );
+    }
+
     public function test_selectWhereSlug_result()
     {
         $result = $this->brandTable->selectWhereSlug('slug');
