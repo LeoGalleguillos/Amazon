@@ -15,6 +15,7 @@ class SaveArrayToMySql
         AmazonService\Api\Resources\ItemInfo\Features\SaveArrayToMySql $saveFeaturesArrayToMySqlService,
         AmazonService\Api\Resources\ItemInfo\ManufactureInfo\Set $manufactureInfoSetService,
         AmazonService\Api\Resources\ItemInfo\TradeInInfo\Set $tradeInInfoSetService,
+        AmazonService\Brand\ConditionallyInsert $conditionallyInsertService,
         AmazonTableGateway\Product $productTableGateway,
         ArrayModuleService\Path\StringOrNull $stringOrNullService
     ) {
@@ -25,6 +26,7 @@ class SaveArrayToMySql
         $this->saveFeaturesArrayToMySqlService    = $saveFeaturesArrayToMySqlService;
         $this->manufactureInfoSetService          = $manufactureInfoSetService;
         $this->tradeInInfoSetService              = $tradeInInfoSetService;
+        $this->conditionallyInsertService         = $conditionallyInsertService;
         $this->productTableGateway                = $productTableGateway;
         $this->stringOrNullService                = $stringOrNullService;
     }
@@ -96,6 +98,12 @@ class SaveArrayToMySql
         if (isset($itemInfoArray['TradeInInfo'])) {
             $set += $this->tradeInInfoSetService->getSet(
                 $itemInfoArray['TradeInInfo']
+            );
+        }
+
+        if (isset($set['brand'])) {
+            $this->conditionallyInsertService->conditionallyInsert(
+                $set['brand']
             );
         }
 

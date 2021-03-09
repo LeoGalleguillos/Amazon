@@ -31,6 +31,9 @@ class SaveArrayToMySqlTest extends TestCase
         $this->tradeInInfoSetServiceMock = $this->createMock(
             AmazonService\Api\Resources\ItemInfo\TradeInInfo\Set::class
         );
+        $this->conditionallyInsertServiceMock = $this->createMock(
+            AmazonService\Brand\ConditionallyInsert::class
+        );
         $this->productTableGatewayMock = $this->createMock(
             AmazonTableGateway\Product::class
         );
@@ -45,6 +48,7 @@ class SaveArrayToMySqlTest extends TestCase
             $this->saveFeaturesArrayToMySqlMock,
             $this->manufactureInfoSetServiceMock,
             $this->tradeInInfoSetServiceMock,
+            $this->conditionallyInsertServiceMock,
             $this->productTableGatewayMock,
             $this->stringOrNullServiceMock
         );
@@ -120,6 +124,12 @@ class SaveArrayToMySqlTest extends TestCase
                     null
                 )
             );
+
+        $this->conditionallyInsertServiceMock
+            ->expects($this->exactly(1))
+            ->method('conditionallyInsert')
+            ->with('SUNDOLPHIN')
+            ;
 
         $this->productTableGatewayMock
             ->expects($this->exactly(1))
