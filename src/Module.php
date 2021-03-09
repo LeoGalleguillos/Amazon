@@ -411,6 +411,13 @@ class Module
                         $sm->get(AmazonTable\Binding::class)
                     );
                 },
+                AmazonService\Brand\ConditionallyInsert::class => function ($sm) {
+                    return new AmazonService\Brand\ConditionallyInsert(
+                        $sm->get(AmazonService\Brand\NameExists::class),
+                        $sm->get(AmazonTable\Brand::class),
+                        $sm->get(StringService\UrlFriendly::class)
+                    );
+                },
                 AmazonService\Brand\NameExists::class => function ($sm) {
                     return new AmazonService\Brand\NameExists(
                         $sm->get(AmazonTable\Brand::class)
