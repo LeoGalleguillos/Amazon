@@ -26,9 +26,15 @@ class BrandTest extends TableTestCase
             $result->getGeneratedValue()
         );
 
-        $result = $this->brandTable->insert('Name 2', 'slug-2');
+        $result = $this->brandTable->insert('Name with same slug', 'slug');
         $this->assertEquals(
             2,
+            $result->getGeneratedValue()
+        );
+
+        $result = $this->brandTable->insert('Name 3', 'slug-3');
+        $this->assertEquals(
+            3,
             $result->getGeneratedValue()
         );
 
