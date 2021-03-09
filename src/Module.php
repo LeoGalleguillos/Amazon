@@ -411,6 +411,11 @@ class Module
                         $sm->get(AmazonTable\Binding::class)
                     );
                 },
+                AmazonService\Brand\NameExists::class => function ($sm) {
+                    return new AmazonService\Brand\NameExists(
+                        $sm->get(AmazonTable\Brand::class)
+                    );
+                },
                 AmazonService\BrowseNode\BrowseNodes::class => function ($sm) {
                     return new AmazonService\BrowseNode\BrowseNodes(
                         $sm->get(AmazonFactory\BrowseNode::class),
