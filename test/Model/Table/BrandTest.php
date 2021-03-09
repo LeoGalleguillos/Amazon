@@ -37,7 +37,7 @@ class BrandTest extends TableTestCase
             $this->fail();
         } catch (InvalidQueryException $pdoException) {
             $this->assertSame(
-                "Statement could not be executed (23000 - 1062 - Duplicate entry 'slug' for key 'slug')",
+                "Statement could not be executed (23000 - 1062 - Duplicate entry 'Name' for key 'name')",
                 $pdoException->getMessage()
             );
         }
