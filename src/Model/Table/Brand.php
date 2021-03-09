@@ -17,6 +17,15 @@ class Brand
         $this->adapter = $adapter;
     }
 
+    public function getSelect(): string
+    {
+        return '
+            SELECT `brand`.`brand_id`
+                 , `brand`.`name`
+                 , `brand`.`slug`
+        ';
+    }
+
     public function insert(
         string $name,
         string $slug
@@ -40,10 +49,8 @@ class Brand
 
     public function selectWhereName(string $name): Result
     {
-        $sql = '
-            SELECT `brand`.`brand_id`
-                 , `brand`.`name`
-                 , `brand`.`slug`
+        $sql = $this->getSelect()
+             . '
               FROM `brand`
              WHERE `brand`.`name` = ?
                  ;
@@ -56,10 +63,8 @@ class Brand
 
     public function selectWhereSlug(string $slug): Result
     {
-        $sql = '
-            SELECT `brand`.`brand_id`
-                 , `brand`.`name`
-                 , `brand`.`slug`
+        $sql = $this->getSelect()
+             . '
               FROM `brand`
              WHERE `brand`.`slug` = ?
                  ;
