@@ -21,34 +21,75 @@ class ProductGroup extends TableTestCase
         );
     }
 
-    public function test_selectWhereProductGroup()
+    public function test_selectWhereProductGroup_emptyResult()
     {
-        $result = $this->productGroupTable
-            ->selectWhereProductGroup(
-                'Product Group'
-            );
+        $result = $this->productGroupTable->selectWhereProductGroup(
+            'Product Group',
+            0,
+            100
+        );
         $this->assertEmpty($result);
+    }
 
+    public function test_selectWhereProductGroup_specificResults()
+    {
         $this->productTable->insert(
-            'ASIN123',
+            'ASIN1',
             'Title',
             'Product Group',
             'Binding',
             'Brand',
             4.99
         );
-        $result = $this->productGroupTable
-            ->selectWhereProductGroup(
-                'Product Group'
-            );
+        $this->productTable->insert(
+            'ASIN2',
+            'Title',
+            'Product Group 2',
+            'Binding',
+            'Brand',
+            4.99
+        );
+        $this->productTable->insert(
+            'ASIN3',
+            'Title',
+            'Product Group',
+            'Binding',
+            'Brand',
+            4.99
+        );
+
+        $result = $this->productGroupTable->selectWhereProductGroup(
+            'Product Group',
+            0,
+            10
+        );
         $array = $result->current();
         $this->assertSame(
-            'ASIN123',
+            'ASIN3',
             $array['asin']
         );
         $this->assertSame(
             'Binding',
             $array['binding']
+        );
+        $array = $result->next();
+        $this->assertSame(
+            'ASIN1',
+            $array['asin']
+        );
+
+        $result = $this->productGroupTable->selectWhereProductGroup(
+            'Product Group',
+            1,
+            1
+        );
+        $array = $result->current();
+        $this->assertSame(
+            'ASIN1',
+            $array['asin']
+        );
+        $this->assertFalse(
+            $result->next()
         );
     }
 }

@@ -33,6 +33,14 @@ class ProductGroupTest extends TestCase
             ->setName('Name')
             ->setSlug('slug')
             ;
+        $this->productGroupTableMock
+            ->expects($this->once())
+            ->method('selectWhereProductGroup')
+            ->with(
+                'Name',
+                0,
+                100
+            );
         $result = $this->productGroupService->getProductEntities(
             $productGroupEntity,
             1
@@ -69,7 +77,7 @@ class ProductGroupTest extends TestCase
         $this->productGroupTableMock
             ->expects($this->exactly(1))
             ->method('selectWhereProductGroup')
-            ->with($productGroupEntity)
+            ->with('Name', 0, 100)
             ->willReturn($resultMock);
 
         $productEntity1 = new AmazonEntity\Product();

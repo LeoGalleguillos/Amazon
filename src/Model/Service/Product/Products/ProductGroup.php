@@ -23,7 +23,9 @@ class ProductGroup
         int $page = 1
     ): Generator {
         $result = $this->productGroupTable->selectWhereProductGroup(
-            $productGroupEntity->getName()
+            $productGroupEntity->getName(),
+            ($page - 1) * 100,
+            100
         );
 
         foreach ($result as $array) {

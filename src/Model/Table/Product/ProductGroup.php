@@ -18,7 +18,9 @@ class ProductGroup
     }
 
     public function selectWhereProductGroup(
-        string $productGroup
+        string $productGroup,
+        int $limitOffset,
+        int $limitRowCount
     ): Result {
         $sql = $this->productTable->getSelect()
             . '
@@ -26,11 +28,14 @@ class ProductGroup
              WHERE `product`.`product_group` = ?
              ORDER
                 BY `product`.`modified` DESC
-             LIMIT 0, 100
+                 , `product`.`product_id` DESC
+             LIMIT ?, ?
                  ;
         ';
         $parameters = [
             $productGroup,
+            $limitOffset,
+            $limitRowCount,
         ];
         return $this->adapter->query($sql)->execute($parameters);
     }
