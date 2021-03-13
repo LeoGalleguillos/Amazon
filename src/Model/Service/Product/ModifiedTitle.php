@@ -11,8 +11,8 @@ class ModifiedTitle
         $title = $product->getTitle();
 
         // Remove (...) and [...]
-        $title = preg_replace('/\(.*\)?/', '', $title);
-        $title = preg_replace('/\[.*\]?/', '', $title);
+        $title = preg_replace('/\(.*\)/', '', $title);
+        $title = preg_replace('/\[.*\]/', '', $title);
 
         // Remove non-alphanumeric characters.
         $title = preg_replace('/[^\w ]/', '', $title);

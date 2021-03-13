@@ -12,15 +12,7 @@ class ModifiedTitleTest extends TestCase
         $this->productModifiedTitleService = new AmazonService\Product\ModifiedTitle();
     }
 
-    public function testInitialize()
-    {
-        $this->assertInstanceOf(
-            AmazonService\Product\ModifiedTitle::class,
-            $this->productModifiedTitleService
-        );
-    }
-
-    public function testGetModifiedTitle()
+    public function test_getModifiedTitle()
     {
         $productEntity        = new AmazonEntity\Product();
         $productEntity->setTitle('Example Brand Amazing Product\'s Title (Is Great)');
@@ -39,6 +31,12 @@ class ModifiedTitleTest extends TestCase
         $productEntity->setTitle('!This is a really long title! It has a lot of words in it but only the first pre-determined number of words should be stored in the title because otherwise there would be too many words in the title');
         $this->assertSame(
             'This really long title has lot words but only the first predetermined number words should stored the title because otherwise',
+            $this->productModifiedTitleService->getModifiedTitle($productEntity)
+        );
+
+        $productEntity->setTitle('(2 Pack) Headphone');
+        $this->assertSame(
+            'Headphone',
             $this->productModifiedTitleService->getModifiedTitle($productEntity)
         );
 
