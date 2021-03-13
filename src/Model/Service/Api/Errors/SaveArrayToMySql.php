@@ -23,8 +23,8 @@ class SaveArrayToMySql
             foreach ($patterns as $pattern) {
                 if (preg_match($pattern, $errorArray['Message'], $matches)) {
                     $asin = $matches[1];
+                    $this->asinTable->updateSetModifiedToUtcTimestampWhereAsin($asin);
                     $this->asinTable->updateSetIsValidWhereAsin(0, $asin);
-
                     continue;
                 }
             }

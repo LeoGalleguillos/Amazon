@@ -22,6 +22,14 @@ class SaveArrayToMySqlTest extends TestCase
     {
         $this->asinTableMock
             ->expects($this->exactly(3))
+            ->method('updateSetModifiedToUtcTimestampWhereAsin')
+            ->withConsecutive(
+                ['B00388Q3WU'],
+                ['B071K8P186'],
+                ['B072QTHMC7']
+            );
+        $this->asinTableMock
+            ->expects($this->exactly(3))
             ->method('updateSetIsValidWhereAsin')
             ->withConsecutive(
                 [0, 'B00388Q3WU'],
