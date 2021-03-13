@@ -9,14 +9,13 @@ class ProductTest extends TableTestCase
 {
     protected function setUp(): void
     {
+        $this->setForeignKeyChecks0();
+        $this->dropAndCreateTable('product');
+        $this->setForeignKeyChecks1();
+
         $this->productTable = new AmazonTable\Product(
             $this->getAdapter()
         );
-
-        $this->setForeignKeyChecks0();
-        $this->dropTable('product');
-        $this->createTable('product');
-        $this->setForeignKeyChecks1();
     }
 
     public function test_insertAsin_uniqueAsin_success()
