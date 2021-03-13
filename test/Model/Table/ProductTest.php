@@ -38,4 +38,32 @@ class ProductTest extends TableTestCase
         $this->productTable->insertAsin('ASIN002');
         $this->productTable->insertAsin('ASIN002');
     }
+
+    public function test_select_emptyResult()
+    {
+        $result = $this->productTable->select(0, 100);
+        $this->assertEmpty($result);
+    }
+
+    public function test_select_desiredResult()
+    {
+        $this->productTable->insertAsin('ASIN001');
+        $this->productTable->insertAsin('ASIN002');
+        $this->productTable->insertAsin('ASIN003');
+        $this->productTable->insertAsin('ASIN004');
+        $result = $this->productTable->select(1, 2);
+        $array = $result->current();
+        $this->assertSame(
+            'ASIN002',
+            $array['asin']
+        );
+        $result->next();
+        $array = $result->current();
+        $this->assertSame(
+            'ASIN003',
+            $array['asin']
+        );
+        $result->next();
+        $this->assertFalse($result->current());
+    }
 }

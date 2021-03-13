@@ -124,6 +124,25 @@ class Product
         return (bool) $row['count'];
     }
 
+    public function select(
+        int $limitOffset,
+        int $limitRowCount
+    ): Result {
+        $sql = $this->getSelect()
+             . '
+              FROM `product`
+             ORDER
+                BY `product_id` ASC
+             LIMIT ?, ?
+                 ;
+        ';
+        $parameters = [
+            $limitOffset,
+            $limitRowCount,
+        ];
+        return $this->adapter->query($sql)->execute($parameters);
+    }
+
     public function selectAsinWhereProductGroupAndSimilarRetrievedIsNull(
         string $productGroup
     ) {
