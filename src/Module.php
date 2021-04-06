@@ -373,7 +373,8 @@ class Module
                         $sm->get(AmazonService\Api\Resources\ItemInfo\TradeInInfo\Set::class),
                         $sm->get(AmazonService\Brand\ConditionallyInsert::class),
                         $sm->get(AmazonTableGateway\Product::class),
-                        $sm->get(ArrayModuleService\Path\StringOrNull::class)
+                        $sm->get(ArrayModuleService\Path\StringOrNull::class),
+                        $sm->get(StringService\Shorten::class)
                     );
                 },
                 AmazonService\Api\Resources\Offers\Listings\SaveArrayToMySql::class => function ($sm) {

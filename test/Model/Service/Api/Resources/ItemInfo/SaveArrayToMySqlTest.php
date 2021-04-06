@@ -4,6 +4,7 @@ namespace LeoGalleguillos\AmazonTest\Model\Service\Api\Resources\ItemInfo;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\TableGateway as AmazonTableGateway;
 use LeoGalleguillos\ArrayModule\Service as ArrayModuleService;
+use MonthlyBasis\String\Model\Service as StringService;
 use PHPUnit\Framework\TestCase;
 
 class SaveArrayToMySqlTest extends TestCase
@@ -40,6 +41,9 @@ class SaveArrayToMySqlTest extends TestCase
         $this->stringOrNullServiceMock = $this->createMock(
             ArrayModuleService\Path\StringOrNull::class
         );
+        $this->shortenServiceMock = $this->createMock(
+            StringService\Shorten::class
+        );
         $this->saveArrayToMySqlService = new AmazonService\Api\Resources\ItemInfo\SaveArrayToMySql(
             $this->byLineInfoSetServiceMock,
             $this->classificationsSetServiceMock,
@@ -50,12 +54,19 @@ class SaveArrayToMySqlTest extends TestCase
             $this->tradeInInfoSetServiceMock,
             $this->conditionallyInsertServiceMock,
             $this->productTableGatewayMock,
-            $this->stringOrNullServiceMock
+            $this->stringOrNullServiceMock,
+            $this->shortenServiceMock
         );
     }
 
     public function test_saveArrayToMySql()
     {
+        $this->shortenServiceMock
+            ->expects($this->exactly(1))
+            ->method('shorten')
+            ->with('SUNDOLPHIN Sun Dolphin Mackinaw Canoe (Green, 15.6-Feet)')
+            ->willReturn('SUNDOLPHIN Sun Dolphin Mackinaw Canoe (Green, 15.6-Feet)')
+            ;
         $this->byLineInfoSetServiceMock
             ->expects($this->exactly(1))
             ->method('getSet')

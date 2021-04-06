@@ -4,6 +4,7 @@ namespace LeoGalleguillos\Amazon\Model\Service\Api\Resources\ItemInfo;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\TableGateway as AmazonTableGateway;
 use LeoGalleguillos\ArrayModule\Service as ArrayModuleService;
+use MonthlyBasis\String\Model\Service as StringService;
 
 class SaveArrayToMySql
 {
@@ -17,7 +18,8 @@ class SaveArrayToMySql
         AmazonService\Api\Resources\ItemInfo\TradeInInfo\Set $tradeInInfoSetService,
         AmazonService\Brand\ConditionallyInsert $conditionallyInsertService,
         AmazonTableGateway\Product $productTableGateway,
-        ArrayModuleService\Path\StringOrNull $stringOrNullService
+        ArrayModuleService\Path\StringOrNull $stringOrNullService,
+        StringService\Shorten $shortenService
     ) {
         $this->byLineInfoSetService               = $byLineInfoSetService;
         $this->classificationsSetService          = $classificationsSetService;
@@ -29,6 +31,7 @@ class SaveArrayToMySql
         $this->conditionallyInsertService         = $conditionallyInsertService;
         $this->productTableGateway                = $productTableGateway;
         $this->stringOrNullService                = $stringOrNullService;
+        $this->shortenService                     = $shortenService;
     }
 
     public function saveArrayToMySql(
@@ -50,7 +53,10 @@ class SaveArrayToMySql
                 : null,
             'length_units' => $itemInfoArray['ProductInfo']['ItemDimensions']['Length']['Unit']
                 ?? null,
-            'title' => $itemInfoArray['Title']['DisplayValue'],
+            'title' => $this->shortenService->shorten(
+                $itemInfoArray['Title']['DisplayValue'],
+                511
+            ),
             'weight_value' => isset($itemInfoArray['ProductInfo']['ItemDimensions']['Weight']['DisplayValue'])
                 ? ((float) $itemInfoArray['ProductInfo']['ItemDimensions']['Weight']['DisplayValue'])
                 : null,
