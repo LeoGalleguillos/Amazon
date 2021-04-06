@@ -3,7 +3,7 @@ namespace LeoGalleguillos\AmazonTest\Model\Service;
 
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
-use LeoGalleguillos\String\Model\Service as StringService;
+use MonthlyBasis\String\Model\Service as StringService;
 use PHPUnit\Framework\TestCase;
 
 class RootRelativeUrlTest extends TestCase

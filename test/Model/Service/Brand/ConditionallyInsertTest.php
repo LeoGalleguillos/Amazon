@@ -4,7 +4,7 @@ namespace LeoGalleguillos\AmazonTest\Model\Service\Brand;
 use Laminas\Db\Adapter\Driver\Pdo\Result;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
-use LeoGalleguillos\String\Model\Service as StringService;
+use MonthlyBasis\String\Model\Service as StringService;
 use PHPUnit\Framework\TestCase;
 
 class ConditionallyInsertTest extends TestCase

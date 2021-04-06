@@ -5,7 +5,7 @@ use Exception;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\View\Helper as AmazonHelper;
-use LeoGalleguillos\String\Model\Service as StringService;
+use MonthlyBasis\String\Model\Service as StringService;
 use PHPUnit\Framework\TestCase;
 
 class BreadcrumbsHtmlTest extends TestCase
@@ -20,13 +20,15 @@ class BreadcrumbsHtmlTest extends TestCase
             AmazonService\Product\Breadcrumbs::class
         );
         $this->escapeService = new StringService\Escape();
-        $this->urlFriendlyService = new StringService\UrlFriendly();
+        $this->urlFriendlyServiceMock = $this->createMock(
+            StringService\UrlFriendly::class
+        );
 
         $this->breadcrumbsHtmlHelper = new AmazonHelper\Product\BreadcrumbsHtml(
             $this->browseNodeNameDomains,
             $this->breadcrumbsServiceMock,
             $this->escapeService,
-            $this->urlFriendlyService
+            $this->urlFriendlyServiceMock
         );
     }
 

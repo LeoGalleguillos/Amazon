@@ -3,7 +3,7 @@ namespace LeoGalleguillos\Amazon\Model\Factory;
 
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
-use LeoGalleguillos\String\Model\Service as StringService;
+use MonthlyBasis\String\Model\Service as StringService;
 use TypeError;
 
 class ProductGroup

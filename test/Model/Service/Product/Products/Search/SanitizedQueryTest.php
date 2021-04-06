@@ -2,7 +2,7 @@
 namespace LeoGalleguillos\AmazonTest\Model\Service\Product\Products\Search;
 
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
-use LeoGalleguillos\String\Model\Service as StringService;
+use MonthlyBasis\String\Model\Service as StringService;
 use PHPUnit\Framework\TestCase;
 
 class SanitizedQueryTest extends TestCase

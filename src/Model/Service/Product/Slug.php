@@ -3,7 +3,7 @@ namespace LeoGalleguillos\Amazon\Model\Service\Product;
 
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
-use LeoGalleguillos\String\Model\Service as StringService;
+use MonthlyBasis\String\Model\Service as StringService;
 
 class Slug
 {

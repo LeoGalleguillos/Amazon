@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "711408f9de8216dcab80178b87f8cb1f",
+    "content-hash": "f4e987045097860d6eb550506b8160b9",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -2268,37 +2268,6 @@
             "time": "2020-11-10T20:57:30+00:00"
         },
         {
-            "name": "leo-galleguillos/string",
-            "version": "v1.0.42",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/LeoGalleguillos/String.git",
-                "reference": "67e275fd3e9031ec8a96877960f051816c589676"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/String/zipball/67e275fd3e9031ec8a96877960f051816c589676",
-                "reference": "67e275fd3e9031ec8a96877960f051816c589676",
-                "shasum": ""
-            },
-            "require": {
-                "laminas/laminas-test": "^3.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "LeoGalleguillos\\String\\": "src/",
-                    "LeoGalleguillos\\StringTest\\": "test/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "abandoned": "monthly-basis/string",
-            "time": "2020-07-29T16:27:49+00:00"
-        },
-        {
             "name": "leo-galleguillos/test",
             "version": "v1.0.12",
             "source": {
@@ -2392,6 +2361,36 @@
                 "MIT"
             ],
             "time": "2020-07-03T01:24:44+00:00"
+        },
+        {
+            "name": "monthly-basis/string",
+            "version": "v3.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/monthly-basis/string.git",
+                "reference": "43637c05bafcec7e3cbd093e705f967dbc28ea5f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/monthly-basis/string/zipball/43637c05bafcec7e3cbd093e705f967dbc28ea5f",
+                "reference": "43637c05bafcec7e3cbd093e705f967dbc28ea5f",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-test": "^3.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MonthlyBasis\\String\\": "src/",
+                    "MonthlyBasis\\StringTest\\": "test/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2021-03-12T19:44:03+00:00"
         },
         {
             "name": "myclabs/deep-copy",

@@ -4,7 +4,7 @@ namespace LeoGalleguillos\Amazon\View\Helper\Product;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\View\Helper as AmazonHelper;
-use LeoGalleguillos\String\Model\Service as StringService;
+use MonthlyBasis\String\Model\Service as StringService;
 use TypeError;
 use Laminas\View\Helper\AbstractHelper;
 

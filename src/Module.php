@@ -12,7 +12,7 @@ use LeoGalleguillos\Amazon\View\Helper as AmazonHelper;
 use LeoGalleguillos\ArrayModule\Service as ArrayModuleService;
 use LeoGalleguillos\Image\Model\Factory as ImageFactory;
 use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
-use LeoGalleguillos\String\Model\Service as StringService;
+use MonthlyBasis\String\Model\Service as StringService;
 use LeoGalleguillos\Video\Model\Service as VideoService;
 
 class Module

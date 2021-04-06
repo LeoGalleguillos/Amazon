@@ -3,7 +3,7 @@ namespace LeoGalleguillos\Amazon\Model\Service\Brand;
 
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
-use LeoGalleguillos\String\Model\Service as StringService;
+use MonthlyBasis\String\Model\Service as StringService;
 
 class ConditionallyInsert
 {

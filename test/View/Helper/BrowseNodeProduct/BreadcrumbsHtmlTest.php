@@ -4,7 +4,7 @@ namespace LeoGalleguillos\AmazonTest\View\Helper\BrowseNodeProduct;
 use LeoGalleguillos\Amazon\Model\Entity as AmazonEntity;
 use LeoGalleguillos\Amazon\View\Helper as AmazonHelper;
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
-use LeoGalleguillos\String\Model\Service as StringService;
+use MonthlyBasis\String\Model\Service as StringService;
 use Laminas\View\Helper\AbstractHelper;
 use PHPUnit\Framework\TestCase;
 
@@ -20,13 +20,15 @@ class BreadcrumbsHtmlTest extends TestCase
             'Browse Node Name' => 'www.example.com',
         ];
         $this->escapeService = new StringService\Escape();
-        $this->urlFriendlyService = new StringService\UrlFriendly();
+        $this->urlFriendlyServiceMock = $this->createMock(
+            StringService\UrlFriendly::class
+        );
 
         $this->breadcrumbsHtmlHelper = new AmazonHelper\BrowseNodeProduct\BreadcrumbsHtml(
             $this->breadcrumbsServiceMock,
             $this->browseNodeNameDomains,
             $this->escapeService,
-            $this->urlFriendlyService
+            $this->urlFriendlyServiceMock
         );
     }
 
