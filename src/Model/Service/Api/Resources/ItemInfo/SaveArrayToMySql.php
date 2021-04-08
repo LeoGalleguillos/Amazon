@@ -53,10 +53,7 @@ class SaveArrayToMySql
                 : null,
             'length_units' => $itemInfoArray['ProductInfo']['ItemDimensions']['Length']['Unit']
                 ?? null,
-            'title' => $this->shortenService->shorten(
-                $itemInfoArray['Title']['DisplayValue'],
-                511
-            ),
+            'title' => $this->getTitle($itemInfoArray),
             'weight_value' => isset($itemInfoArray['ProductInfo']['ItemDimensions']['Weight']['DisplayValue'])
                 ? ((float) $itemInfoArray['ProductInfo']['ItemDimensions']['Weight']['DisplayValue'])
                 : null,
@@ -155,5 +152,20 @@ class SaveArrayToMySql
             $itemInfoArray,
             127
         );
+    }
+
+    /**
+     * @return string|null
+     */
+    protected function getTitle(array $itemInfoArray)
+    {
+        if (isset($itemInfoArray['Title']['DisplayValue'])) {
+            return $this->shortenService->shorten(
+                $itemInfoArray['Title']['DisplayValue'],
+                511
+            );
+        }
+
+        return null;
     }
 }
