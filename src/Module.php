@@ -132,7 +132,9 @@ class Module
                     );
                 },
                 AmazonFactory\Brand::class => function ($sm) {
-                    return new AmazonFactory\Brand();
+                    return new AmazonFactory\Brand(
+                        $sm->get(StringService\UrlFriendly::class)
+                    );
                 },
                 AmazonFactory\Brand\Slug::class => function ($sm) {
                     return new AmazonFactory\Brand\Slug(
