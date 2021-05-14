@@ -899,6 +899,11 @@ class Module
                         $sm->get(AmazonTable\Product::class)
                     );
                 },
+                AmazonTable\Product\ProductGroupIsValidModified::class => function ($sm) {
+                    return new AmazonTable\Product\ProductGroupIsValidModified(
+                        $sm->get('amazon')
+                    );
+                },
                 AmazonTable\Product\SimilarRetrievedModifiedProductId::class => function ($sm) {
                     return new AmazonTable\Product\SimilarRetrievedModifiedProductId(
                         $sm->get('amazon'),
