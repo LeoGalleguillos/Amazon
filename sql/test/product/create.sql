@@ -38,6 +38,7 @@ CREATE TABLE `product` (
   UNIQUE KEY `asin` (`asin`),
   KEY `product_group_modified` (`product_group`,`modified`),
   KEY `product_group_is_valid_modified` (`product_group`, `is_valid`, `modified`),
+  KEY `product_group_is_valid_product_id` (`product_group`,`is_valid`,`product_id`),
   KEY `product_group_is_valid_similar_retrieved` (`product_group`, `is_valid`, `similar_retrieved`),
   KEY `product_group_binding_modified` (`product_group`,`binding`,`modified`),
   KEY `product_group_brand_modified` (`product_group`,`brand`,`modified`),
