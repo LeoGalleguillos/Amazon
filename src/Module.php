@@ -904,6 +904,12 @@ class Module
                         $sm->get('amazon')
                     );
                 },
+                AmazonTable\Product\ProductGroupIsValidSimilarRetrieved::class => function ($sm) {
+                    return new AmazonTable\Product\ProductGroupIsValidSimilarRetrieved(
+                        $sm->get('amazon'),
+                        $sm->get(AmazonTable\Product::class)
+                    );
+                },
                 AmazonTable\Product\SimilarRetrievedModifiedProductId::class => function ($sm) {
                     return new AmazonTable\Product\SimilarRetrievedModifiedProductId(
                         $sm->get('amazon'),
