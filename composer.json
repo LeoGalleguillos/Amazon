@@ -18,6 +18,7 @@
         "leo-galleguillos/test": "^1.0",
         "leo-galleguillos/video": "^1.0",
         "monthly-basis/laminas-test": "^2.0",
-        "monthly-basis/string": "^3.0"
+        "monthly-basis/string": "^3.0",
+        "php": "^7.4"
     }
 }
