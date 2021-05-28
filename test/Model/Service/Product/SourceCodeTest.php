@@ -12,14 +12,6 @@ class SourceCodeTest extends TestCase
         $this->sourceCodeService = new AmazonService\Product\SourceCode();
     }
 
-    public function testInitialize()
-    {
-        $this->assertInstanceOf(
-            AmazonService\Product\SourceCode::class,
-            $this->sourceCodeService
-        );
-    }
-
     public function testGetSourceCode()
     {
         $this->markTestSkipped('Skip test unless you want to call Amazon.');

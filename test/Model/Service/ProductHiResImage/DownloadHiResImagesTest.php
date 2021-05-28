@@ -15,17 +15,13 @@ class DownloadHiResImagesTest extends TestCase
         $this->downloadHiResImagesService = new AmazonService\ProductHiResImage\DownloadHiResImages();
     }
 
-    public function testInitialize()
-    {
-        $this->assertInstanceOf(
-            AmazonService\ProductHiResImage\DownloadHiResImages::class,
-            $this->downloadHiResImagesService
-        );
-    }
-
     public function testDownloadHiResImages()
     {
-        $productEntity = new AmazonEntity\Product();
+        $this->markTestSkipped('Skip test unless you want to call Amazon.');
+
+        $productEntity = (new AmazonEntity\Product())
+            ->setAsin('ASIN001')
+            ;
 
         try {
             $this->downloadHiResImagesService->downloadHiResImages($productEntity);
