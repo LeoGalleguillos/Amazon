@@ -25,6 +25,16 @@ class ProductTest extends TestCase
             $this->productEntity->getAsin()
         );
 
+        $bindingEntity = new AmazonEntity\Binding();
+        $this->assertSame(
+            $this->productEntity,
+            $this->productEntity->setBindingEntity($bindingEntity)
+        );
+        $this->assertSame(
+            $bindingEntity,
+            $this->productEntity->getBindingEntity()
+        );
+
         $brandEntity = new AmazonEntity\Brand();
         $this->assertSame(
             $this->productEntity,

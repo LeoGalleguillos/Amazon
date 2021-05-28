@@ -7,20 +7,9 @@ use LeoGalleguillos\Image\Model\Entity as ImageEntity;
 
 class Product
 {
-    /**
-     * @var string
-     */
-    public $asin;
-
-    /**
-     * @var AmazonEntity\Binding
-     */
-    public $binding;
-
-    /**
-     * @var AmazonEntity\Binding
-     */
-    protected $bindingEntity;
+    public string $asin;
+    public AmazonEntity\Binding $binding;
+    protected AmazonEntity\Binding $bindingEntity;
 
     /**
      * @var string
