@@ -99,6 +99,11 @@ class BrowseNodeProduct
             $browseNodeId,
         ];
         $array = $this->adapter->query($sql)->execute($parameters)->current();
+
+        if (empty($array)) {
+            return 0;
+        }
+
         return (int) $array['product_id'];
     }
 
@@ -128,6 +133,11 @@ class BrowseNodeProduct
         ";
         $parameters = $browseNodeIds;
         $array = $this->adapter->query($sql)->execute($parameters)->current();
+
+        if (empty($array)) {
+            return 0;
+        }
+
         return (int) $array['product_id'];
     }
 
@@ -157,6 +167,11 @@ class BrowseNodeProduct
         ";
         $parameters = $browseNodeIds;
         $array = $this->adapter->query($sql)->execute($parameters)->current();
+
+        if (empty($array)) {
+            return 0;
+        }
+
         return (int) $array['product_id'];
     }
 
@@ -181,6 +196,11 @@ class BrowseNodeProduct
             $browseNodeId,
         ];
         $array = $this->adapter->query($sql)->execute($parameters)->current();
+
+        if (empty($array)) {
+            return 0;
+        }
+
         return (int) $array['product_id'];
     }
 
