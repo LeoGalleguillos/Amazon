@@ -632,9 +632,6 @@ class Module
                         $sm->get(StringService\UrlFriendly::class)
                     );
                 },
-                AmazonService\Product\SourceCode::class => function ($sm) {
-                    return new AmazonService\Product\SourceCode();
-                },
                 AmazonService\Product\Tweet::class => function ($sm) {
                     return new AmazonService\Product\Tweet(
                         $sm->get(AmazonService\Product\Hashtags::class),
