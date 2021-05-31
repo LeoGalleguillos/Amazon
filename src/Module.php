@@ -689,22 +689,6 @@ class Module
                         $sm->get(AmazonService\ProductImage\DownloadFile::class)
                     );
                 },
-                AmazonService\ProductHiResImage\ArrayFromSourceCode::class => function ($sm) {
-                    return new AmazonService\ProductHiResImage\ArrayFromSourceCode();
-                },
-                AmazonService\ProductHiResImage\DownloadHiResImages::class => function ($sm) {
-                    return new AmazonService\ProductHiResImage\DownloadHiResImages();
-                },
-                AmazonService\ProductHiResImage\DownloadUrls::class => function ($sm) {
-                    return new AmazonService\ProductHiResImage\DownloadUrls(
-                        $sm->get(AmazonService\Product\SourceCode::class),
-                        $sm->get(AmazonService\ProductHiResImage\ArrayFromSourceCode::class),
-                        $sm->get(AmazonTable\ProductHiResImage::class)
-                    );
-                },
-                AmazonService\ProductHiResImage\HiResImagesDownloaded::class => function ($sm) {
-                    return new AmazonService\ProductHiResImage\HiResImagesDownloaded();
-                },
                 AmazonService\ProductVideo\Command::class => function ($sm) {
                     return new AmazonService\ProductVideo\Command(
                         $sm->get(AmazonService\ProductVideo\RandomMp3Rru::class)
@@ -1013,11 +997,6 @@ class Module
                 AmazonTable\ProductGroup::class => function ($sm) {
                     return new AmazonTable\ProductGroup(
                         $sm->get(MemcachedService\Memcached::class),
-                        $sm->get('amazon')
-                    );
-                },
-                AmazonTable\ProductHiResImage::class => function ($sm) {
-                    return new AmazonTable\ProductHiResImage(
                         $sm->get('amazon')
                     );
                 },
