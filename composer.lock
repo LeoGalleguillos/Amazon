@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2dbb5586eb6a0e0f24770dd7660f11a6",
+    "content-hash": "7a019db963e0888ec92356d7c8c2d780",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -156,16 +156,16 @@
         },
         {
             "name": "laminas/laminas-cache",
-            "version": "2.11.1",
+            "version": "2.11.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-cache.git",
-                "reference": "f888588c3a40916e505658c9e8b8922166b70ec6"
+                "reference": "f825aecc67f40e8bc499500373e5de700b95d00b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-cache/zipball/f888588c3a40916e505658c9e8b8922166b70ec6",
-                "reference": "f888588c3a40916e505658c9e8b8922166b70ec6",
+                "url": "https://api.github.com/repos/laminas/laminas-cache/zipball/f825aecc67f40e8bc499500373e5de700b95d00b",
+                "reference": "f825aecc67f40e8bc499500373e5de700b95d00b",
                 "shasum": ""
             },
             "require": {
@@ -250,7 +250,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-05-03T20:23:26+00:00"
+            "time": "2021-06-03T19:18:41+00:00"
         },
         {
             "name": "laminas/laminas-cache-storage-adapter-apc",
@@ -312,6 +312,7 @@
                     "type": "community_bridge"
                 }
             ],
+            "abandoned": true,
             "time": "2020-10-12T16:04:12+00:00"
         },
         {
@@ -496,6 +497,7 @@
                     "type": "community_bridge"
                 }
             ],
+            "abandoned": true,
             "time": "2020-10-12T16:08:58+00:00"
         },
         {
@@ -685,6 +687,7 @@
                     "type": "community_bridge"
                 }
             ],
+            "abandoned": true,
             "time": "2021-04-29T19:57:43+00:00"
         },
         {
@@ -871,16 +874,16 @@
         },
         {
             "name": "laminas/laminas-cache-storage-adapter-redis",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-cache-storage-adapter-redis.git",
-                "reference": "f871faafa8706f662ff10bc6ac63271b463af2ff"
+                "reference": "de8a63d4a0ef1ccead401eb7fb6d75b57fa3f9ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-cache-storage-adapter-redis/zipball/f871faafa8706f662ff10bc6ac63271b463af2ff",
-                "reference": "f871faafa8706f662ff10bc6ac63271b463af2ff",
+                "url": "https://api.github.com/repos/laminas/laminas-cache-storage-adapter-redis/zipball/de8a63d4a0ef1ccead401eb7fb6d75b57fa3f9ee",
+                "reference": "de8a63d4a0ef1ccead401eb7fb6d75b57fa3f9ee",
                 "shasum": ""
             },
             "require": {
@@ -894,11 +897,15 @@
                 "laminas/laminas-cache-storage-implementation": "1.0"
             },
             "require-dev": {
+                "composer-runtime-api": "^2",
+                "ext-posix": "*",
                 "ext-redis": "*",
                 "laminas/laminas-cache": "^2.10",
                 "laminas/laminas-cache-storage-adapter-test": "^1.1",
                 "laminas/laminas-coding-standard": "^2.1",
-                "laminas/laminas-serializer": "^2.10"
+                "laminas/laminas-serializer": "^2.10",
+                "psalm/plugin-phpunit": "^0.15.1",
+                "vimeo/psalm": "^4.7"
             },
             "type": "library",
             "autoload": {
@@ -928,7 +935,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-05-02T11:53:50+00:00"
+            "time": "2021-06-03T16:14:07+00:00"
         },
         {
             "name": "laminas/laminas-cache-storage-adapter-session",
@@ -2294,61 +2301,54 @@
         },
         {
             "name": "laminas/laminas-test",
-            "version": "3.4.2",
+            "version": "3.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-test.git",
-                "reference": "da508dd32bdedd8f2757887ad7dfed3cf5faea2d"
+                "reference": "621eced0d747ead65c39ab0fc507f66e9bdca276"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-test/zipball/da508dd32bdedd8f2757887ad7dfed3cf5faea2d",
-                "reference": "da508dd32bdedd8f2757887ad7dfed3cf5faea2d",
+                "url": "https://api.github.com/repos/laminas/laminas-test/zipball/621eced0d747ead65c39ab0fc507f66e9bdca276",
+                "reference": "621eced0d747ead65c39ab0fc507f66e9bdca276",
                 "shasum": ""
             },
             "require": {
                 "laminas/laminas-console": "^2.6",
-                "laminas/laminas-dom": "^2.6",
-                "laminas/laminas-eventmanager": "^2.6.2 || ^3.0",
-                "laminas/laminas-http": "^2.8.3",
+                "laminas/laminas-dom": "^2.8",
+                "laminas/laminas-eventmanager": "^3.0",
+                "laminas/laminas-http": "^2.13",
                 "laminas/laminas-mvc": "^3.0",
-                "laminas/laminas-servicemanager": "^2.7.5 || ^3.0.3",
-                "laminas/laminas-stdlib": "^2.7 || ^3.0",
+                "laminas/laminas-servicemanager": "^3.0.3",
+                "laminas/laminas-stdlib": "^3.3",
                 "laminas/laminas-uri": "^2.5",
                 "laminas/laminas-view": "^2.6.3",
-                "laminas/laminas-zendframework-bridge": "^1.0",
-                "php": "^5.6 || ^7.0",
-                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0"
+                "laminas/laminas-zendframework-bridge": "^1.1",
+                "php": "^7.3 || ~8.0.0",
+                "phpunit/phpunit": "^8.0 || ^9.0"
             },
             "replace": {
                 "zendframework/zend-test": "^3.3.0"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "~1.0.0",
+                "laminas/laminas-coding-standard": "~2.2.1",
                 "laminas/laminas-i18n": "^2.6",
                 "laminas/laminas-log": "^2.7.1",
                 "laminas/laminas-modulemanager": "^2.7.1",
                 "laminas/laminas-mvc-console": "^1.1.8",
-                "laminas/laminas-mvc-plugin-flashmessenger": "^0.1.0",
+                "laminas/laminas-mvc-plugin-flashmessenger": "^1.0",
                 "laminas/laminas-serializer": "^2.6.1",
                 "laminas/laminas-session": "^2.8.5",
                 "laminas/laminas-validator": "^2.8",
-                "mikey179/vfsstream": "~1.2"
+                "mikey179/vfsstream": "^1.6.8",
+                "psalm/plugin-phpunit": "^0.16.0",
+                "vimeo/psalm": "^4.7"
             },
             "suggest": {
                 "laminas/laminas-mvc-console": "^1.1.8, to test MVC <-> console integration"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4.x-dev",
-                    "dev-develop": "3.5.x-dev"
-                }
-            },
             "autoload": {
-                "files": [
-                    "autoload/phpunit-class-aliases.php"
-                ],
                 "psr-4": {
                     "Laminas\\Test\\": "src/"
                 }
@@ -2377,7 +2377,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2020-05-20T14:56:04+00:00"
+            "time": "2021-06-14T13:48:54+00:00"
         },
         {
             "name": "laminas/laminas-uri",
@@ -2697,57 +2697,22 @@
             "time": "2021-02-25T21:54:58+00:00"
         },
         {
-            "name": "leo-galleguillos/array-module",
+            "name": "leo-galleguillos/image",
             "version": "v1.0.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/LeoGalleguillos/ArrayModule.git",
-                "reference": "c5faa4a9ae598fbfeb6de575085737ae16b1e19a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/ArrayModule/zipball/c5faa4a9ae598fbfeb6de575085737ae16b1e19a",
-                "reference": "c5faa4a9ae598fbfeb6de575085737ae16b1e19a",
-                "shasum": ""
-            },
-            "require": {
-                "laminas/laminas-test": "^3.1",
-                "leo-galleguillos/test": "^1.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "LeoGalleguillos\\ArrayModule\\": "src/",
-                    "LeoGalleguillos\\ArrayModuleTest\\": "test/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "support": {
-                "issues": "https://github.com/LeoGalleguillos/ArrayModule/issues",
-                "source": "https://github.com/LeoGalleguillos/ArrayModule/tree/master"
-            },
-            "time": "2020-02-23T16:34:15+00:00"
-        },
-        {
-            "name": "leo-galleguillos/image",
-            "version": "v1.0.1",
-            "source": {
-                "type": "git",
                 "url": "https://github.com/LeoGalleguillos/Image.git",
-                "reference": "fb68f6c652841d68a766a5e1d71c8a9e627b290f"
+                "reference": "baa10b9e5dba1126507e72a178e548891042bdfe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/Image/zipball/fb68f6c652841d68a766a5e1d71c8a9e627b290f",
-                "reference": "fb68f6c652841d68a766a5e1d71c8a9e627b290f",
+                "url": "https://api.github.com/repos/LeoGalleguillos/Image/zipball/baa10b9e5dba1126507e72a178e548891042bdfe",
+                "reference": "baa10b9e5dba1126507e72a178e548891042bdfe",
                 "shasum": ""
             },
             "require": {
                 "laminas/laminas-test": "^3.1",
-                "leo-galleguillos/test": "^1.0"
+                "monthly-basis/laminas-test": "^2.0"
             },
             "type": "library",
             "autoload": {
@@ -2762,23 +2727,23 @@
             ],
             "support": {
                 "issues": "https://github.com/LeoGalleguillos/Image/issues",
-                "source": "https://github.com/LeoGalleguillos/Image/tree/master"
+                "source": "https://github.com/LeoGalleguillos/Image/tree/v1.0.2"
             },
             "abandoned": "monthly-basis/image",
-            "time": "2020-06-19T23:14:47+00:00"
+            "time": "2021-06-10T22:18:44+00:00"
         },
         {
             "name": "leo-galleguillos/memcached",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/Memcached.git",
-                "reference": "a955ebfbbb5a677730c6be45d1c647dc19a0a28b"
+                "reference": "9e45a805e4e2ddb8b20c2a187e681432420ab4f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/Memcached/zipball/a955ebfbbb5a677730c6be45d1c647dc19a0a28b",
-                "reference": "a955ebfbbb5a677730c6be45d1c647dc19a0a28b",
+                "url": "https://api.github.com/repos/LeoGalleguillos/Memcached/zipball/9e45a805e4e2ddb8b20c2a187e681432420ab4f2",
+                "reference": "9e45a805e4e2ddb8b20c2a187e681432420ab4f2",
                 "shasum": ""
             },
             "require": {
@@ -2798,23 +2763,23 @@
             ],
             "support": {
                 "issues": "https://github.com/LeoGalleguillos/Memcached/issues",
-                "source": "https://github.com/LeoGalleguillos/Memcached/tree/v1.0.1"
+                "source": "https://github.com/LeoGalleguillos/Memcached/tree/v1.0.2"
             },
             "abandoned": "monthly-basis/memcached",
-            "time": "2020-11-10T20:57:30+00:00"
+            "time": "2021-06-10T23:18:34+00:00"
         },
         {
             "name": "leo-galleguillos/test",
-            "version": "v1.0.12",
+            "version": "v1.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/Test.git",
-                "reference": "313e9bc536f6ce1e28eeecab25ea4aa11e203755"
+                "reference": "e23c90295d54a31e16136cb1753fcecf35fb8bc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/Test/zipball/313e9bc536f6ce1e28eeecab25ea4aa11e203755",
-                "reference": "313e9bc536f6ce1e28eeecab25ea4aa11e203755",
+                "url": "https://api.github.com/repos/LeoGalleguillos/Test/zipball/e23c90295d54a31e16136cb1753fcecf35fb8bc7",
+                "reference": "e23c90295d54a31e16136cb1753fcecf35fb8bc7",
                 "shasum": ""
             },
             "require": {
@@ -2834,23 +2799,23 @@
             ],
             "support": {
                 "issues": "https://github.com/LeoGalleguillos/Test/issues",
-                "source": "https://github.com/LeoGalleguillos/Test/tree/master"
+                "source": "https://github.com/LeoGalleguillos/Test/tree/v1.0.13"
             },
             "abandoned": "monthly-basis/laminas-test",
-            "time": "2020-06-06T16:07:22+00:00"
+            "time": "2021-06-11T01:18:34+00:00"
         },
         {
             "name": "leo-galleguillos/video",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeoGalleguillos/Video.git",
-                "reference": "d3b62f9272601f3c42cbd3a157d5e5cba6135962"
+                "reference": "d1d5cf37a75b4137777284d6a0373901988efea2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeoGalleguillos/Video/zipball/d3b62f9272601f3c42cbd3a157d5e5cba6135962",
-                "reference": "d3b62f9272601f3c42cbd3a157d5e5cba6135962",
+                "url": "https://api.github.com/repos/LeoGalleguillos/Video/zipball/d1d5cf37a75b4137777284d6a0373901988efea2",
+                "reference": "d1d5cf37a75b4137777284d6a0373901988efea2",
                 "shasum": ""
             },
             "require": {
@@ -2871,9 +2836,44 @@
             ],
             "support": {
                 "issues": "https://github.com/LeoGalleguillos/Video/issues",
-                "source": "https://github.com/LeoGalleguillos/Video/tree/v1.0.1"
+                "source": "https://github.com/LeoGalleguillos/Video/tree/v1.0.2"
             },
-            "time": "2020-01-27T06:10:11+00:00"
+            "time": "2021-06-13T08:32:26+00:00"
+        },
+        {
+            "name": "monthly-basis/array-module",
+            "version": "v2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/monthly-basis/array-module.git",
+                "reference": "faf57deda3f24070e4cbe465da88f2fd347ecc89"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/monthly-basis/array-module/zipball/faf57deda3f24070e4cbe465da88f2fd347ecc89",
+                "reference": "faf57deda3f24070e4cbe465da88f2fd347ecc89",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-test": "^3.1",
+                "monthly-basis/laminas-test": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MonthlyBasis\\ArrayModule\\": "src/",
+                    "MonthlyBasis\\ArrayModuleTest\\": "test/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "support": {
+                "issues": "https://github.com/monthly-basis/array-module/issues",
+                "source": "https://github.com/monthly-basis/array-module/tree/v2.0.1"
+            },
+            "time": "2021-06-16T03:39:28+00:00"
         },
         {
             "name": "monthly-basis/laminas-test",
@@ -3714,16 +3714,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.5.4",
+            "version": "9.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "c73c6737305e779771147af66c96ca6a7ed8a741"
+                "reference": "89ff45ea9d70e35522fb6654a2ebc221158de276"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c73c6737305e779771147af66c96ca6a7ed8a741",
-                "reference": "c73c6737305e779771147af66c96ca6a7ed8a741",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/89ff45ea9d70e35522fb6654a2ebc221158de276",
+                "reference": "89ff45ea9d70e35522fb6654a2ebc221158de276",
                 "shasum": ""
             },
             "require": {
@@ -3753,7 +3753,7 @@
                 "sebastian/global-state": "^5.0.1",
                 "sebastian/object-enumerator": "^4.0.3",
                 "sebastian/resource-operations": "^3.0.3",
-                "sebastian/type": "^2.3",
+                "sebastian/type": "^2.3.2",
                 "sebastian/version": "^3.0.2"
             },
             "require-dev": {
@@ -3801,7 +3801,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.4"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.5"
             },
             "funding": [
                 {
@@ -3813,7 +3813,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-23T07:16:29+00:00"
+            "time": "2021-06-05T04:49:07+00:00"
         },
         {
             "name": "psr/cache",
@@ -4469,16 +4469,16 @@
         },
         {
             "name": "sebastian/global-state",
-            "version": "5.0.2",
+            "version": "5.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/global-state.git",
-                "reference": "a90ccbddffa067b51f574dea6eb25d5680839455"
+                "reference": "23bd5951f7ff26f12d4e3242864df3e08dec4e49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/a90ccbddffa067b51f574dea6eb25d5680839455",
-                "reference": "a90ccbddffa067b51f574dea6eb25d5680839455",
+                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/23bd5951f7ff26f12d4e3242864df3e08dec4e49",
+                "reference": "23bd5951f7ff26f12d4e3242864df3e08dec4e49",
                 "shasum": ""
             },
             "require": {
@@ -4521,7 +4521,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/global-state/issues",
-                "source": "https://github.com/sebastianbergmann/global-state/tree/5.0.2"
+                "source": "https://github.com/sebastianbergmann/global-state/tree/5.0.3"
             },
             "funding": [
                 {
@@ -4529,7 +4529,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-26T15:55:19+00:00"
+            "time": "2021-06-11T13:31:12+00:00"
         },
         {
             "name": "sebastian/lines-of-code",
@@ -4820,16 +4820,16 @@
         },
         {
             "name": "sebastian/type",
-            "version": "2.3.1",
+            "version": "2.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/type.git",
-                "reference": "81cd61ab7bbf2de744aba0ea61fae32f721df3d2"
+                "reference": "b8cd8a1c753c90bc1a0f5372170e3e489136f914"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/type/zipball/81cd61ab7bbf2de744aba0ea61fae32f721df3d2",
-                "reference": "81cd61ab7bbf2de744aba0ea61fae32f721df3d2",
+                "url": "https://api.github.com/repos/sebastianbergmann/type/zipball/b8cd8a1c753c90bc1a0f5372170e3e489136f914",
+                "reference": "b8cd8a1c753c90bc1a0f5372170e3e489136f914",
                 "shasum": ""
             },
             "require": {
@@ -4864,7 +4864,7 @@
             "homepage": "https://github.com/sebastianbergmann/type",
             "support": {
                 "issues": "https://github.com/sebastianbergmann/type/issues",
-                "source": "https://github.com/sebastianbergmann/type/tree/2.3.1"
+                "source": "https://github.com/sebastianbergmann/type/tree/2.3.4"
             },
             "funding": [
                 {
@@ -4872,7 +4872,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-26T13:18:59+00:00"
+            "time": "2021-06-15T12:49:02+00:00"
         },
         {
             "name": "sebastian/version",

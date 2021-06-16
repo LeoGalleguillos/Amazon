@@ -5,10 +5,10 @@ return [
         'Laminas\Db',
         'Laminas\Router',
         'LeoGalleguillos\Amazon',
-        'LeoGalleguillos\ArrayModule',
         'LeoGalleguillos\Image',
         'LeoGalleguillos\Memcached',
         'LeoGalleguillos\Video',
+        'MonthlyBasis\ArrayModule',
         'MonthlyBasis\String',
     ],
     // These are various options for the listeners attached to the ModuleManager

@@ -1,7 +1,7 @@
 <?php
 namespace LeoGalleguillos\Amazon\Model\Service\Api\Resources\ItemInfo\ByLineInfo;
 
-use LeoGalleguillos\ArrayModule\Service as ArrayModuleService;
+use MonthlyBasis\ArrayModule\Service as ArrayModuleService;
 
 class Set
 {

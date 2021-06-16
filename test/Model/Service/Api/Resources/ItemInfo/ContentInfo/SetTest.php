@@ -2,7 +2,7 @@
 namespace LeoGalleguillos\AmazonTest\Model\Service\Api\Resources\ItemInfo\ContentInfo;
 
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
-use LeoGalleguillos\ArrayModule\Service as ArrayModuleService;
+use MonthlyBasis\ArrayModule\Service as ArrayModuleService;
 use PHPUnit\Framework\TestCase;
 
 class SetTest extends TestCase

@@ -9,7 +9,7 @@ use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\Table as AmazonTable;
 use LeoGalleguillos\Amazon\Model\TableGateway as AmazonTableGateway;
 use LeoGalleguillos\Amazon\View\Helper as AmazonHelper;
-use LeoGalleguillos\ArrayModule\Service as ArrayModuleService;
+use MonthlyBasis\ArrayModule\Service as ArrayModuleService;
 use LeoGalleguillos\Image\Model\Factory as ImageFactory;
 use LeoGalleguillos\Memcached\Model\Service as MemcachedService;
 use MonthlyBasis\String\Model\Service as StringService;

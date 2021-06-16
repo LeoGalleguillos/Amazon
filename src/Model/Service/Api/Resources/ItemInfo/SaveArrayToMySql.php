@@ -3,7 +3,7 @@ namespace LeoGalleguillos\Amazon\Model\Service\Api\Resources\ItemInfo;
 
 use LeoGalleguillos\Amazon\Model\Service as AmazonService;
 use LeoGalleguillos\Amazon\Model\TableGateway as AmazonTableGateway;
-use LeoGalleguillos\ArrayModule\Service as ArrayModuleService;
+use MonthlyBasis\ArrayModule\Service as ArrayModuleService;
 use MonthlyBasis\String\Model\Service as StringService;
 
 class SaveArrayToMySql
