@@ -8,14 +8,8 @@ use LeoGalleguillos\Image\Model\Entity as ImageEntity;
 class Product
 {
     public string $asin;
-    public AmazonEntity\Binding $binding;
-    protected AmazonEntity\Binding $bindingEntity;
-    protected AmazonEntity\Brand $brandEntity;
-
-    /**
-     * @var string
-     */
-    protected $brand;
+    protected AmazonEntity\Binding $binding;
+    protected AmazonEntity\Brand $brand;
 
     /**
      * @var array
@@ -233,19 +227,14 @@ class Product
         return $this->asin;
     }
 
-    public function getBindingEntity(): AmazonEntity\Binding
+    public function getBinding(): AmazonEntity\Binding
     {
-        return $this->bindingEntity;
+        return $this->binding;
     }
 
-    public function getBrand(): string
+    public function getBrand(): AmazonEntity\Brand
     {
         return $this->brand;
-    }
-
-    public function getBrandEntity(): AmazonEntity\Brand
-    {
-        return $this->brandEntity;
     }
 
     public function getBrowseNodeProducts(): array
@@ -457,24 +446,17 @@ class Product
         return $this;
     }
 
-    public function setBindingEntity(
-        AmazonEntity\Binding $bindingEntity
+    public function setBinding(
+        AmazonEntity\Binding $binding
     ): self {
-        $this->bindingEntity = $bindingEntity;
+        $this->binding = $binding;
         return $this;
     }
 
     public function setBrand(
-        string $brand
+        AmazonEntity\Brand $brand
     ): self {
         $this->brand = $brand;
-        return $this;
-    }
-
-    public function setBrandEntity(
-        AmazonEntity\Brand $brandEntity
-    ): self {
-        $this->brandEntity = $brandEntity;
         return $this;
     }
 

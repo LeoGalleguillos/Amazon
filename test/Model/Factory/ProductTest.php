@@ -233,8 +233,8 @@ class ProductTest extends TestCase
 
         $productEntity = (new AmazonEntity\Product())
             ->setAsin('ASIN')
-            ->setBindingEntity($bindingEntity)
-            ->setBrandEntity($brandEntity)
+            ->setBinding($bindingEntity)
+            ->setBrand($brandEntity)
             ->setCreated(new DateTime($created))
             ->setColor('Red')
             ->setEans([
