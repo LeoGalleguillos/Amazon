@@ -10,16 +10,12 @@ class Product
     public string $asin;
     public AmazonEntity\Binding $binding;
     protected AmazonEntity\Binding $bindingEntity;
+    protected AmazonEntity\Brand $brandEntity;
 
     /**
      * @var string
      */
     protected $brand;
-
-    /**
-     * @var AmazonEntity\Brand
-     */
-    protected $brandEntity;
 
     /**
      * @var array
